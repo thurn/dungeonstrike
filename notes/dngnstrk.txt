@@ -1,0 +1,39 @@
+** The Champion **
+- Different ability-based resources
+- Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma
+- Weapons are permanent equips, abilities are in the deck
+- Weapon abilities
+- Feats
+- Skills (e.g. search)?
+- Maybe just 6 different actions you can perform in each room, one for each skill, actions have different contextual meanings.
+- Strength: Climb, Swim
+- Dexterity: Escape, Move Silently, Balance, Ride, Tumble
+- Intelligence: Search, Knowledge, Disable Device, Decipher Script
+- Wisdom: Spot, Heal, Sense Motive
+- Charisma: Disguise, Bluff, Diplomacy, Intimidate
+
+- Can only play one card per turn
+- Cards have different value levels (copper, bronze, silver, gold, platinum)
+- Better characters just have better cards, not really any "levels" per se
+- Your "ability scores" are determined by the prevalance of different cards in your deck
+- Each card is aligned with one attribute
+- So if you're really strong, you might have a ton of strength-aligned cards, etc
+
+
+** The Master **
+- Single resource?
+- Different types of stuff: Traps, monster abilities, monster spawning
+- Different strategies: Lots of small monsters, a few big mosnters, monster abilities, traps
+- Goal to find the end of the dungeon, monsters block path
+- Have bluffing about which way to go
+
+** Example Dungeon Features **
+- Large room, two iron doors, three very tired and haggard orc warriors who aren't looking for a
+fight
+- Body storage, awful smell, save against being sickened by the smell, can get filth fever. Secret door in the eastern wall.
+- Antechamber. Trapped with burning hands spell. Two secret doors. Sacks with bold and mushrooms, picking them up spills the contents and releases a black mold.
+- Main storage. Rotting barrels and crates. Moving a barrel or create requires a dexerity check or a cloud of spores are released, as well as a black mold.
+- Tool storage. Acid arrow trap. Coils of rope, secret door to bypass trap.
+- Troglodyte Quarters. Bad smell causing nausea. DC12 spot check reveals drips of blood. Shell necklace, ceremonial dagger, ceramic idol of some sort.
+- Orc corpse. A dead orc is in the room. Strength ran out before he got to the door. Search the body to reveal holes in its neck.
+- Death from above. Open door on opposite wall. Clinging to the ceiling is a fiendish darkmantle. DC25 spot to notice it. Cloaks itself in darkness and drops from the ceiling with the element of surprise.
