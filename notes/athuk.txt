@@ -1,0 +1,19 @@
+Level 2
+
+2-1
+
+The air is foul, and eight giant [rat corpses] lay about, apparently torn apart by some wild animal. The [north door] has been scratched and hacked with a [handaxe] that is embedded in it. There are two doors to the west ([west 1], [west 2]) and a door to the [south]. You notice (Perception) a [loose tile] in the floor.
+
+Actions:
+[rat corpses]: Flavor
+[north door]: There appears to be a [key] in the door. [Open].
+[handaxe]: An oak-handled axe. [Remove].
+[west 1]: This door is locked. [Use key].
+[west 2]: This door is locked. [Use key].
+[south]: This door is locked. [Use key].
+[loose tile]: [Lift].
+[key]: You take the key.
+[Remove]: With some force (Strength) you are able to remove the axe.
+[Lift]: You find a secret compartment containing stagnant water and the bones of a small animal.
+
+2-2
