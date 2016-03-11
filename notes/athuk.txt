@@ -1,8 +1,25 @@
+- Room Cards. Have descriptions, actions, exits.
+- Encounter Cards. Modify the contents of Rooms with obstacles
+- Monster Cards. Populate rooms with monsters.
+- Master is trying to get player's life to 0
+- Player is trying to get to the end of the level
+- Player gains resources as they go further
+- Master can attack early or build up a big encounter
+  - Need some reason to incentivize early interaction
+  - Master gets resource rewards for damaging player?
+- Master can have a lot of small threats or a few big ones
+-
+
 Level 2
 
 2-1
 
-The air is foul, and eight giant [rat corpses] lay about, apparently torn apart by some wild animal. The [north door] has been scratched and hacked with a [handaxe] that is embedded in it. There are two doors to the west ([west 1], [west 2]) and a door to the [south]. You notice (Perception) a [loose tile] in the floor.
+The air is foul, and eight giant [rat corpses] lay about, apparently torn apart by some wild animal. The north door has been scratched and hacked with a [handaxe] that is embedded in it.
+
+{Perception}: You notice a [loose tile] in the floor.
+
+Exit Cards:
+North; West 1; West 2; South;
 
 Actions:
 [rat corpses]: Flavor
@@ -13,7 +30,18 @@ Actions:
 [south]: This door is locked. [Use key].
 [loose tile]: [Lift].
 [key]: You take the key.
-[Remove]: With some force (Strength) you are able to remove the axe.
+[Remove]: {Strength} With some force you are able to remove the axe.
 [Lift]: You find a secret compartment containing stagnant water and the bones of a small animal.
 
 2-2
+6 [black skeletons] emerge, shrieking.
+- One is enchanted with a [deeper darkness] spell.
+- All have [blindsight].
+
+2-3
+Dim firelight can be seen coming from the south. The corridor beyond is filled with smashed bits of armor and bones. A huge [spiked iron ball] rolls back and forth along the corridor.
+
+{Perception}: The west wall of the hallway is covered in [brown mold].
+
+Exit Cards:
+North; South;
