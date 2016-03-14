@@ -34,3 +34,26 @@ A large pile of rubble from a partially collapsed wall fills the southeast corne
 
 Encounter: Yarsha
 A Stonemelder named Yarsha and her two Black Earth guards (see chapter 7 for both) dwell here. In addition to normal gear, Yarsha carries a potion of greater healing, and the guards have light crossbows.
+
+Treasure:
+An iron coffer under Yarsha’s bunk contains 210 sp, 140 ep, a pouch with six obsidian flakes worth 10 gp each, and a potion of water breathing.
+
+Encounter: Gatewarden's Quarters
+This large suite consists of several small rooms linked by low archways. Brown curtains offer some amount of privacy for the different rooms, and martial displays cover the walls--shields and crossed swords, tattered banners, and a few mounted monster heads, including those of a peryton and a manticore.
+
+Encounter: Dynath
+A burrowshark named Dynath, a Black Earth guard, and four cultists occupy the room. The cultists keep odd hours, and at any given time 1d4 are sacked out in their bunks. At least two of the residents are awake even in the middle of the night. They assume that random strangers that blunder in unannounced are enemies and attack. If circumstances permit, the occupants of the room spread the alarm by alerting the cultists in area B4 to the attack.
+
+Treasure:
+Dynath wears a hidden purse underneath his armor containing 15 gp, 5 pp, and five fine citrines worth 40 gp each.
+
+Encounter: Mud Sorcerer's Lab
+Large stone statues carved to look like scowling dwarf warriors line the walls of this large chamber. Each statue has spiky maces in place of hands. However, several of the statues are melted or deformed. The flagstones in the middle of the room have been removed to reveal a surface of natural rock. Several worktables and shelves full of alchemical reagents are tucked up against the walls between the statues.
+
+Encounter: Miraj Vizann
+Miraj is rational, deliberate, and slow to anger. He supports the cult because it deepens his understanding of elemental magic. If challenged, he attempts to persuade his attackers to turn their efforts against the fire cult. Miraj isn’t above offering a bribe to entice enemies, then reneging on the deal if they come back to collect.
+
+In battle, Miraj commands the golem to defend him. He then retreats to the back of the room to cast spells. Miraj turns invisible and flees if death seems imminent.
+
+Treasure:
+A wooden chest stowed under one of the worktables holds a small hoard of 220 gp, nine strange black crystals worth 50 gp each, and a potion of water breathing.
