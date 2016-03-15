@@ -57,3 +57,120 @@ In battle, Miraj commands the golem to defend him. He then retreats to the back 
 
 Treasure:
 A wooden chest stowed under one of the worktables holds a small hoard of 220 gp, nine strange black crystals worth 50 gp each, and a potion of water breathing.
+
+Encounter: Broken Hall
+Some long-ago, a seismic event devastated this great hall. A deep chasm splits the chamber in two, leaving a wide gap between the room’s northern and southern halves. Freestanding pillars of rock to the east create natural “stepping stones” across the chasm. The chasm continues beyond the west wall, and a narrow ledge hugs the south wall of the expanse. Six huge stone pillars still stand in this chamber, and the ceiling here is almost fifty feet high. Each of the pillars anchors heavy iron chains with links as big as a warrior’s hand.
+
+Encounter: Bulette Stable
+The Cult of the Black Earth now uses the room as a stable for their prized mounts: three bulettes. One belongs to Dynath in area B7. The other two were recently caught and haven’t yet been broken. The bulettes are being held here until the monsters can be bonded with cultists.
+Each bulette is chained securely to one of the big pillars in the room. The chains keep the bulettes within 15 feet of the pillars, but they can move freely otherwise. The bulettes spend most of their time dozing, but they are light sleepers. A bulette can break its chain with a successful DC 20 Strength check, but the chain to the northeast (holding the trained bulette) is weaker, requiring only a successful DC 15 Strength check to break.
+
+Encounter: Chasm
+The chasm that bisects the room is 100 feet deep and ranges in width from 15 feet (at the far east end) to 30 feet. The pillars of rock at the east end of the chasm are flat on top, and the gaps between them are 5 feet wide.
+
+Encounter: Long Chasm
+This long chasm stretches northwest to southeast. A five-foot-wide ledge clings to one wall, then forms a narrow stone bridge that spans the chasm and connects to a similar ledge that runs along the opposite wall.
+
+Encounter: Bats
+Creatures that make a lot of noise in the vicinity of the natural bridge disturb a swarm of bats roosting on the bridge’s underside.
+
+Encounter: South Passage
+This hallway leads south to area C10 of the Temple of the Crushing Wave.
+
+Encounter: Broog-Norb's Lair
+Crumbling masonry, huge uncured pelts, and heaps of picked-over bones and refuse fill this large room. It looks like it used to be a kitchen or bakery: huge ancient brick ovens stand in the middle of the chamber, although most are crumbling heaps of red rubble now.
+
+Encounter: Broog-Norb
+It is now the lair of Broog and Norb—the two heads of a particularly large and grumpy ettin. Broog-Norb has 130 hit points. Broog-Norb isn’t a follower of the Cult of the Black Earth. He found a way down into the ruins of Tyar-Besil months ago. The ettin has a tenuous truce with the earth cultists, who are careful to stay out of his way.
+
+He attacks intruders who make it clear that they aren’t part of the earth cult, but only threatens intruders who present themselves as cult members. Broog-Norb has no idea who is a cultist and who isn’t.
+
+Treasure
+The ettin’s treasure lies in an untidy heap covered with a filthy pelt. The pile contains 2,900 cp, 130 ep, an ivory statuette of an elephant worth 80 gp, and a pair of gold bracelets worth 30 gp each.
+
+Encounter: Hunting Hall
+Water fills a rectangular marble basin in the middle of this hall, and the walls display an ancient frieze that circles the room. The frieze depicts woodland images of deer, bears, and game fowl, along with parties of dwarven hunters. The southeast corner of the room is badly damaged, and the walls there are little more than rubble.
+
+Encounter: Torture Chamber
+A wooden torture rack stands in the middle of this room. Manacles hang from the walls and fiendish hooks, blades, and clamps hang on the back wall. Four cramped iron cages stand in the room’s western alcove, occupied by gaunt, dirty humans with blank gazes. In the room’s eastern alcove stand two double bunks and an iron stove.
+
+Encounter: Heldorm
+This grim chamber is the domain of a Stonemelder named Heldorm and the three cultists who assist him. Unbalanced, Heldorm goes about his work while arguing with himself and tittering at a series of black jests he only partially shares aloud. If the characters pass themselves off as Black Earth cultists, he assumes they brought him a new victim, and asks, “Who is to be questioned?” He is very excited by the prospect of interrogating a new subject.
+
+Encounter: Prisoners
+The captives locked in the cages include the following: Orna, Droth, Wulgrda, Gervor
+
+Treasure
+Hedorm keeps the best pickings from the prisoners in a locked wooden chest (the key is in his pocket). His trove includes 230 sp, a pouch of six azurites worth 10 gp each, Orna’s plate armor, Gervor’s studded leather armor and longsword, and a wand of magic missiles (fully charged) left behind by a previous victim.
+
+Encounter: Stone Forge
+Characters approaching this area hear the ringing of hammers on anvils before they enter. A forge stands in the middle of this room, surrounded by piles of firewood. Two big anvils stand close by, and hammers, tongs, and other smithing tools are scattered around several workbenches along the chamber’s walls. There are doorways to the west and the south, but the eastern end of the room opens up onto a dark chasm.
+
+Encounter: Xharver Deem
+The master of the forge is a dao named Xharva Deem. Two duergar assist her. Xharva Deem has no interest in fighting, because her bargain with Marlos Urnrayle requires her to make implements of elemental power for the cult. That is the extent of her promise. If the characters ask why she is standing aside, she answers, “Urnrayle has not paid me to fight puny mortals. He can look after his own slaves.
+
+She doesn’t defend her duergar assistants, although she fights back with indignant fury if any mortal dares to attack her. Xharva Deem also intervenes if characters attempt to vandalize her forge, take her tools, or remove objects she is working on, although she issues a sharply worded warning first.
+
+Treasure
+Xharva Deem is well paid indeed. Two iron coffers by her forge contain a total of 600 gp, two gold bracelets worth 100 gp each, a gold necklace with a ruby pendant worth 750 gp, and a bag with a dozen malachites worth 25 gp each. In addition, the dao has completed one set of claws of the umber hulk for the cult (see chapter 7). The claws sit on a singed square of leather on one of the workbenches.
+
+Encounter: Armory
+A single thick pillar supports the low, barrel-vaulted ceiling of this unlit chamber. Rusted scraps of metal—the remnants of breastplates, shields, axes, and swords—hang from the walls on old pegs, or lie on the floor where they fell long ago. More recent clutter in the form of filthy furs and splintered wooden furniture also lies scattered about the room. A pile of broken chairs and table legs lies next to a smoky fire pit on the north side of the room. Doors lead to the east and the southwest.
+
+Encounter: Ogres
+To guard this point of access, Marlos Urnrayle has assigned a garrison of five ogres with orders to
+let no one enter from the west without giving the pass sign of the earth cult (a triangle formed by thumbs and forefingers). The ogres have no orders to prevent people from leaving, although they challenge strangers who don’t look like members of the cult.
+
+Encounter: Chasm Staircase
+A great chasm opens before you, its ceiling thirty feet overhead. In the middle of the chasm is a square pillar of black rock. A stone bridge leads to a staircase that wraps around this pillar. The chasm, the staircase, and the pillar descend into darkness.
+
+Encounter: Alarm
+An alarm spell has been cast on the middle of the bridge. When you reach the middle of the bridge, you feel a slight tremor underfoot. Then a loud, low-pitched tone like the groaning of a giant fills the air, reverberating within the chasm. The alarm alerts cultists in area B18, who awaken, arm themselves, and move to watch for new arrivals.
+
+Encounter: Barracks
+This room appears to be a clean, neatly organized bunkroom. The sparse furnishings include six double­bunks arranged against the south and east walls, and a wooden table with several chairs in the north half of the room. An iron stove with a tidy pile of firewood stands near the middle of the room. In the southwest corner, an arrow-slit looks out at a dark passageway. Doors lead to the east and west.
+
+Encounter: Cultists
+A dozen Black Earth cultists are quartered here, but only four Black Earth guards and a Black Earth priest (see chapter 7 for both) are present at any given time. Two guards are sleeping and unarmored; they have AC 10 and won’t have time to don their armor if an alarm is raised.
+
+Encounter: Statue of Ogremoch
+Three hallways meet at this room. An alcove in the middle of the west wall holds a ten-foot-tall statue depicting a crude humanoid form composed of earth, boulders, and sharp crystals. One massive, rocky fist is raised above its blunt head.Shattered rubble from an older statue lies heaped around the pedestal on which this figure stands.
+
+Encounter: Mess Hall
+Three trestle tables are arranged in the middle of this room, and crates of provisions are stacked neatly against the walls. To the southeast, an open doorway leads to a small kitchen containing more provisions and a large cooking-hearth. A tattered gray cloak with feathers is nailed to the middle of the north wall. Doors lead to the east, west, and south.
+
+Encounter: Eating Guards
+Two Black Earth guards currently eat at the middle table, while three cultists work in the kitchen.
+
+Encounter: Screaming Statues
+This cavern has formations of flowstone, stalagmites, and stalactites everywhere. A stone building is anchored in the north wall, and a stone door stands in a masonry wall to the south. A natural gap in the cavern wall to the east reveals a chasm beyond. Numerous lifelike statues have been arranged among the rock formations. The statues depict creatures in poses suggesting shock, fear, or agony.
+
+Encounter: Marlos Urnrayle
+Marlos Urnrayle is here. Visions have warned the medusa of the characters’ arrival, and he prefers to meet visitors in this area. A shadow demon that serves as Marlos’s messenger and majordomo lurks nearby.
+
+An unrelenting narcissist, Marlos loves talking about himself. If they forget they’re talking to a medusa and take a good look at him, he is happy to make a permanent record of their astonishment. Marlos enjoys fine things and showing off. He gloats about how he has discovered power to shake the foundations of the earth. Very soon, he intends to pay back everyone who ever defied or insulted him. In combat, Marlos relies on his petrifying gaze to keep him safe from ranged attacks or spells, as he closes in to use Ironfang and his snaky hair. When the battle turns against him, Marlos flees to area B23 and makes his getaway through the hidden path in area B2.
+
+Treasure
+Marlos carries Ironfang
+
+Encounter: Earth Prophet's Sanctum
+This sumptuously appointed chamber features tapestries of gold and brown, a huge bed covered in pillows, fine mahogany furniture with crimson cushions, and lovely art objects including sculptures, busts, and urns. An arrow slit faces toward a chasm to the east.
+
+Marlos has carefully prepared the alcove with the arrow slit to function as a means of escape. The arrow slit is 4 feet high, 6 inches wide, and 1 foot deep. One use of his Earth Passage feature is sufficient to pass through. Just outside is a narrow ledge
+
+Treasure
+In the urns, Marlos has stored 1,100 sp and 130 pp. Within the room are a beautiful tapestry of a flying dragon (worth 400 gp), a carved lyre worth 250 gp, and an embroidered silk robe worth 80 gp. A suit of elven chain is folded inside a wooden chest.
+
+Encounter: Shrine of Bleeding Stone
+An irregular pit fills the center of this large hall. In the middle ofthe pit stands an obelisk of glistening black stone. Bleached bones lie scattered near the foot of the
+obelisk.A smaller stone post in front of the obelisk holds  a pair of manacles, which now confine a strange gnome with gray skin and a bald head.
+
+Encounter: Erione and Rukh
+A Black Earth priest named Erione is establishing a shrine here atop the wreckage of an ancient dwarven chapel. She is joined by four cultists. Erione resents the fact that few priests hold high places in the cult, and she intends to demonstrate that worship can bring even greater power. She has coaxed a black pudding into the porous rock obelisk. It seeps forth on her command.
+
+Erione has manacled a female deep gnome named Rukhelmoth “Rukh” Glitterstone to the stone post at the foot of the obelisk and intends to offer him as a sacrifice to the black pudding. When the pudding emerges, it seeps out of the obelisk like thick black blood and attacks the gnome first. Only after the gnome has been consumed does it pay attention to the characters.
+
+Encounter: Sentinel's Hall
+Four massive, square columns support the ceiling of this ancient hall. Passages lead out to the northwest and southeast. In the middle of the hall stands the ten-foot statue of a stern dwarf warrior with spiked balls instead of hands.
+
+The statue is a stone golem reactivated by Miraj Vizann and placed here. The stone golem responds only to attacks and creatures entering the hall from the west. If intruders make a triangular handsign by touching thumbs and forefingers, or if they speak the pass phrase “I serve the Black Earth,” the golem allows them to continue. Otherwise, it attacks.
