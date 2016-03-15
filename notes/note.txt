@@ -1,0 +1,7 @@
+## Introduction
+
+Dungeonstrike is a 2 player collectible dungeon crawl card game. One player takes on the role of the Champion, a great warrior seeking his or her fortune in a maze of traps, treasure, and ferocious monsters. The other player takes on the role of the Master, the evil presence ruling the dungeon itself.
+
+  A game of Dungeonstrike is played over a series of rounds until the Champion is killed or reaches the final room of the dungeon and kills the Master. The Master always starts the game by putting the topmost Room card of the Room deck into play and then taking the first turn.
+
+## Turn Structure
