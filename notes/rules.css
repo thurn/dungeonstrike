@@ -1,0 +1,201 @@
+body {
+  background-color: #EEEEEE;
+  margin: 0;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: bold;
+  font-family: 'Libre Baskerville';
+}
+
+table {
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+
+td,th {
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.content {
+  max-width: 600px;
+  position: fixed;
+  left: 150px;
+  margin: 0 auto 0 auto;
+  background-color: #FFFFFF;
+  padding: 50px;
+  box-shadow: 5px 5px 5px #CCCCCC;
+  overflow-y: scroll;
+  height: 90%;
+}
+
+.imageBlock {
+  max-width: 500px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1000px) {
+  .content {
+    position: inherit;
+    margin-top: 10px;
+    overflow-y: inherit;
+    height: inherit;
+  }
+}
+
+#toc {
+    top: 0px;
+    left: 0px;
+    height: 95%;
+    position: fixed;
+    background: #333;
+    box-shadow: inset -5px 0 5px 0px #000;
+    width: 150px;
+    padding-top: 20px;
+    color: #fff;
+    overflow-y: scroll;
+    font-size: 20px;
+}
+
+#toc ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#toc li {
+    padding: 5px 10px;
+}
+
+#toc a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+#toc .-h1 {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#toc .-h2 {
+  font-size: 80%;
+}
+
+#toc .-h2 a {
+  padding-left: 10px;
+}
+
+#toc .-h3 {
+  font-size: 60%;
+}
+
+#toc .-h3 a {
+  padding-left: 20px;
+}
+
+#toc .toc-active {
+    background: #336699;
+    box-shadow: inset -5px 0px 10px -5px #000;
+}
+
+.cardExample {
+  height: 315px;
+  background-color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/** CARDS **/
+
+.card {
+  width: 216px;
+  height: 310px;
+  display: inline-block;
+  float: left;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
+.cardCost {
+  margin: 2px 8px 2px 8px;
+  height: 25px;
+  color: white;
+
+}
+
+.cardName {
+  font-size: 38pt;
+  font-family: 'Lora';
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 90%;
+  text-align: center;
+}
+
+.smaller {
+  font-size: 34pt;
+}
+
+.cardRules {
+  font-size: 12px;
+  margin: 0 5px 0 5px;
+  font-family: 'Roboto';
+  height: 150px;
+  color: white;
+}
+
+.cardType {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Lora';
+  font-size: 14px;
+}
+
+.air {
+  color: #E0E0E0;
+}
+
+.fire {
+  color: #FF5722;
+}
+
+.earth {
+  color: #4CAF50;
+}
+
+.water {
+  color: #00BCD4;
+}
+
+.actionCard {
+  color: #FFEB3B;
+}
+
+.equipment {
+  color: #E91E63;
+}
+
+.spellseeker {
+  color: #CDDC39;
+}
+
+.enemy {
+  color: #FF9800;
+}
+
+.rightCard {
+  float: right;
+}
+
+.cardRules ul {
+  margin: 0;
+  padding-left: 15px;
+}

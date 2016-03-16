@@ -1,0 +1,120 @@
+.m0::after {
+  content: "\24EA";
+  font-style: normal;
+}
+
+.m1::after {
+  content: "\2460";
+  font-style: normal;
+}
+
+.m2::after {
+  content: "\2461";
+  font-style: normal;
+}
+
+.m3::after {
+  content: "\2462";
+  font-style: normal;
+}
+
+.m4::after {
+  content: "\2463";
+  font-style: normal;
+}
+
+.m5::after {
+  content: "\2464";
+  font-style: normal;
+}
+
+.m6::after {
+  content: "\2465";
+  font-style: normal;
+}
+
+.m7::after {
+  content: "\2466";
+  font-style: normal;
+}
+
+.m8::after {
+  content: "\2467";
+  font-style: normal;
+}
+
+.m9::after {
+  content: "\2468";
+  font-style: normal;
+}
+
+.m10::after {
+  content: "\2469";
+  font-style: normal;
+}
+
+.m11::after {
+  content: "\246A";
+  font-style: normal;
+}
+
+.m12::after {
+  content: "\246B";
+  font-style: normal;
+}
+
+.m13::after {
+  content: "\246C";
+  font-style: normal;
+}
+
+.m14::after {
+  content: "\246D";
+  font-style: normal;
+}
+
+.m15::after {
+  content: "\246E";
+  font-style: normal;
+}
+
+.action::after {
+  content: "\272E";
+  font-style: normal;
+}
+
+.move::after {
+  content: "\27A0";
+  font-style: normal;
+}
+
+.time::after {
+  content: "\29D7";
+  font-style: normal;
+}
+
+.arrow::after {
+  content: "\2192";
+  font-style: normal;
+}
+
+.doubleArrow::after {
+  content: "\21C9";
+  font-style: normal;
+}
+
+.dot::after {
+  content: "\2022";
+  font-style: normal;
+}
+
+.mN::after {
+  content: "\24C3";
+  font-style: normal;
+}
+
+.charge::after {
+  content: "\2600";
+  font-style: normal;
+  font-size: 90%;
+}

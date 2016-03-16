@@ -1,0 +1,594 @@
+<html>
+<head>
+  <title>DungeonStrike</title>
+  <link href="./rules.css" type="text/css" rel="stylesheet">
+  <link href="symbols.css" type="text/css" rel="stylesheet">
+  <link href='baskerville.css' rel='stylesheet' type='text/css'>
+  <link href='roboto.css' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&subset=latin,greek-ext,greek,vietnamese,latin-ext,cyrillic,cyrillic-ext' rel='stylesheet' type='text/css'>
+  <script src="jquery.js"></script>
+  <script src="toc.js"></script>
+  <script>
+   $(function() {
+       $("#toc").toc({"prefix": ""});
+   });
+  </script>
+</head>
+<body>
+<div id="toc">
+</div>
+<div class="content">
+  <div class="title">DungeonStrike</div>
+  <p>
+    <b>DungeonStrike</b> is a 2 player collectible dungeon crawl card game. One player takes on the role of the Champion, a great warrior seeking his or her fortune in a maze of traps, treasure, and ferocious monsters. The other player takes on the role of the Master, the evil presence ruling the dungeon itself.
+  </p>
+
+  <h1>Attributes and Skills</h1>
+
+  <h2>Dice Rolling</h2>
+  <p>
+  In-game instructions will occasionally use notation like "d20" or "d12". This
+  notation originally referred to rolling dice, but in DungeonStrike it means to
+  draw a card from a specific deck of numbered cards. The decks contain the
+  following values:
+  <ul>
+    <li><b>d20:</b> [1, 2, 3, 4, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12,
+    12, 13, 13, 14, 14, 15, 15, 16, 17, 18, 19, 20]</li>
+    <li><b>d12:</b> [1, 2, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 11,
+    12]</li>
+    <li><b>d10:</b> [1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 10]</li>
+    <li><b>d8:</b> [1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8]</li>
+    <li><b>d6:</b> [1, 2, 2, 3, 3, 4, 4, 5, 5, 6]</li>
+    <li><b>d4:</b> [1, 2, 2, 3, 3, 4]</li>
+  </ul>
+  If a deck runs out of numbers, it is shuffled before further draws take place.
+  </p>
+
+  <h2>Attributes</h2>
+  <p>
+      All characters in DungeonStrike have 3 common attribute scores which
+      describe their ability to perform various game actions. These attributes
+      are:
+      <ul>
+        <li>
+          <b>Agility</b>, which captures the character's reflexes, dexterity,
+          and speed. Characters with a higher agility have better aim.
+        </li>
+        <li>
+          <b>Fortitude</b>, which captures the character's constitution, brawn,
+          and strength. Characters with a higher fortitude have more health.
+        </li>
+        <li>
+          <b>Mind</b>, which captures the character's intellect, charisma,
+          wisdom, cunning, and knowledge. Characters with a higher mind score
+          are better at a variety of skills and at resisting certain types of
+          mental attacks.
+        </li>
+      </ul>
+      Attributes for characters usually fall in the 10-18 range, with 12 being a
+      typical starting value. Characters can discover special "attribute bonus"
+      cards which let them increase an attribute score.
+  </p>
+
+  <p>
+    Some in-game effects reduce a character's attributes instead of directly
+    damaging that character. This is called <b>attribute score damage</b>. Until
+    the damage wears off or is removed, the character functions as if it has the
+    new lower score in the indicated attribute. If any of a character's
+    attribute scores falls below zero, the score is set to zero and the
+    character will be unconscious and at <a
+    href="#-health-unconsciousness-and-death">risk of dying</a> until the
+    attribute damage is healed.
+  </p>
+
+  <h2>Attribute Checks</h2>
+  <p>
+  Many game situations call for an <b>attribute check</b> to resolve the outcome
+  of a particular action. In order to make an attribute check, start with the
+  character's attribute score and add any bonuses or penalties to the score as
+  appropriate to get an <b>attribute target</b>. Finally, roll a 20-sided
+  die. If the number rolled is <b>lower than or equal to</b> the attribute
+  target, the result of check was success.
+  </p>
+  <p>
+  For example, a character attacking might have an Agility of 13 and may have a
+  +2 bonus to hit. Adding in the bonus means the agility target is 15, so the
+  character must roll 15 or less to score a hit.
+  </p>
+  <h2>Opposed Attribute Checks</h2>
+  <p>
+  Some situations involve a contest between two different characters's
+  attributes. In situations like this, both characters make <b>opposed</b>
+  attribute checks, with the winner being the character who passes the attribute
+  target by the largest amount. For example, two characters arm wrestling would
+  make opposed checks against their Fortitude attribute. The winner is the
+  character whose roll is lower than their fortitude-based attribute target by
+  the largest absolute magnitude.
+  </p>
+  <h2>Skills</h2>
+  <p>
+  In addition to the three main attributes, there are six different skills in
+  DungeonStrike that a character can specialize in. Additional ranks in a skill
+  can be gained by discovering "skill bonus" cards which let the character add
+  levels as desired. The six skills are:
+  <ul>
+    <li>
+    <b>Athletics</b> [Fortitude]. Used to perform actions such as swimming,
+    climbing, lifting heavy objects, grappling enemies, punching, kicking,
+    riding, charging, or throwing.
+    </li>
+    <li>
+    <b>Acrobatics</b> [Agility]. Used to perform actions such as tumbling,
+    balancing, escaping from entanglements, jumping, or tripping enemies.
+    </li>
+    <li>
+    <b>Mechanics</b> [Mind]. Used to perform actions such as opening locks,
+    disabling traps or understanding devices.
+    </li>
+    <li>
+    <b>Perception</b> [Mind]. Used to perform actions such as seeing enemies
+    from far away, sensing somebody's motives, telling whether somebody is
+    lying, searching a room, or listening for movement.
+    </li>
+    <li>
+    <b>Stealth</b> [Mind]. Used to hide from enemies, move silently, disguise
+    oneself, or steal items.
+    </li>
+    <li>
+    <b>Influence</b> [Mind]. Used to intimidate, bluff, charm, negotiate,
+    deceive, or coerce.
+    </li>
+  </ul>
+  </p>
+  <h2>Skill Checks</h2>
+  <p>
+  Each of the 6 skills is associated with a certain attribute. In order to
+  attempt a task based on one of the skills, a <b>skill check</b> is
+  made. Sometimes a check will also be made without action on the part of the
+  character in question, this is called a <b>passive</b> skill check. A skill
+  check is just an attribute check for the underlying attribute of the
+  skill. Each level the character has in the skill in question grants a +1 bonus
+  on the check.
+  </p>
+
+  <h1>Card Types</h1>
+  <p>
+      Cards in DungeonStrike are the basis of the game. They are the reward for
+      successful adventuring -- killing enemies results in new cards for the
+      player to add to their spell deck. There are various card types present in
+      the game.
+  </p>
+  <h2>Action Cards</h2>
+  <p>
+  Action cards describe the basic actions in the game. They serve as
+  reminders of the possible actions which can be taken after a move, and cannot
+  be discarded or interacted with in any way.
+  </p>
+  <div class="cardExample">
+    <div class="card actionCard">
+      <div class="cardCost"></div>
+      <div class="cardName">Attack</div>
+      <div class="cardRules">
+        <p>
+        Roll for an attack against an enemy with your equipped weapon. On hit,
+        deal its weapon damage to that enemy.
+        </p>
+      </div>
+      <div class="cardType">
+        Action
+      </div>
+    </div>
+    <div class="card actionCard rightCard">
+      <div class="cardCost"></div>
+      <div class="cardName">Card Name</div>
+      <div class="cardRules">
+        <p>
+        Rules Text
+        </p>
+      </div>
+      <div class="cardType">
+        Action
+      </div>
+    </div>
+  </div>
+
+  <h2>Spell Cards</h2>
+    <p>
+      <b>Spell</b> cards can be cast by the player by paying the
+      appropriate costs during their turn, or at certain other times (See <a
+      href="#-spellcasting">Spellcasting</a> for more information). Spells come
+      in a variety of different types.
+    </p>
+  <h3>Spell <i class="dot"></i> Attack</h3>
+    <p>
+    Attack spells require the caster to <a href="#-hits-and-damage">roll to
+    hit</a> the target before their effects resolve. The attack is always made
+    at a <a href="#-range"> 1x short range</a> bonus to hit. On a miss, the
+    spell has no effect.
+    </p>
+    <div class="cardExample">
+      <div class="card fire">
+        <div class="cardCost"><i class="m3"></i>, <i class="action"></i></div>
+        <div class="cardName">Flame Jet</div>
+        <div class="cardRules">
+          <p>
+          A jet of white-hot flame shoots from your outstretched hand towards
+          your enemy, striking home for 2d4 fire damage.
+          </p>
+          <p>
+          <i class="mN"></i> : Deal N additional fire damage to your enemy.
+          </p>
+        </div>
+        <div class="cardType">
+          Spell <i class="dot"></i> Attack <i class="dot"></i> Fire
+        </div>
+      </div>
+      <div class="card fire rightCard">
+        <div class="cardCost">costs: 3 mana, action</div>
+        <div class="cardName">Card Name</div>
+        <div class="cardRules">
+          <p>
+          Rules Text. Roll to hit target, then resolve this effect on success.
+          </p>
+          <p>
+          <i class="mN"></i> : Optional Effect. If you spend N mana, this effect
+          is added to the above effect.
+          </p>
+        </div>
+        <div class="cardType">
+          Spell <i class="dot"></i> Attack <i class="dot"></i> Subtype
+        </div>
+      </div>
+    </div>
+  <h3>Spell <i class="dot"></i> Immediate</h3>
+    <p>
+    Immediate spells are one-time effects. The caster pays their costs, the
+    effects resolve, and then the card is discarded.
+    </p>
+    <div class="cardExample">
+      <div class="card earth">
+        <div class="cardCost"><i class="m2"></i>, <i class="action"></i></div>
+        <div class="cardName">Healing Aura</div>
+        <div class="cardRules">
+          <p>
+          A diffuse white glow envelops your ally, renewing their strength. Pick
+          1:
+          </p>
+          <ul>
+            <li>Your ally makes attacks at +2 to hit this turn.</li>
+            <li>Your ally heals 5.</li>
+          </ul>
+        </div>
+        <div class="cardType">
+          Spell <i class="dot"></i> Immediate <i class="dot"></i> Boon
+        </div>
+      </div>
+      <div class="card earth rightCard">
+        <div class="cardCost">costs: 2 mana, action</div>
+        <div class="cardName">Card Name</div>
+        <div class="cardRules">
+          <p>
+          Rules Text. Pick 1:
+          </p>
+          <ul>
+            <li>Choice #1</li>
+            <li>Choice #2</li>
+          </ul>
+        </div>
+        <div class="cardType">
+          Spell <i class="dot"></i> Immediate <i class="dot"></i> Subtype
+        </div>
+      </div>
+    </div>
+  <h3>Spell <i class="dot"></i> Temporary</h3>
+    <p>
+    Temporary spells enter play with a number of markers on them, and then stay
+    in play until the last marker is removed.
+    </p>
+    <div class="cardExample">
+      <div class="card water">
+        <div class="cardCost"><i class="m4"></i>, 3<i class="charge"></i></div>
+        <div class="cardName">Storm Front</div>
+        <div class="cardRules">
+          <p>
+            You summon into being a massive thundercloud, ready to hurl
+            lightning bolts at your enemies on command.
+          </p>
+          <p>
+          <i class="action"></i> , Remove a <i class="charge"></i>
+          <i class="doubleArrow"></i> Attack an enemy unit, dealing 2d10
+          electricity damage on hit.
+          </p>
+        </div>
+        <div class="cardType">
+          Spell <i class="dot"></i> Temporary <i class="dot"></i> Electric
+        </div>
+      </div>
+      <div class="card water rightCard">
+        <div class="cardCost">4 mana, 3 charges</div>
+        <div class="cardName">Card Name</div>
+        <div class="cardRules">
+          <p>
+          Text.
+          </p>
+          <i class="action"></i> , Remove a <i class="charge"></i>
+          <i class="doubleArrow"></i> Repeatable activated effect.
+          </p>
+        </div>
+        <div class="cardType">
+          Spell <i class="dot"></i> Immediate <i class="dot"></i> Subtype
+        </div>
+      </div>
+    </div>
+  <h3>Spell <i class="dot"></i> Ongoing</h3>
+    <p>
+      <b>Ongoing</b> spells stay in play after being resolved, continuing to
+      have an impact, instead of being discarded.
+    </p>
+    <div class="cardExample">
+      <div class="card air">
+        <div class="cardCost">
+          <i class="m2"></i>, Discard a card</i>
+        </div>
+        <div class="cardName smaller">Valorous Chant</div>
+        <div class="cardRules">
+          <p>
+          Your stirring song evokes feelings of strength and bravery in
+          your comrades.
+          </p>
+          <p>
+          Your allies make attacks at +4 to hit. When an ally scores a hit, they
+          deal 4 extra damage to the target.
+          </p>
+        </div>
+        <div class="cardType">
+          Spell <i class="dot"></i> Ongoing <i class="dot"></i> Boon
+        </div>
+      </div>
+      <div class="card air rightCard">
+        <div class="cardCost">Costs</div>
+        <div class="cardName">Card Name</div>
+        <div class="cardRules">
+          <p>
+          Text creating a continuous effect.
+          </p>
+          </p>
+        </div>
+        <div class="cardType">
+          Spell <i class="dot"></i> Ongoing <i class="dot"></i> Subtype
+        </div>
+      </div>
+    </div>
+
+  <h2>Equipment Cards</h2>
+    <p>
+    Equipment cards represent tools used by the character which give them
+    special abilities and ongoing effects. See <a href="#-equipment">
+    Equipment</a> for more information.
+    </p>
+
+  <h2>Enemy Cards</h2>
+    <p>
+    Enemy cards represent the various foes the player can encounter during the
+    game, describing their abilities and basic statistics.
+    </p>
+
+  <h2>Character Cards</h2>
+    <p>
+    Character cards represent the different characters controlled
+    by the player, and also display their basic statistics such as
+    attribute scores.
+    </p>
+
+  <h1>Reactions and the Stack</h1>
+  <p>
+    When a player casts a spell, activates an activated effect, or makes an attack
+    the effect does not resolve immediately. Instead, the effect is put into an
+    ephemeral area called <b>the stack</b> to allow the opponent to respond.
+  </p>
+
+  <h1>Combat</h1>
+  <p>
+    There are two steps involved in making an attack: rolling for a hit, and
+    rolling for damage.
+  </p>
+  <p>
+      To determine if an attack is a hit, the attacker makes a standard <a
+      href="#-attribute-checks">agility attribute check</a>, applying the
+      various modifiers as appropriate. On success, the attack is a hit.
+      If the attack is a <a href="#-reactions-and-the-stack">reaction
+      attack</a>, the attacker takes a -4 penalty to hit. Area attacks do not
+      need to roll for hits: they always hit.
+  </p>
+  <p>
+      The effect of a hit being scored depends on the type of attack. For basic
+      weapons, the weapon damage will be specified in terms of <b>damage
+      dice</b> to roll to calculate damage.
+  </p>
+
+  <h2>Damage Reduction</h2>
+  <p>
+  Some spells and equipment like armor provide <b>damage reduction</b>. When a
+  character suffers a hit, their damage reduction is subtracted from the total
+  damage that is being dealt. Damage reduction can also be associated with only
+  a specific type of damage, such as fire damage. For example, a character with
+  a damage reduction of "-5 Fire" would only take 7 damage if struck with an
+  effect which would normally deal 12 points of fire damage. It is also possible
+  to have <b>damage immunity</b>, which is effectively infinite damage
+  reduction.
+  </p>
+
+  <h2>Health, Unconsciousness, and Death</h2>
+  <p>
+  Units have two basic values called their <b>current health</b> and their
+  <b>maximum health</b>. Both values are initially equal to their fortitude
+  attribute. Health represents the maximum amount of damage they can sustain
+  before <b>dying</b>, with current health decreasing whenever
+  damage is suffered. Max health can be increased by certain spells and
+  equipment, and it can also decrease, e.g. due to ability score damage. Units
+  can never have more health than their maximum health, and by default when
+  maximum health increases, the unit's current health increases by the same
+  amount. When a unit dies, it is placed into its owner's discard pile. If the
+  Champion or the Master dies, that player loses the game.
+  </p>
+
+  <h1>Spellcasting</h1>
+  <p>
+  Spells in DungeonStrike are represented by spell cards. Each spell card belongs
+  to one of the four <b>schools</b> of magic, each associated with one of the
+  four Gods: Aeris, Petra, Ignis, and Aquis, or is a <b>neutral</b> spell, equally
+  accessible to any spellcaster. Each Champion must select one of the four schools
+  to specialize in. Spells cast from outside the chosen school of the Champion can
+  still be cast at an additional cost.
+  </p>
+  <p>
+  All spell cards also have a <b>cost</b> printed on them, which must be paid
+  before the spell can be played. The most common type of cost is a <b>mana
+  cost</b>. In order to cast such a spell, the unit must spend mana equal to the
+  cost from its <b>mana pool</b>. Units add 1 mana to their pool during the
+  <a href="#-beginning-of-turn-step">beginning of turn step</a>.
+  </p>
+
+  <h2>Spell Decks</h2>
+  <p>
+  Spells are drawn from a Spell Deck which is constructed before an encounter
+  begins. The spell deck consists of 40 cards and cannot contain more than 4
+  copies of the same card.
+  </p>
+  <p>
+  If the spell deck is empty, no further spell cards can be drawn, but the game
+  continues as normal. During the <a href="#-end-of-turn-step">end of turn
+  step</a>, if the player has more than 7 cards in hand, they discard down to a
+  maximum of 7 cards.
+  </p>
+
+  <h2>Effect Resolution</h2>
+  <p>
+  Casting a spell or activating an activated effect follows a sequence of steps:
+  <ol>
+    <li>
+      The player announces which unit is casting the spell or activating the
+      activated effect and the name of the effect, revealing the card if
+      necessary.
+    </li>
+    <li>
+      If the spell offers a choice of multiple different effects, they announce
+      which effect or effects will be used.
+    </li>
+    <li>
+      The player pays any costs required. If they wish to add any optional
+      effects (see <a href="#-reading-a-spell-card">Reading a Spell Card</a>),
+      they announce which ones at this time and pay any costs associated with
+      them as well.
+    </li>
+    <li>
+      The player selects a target for the spell which meets the spell's
+      targeting requirements, if any.
+    </li>
+    <li>
+      The effect is put onto the <a href="#-reactions-and-the-stack">stack</a>
+      to be eventually resolved.
+    </li>
+  </ol>
+  </p>
+
+  <p>
+  After the stack is resolved, the text instructions on the spell card are
+  followed in the order in which they are printed. Choices like targeting are
+  again checked for legality, and instructions on a spell card which attempt to
+  interact with no-longer-legal targets do not resolve.
+  </p>
+
+  <p>
+  If two effects are created simultaneously, effects created by the active player
+  go on the stack first in <b>timestamp order</b>, meaning that effects created
+  by spell cards played earlier go onto the stack first. Effects created by the
+  inactive player are then added to the stack in the same order.
+  </p>
+
+  <h1>Conditions</h1>
+    <p>
+    Spells and other effects in DungeonStrike can create a variety of
+    <b>conditions</b> in their targts, either temporarily or on an ongoing
+    basis. These conditions typically cause a penalty of some type. The possible
+    conditions are:
+    <ul>
+      <li><b>Anosmic</b>. Unable to smell. -8 to Agility checks if scent is
+      a primary sense for the target, otherwise, -2 to Perception.</li>
+      <li><b>Asleep</b>. Unable to take any action. Any stimulus (lights,
+      sounds, attacks) ends this condition</li>
+      <li><b>Blinded</b>. Unable to see. -8 to Agility checks if sight is a
+      primary sense for the target, otherwise, -2 to Perception.</li>
+      <li><b>Charmed</b>. Target is controlled by creator of the effect. -2 to
+      Agility.</li>
+      <li><b>Dazed</b>. Unable to spend <i class="action"></i>.</li>
+      <li><b>Deafened</b>. Unable to hear. -8 to Agility checks if hearing is
+      a primary sense for the target, otherwise, -2 to Perception.</li>
+      <li><b>Diseased</b>. Infected with a disease. Ongoing negative effects
+      dependent on the specific disease.</li>
+      <li><b>Fatigued</b>. -2 to all attributes.</li>
+      <li><b>Flammable</b>. Rolls to create the "On Fire" condition made at +4.
+      </li>
+      <li><b>Frightened</b>. -2 to Mind and Agility, replaces Intimidated.
+      Stacks, if target would become Intimidated or Frightened, they become
+      Terrified instead.</li>
+      <li><b>Frozen</b>. -2 to Agility, 1d4 cold damage per round.</li>
+      <li><b>Immobilized</b>. Unable to move rooms.</li>
+      <li><b>Insane</b>. Target acts randomly.</li>
+      <li><b>Intimidated</b>. -1 to Mind and Agility. Stacks, if target would
+      become Intimidated again, they become Frightened instead.</li>
+      <li><b>Invisible</b>. Can't be seen. Enemies with sight as a primary sense
+      take penalties as if Blinded when attacking.</li>
+      <li><b>Mute</b>. Unable to communicate or cast spells requiring verbal
+      activation words.</li>
+      <li><b>On Fire</b>. -8 to Mind checks, 2d12 fire damage per round.</li>
+      <li><b>Prone</b>. On the ground. Can only spend <i class="move"></i> to
+      stand up.</li>
+      <li><b>Restrained</b>. Unable to cast spells requiring hand movements.
+      </li>
+      <li><b>Scentless</b>. Does not create an odor. Enemies with scent as a
+      primary sense take penalties as if Anosmic when attacking.
+      <li><b>Silent</b>. Does not produce noise. Enemies with hearing as a
+      primary sense take penalties as if Deafened when attacking.</li>
+      <li><b>Slowed</b>.</li>
+      <li><b>Terrified</b>. -3 to Mind and Agility, replaces Intimidated and
+      Frightened. Stacks, if target would become Intimidated or Frightened, they
+      stay Terrified instead.
+      <li><b>Unconscious</b>. Unable to take any action.</li>
+      <li><b>Waterlogged</b>. Rolls to create the "On Fire" condition made at
+      -4.</li>
+      <li><b>Weakened</b>. -6 to Fortitude checks.</li>
+    </ul>
+    </p>
+
+  <h1>Equipment</h1>
+  <p>
+  Equipment represents the weapons, armor, and other tools that units bring with
+  them into combat. Equipment cards are received as a reward for combat success
+  much in the same way as spell cards, but equipment belongs to a specific unit
+  and cannot be changed during gameplay, only configured outside of an
+  individual encounter. Units are limited to at most one piece of equipment with
+  a given equipment, except for Rings and Miscellaneous which each have 2.
+  </p>
+  <h2>Equipment Types</h2>
+  <p>
+  The following equipment types are available in DungeonStrike:
+  <ul>
+    <li>Weapon</li>
+    <li>Armor, Robe</li>
+    <li>Bracers (armbands, bracelets)</li>
+    <li>Facewear (goggles, lenses, masks, spectacles)</li>
+    <li>Boots (sandals, shoes, slippers)</li>
+    <li>Headwear (circlets, crowns, hats, helmets)</li>
+    <li>Cloaks (capes, mantles, shawls)</li>
+    <li>Rings (2 slots)</li>
+    <li>Gauntlets (gloves)</li>
+    <li>Amulets (brooches, collars, medals, necklaces, pedants)</li>
+    <li>Tunics (shirts, vests, vestments)
+    <li>Belts (girdles, sashes)</li>
+    <li>Miscellaneous (2 slots)</li>
+  </ul>
+  </p>
+</div>
+</body>
+</html>
