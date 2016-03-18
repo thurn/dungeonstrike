@@ -19,25 +19,49 @@
 </div>
 <div class="content">
   <div class="title">DungeonStrike</div>
+  <h1>Game Overview</h1>
   <p>
     <b>DungeonStrike</b> is a 2 player collectible dungeon crawl card game. One player takes on the role of the Champion, a great warrior seeking his or her fortune in a maze of traps, treasure, and ferocious monsters. The other player takes on the role of the Master, the evil presence ruling the dungeon itself.
   </p>
-
+  <h1>Object of the Game</h1>
+  <h1>Setup</h1>
+  <h1>Vocabulary</h1>
+  <h1>Master Cards</h1>
+  <h1>Champion Cards</h1>
   <h1>Turn Structure</h1>
   <p>A game of DungeonStrike is divided up into a series of turns, alternating between the Master and the Champion. The Master always takes the first turn.</p>
 
   <h2>The Master's Turn</h2>
-  <p>The Master's turn consists of a series of phases, which happen in order.</p>
-  <h3>The Income Phase</h3>
-  <p>During the Income phase, the Master gains 1 gold for each Room card in play.</p>
-  <h3>The Draw Phase</h3>
-  <p>During the Draw phase, the Master draws a card. If the Master's deck is empty, the Champion immediately wins the game.</p>
-  <h3>The Main Phase</h3>
-  <p>During the Main phase, the Master may put any number of Threat cards into play, paying their costs as appropriate. Each Threat card must be placed into a specific Room. If the Room is currently face-down, the Threat is also played face-down, otherwise it is played face-up. New Threat cards cannot normally be added to the Room currently containing the Champion (the Active Room).</p>
+  <p>At the beginning of their turn, the Master:</p>
+    <ul>
+      <li>Gains 1 <a href="#gold">gold</a> for each <a href="#room-cards">Room card</a> in play.</li>
+      <li>Draws a card. If this is impossible because the Master's deck has no more cards in it, the Champion immediately wins the game.</li>
+    </ul>
 
-  <p>The Master can play a single Room card during the Main phase. New Room cards are played face-down.</p>
+  <p>After drawing a card, the Master may:</p>
+  <ul>
+    <li>Play any number of <a href="#threat-cards">Threat</a> or <a href="#interrupt-cards">Interrupt</a> cards, paying their costs as appropriate.</li>
+    <li>Play a single <a href="#room-cards">Room card</a> face-down.</li>
+    <li>Have any <a href="#creatures">Creatures</a> in the Active Room make an <a href="#attacks">Attack</a> against the Champion.</li>
+  </ul>
+  <p>Once these actions are completed, the Master's turn ends.</p>
 
-  <p>Any Creatures in the Active Room may make an Attack against the Champion. See <a href="#">Attacks</a></p>
+  <h2>The Champion's Turn</h2>
+  <p>At the beginning of their turn, the Champion gains 4<i class="action"></i> (actions). The Champion can take any of the following actions on their by turn by spending <i class="action"></i>:</p>
+  <ul>
+    <li><i class="action"></i>: Draw a card.</li>
+    <li><i class="action"></i>: Gain 1 mana.</li>
+    <li><i class="action"></i>: Make an attack.</li>
+    <li><i class="action"></i>: Cast a <a href="#spell-types">non-Interrupt</a> spell.</li>
+    <li><i class="action"></i>: <a href="#searching">Search</a> the Active Room.</li>
+    <li><i class="action"></i>: <a href="champion-movement">Move</a> to a new Room.</li>
+  </ul>
+  <p>The Champion can also play any number of <a href="#spell-types">Interrupt</a> spells on their turn without spending <i class="action"></i>.
+
+  <h1>Threat Cards</h1>
+  <p>
+    During their turn, the Master may put any number of Threat cards into play. Each Threat card must be placed into a specific Room. If the Room is currently face-down, the Threat is also played face-down, otherwise it is played face-up. New Threat cards cannot normally be added to the Room currently containing the Champion (the Active Room).
+  </p>
 
   <h1>Attributes and Skills</h1>
 
