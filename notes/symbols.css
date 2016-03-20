@@ -83,11 +83,6 @@
   font-style: normal;
 }
 
-.move::after {
-  content: "\27A0";
-  font-style: normal;
-}
-
 .time::after {
   content: "\29D7";
   font-style: normal;
