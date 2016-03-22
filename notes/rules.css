@@ -112,6 +112,16 @@ td,th {
 
 /** CARDS **/
 
+.exampleCard {
+  width: 216px;
+  height: 310px;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  background-color:black;
+  margin: 10px;
+}
+
 .card {
   width: 216px;
   height: 310px;
@@ -176,6 +186,10 @@ td,th {
 }
 
 .actionCard {
+  color: #FFEB3B;
+}
+
+.roomCard {
   color: #FFEB3B;
 }
 

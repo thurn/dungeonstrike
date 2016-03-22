@@ -32,9 +32,10 @@
   <h1>Object of the Game</h1>
   <p>The objective for the Master is simple: kill the Champion by any means necessary. The Champion wins the game by successfully navigating the Dungeon, winning the game if all of the rooms in the dungeon are cleared. The Champion also wins if the Master must draw a card from his empty deck.</p>
   <h1>Setup</h1>
-  <p>Players decide who will be the Champion and who will be the Master. The Champion receives 4 mana to start, and the Master receives 4 gold. Each player shuffles their deck and then draws a starting hand of 7 cards.</p>
-  <p>The Master may then elect to <b>mulligan</b> by setting aside two or more cards from his hand, drawing one less card than the number discarded, and then shuffling the set aside cards back into his deck. After the Master mulligans, the Champion can mulligan in the same manner.</p>
-  <p>Finally, three starting Standard Room cards are put into play. Two are placed face-down and one is placed face-up. The face-up room becomes the first <b>active room</b>.</p>
+  <p>Players decide who will be the Champion and who will be the Master. The Champion receives 4 mana to start, and the Master receives 4 gold. The Master shuffles his deck and draws 7 cards.</p>
+  <p>The Champion shuffles her Spell deck and draws 5 cards. She then sorts her Equipment deck into piles by <b>equipment level</b> and shuffles each pile. She draws up to 2 cards from the level 1 Equipment deck.</p>
+  <p>The Master may then elect to <b>mulligan</b> by setting aside two or more cards from his hand, drawing one less card than the number discarded, and then shuffling the set aside cards back into his deck. After the Master mulligans, the Champion can mulligan Spell cards in a similar manner. Equipment cards cannot be mulliganed.</p>
+  <p>After resolving mulligans, the Champion may put the Equipment cards from her hand into  play. Finally, three starting Standard Room cards are put into play. Two are placed face-down and one is placed face-up. The face-up room becomes the first <b>active room</b>.</p>
   <h1>Important Vocabulary and Symbols</h1>
   <h2>Vocabulary</h2>
   <ul>
@@ -42,6 +43,8 @@
     <li><b>Cleared</b>: A room which has no face-up Threat cards in it.</li>
     <li><b>Gold</b>: Currency used by the Master to pay for his schemes.</li>
     <li><b>Interrupt</b>: A card which can be played at any time, not just on a player's turn.</li>
+    <li><b>Equipment Level</b>: Rank indicator on equipment which indicates its power.</li>
+    <li><b>Explore</b>: The act of moving to a new room.</li>
     <li><b>Mana</b>: Represents magical energy used by the Champion to cast her spells.</li>
     <li><b>Room</b>: A distinct location in the dungeon represented by a card.</li>
     <li><b>Spell</b>: Card representing a magical effect used by the Champion.</li>
@@ -57,7 +60,50 @@
     <li><i class="charge"></i> refers to a charge marker, placed on cards which can be used a limited number of times.</li>
   </ul>
   <h1>Master Cards</h1>
+  <h2>Room Cards</h2>
+  <div class="exampleCard roomCard">
+    <div class="cardCost"></div>
+    <div class="cardName">Orcish Armory</div>
+    <div class="cardRules">
+      <p>
+      Orcs have +1 to Attack.
+      </p>
+    </div>
+    <div class="cardType">
+      Room
+    </div>
+  </div>
+  <p>Room cards are played by the Master to represent locations in the dungeon. They are normally put into play face-down and are turned face-up when the champion <b>explores</b> them. At the beginning of his turn, the Master gains gold for each room card in play.</p>
+  <p>During his turn, the master can add one new Room from his hand to the dungeon complex. Room cards have a name and often have a special effect which impacts the game. For example, the "Orcish Armory" room grants a bonus to Orc creatures deployed there.</p>
+  <h3>Standard Room Cards</h3>
+  <div class="exampleCard roomCard">
+    <div class="cardCost"></div>
+    <div class="cardName">Cavern</div>
+    <div class="cardRules">
+      <p>
+        Gain 2 gold when played.
+      </p>
+    </div>
+    <div class="cardType">
+      Standard Room
+    </div>
+  </div>
+  <p>Standard Room cards are room cards that always have the same effect: the Master gains 2 gold when they are played face-down. the Master's deck may contain any number of Standard Room cards.</p>
+  <h2>Threat Cards</h2>
+  <h3>Creatures</h3>
+  <h3>Traps</h3>
+  <h2>Effect Cards</h2>
+  <h2>Interrupts</h2>
   <h1>Champion Cards</h1>
+  <h2>Character Card</h2>
+  <h2>Spell Cards</h2>
+  <h3>Attack Spells</h3>
+  <h3>Ongoing Spells</h3>
+  <h3>Interrupts</h3>
+  <h2>Equipment Cards</h2>
+  <h3>Weapons</h3>
+  <h3>Armor</h3>
+  <h3>Other Equipment</h3>
   <h1>Turn Structure</h1>
   <p>A game of DungeonStrike is divided up into a series of turns, alternating between the Master and the Champion. The Master always takes the first turn.</p>
 
@@ -74,7 +120,7 @@
     <li>Play a single <a href="#room-cards">Room card</a> face-down.</li>
     <li>Have any <a href="#creatures">Creatures</a> in the Active Room make an <a href="#attacks">Attack</a> against the Champion.</li>
   </ul>
-  <p>Once these actions are completed, the Master's turn ends.</p>
+  <p>Once these actions are completed, the Master's turn ends. At the end of the Master's turn, if there are no face-down room cards, the Champion wins the game.</p>
 
   <h2>The Champion's Turn</h2>
   <p>At the beginning of their turn, the Champion gains 4<i class="action"></i> (actions). The Champion can take any of the following actions on their by turn by spending <i class="action"></i>:</p>
@@ -87,7 +133,7 @@
   </ul>
   <p>The Champion can also play any number of <a href="#spell-types">Interrupt</a> spells on their turn without spending <i class="action"></i>.
 
-  <p>At the end of her turn, if the active room has been cleared, the Champion may select another face-down room, reveal it, and then move to it. That room becomes the active room. If no additional face-down rooms are available, the Champion immediately wins the game.
+  <p>At the end of her turn, if the active room has been cleared, the Champion may select another face-down room and <b>explore</b> it by revealing it and then moving there. That room becomes the active room.
 
   <h1>Threat Cards</h1>
   <p>
@@ -577,6 +623,11 @@
   inactive player are then added to the stack in the same order.
   </p>
 
+  <h1>Deck Building</h1>
+  <p>Each player in <i>DungeonStrike</i> utilitizes a preconstructed deck of cards, which must be built according to specific deck-building rules.</p>
+  <p>The Master builds a deck which consists of 60 cards. With the exception of Standard Room cards, no more than 4 copies of a card with a given name are allowed to be present in the deck. At most 3 distinct subtypes may appear on the cards in the deck.</p>
+  <p>The Champion builds two decks. The Spell Deck consists of 45 Spell cards. No more than 3 copies of a card with a given name are allowed to be present in this deck, and only Spell cards associated with the school or schools of magic listed on the Champion's character card may be played.</p>
+<p>The Equipment deck consists of 30 Equipment cards. No more than 2 copies of a card with a given name are allowed to be present in this deck.</p>
   <h1>Conditions</h1>
     <p>
     Spells and other effects in DungeonStrike can create a variety of
