@@ -40,11 +40,11 @@
   <h2>Vocabulary</h2>
   <ul>
     <li><b>Active Room</b>: The room the Champion is currently in.</li>
-    <li><b>Cleared</b>: A room which has no face-up Threat cards in it.</li>
-    <li><b>Gold</b>: Currency used by the Master to pay for his schemes.</li>
-    <li><b>Interrupt</b>: A card which can be played at any time, not just on a player's turn.</li>
+    <li><b>Empty</b>: A room which has no face-up Threat cards in it.</li>
     <li><b>Equipment Level</b>: Rank indicator on equipment which indicates its power.</li>
     <li><b>Explore</b>: The act of moving to a new room.</li>
+    <li><b>Gold</b>: Currency used by the Master to pay for his schemes.</li>
+    <li><b>Interrupt</b>: A card which can be played at any time, not just on a player's turn.</li>
     <li><b>Mana</b>: Represents magical energy used by the Champion to cast her spells.</li>
     <li><b>Room</b>: A distinct location in the dungeon represented by a card.</li>
     <li><b>Spell</b>: Card representing a magical effect used by the Champion.</li>
@@ -81,15 +81,17 @@
     <div class="cardName">Cavern</div>
     <div class="cardRules">
       <p>
-        Gain 2 gold when played.
+        Gain 2 gold when revealed.
       </p>
     </div>
     <div class="cardType">
       Standard Room
     </div>
   </div>
-  <p>Standard Room cards are room cards that always have the same effect: the Master gains 2 gold when they are played face-down. the Master's deck may contain any number of Standard Room cards.</p>
+  <p>Standard Room cards are room cards that always have the same effect: the Master gains 2 gold when they are revealed. The Master's deck may contain any number of Standard Room cards.</p>
   <h2>Threat Cards</h2>
+    <p>During his turn, the Master may put any number of Threat cards into play. Each Threat card must be played face-down into a specific face-down Room. New Threat cannot normally be added to the Active Room. Playing a Threat card costs 2 gold per Threat already present in the Room it is being added to.
+  </p>
   <h3>Creatures</h3>
   <h3>Traps</h3>
   <h2>Effect Cards</h2>
@@ -129,16 +131,10 @@
     <li><i class="action"></i>: Gain 1 mana.</li>
     <li><i class="action"></i>: Make an attack.</li>
     <li><i class="action"></i>: Cast a <a href="#spell-types">non-Interrupt</a> spell.</li>
-    <li><i class="action"></i>: <a href="#searching">Search</a> the Active Room.</li>
+    <li><i class="action"></i>: <a href="#searching">Search</a> the Active Room (if the current Room is empty).</li>
+    <li><i class="action"></i><i class="action"></i>: <a href="#exploring">Explore</a> another Room (if the current Room is empty)</li>
   </ul>
   <p>The Champion can also play any number of <a href="#spell-types">Interrupt</a> spells on their turn without spending <i class="action"></i>.
-
-  <p>At the end of her turn, if the active room has been cleared, the Champion may select another face-down room and <b>explore</b> it by revealing it and then moving there. That room becomes the active room.
-
-  <h1>Threat Cards</h1>
-  <p>
-    During their turn, the Master may put any number of Threat cards into play. Each Threat card must be placed into a specific Room. If the Room is currently face-down, the Threat is also played face-down, otherwise it is played face-up. New Threat cards cannot normally be added to the Room currently containing the Champion (the Active Room).
-  </p>
 
   <h1>Attributes and Skills</h1>
 
