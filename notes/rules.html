@@ -90,12 +90,11 @@
   </div>
   <p>Standard Room cards are room cards that always have the same effect: the Master gains 2 gold when they are revealed. The Master's deck may contain any number of Standard Room cards.</p>
   <h2>Threat Cards</h2>
-    <p>During his turn, the Master may put any number of Threat cards into play. Each Threat card must be played face-down into a specific face-down Room. New Threat cannot normally be added to the Active Room. Playing a Threat card costs 2 gold per Threat already present in the Room it is being added to.
-  </p>
+    <p>During his turn, the Master may put any number of Threat cards into play. Each Threat card must be played face-down into a specific face-down Room. New Threats cannot normally be added to the Active Room. Playing a Threat card costs 1 gold per Threat already present in the Room it is being added to.</p>
   <h3>Creatures</h3>
+  <p>Creatures are a specific type of Threat which can <a href="#attacks">Attack</a> the Champion directly. When the Champion enters a room, the Master may pay the costs for any face-down Creatures in the room in order to turn them face-up. Otherwise, the Master may flip face-down Creatures by paying their costs during his Reinforcements phase.</p>
   <h3>Traps</h3>
   <h2>Effect Cards</h2>
-  <h2>Interrupts</h2>
   <h1>Champion Cards</h1>
   <h2>Character Card</h2>
   <h2>Spell Cards</h2>
@@ -110,20 +109,22 @@
   <p>A game of DungeonStrike is divided up into a series of turns, alternating between the Master and the Champion. The Master always takes the first turn.</p>
 
   <h2>The Master's Turn</h2>
-  <p>At the beginning of her turn, the Master:</p>
-    <ul>
-      <li>Gains 1 <a href="#gold">gold</a> for each <a href="#room-cards">Room card</a> in play.</li>
-      <li>Draws a card. If this is impossible because the Master's deck has no more cards in it, the Champion immediately wins the game.</li>
-    </ul>
-
-  <p>After drawing a card, the Master may:</p>
+  <p>The Master's turn is divided into 5 phases.</p>
+  <h3>Income Phase</h3>
+  <p>The Master gains 1 <a href="#gold">gold</a> for each <a href="#room-cards">Room card</a> in play.</p>
+  <h3>Draw Phase</h3>
+  <p>The Master draws a card. If this is impossible because the Master's deck has no more cards in it, the Champion immediately wins the game.</p>
+  <h3>Main Phase</h3>
+  <p>The Master may:</p>
   <ul>
-    <li>Play any number of <a href="#threat-cards">Threat</a> or <a href="#interrupt-cards">Interrupt</a> cards, paying their costs as appropriate.</li>
+    <li>Play any number of <a href="#threat-cards">Threat cards.</a></li>
     <li>Play a single <a href="#room-cards">Room card</a> face-down.</li>
     <li>Have any <a href="#creatures">Creatures</a> in the Active Room make an <a href="#attacks">Attack</a> against the Champion.</li>
   </ul>
-  <p>Once these actions are completed, the Master's turn ends. At the end of the Master's turn, if there are no face-down room cards, the Champion wins the game.</p>
-
+  <h3>Reinforcements Phase</h3>
+  <p>The Master may flip any face-down Threat cards in revealed rooms by paying their costs.</p>
+  <h3>End Phase</h3>
+  <p>If there are no face-down room cards at this time, the Champion wins the game.</p>
   <h2>The Champion's Turn</h2>
   <p>At the beginning of their turn, the Champion gains 4<i class="action"></i> (actions). The Champion can take any of the following actions on their by turn by spending <i class="action"></i>:</p>
   <ul>
