@@ -201,6 +201,10 @@ td,th {
   color: #CDDC39;
 }
 
+.threatCard {
+  color: #FF9800;
+}
+
 .enemy {
   color: #FF9800;
 }
