@@ -63,7 +63,7 @@
   <h2>Room Cards</h2>
   <div class="exampleCard roomCard">
     <div class="cardCost"></div>
-    <div class="cardName">Orcish Armory</div>
+    <div class="cardName large">Orcish Armory</div>
     <div class="cardRules">
       <p>
       Orcs have +1 to Attack.
@@ -78,7 +78,7 @@
   <h3>Standard Room Cards</h3>
   <div class="exampleCard roomCard">
     <div class="cardCost"></div>
-    <div class="cardName">Cavern</div>
+    <div class="cardName large">Cavern</div>
     <div class="cardRules">
       <p>
         Gain 2 gold when revealed.
@@ -95,17 +95,39 @@
   <p>Creatures are a specific type of Threat which can <a href="#attacks">Attack</a> the Champion directly. When the Champion enters a room, the Master may pay the costs for any face-down Creatures in the room in order to turn them face-up. Otherwise, the Master may flip face-down Creatures by paying their costs during his Reinforcements phase.</p>
   <div class="exampleCard threatCard">
     <div class="cardCost"><i class="m5"></i></div>
-    <div class="cardName">Orcish Archer</div>
+    <div class="cardName small">Orc Ambusher</div>
     <div class="cardRules">
       <div class="statBlock">
-          <p>ATK 10 <i class="dot"></i> DMG 1d6 <i class="dot"></i> HP 15 <i class="dot"></i> DEF 15</p>
+        ATK 10 <i class="dot"></i> DMG 1d6 <i class="dot"></i> HP 15 <i class="dot"></i> DEF 15
       </div>
+      <p>Attacks once when revealed</p>
     </div>
     <div class="cardType">
       Threat <i class="dot"></i> Creature
     </div>
   </div>
+  <p>This card has the following components:</p>
+  <ul>
+    <li><i class="m5"></i>: This is the cost in gold to reveal this Threat</li>
+    <li><b>ATK 10</b>: ATK governs how likely creatures are to hit enemies</li>
+    <li><b>DMG 1d6</b>: DMG indicates how much damage is dealt on a hit</li>
+    <li><b>HP 15</b>: HP is how much damage a creature can take before dying</li>
+    <li><b>DEF 15</b>: DEF impacts how likely enemies are to hit this creature</li>
+  </ul>
+  <p>Information about creatures attacking can be found in the <a href="#combat">Combat</a> section.</p>
   <h3>Traps</h3>
+  <div class="exampleCard threatCard">
+    <div class="cardCost"><i class="m3"></i></div>
+    <div class="cardName small">Spike Pit</div>
+    <div class="cardRules">
+      <div class="statBlock">
+        <b>Detect</b>: 20 <i class="dot"></i> <b>Save</b>: 15 [AGL]</p>
+      </div>
+    </div>
+    <div class="cardType">
+      Threat <i class="dot"></i> Trap
+    </div>
+  </div>
   <h2>Effect Cards</h2>
   <h1>Champion Cards</h1>
   <h2>Character Card</h2>

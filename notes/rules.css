@@ -140,7 +140,6 @@ td,th {
 }
 
 .cardName {
-  font-size: 38pt;
   font-family: 'Lora';
   height: 100px;
   display: flex;
@@ -150,9 +149,18 @@ td,th {
   text-align: center;
 }
 
-.smaller {
+.large {
+  font-size: 38pt;
+}
+
+.medium {
   font-size: 34pt;
 }
+
+.small {
+  font-size: 30pt;
+}
+
 
 .cardRules {
   font-size: 12px;
