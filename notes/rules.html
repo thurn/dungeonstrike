@@ -116,13 +116,21 @@
   </ul>
   <p>Information about creatures attacking can be found in the <a href="#combat">Combat</a> section.</p>
   <h3>Traps</h3>
+  <p>Traps are another kind of Threat intended to catch the Champion by surprise. Traps can have the following components:</p>
+  <ul>
+    <li><b>Trigger</b>: What causes the trap to be revealed and have its effect. If no Trigger is specified, the trap triggers when the Champion enters the room containing the trap.</li>
+    <li><b>Detection Rating</b>: For traps with a Detect number, the Champion has an opportunity to find and avoid the trap without setting it off. The Champion makes a <a href="#perception">Perception [Mind]</a> check against the detect number to determine if the trap will trigger.</li>
+    <li><b>Save</b>: If the trap does trigger, the Champion may still be able to make a <a href="#saving-throws">saving throw</a> to avoid some or all of the effects of the trap.
+  </ul>
   <div class="exampleCard threatCard">
     <div class="cardCost"><i class="m3"></i></div>
     <div class="cardName small">Spike Pit</div>
     <div class="cardRules">
-      <div class="statBlock">
-        <b>Detect</b>: 20 <i class="dot"></i> <b>Save</b>: 15 [AGL]</p>
-      </div>
+      <ul>
+        <li><b>Detect</b>: 20 </li>
+        <li><b>Save</b>: 15 vs AGL for no damage</li>
+      </ul>
+      <p>Champion takes 1d6 damage and cannot attack this turn.</p>
     </div>
     <div class="cardType">
       Threat <i class="dot"></i> Trap
