@@ -150,17 +150,16 @@ td,th {
 }
 
 .large {
-  font-size: 38pt;
-}
-
-.medium {
-  font-size: 34pt;
-}
-
-.small {
   font-size: 30pt;
 }
 
+.medium {
+  font-size: 26pt;
+}
+
+.small {
+  font-size: 22pt;
+}
 
 .cardRules {
   font-size: 12px;
@@ -193,15 +192,11 @@ td,th {
   color: #00BCD4;
 }
 
-.actionCard {
-  color: #FFEB3B;
-}
-
 .roomCard {
   color: #FFEB3B;
 }
 
-.equipment {
+.equipmentCard {
   color: #E91E63;
 }
 
@@ -213,8 +208,8 @@ td,th {
   color: #FF9800;
 }
 
-.enemy {
-  color: #FF9800;
+.effectCard {
+  color: #795548;
 }
 
 .rightCard {
