@@ -145,7 +145,6 @@ td,th {
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 90%;
   text-align: center;
 }
 
@@ -200,7 +199,7 @@ td,th {
   color: #E91E63;
 }
 
-.character {
+.characterCard {
   color: #CDDC39;
 }
 
