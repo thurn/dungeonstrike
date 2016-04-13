@@ -12,6 +12,15 @@
 ### Main Gate
 *A lowered drawbridge spans a foggy moat. Beyond it is an open portcullis.*
 
+✮: Lower the portcullis. While it's lowered, occupants of this room can't attack and you can't take the Explore action.
+
+✮: Raise the portcullis.
+
+### Gate Towers
+
+*Two towers stand above the gate, extending up into the mist.*
+
+The Master can place Creatures into the tower, in which case they get +4 to hit rolls but cannot make melee attacks.
 
 ## Threats [18]
 
