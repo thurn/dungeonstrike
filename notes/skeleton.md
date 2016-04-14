@@ -1,5 +1,7 @@
 # Notes
 * Some ordering for room draws could be good, similar to equipment draws, to make sure the more impressive/powerful rooms are later in the game
+* Need a way to compensate for varying Room effect power-level to make you want to put them in your deck
+* Master Currency: "Menace"?
 
 # Master Deck
 * 60 Cards
@@ -17,10 +19,19 @@
 ✮: Raise the portcullis.
 
 ### Gate Towers
-
 *Two towers stand above the gate, extending up into the mist.*
 
-The Master can place Creatures into the tower, in which case they get +4 to hit rolls but cannot make melee attacks.
+Creatures can be placed into the tower, in which case they get +4 to hit rolls but cannot make melee attacks.
+
+### Lower Courtyard
+*Walls of solid ice enclose this courtyard. An opening in one wall leads to a spiral staircase made out of sculpted ice.*
+
+Creatures can be placed on the staircase. Melee attacks made on the staircase must pass a Agility[15] check or the attack is prevented and the attacker takes 1d4 damage.
+
+### Stables
+*This place stinks of some kind of droppings and rotted flesh. Cracked bones cover the floor.*
+
+**Treasure**: Four fine bridles are kept here, embellished with jade, worth 500 gp each.
 
 ## Threats [18]
 
