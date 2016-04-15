@@ -1,7 +1,9 @@
 # Notes
 * Some ordering for room draws could be good, similar to equipment draws, to make sure the more impressive/powerful rooms are later in the game
 * Need a way to compensate for varying Room effect power-level to make you want to put them in your deck
-* Master Currency: "Menace"?
+* Master Currency: "Menace"? "Peril"? "Threat"?
+* Non-hostile creatures? Diplomacy? Retreats? Information from creatures?
+* How does trasure work?
 
 # Master Deck
 * 60 Cards
@@ -31,7 +33,25 @@ Creatures can be placed on the staircase. Melee attacks made on the staircase mu
 ### Stables
 *This place stinks of some kind of droppings and rotted flesh. Cracked bones cover the floor.*
 
+**Likely Creature:** Wyvern
+
 **Treasure**: Four fine bridles are kept here, embellished with jade, worth 500 gp each.
+
+### Cultist Barracks
+*The barracks smell of unwashed bedclothes, and the chamber contains fourteen fur-covered beds*
+
+**Likely Creature:** Dragonwing
+
+Dragonwings played here are asleep. When a Dragonwing is played here, the Master draws a card.
+
+### Stone Giants' Chamber
+
+**Likely Creature:** Giant
+
+*In the middle of this frost-glazed room stands a nine-foot tall table of carved stone surrounded by three giant-sized chairs.*
+
+**Treasure**: A `Globe of Force` secures a collection of gemstones: amethysts, diamonds, opals, and rubies.
+
 
 ## Threats [18]
 
