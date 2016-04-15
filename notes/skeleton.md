@@ -3,7 +3,10 @@
 * Need a way to compensate for varying Room effect power-level to make you want to put them in your deck
 * Master Currency: "Menace"? "Peril"? "Threat"?
 * Non-hostile creatures? Diplomacy? Retreats? Information from creatures?
+* Named creatures in specific rooms?
 * How does trasure work?
+* Keys?
+* Room **slots** for occupants/treasure/items/etc for Master's consumption, go away when viewd by Champion, who just gets a narrative about the occupants of the room.
 
 # Master Deck
 * 60 Cards
@@ -16,6 +19,10 @@
 ### Main Gate
 *A lowered drawbridge spans a foggy moat. Beyond it is an open portcullis.*
 
+* Object: [Portcullis]()
+* Creature: [Inactive Stone Golem]()
+
+#### Portcullis
 ✮: Lower the portcullis. While it's lowered, occupants of this room can't attack and you can't take the Explore action.
 
 ✮: Raise the portcullis.
@@ -23,34 +30,59 @@
 ### Gate Towers
 *Two towers stand above the gate, extending up into the mist.*
 
-Creatures can be placed into the tower, in which case they get +4 to hit rolls but cannot make melee attacks.
+* Location: [Tower]()
+* Location: [Tower]()
+
+#### Tower
+
+A creatures can be placed into the tower, in which case it gets +4 to hit rolls but cannot make melee attacks.
 
 ### Lower Courtyard
 *Walls of solid ice enclose this courtyard. An opening in one wall leads to a spiral staircase made out of sculpted ice.*
+
+* Location: [Staircase]()
+
+#### Staircase
 
 Creatures can be placed on the staircase. Melee attacks made on the staircase must pass a Agility[15] check or the attack is prevented and the attacker takes 1d4 damage.
 
 ### Stables
 *This place stinks of some kind of droppings and rotted flesh. Cracked bones cover the floor.*
 
-**Likely Creature:** Wyvern
+* Creature: [Wyvern]()
+* Treasure: [Bridles]()
 
-**Treasure**: Four fine bridles are kept here, embellished with jade, worth 500 gp each.
+#### Bridles
+
+Four fine bridles are kept here, embellished with jade, worth 500 gp each.
 
 ### Cultist Barracks
 *The barracks smell of unwashed bedclothes, and the chamber contains fourteen fur-covered beds*
 
-**Likely Creature:** Dragonwing
+* Creature: [Dragonwing]()
 
 Dragonwings played here are asleep. When a Dragonwing is played here, the Master draws a card.
 
 ### Stone Giants' Chamber
-
-**Likely Creature:** Giant
-
 *In the middle of this frost-glazed room stands a nine-foot tall table of carved stone surrounded by three giant-sized chairs.*
 
-**Treasure**: A `Globe of Force` secures a collection of gemstones: amethysts, diamonds, opals, and rubies.
+* Creature: Giant
+* Treasure: [Gemstones]()
+
+#### Gemstones
+
+A [Globe of Force]() secures a collection of gemstones: amethysts, diamonds, opals, and rubies.
+
+#### Globe of Force
+
+
+### Rezmir's Chamber
+**Locked**: Mechanics[15] to enter
+
+A large rug covers the icy floor inside the door of this room. Resting atop a desk is a handsome, iron-banded chest secured with a sturdy padlock. The half-black dragon [Rezmir]() is here. The 
+
+**Likely Creature:** Drake
+
 
 
 ## Threats [18]
