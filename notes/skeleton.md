@@ -20,41 +20,29 @@
 *A lowered drawbridge spans a foggy moat. Beyond it is an open portcullis.*
 
 * Object: [Portcullis]()
+	- ✮: Lower the portcullis. While it's lowered, occupants of this room can't attack and you can't take the Explore action.
+	- ✮: Raise the portcullis.
 * Creature: [Inactive Stone Golem]()
-
-#### Portcullis
-✮: Lower the portcullis. While it's lowered, occupants of this room can't attack and you can't take the Explore action.
-
-✮: Raise the portcullis.
 
 ### Gate Towers
 *Two towers stand above the gate, extending up into the mist.*
 
 * Location: [Tower]()
+	- A creature can be placed into the tower, in which case it gets +4 to hit rolls but cannot make melee attacks.
 * Location: [Tower]()
-
-#### Tower
-
-A creatures can be placed into the tower, in which case it gets +4 to hit rolls but cannot make melee attacks.
 
 ### Lower Courtyard
 *Walls of solid ice enclose this courtyard. An opening in one wall leads to a spiral staircase made out of sculpted ice.*
 
 * Location: [Staircase]()
-
-#### Staircase
-
-Creatures can be placed on the staircase. Melee attacks made on the staircase must pass a Agility[15] check or the attack is prevented and the attacker takes 1d4 damage.
+	- Creatures can be placed on the staircase. Melee attacks made on the staircase must pass a Agility[15] check or the attack is prevented and the attacker takes 1d4 damage.
 
 ### Stables
 *This place stinks of some kind of droppings and rotted flesh. Cracked bones cover the floor.*
 
 * Creature: [Wyvern]()
 * Treasure: [Bridles]()
-
-#### Bridles
-
-Four fine bridles are kept here, embellished with jade, worth 500 gp each.
+	- Four fine bridles are kept here, embellished with jade, worth 500 gp each.
 
 ### Cultist Barracks
 *The barracks smell of unwashed bedclothes, and the chamber contains fourteen fur-covered beds*
@@ -68,20 +56,15 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 
 * Creature: Giant
 * Treasure: [Gemstones]()
-
-#### Gemstones
-
-A [Globe of Force]() secures a collection of gemstones: amethysts, diamonds, opals, and rubies.
-
-#### Globe of Force
+	- A [Globe of Force]() secures a collection of gemstones: amethysts, diamonds, opals, and rubies.
 
 
 ### Rezmir's Chamber
-**Locked**: Mechanics[15] to enter
+*A large rug covers the icy floor inside the door of this room. Resting atop a desk is a handsome, iron-banded chest secured with a sturdy padlock.*
 
-A large rug covers the icy floor inside the door of this room. Resting atop a desk is a handsome, iron-banded chest secured with a sturdy padlock. The half-black dragon [Rezmir]() is here. The 
-
-**Likely Creature:** Drake
+* Door: Locked. Mechanics[15] to enter.
+* Creature: Rezmir, Half-black dragon
+* Creature Guard drake
 
 
 
