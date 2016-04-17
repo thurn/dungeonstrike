@@ -7,6 +7,7 @@
 * How does trasure work?
 * Keys?
 * Room **slots** for occupants/treasure/items/etc for Master's consumption, go away when viewd by Champion, who just gets a narrative about the occupants of the room.
+* Master can customize rooms in advance?
 
 # Master Deck
 * 60 Cards
@@ -63,10 +64,21 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 *A large rug covers the icy floor inside the door of this room. Resting atop a desk is a handsome, iron-banded chest secured with a sturdy padlock.*
 
 * Door: Locked. Mechanics[15] to enter.
-* Creature: Rezmir, Half-black dragon
-* Creature Guard drake
+* Creature: [Rezmir](), Half-black dragon
+* Creature: Guard drake
+* Trap: [Rug of Smothering]()
+* Chest: Locked. Mechanics[20] to open.
+* Chest: Trapped. Poison needle, Agility[15] to dodge, Fortitude[12] or take 7d6 poison damage.
+* Chest Contents: [Black Dragon Mask]()
 
+### Red Wizard's Room
+*Hundreds of horse skulls are nailed to the ceiling, covering it entirely. Thick carpets cover the icy floor.*
 
+* Creature: [Rath Modar](), Red Wizard of Thay
+* Creature: [Azbara Jos](), Red Wizard of Thay
+* Creature: Gargoyle
+* Object: [Vanishing Wall of Ice]()
+* Treasure: Rath Modar has scrolls of dimension door, feather fall, and fireball. He carries a staff of 
 
 ## Threats [18]
 
