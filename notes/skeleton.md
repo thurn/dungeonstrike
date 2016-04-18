@@ -78,7 +78,26 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 * Creature: [Azbara Jos](), Red Wizard of Thay
 * Creature: Gargoyle
 * Object: [Vanishing Wall of Ice]()
-* Treasure: Rath Modar has scrolls of dimension door, feather fall, and fireball. He carries a staff of 
+* Treasure: Rath Modar has scrolls of dimension door, feather fall, and fireball. He carries a [staff of fire]().
+
+### Storeroom
+*Huge sides of beef, entire ham hocks, and enormous barrels fill this room, as do hundreds of crates.*
+
+### Guest Chamber
+*This room is comfortably furnished for inhabitants of human size.*
+
+* Object: [Vanishing Wall of Ice]()
+	- A large section of the icy wall opposite the door vanishes for 1 minute when touched.
+
+### Kitchen
+*The scene is pure chaos: dozens of kobolds chopping, mixing, carrying sacks of ingredients, and stirring great caldurons.*
+
+* Creature: [Kobold]()
+* Creature: [Griffon]()
+* Treasure: Small chests of black pepper, cinnamon, and nutmeg. Worth 130 gp total.
+
+### Upper Courtyard
+
 
 ## Threats [18]
 
