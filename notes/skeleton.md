@@ -97,10 +97,49 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 * Treasure: Small chests of black pepper, cinnamon, and nutmeg. Worth 130 gp total.
 
 ### Upper Courtyard
+*Tall, slender towers and walls of ice enclose a windswept courtyard.*
 
+* Creature: [Ogre]()
+* Creature: [Vampire]()
+
+### High Blue Tower
+*This tower of pale blue ice is the color of sky on a winter day. Its few windows shimmer like mirrored glass or crystal.*
+
+* Lock: Mechanics[15] or Blagothkus' Key.
+* Creature: [Ogre]()
+* Object: [Ballista]()
+
+### Crumbling Tower
+*This ancient tower seems to be crumbling. The windows have been sealed shut with ice, and cracks have formed in the walls and roofcap.*
+
+* Creature: [Sandesyl Morgia](), Vampire.
+* Creature: [Vampire Spawn]()
+* Climb Tower: Athletics[10]
 
 ## Threats [18]
 
 ## Effects [18]
 
 # Champion Deck
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
