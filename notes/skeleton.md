@@ -116,6 +116,28 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 * Creature: [Vampire Spawn]()
 * Climb Tower: Athletics[10]
 
+### Steering Tower
+*A staircase of ice leads from the tower's ground floor to a higher chamber. After a moment, the walls themselves seem to disappear, and more than a dozen glowing white runes wink into existence, drifting about the room like snowflakes.*
+
+* [Esclarotta](), Giant Spirit
+    - Communicate: Mind[15]
+    - Persuade: Influence[14]
+* Treasure: Can pry loose fistfuls of emeralds, turquoise, moonstones, jade, amber, and mithral worth 10,000gp total. Causes [Blagothukus]() to appear.
+
+### Ogre Barracks
+*This unfurnished chamber contains a horde of ogres sleeping on piles of fur.*
+
+* Creature: Ogre
+* Treasure: Ogres keep small amounts of gold and silver in pouches, sacks, and chests, 300gp in total.
+* Treasure: Perception[20] to find a single pale blue sapphire worth 500gp wedged into a crevice.
+
+Ogres are asleep.
+
+### Esclarotta's Tomb
+*You appear in an oval cave carved from solid glacial ice, with no passages leading out. A massive white marble sarcophagus sits in the middle of the floor.*
+
+* Speak "Blagothkus" to escape
+
 ## Threats [18]
 
 ## Effects [18]
