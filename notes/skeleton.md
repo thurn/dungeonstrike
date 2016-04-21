@@ -138,6 +138,20 @@ Ogres are asleep.
 
 * Speak "Blagothkus" to escape
 
+### Cloud Giant Tower
+*The walls of this room are sculpted with icy murals. A blue-skinned giant sits on the floor with his legs crossed while two ogres comb his snowy white hair.*
+
+* Creature: [Blagothkus](), cloud giant
+     - Can negotiate with him, in which case he takes the castle north while you deal with the cult
+     - Can summon an air elemental
+* Creature: Ogre
+* Treasure: Chests are unlocked and loaded with silver and gold (12,000 gp). One also contains a [bag of holding]()
+
+### Giant Guest Chambers
+*These rooms are set aside for giant-sized guests, and have furnishings of the appropriate size.*
+
+*Object: [Vanishing Wall of Ice]()
+
 ## Threats [18]
 
 ## Effects [18]
