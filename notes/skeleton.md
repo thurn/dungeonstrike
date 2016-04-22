@@ -8,6 +8,7 @@
 * Keys?
 * Room **slots** for occupants/treasure/items/etc for Master's consumption, go away when viewd by Champion, who just gets a narrative about the occupants of the room.
 * Master can customize rooms in advance?
+* Room ordering & final room
 
 # Master Deck
 * 60 Cards
@@ -151,6 +152,19 @@ Ogres are asleep.
 *These rooms are set aside for giant-sized guests, and have furnishings of the appropriate size.*
 
 *Object: [Vanishing Wall of Ice]()
+
+### Servant Barracks
+*Twenty kobolds are trying to sleep here on dozens of small piles of bedding, fur, and clothes. They are exhaused and ignore you.*
+
+### Main Vault Tunnels
+*The walls of blue ice are partly transparent, revealing various things embedded in the ice all around, including coins, helmets and livestock.*
+
+### Main Vault
+*This grand vault is split into two levels: an egg-shaped upper level with a sheer ledge overlooking a sunken level 30 feet below, where a passive pile of treasure rests. Clinging to the ceiling above the hoard is a huge white dragon.*
+
+* Creature: [Glazhael](), an adult white dragon
+    - clings to ceiling, uses breath weapon and frightful presence
+* Treausure: the floor of the cavern is carpeted in gold, silver, copper, and jewels, all sealed under a sheet of ice.
 
 ## Threats [18]
 
