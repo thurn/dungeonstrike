@@ -9,6 +9,9 @@
 * Room **slots** for occupants/treasure/items/etc for Master's consumption, go away when viewd by Champion, who just gets a narrative about the occupants of the room.
 * Master can customize rooms in advance?
 * Room ordering & final room
+* Tutor slots on cards search up a random matching card from your deck.
+* Other permanent fixture slots are cards permanently attached to the room.
+* Rooms are drawn like equipment in a semi-random order
 
 # Master Deck
 * 60 Cards
