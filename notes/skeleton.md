@@ -11,6 +11,7 @@
 * Room ordering & final room
 * Tutor slots on cards search up a random matching card from your deck.
 * Other permanent fixture slots are cards permanently attached to the room.
+* Need names for these concepts
 * Rooms are drawn like equipment in a semi-random order
 
 # Master Deck
@@ -174,25 +175,3 @@ Ogres are asleep.
 ## Effects [18]
 
 # Champion Deck
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
