@@ -14,6 +14,16 @@
 * Need names for these concepts
 * Rooms are drawn like equipment in a semi-random order
 
+## Room Cards
+* Decks contain 3 special room cards: Start #1, Start #2, and Final
+* Rooms have **Room Components**, which can be:
+ - Creatures
+ - Traps
+ - Objects
+ - Locations
+* Component pieces can contain their own components as well, for example an Object might have a Trap component, or a creature might have certain spells or equipment.
+*
+
 # Master Deck
 * 60 Cards
 * Max 4 of any kind
