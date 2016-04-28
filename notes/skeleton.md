@@ -14,15 +14,18 @@
 * Need names for these concepts
 * Rooms are drawn like equipment in a semi-random order
 
-## Room Cards
-* Decks contain 3 special room cards: Start #1, Start #2, and Final
-* Rooms have **Room Components**, which can be:
+## Cards
+* Cards have card **components** and card **slots**
+  - When a card is *drawn*, a card is automatically generated matching each **component** on the card and put into the Master's hand
+  - When a card is *played*, a card is searched from the Master's deck matching each **slot** on the card and put into the Master's hand
+* Types of components or slots:
  - Creatures
  - Traps
  - Objects
  - Locations
-* Component pieces can contain their own components as well, for example an Object might have a Trap component, or a creature might have certain spells or equipment.
-*
+ - Equipment
+ - Spells
+* Decks contain 3 special room cards: Start #1, Start #2, and Final
 
 # Master Deck
 * 60 Cards
