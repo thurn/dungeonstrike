@@ -15,10 +15,10 @@
 * Rooms are drawn like equipment in a semi-random order
 
 ## Cards
-* Cards have card **components** and card **slots**
-  - When a card is *drawn*, a card is automatically generated matching each **component** on the card and put into the Master's hand
-  - When a card is *played*, a card is searched from the Master's deck matching each **slot** on the card and put into the Master's hand
-* Types of components or slots:
+* Master has a currency called "Peril"
+* Cards have card **components**
+  - When a card is *drawn*, a card is automatically generated matching each **component** on the card and put into the Master's hand (if it has a cost) or directly into play (if it does not).
+* Types of components:
  - Creatures
  - Traps
  - Objects
@@ -26,6 +26,8 @@
  - Equipment
  - Spells
 * Decks contain 3 special room cards: Start #1, Start #2, and Final
+* Possible Threats: If a room has a possible thread indicator, the Master gets a discount of 2 Peril when adding the indicated type of Threat to the room.
+* Treasure? Treasure is basically irrelevant to the Master but provides good motive for Champion. Should probably not be tied to individual rooms. How to set up e.g. trapped chests?
 
 # Master Deck
 * 60 Cards
@@ -42,6 +44,7 @@
 	- ✮: Lower the portcullis. While it's lowered, occupants of this room can't attack and you can't take the Explore action.
 	- ✮: Raise the portcullis.
 * Creature: [Inactive Stone Golem]()
+   - TODO
 
 ### Gate Towers
 *Two towers stand above the gate, extending up into the mist.*
@@ -49,6 +52,7 @@
 * Location: [Tower]()
 	- A creature can be placed into the tower, in which case it gets +4 to hit rolls but cannot make melee attacks.
 * Location: [Tower]()
+	- A creature can be placed into the tower, in which case it gets +4 to hit rolls but cannot make melee attacks.
 
 ### Lower Courtyard
 *Walls of solid ice enclose this courtyard. An opening in one wall leads to a spiral staircase made out of sculpted ice.*
@@ -59,21 +63,21 @@
 ### Stables
 *This place stinks of some kind of droppings and rotted flesh. Cracked bones cover the floor.*
 
-* Creature: [Wyvern]()
+* Possible Threat: [Wyvern]()
 * Treasure: [Bridles]()
 	- Four fine bridles are kept here, embellished with jade, worth 500 gp each.
 
 ### Cultist Barracks
 *The barracks smell of unwashed bedclothes, and the chamber contains fourteen fur-covered beds*
 
-* Creature: [Dragonwing]()
+* Possible Threat: [Dragonwing]()
 
 Dragonwings played here are asleep. When a Dragonwing is played here, the Master draws a card.
 
 ### Stone Giants' Chamber
 *In the middle of this frost-glazed room stands a nine-foot tall table of carved stone surrounded by three giant-sized chairs.*
 
-* Creature: Giant
+* Possible Creature: Stone Giant
 * Treasure: [Gemstones]()
 	- A [Globe of Force]() secures a collection of gemstones: amethysts, diamonds, opals, and rubies.
 
@@ -82,8 +86,8 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 *A large rug covers the icy floor inside the door of this room. Resting atop a desk is a handsome, iron-banded chest secured with a sturdy padlock.*
 
 * Door: Locked. Mechanics[15] to enter.
-* Creature: [Rezmir](), Half-black dragon
-* Creature: Guard drake
+* Unique Creature: [Rezmir](), Half-black dragon
+* Possible Creature: Drake
 * Trap: [Rug of Smothering]()
 * Chest: Locked. Mechanics[20] to open.
 * Chest: Trapped. Poison needle, Agility[15] to dodge, Fortitude[12] or take 7d6 poison damage.
@@ -92,9 +96,9 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 ### Red Wizard's Room
 *Hundreds of horse skulls are nailed to the ceiling, covering it entirely. Thick carpets cover the icy floor.*
 
-* Creature: [Rath Modar](), Red Wizard of Thay
-* Creature: [Azbara Jos](), Red Wizard of Thay
-* Creature: Gargoyle
+* Possible Creature: [Rath Modar](), Red Wizard of Thay
+* Possible Creature: [Azbara Jos](), Red Wizard of Thay
+* Possible Creature: Gargoyle
 * Object: [Vanishing Wall of Ice]()
 * Treasure: Rath Modar has scrolls of dimension door, feather fall, and fireball. He carries a [staff of fire]().
 
@@ -110,28 +114,28 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 ### Kitchen
 *The scene is pure chaos: dozens of kobolds chopping, mixing, carrying sacks of ingredients, and stirring great caldurons.*
 
-* Creature: [Kobold]()
-* Creature: [Griffon]()
+* Possible Creature: [Kobold]()
+* Possible Creature: [Griffon]()
 * Treasure: Small chests of black pepper, cinnamon, and nutmeg. Worth 130 gp total.
 
 ### Upper Courtyard
 *Tall, slender towers and walls of ice enclose a windswept courtyard.*
 
-* Creature: [Ogre]()
-* Creature: [Vampire]()
+* Possible Creature: [Ogre]()
+* Possible Creature: [Vampire]()
 
 ### High Blue Tower
 *This tower of pale blue ice is the color of sky on a winter day. Its few windows shimmer like mirrored glass or crystal.*
 
 * Lock: Mechanics[15] or Blagothkus' Key.
-* Creature: [Ogre]()
+* Possible Creature: [Ogre]()
 * Object: [Ballista]()
 
 ### Crumbling Tower
 *This ancient tower seems to be crumbling. The windows have been sealed shut with ice, and cracks have formed in the walls and roofcap.*
 
-* Creature: [Sandesyl Morgia](), Vampire.
-* Creature: [Vampire Spawn]()
+* Possible Creature: [Sandesyl Morgia](), Vampire.
+* Possible Creature: [Vampire Spawn]()
 * Climb Tower: Athletics[10]
 
 ### Steering Tower
@@ -145,7 +149,7 @@ Dragonwings played here are asleep. When a Dragonwing is played here, the Master
 ### Ogre Barracks
 *This unfurnished chamber contains a horde of ogres sleeping on piles of fur.*
 
-* Creature: Ogre
+* Possible Creature: Ogre
 * Treasure: Ogres keep small amounts of gold and silver in pouches, sacks, and chests, 300gp in total.
 * Treasure: Perception[20] to find a single pale blue sapphire worth 500gp wedged into a crevice.
 
@@ -159,10 +163,10 @@ Ogres are asleep.
 ### Cloud Giant Tower
 *The walls of this room are sculpted with icy murals. A blue-skinned giant sits on the floor with his legs crossed while two ogres comb his snowy white hair.*
 
-* Creature: [Blagothkus](), cloud giant
+* Unique Creature: [Blagothkus](), cloud giant
      - Can negotiate with him, in which case he takes the castle north while you deal with the cult
      - Can summon an air elemental
-* Creature: Ogre
+* Possible Creature: Ogre
 * Treasure: Chests are unlocked and loaded with silver and gold (12,000 gp). One also contains a [bag of holding]()
 
 ### Giant Guest Chambers
@@ -177,9 +181,9 @@ Ogres are asleep.
 *The walls of blue ice are partly transparent, revealing various things embedded in the ice all around, including coins, helmets and livestock.*
 
 ### Main Vault
-*This grand vault is split into two levels: an egg-shaped upper level with a sheer ledge overlooking a sunken level 30 feet below, where a passive pile of treasure rests. Clinging to the ceiling above the hoard is a huge white dragon.*
+*This grand vault is split into two levels: an egg-shaped upper level with a sheer ledge overlooking a sunken level 30 feet below, where a massive pile of treasure rests. Clinging to the ceiling above the hoard is a huge white dragon.*
 
-* Creature: [Glazhael](), an adult white dragon
+* Unique Creature: [Glazhael](), an adult white dragon
     - clings to ceiling, uses breath weapon and frightful presence
 * Treausure: the floor of the cavern is carpeted in gold, silver, copper, and jewels, all sealed under a sheet of ice.
 
