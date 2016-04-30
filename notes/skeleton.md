@@ -17,7 +17,7 @@
 ## Cards
 * Master has a currency called "Peril"
 * Cards have card **components**
-  - When a card is *drawn*, a card is automatically generated matching each **component** on the card and put into the Master's hand (if it has a cost) or directly into play (if it does not).
+  - When a card is *played*, a card is automatically generated matching each **component** on the card and put into the Master's hand (if it has a cost) or directly into play (if it does not).
 * Types of components:
  - Creatures
  - Traps
@@ -27,7 +27,7 @@
  - Spells
 * Decks contain 3 special room cards: Start #1, Start #2, and Final
 * Possible Threats: If a room has a possible thread indicator, the Master gets a discount of 2 Peril when adding the indicated type of Threat to the room.
-* Treasure? Treasure is basically irrelevant to the Master but provides good motive for Champion. Should probably not be tied to individual rooms. How to set up e.g. trapped chests?
+* No treasure
 
 # Master Deck
 * 60 Cards
@@ -64,43 +64,37 @@
 *This place stinks of some kind of droppings and rotted flesh. Cracked bones cover the floor.*
 
 * Possible Threat: [Wyvern]()
-* Treasure: [Bridles]()
-	- Four fine bridles are kept here, embellished with jade, worth 500 gp each.
 
 ### Cultist Barracks
 *The barracks smell of unwashed bedclothes, and the chamber contains fourteen fur-covered beds*
 
-* Possible Threat: [Dragonwing]()
+* Possible Threat: [Cultist]()
 
-Dragonwings played here are asleep. When a Dragonwing is played here, the Master draws a card.
+Cultists played here are asleep. Add 3 copies of any Cultist played here to this room.
 
 ### Stone Giants' Chamber
 *In the middle of this frost-glazed room stands a nine-foot tall table of carved stone surrounded by three giant-sized chairs.*
 
-* Possible Creature: Stone Giant
-* Treasure: [Gemstones]()
-	- A [Globe of Force]() secures a collection of gemstones: amethysts, diamonds, opals, and rubies.
+* Possible Threat: [Stone Giant]()
+* Obstacle: A [Globe of Force]() shields this room
+    -  TODO
 
 
 ### Rezmir's Chamber
 *A large rug covers the icy floor inside the door of this room. Resting atop a desk is a handsome, iron-banded chest secured with a sturdy padlock.*
 
-* Door: Locked. Mechanics[15] to enter.
 * Unique Creature: [Rezmir](), Half-black dragon
-* Possible Creature: Drake
-* Trap: [Rug of Smothering]()
-* Chest: Locked. Mechanics[20] to open.
-* Chest: Trapped. Poison needle, Agility[15] to dodge, Fortitude[12] or take 7d6 poison damage.
-* Chest Contents: [Black Dragon Mask]()
+    - TODO
+* Possible Threat: [Drake]()
+* Chest
+    - Possible Threat: Trap
 
 ### Red Wizard's Room
 *Hundreds of horse skulls are nailed to the ceiling, covering it entirely. Thick carpets cover the icy floor.*
 
-* Possible Creature: [Rath Modar](), Red Wizard of Thay
-* Possible Creature: [Azbara Jos](), Red Wizard of Thay
-* Possible Creature: Gargoyle
-* Object: [Vanishing Wall of Ice]()
-* Treasure: Rath Modar has scrolls of dimension door, feather fall, and fireball. He carries a [staff of fire]().
+* Possible Threat: [Rath Modar](), Red Wizard of Thay
+    - TODO
+* Possible Threat: Gargoyle
 
 ### Storeroom
 *Huge sides of beef, entire ham hocks, and enormous barrels fill this room, as do hundreds of crates.*
