@@ -28,6 +28,9 @@
 * Decks contain 3 special room cards: Start #1, Start #2, and Final
 * Possible Threats: If a room has a possible thread indicator, the Master gets a discount of 2 Peril when adding the indicated type of Threat to the room.
 * No treasure
+* No locks
+* Champion wins by clearing all rooms or 10 rooms, whichever happens first
+* 10th room drawn is always final room
 
 # Master Deck
 * 60 Cards
@@ -102,35 +105,31 @@ Cultists played here are asleep. Add 3 copies of any Cultist played here to this
 ### Guest Chamber
 *This room is comfortably furnished for inhabitants of human size.*
 
-* Object: [Vanishing Wall of Ice]()
-	- A large section of the icy wall opposite the door vanishes for 1 minute when touched.
-
 ### Kitchen
 *The scene is pure chaos: dozens of kobolds chopping, mixing, carrying sacks of ingredients, and stirring great caldurons.*
 
-* Possible Creature: [Kobold]()
-* Possible Creature: [Griffon]()
-* Treasure: Small chests of black pepper, cinnamon, and nutmeg. Worth 130 gp total.
+* Possible Threat: [Kobold]()
+* Possible Threat: [Griffon]()
 
 ### Upper Courtyard
 *Tall, slender towers and walls of ice enclose a windswept courtyard.*
 
-* Possible Creature: [Ogre]()
-* Possible Creature: [Vampire]()
+* Possible Threat: [Ogre]()
+* Possible Threat: [Vampire]()
 
 ### High Blue Tower
 *This tower of pale blue ice is the color of sky on a winter day. Its few windows shimmer like mirrored glass or crystal.*
 
-* Lock: Mechanics[15] or Blagothkus' Key.
 * Possible Creature: [Ogre]()
 * Object: [Ballista]()
+    - TODO
 
 ### Crumbling Tower
 *This ancient tower seems to be crumbling. The windows have been sealed shut with ice, and cracks have formed in the walls and roofcap.*
 
-* Possible Creature: [Sandesyl Morgia](), Vampire.
-* Possible Creature: [Vampire Spawn]()
-* Climb Tower: Athletics[10]
+* Possible Threat: [Sandesyl Morgia](), Vampire
+    - TODO
+* Possible Threat: [Vampire Spawn]()
 
 ### Steering Tower
 *A staircase of ice leads from the tower's ground floor to a higher chamber. After a moment, the walls themselves seem to disappear, and more than a dozen glowing white runes wink into existence, drifting about the room like snowflakes.*
