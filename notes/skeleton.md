@@ -32,6 +32,30 @@
 * Champion wins by clearing all rooms or 10 rooms, whichever happens first
 * 10th room drawn is always final room
 
+## Rooms
+* Rooms are always played face-up, Master places Threats into them face-up
+    - some threats can be played face-down as Hidden Threats, e.g. traps or ambushes
+    - cost for face-down threats is paid in order to flip them
+    - each Threat costs 1 per threat already in that room
+* Master gains 1 Peril per active room card in play during the Income step
+* Champion can approach rooms in any order
+* Rooms can be "active" or "cleared"
+* When the Champion leaves a room it is "cleared" and flipped face-down
+* Champion wins by clearing all rooms in play or by clearing 12 rooms
+* Game starts with 2 active rooms
+* A "standard" room has no special abilities, the Master gains 1 peril when it's played
+* Need to differentiate Master strategies
+   - Factions on cards
+   - Cards are neutral or associated with 1 card subtype
+* Master card types
+  - **Interrupt - Monstrous**: extra big monsters
+  - **Interrupt - Legion**: cheap little threats, more organized, large numbers
+  - **Interrupt - Arcane**: spellcasters & counterspells 
+  - **Interrupt - Deception**: traps & ambushes
+  - **Interrupt - Bolster**: threat benefit effects
+  - **Interrupt - Fury**: champion harm effects
+  - **Interrupt - Boon**: master benefit effects
+
 # Master Deck
 * 60 Cards
 * Max 4 of any kind
