@@ -44,22 +44,22 @@
 * Champion wins by clearing all rooms in play or by clearing 12 rooms
 * Game starts with 2 active rooms
 * A "standard" room has no special abilities and is affiliated with a particular House, the master gains 1 Peril in that House when it's played
-* A "dual" room is affiliated with two houses, and the master does not gain Peril when it's played.
-    - Often there is some other benefit to a dual house
-* A "triple" room is affiliated with three houses, does not produce Peril, and never has a benefit for being played.
-* Some rooms do not produce Peirl, but have an associated unique creature, limited number of these per deck
+* A "dual" room is affiliated with two House, and the master does not gain Peril when it's played.
+    - Often there is some other benefit to a dual room
+* A "triple" room is affiliated with three Houses, does not produce Peril, and never has a benefit for being played.
+* Some rooms do not produce Peril, but have an associated unique creature, limited number of these per deck
 * Need to differentiate Master strategies
    - Factions on cards
    - Cards are neutral or associated with 1 House
 * Master card Houses:
-  - **Interrupt - Monstrous**: extra big monsters
-  - **Interrupt - Legion**: cheap little threats, more organized, large numbers
-  - **Interrupt - Arcane**: spellcasters & counterspells 
-  - **Interrupt - Deception**: traps & ambushes
-  - **Interrupt - Bolster**: threat benefit effects
-  - **Interrupt - Fury**: champion harm effects
-  - **Interrupt - Boon**: master benefit effects
-* All Houses get creatures, rooms, traps, effects, etc as long as they carry forward the central theme
+  - **Monstrous**: extra big monsters
+  - **Legion**: cheap little threats, more organized, large numbers
+  - **Arcane**: spellcasters & counterspells 
+  - **Deceit**: traps & ambushes
+  - **Bolster**: threat benefit effects
+  - **Fury**: champion harm effects
+  - **Boon**: master benefit effects
+* All House get creatures, rooms, traps, effects, etc as long as they carry forward the central theme
 
 # Master Deck
 * 60 Cards
