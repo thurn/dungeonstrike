@@ -43,43 +43,45 @@
 * When the Champion leaves a room it is "cleared" and flipped face-down
 * Champion wins by clearing all rooms in play or by clearing 12 rooms
 * Game starts with 2 active rooms
-* A "standard" room has no special abilities and is affiliated with a particular House, the master gains 1 Peril in that House when it's played
-* A "dual" room is affiliated with two House, and the master does not gain Peril when it's played.
+* A "standard" room has no special abilities and is affiliated with a particular Peril, the master gains 1 Peril of that type when it's played
+* A "dual" room is affiliated with two Perils, and the master does not gain Peril when it's played. It produces one of his choice during the income step.
     - Often there is some other benefit to a dual room
-* A "triple" room is affiliated with three Houses, does not produce Peril, and never has a benefit for being played.
+* A "triple" room is affiliated with three Perils, does not produce Peril, and never has a benefit for being played.
 * Some rooms do not produce Peril, but have an associated unique creature, limited number of these per deck
 * Need to differentiate Master strategies
    - Factions on cards
    - Cards are neutral or associated with 1 House
-* Master card Houses:
+* Master card Perils:
   - **Monstrous**: extra big monsters
   - **Legion**: cheap little threats, more organized, large numbers
   - **Arcane**: spellcasters & counterspells 
-  - **Deceit**: traps & ambushes
+  - **Deception**: traps & ambushes
   - **Bolster**: threat benefit effects
   - **Fury**: champion harm effects
   - **Boon**: master benefit effects
-* All House get creatures, rooms, traps, effects, etc as long as they carry forward the central theme
+* All Perils get creatures, rooms, traps, effects, etc as long as they carry forward the central theme
 
 # Master Deck
 * 60 Cards
-* Max 4 of any kind
-* Max 1 of Room cards?
-* Max 3 subtypes
+* Max 4 of any kind except standard rooms
+* Max 3 Houses
 * Theme: Flying fortress full of cultists, built by cloud giants, mostly made out of ice
+* Perils: Boon, Legion, Bolster
 
 ## Rooms [24]
 ### Main Gate
 *A lowered drawbridge spans a foggy moat. Beyond it is an open portcullis.*
 
+**Boon; Legion**
+
 * Object: [Portcullis]()
 	- ✮: Lower the portcullis. While it's lowered, occupants of this room can't attack and you can't take the Explore action.
 	- ✮: Raise the portcullis.
-* Creature: [Inactive Stone Golem]()
-   - TODO
 
 ### Gate Towers
 *Two towers stand above the gate, extending up into the mist.*
+
+**Legion; Bolster**
 
 * Location: [Tower]()
 	- A creature can be placed into the tower, in which case it gets +4 to hit rolls but cannot make melee attacks.
@@ -89,125 +91,107 @@
 ### Lower Courtyard
 *Walls of solid ice enclose this courtyard. An opening in one wall leads to a spiral staircase made out of sculpted ice.*
 
+**Boon; Bolster**
+
 * Location: [Staircase]()
 	- Creatures can be placed on the staircase. Melee attacks made on the staircase must pass a Agility[15] check or the attack is prevented and the attacker takes 1d4 damage.
 
 ### Stables
 *This place stinks of some kind of droppings and rotted flesh. Cracked bones cover the floor.*
 
-* Possible Threat: [Wyvern]()
+**Standard Boon**
 
 ### Cultist Barracks
 *The barracks smell of unwashed bedclothes, and the chamber contains fourteen fur-covered beds*
 
-* Possible Threat: [Cultist]()
+**Legion**
 
 Cultists played here are asleep. Add 3 copies of any Cultist played here to this room.
 
 ### Stone Giants' Chamber
 *In the middle of this frost-glazed room stands a nine-foot tall table of carved stone surrounded by three giant-sized chairs.*
 
-* Possible Threat: [Stone Giant]()
-* Obstacle: A [Globe of Force]() shields this room
-    -  TODO
-
+**Standard Bolster**
 
 ### Rezmir's Chamber
-*A large rug covers the icy floor inside the door of this room. Resting atop a desk is a handsome, iron-banded chest secured with a sturdy padlock.*
+*A large rug covers the icy floor inside the door of this room.*
 
 * Unique Creature: [Rezmir](), Half-black dragon
     - TODO
-* Possible Threat: [Drake]()
-* Chest
-    - Possible Threat: Trap
 
 ### Red Wizard's Room
 *Hundreds of horse skulls are nailed to the ceiling, covering it entirely. Thick carpets cover the icy floor.*
 
-* Possible Threat: [Rath Modar](), Red Wizard of Thay
-    - TODO
-* Possible Threat: Gargoyle
+**Standard Boon**
 
 ### Storeroom
 *Huge sides of beef, entire ham hocks, and enormous barrels fill this room, as do hundreds of crates.*
 
+**Standard Bolster**
+
 ### Guest Chamber
 *This room is comfortably furnished for inhabitants of human size.*
+
+**Standard Legion**
 
 ### Kitchen
 *The scene is pure chaos: dozens of kobolds chopping, mixing, carrying sacks of ingredients, and stirring great caldurons.*
 
-* Possible Threat: [Kobold]()
-* Possible Threat: [Griffon]()
+**Standard Boon**
 
 ### Upper Courtyard
 *Tall, slender towers and walls of ice enclose a windswept courtyard.*
 
-* Possible Threat: [Ogre]()
-* Possible Threat: [Vampire]()
+**Standard Bolster**
 
 ### High Blue Tower
 *This tower of pale blue ice is the color of sky on a winter day. Its few windows shimmer like mirrored glass or crystal.*
 
-* Possible Creature: [Ogre]()
-* Object: [Ballista]()
-    - TODO
+**Standard Legion**
 
 ### Crumbling Tower
 *This ancient tower seems to be crumbling. The windows have been sealed shut with ice, and cracks have formed in the walls and roofcap.*
 
-* Possible Threat: [Sandesyl Morgia](), Vampire
-    - TODO
-* Possible Threat: [Vampire Spawn]()
+**Standard Boon**
 
 ### Steering Tower
 *A staircase of ice leads from the tower's ground floor to a higher chamber. After a moment, the walls themselves seem to disappear, and more than a dozen glowing white runes wink into existence, drifting about the room like snowflakes.*
 
-* [Esclarotta](), Giant Spirit
-    - Communicate: Mind[15]
-    - Persuade: Influence[14]
-* Treasure: Can pry loose fistfuls of emeralds, turquoise, moonstones, jade, amber, and mithral worth 10,000gp total. Causes [Blagothukus]() to appear.
+**Standard Bolster**
 
 ### Ogre Barracks
-*This unfurnished chamber contains a horde of ogres sleeping on piles of fur.*
+*This unfurnished chamber is covered in piles of fur used for sleeping*
 
-* Possible Creature: Ogre
-* Treasure: Ogres keep small amounts of gold and silver in pouches, sacks, and chests, 300gp in total.
-* Treasure: Perception[20] to find a single pale blue sapphire worth 500gp wedged into a crevice.
+**Legion**
 
-Ogres are asleep.
-
-### Esclarotta's Tomb
-*You appear in an oval cave carved from solid glacial ice, with no passages leading out. A massive white marble sarcophagus sits in the middle of the floor.*
-
-* Speak "Blagothkus" to escape
+Ogres played here cost 2 less
 
 ### Cloud Giant Tower
 *The walls of this room are sculpted with icy murals. A blue-skinned giant sits on the floor with his legs crossed while two ogres comb his snowy white hair.*
 
 * Unique Creature: [Blagothkus](), cloud giant
-     - Can negotiate with him, in which case he takes the castle north while you deal with the cult
-     - Can summon an air elemental
-* Possible Creature: Ogre
-* Treasure: Chests are unlocked and loaded with silver and gold (12,000 gp). One also contains a [bag of holding]()
+    - TODO
 
 ### Giant Guest Chambers
 *These rooms are set aside for giant-sized guests, and have furnishings of the appropriate size.*
 
-*Object: [Vanishing Wall of Ice]()
+**Standard Boon**
 
 ### Servant Barracks
 *Twenty kobolds are trying to sleep here on dozens of small piles of bedding, fur, and clothes. They are exhaused and ignore you.*
 
+**Standard Bolster**
+
 ### Main Vault Tunnels
 *The walls of blue ice are partly transparent, revealing various things embedded in the ice all around, including coins, helmets and livestock.*
+
+**Standard Legion**
 
 ### Main Vault
 *This grand vault is split into two levels: an egg-shaped upper level with a sheer ledge overlooking a sunken level 30 feet below, where a massive pile of treasure rests. Clinging to the ceiling above the hoard is a huge white dragon.*
 
 * Unique Creature: [Glazhael](), an adult white dragon
-    - clings to ceiling, uses breath weapon and frightful presence
-* Treausure: the floor of the cavern is carpeted in gold, silver, copper, and jewels, all sealed under a sheet of ice.
+    - TODO
 
 ## Threats [18]
 
