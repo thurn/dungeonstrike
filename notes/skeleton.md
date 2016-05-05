@@ -69,129 +69,110 @@
 * Perils: Boon, Legion, Bolster
 
 ## Rooms [24]
-### Main Gate
+### 1) Main Gate
 *A lowered drawbridge spans a foggy moat. Beyond it is an open portcullis.*
 
 **Boon; Legion**
 
-* Object: [Portcullis]()
-	- ✮: Lower the portcullis. While it's lowered, occupants of this room can't attack and you can't take the Explore action.
-	- ✮: Raise the portcullis.
-
-### Gate Towers
+### 2) Gate Towers
 *Two towers stand above the gate, extending up into the mist.*
 
 **Legion; Bolster**
 
-* Location: [Tower]()
-	- A creature can be placed into the tower, in which case it gets +4 to hit rolls but cannot make melee attacks.
-* Location: [Tower]()
-	- A creature can be placed into the tower, in which case it gets +4 to hit rolls but cannot make melee attacks.
-
-### Lower Courtyard
+### 3) Lower Courtyard
 *Walls of solid ice enclose this courtyard. An opening in one wall leads to a spiral staircase made out of sculpted ice.*
 
 **Boon; Bolster**
 
-* Location: [Staircase]()
-	- Creatures can be placed on the staircase. Melee attacks made on the staircase must pass a Agility[15] check or the attack is prevented and the attacker takes 1d4 damage.
-
-### Stables
+### 4) Stables
 *This place stinks of some kind of droppings and rotted flesh. Cracked bones cover the floor.*
 
 **Standard Boon**
 
-### Cultist Barracks
+### 5) Cultist Barracks
 *The barracks smell of unwashed bedclothes, and the chamber contains fourteen fur-covered beds*
 
-**Legion**
+**Standard Legion**
 
-Cultists played here are asleep. Add 3 copies of any Cultist played here to this room.
-
-### Stone Giants' Chamber
+### 6) Stone Giants' Chamber
 *In the middle of this frost-glazed room stands a nine-foot tall table of carved stone surrounded by three giant-sized chairs.*
 
 **Standard Bolster**
 
-### Rezmir's Chamber
+### 7) Rezmir's Chamber
 *A large rug covers the icy floor inside the door of this room.*
 
-* Unique Creature: [Rezmir](), Half-black dragon
-    - TODO
+**Bolster, Boon**
 
-### Red Wizard's Room
+### 8) Red Wizard's Room
 *Hundreds of horse skulls are nailed to the ceiling, covering it entirely. Thick carpets cover the icy floor.*
 
 **Standard Boon**
 
-### Storeroom
+### 9) Storeroom
 *Huge sides of beef, entire ham hocks, and enormous barrels fill this room, as do hundreds of crates.*
 
 **Standard Bolster**
 
-### Guest Chamber
+### 10) Guest Chamber
 *This room is comfortably furnished for inhabitants of human size.*
 
 **Standard Legion**
 
-### Kitchen
+### 11) Kitchen
 *The scene is pure chaos: dozens of kobolds chopping, mixing, carrying sacks of ingredients, and stirring great caldurons.*
 
 **Standard Boon**
 
-### Upper Courtyard
+### 12) Upper Courtyard
 *Tall, slender towers and walls of ice enclose a windswept courtyard.*
 
 **Standard Bolster**
 
-### High Blue Tower
+### 13) High Blue Tower
 *This tower of pale blue ice is the color of sky on a winter day. Its few windows shimmer like mirrored glass or crystal.*
 
 **Standard Legion**
 
-### Crumbling Tower
+### 14) Crumbling Tower
 *This ancient tower seems to be crumbling. The windows have been sealed shut with ice, and cracks have formed in the walls and roofcap.*
 
 **Standard Boon**
 
-### Steering Tower
+### 15) Steering Tower
 *A staircase of ice leads from the tower's ground floor to a higher chamber. After a moment, the walls themselves seem to disappear, and more than a dozen glowing white runes wink into existence, drifting about the room like snowflakes.*
 
 **Standard Bolster**
 
-### Ogre Barracks
+### 16) Ogre Barracks
 *This unfurnished chamber is covered in piles of fur used for sleeping*
 
-**Legion**
+**Standard Legion**
 
-Ogres played here cost 2 less
+### 17) Cloud Giant Tower
+*The walls of this room are sculpted with icy murals.*
 
-### Cloud Giant Tower
-*The walls of this room are sculpted with icy murals. A blue-skinned giant sits on the floor with his legs crossed while two ogres comb his snowy white hair.*
+**Bolster, Legion**
 
-* Unique Creature: [Blagothkus](), cloud giant
-    - TODO
-
-### Giant Guest Chambers
+### 18) Giant Guest Chambers
 *These rooms are set aside for giant-sized guests, and have furnishings of the appropriate size.*
 
 **Standard Boon**
 
-### Servant Barracks
+### 19) Servant Barracks
 *Twenty kobolds are trying to sleep here on dozens of small piles of bedding, fur, and clothes. They are exhaused and ignore you.*
 
 **Standard Bolster**
 
-### Main Vault Tunnels
+### 20) Main Vault Tunnels
 *The walls of blue ice are partly transparent, revealing various things embedded in the ice all around, including coins, helmets and livestock.*
 
 **Standard Legion**
 
-### Main Vault
-*This grand vault is split into two levels: an egg-shaped upper level with a sheer ledge overlooking a sunken level 30 feet below, where a massive pile of treasure rests. Clinging to the ceiling above the hoard is a huge white dragon.*
+### 21) Main Vault
+*This grand vault is split into two levels: an egg-shaped upper level with a sheer ledge overlooking a sunken level 30 feet below.*
 
-* Unique Creature: [Glazhael](), an adult white dragon
-    - TODO
+**Bolster, Legion**
 
 ## Threats [18]
 
