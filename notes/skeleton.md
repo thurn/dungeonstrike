@@ -8,26 +8,86 @@
 ## Rooms
 * 4 of each basic type, 4 of each dual type
 
+## Effects - Diamond
+
+### 1)
+
+### 2)
+
+### 3)
+
+### 4)
+
+### 5)
+
+### 6)
+
+## Effects - Emerald
+
+### 1)
+
+### 2)
+
+### 3)
+
+### 4)
+
+### 5)
+
+### 6)
+
+## Effects - Topaz
+
+### 1)
+
+### 2)
+
+### 3)
+
+### 4)
+
+### 5)
+
+### 6)
+
 ## Threats - Diamond
 
 ### 1)
 
-### 2
+### 2)
 
-### 3
+### 3)
 
-### 4
+### 4)
 
-### 5
+### 5)
 
-### 6
+### 6)
 
 ## Threats - Emerald
 
+### 1)
+
+### 2)
+
+### 3)
+
+### 4)
+
+### 5)
+
+### 6)
+
 ## Threats - Topaz
 
-## Effects - Diamond
+### 1)
 
-## Effects - Emerald
+### 2)
 
-## Effects - Topaz
+### 3)
+
+### 4)
+
+### 5)
+
+### 6)
