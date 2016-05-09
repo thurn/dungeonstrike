@@ -1,7 +1,7 @@
 # Master Deck
 * 60 cards
 * Diamond/Emerald/Topaz
-* 24 Rooms
+* 24 Rooms (12 single and 12 dual)
 * 18 Threats (6 of each type)
 * 18 Effects (6 of each type)
 
