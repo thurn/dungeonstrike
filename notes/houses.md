@@ -11,10 +11,10 @@
 **Theme**: Traps, ambushes, deception.
 
 # Topaz
-**Theme**: Bonuses to your other threats, pump effets.
+**Theme**: Aggressive bonuses to your threats, pump effets, defensive pump.
 
 # Onyx
 **Theme**: Direct harm to the champion.
 
 # Diamond
-**Theme**: Benefits to the Master directly (e.g. card or mana manipulation)
+**Theme**: Benefits to the Master directly (e.g. card or mana manipulation), healing threats, reversing Champion's damage.

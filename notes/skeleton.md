@@ -10,17 +10,23 @@
 
 ## Effects - Diamond
 
-### 1)
+### 1) Foresight
+Look at the top 3 cards of your deck. Put one into your hand and shuffle the rest back.
 
-### 2)
+### 2) Cure Wounds
+Restore 10 health.
 
-### 3)
+### 3) Contingency
+Draw 3 cards.
 
-### 4)
+### 4) Revival
+Fully heal a creature and remove all status effects from it.
 
-### 5)
+### 5) Disenchant
+Destroy an Ongoing spell
 
-### 6)
+### 6) Restoration
+Fully heal all creatures and draw X cards.
 
 ## Effects - Emerald
 
