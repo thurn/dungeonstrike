@@ -2,7 +2,7 @@
 **Theme**: Big scary monsters.
 
 # Emerald
-**Theme**: Cheap little monsters, organized, in large numbers.
+**Theme**: Cheap little monsters, organized, in large numbers. Cost discounts, tutoring creatures, random creatures from deck, copying creatures, mana production, finding rooms.
 
 # Amethyst
 **Theme**: Magic, spellcasters, counterspells.
@@ -17,4 +17,4 @@
 **Theme**: Direct harm to the champion.
 
 # Diamond
-**Theme**: Benefits to the Master directly (e.g. card or mana manipulation), healing threats, reversing Champion's damage.
+**Theme**: Card manipulation, healing threats, reversing Champion's damage, stopping Champion's ongoing effects.

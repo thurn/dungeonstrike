@@ -30,17 +30,23 @@ Fully heal all creatures and draw X cards.
 
 ## Effects - Emerald
 
-### 1)
+### 1) Assemble
+Creatures cost `E` less to play.
 
-### 2)
+### 2) Surprise Intruder
+Put a random creature from your deck into play.
 
-### 3)
+### 3) Selection
+Search your deck for a creature and put it into your hand.
 
-### 4)
+### 4) Accelerated Construction
+You may play an additional Room card this turn
 
-### 5)
+### 5) Greensun
+Gain `E``E``E`
 
-### 6)
+### 6) Clone
+Copies another Creature
 
 ## Effects - Topaz
 
