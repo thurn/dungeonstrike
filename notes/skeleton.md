@@ -50,17 +50,23 @@ Copies another Creature
 
 ## Effects - Topaz
 
-### 1)
+### 1) Mighty Aura
+Creature gains +4 Attack and +4 Damage
 
-### 2)
+### 2) Shroud
+Creature cannot be targeted by the Champion this turn
 
-### 3)
+### 3) Precise Blow
+Creature's next attack cannot miss
 
-### 4)
+### 4) Critical Hit
+Double the damage of a creature's next hit
 
-### 5)
+### 5) Invisible Armor
+Creature gains 4 Defense
 
-### 6)
+### 6) Stampeding Charge
+All creatures gain +2 Attack this turn
 
 ## Threats - Diamond
 
