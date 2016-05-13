@@ -70,17 +70,30 @@ All creatures gain +2 Attack this turn
 
 ## Threats - Diamond
 
-### 1)
+### 1) Righteous Angel
+2 ATK, 4 DMG, 20 HP, 5 DEF
 
-### 2)
+### 2) Sphinx of Jer-al
+5 ATK, 8 DMG, 25 HP, 2 DEF
 
-### 3)
+### 3) Radiant Cleric
+3 ATK, 6 DMG, 32 HP, 5 DEF
 
-### 4)
+When played, fully heals a creature
 
-### 5)
+### 4) Wizened Scholar
+7 ATK, 5 DMG, 10 HP, 0 DEF
 
-### 6)
+Draw an extra card each turn
+
+### 5) Aven Rummager
+6 ATK, 10 DMG, 40 HP, 1 DEF
+
+When played, draw 2 cards then discard 2 cards
+
+### 6) Slow Field
+
+Champion loses `A` at the start of each turn in this Room.
 
 ## Threats - Emerald
 

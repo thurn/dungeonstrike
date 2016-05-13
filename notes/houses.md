@@ -11,7 +11,7 @@
 **Theme**: Traps, ambushes, deception.
 
 # Topaz
-**Theme**: Aggressive bonuses to your threats, pump effets, defensive pump.
+**Theme**: Bonuses to your threats: +attack, +health, +damage, +defense.
 
 # Onyx
 **Theme**: Direct harm to the champion.
