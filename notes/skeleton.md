@@ -97,17 +97,31 @@ Champion loses `A` at the start of each turn in this Room.
 
 ## Threats - Emerald
 
-### 1)
+### 1) Goblin Raider
+3 ATK, 10 DMG, 50 HP, 5 DEF
 
-### 2)
+### 2) Kobold Warrior
+10 ATK, 5 DMG, 40 HP, 1 DEF
 
-### 3)
+### 3) Orc Shaman
+4 ATK, 3 DMG, 20 HP, 2 DEF
 
-### 4)
+Orcs cost `E` less to cast
 
-### 5)
+### 4) Elven High Priest
+10 ATK, 10 DMG, 10 HP, 4 DEF
 
-### 6)
+Exhaust: Gain `E``E`
+
+### 5) Eleven Standard-Bearer
+5 ATK, 4 DMG, 25 HP, 3 DEF
+
+When played, put a random Elf into play
+
+### 6) Knight-Commander Cathus
+4 ATK, 6 DMG, 20 HP, 4 DEF
+
+All creatures may make 2 attacks per turn
 
 ## Threats - Topaz
 
