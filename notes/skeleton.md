@@ -93,6 +93,8 @@ When played, draw 2 cards then discard 2 cards
 
 ### 6) Slow Field
 
+Hidden
+
 Champion loses `A` at the start of each turn in this Room.
 
 ## Threats - Emerald
@@ -125,14 +127,30 @@ All creatures may make 2 attacks per turn
 
 ## Threats - Topaz
 
-### 1)
+### 1) Dire Wolf
+5 ATK, 3 DMG, 15 HP, 7 DEF
 
-### 2)
+### 2) Giant Spider
+9 ATK, 8 DMG, 25 HP, 9 DEF
 
-### 3)
+### 3) Shieldbearer
+2 ATK, 5 DMG, 20 HP, 0 DEF
 
-### 4)
+Other creatures get +5 Defense
 
-### 5)
+### 4) Sureshot Archer
+* ATK, 8 DMG, 30 HP, 2 DEF
 
-### 6)
+This creature cannot miss
+
+### 5) Firehawk Apprentice
+5 ATK, 9 DMG, 35 HP, 3 DEF
+
+Double all damage dealt
+
+### 6) Ambush Hawk
+7 ATK, 8 DMG, 30 HP, 2 DEF
+
+Hidden
+
+Attacks immediately when revealed
