@@ -154,3 +154,102 @@ Double all damage dealt
 Hidden
 
 Attacks immediately when revealed
+
+# Champion Deck
+* 40 Spells
+* 20 Equipment Cards
+* 20 Petra, 20 Ignis
+* 8 Attack, 6 Ongoing/Temporary, 6 Interrupt
+
+## Attacks - Petra
+
+### 1) 
+
+### 2) 
+
+### 3) 
+
+### 4) 
+
+### 5) 
+
+### 6) 
+
+### 7) 
+
+### 8) 
+
+## Ongoing/Temporary - Petra
+
+### 1) 
+
+### 2) 
+
+### 3) 
+
+### 4) 
+
+### 5) 
+
+### 6) 
+
+## Interrupts - Petra
+
+### 1) 
+
+### 2) 
+
+### 3) 
+
+### 4) 
+
+### 5) 
+
+### 6) 
+
+## Attacks - Ignis
+
+### 1) 
+
+### 2) 
+
+### 3) 
+
+### 4) 
+
+### 5) 
+
+### 6) 
+
+### 7) 
+
+### 8) 
+
+## Ongoing/Temporary - Ignis
+
+### 1) 
+
+### 2) 
+
+### 3) 
+
+### 4) 
+
+### 5) 
+
+### 6) 
+
+## Interrupts - Ignis
+
+### 1) 
+
+### 2) 
+
+### 3) 
+
+### 4) 
+
+### 5) 
+
+### 6) 
+
