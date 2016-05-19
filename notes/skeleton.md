@@ -179,6 +179,10 @@ Attacks immediately when revealed
 
 ### 8) 
 
+### 9) 
+
+### 10) 
+
 ## Ongoing/Temporary - Petra
 
 ### 1) 
@@ -191,8 +195,6 @@ Attacks immediately when revealed
 
 ### 5) 
 
-### 6) 
-
 ## Interrupts - Petra
 
 ### 1) 
@@ -204,8 +206,6 @@ Attacks immediately when revealed
 ### 4) 
 
 ### 5) 
-
-### 6) 
 
 ## Attacks - Ignis
 
@@ -225,6 +225,10 @@ Attacks immediately when revealed
 
 ### 8) 
 
+### 9) 
+
+### 10) 
+
 ## Ongoing/Temporary - Ignis
 
 ### 1) 
@@ -237,8 +241,6 @@ Attacks immediately when revealed
 
 ### 5) 
 
-### 6) 
-
 ## Interrupts - Ignis
 
 ### 1) 
@@ -249,7 +251,5 @@ Attacks immediately when revealed
 
 ### 4) 
 
-### 5) 
-
-### 6) 
+### 5)
 
