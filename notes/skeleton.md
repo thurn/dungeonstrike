@@ -161,51 +161,53 @@ Attacks immediately when revealed
 * 20 Petra, 20 Ignis
 * 8 Attack, 6 Ongoing/Temporary, 6 Interrupt
 
-## Attacks - Petra
+## Petra
 
-### 1) 
+### 1) Mage Armor
 
-### 2) 
+### 2) Scry
+* Manipulate top of deck
 
-### 3) 
+### 3) Foresight
+* Revealing hidden threat
 
-### 4) 
+### 4) Sleep Glyph
 
-### 5) 
+### 5) Summon Monster
 
-### 6) 
+### 6) Flame Armor
 
-### 7) 
+### 7) Inner Sight
+* Look at enemy hand or deck
 
-### 8) 
+### 8) Fear Arrow
+* Create an arrow
 
-### 9) 
+### 9) Oracle
+* Interact with hands
 
-### 10) 
+### 10) Create Elemental
 
-## Ongoing/Temporary - Petra
+### 11) Silence Glyph
 
-### 1) 
+### 12) Summon Greater Monster
 
-### 2) 
+### 13) Stun Glyph
 
-### 3) 
+### 14) Prism Ray
+* Different rays with different effects
 
-### 4) 
+### 15) Death Glyph
 
-### 5) 
+### 16) Summon Demon
 
-## Interrupts - Petra
+### 17) Blinding Glyph
 
-### 1) 
+### 18) Summon Dragon
 
-### 2) 
+### 19) Fear Glyph
 
-### 3) 
-
-### 4) 
-
-### 5) 
+### 20) Insect Swarm
 
 ## Attacks - Ignis
 
