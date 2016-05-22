@@ -209,49 +209,45 @@ Attacks immediately when revealed
 
 ### 20) Insect Swarm
 
-## Attacks - Ignis
+## Ignis
 
-### 1) 
+### 1) Arcane Missile
 
-### 2) 
+### 2) Wizard Shield
 
-### 3) 
+### 3) Flame Jet
 
-### 4) 
+### 4) Web
 
-### 5) 
+### 5) Resist Elements
 
-### 6) 
+### 6) Fortitude
 
-### 7) 
+### 7) Fireball
 
-### 8) 
+### 8) Lightning Bolt
 
-### 9) 
+### 9) Haste
 
-### 10) 
+### 10) Ice Storm
 
-## Ongoing/Temporary - Ignis
+### 11) Steelskin
 
-### 1) 
+### 12) 
 
-### 2) 
+### 13) 
 
-### 3) 
+### 14) 
 
-### 4) 
+### 15) 
 
-### 5) 
+### 16) 
 
-## Interrupts - Ignis
+### 17) 
 
-### 1) 
+### 18) 
 
-### 2) 
+### 19) 
 
-### 3) 
-
-### 4) 
-
-### 5)
+### 20) 
 
