@@ -233,21 +233,21 @@ Attacks immediately when revealed
 
 ### 11) Steelskin
 
-### 12) 
+### 12) Pillar of Flame
 
-### 13) 
+### 13) Resist Magic
 
-### 14) 
+### 14) Chain Lightning
 
-### 15) 
+### 15) Disintegrate
 
-### 16) 
+### 16) Earthquake
 
-### 17) 
+### 17) Sunblast
 
-### 18) 
+### 18) Time Stop
 
-### 19) 
+### 19) Meteor Strike
 
-### 20) 
+### 20) Shapechange
 
