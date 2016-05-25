@@ -164,29 +164,34 @@ Attacks immediately when revealed
 ## Petra
 
 ### 1) Mage Armor
+* Ongoing: Gain 5 DEF
 
-### 2) Scry
-* Manipulate top of deck
+### 2) Forecast
+* Look at the top three cards of your deck. Put one into your hand and shuffle the others back.
 
 ### 3) Foresight
-* Revealing hidden threat
+* Ongoing: You may look at hidden Threat cards.
 
 ### 4) Sleep Glyph
+* Ongoing: Creatures which enter this room gain the "Asleep" condition for one turn
 
 ### 5) Summon Monster
+* X - Summon a random creature with cost equal to X
 
 ### 6) Flame Armor
+* Ongoing: Gain 5 DEF. Whenever a creature attacks you, deal 5 fire damage to it.
 
 ### 7) Inner Sight
-* Look at enemy hand or deck
+* Draw three cards
 
-### 8) Fear Arrow
-* Create an arrow
+### 8) Flame Quiver
+* Create 3 Fire Arrows with 1{a}: Attack an opposing creature for 5 fire damage.
 
-### 9) Oracle
-* Interact with hands
+### 9) Contingency
+* Draw 4 cards, then discard 3 cards.
 
-### 10) Create Elemental
+### 10) Summon Fire Elemental
+* Summon a Fire Elemental.
 
 ### 11) Silence Glyph
 
