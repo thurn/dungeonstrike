@@ -14,7 +14,7 @@ Air/Black/Assault/Fighter
 * Manipulate top of deck
 * Create ongoing weapons/armor
 * Summon creatures
-* Create glyphs which impact the current room
+* Create glyphs which impact the current room by helping or harming
 
 # Ignis
 Fire/Red/Heavy/Mage

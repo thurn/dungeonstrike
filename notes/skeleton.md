@@ -173,46 +173,55 @@ Attacks immediately when revealed
 * Ongoing: You may look at hidden Threat cards.
 
 ### 4) Sleep Glyph
-* Ongoing: Creatures which enter this room gain the "Asleep" condition for one turn
+* Ongoing: Creatures which enter this room must succeed at a Mind/15 save or be asleep.
 
 ### 5) Summon Monster
-* X - Summon a random creature with cost equal to X
+* Summon a random creature with cost equal to 3
 
 ### 6) Flame Armor
-* Ongoing: Gain 5 DEF. Whenever a creature attacks you, deal 5 fire damage to it.
+* Ongoing: Gain 5 DEF. Whenever a creature attacks you, deal 5 fire damage to it. Gain immunity to fire damage.
 
 ### 7) Inner Sight
 * Draw three cards
 
 ### 8) Flame Quiver
-* Create 3 Fire Arrows with 1{a}: Attack an opposing creature for 5 fire damage.
+* Create 3 **Fire Arrows** with 2{a}: Attack an opposing creature for 5 fire damage.
 
 ### 9) Contingency
 * Draw 4 cards, then discard 3 cards.
 
 ### 10) Summon Fire Elemental
-* Summon a Fire Elemental.
+* Summon a **Fire Elemental**.
 
-### 11) Silence Glyph
+### 11) Healing Glyph
+* Ongoing: Each turn, restore 5 health to all allies in this room.
 
 ### 12) Summon Greater Monster
+* Summon a random creature with cost equal to 8
 
 ### 13) Stun Glyph
+* Ongoing: Creatures which enter this room must succeed at a Mind/15 save or be stunned.
 
 ### 14) Prism Ray
-* Different rays with different effects
+* 5 rays randomly attack all creatures in play, dealing 5 fire, cold, acid, electicity, and force damage respectively.
 
 ### 15) Death Glyph
+* Ongoing: Creatures which enter this room must succeed at a Mind/15 save or die.
 
 ### 16) Summon Demon
+* Summon a **Greater Fiend**.
 
-### 17) Blinding Glyph
+### 17) Amplifying Glyph
+* Ongoing: Increase the save difficulty for all Glyphs in this room by 5.
 
-### 18) Summon Dragon
+### 18) Summon Red Dragon
+* Summon an **Elder Red Dragon**.
 
 ### 19) Fear Glyph
+* Ongoing: Creatures which enter this room must succeed at a Mind/15 save or be frightened.
 
 ### 20) Insect Swarm
+* Summon an **Insect Swarm** attacking target creature for three turns. It must succeed at a Mind/15 check or be unable to attack, and it takes 5 damage per turn.
 
 ## Ignis
 
