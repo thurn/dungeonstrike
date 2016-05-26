@@ -16,7 +16,7 @@ Look at the top 3 cards of your deck. Put one into your hand and shuffle the res
 ### 2) Cure Wounds
 Restore 10 health.
 
-### 3) Contingency
+### 3) Reinforce
 Draw 3 cards.
 
 ### 4) Revival
@@ -139,7 +139,7 @@ All creatures may make 2 attacks per turn
 Other creatures get +5 Defense
 
 ### 4) Sureshot Archer
-* ATK, 8 DMG, 30 HP, 2 DEF
+* ATK 6, 8 DMG, 30 HP, 2 DEF
 
 This creature cannot miss
 
@@ -265,3 +265,44 @@ Attacks immediately when revealed
 
 ### 20) Shapechange
 
+## Equipment
+
+### 1)
+
+### 2)
+
+### 3)
+
+### 4)
+
+### 5)
+
+### 6)
+
+### 7)
+
+### 8)
+
+### 9)
+
+### 10)
+
+### 11)
+
+### 12)
+
+### 13)
+
+### 14)
+
+### 15)
+
+### 16)
+
+### 17)
+
+### 18)
+
+### 19)
+
+### 20)
