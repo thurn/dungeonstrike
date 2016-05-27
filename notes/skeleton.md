@@ -221,19 +221,24 @@ Attacks immediately when revealed
 * Ongoing: Creatures which enter this room must succeed at a Mind/15 save or be frightened.
 
 ### 20) Insect Swarm
-* Summon an **Insect Swarm** attacking target creature for three turns. It must succeed at a Mind/15 check or be unable to attack, and it takes 5 damage per turn.
+* Summon an **Insect Swarm** attacking target creature for three rounds. It must succeed at a Mind/15 check or be unable to attack, and it takes 5 damage per turn.
 
 ## Ignis
 
 ### 1) Arcane Missile
+* Attack three times, each attack deals 3 force damage on hit
 
 ### 2) Wizard Shield
+* Ignore all damage this turn
 
 ### 3) Flame Jet
+* Attack a creatue, deal 8 fire damage on hit
 
 ### 4) Web
+* For the next three rounds, enemy creatures must succeed at an Agility/15 check or be **Entangled**.
 
 ### 5) Resist Elements
+* Prevent the next 10 points of fire or cold damage which would be dealt to you.
 
 ### 6) Fortitude
 
@@ -265,7 +270,7 @@ Attacks immediately when revealed
 
 ### 20) Shapechange
 
-## Equipment
+## Equipment - Weapons
 
 ### 1)
 
@@ -287,22 +292,25 @@ Attacks immediately when revealed
 
 ### 10)
 
-### 11)
+## Equipment - Non-Weapons
 
-### 12)
+### 1)
 
-### 13)
+### 2)
 
-### 14)
+### 3)
 
-### 15)
+### 4)
 
-### 16)
+### 5)
 
-### 17)
+### 6)
 
-### 18)
+### 7)
 
-### 19)
+### 8)
 
-### 20)
+### 9)
+
+### 10)
+
