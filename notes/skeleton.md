@@ -273,44 +273,64 @@ Attacks immediately when revealed
 ## Equipment - Weapons
 
 ### 1)
+* Long Sword
 
 ### 2)
+* Short Sword
 
 ### 3)
+* Two-Handed Sword
 
 ### 4)
+* Hammer
 
 ### 5)
+* Longbow
 
 ### 6)
+* Axe
 
 ### 7)
+* Mace
 
 ### 8)
+* Crossbow
 
 ### 9)
+* Staff
 
 ### 10)
+* Shortbow
 
 ## Equipment - Non-Weapons
 
 ### 1)
+* Ring
 
 ### 2)
+* Ring
 
 ### 3)
+* Armor
 
 ### 4)
+* Armor
 
 ### 5)
+* Armor
 
 ### 6)
+* Helmet
 
 ### 7)
+* Bracers
 
 ### 8)
+* Amulet
 
 ### 9)
+* Cloak
 
 ### 10)
+* Boots
 
