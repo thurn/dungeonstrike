@@ -173,7 +173,7 @@ Attacks immediately when revealed
 * Ongoing: You may look at hidden Threat cards.
 
 ### 4) Sleep Glyph
-* Ongoing: Creatures which enter this room must succeed at a Mind/15 save or be asleep.
+* Ongoing: Creatures which enter this room must succeed at a *Mind/15* save or be asleep.
 
 ### 5) Summon Monster
 * Summon a random creature with cost equal to 3
@@ -200,13 +200,13 @@ Attacks immediately when revealed
 * Summon a random creature with cost equal to 8
 
 ### 13) Stun Glyph
-* Ongoing: Creatures which enter this room must succeed at a Mind/15 save or be stunned.
+* Ongoing: Creatures which enter this room must succeed at a *Mind/15* save or be stunned.
 
 ### 14) Prism Ray
 * 5 rays randomly attack all creatures in play, dealing 5 fire, cold, acid, electicity, and force damage respectively.
 
 ### 15) Death Glyph
-* Ongoing: Creatures which enter this room must succeed at a Mind/15 save or die.
+* Ongoing: Creatures which enter this room must succeed at a *Mind/15* save or die.
 
 ### 16) Summon Demon
 * Summon a **Greater Fiend**.
@@ -218,7 +218,7 @@ Attacks immediately when revealed
 * Summon an **Elder Red Dragon**.
 
 ### 19) Fear Glyph
-* Ongoing: Creatures which enter this room must succeed at a Mind/15 save or be frightened.
+* Ongoing: Creatures which enter this room must succeed at a *Mind/15* save or be frightened.
 
 ### 20) Insect Swarm
 * Summon an **Insect Swarm** attacking target creature for three rounds. It must succeed at a Mind/15 check or be unable to attack, and it takes 5 damage per turn.
@@ -235,18 +235,22 @@ Attacks immediately when revealed
 * Attack a creatue, deal 8 fire damage on hit
 
 ### 4) Web
-* For the next three rounds, enemy creatures must succeed at an Agility/15 check or be **Entangled**.
+* For the next three rounds, enemy creatures must succeed at an *Agility/15* check or be **Entangled**.
 
 ### 5) Resist Elements
 * Prevent the next 10 points of fire or cold damage which would be dealt to you.
 
 ### 6) Fortitude
+* Increase your Fortitude by 10 for the next three rounds.
 
 ### 7) Fireball
+Deals 6 fire damage to each enemy in this room. *Agility/15* save for half damage.
 
 ### 8) Lightning Bolt
+Attack an enemy creature, dealing 10 electricity damage on a successful hit.
 
 ### 9) Haste
+Gain {a}{a}{a}
 
 ### 10) Ice Storm
 
