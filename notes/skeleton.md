@@ -253,26 +253,37 @@ Attack an enemy creature, dealing 10 electricity damage on a successful hit.
 Gain {a}{a}{a}
 
 ### 10) Ice Storm
+Deals 5 cold dmage per turn to each enemy in this room. *Fortitude/15* save for half damage.
 
 ### 11) Steelskin
+Gain damage reduction 5 for 3 turns. Double all electrical damage dealt to you.
 
 ### 12) Pillar of Flame
+Deal 15 damage to an enemy creature. *Agility/15* save to take no damage.
 
 ### 13) Resist Magic
+Negate the next magical effect which targets you.
 
 ### 14) Chain Lightning
+Attack an enemy creature. On hit, deal 10 damage and repeat this effect.
 
 ### 15) Disintegrate
+Attack an enemy creature. On hit, destroy that creature.
 
 ### 16) Earthquake
+Deal 10 force damage to each enemy in this room. *Agility/15* save to take no damage.
 
 ### 17) Sunblast
+Attack an enemy creature. On hit, deal 10 fire damage.
 
 ### 18) Time Stop
+The Master skips their next turn and cannot take actions this turn.
 
 ### 19) Meteor Strike
+Deal 25 damage to each enemy in this room. *Agility/15* save to take half damage.
 
 ### 20) Shapechange
+Transform into an Elemental, Demon, Dragon, or Construct of your choice.
 
 ## Equipment - Weapons
 
