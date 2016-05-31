@@ -169,7 +169,7 @@ Attacks immediately when revealed
 ### 2) Forecast
 * Look at the top three cards of your deck. Put one into your hand and shuffle the others back.
 
-### 3) Foresight
+### 3) True Sight
 * Ongoing: You may look at hidden Threat cards.
 
 ### 4) Sleep Glyph
