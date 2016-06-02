@@ -287,20 +287,24 @@ Transform into an Elemental, Demon, Dragon, or Construct of your choice.
 
 ## Equipment - Weapons
 
-### 1)
-* Long Sword
+### 1) Summerflame
+* Long Sword +3
+* Deals additional 4 fire damage on hit
 
-### 2)
-* Short Sword
+### 2) Blacktooth
+* Short Sword +2
+* On hit, the target can no longer be healed
 
-### 3)
-* Two-Handed Sword
+### 3) Pulverizer
+* Two-Handed Sword +4
+* On hit, target loses two points of DEF
 
-### 4)
-* Hammer
+### 4) Thunder Hammer
+* War Hammer +3
+* Deals additional 2 electrical damage to each enemy on hit
 
-### 5)
-* Longbow
+### 5) Taerynar
+* Longbow +1
 
 ### 6)
 * Axe
