@@ -299,27 +299,32 @@ Transform into an Elemental, Demon, Dragon, or Construct of your choice.
 * Two-Handed Sword +4
 * On hit, target loses two points of DEF
 
-### 4) Thunder Hammer
+### 4) Thunderheim
 * War Hammer +3
 * Deals additional 2 electrical damage to each enemy on hit
 
 ### 5) Taerynar
 * Longbow +1
 
-### 6)
-* Axe
+### 6) Soulreaper
+* Battle Axe +5
+* On hit, enemies must succeed at a Fortitude/15 save or die
 
-### 7)
-* Mace
+### 7) Shieldstar
+* Mace +2
+* Sets wielder's fortitude to 18 and defense to 5
 
-### 8)
-* Crossbow
+### 8) Poisonbolt Crossbow
+* Crossbow +1
+* On hit, target must succeed at a Fortitude/15 save or become poisoned, taking 2 damage per turn.
 
-### 9)
-* Staff
+### 9) Spellfury Staff
+* Staff +2
+* Reduce the cost of all spells cast by 2 mana
 
-### 10)
-* Shortbow
+### 10) Elfsong
+* Shortbow +4
+* May attack an additional enemy when fired for the first time each round
 
 ## Equipment - Non-Weapons
 
