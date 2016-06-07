@@ -328,20 +328,25 @@ Transform into an Elemental, Demon, Dragon, or Construct of your choice.
 
 ## Equipment - Non-Weapons
 
-### 1)
+### 1) Ring of Resistance
 * Ring
+* Wearer cannot gain status effects
 
-### 2)
+### 2) Regeneration Ring
 * Ring
+* Wearer heals 3 HP per round
 
-### 3)
-* Armor
+### 3) Red Dragon Armor
+* Plate Armor +5
+* Immunity to fire damage
 
-### 4)
-* Armor
+### 4) Chain of Frost
+* Mail Armor +3
+* Immunity to cold damage
 
-### 5)
-* Armor
+### 5) Night's Shadow
+* Leather Armor +2
+* All attacks against you have a 25% miss chance
 
 ### 6)
 * Helmet
