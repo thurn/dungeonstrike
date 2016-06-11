@@ -348,18 +348,22 @@ Transform into an Elemental, Demon, Dragon, or Construct of your choice.
 * Leather Armor +2
 * All attacks against you have a 25% miss chance
 
-### 6)
-* Helmet
+### 6) Helm of Heroes
+* Helmet +1
+* You automatically suceed at all saving throws
 
-### 7)
+### 7) Bracers of Might
 * Bracers
+* Doubles all damage deal by your weapon attacks
 
-### 8)
+### 8) Amulet of Speed
 * Amulet
+* Gain {a} at the start of each round
 
-### 9)
+### 9) Cloak of Invisibility
 * Cloak
+* You cannot be attacked or targeted unless you attacked this round
 
-### 10)
-* Boots
+### 10) Boots of the Sun King
+* Gain +2 DEF and +5 DEF vs fire damage.
 
