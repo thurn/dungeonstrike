@@ -24,7 +24,7 @@ Fire/Red/Heavy/Mage
 
 # Aquis
 * Water/Blue/Sniper/Thief
-* Spirit: Countermagic, Spell Resistance, Mana Alternation, Telepathy, Imprisoning, Cold
+* Spirit: Countermagic, Spell Resistance, Mana Alteration, Telepathy, Imprisoning, Cold
 * Illusion: Deceive the senses or mind of others
 * Abjuration: Protection, creating barriers
 * Put creatures on top of enemy deck
