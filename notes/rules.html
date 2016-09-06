@@ -60,12 +60,33 @@
 
   <h3>Create Object Action</h3>
   <p>
-      The character places an Object card from their hand onto the arena on their current square.  See <a href="#-Objects">Objects</a>.
+      The character places an Object card from their hand onto the arena on their current square. Once placed, Objects cannot be moved. See <a href="#-Objects">Objects</a> for more information..
   </p>
 
   <h2>End of Turn Step</h2>
   <p>
       After all actions are finished, the end of turn step begins. Unspent <i class="action"></i> and <i class="move"></i> are lost. If the character has more cards in hand than their hand size limit (7 for Champions, 3 for Monsters), they discard the excess cards.
+  </p>
+
+  <h1>Decks</h1>
+  <p>
+  Spells are drawn from  which is constructed before an encounter
+  begins. The spell deck consists of 40 cards and cannot contain more than 4
+  copies of the same card. The player begins with no cards in hand, and draws a
+  new spell card during the <a href="#-beginning-of-turn-step">beginning of turn
+  step</a>.
+  </p>
+  <p>
+  If the spell deck is empty, no further spell cards can be drawn, but the game
+  continues as normal. During the <a href="#-end-of-turn-step">end of turn
+  step</a>, if the player has more than 7 cards in hand, they discard down to a
+  maximum of 7 cards.
+  </p>
+  <p>
+  Enemies of the player cast spells using spell cards as well, and also have
+  spell decks. Enemy spell decks are not subject to the 40 card minimum or max 4
+  copies rules. Enemies do have mana pools which refill over time, sometimes at
+  a rate other than 1 mana per turn.
   </p>
 
   <h1>Movement and Distance</h1>
@@ -199,6 +220,54 @@
   </p>
   <p>
   Instead of taking normal moves and actions, an unconscious unit makes a <a href="#-attribute-checks">Fortitude check</a> each turn. The check is initially made at +5 bonus, but this modifier decreases by 1 for each additional turn the unit remains unconscious and can eventually become negative. If the check fails, the unit dies permanently. If the unit is healed above 0 health, it stops needing to make these checks and can once again function normally.
+  </p>
+
+  <h1>Spellcasting</h1>
+  <p>
+      Spells in <i>DungeonStrike</i> are represented by spell cards. Each spell card belongs to one of the four <b>schools</b> of magic, each associated with one of the four Gods: Aeris, Petra, Ignis, and Aquis.
+  </p>
+  <p>
+      All spell cards have a <b>cost</b> printed on them, which must be paid before the spell can be played. The most common type of cost is a <b>mana cost</b>. In order to cast such a spell, the unit must spend mana equal to the cost from its <b>mana pool</b>.
+  </p>
+
+  <h2>Shrines</h2>
+  <p>
+      The standard way of gaining mana is by creating <b>Shrines</b> in the arena. A standard Shrine provides one mana of one specific type for its controller when it is constructed, and one mana during each subsequent beginning-of-turn step. Other types of Shrine exist which provide multiple types of mana or which have bonus effects.
+  </p>
+
+  <h2>Spell Timing</h2>
+  <p>
+  Spells can be cast by a character at any time while their team is active. They can also be cast as a reaction during an enemy turn if the unit takes the  Hold action (see <a href="#-reactions-and-the-stack">Reactions and the Stack</a>). Spells with <i class="action"></i> or <i class="move"></i> in their costs require the unit to spend its action for the turn or some of its movement points for the turn respectively to cast the spell, and cannot be cast as a reaction.
+  </p>
+
+  <h2>Effect Resolution</h2>
+  <p>
+  Casting a spell or activating an activated effect follows a sequence of steps:
+  <ol>
+    <li>
+      The player announced which unit is casting the spell or activating the activated effect and the name of the effect, revealing the card if necessary.
+    </li>
+    <li>
+      If the spell offers a choice of multiple different effects, they announce which effect or effects will be used.
+    </li>
+    <li>
+      The player pays any costs required. If they wish to add any optional effects (see <a href="#-reading-a-spell-card">Reading a Spell Card</a>), they announce which ones at this time and pay any costs associated with them as well.
+    </li>
+    <li>
+      The player selects a target for the spell which meets the spell's targeting requirements, if any.
+    </li>
+    <li>
+      The effect is put onto the <a href="#-reactions-and-the-stack">stack</a> to be eventually resolved.
+    </li>
+  </ol>
+  </p>
+
+  <p>
+  After the stack is resolved, the text instructions on the spell card are followed in the order in which they are printed. Choices like targeting are again checked for legality, and instructions on a spell card which attempt to interact with no-longer-legal targets do not resolve.
+  </p>
+
+  <p>
+  If two effects are created simultaneously, effects created by the active team go on the stack first in <b>timestamp order</b>, meaning that effects created by spell cards played earlier go onto the stack first. Effects created by the inactive team are then added to the stack in the same order.
   </p>
 
   <h1>Old</h1>
