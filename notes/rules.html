@@ -121,6 +121,86 @@
   target by the largest amount. For example, two characters arm wrestling would make opposed checks against their Fortitude attribute. The winner is the character whose roll is lower than their fortitude-based attribute target by the largest amount.
   </p>
 
+  <h1>Combat</h1>
+  <p>
+      Combat takes place on a standard grid (potentially three-dimensional), and primarily involves resolving attacks. There are five steps involved in making an attack: checking line of sight, checking range, checking cover, rolling for a hit, and rolling for damage.
+  </p>
+
+  <h2>Line of Sight</h2>
+  <p>
+      A unit can only attack or cast a spell which targets an enemy if it has line of sight from its current square to a square containing that enemy. Similarly, area attacks and area attack spells require line of sight to the target square of the attack.
+  </p>
+  <p>
+      Line of sight exists if a line can be drawn from one of the closest corners of the square containing the attacker to one of the closest corners of the square containing the defender without running through a full cover square (partial cover never obstructs line of sight). Running along the edge or through the corner of a full cover square is not enough to obstruct line of sight, the line must intersect the interior of the barrier.
+  </p>
+  <p>
+      In the examples below, orange squares represent full cover barriers. White squares are ones where the units at A and B respectively have line of sight, and grey squares are ones where they do not have line of sight.
+  </p>
+  <p>
+    <img class="imageBlock" src="lineOfSight.png" />
+  </p>
+
+  <h2>Cover</h2>
+  <p>
+      Various pieces of the environment can provide cover to make units harder to hit. There are two types of cover, called <b>partial cover</b> and <b>full cover</b>, which grant different levels of protection. A unit is in cover if a line drawn from an attacker-chosen corner of the attacker's square to a defender-chosen corner of the defender's square intersects the interior of an obstacle, with the type of cover depending on the type of the obstacle. Unlike line of sight, cover is not symmetrical. Below, light blue squares have full cover from the unit at A in the first example and from the unit at B in the second example. Note that A has full cover from B, but not vice versa.
+  </p>
+  <p>
+    <img class="imageBlock" src="cover.png" />
+  </p>
+  <p>
+      Attacks against a unit in full cover are made at a <b>-8 penalty</b> to hit. Attacks against a unit in partial cover are made at a <b>-4 penalty</b> to hit. Some attacks, called <b>area attacks</b>, ignore cover.
+  </p>
+
+  <h2>Range</h2>
+  <p>
+      Weapons and spells have a <b>maximum range</b> of 16 squares, beyond which they cannot hit. They can also have a <b>short range multiplier</b> or a <b>long range multiplier</b> which impact their accuracy at various distances. All weapons have the same accuracy at a distance of 8 squares. Shots closer than that are called "short range" and shots further away than that are called "long range".
+  </p>
+  <p>
+      To find the range bonus or penalty for a shot, multiply the range multiplier by the absolute distance away from 8 squares. For example, if a weapon has a "1x short range" multiplier and a shot is being taken from 2 squares away from the target, the aim bonus is +6. Range penalties also exist. For example, a "-2x long range" multiplier imposes a penalty on long range shots. A shot taken from 10 squares away with such a weapon would have a -4 penalty to aim.
+  </p>
+  <p>
+      <a href="#-appendix-a-common-range-modifiers">Appendix A</a> contains a complete range bonus and penalty table for several common weapon types.
+  </p>
+
+  <h2>Hits and Damage</h2>
+  <p>
+      To determine if an attack is a hit, the attacker makes a standard <a href="#-attribute-checks">agility attribute check</a>, applying the various modifiers as appropriate. On success, the attack is a hit. The
+      most common modifiers that affect attack accuracy are:
+      <ul>
+        <li>
+          Range, with the specific modifier depending on the weapon, see <a href="#-range">Range</a>.
+        </li>
+        <li>
+          Cover, -4 penalty if the target has partial cover and -8 if the target is in full cover, see <a href="#-cover">Cover</a>.
+        </li>
+        <li>
+          If the attack is a <a href="#-reactions-and-the-stack">reaction attack</a>, the attacker takes a -4 penalty to hit.
+        </li>
+      </ul>
+  </p>
+  <p>
+      Area attacks do not need to roll for hits: they always hit if they are within 16 squares and have line of sight to the target.
+  </p>
+  <p>
+      The effect of a hit being scored depends on the type of attack. For basic weapons, the weapon damage will be specified in terms of <b>damage dice</b> to roll to calculate damage.
+  </p>
+  <p>
+      <a href="#-appendix-b-expected-damage">Appendix B</a> contains a table of the expected damage output for an attack with various hit modifiers and damage dice.
+  </p>
+
+  <h2>Damage Reduction</h2>
+  <p>
+  Some spells and equipment like armor provide <b>damage reduction</b>. When a character suffers a hit, their damage reduction is subtracted from the total damage that is being dealt. Damage reduction can also be associated with only a specific type of damage, such as fire damage. For example, a character with a damage reduction of "-5 Fire" would only take 7 damage if struck with an effect which would normally deal 12 points of fire damage. It is also possible to have <b>damage immunity</b>, which is effectively infinite damage reduction.
+  </p>
+
+  <h2>Health, Unconsciousness, and Death</h2>
+  <p>
+  Units have two basic values called their <b>current health</b> and their <b>maximum health</b>. Both values are initially equal to their fortitude attribute. Health represents the maximum amount of damage they can sustain before falling <b>unconscious</b>, with current health decreasing whenever damage is suffered. Max health can be increased by certain spells and equipment, and it can also decrease, e.g. due to ability score damage. Units can never have more health than their maximum health, and by default when maximum health increases, the unit's current health increases by the same amount. When a unit falls unconscious, it remains at 0 health and cannot sustain further damage or take any actions. Each turn, the unit has a risk of permanently <b>dying</b>.
+  </p>
+  <p>
+  Instead of taking normal moves and actions, an unconscious unit makes a <a href="#-attribute-checks">Fortitude check</a> each turn. The check is initially made at +5 bonus, but this modifier decreases by 1 for each additional turn the unit remains unconscious and can eventually become negative. If the check fails, the unit dies permanently. If the unit is healed above 0 health, it stops needing to make these checks and can once again function normally.
+  </p>
+
   <h1>Old</h1>
   <h1>Rules</h1>
   <h1>Setup</h1>
