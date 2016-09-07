@@ -1,3 +1,5 @@
-Notes
+Testing Notes
 
-Champion Actions:
+- why not just wait around placing shrines forever at the start of the game?
+- if there is early pressure you don't have equipment yet, how do you fight?
+- starting mana/ability to cast early spells?
