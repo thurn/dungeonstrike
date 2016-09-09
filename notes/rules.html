@@ -24,11 +24,11 @@
     <i>DungeonStrike</i> is a modern fantasy collectable card game for two players. It focuses on turn-based squad combat. One player, called the Champion, controls a team of warriors who are fighting to survive in a dungeon. She is pited against the hordes of monsters in the dungoen controlled by the second player, the Master of the Dungeon. To succeed, players will need to use extraordinary abilities, powerful equipment, and curry divine favor.
   </p>
   <h1>Setup</h1>
-  <p>Each player shuffles their deck and draws 7 cards, and then places their characters into the dungeon starting locations. Each character can equip up to 3 zero-cost equipment cards of their choice.</p>
+  <p>Each player shuffles their deck and draws 7 cards, and then places their characters into the dungeon starting locations.</p>
   <h1>Turn Structure</h1>
-  Master and Champion turns follow a similar structure. Each active monster gets a turn in decreasing order based on their Agility attribute. Each squad member then takes a turn, also in decreasing order of Agility. The term "character" is used to refer generically to either a squad member or a monster.
+  Master and Champion turns follow a similar structure. Each monster gets a turn in decreasing order based on their Agility attribute. Each squad member then takes a turn, also in decreasing order of Agility. The term "character" is used to refer generically to either a squad member or a monster.
   <h2>Beginning of Turn Step</h2>
-  <p>At the beginning of a player's turn, they draw a card from their deck (from the effect deck, in the case of the Master). The player then gains a quantity of <b>essence</b> based on the number of <b>links</b> they have. One <i class="time"></i> (time marker) is also removed at this point from each card in play with one or more <i class="time"></i> on it. In Agility order, each of their characters gains a quantity of <i class="move"></i> (movement) equal to their <b>movement speed</b>, and can take one standard action.
+  <p>At the beginning of a player's turn, they draw a card from their main deck (the Champion deck or the Master deck, respectively). The player then gains a quantity of <b>essence</b> based on the number of <b>links</b> they have. One <i class="time"></i> (time marker) is also removed at this point from each card in play with one or more <i class="time"></i> on it. In Agility order, each of their characters gains a quantity of <i class="move"></i> (movement) equal to their <b>movement speed</b>, and can take one standard action.
   </p>
   <h2>Standard Actions</h2>
   <p>
@@ -57,7 +57,7 @@
 
   <h3>Link Action</h3>
   <p>
-      By playing a Link card any paying its costs (if any), the character grows their team's connection to one of the four gods. For a standard link card, the player immediately gains one point of essence, and will continue to gain essence each turn for each link they have. Taking the link action may <a href="-activating-monsters">activate</a> a nearby group of monsters.
+      By playing a Link card any paying its costs (if any), the character grows their team's connection to one of the four gods. For a standard link card, the player immediately gains one point of essence of the corresponding type, and will continue to gain essence each turn for each link they have. The Champion taking the link action may cause a nearby group of monsters to <a href="-spawning-monsters">spawn</a>.
   </p>
 
   <h2>Quick Actions</h2>
@@ -97,28 +97,36 @@
   </p>
 
   <h2>Champion Decks</h2>
+  <p>
+      The Champion creates two distinct decks before the game. The <b>Champion deck</b> provides extraordinary abilities for each squad member, while the <b>Equipment deck</b> is used to supply the equipment that can be found in dungeon.
   </p>
-  The Champion creates two distinct decks before the game. The <b>Equipment deck</b> is used to supply the equipment that can be found in dungeon, while the <b>Champion deck</b> provides extraordinary abilities for each squad member.
+  <h3>The Champion Deck</h3>
+  <p>
+      The Champion deck contains cards which grant special abilities to squad members. It also contains Link cards, which the Champion can play to increase her divine connection and gain essence.
   </p>
-
+  <h3>The Equipment Deck</h3>
+  <p>
+      The Equipment deck contains equipment cards which will be discovered throughout the dungeon. Whenever a monster is killed, the Champion gains a random Equipment card from their deck with an <a href="-equipment-cards">equipment level</a> equal to the level of the monster. If no card of an appropriate level is available, lower-level equipment is substituted instead.
+  </p>
   <h2>Master Decks</h2>
   <p>
-      The Master also creates two distinct decks. The <b>Dungeon deck</b> is used to populate the monsters and other threats in the dungeon environment, while the <b>Master deck</b> is similar to the Champion's Champion deck.
+      The Master also creates two distinct decks. The <b>Master deck</b> is similar to the Champion deck, containing special abilities which impact monsters in the game, while the <b>Dungeon deck</b> is used to create the monsters and other threats in the dungeon environment.
   </p>
-  <h3>The Dungeon Deck</h3>
+  <h3>The Master Deck</h3>
   <p>
-      The Dungeon deck is primarily made up of monsters that will be encountered by the players. Monsters are generated randomly throughout the dungeon. Monster cards have a <a href="-monster-cards">monster level</a> on them between 1 and 5. The game will attempt to present monsters to the Champion in increasing order of level. If no monster is available of a given level, a lower-level monster can be substituted. If no monster is available at all, the monsters will simply not be placed.
-  </p>
-  <h3>The Effect Deck</h3>
-  <p>
-      The Effect deck is made up of cards that grant monsters special abilities, as well as link cards. Many of the Master's effect cards are associated with some specific type of monster. For these types of cards, the Master's deck always contains only the cards based on which types of monsters are currently active. When the last monster of a given type ceases to be active (e.g. because it has died), all cards associated with that monster type are discarded from the Master's hand. When a new type of monster becomes active, the Master draws up to 7 cards in hand.
+      The Master deck is made up of cards that grant monsters special abilities, as well as link cards. Many of the Master's cards are associated with some specific type of monster. For these types of cards, the Master's deck always contains only the cards based on which types of monsters are currently active. When the last monster of a given type ceases to be active (e.g. because it has died), all cards associated with that monster type are discarded from the Master's hand. When a new type of monster is spawned, the Master draws up to 7 cards in hand.
   </p>
   <p>
       Cards which are not associated with a specific type of monster are called <b>neutral</b> cards, and are not impacted by this deck filtering process. The Effect deck follows the same deck building rules and constraints as the Champion deck.
   </p>
+  <h3>The Dungeon Deck</h3>
+  <p>
+      The Dungeon deck is primarily made up of monsters that will be encountered by the players. Monsters are generated randomly throughout the dungeon. Monster cards have a <a href="-monster-cards">monster level</a> on them between 1 and 5. The game will attempt to present squads of monsters to the Champion in increasing order of level. If no monster is available of a given level, a lower-level monster can be substituted. If no monster is available at all, the monsters will simply not be placed.
+  </p>
+
   <h1>Dungeon Generation</h1>
   <p>
-      The dungeon is the arena of combat in <i>DungeonStrike</i>. Before each match, the dungeon is randomly generated and populated with monsters corresponding to the monster types in the Master's deck. Monsters are placed to form a rough difficulty curve by level, with lower level monsters being encountered first. All monsters are initially inactive.
+      The dungeon is the arena of combat in <i>DungeonStrike</i>. As the game proceeds, the dungeon layout is randomly generated. When certain conditions are met, squads of monsters will be <a href="-spawning-monsters">spawned</a> from the Master's Dungeon deck in roughly increasing order of level.
   </p>
 
   <h1>Card Types</h1>
