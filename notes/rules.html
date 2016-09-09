@@ -26,7 +26,7 @@
   <h1>Setup</h1>
   <p>Each player shuffles their deck and draws 7 cards, and then places their characters into the dungeon starting locations.</p>
   <h1>Turn Structure</h1>
-  Master and Champion turns follow a similar structure. Each monster gets a turn in decreasing order based on their Agility attribute. Each squad member then takes a turn, also in decreasing order of Agility. The term "character" is used to refer generically to either a squad member or a monster.
+  Master and Champion turns follow a similar structure. Each monster gets a turn in decreasing order based on their Agility attribute. Each warrior then takes a turn, also in decreasing order of Agility. The term "character" is used to refer generically to either a warrior or a monster.
   <h2>Beginning of Turn Step</h2>
   <p>At the beginning of a player's turn, they draw a card from their main deck (the Champion deck or the Master deck, respectively). The player then gains a quantity of <b>essence</b> based on the number of <b>links</b> they have. One <i class="time"></i> (time marker) is also removed at this point from each card in play with one or more <i class="time"></i> on it. In Agility order, each of their characters gains a quantity of <i class="move"></i> (movement) equal to their <b>movement speed</b>, and can take one standard action.
   </p>
@@ -98,11 +98,11 @@
 
   <h2>Champion Decks</h2>
   <p>
-      The Champion creates two distinct decks before the game. The <b>Champion deck</b> provides extraordinary abilities for each squad member, while the <b>Equipment deck</b> is used to supply the equipment that can be found in dungeon.
+      The Champion creates two distinct decks before the game. The <b>Champion deck</b> provides extraordinary abilities for each warrior, while the <b>Equipment deck</b> is used to supply the equipment that can be found in dungeon.
   </p>
   <h3>The Champion Deck</h3>
   <p>
-      The Champion deck contains cards which grant special abilities to squad members. It also contains Link cards, which the Champion can play to increase her divine connection and gain essence.
+      The Champion deck contains cards which grant special abilities to warriors. It also contains Link cards, which the Champion can play to increase her divine connection and gain essence.
   </p>
   <h3>The Equipment Deck</h3>
   <p>
@@ -126,15 +126,15 @@
 
   <h1>Dungeon Generation</h1>
   <p>
-      The dungeon is the arena of combat in <i>DungeonStrike</i>. As the game proceeds, the dungeon layout is randomly generated. When certain conditions are met, squads of monsters will be <a href="-spawning-monsters">spawned</a> from the Master's Dungeon deck in roughly increasing order of level.
+      The dungeon is the arena of combat in <i>DungeonStrike</i>. As the game proceeds, the dungeon layout is randomly generated. When certain conditions are met, squads of monsters will be <a href="-spawning-monsters">spawned</a> from the Master's Dungeon deck in roughly increasing order of level, and the Master will gain control of those monsters.
   </p>
 
   <h1>Card Types</h1>
-  There are four different types of cards in <i>DungeonStrike</i>, which can be further subdivded into several subtypes. The four fundamental card types are <b>Abilities</b>, <b>Equipment</b>, <b>Characters</b>, and <b>Structures</b>.
+  There are five different types of cards in <i>DungeonStrike</i>, which can be further subdivded into several subtypes. The four fundamental card types are <b>Characters</b>, <b>Abilities</b>, <b>Links</b>, and <b>Equipment</b>.
   <h2>Character Cards</h2>
-  <h3>Champions</h3>
+  <h3>Warrior Cards</h3>
   <p>
-      Champion cards describe each Champion in the arena. They list the <a href="#-attribute-scores">Attribute Scores</a> for the Champion, as well as dervied information such as their current attack score, HP, hit damage with currently-equipped weapon, and defense score.
+      Warrior cards describe each of the Champion's warriors in the dungeon. They list the <a href="#-attribute-scores">Attribute Scores</a> for the warrior, as well as dervied information such as their current attack score, HP, hit damage with currently-equipped weapon, and defense score.
   </p>
   <h3>Monsters</h3>
   <p>
@@ -143,23 +143,19 @@
   <h2>Ability Cards</h2>
   <h3>Action Abilities</h3>
   <p>
-      An ability with the "Action" subtype is one which requires the character to spend <i class="action"></i> to use it.
+      An ability with the "Action" subtype is one which requires the character to spend an action to use it.
   </p>
   <h3>Quick Abilities</h3>
   <p>
-      Quick abilities can be used by a character during their turn, and do not require <i class="action"></i>. However, they cannot be used during other character's turns.
+      An ability with the "Quick" subtype can be used by a character during their turn and does not require an action. Quick abilities can also be used on an opponent's turn as a <a href="#-reactions">Reaction</a> if the user took the <a href="#-hold">Hold</a> action on their turn.
   </p>
-  <h3>Interrupt Abilities</h3>
+  <h2>Link Card</h2>
   <p>
-      The fastest abilities of all, Interrupt abilities can be used by a character on their own turn, but they can also be used on another character's turn as a <a href="#-reactions">Reaction</a> if the user took the <a href="#-hold">Hold</a> action on their turn.
-  </p>
-  <h2>Shrine Card</h2>
-  <p>
-      Shrine cards are used to construct <a href="#-shrines">Shrines</a> in the arena. Shrines are the primary way for characters to gain essence.
+      Link cards are used to create <a href="#-links">Links</a>. They are the primary way for player to gain essence, which they can use to activate abilities.
   </p>
   <h2>Equipment Cards</h2>
   <p>
-      Equipment cards are used to give a character an ongoing bonus. Equipment can be equipped (after paying any costs) as a quick ability - spending <i class="action"></i> is not required.
+      Equipment cards are used to give a character an ongoing bonus. Equipment can be equipped (after paying any costs) as a quick action - spending a turn is not required. The Master gains access to equipment Champion gains equipment by killing monsters.
   </p>
   <h1>Movement and Distance</h1>
   <p>
