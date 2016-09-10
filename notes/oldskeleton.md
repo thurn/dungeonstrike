@@ -366,4 +366,3 @@ Transform into an Elemental, Demon, Dragon, or Construct of your choice.
 
 ### 10) Boots of the Sun King
 * Gain +2 DEF and +5 DEF vs fire damage.
-

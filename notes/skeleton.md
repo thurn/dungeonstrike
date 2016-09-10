@@ -59,7 +59,9 @@
 * U: Petra Link
 
 ## 5 Ignis
-- V: neutral
+- V: Arcane Missile [neutral]
+Make three attacks. Each deals 3 force damage on hit.
+
 - W: neutral
 - X: neutral
 - Y: samurai
