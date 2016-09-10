@@ -62,10 +62,17 @@
 - V: Arcane Missile [neutral]
 Make three attacks. Each deals 3 force damage on hit.
 
-- W: neutral
-- X: neutral
-- Y: samurai
-- Z: warmage
+- W: Time Stop [neutral]
+Take an extra turn after this one
+
+- X: Lightning Bolt [warmage]
+Attack an enemy creature, dealing 3d10 damage on hit.
+
+- Y: Haste [samurai]
+Gain 2 actions this turn
+
+- Z: Fireball [warmage]
+Deals 4d6 fire damage to all creatures in area of effect, agility/15 save for half damage.
 
 ## 4 Petra
 - AA: wraith
