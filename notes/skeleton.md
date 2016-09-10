@@ -9,8 +9,17 @@
 * Aquis Link
 
 ## 5 Aeris
+- neutral
+- neutral
+- neutral
+- samurai
+- warmage
 
 ## 4 Aquis
+- wraith
+- sentinel
+- neutral
+- neutral
 
 # Dungeon Deck (15 cards)
 
@@ -35,8 +44,17 @@
 * Petra Link
 
 ## 5 Ignis
+- neutral
+- neutral
+- neutral
+- samurai
+- warmage
 
 ## 4 Petra
+- wraith
+- sentinel
+- neutral
+- neutral
 
 # Equipment Deck (15 cards)
 ## 5 guns (levels 1-5)
