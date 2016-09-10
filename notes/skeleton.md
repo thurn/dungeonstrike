@@ -75,10 +75,17 @@ Gain 2 actions this turn
 Deals 4d6 fire damage to all creatures in area of effect, agility/15 save for half damage.
 
 ## 4 Petra
-- AA: wraith
-- BB: sentinel
-- CC: neutral
-- DD: neutral
+- AA: Sleep Glyph [wraith]
+Enemy creatures within range of this glyph must succeed at a Min/15 check save or fall asleep.
+
+- BB: Heal II [sentinel]
+Heal 10 damage.
+
+- CC: Forecast [neutral]
+Look at the top 3 cards of your deck. Put one in your hand and shuffle the others back.
+
+- DD: Mage Armor [neutral]
+Gain 5 damage reduction until your next turn
 
 # Equipment Deck (15 cards)
 ## 5 guns (levels 1-5)
