@@ -46,7 +46,10 @@
 * RR
 
 ## 1 dragon (level 5)
-* SS
+* SS: Kranthaal, Elder Red Dragon
+- AGI 18 FRT 18 MND 18
+- Weapon: Fire Breath, 10d6 damage in 8 tile long cone
+- Weapon: Claws: 4d4 damage to one target
 
 # Champion Deck (15 cards)
 
