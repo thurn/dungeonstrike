@@ -89,22 +89,50 @@ Gain 5 damage reduction until your next turn
 
 # Equipment Deck (15 cards)
 ## 5 guns (levels 1-5)
-* TT
-* UU
-* VV
-* WW
-* XX
+* TT: Elfsong
+Sniper Rifle +1
 
-## 5 armors (levels 1-5)
-* YY
-* ZZ
-* AB
-* AC
-* AD
+* UU: Taerynar +2
+Shotgun +2
+
+* VV: Summerflame +3
+Grenade Launcher +3. Grenades deal 2 additional fire damage on hit.
+
+* WW: Spellfury +4
+Combat Rifle +4. While equipped, reduce the cost of all spells by 2.
+
+* XX: Soulreaper +5
+Submachine Gun +5. On hit, enemies must succeed at a Fortitude/15 save or die.
 
 ## 5 misc (levels 1-5)
-* AE
-* AF
-* AG
-* AH
-* AI
+* YY
+
+
+* ZZ
+
+
+* AB
+
+
+* AC
+
+
+* AD
+
+
+
+## 5 armors (levels 1-5)
+* AF: Hero's Boon
+Light Armor +1
+
+* AG: Night's Shadow
+Light Armor +2. The sight radius to detect you is 10 tiles instead of 16.
+
+* AE: Blacktooh Armor
+Medium Armor +3.
+
+* AH: Frost Armor
+Medium Armor +4. Opponents within 2 tiles of you are slowed.
+
+* AI: Red Dragon Armor
+Heavy Armor +5. Immunity to fire damage.
