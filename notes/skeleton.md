@@ -45,7 +45,6 @@
 * QQ: Rakthar, Lord of the Pit [mythical]
 - AGI 14 FRT 18 MND 14
 
-
 * RR: Ang Dranar, the Flaming Wing [mythical]
 - AGI 18 FRT 15 MND 14
 
