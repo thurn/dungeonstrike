@@ -9,19 +9,27 @@
 * F: Aquis Link
 
 ## 5 Aeris
-- G: neutral
-- H: neutral
-- I: neutral
-- J: samurai
-- K: warmage
+- G: Confusion [neutral]
+
+- H: Control Person [neutral]
+
+- I: Energy Siphon [neutral]
+
+- L: Slow [samurai]
+
+- M: Heal I [sentinel]
 
 ## 4 Aquis
-- L: wraith
-- M: sentinel
-- N: neutral
-- O: neutral
+- N: Sphere of Protection [neutral]
 
-Monster Types: Goblin, Vampire, Demon, Dragon
+- O: Spell Deflection [neutral]
+
+- J: Invisibility [wraith]
+Enemies cannot target you unless you make an attack within their line of sight.
+
+- K: Imprison [warmage]
+
+Monster Types: Goblin, Vampire, Ogre, Dragon
 
 Dragon Abilities:
 - Claw Attack
@@ -61,8 +69,8 @@ Deals 4d6 fire damage to all creatures in area of effect, agility/15 save for ha
 - AA: Sleep Glyph [wraith]
 Enemy creatures within range of this glyph must succeed at a Min/15 check save or fall asleep.
 
-- BB: Heal II [sentinel]
-Heal 10 damage.
+- BB: Summon Monster III [sentinel]
+Summon a level 7-9 monster.
 
 - CC: Forecast [neutral]
 Look at the top 3 cards of your deck. Put one in your hand and shuffle the others back.
