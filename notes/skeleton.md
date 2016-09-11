@@ -105,21 +105,20 @@ Combat Rifle +4. While equipped, reduce the cost of all spells by 2.
 Submachine Gun +5. On hit, enemies must succeed at a Fortitude/15 save or die.
 
 ## 5 misc (levels 1-5)
-* YY
+* YY: Bracers of Might
+Every successful weapon attack deals 1d4 additional damage.
 
+* ZZ:  Amulet of Speed
+Increase your movement speed by 4
 
-* ZZ
+* AB: Cloak of Invisibility
+Enemies cannot target you before you make an attack within their line of sight.
 
+* AC: Ring of Regeneration
+Heal 3 HP per round.
 
-* AB
-
-
-* AC
-
-
-* AD
-
-
+* AD: Boots of the Sun King
+Gain +5 damage reduction. Creatures within 4 tiles of you become blinded.
 
 ## 5 armors (levels 1-5)
 * AF: Hero's Boon
