@@ -42,14 +42,26 @@
 * PP
 
 ## 2 demons (level 4)
-* QQ
-* RR
+* QQ: Rakthar, Lord of the Pit [mythical]
+- AGI 14 FRT 18 MND 14
+
+
+* RR: Ang Dranar, the Flaming Wing [mythical]
+- AGI 18 FRT 15 MND 14
 
 ## 1 dragon (level 5)
-* SS: Kranthaal, Elder Red Dragon
+* SS: Elder Red Dragon [mythical]
+- immune to fire, vulnerable to cold
+
 - AGI 18 FRT 18 MND 18
-- Weapon: Fire Breath, 10d6 damage in 8 tile long cone
-- Weapon: Claws: 4d4 damage to one target
+- Ability: Claw Attack: 4d4 damage to one target
+- Ability: Bite Attack: 3d6 damage to one target
+- Ability: Wing Slam
+- Ability: Tail Sweep
+- Ability: Keen Senses
+- Ability:
+
+- Unique Ability: Fire Breath, 10d6 damage in 8 tile long cone
 
 # Champion Deck (15 cards)
 
