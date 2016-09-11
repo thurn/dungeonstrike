@@ -10,24 +10,32 @@
 
 ## 5 Aeris
 - G: Confusion [neutral]
+Target creature moves and acts randomly until the end of its next turn
 
 - H: Control Person [neutral]
+Gain control of target creature. Mind/15 save each round to break control.
 
-- I: Energy Siphon [neutral]
+- I: Life Siphon [neutral]
+Target creature loses 5 life and you gain 5 life.
 
 - L: Slow [samurai]
+Target creature can only move or take an action for the next 3 turns. Mind/15 save each round to prevent.
 
 - M: Heal I [sentinel]
+Target creature heals 10 HP.
 
 ## 4 Aquis
 - N: Sphere of Protection [neutral]
+Create a protective sphere which can absorb 25 damage before being destroyed
 
 - O: Spell Deflection [neutral]
+Until the end of this turn, you can change the target of spells targeting you
 
 - J: Invisibility [wraith]
 Enemies cannot target you unless you make an attack within their line of sight.
 
 - K: Imprison [warmage]
+Target creature is permanently imprisoned beneath the earth.
 
 Monster Types: Goblin, Vampire, Ogre, Dragon
 
