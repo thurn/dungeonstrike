@@ -1,0 +1,315 @@
+********************************************************************************
+*                      Saturday, 13 August 2016 16:26:14                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-ae133f8b7b0e54e91a8d754005750008
+Exit code: 0
+Elapsed time: 0.62 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:27:34                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-92e47096d55f640aeb58090a7a758445
+Exit code: 0
+Elapsed time: 0.58 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:27:46                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-bfb75bb2c02dd4f7b937be8964570450
+Exit code: 0
+Elapsed time: 0.71 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:27:46                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp-Editor-firstpass.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-bf1d3f3d2b61d4be5bfe4c849f9de74e
+Exit code: 0
+Elapsed time: 0.65 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:28:17                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-c7143ff8eb9bb4044b9967ffe9e541d8
+Exit code: 0
+Elapsed time: 0.59 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:28:19                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-7b0f8170551b54258aab949972fa0784
+Exit code: 0
+Elapsed time: 0.69 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:28:19                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp-Editor-firstpass.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-48ee2a3249f67477499116e52e8318c2
+Exit code: 0
+Elapsed time: 0.64 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:28:57                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-573e88871f65641ac8f3493f267e3f97
+Exit code: 0
+Elapsed time: 0.57 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:29:00                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-01aaa2b58f80c4ed7ab5b5ef48dba249
+Exit code: 0
+Elapsed time: 0.67 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:29:00                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp-Editor-firstpass.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-c27bb02d6c56640c0be9d73309e071c9
+Exit code: 0
+Elapsed time: 0.61 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:32:50                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-bcb97a51ae98440bbbbb13904320bdb4
+Exit code: 0
+Elapsed time: 0.57 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:32:52                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-77aa1b46300a04327931589c68dff055
+Exit code: 0
+Elapsed time: 0.65 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:32:52                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp-Editor-firstpass.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-b57c71019ccaf45a3b69c3b817e0f022
+Exit code: 0
+Elapsed time: 0.59 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:34:11                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-225915945754242d58995f246ee6eeea
+Exit code: 0
+Elapsed time: 0.57 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+********************************************************************************
+*                      Saturday, 13 August 2016 16:34:11                       *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 1.10.0.0
+Platform: Mac
+Target assembly: /Assembly-CSharp-Editor-firstpass.dll
+Project directory: /Users/dthurn/Dropbox/dungeonstrike/src
+Unity 'Data' or 'Frameworks' directory: /Applications/Unity/Unity.app/Contents
+Microsoft C# 6.0 compiler found, but it is not supported on the current platform. Looking for another compiler...
+Compiler: Mono C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: /Library/Frameworks/Mono.framework/Commands/mono
+Arguments: "/Users/dthurn/Dropbox/dungeonstrike/src/CSharp60Support/mcs.exe" -nostdlib+ -noconfig -nologo -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/mscorlib.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Core.dll" -r:"/Applications/Unity/Unity.app/Contents/Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-810dc3d3700eb49f6805c43086276412
+Exit code: 0
+Elapsed time: 0.56 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
