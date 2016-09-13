@@ -9,32 +9,32 @@
 * F: Aquis Link
 
 ## 5 Aeris
-- G: Confusion [neutral]
+- G: Confusion
 Target creature moves and acts randomly until the end of its next turn
 
-- H: Control Person [neutral]
+- H: Control Person
 Gain control of target creature. Mind/15 save each round to break control.
 
 - I: Life Siphon [neutral]
 Target creature loses 5 life and you gain 5 life.
 
-- L: Slow [samurai]
+- L: Slow
 Target creature can only move or take an action for the next 3 turns. Mind/15 save each round to prevent.
 
-- M: Heal I [sentinel]
+- M: Heal I
 Target creature heals 10 HP.
 
 ## 4 Aquis
-- N: Sphere of Protection [neutral]
+- N: Sphere of Protection
 Create a protective sphere which can absorb 25 damage before being destroyed
 
-- O: Spell Deflection [neutral]
+- O: Spell Deflection
 Until the end of this turn, you can change the target of spells targeting you
 
-- J: Invisibility [wraith]
+- J: Invisibility
 Enemies cannot target you unless you make an attack within their line of sight.
 
-- K: Imprison [warmage]
+- K: Imprison
 Target creature is permanently imprisoned beneath the earth.
 
 Monster Types: Goblin, Vampire, Ogre, Dragon
@@ -58,32 +58,32 @@ Dragon Abilities:
 * U: Petra Link
 
 ## 5 Ignis
-- V: Arcane Missile [neutral]
+- V: Arcane Missile
 Make three attacks. Each deals 3 force damage on hit.
 
-- W: Time Stop [neutral]
+- W: Time Stop
 Take an extra turn after this one
 
-- X: Lightning Bolt [warmage]
+- X: Lightning Bolt
 Attack an enemy creature, dealing 3d10 damage on hit.
 
-- Y: Haste [samurai]
+- Y: Haste
 Gain 2 actions this turn
 
-- Z: Fireball [warmage]
+- Z: Fireball
 Deals 4d6 fire damage to all creatures in area of effect, agility/15 save for half damage.
 
 ## 4 Petra
-- AA: Sleep Glyph [wraith]
+- AA: Sleep Glyph
 Enemy creatures within range of this glyph must succeed at a Min/15 check save or fall asleep.
 
-- BB: Summon Monster III [sentinel]
+- BB: Summon Monster III
 Summon a level 7-9 monster.
 
-- CC: Forecast [neutral]
+- CC: Forecast
 Look at the top 3 cards of your deck. Put one in your hand and shuffle the others back.
 
-- DD: Mage Armor [neutral]
+- DD: Mage Armor
 Gain 5 damage reduction until your next turn
 
 # Equipment Deck (15 cards)
