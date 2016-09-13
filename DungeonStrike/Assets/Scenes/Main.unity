@@ -913,6 +913,9 @@ GameObject:
   - 92: {fileID: 1882194502}
   - 124: {fileID: 1882194501}
   - 81: {fileID: 1882194500}
+  - 114: {fileID: 1882194507}
+  - 114: {fileID: 1882194506}
+  - 114: {fileID: 1882194505}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -988,6 +991,115 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1882194505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882194499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9985fd5e88610754eb21a3f71289ae5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LookAt: {x: 0, y: 0, z: 0}
+  Distance: 5
+  Rotation: 0
+  Tilt: 90
+  Smoothing: 1
+  MoveDampening: 5
+  ZoomDampening: 5
+  RotationDampening: 5
+  TiltDampening: 5
+  MinBounds: {x: -100, y: -100, z: -100}
+  MaxBounds: {x: 100, y: 100, z: 100}
+  MinDistance: 1
+  MaxDistance: 15
+  MinTilt: 0
+  MaxTilt: 90
+  TerrainHeightViaPhysics: 0
+  TerrainPhysicsLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  LookAtHeightOffset: 0
+  TargetVisbilityViaPhysics: 0
+  CameraRadius: 1
+  TargetVisibilityIgnoreLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  FollowBehind: 0
+  FollowRotationOffset: 0
+  ShowDebugCameraTarget: 0
+--- !u!114 &1882194506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882194499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b975f7ee261ae42a9d76cff7612836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllowMove: 1
+  MoveSpeed: 20
+  AllowFastMove: 1
+  FastMoveSpeed: 40
+  FastMoveKeyCode1: 304
+  FastMoveKeyCode2: 303
+  AllowRotate: 1
+  RotateSpeed: 180
+  AllowZoom: 1
+  ZoomSpeed: 20
+  AllowTilt: 1
+  TiltSpeed: 90
+  ResetKey: 99
+  IncludePositionOnReset: 0
+  MovementBreaksFollow: 1
+  HorizontalInputAxis: Horizontal
+  VerticalInputAxis: Vertical
+  RotateUsesInputAxis: 0
+  RotateInputAxis: KbCameraRotate
+  RotateLeftKey: 113
+  RotateRightKey: 101
+  ZoomUsesInputAxis: 0
+  ZoomInputAxis: KbCameraZoom
+  ZoomOutKey: 122
+  ZoomInKey: 120
+  TiltUsesInputAxis: 0
+  TiltInputAxis: KbCameraTilt
+  TiltUpKey: 114
+  TiltDownKey: 102
+--- !u!114 &1882194507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882194499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af99e4c67465f4d4d8a56dcd4210dd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseOrbitButton: 325
+  AllowScreenEdgeMove: 0
+  ScreenEdgeMoveBreaksFollow: 1
+  ScreenEdgeBorderWidth: 4
+  MoveSpeed: 30
+  AllowPan: 1
+  PanBreaksFollow: 1
+  PanSpeed: 50
+  AllowRotate: 1
+  RotateSpeed: 360
+  AllowTilt: 1
+  TiltSpeed: 200
+  AllowZoom: 1
+  ZoomSpeed: 500
+  RotateInputAxis: Mouse X
+  TiltInputAxis: Mouse Y
+  ZoomInputAxis: Mouse ScrollWheel
+  PanKey1: 304
+  PanKey2: 303
 --- !u!1 &2081125374
 GameObject:
   m_ObjectHideFlags: 0
