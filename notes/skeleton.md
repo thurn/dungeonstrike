@@ -18,23 +18,23 @@ Gain control of target creature. Mind/15 save each round to break control.
 - I: Life Siphon [neutral]
 Target creature loses 5 life and you gain 5 life.
 
-- L: Slow
+- J: Slow
 Target creature can only move or take an action for the next 3 turns. Mind/15 save each round to prevent.
 
-- M: Heal I
+- K: Heal I
 Target creature heals 10 HP.
 
 ## 4 Aquis
-- N: Sphere of Protection
+- L: Sphere of Protection
 Create a protective sphere which can absorb 25 damage before being destroyed
 
-- O: Spell Deflection
+- M: Spell Deflection
 Until the end of this turn, you can change the target of spells targeting you
 
-- J: Invisibility
+- N: Invisibility
 Enemies cannot target you unless you make an attack within their line of sight.
 
-- K: Imprison
+- O: Imprison
 Target creature is permanently imprisoned beneath the earth.
 
 Monster Types: Goblin, Vampire, Ogre, Dragon
@@ -88,49 +88,49 @@ Gain 5 damage reduction until your next turn
 
 # Equipment Deck (15 cards)
 ## 5 guns (levels 1-5)
-* TT: Elfsong
+* EE: Elfsong
 Sniper Rifle +1
 
-* UU: Taerynar +2
+* FF: Taerynar +2
 Shotgun +2
 
-* VV: Summerflame +3
+* GG: Summerflame +3
 Grenade Launcher +3. Grenades deal 2 additional fire damage on hit.
 
-* WW: Spellfury +4
+* HH: Spellfury +4
 Combat Rifle +4. While equipped, reduce the cost of all spells by 2.
 
-* XX: Soulreaper +5
+* II: Soulreaper +5
 Submachine Gun +5. On hit, enemies must succeed at a Fortitude/15 save or die.
 
 ## 5 misc (levels 1-5)
-* YY: Bracers of Might
+* JJ: Bracers of Might
 Every successful weapon attack deals 1d4 additional damage.
 
-* ZZ:  Amulet of Speed
+* KK:  Amulet of Speed
 Increase your movement speed by 4
 
-* AB: Cloak of Invisibility
+* LL: Cloak of Invisibility
 Enemies cannot target you before you make an attack within their line of sight.
 
-* AC: Ring of Regeneration
+* MM: Ring of Regeneration
 Heal 3 HP per round.
 
-* AD: Boots of the Sun King
+* NN: Boots of the Sun King
 Gain +5 damage reduction. Creatures within 4 tiles of you become blinded.
 
 ## 5 armors (levels 1-5)
-* AF: Hero's Boon
+* OO: Hero's Boon
 Light Armor +1
 
-* AG: Night's Shadow
+* PP: Night's Shadow
 Light Armor +2. The sight radius to detect you is 10 tiles instead of 16.
 
-* AE: Blacktooh Armor
+* QQ: Blacktooh Armor
 Medium Armor +3.
 
-* AH: Frost Armor
+* RR: Frost Armor
 Medium Armor +4. Opponents within 2 tiles of you are slowed.
 
-* AI: Red Dragon Armor
+* SS: Red Dragon Armor
 Heavy Armor +5. Immunity to fire damage.

@@ -25,12 +25,12 @@
   </p>
 
   <h1>Setup</h1>
-  <p>Each player shuffles their main deck and draws 7 cards. The Master shuffles his dungeon check and sets it aside, and the Champion shuffles her Equipment deck. The Champion then places her warriors onto the dungeon's starting location.</p>
+  <p>Each player shuffles their main deck and draws 7 cards. The Champion shuffles her Equipment deck and sets it aside, and then places her warriors onto the dungeon's starting location. Each player, starting with the Master, may choose to take a "mulligan" by discarding any number of cards from their hand and then drawing that many cards. The game then begins.</p>
 
-  <h1>Turn Structure</h1>
-  Master and Champion turns follow a similar structure. Each monster gets a turn in decreasing order based on their Agility attribute. Each warrior then takes a turn, also in decreasing order of Agility. The term "character" is used to refer generically to either a warrior or a monster.
+  <h1>Round Structure</h1>
+  The game is divided up into <b>rounds</b>, which follow a consistent structure. Each character gets a turn in decreasing order based on their Agility attribute. The term "character" is used to refer generically to either a warrior or a monster.
   <h2>Beginning of Turn Step</h2>
-  <p>At the beginning of a player's turn, they draw a card from their main deck (the Champion deck or the Master deck, respectively). The player then gains a quantity of <b>essence</b> based on the number of <b>links</b> they have. One <i class="time"></i> (time marker) is also removed at this point from each card in play with one or more <i class="time"></i> on it. In Agility order, each of their characters gains a quantity of <i class="move"></i> (movement) equal to their <b>movement speed</b>, and can take one standard action and any number of quick actions.
+  <p>At the beginning of a round, each player draws a card from their main deck (the Champion deck or the Master deck, respectively). The player then gains a quantity of <b>essence</b> based on the number of <b>links</b> they have. One <i class="time"></i> (time marker) is also removed at this point from each card in play with one or more <i class="time"></i> on it. In Agility order, each character takes a <b>turn</b>. During a turn, the character gains a quantity of <i class="move"></i> (movement) equal to their <b>movement speed</b>, and can take one standard action and any number of quick actions. Movement and actions can be done in either order, but must be performed atomically.
   </p>
   <h2>Standard Actions</h2>
   <p>
@@ -59,7 +59,7 @@
 
   <h3>Link Action</h3>
   <p>
-      By playing a Link card any paying its costs (if any), the character grows their team's connection to one of the four gods. For a standard link card, the player immediately gains one point of essence of the corresponding domain, and will continue to gain essence each turn for each link they have. The Champion taking the link action may cause a nearby group of monsters to <a href="-spawning-monsters">spawn</a>.
+      By playing a Link card and paying its costs (if any), the character grows their team's connection to one of the four gods. For a standard link card, the player immediately gains one point of essence of the corresponding domain, and will continue to gain essence each turn for each link they have. Taking the link action may cause a nearby group of monsters to <a href="-activating-monsters">activate</a>.
   </p>
 
   <h2>Quick Actions</h2>
@@ -120,7 +120,12 @@
   </p>
   <h1>Dungeon Generation</h1>
   <p>
-      The dungeon is the arena of combat in <i>DungeonStrike</i>. As the game proceeds, the dungeon layout is randomly generated. When certain conditions are met, squads of monsters will be <a href="-activating-monsters">activated</a> in roughly increasing order of level, and the Master will gain control of those monsters. The monster types of the activated monsters will always be drawn from the four types selected by the Master at the beginning of the game.
+      The dungeon is the arena of combat in <i>DungeonStrike</i>. As the game proceeds, the dungeon layout is randomly generated in sections called <b>tiles</b>. Each tile has a 50% chance to contain a squad of monsters drawn from the Master's monster type choices.
+  </p>
+
+  <h2>Activating Monsters</h2>
+  <p>
+      When a warrior comes within line of sight of a monster or attacks a monster, the monsters in its squad are <b>activated</b>, meaning the Master gains control of them. When a new squad is activated, the turn immediately ends.
   </p>
 
   <h1>Card Types</h1>
