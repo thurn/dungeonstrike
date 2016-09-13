@@ -22,3 +22,6 @@
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+
+CSharp60Support/compilation.log
+.vscode/launch.json
