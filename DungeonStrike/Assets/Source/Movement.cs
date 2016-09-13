@@ -15,13 +15,13 @@ public class Movement : MonoBehaviour {
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			var cell = GGGrid.GetCellFromRay(ray, 1000f);
 			var gridObject = GetComponent<GGObject>();
-			Debug.Log(gridObject.Cell);
-			Debug.Log(cell);
+			Debug.Log("from " + gridObject.Cell.GridX + "," + gridObject.Cell.GridY);
+			Debug.Log("to " + cell.GridX + "," + cell.GridY);
 			_currentPath = GGAStar.GetPath(gridObject.Cell, cell, false);
 
-			Debug.Log("Got Path " + _currentPath.Count);
+			Debug.Log("Gxt Path " + _currentPath.Count);
 			foreach (var pathCell in _currentPath) {
-				Debug.Log("Cell " + pathCell);
+				Debug.Log("Cell " + pathCell.GridX + "," + pathCell.GridY);
 			}			
 		}
 	}
