@@ -5,6 +5,7 @@ namespace DungeonStrike
 {
     public class Movement : MonoBehaviour
     {
+        public GGGrid grid;
         private List<GGCell> _currentPath;
 
         // Use this for initialization
@@ -21,8 +22,7 @@ namespace DungeonStrike
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 var cell = GGGrid.GetCellFromRay(ray, 1000f);
                 var gridObject = GetComponent<GGObject>();
-                Debug.Log("from " + gridObject.Cell.GridX + "," + gridObject.Cell.GridY);
-                Debug.Log("to " + cell.GridX + "," + cell.GridY);
+
                 _currentPath = GGAStar.GetPath(gridObject.Cell, cell, true /* ignoredOccupiedAtDestCell */, true);
 
                 Debug.Log("Got Path " + _currentPath.Count);
