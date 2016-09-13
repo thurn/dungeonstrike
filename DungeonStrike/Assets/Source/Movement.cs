@@ -5,30 +5,58 @@ namespace DungeonStrike
 {
     public class Movement : MonoBehaviour
     {
-        public GGGrid grid;
-        private List<GGCell> _currentPath;
+        public float MovementSpeed;
+        private Queue<GGCell> _currentPath;
+        private GGObject _gridObject;
 
         // Use this for initialization
         void Start()
         {
-
+            _gridObject = GetComponent<GGObject>();
         }
 
         // Update is called once per frame
         void Update()
         {
+            MoveOnCurrentPath();
+            HandleMovementClick();
+        }
+
+        private void MoveOnCurrentPath()
+        {
+            if (_currentPath != null)
+            {
+                var currentTargetCell = _currentPath.Peek();
+                var target = currentTargetCell.CenterPoint3D;
+                transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * MovementSpeed);
+                if (Vector3.Distance(transform.position, target) < 0.001f)
+                {
+                    _currentPath.Dequeue();
+                    if (_currentPath.Count == 0)
+                    {
+                        _currentPath = null;
+                    }
+                }
+            }
+        }
+
+        private void HandleMovementClick()
+        {
             if (Input.GetMouseButtonDown(0))
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 var cell = GGGrid.GetCellFromRay(ray, 1000f);
-                var gridObject = GetComponent<GGObject>();
 
-                _currentPath = GGAStar.GetPath(gridObject.Cell, cell, true /* ignoredOccupiedAtDestCell */, true);
-
-                Debug.Log("Got Path " + _currentPath.Count);
-                foreach (var pathCell in _currentPath)
+                var newPath = GGAStar.GetPath(_gridObject.Cell, cell, false /* ignoredOccupiedAtDestCell */);
+                if (newPath.Count > 0)
                 {
-                    Debug.Log("Cell " + pathCell.GridX + "," + pathCell.GridY);
+                    _currentPath = new Queue<GGCell>(newPath);
+                    // Remove first path entry, since it is the current location:
+                    _currentPath.Dequeue();
+                }
+                else
+                {
+                    Debug.Log("NO PATH");
                 }
             }
         }
