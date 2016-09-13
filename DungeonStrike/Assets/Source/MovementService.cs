@@ -50,7 +50,6 @@ namespace DungeonStrike
                     if (_currentPath.Count == 0)
                     {
                         _currentPath = null;
-                        _currentMover = null;
                     }
                 }
             }

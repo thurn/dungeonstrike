@@ -19,7 +19,7 @@ namespace DungeonStrike
         {
             _currentCharacterNumber = 0;
             _movementService = MovementService.Instance;
-            _movementService.SetCurrentMover(CurrentActiveCharacter().transform);
+            _movementService.SetCurrentMover(CurrentActiveCharacter().gameObject);
         }
 
         private void Update()
@@ -35,7 +35,7 @@ namespace DungeonStrike
         private void SelectNextCharacter()
         {
             _currentCharacterNumber = (_currentCharacterNumber + 1) % _allCharacters.Length;
-            _movementService.SetCurrentMover(CurrentActiveCharacter().transform);
+            _movementService.SetCurrentMover(CurrentActiveCharacter().gameObject);
         }
 
         public Character CurrentActiveCharacter()
