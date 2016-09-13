@@ -37,7 +37,7 @@
   </p>
   <h2>Turn Order</h2>
   <p>
-      The sequence in which characters take turns is called the <b>turn order</b>. Warriors always take turns in order based on their Agility attribute. When Monsters are <a href="-activating-monsters">activated</a>, they are slotted in to the current turn order based on their agility attributes as well. Monsters which have a higher agility than the character which activated them are simply given turns immediately in agility order, and will continue to act after that character throughout the game.
+      The sequence in which characters take turns is called the <b>turn order</b>. Warriors always take turns in order based on their Agility attribute. If there is a tie in Agility attributes, it is randomly broken for the duration of the game. When Monsters are <a href="-activating-monsters">activated</a>, they are slotted in to the current turn order based on their agility attributes as well. Monsters which have a higher agility than the character which activated them are simply given turns immediately in agility order, and will continue to act after that character throughout the game.
   </p>
   <h2>Beginning of Turn Step</h2>
   <p>
@@ -70,7 +70,7 @@
 
   <h3>Link Action</h3>
   <p>
-      By playing a Link card and paying its costs (if any), the character grows their team's connection to one of the four gods. For a standard link card, the player immediately gains one point of essence of the corresponding domain, and will continue to gain essence each turn for each link they have. Taking the link action may cause a nearby group of monsters to <a href="-activating-monsters">activate</a>.
+      By playing a Link card and paying its costs (if any), the character grows their team's connection to one of the four gods. For a standard link card, the player immediately gains one point of essence of the corresponding domain, and will continue to gain essence each turn for each link they have.
   </p>
 
   <h2>Quick Actions</h2>
@@ -91,6 +91,15 @@
   <h2>End of Round Step</h2>
   <p>
       After all actions are finished, the end of turn step begins. Unspent <i class="move"></i> are lost. If a player has more cards in hand than their hand size limit (typically 7), they discard the excess cards.
+  </p>
+
+  <h2>Wandering Monster Check</h2>
+  <p>
+      After each round, there is a possibility that the Warriors will be attacked by wandering monsters within the dungeon. Attacks cannot occur immediately after a round in which combat occurred, but for each subsequent round that passes they become exponentially more likely according to the formula <b>1-1/1.5<sup>X</sup></b>, where X is the number of rounds since combat last occured. Thus, the chances of a wandering monster attack at the end of each round are 33%, 55%, 70%, 80%, etc.
+  </p>
+
+  <p>
+      When a wandering monster attack does occur, a group of monsters are spawned according to the normal rules for <a href="#-spawning-monsters">activating monsters</a> and are slotted into the <a href="#-turn-order">turn order</a> for the next round as normal.
   </p>
 
   <h1>Player Decks</h1>
@@ -132,6 +141,10 @@
   <h1>Dungeon Generation</h1>
   <p>
       The dungeon is the arena of combat in <i>DungeonStrike</i>. As the game proceeds, the dungeon layout is randomly generated in sections called <b>tiles</b>. Each tile has a 50% chance to contain a squad of monsters drawn from the Master's monster type choices.
+  </p>
+
+  <h2>Spawning Monsters</h2>
+  <p>
   </p>
 
   <h2>Activating Monsters</h2>
