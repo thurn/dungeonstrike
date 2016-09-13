@@ -15,14 +15,7 @@ namespace DungeonStrike
 
         public float MovementSpeed;
         private Queue<GGCell> _currentPath;
-        private Transform _currentMover;
-        private GGObject _gridObject;
-
-        // Use this for initialization
-        void Start()
-        {
-            _gridObject = GetComponent<GGObject>();
-        }
+        private GameObject _currentMover;
 
         // Update is called once per frame
         void Update()
@@ -31,9 +24,9 @@ namespace DungeonStrike
             HandleMovementClick();
         }
 
-        public void SetCurrentMover(Transform currentMover)
+        public void SetCurrentMover(GameObject currentMover)
         {
-            if (_currentMover != null)
+            if (_currentPath != null)
             {
                 Debug.Log("Error: already have a current mover");
             }
@@ -49,8 +42,9 @@ namespace DungeonStrike
             {
                 var currentTargetCell = _currentPath.Peek();
                 var target = currentTargetCell.CenterPoint3D;
-                _currentMover.position = Vector3.MoveTowards(_currentMover.position, target, Time.deltaTime * MovementSpeed);
-                if (Vector3.Distance(_currentMover.position, target) < 0.001f)
+                _currentMover.transform.position =
+                    Vector3.MoveTowards(_currentMover.transform.position, target, Time.deltaTime * MovementSpeed);
+                if (Vector3.Distance(_currentMover.transform.position, target) < 0.001f)
                 {
                     _currentPath.Dequeue();
                     if (_currentPath.Count == 0)
@@ -70,7 +64,8 @@ namespace DungeonStrike
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 var cell = GGGrid.GetCellFromRay(ray, 1000f);
 
-                var newPath = GGAStar.GetPath(_gridObject.Cell, cell, false /* ignoredOccupiedAtDestCell */);
+                var gridObject = _currentMover.GetComponent<GGObject>();
+                var newPath = GGAStar.GetPath(gridObject.Cell, cell, false /* ignoredOccupiedAtDestCell */);
                 if (newPath.Count > 0)
                 {
                     _currentPath = new Queue<GGCell>(newPath);
