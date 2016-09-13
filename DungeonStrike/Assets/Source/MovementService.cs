@@ -4,8 +4,15 @@ using UnityEngine.EventSystems;
 
 namespace DungeonStrike
 {
-    public class Movement : MonoBehaviour
+    public class MovementService : MonoBehaviour
     {
+        private static MovementService _instance;
+
+        public static MovementService Instance
+        {
+            get { return _instance ?? (_instance = FindObjectOfType<MovementService>()); }
+        }
+
         public float MovementSpeed;
         private Queue<GGCell> _currentPath;
         private GGObject _gridObject;
