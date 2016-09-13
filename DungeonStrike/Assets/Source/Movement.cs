@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 namespace DungeonStrike
 {
@@ -44,6 +45,7 @@ namespace DungeonStrike
         {
             if (Input.GetMouseButtonDown(0))
             {
+                if (EventSystem.current.IsPointerOverGameObject()) return;
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 var cell = GGGrid.GetCellFromRay(ray, 1000f);
 
