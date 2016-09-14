@@ -10,5 +10,7 @@ namespace DungeonStrike
         public int Agility;
         public int Fortitude;
         public int Mind;
+        public int ActionsThisRound;
+        public int MovesThisRound;
     }
 }

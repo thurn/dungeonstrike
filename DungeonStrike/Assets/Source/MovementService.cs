@@ -16,6 +16,8 @@ namespace DungeonStrike
         public float MovementSpeed;
         private Queue<GGCell> _currentPath;
         private GameObject _currentMover;
+        private Character _currentCharacter;
+        private int _maxDistance;
 
         // Update is called once per frame
         void Update()
@@ -33,6 +35,7 @@ namespace DungeonStrike
             else
             {
                 _currentMover = currentMover;
+                _currentCharacter = currentMover.GetComponent<Character>();
             }
         }
 
@@ -60,6 +63,13 @@ namespace DungeonStrike
             if (Input.GetMouseButtonDown(0) && _currentMover != null)
             {
                 if (EventSystem.current.IsPointerOverGameObject()) return;
+
+                if (_currentCharacter.MovesThisRound >= 2)
+                {
+                    Debug.Log("OUT OF MOVES");
+                    return;
+                }
+
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 var cell = GGGrid.GetCellFromRay(ray, 1000f);
 
@@ -67,15 +77,28 @@ namespace DungeonStrike
                 var newPath = GGAStar.GetPath(gridObject.Cell, cell, false /* ignoredOccupiedAtDestCell */);
                 if (newPath.Count > 0)
                 {
+                    if (newPath.Count > MaxMoveDistance() + 1)
+                    {
+                        Debug.Log("TOO FAR");
+                        return;
+                    }
+
                     _currentPath = new Queue<GGCell>(newPath);
+
                     // Remove first path entry, since it is the current location:
                     _currentPath.Dequeue();
+                    _currentCharacter.MovesThisRound += 1;
                 }
                 else
                 {
                     Debug.Log("NO PATH");
                 }
             }
+        }
+
+        private int MaxMoveDistance()
+        {
+            return _currentCharacter.Agility / 2;
         }
     }
 }

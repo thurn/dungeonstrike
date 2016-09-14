@@ -28,6 +28,7 @@ namespace DungeonStrike
         private void Start()
         {
             _movementService = MovementService.Instance;
+            System.Array.Sort(_allCharacters, (a, b) => b.Agility.CompareTo(a.Agility));
             SelectCharacter(0);
         }
 
