@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace DungeonStrike
 {
@@ -12,30 +13,30 @@ namespace DungeonStrike
         }
 
         public Character[] _allCharacters;
+        public Text CurrentCharacterText;
         private int _currentCharacterNumber;
         private MovementService _movementService;
 
         private void Start()
         {
-            _currentCharacterNumber = 0;
             _movementService = MovementService.Instance;
-            _movementService.SetCurrentMover(CurrentActiveCharacter().gameObject);
+            SelectCharacter(0);
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-                SelectNextCharacter();
-                var current = CurrentActiveCharacter();
-                Debug.Log("Active character: " + current.Name);
+                SelectCharacter((_currentCharacterNumber + 1) % _allCharacters.Length);
             }
         }
 
-        private void SelectNextCharacter()
+        private void SelectCharacter(int number)
         {
-            _currentCharacterNumber = (_currentCharacterNumber + 1) % _allCharacters.Length;
+            _currentCharacterNumber = number;
             _movementService.SetCurrentMover(CurrentActiveCharacter().gameObject);
+            var current = CurrentActiveCharacter();
+            CurrentCharacterText.text = current.Name;
         }
 
         public Character CurrentActiveCharacter()
