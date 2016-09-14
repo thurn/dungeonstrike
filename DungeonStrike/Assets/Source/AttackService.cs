@@ -14,6 +14,7 @@ namespace DungeonStrike
         }
 
         private bool _inTargetMode;
+        private int _currentCharacterNumber;
         private CharacterService _characterService;
         private List<int> _enemies;
         private int _currentEnemyIndex;
@@ -28,18 +29,76 @@ namespace DungeonStrike
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                if (_inTargetMode)
+                {
+                    VectorLine.Destroy(ref _line);
+                    _currentEnemyIndex = 0;
+                    _inTargetMode = false;
+                    _characterService.SelectCharacter(_currentCharacterNumber);
+                }
+                else
+                {
+                    EnterTargetMode();
+                }
+            }
+
             if (_inTargetMode)
             {
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
+                    _currentEnemyIndex = (_currentEnemyIndex + 1) % _enemies.Count;
+                    SelectEnemy(_enemies[_currentEnemyIndex]);
+                }
 
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    // fire!
+                    bool hit = RollForHit();
+                    if (hit)
+                    {
+                        ApplyDamage();
+                    }
+                }
+
+                if (_line != null)
+                {
+                    _line.Draw();
                 }
             }
-            _line.Draw();
+        }
+
+        public bool RollForHit()
+        {
+            var attacker = _characterService.GetCharacter(_currentCharacterNumber);
+            var target = _characterService.GetCharacter(_enemies[_currentEnemyIndex]);
+            var attackerCell = attacker.GetComponent<GGObject>().Cell;
+            var targetCell = target.GetComponent<GGObject>().Cell;
+            var distance = Mathf.Floor(Vector3.Distance(attackerCell.CenterPoint3D, targetCell.CenterPoint3D));
+            var bonus = Mathf.Max(0, 8 - distance);
+            var cover = 0;
+            var agilityTarget = attacker.Agility + bonus + cover;
+            var roll = RollD20();
+            Debug.Log("Rolled " + roll + " vs hit target of " + agilityTarget);
+            return roll <= agilityTarget;
+        }
+
+        public void ApplyDamage()
+        {
+            var damage = Random.Range(1, 9) + Random.Range(1, 9);
+            var target = _characterService.GetCharacter(_enemies[_currentEnemyIndex]);
+            target.CurrentHealth -= damage;
+        }
+
+        public int RollD20()
+        {
+            return Random.Range(1, 21);
         }
 
         public void EnterTargetMode()
         {
+            _currentCharacterNumber = _characterService.SelectedCharacterNumber();
             _inTargetMode = true;
             _enemies = _characterService.EnemiesOfCharacter(_characterService.SelectedCharacter());
             _currentEnemyIndex = 0;
@@ -48,7 +107,10 @@ namespace DungeonStrike
 
         private void SelectEnemy(int enemyNumber)
         {
-            Debug.Log("Targeting " + enemyNumber);
+            if (_line != null)
+            {
+                VectorLine.Destroy(ref _line);
+            }
             var enemy = _characterService.SelectCharacter(enemyNumber);
             var linePoints = new List<Vector3>(60);
             _line = new VectorLine("selected", linePoints, null, 5.0f, LineType.Continuous)

@@ -43,10 +43,14 @@ namespace DungeonStrike
                 SelectCharacter((_selectedCharacterNumber + 1) % _allCharacters.Length);
             }
 
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                _attackService.EnterTargetMode();
-            }
+            var current = SelectedCharacter();
+            CurrentCharacterText.text = current.Name;
+            CurrentCharacterAttack.text = "" + current.Agility;
+            CurrentCharacterDefense.text = "" + current.Fortitude;
+            CurrentCharacterHealth.text = "" + current.CurrentHealth;
+            CurrentCharacterFortitude.text = "" + current.Fortitude;
+            CurrentCharacterAgility.text = "" + current.Agility;
+            CurrentCharacterMind.text = "" + current.Mind;
         }
 
         public List<int> EnemiesOfCharacter(Character character)
@@ -59,22 +63,24 @@ namespace DungeonStrike
             _selectedCharacterNumber = number;
             var characterObject = SelectedCharacter().gameObject;
             _movementService.SetCurrentMover(characterObject);
-            var current = SelectedCharacter();
-            CurrentCharacterText.text = current.Name;
-            CurrentCharacterAttack.text = "" + current.Agility;
-            CurrentCharacterDefense.text = "" + current.Fortitude;
-            CurrentCharacterHealth.text = "" + current.CurrentHealth;
-            CurrentCharacterFortitude.text = "" + current.Fortitude;
-            CurrentCharacterAgility.text = "" + current.Agility;
-            CurrentCharacterMind.text = "" + current.Mind;
             CurrentCharacterHealthBar.followObject = characterObject;
             FollowHelper.FollowTarget = characterObject;
             return characterObject;
         }
 
+        public Character GetCharacter(int characterNumber)
+        {
+            return _allCharacters[characterNumber];
+        }
+
         public Character SelectedCharacter()
         {
             return _allCharacters[_selectedCharacterNumber];
+        }
+
+        public int SelectedCharacterNumber()
+        {
+            return _selectedCharacterNumber;
         }
     }
 }
