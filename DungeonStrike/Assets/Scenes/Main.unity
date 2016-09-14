@@ -123,7 +123,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 918d779bd277c4b729af6b38d064da37, type: 2}
+  - {fileID: 2100000, guid: 3106808e73a424182a727007d61e00fe, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1691,7 +1691,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 918d779bd277c4b729af6b38d064da37, type: 2}
+  - {fileID: 2100000, guid: 63487bd1612a84af7a479c9a95354c74, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1803,7 +1803,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 918d779bd277c4b729af6b38d064da37, type: 2}
+  - {fileID: 2100000, guid: 89bf0097f5c654840a7b5feea4c2978b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1990,7 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 388f6c6ef92154d6791551a27af92d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 10
+  MovementSpeed: 7
 --- !u!1 &1265057086
 GameObject:
   m_ObjectHideFlags: 1
