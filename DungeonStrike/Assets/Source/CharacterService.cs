@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using EnergyBarToolkit;
+using System.Collections.Generic;
 
 namespace DungeonStrike
 {
@@ -22,30 +23,43 @@ namespace DungeonStrike
         public Text CurrentCharacterAgility;
         public Text CurrentCharacterMind;
         public EnergyBarFollowObject CurrentCharacterHealthBar;
-        private int _currentCharacterNumber;
+        public FollowHelper FollowHelper;
+        private int _selectedCharacterNumber;
         private MovementService _movementService;
+        private AttackService _attackService;
 
         private void Start()
         {
             _movementService = MovementService.Instance;
+            _attackService = AttackService.Instance;
             System.Array.Sort(_allCharacters, (a, b) => b.Agility.CompareTo(a.Agility));
             SelectCharacter(0);
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetKeyDown(KeyCode.N))
             {
-                SelectCharacter((_currentCharacterNumber + 1) % _allCharacters.Length);
+                SelectCharacter((_selectedCharacterNumber + 1) % _allCharacters.Length);
+            }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                _attackService.EnterTargetMode();
             }
         }
 
-        private void SelectCharacter(int number)
+        public List<int> EnemiesOfCharacter(Character character)
         {
-            _currentCharacterNumber = number;
-            var characterObject = CurrentActiveCharacter().gameObject;
+            return new List<int>() { 1, 4 };
+        }
+
+        public GameObject SelectCharacter(int number)
+        {
+            _selectedCharacterNumber = number;
+            var characterObject = SelectedCharacter().gameObject;
             _movementService.SetCurrentMover(characterObject);
-            var current = CurrentActiveCharacter();
+            var current = SelectedCharacter();
             CurrentCharacterText.text = current.Name;
             CurrentCharacterAttack.text = "" + current.Agility;
             CurrentCharacterDefense.text = "" + current.Fortitude;
@@ -54,11 +68,13 @@ namespace DungeonStrike
             CurrentCharacterAgility.text = "" + current.Agility;
             CurrentCharacterMind.text = "" + current.Mind;
             CurrentCharacterHealthBar.followObject = characterObject;
+            FollowHelper.FollowTarget = characterObject;
+            return characterObject;
         }
 
-        public Character CurrentActiveCharacter()
+        public Character SelectedCharacter()
         {
-            return _allCharacters[_currentCharacterNumber];
+            return _allCharacters[_selectedCharacterNumber];
         }
     }
 }
