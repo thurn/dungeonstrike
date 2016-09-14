@@ -24,6 +24,7 @@ namespace DungeonStrike
         public void Draw(Vector3 deckPosition, Sprite frontSprite)
         {
             var card = Canvas.Instance.InstantiateObject<Card>(CardPrefab, deckPosition);
+            card.CardState = CardState.BeingDrawn;
             card.CardFront = frontSprite;
             _cards.Add(card);
             DOTween.Sequence()
@@ -37,7 +38,11 @@ namespace DungeonStrike
               .AppendInterval(0.5f)
               .Append(DOTween.Sequence()
                 .Append(card.transform.DOMove(transform.position, 1.0f))
-                .Insert(0, card.transform.DOScale(Vector3.one, 1.0f)));
+                .Insert(0, card.transform.DOScale(Vector3.one, 1.0f)))
+              .AppendCallback(() =>
+              {
+                  card.CardState = CardState.InHand;
+              });
             transform.Translate(180, 0, 0);
         }
     }

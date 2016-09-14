@@ -14,7 +14,6 @@ namespace DungeonStrike
         }
 
         private bool _inTargetMode;
-        private int _currentCharacterNumber;
         private CharacterService _characterService;
         private List<int> _enemies;
         private int _currentEnemyIndex;
@@ -31,7 +30,7 @@ namespace DungeonStrike
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
-                var currentCharacter = _characterService.GetCharacter(_currentCharacterNumber);
+                var currentCharacter = _characterService.CurrentTurnCharacter();
                 if (_inTargetMode)
                 {
                     ExitTargetMode();
@@ -58,9 +57,9 @@ namespace DungeonStrike
                     {
                         ApplyDamage();
                     }
-                    var currentCharacter = _characterService.GetCharacter(_currentCharacterNumber);
+                    var currentCharacter = _characterService.CurrentTurnCharacter();
                     currentCharacter.ActionsThisRound++;
-                    ExitTargetMode();
+                    StartCoroutine(ExitTargetModeAfterDelay());
                 }
 
                 if (_line != null)
@@ -70,17 +69,23 @@ namespace DungeonStrike
             }
         }
 
+        private IEnumerator<WaitForSeconds> ExitTargetModeAfterDelay()
+        {
+            yield return new WaitForSeconds(1.0f);
+            ExitTargetMode();
+        }
+
         private void ExitTargetMode()
         {
             VectorLine.Destroy(ref _line);
             _currentEnemyIndex = 0;
             _inTargetMode = false;
-            _characterService.SelectCharacter(_currentCharacterNumber);
+            _characterService.SelectCharacter(_characterService.CurrentTurnCharacterNumber());
         }
 
         public bool RollForHit()
         {
-            var attacker = _characterService.GetCharacter(_currentCharacterNumber);
+            var attacker = _characterService.CurrentTurnCharacter();
             var target = _characterService.GetCharacter(_enemies[_currentEnemyIndex]);
             var attackerCell = attacker.GetComponent<GGObject>().Cell;
             var targetCell = target.GetComponent<GGObject>().Cell;
@@ -89,7 +94,6 @@ namespace DungeonStrike
             var cover = 0;
             var agilityTarget = attacker.Agility + bonus + cover;
             var roll = RollD20();
-            Debug.Log("Rolled " + roll + " vs hit target of " + agilityTarget);
             return roll <= agilityTarget;
         }
 
@@ -107,7 +111,6 @@ namespace DungeonStrike
 
         public void EnterTargetMode()
         {
-            _currentCharacterNumber = _characterService.CurrentTurnCharacterNumber();
             _inTargetMode = true;
             _enemies = _characterService.EnemiesOfCharacter(_characterService.CurrentTurnCharacter());
             _currentEnemyIndex = 0;

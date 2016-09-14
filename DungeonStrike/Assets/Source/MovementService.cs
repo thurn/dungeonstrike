@@ -79,6 +79,8 @@ namespace DungeonStrike
 
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 var cell = GGGrid.GetCellFromRay(ray, 1000f);
+                if (cell == null) return;
+
                 var cellObjects = cell.Objects;
                 if (cellObjects.Count > 1)
                 {

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace DungeonStrike
 {
@@ -8,6 +9,20 @@ namespace DungeonStrike
         public Sprite WoodSprite;
         public Sprite LavaSprite;
         public Sprite SciFiSprite;
+
+        public void Start()
+        {
+            StartCoroutine(DrawCardsAfterDelay());
+        }
+
+        private IEnumerator<WaitForSeconds> DrawCardsAfterDelay()
+        {
+            for (var i = 0; i < 7; ++i)
+            {
+                yield return new WaitForSeconds(0.1f);
+                DrawCard();
+            }
+        }
 
         public void DrawCard()
         {

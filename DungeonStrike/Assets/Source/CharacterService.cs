@@ -50,10 +50,27 @@ namespace DungeonStrike
                 SelectCharacter(_currentTurnCharacter);
             }
 
-            var currentTurn = CurrentTurnCharacter();
-            if (currentTurn.ActionsThisRound == 1 || currentTurn.MovesThisRound == 2)
+            if (Input.GetKeyDown(KeyCode.P))
             {
-                SetCurrentTurnCharacter((_currentTurnCharacter + 1) % _allCharacters.Length);
+                // Pass turn
+                var currentTurn = CurrentTurnCharacter();
+                if (currentTurn.ActionsThisRound == 1 || currentTurn.MovesThisRound == 2)
+                {
+                    _currentTurnCharacter++;
+                    if (_currentTurnCharacter == _allCharacters.Length)
+                    {
+                        Debug.Log("End of round");
+                    }
+                    else
+                    {
+                        SetCurrentTurnCharacter(_currentTurnCharacter);
+                    }
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                // Hold
             }
 
             var current = SelectedCharacter();
