@@ -38,7 +38,7 @@ namespace DungeonStrike
               .Append(DOTween.Sequence()
                 .Append(card.transform.DOMove(transform.position, 1.0f))
                 .Insert(0, card.transform.DOScale(Vector3.one, 1.0f)));
-            transform.Translate(140, 0, 0);
+            transform.Translate(180, 0, 0);
         }
     }
 }
