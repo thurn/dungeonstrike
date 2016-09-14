@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e032287f26ca64e25b856cbda373cc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterNumber: 0
   Name: Agnar
   MaxHealth: 50
   CurrentHealth: 40
@@ -1174,6 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e032287f26ca64e25b856cbda373cc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterNumber: 0
   Name: Orc
   MaxHealth: 40
   CurrentHealth: 40
@@ -1843,6 +1845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e032287f26ca64e25b856cbda373cc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterNumber: 0
   Name: Torthas
   MaxHealth: 50
   CurrentHealth: 50
@@ -1957,6 +1960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e032287f26ca64e25b856cbda373cc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterNumber: 0
   Name: Valruk
   MaxHealth: 50
   CurrentHealth: 50
@@ -2146,6 +2150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e032287f26ca64e25b856cbda373cc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterNumber: 0
   Name: Warlord
   MaxHealth: 70
   CurrentHealth: 70
@@ -2239,6 +2244,7 @@ GameObject:
   - 4: {fileID: 1226068801}
   - 114: {fileID: 1226068800}
   - 114: {fileID: 1226068802}
+  - 114: {fileID: 1226068803}
   m_Layer: 0
   m_Name: ServiceRoot
   m_TagString: Untagged
@@ -2270,7 +2276,7 @@ MonoBehaviour:
   CurrentCharacterFortitude: {fileID: 1118484620}
   CurrentCharacterAgility: {fileID: 2140494582}
   CurrentCharacterMind: {fileID: 1859129784}
-  CurrentCharacterHealthBar: {fileID: 1062138459}
+  CurrentCharacterHealthBar: {fileID: 1062138458}
   FollowHelper: {fileID: 1882194508}
 --- !u!4 &1226068801
 Transform:
@@ -2297,6 +2303,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 7
+--- !u!114 &1226068803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1226068799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b742138a4d3e4a6a9c7b7d611f8f228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1281800573
 GameObject:
   m_ObjectHideFlags: 0
@@ -3109,7 +3126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac92c5746ccaeb14187a6f2c5516b9e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FollowTarget: {fileID: 0}
+  FollowTarget: {fileID: 1188967734}
   Snap: 1
 --- !u!1 &1915811036
 GameObject:

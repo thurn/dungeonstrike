@@ -17,7 +17,13 @@ namespace DungeonStrike
         private Queue<GGCell> _currentPath;
         private GameObject _currentMover;
         private Character _currentCharacter;
+        private CharacterService _characterService;
         private int _maxDistance;
+
+        void Start()
+        {
+            _characterService = CharacterService.Instance;
+        }
 
         // Update is called once per frame
         void Update()
@@ -64,7 +70,8 @@ namespace DungeonStrike
             {
                 if (EventSystem.current.IsPointerOverGameObject()) return;
 
-                if (_currentCharacter.MovesThisRound >= 2)
+                if (_currentCharacter.MovesThisRound == 2 ||
+                    (_currentCharacter.MovesThisRound == 1 && _currentCharacter.ActionsThisRound == 1))
                 {
                     Debug.Log("OUT OF MOVES");
                     return;
@@ -72,26 +79,42 @@ namespace DungeonStrike
 
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 var cell = GGGrid.GetCellFromRay(ray, 1000f);
-
-                var gridObject = _currentMover.GetComponent<GGObject>();
-                var newPath = GGAStar.GetPath(gridObject.Cell, cell, false /* ignoredOccupiedAtDestCell */);
-                if (newPath.Count > 0)
+                var cellObjects = cell.Objects;
+                if (cellObjects.Count > 1)
                 {
-                    if (newPath.Count > MaxMoveDistance() + 1)
+                    throw new System.ArgumentException("too many objects in cell");
+                }
+                else if (cellObjects.Count == 1)
+                {
+                    var cellObject = cellObjects[0];
+                    var character = cellObject.GetComponent<Character>();
+                    if (character != null)
                     {
-                        Debug.Log("TOO FAR");
-                        return;
+                        _characterService.SelectCharacter(character.CharacterNumber);
                     }
-
-                    _currentPath = new Queue<GGCell>(newPath);
-
-                    // Remove first path entry, since it is the current location:
-                    _currentPath.Dequeue();
-                    _currentCharacter.MovesThisRound += 1;
                 }
                 else
                 {
-                    Debug.Log("NO PATH");
+                    var gridObject = _currentMover.GetComponent<GGObject>();
+                    var newPath = GGAStar.GetPath(gridObject.Cell, cell, false /* ignoredOccupiedAtDestCell */);
+                    if (newPath.Count > 0)
+                    {
+                        if (newPath.Count > MaxMoveDistance() + 1)
+                        {
+                            Debug.Log("TOO FAR");
+                            return;
+                        }
+
+                        _currentPath = new Queue<GGCell>(newPath);
+
+                        // Remove first path entry, since it is the current location:
+                        _currentPath.Dequeue();
+                        _currentCharacter.MovesThisRound += 1;
+                    }
+                    else
+                    {
+                        Debug.Log("NO PATH");
+                    }
                 }
             }
         }

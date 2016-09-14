@@ -22,9 +22,10 @@ namespace DungeonStrike
         public Text CurrentCharacterFortitude;
         public Text CurrentCharacterAgility;
         public Text CurrentCharacterMind;
-        public EnergyBarFollowObject CurrentCharacterHealthBar;
+        public EnergyBar CurrentCharacterHealthBar;
         public FollowHelper FollowHelper;
         private int _selectedCharacterNumber;
+        private int _currentTurnCharacter;
         private MovementService _movementService;
         private AttackService _attackService;
 
@@ -33,14 +34,26 @@ namespace DungeonStrike
             _movementService = MovementService.Instance;
             _attackService = AttackService.Instance;
             System.Array.Sort(_allCharacters, (a, b) => b.Agility.CompareTo(a.Agility));
-            SelectCharacter(0);
+            for (var i = 0; i < _allCharacters.Length; ++i)
+            {
+                _allCharacters[i].CharacterNumber = i;
+            }
+            SetCurrentTurnCharacter(0);
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.N))
             {
-                SelectCharacter((_selectedCharacterNumber + 1) % _allCharacters.Length);
+                var next = (_currentTurnCharacter + 1) % _allCharacters.Length;
+                _currentTurnCharacter = next;
+                SelectCharacter(_currentTurnCharacter);
+            }
+
+            var currentTurn = CurrentTurnCharacter();
+            if (currentTurn.ActionsThisRound == 1 || currentTurn.MovesThisRound == 2)
+            {
+                SetCurrentTurnCharacter((_currentTurnCharacter + 1) % _allCharacters.Length);
             }
 
             var current = SelectedCharacter();
@@ -51,19 +64,40 @@ namespace DungeonStrike
             CurrentCharacterFortitude.text = "" + current.Fortitude;
             CurrentCharacterAgility.text = "" + current.Agility;
             CurrentCharacterMind.text = "" + current.Mind;
+            CurrentCharacterHealthBar.valueCurrent = current.CurrentHealth;
+            CurrentCharacterHealthBar.valueMax = current.MaxHealth;
         }
 
         public List<int> EnemiesOfCharacter(Character character)
         {
-            return new List<int>() { 1, 4 };
+            switch (character.CharacterNumber)
+            {
+                case 0:
+                case 2:
+                case 3:
+                    return new List<int>() { 1, 4 };
+                case 1:
+                case 4:
+                    return new List<int>() { 0, 2, 3 };
+            }
+            throw new System.ArgumentException("Unknown character.");
+        }
+
+        public GameObject SetCurrentTurnCharacter(int number)
+        {
+            SelectCharacter(number);
+            _currentTurnCharacter = number;
+            var characterObject = CurrentTurnCharacter().gameObject;
+            _movementService.SetCurrentMover(characterObject);
+            return characterObject;
         }
 
         public GameObject SelectCharacter(int number)
         {
             _selectedCharacterNumber = number;
             var characterObject = SelectedCharacter().gameObject;
-            _movementService.SetCurrentMover(characterObject);
-            CurrentCharacterHealthBar.followObject = characterObject;
+            var energyBarFollow = CurrentCharacterHealthBar.GetComponent<EnergyBarFollowObject>();
+            energyBarFollow.followObject = characterObject;
             FollowHelper.FollowTarget = characterObject;
             return characterObject;
         }
@@ -78,9 +112,19 @@ namespace DungeonStrike
             return _allCharacters[_selectedCharacterNumber];
         }
 
+        public Character CurrentTurnCharacter()
+        {
+            return _allCharacters[_currentTurnCharacter];
+        }
+
         public int SelectedCharacterNumber()
         {
             return _selectedCharacterNumber;
+        }
+
+        public int CurrentTurnCharacterNumber()
+        {
+            return _currentTurnCharacter;
         }
     }
 }

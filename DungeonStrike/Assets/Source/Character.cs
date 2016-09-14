@@ -4,6 +4,7 @@ namespace DungeonStrike
 {
     public class Character : MonoBehaviour
     {
+        public int CharacterNumber;
         public string Name;
         public int MaxHealth;
         public int CurrentHealth;

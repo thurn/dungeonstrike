@@ -31,14 +31,12 @@ namespace DungeonStrike
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
+                var currentCharacter = _characterService.GetCharacter(_currentCharacterNumber);
                 if (_inTargetMode)
                 {
-                    VectorLine.Destroy(ref _line);
-                    _currentEnemyIndex = 0;
-                    _inTargetMode = false;
-                    _characterService.SelectCharacter(_currentCharacterNumber);
+                    ExitTargetMode();
                 }
-                else
+                else if (currentCharacter.ActionsThisRound == 0)
                 {
                     EnterTargetMode();
                 }
@@ -60,6 +58,9 @@ namespace DungeonStrike
                     {
                         ApplyDamage();
                     }
+                    var currentCharacter = _characterService.GetCharacter(_currentCharacterNumber);
+                    currentCharacter.ActionsThisRound++;
+                    ExitTargetMode();
                 }
 
                 if (_line != null)
@@ -67,6 +68,14 @@ namespace DungeonStrike
                     _line.Draw();
                 }
             }
+        }
+
+        private void ExitTargetMode()
+        {
+            VectorLine.Destroy(ref _line);
+            _currentEnemyIndex = 0;
+            _inTargetMode = false;
+            _characterService.SelectCharacter(_currentCharacterNumber);
         }
 
         public bool RollForHit()
@@ -98,9 +107,9 @@ namespace DungeonStrike
 
         public void EnterTargetMode()
         {
-            _currentCharacterNumber = _characterService.SelectedCharacterNumber();
+            _currentCharacterNumber = _characterService.CurrentTurnCharacterNumber();
             _inTargetMode = true;
-            _enemies = _characterService.EnemiesOfCharacter(_characterService.SelectedCharacter());
+            _enemies = _characterService.EnemiesOfCharacter(_characterService.CurrentTurnCharacter());
             _currentEnemyIndex = 0;
             SelectEnemy(_enemies[0]);
         }
