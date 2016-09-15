@@ -7,8 +7,8 @@ namespace DungeonStrike
     public class Hand : MonoBehaviour
     {
         private static Hand _instance;
-        private List<Card> _cards;
-        public Card CardPrefab;
+        private List<CardBehaviour> _cards;
+        public CardBehaviour CardPrefab;
         public Transform ShowCardPosition;
 
         public static Hand Instance
@@ -18,12 +18,12 @@ namespace DungeonStrike
 
         public void Awake()
         {
-            _cards = new List<Card>();
+            _cards = new List<CardBehaviour>();
         }
 
         public void Draw(Vector3 deckPosition, Sprite frontSprite)
         {
-            var card = Canvas.Instance.InstantiateObject<Card>(CardPrefab, deckPosition);
+            var card = Canvas.Instance.InstantiateObject<CardBehaviour>(CardPrefab, deckPosition);
             card.CardState = CardState.BeingDrawn;
             card.CardFront = frontSprite;
             _cards.Add(card);
