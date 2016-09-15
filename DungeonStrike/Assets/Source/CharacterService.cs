@@ -53,18 +53,14 @@ namespace DungeonStrike
             if (Input.GetKeyDown(KeyCode.P))
             {
                 // Pass turn
-                var currentTurn = CurrentTurnCharacter();
-                if (currentTurn.ActionsThisRound == 1 || currentTurn.MovesThisRound == 2)
+                _currentTurnCharacter++;
+                if (_currentTurnCharacter == _allCharacters.Length)
                 {
-                    _currentTurnCharacter++;
-                    if (_currentTurnCharacter == _allCharacters.Length)
-                    {
-                        Debug.Log("End of round");
-                    }
-                    else
-                    {
-                        SetCurrentTurnCharacter(_currentTurnCharacter);
-                    }
+                    Debug.Log("End of round");
+                }
+                else
+                {
+                    SetCurrentTurnCharacter(_currentTurnCharacter);
                 }
             }
 

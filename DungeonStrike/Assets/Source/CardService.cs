@@ -24,28 +24,78 @@ namespace DungeonStrike
         private CellSelectionService _cellSelectionService;
         private CharacterService _characterService;
         private LinkService _linkService;
+        private AttackService _attackService;
 
         public void Start()
         {
             _cellSelectionService = CellSelectionService.Instance;
             _characterService = CharacterService.Instance;
             _linkService = LinkService.Instance;
+            _attackService = AttackService.Instance;
         }
 
         public void PlayCard(Card card)
         {
-            if (card.CardType != CardType.Link)
+            if (card.CardType == CardType.Link)
             {
-                throw new System.ArgumentException("Unsupported card type");
+                _cellSelectionService.EnterCellSelectionMode(card);
             }
-            Debug.Log("play card " + card.School);
+            else
+            {
+                PlayAbilityCard(card);
+            }
+        }
 
-            _cellSelectionService.EnterCellSelectionMode(card);
+        private void PlayAbilityCard(Card card)
+        {
+            switch (card.CardIdentity)
+            {
+                case CardIdentity.ArcaneMissile:
+                    PlayArcaneMissileCard(card);
+                    break;
+                case CardIdentity.LightningBolt:
+                    PlayLightningBoltCard(card);
+                    break;
+                case CardIdentity.Haste:
+                    PlayHasteCard(card);
+                    break;
+                case CardIdentity.Fireball:
+                    PlayFireballCard(card);
+                    break;
+                default:
+                    throw new System.ArgumentException("Unsupported card type: " + card.CardIdentity);
+            }
+        }
+
+        private void PlayArcaneMissileCard(Card card)
+        {
+            _attackService.MakeAttack(false, () => 3);
+            _attackService.MakeAttack(false, () => 3);
+            _attackService.MakeAttack(true, () => 3);
+        }
+
+        private void PlayLightningBoltCard(Card card)
+        {
+            _attackService.MakeAttack(true, () => _attackService.RollDice(3, 10));
+        }
+
+        private void PlayHasteCard(Card card)
+        {
+            var character = _characterService.CurrentTurnCharacter();
+            character.MaxActionsThisRound += 2;
+        }
+
+        private void PlayFireballCard(Card card)
+        {
+
         }
 
         public void CellSelected(Card card, GGCell cell, GameObject selectionQuad)
         {
-            CreateLink(card, cell, selectionQuad);
+            if (card.CardType == CardType.Link)
+            {
+                CreateLink(card, cell, selectionQuad);
+            }
         }
 
         public CardBehaviour DrawCard(Vector3 startingPosition)
@@ -104,7 +154,7 @@ namespace DungeonStrike
                         card.CardIdentity = CardIdentity.Fireball;
                         break;
                 }
-                card.CardIdentity = CardIdentity.ArcaneMissile;
+                card.CardIdentity = CardIdentity.LightningBolt;
             }
             else
             {

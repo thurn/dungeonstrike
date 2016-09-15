@@ -13,6 +13,7 @@ namespace DungeonStrike
         public int Mind;
         public int ActionsThisRound;
         public int MovesThisRound;
+        public int MaxActionsThisRound = 2;
         public Faction Faction;
 
         public bool CanTakeAdditionAction()
@@ -23,11 +24,11 @@ namespace DungeonStrike
             }
             else if (MovesThisRound == 1)
             {
-                return ActionsThisRound == 0;
+                return ActionsThisRound < MaxActionsThisRound - 1;
             }
             else
             {
-                return ActionsThisRound <= 1;
+                return ActionsThisRound < MaxActionsThisRound;
             }
         }
     }

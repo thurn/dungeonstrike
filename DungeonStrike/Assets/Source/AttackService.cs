@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 using Vectrosity;
 
 namespace DungeonStrike
@@ -13,7 +14,7 @@ namespace DungeonStrike
             get { return _instance ?? (_instance = FindObjectOfType<AttackService>()); }
         }
 
-        private bool _inTargetMode;
+        public bool InTargetMode;
         private CharacterService _characterService;
         private List<int> _enemies;
         private int _currentEnemyIndex;
@@ -31,17 +32,24 @@ namespace DungeonStrike
             if (Input.GetKeyDown(KeyCode.T))
             {
                 var currentCharacter = _characterService.CurrentTurnCharacter();
-                if (_inTargetMode)
+                if (InTargetMode)
                 {
                     ExitTargetMode();
                 }
-                else if (currentCharacter.ActionsThisRound == 0)
+                else
                 {
-                    EnterTargetMode();
+                    if (currentCharacter.CanTakeAdditionAction())
+                    {
+                        EnterTargetMode();
+                    }
+                    else
+                    {
+                        Debug.Log("Out of actions");
+                    }
                 }
             }
 
-            if (_inTargetMode)
+            if (InTargetMode)
             {
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
@@ -52,14 +60,7 @@ namespace DungeonStrike
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     // fire!
-                    bool hit = RollForHit();
-                    if (hit)
-                    {
-                        ApplyDamage();
-                    }
-                    var currentCharacter = _characterService.CurrentTurnCharacter();
-                    currentCharacter.ActionsThisRound++;
-                    StartCoroutine(ExitTargetModeAfterDelay());
+                    MakeAttack(true, () => RollDice(2, 10));
                 }
 
                 if (_line != null)
@@ -79,14 +80,29 @@ namespace DungeonStrike
         {
             VectorLine.Destroy(ref _line);
             _currentEnemyIndex = 0;
-            _inTargetMode = false;
+            InTargetMode = false;
             _characterService.SelectCharacter(_characterService.CurrentTurnCharacterNumber());
+        }
+
+        public Character CurrentTarget()
+        {
+            return _characterService.GetCharacter(_enemies[_currentEnemyIndex]);
+        }
+
+        public int RollDice(int quantity, int sides, int modifier = 0)
+        {
+            int result = 0;
+            for (int i = 0; i < quantity; ++i)
+            {
+                result += UnityEngine.Random.Range(1, sides + 1) + modifier;
+            }
+            return result;
         }
 
         public bool RollForHit()
         {
             var attacker = _characterService.CurrentTurnCharacter();
-            var target = _characterService.GetCharacter(_enemies[_currentEnemyIndex]);
+            var target = CurrentTarget();
             var attackerCell = attacker.GetComponent<GGObject>().Cell;
             var targetCell = target.GetComponent<GGObject>().Cell;
             var distance = Mathf.Floor(Vector3.Distance(attackerCell.CenterPoint3D, targetCell.CenterPoint3D));
@@ -97,21 +113,47 @@ namespace DungeonStrike
             return roll <= agilityTarget;
         }
 
-        public void ApplyDamage()
+        public void MakeAttack(bool isAction, Func<int> damageFunction)
         {
-            var damage = Random.Range(1, 9) + Random.Range(1, 9);
-            var target = _characterService.GetCharacter(_enemies[_currentEnemyIndex]);
+            if (!InTargetMode)
+            {
+                throw new System.ArgumentException("You must select a target first.");
+            }
+
+            bool hit = RollForHit();
+            if (hit)
+            {
+                var damage = damageFunction();
+                ApplyDamage(damage);
+                Debug.Log("ATTACK - Hit for " + damage);
+            }
+            else
+            {
+                Debug.Log("ATTACK - Miss");
+            }
+
+            if (isAction)
+            {
+                var currentCharacter = _characterService.CurrentTurnCharacter();
+                currentCharacter.ActionsThisRound++;
+                StartCoroutine(ExitTargetModeAfterDelay());
+            }
+        }
+
+        public void ApplyDamage(int damage)
+        {
+            var target = CurrentTarget();
             target.CurrentHealth -= damage;
         }
 
         public int RollD20()
         {
-            return Random.Range(1, 21);
+            return UnityEngine.Random.Range(1, 21);
         }
 
         public void EnterTargetMode()
         {
-            _inTargetMode = true;
+            InTargetMode = true;
             _enemies = _characterService.EnemiesOfCharacter(_characterService.CurrentTurnCharacter());
             _currentEnemyIndex = 0;
             SelectEnemy(_enemies[0]);
