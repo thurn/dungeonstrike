@@ -55,7 +55,11 @@ namespace DungeonStrike
         {
             if (CardState == CardState.InHand)
             {
-                transform.DOScale(new Vector3(1.2f, 1.2f, 1), 0.2f);
+                if (CostText != null)
+                {
+                    CostText.resizeTextForBestFit = false;
+                }
+                transform.DOScale(new Vector3(5f, 5f, 1), 0.2f);
                 _siblingIndex = transform.GetSiblingIndex();
                 transform.SetSiblingIndex(99999);
             }
@@ -65,6 +69,10 @@ namespace DungeonStrike
         {
             if (CardState == CardState.InHand)
             {
+                if (CostText != null)
+                {
+                    CostText.resizeTextForBestFit = true;
+                }
                 transform.DOScale(new Vector3(1, 1, 1), 0.2f);
                 transform.SetSiblingIndex(_siblingIndex);
             }

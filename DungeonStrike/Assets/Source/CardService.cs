@@ -81,7 +81,7 @@ namespace DungeonStrike
         {
             var card = new Card();
             card.CardType = CardType.Ability;
-            card.School = Random.Range(0, 2) == 0 ? School.Ignis : School.Petra;
+            card.School = School.Ignis; //Random.Range(0, 2) == 0 ? School.Ignis : School.Petra;
             card.Faction = Faction.Player;
 
             if (card.School == School.Ignis)
@@ -104,6 +104,7 @@ namespace DungeonStrike
                         card.CardIdentity = CardIdentity.Fireball;
                         break;
                 }
+                card.CardIdentity = CardIdentity.ArcaneMissile;
             }
             else
             {
