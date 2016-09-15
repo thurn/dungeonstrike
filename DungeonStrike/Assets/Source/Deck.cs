@@ -26,28 +26,7 @@ namespace DungeonStrike
 
         public void DrawCard()
         {
-            Sprite sprite;
-            School school;
-            switch (Random.Range(0, 4))
-            {
-                case 0:
-                    sprite = IceSprite;
-                    school = School.Petra;
-                    break;
-                case 1:
-                    sprite = WoodSprite;
-                    school = School.Aeris;
-                    break;
-                case 2:
-                    sprite = LavaSprite;
-                    school = School.Ignis;
-                    break;
-                default:
-                    sprite = SciFiSprite;
-                    school = School.Aquis;
-                    break;
-            }
-            Hand.Instance.Draw(transform.position, sprite, school);
+            Hand.Instance.Draw(transform.position);
         }
     }
 }

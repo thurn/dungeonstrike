@@ -11,12 +11,12 @@ namespace DungeonStrike
             get { return _instance ?? (_instance = FindObjectOfType<Canvas>()); }
         }
 
-        public T InstantiateObject<T>(Object newObject, Vector3 position) where T : class
+        public GameObject InstantiateObject(GameObject prefab, Vector3 position)
         {
-            var value = (MonoBehaviour)Instantiate(newObject, position, Quaternion.identity);
-            value.transform.SetParent(transform, true /* worldPositionStays */);
+            var value = (GameObject)Object.Instantiate(prefab, position, Quaternion.identity);
+            value.transform.SetParent(this.transform, true /* worldPositionStays */);
             value.transform.localScale = Vector3.one;
-            return value as T;
+            return value;
         }
     }
 }
