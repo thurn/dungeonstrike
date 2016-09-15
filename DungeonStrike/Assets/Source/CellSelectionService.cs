@@ -11,11 +11,9 @@ namespace DungeonStrike
             get { return _instance ?? (_instance = FindObjectOfType<CellSelectionService>()); }
         }
 
-        public Material GreenIceMaterial;
-        public Material LavaMaterial;
-        public Material SciFiMaterial;
-        public Material GreyWoodMaterial;
         private bool _inCellSelectionMode;
+        private bool _inAreaSelectionMode;
+        private int _areaSelectionRadius;
         private GameObject _selectedQuad;
         private MeshRenderer _quadRenderer;
         private Card _currentCard;
@@ -33,27 +31,21 @@ namespace DungeonStrike
             SetQuadEnabled(false);
         }
 
-        public void EnterCellSelectionMode(Card card)
+        public void EnterCellSelectionMode(Material quadMaterial, Card card)
         {
             _inCellSelectionMode = true;
             _currentCard = card;
             _movementService.MovementEnabled = false;
-            Material quadMaterial;
-            switch (card.School)
-            {
-                case School.Aeris:
-                    quadMaterial = GreyWoodMaterial;
-                    break;
-                case School.Aquis:
-                    quadMaterial = SciFiMaterial;
-                    break;
-                case School.Ignis:
-                    quadMaterial = LavaMaterial;
-                    break;
-                default: // School.Petra:
-                    quadMaterial = GreenIceMaterial;
-                    break;
-            }
+            _quadRenderer.material = quadMaterial;
+        }
+
+        public void EnterAreaSelectionMode(Material quadMaterial, Card card, int radius)
+        {
+            _inCellSelectionMode = true;
+            _inAreaSelectionMode = true;
+            _areaSelectionRadius = radius;
+            _currentCard = card;
+            _movementService.MovementEnabled = false;
             _quadRenderer.material = quadMaterial;
         }
 
@@ -80,7 +72,15 @@ namespace DungeonStrike
                     var quad = GameObject.Instantiate(_selectedQuad,
                         _selectedQuad.transform.parent,
                         true /* worldPositionStays */);
-                    _cardService.CellSelected(_currentCard, cell, quad as GameObject);
+                    if (_inAreaSelectionMode)
+                    {
+                        _cardService.AreaSelected(_currentCard, null, quad as GameObject);
+                    }
+                    else
+                    {
+                        _cardService.CellSelected(_currentCard, cell, quad as GameObject);
+                    }
+
                     SetQuadEnabled(false);
                     _movementService.MovementEnabled = true;
                     _inCellSelectionMode = false;

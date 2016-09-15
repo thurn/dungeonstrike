@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 namespace DungeonStrike
 {
@@ -18,6 +19,11 @@ namespace DungeonStrike
         public Sprite GreyWoodAbilitySprite;
         public Sprite LavaAbilitySprite;
         public Sprite SciFiAbilitySprite;
+        public Material GreenIceMaterial;
+        public Material LavaMaterial;
+        public Material SciFiMaterial;
+        public Material GreyWoodMaterial;
+        public Material FireballSelectionMaterial;
         public GameObject LinkPrefab;
         public GameObject AbilityPrefab;
 
@@ -38,7 +44,23 @@ namespace DungeonStrike
         {
             if (card.CardType == CardType.Link)
             {
-                _cellSelectionService.EnterCellSelectionMode(card);
+                Material quadMaterial;
+                switch (card.School)
+                {
+                    case School.Aeris:
+                        quadMaterial = GreyWoodMaterial;
+                        break;
+                    case School.Aquis:
+                        quadMaterial = SciFiMaterial;
+                        break;
+                    case School.Ignis:
+                        quadMaterial = LavaMaterial;
+                        break;
+                    default: // School.Petra:
+                        quadMaterial = GreenIceMaterial;
+                        break;
+                }
+                _cellSelectionService.EnterCellSelectionMode(quadMaterial, card);
             }
             else
             {
@@ -87,7 +109,7 @@ namespace DungeonStrike
 
         private void PlayFireballCard(Card card)
         {
-
+            _cellSelectionService.EnterAreaSelectionMode(FireballSelectionMaterial, card, 3 /* radius */);
         }
 
         public void CellSelected(Card card, GGCell cell, GameObject selectionQuad)
@@ -96,6 +118,11 @@ namespace DungeonStrike
             {
                 CreateLink(card, cell, selectionQuad);
             }
+        }
+
+        public void AreaSelected(Card card, List<GGCell> cells, GameObject selectionQuad)
+        {
+
         }
 
         public CardBehaviour DrawCard(Vector3 startingPosition)
@@ -154,7 +181,7 @@ namespace DungeonStrike
                         card.CardIdentity = CardIdentity.Fireball;
                         break;
                 }
-                card.CardIdentity = CardIdentity.LightningBolt;
+                card.CardIdentity = CardIdentity.Fireball;
             }
             else
             {
