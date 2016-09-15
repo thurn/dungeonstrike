@@ -19,5 +19,6 @@ namespace DungeonStrike
     {
         public CardType CardType;
         public School School;
+        public Faction Faction;
     }
 }

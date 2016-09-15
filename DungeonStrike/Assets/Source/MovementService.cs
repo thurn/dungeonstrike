@@ -14,22 +14,26 @@ namespace DungeonStrike
         }
 
         public float MovementSpeed;
+        public bool MovementEnabled;
         private Queue<GGCell> _currentPath;
         private GameObject _currentMover;
-        private Character _currentCharacter;
         private CharacterService _characterService;
         private int _maxDistance;
 
         void Start()
         {
             _characterService = CharacterService.Instance;
+            MovementEnabled = true;
         }
 
         // Update is called once per frame
         void Update()
         {
             MoveOnCurrentPath();
-            HandleMovementClick();
+            if (MovementEnabled)
+            {
+                HandleMovementClick();
+            }
         }
 
         public void SetCurrentMover(GameObject currentMover)
@@ -41,7 +45,6 @@ namespace DungeonStrike
             else
             {
                 _currentMover = currentMover;
-                _currentCharacter = currentMover.GetComponent<Character>();
             }
         }
 
@@ -68,10 +71,10 @@ namespace DungeonStrike
         {
             if (Input.GetMouseButtonDown(0) && _currentMover != null)
             {
+                var currentCharacter = _characterService.CurrentTurnCharacter();
                 if (EventSystem.current.IsPointerOverGameObject()) return;
 
-                if (_currentCharacter.MovesThisRound == 2 ||
-                    (_currentCharacter.MovesThisRound == 1 && _currentCharacter.ActionsThisRound == 1))
+                if (!currentCharacter.CanTakeAdditionAction())
                 {
                     Debug.Log("OUT OF MOVES");
                     return;
@@ -101,7 +104,7 @@ namespace DungeonStrike
                     var newPath = GGAStar.GetPath(gridObject.Cell, cell, false /* ignoredOccupiedAtDestCell */);
                     if (newPath.Count > 0)
                     {
-                        if (newPath.Count > MaxMoveDistance() + 1)
+                        if (newPath.Count > MaxMoveDistance(currentCharacter) + 1)
                         {
                             Debug.Log("TOO FAR");
                             return;
@@ -111,7 +114,7 @@ namespace DungeonStrike
 
                         // Remove first path entry, since it is the current location:
                         _currentPath.Dequeue();
-                        _currentCharacter.MovesThisRound += 1;
+                        currentCharacter.MovesThisRound += 1;
                     }
                     else
                     {
@@ -121,9 +124,9 @@ namespace DungeonStrike
             }
         }
 
-        private int MaxMoveDistance()
+        private int MaxMoveDistance(Character currentCharacter)
         {
-            return _currentCharacter.Agility / 2;
+            return currentCharacter.Agility / 2;
         }
     }
 }

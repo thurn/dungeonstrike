@@ -17,18 +17,44 @@ namespace DungeonStrike
         public Material GreyWoodMaterial;
         private bool _inCellSelectionMode;
         private GameObject _selectedQuad;
+        private MeshRenderer _quadRenderer;
+        private Card _currentCard;
+        private CardService _cardService;
+        private MovementService _movementService;
 
         public void Start()
         {
             _selectedQuad = GameObject.CreatePrimitive(PrimitiveType.Quad);
             _selectedQuad.transform.position = new Vector3(0, 0.03f, 0);
             _selectedQuad.transform.eulerAngles = new Vector3(90, 0, 0);
+            _quadRenderer = _selectedQuad.GetComponent<MeshRenderer>();
+            _cardService = CardService.Instance;
+            _movementService = MovementService.Instance;
             SetQuadEnabled(false);
         }
 
         public void EnterCellSelectionMode(Card card)
         {
             _inCellSelectionMode = true;
+            _currentCard = card;
+            _movementService.MovementEnabled = false;
+            Material quadMaterial;
+            switch (card.School)
+            {
+                case School.Aeris:
+                    quadMaterial = GreyWoodMaterial;
+                    break;
+                case School.Aquis:
+                    quadMaterial = SciFiMaterial;
+                    break;
+                case School.Ignis:
+                    quadMaterial = LavaMaterial;
+                    break;
+                default: // School.Petra:
+                    quadMaterial = GreenIceMaterial;
+                    break;
+            }
+            _quadRenderer.material = quadMaterial;
         }
 
         public void Update()
@@ -49,8 +75,21 @@ namespace DungeonStrike
                     return;
                 }
 
-                SetQuadEnabled(true);
-                _selectedQuad.transform.position = new Vector3(cell.CenterPoint3D.x, 0.03f, cell.CenterPoint3D.z);
+                if (Input.GetMouseButtonUp(0))
+                {
+                    var quad = GameObject.Instantiate(_selectedQuad,
+                        _selectedQuad.transform.parent,
+                        true /* worldPositionStays */);
+                    _cardService.CellSelected(_currentCard, cell, quad as GameObject);
+                    SetQuadEnabled(false);
+                    _movementService.MovementEnabled = true;
+                    _inCellSelectionMode = false;
+                }
+                else
+                {
+                    SetQuadEnabled(true);
+                    _selectedQuad.transform.position = new Vector3(cell.CenterPoint3D.x, 0.03f, cell.CenterPoint3D.z);
+                }
             }
         }
 

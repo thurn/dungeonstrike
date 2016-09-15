@@ -20,11 +20,13 @@ namespace DungeonStrike
         private int _siblingIndex;
         private Vector3 _originalPosition;
         private CardService _cardService;
+        private CharacterService _characterService;
 
         public void Awake()
         {
             _image = GetComponent<Image>();
             _cardService = CardService.Instance;
+            _characterService = CharacterService.Instance;
         }
 
         public void Flip()
@@ -68,7 +70,8 @@ namespace DungeonStrike
         public void OnEndDrag()
         {
             var mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-            if (mousePosition.y < 0.25)
+            var currentCharacter = _characterService.CurrentTurnCharacter();
+            if (mousePosition.y < 0.25 || !currentCharacter.CanTakeAdditionAction())
             {
                 // Card is still over UI, return to hand
                 CardState = CardState.InHand;

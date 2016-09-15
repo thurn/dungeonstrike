@@ -31,6 +31,7 @@ namespace DungeonStrike
             var card = new Card();
             card.CardType = CardType.Link;
             card.School = school;
+            card.Faction = Faction.Player;
             cardObject.Card = card;
 
             DOTween.Sequence()
