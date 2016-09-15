@@ -25,7 +25,7 @@ namespace DungeonStrike
             }
             Debug.Log("play card " + card.School);
 
-            _cellSelectionService.EnterCellSelectionMode();
+            _cellSelectionService.EnterCellSelectionMode(card);
         }
     }
 

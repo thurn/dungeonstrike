@@ -10,6 +10,11 @@ namespace DungeonStrike
         {
             get { return _instance ?? (_instance = FindObjectOfType<CellSelectionService>()); }
         }
+
+        public Material GreenIceMaterial;
+        public Material LavaMaterial;
+        public Material SciFiMaterial;
+        public Material GreyWoodMaterial;
         private bool _inCellSelectionMode;
         private GameObject _selectedQuad;
 
@@ -21,7 +26,7 @@ namespace DungeonStrike
             SetQuadEnabled(false);
         }
 
-        public void EnterCellSelectionMode()
+        public void EnterCellSelectionMode(Card card)
         {
             _inCellSelectionMode = true;
         }
