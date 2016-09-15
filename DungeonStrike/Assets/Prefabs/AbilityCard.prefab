@@ -367,6 +367,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardState: 0
   CardFront: {fileID: 0}
+  CostText: {fileID: 114000010587675680}
+  NameText: {fileID: 114000012652661634}
+  RulesText: {fileID: 114000011665988952}
 --- !u!222 &222000010557690454
 CanvasRenderer:
   m_ObjectHideFlags: 1

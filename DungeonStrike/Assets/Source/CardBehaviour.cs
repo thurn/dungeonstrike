@@ -17,6 +17,9 @@ namespace DungeonStrike
         public CardState CardState;
         public Sprite CardFront;
         public Card Card;
+        public Text CostText;
+        public Text NameText;
+        public Text RulesText;
         private int _siblingIndex;
         private Vector3 _originalPosition;
         private CardService _cardService;
@@ -32,6 +35,20 @@ namespace DungeonStrike
         public void Flip()
         {
             _image.sprite = CardFront;
+            if (CostText != null)
+            {
+                CostText.enabled = true;
+            }
+
+            if (NameText != null)
+            {
+                NameText.enabled = true;
+            }
+
+            if (RulesText != null)
+            {
+                RulesText.enabled = true;
+            }
         }
 
         public void StartHover()
