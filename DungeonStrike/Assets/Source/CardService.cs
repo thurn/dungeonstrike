@@ -109,7 +109,7 @@ namespace DungeonStrike
 
         private void PlayFireballCard(Card card)
         {
-            _cellSelectionService.EnterAreaSelectionMode(FireballSelectionMaterial, card, 3 /* radius */);
+            _cellSelectionService.EnterAreaSelectionMode(FireballSelectionMaterial, card, 1 /* radius */);
         }
 
         public void CellSelected(Card card, GGCell cell, GameObject selectionQuad)
@@ -122,7 +122,11 @@ namespace DungeonStrike
 
         public void AreaSelected(Card card, List<GGCell> cells, GameObject selectionQuad)
         {
-
+            if (card.CardIdentity == CardIdentity.Fireball)
+            {
+                GameObject.Destroy(selectionQuad);
+                Debug.Log("fireball ! " + cells.Count);
+            }
         }
 
         public CardBehaviour DrawCard(Vector3 startingPosition)

@@ -11,7 +11,6 @@ namespace DungeonStrike
         private void Start()
         {
             _grid = GetComponent<GGGrid>();
-            Debug.Log("printing grid");
 
             for (var x = 0; x < _grid.GridWidth; ++x)
             {
