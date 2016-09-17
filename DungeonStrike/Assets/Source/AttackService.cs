@@ -159,6 +159,25 @@ namespace DungeonStrike
             SelectEnemy(_enemies[0]);
         }
 
+        public bool AttributeCheck(Character character, AttributeType attribute, int modifier = 0)
+        {
+            int score = 0;
+            switch (attribute)
+            {
+                case AttributeType.Agility:
+                    score = character.Agility;
+                    break;
+                case AttributeType.Fortitude:
+                    score = character.Fortitude;
+                    break;
+                case AttributeType.Mind:
+                    score = character.Mind;
+                    break;
+            }
+
+            return RollD20() <= score + modifier;
+        }
+
         private void SelectEnemy(int enemyNumber)
         {
             if (_line != null)

@@ -125,8 +125,40 @@ namespace DungeonStrike
             if (card.CardIdentity == CardIdentity.Fireball)
             {
                 GameObject.Destroy(selectionQuad);
-                Debug.Log("fireball ! " + cells.Count);
+                var objects = GameObjectsInCells(cells);
+                var damage = _attackService.RollDice(4, 6);
+                foreach (var gridObject in objects)
+                {
+                    var character = gridObject.GetComponent<Character>();
+                    if (character != null)
+                    {
+                        var save = _attackService.AttributeCheck(character, AttributeType.Agility, -5);
+                        if (save)
+                        {
+                            character.CurrentHealth -= damage / 2;
+                            Debug.Log("Fireball hit for " + damage / 2 + " damage with agility save.");
+                        }
+                        else
+                        {
+                            character.CurrentHealth -= damage;
+                            Debug.Log("Fireball hit for " + damage + " damage, no agility save.");
+                        }
+                    }
+                }
+
+                var currentCharacter = _characterService.CurrentTurnCharacter();
+                currentCharacter.ActionsThisRound++;
             }
+        }
+
+        private List<GGObject> GameObjectsInCells(List<GGCell> cells)
+        {
+            List<GGObject> result = new List<GGObject>();
+            foreach (var cell in cells)
+            {
+                result.AddRange(cell.Objects);
+            }
+            return result;
         }
 
         public CardBehaviour DrawCard(Vector3 startingPosition)

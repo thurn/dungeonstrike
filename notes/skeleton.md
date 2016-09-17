@@ -71,11 +71,11 @@ Attack an enemy creature, dealing 3d10 damage on hit.
 Gain 2 actions this turn
 
 - Z: Fireball
-Deals 4d6 fire damage to all creatures in area of effect, agility/15 save for half damage.
+Deals 4d6 fire damage to all creatures in area of effect, agility/-5 save for half damage.
 
 ## 4 Petra
 - AA: Sleep Glyph
-Enemy creatures within range of this glyph must succeed at a Min/15 check save or fall asleep.
+Enemy creatures within range of this glyph must succeed at a mind/-5 check save or fall asleep.
 
 - BB: Summon Monster III
 Summon a level 7-9 monster.
@@ -101,7 +101,7 @@ Grenade Launcher +3. Grenades deal 2 additional fire damage on hit.
 Combat Rifle +4. While equipped, reduce the cost of all spells by 2.
 
 * II: Soulreaper +5
-Submachine Gun +5. On hit, enemies must succeed at a Fortitude/15 save or die.
+Submachine Gun +5. On hit, enemies must succeed at a Fortitude/-5 save or die.
 
 ## 5 misc (levels 1-5)
 * JJ: Bracers of Might

@@ -2,6 +2,13 @@ using UnityEngine;
 
 namespace DungeonStrike
 {
+    public enum AttributeType
+    {
+        Agility,
+        Fortitude,
+        Mind
+    }
+
     public class Character : MonoBehaviour
     {
         public int CharacterNumber;
