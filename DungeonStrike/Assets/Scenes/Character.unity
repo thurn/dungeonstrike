@@ -89,7 +89,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: 0.16666667
     manualCellSize: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 275c5546b76b345dc96bc634eedde74f, type: 2}
 --- !u!1 &105303415
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 105303416}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411209108}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 434569188}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 445456521}
   - 137: {fileID: 445456520}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7dad81e927eb347b794a5de2bd6dbc17, type: 2}
+  - {fileID: 2100000, guid: 36a10c9280e324eae86984b96e1a026f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -300,9 +300,22 @@ GameObject:
   - 4: {fileID: 512936654}
   - 95: {fileID: 512936653}
   - 205: {fileID: 512936652}
-  m_Layer: 0
+  - 136: {fileID: 512936671}
+  - 54: {fileID: 512936670}
+  - 114: {fileID: 512936669}
+  - 114: {fileID: 512936668}
+  - 114: {fileID: 512936667}
+  - 114: {fileID: 512936666}
+  - 114: {fileID: 512936664}
+  - 114: {fileID: 512936661}
+  - 114: {fileID: 512936658}
+  - 114: {fileID: 512936657}
+  - 114: {fileID: 512936656}
+  - 114: {fileID: 512936655}
+  - 195: {fileID: 512936672}
+  m_Layer: 31
   m_Name: genSWAT
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,9 +356,9 @@ Animator:
   m_GameObject: {fileID: 512936651}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a980fb7137f2e194a8a2e064607659c8, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4d45b2807e7f674cac65937c395709d, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -367,7 +380,303 @@ Transform:
   - {fileID: 1943247077}
   - {fileID: 1378298065}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
+--- !u!114 &512936655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbac2b9b0a8c6f4da0d7d72b8d579c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SettledThreshold: 0.01
+  m_SettledFrameCount: 5
+--- !u!114 &512936656
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -945986818, guid: c03ce02eabac4ea40af86f870a3c9813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 1
+  m_InputName: Jump
+  m_StartType: 2
+  m_StopType: 0
+  m_TransitionDuration: 0.1
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_Force: 5
+  m_DoubleJumpForce: 0
+  m_RecurrenceDelay: 0.2
+  m_MovementCycleNormalizedLength: 0.5
+  m_MovementCycleLegOffset: 0
+  m_UniformAcceleration: 0
+--- !u!114 &512936657
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2020902626, guid: c03ce02eabac4ea40af86f870a3c9813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Index: 0
+  m_InputName: 
+  m_StartType: 0
+  m_StopType: 1
+  m_TransitionDuration: 0.1
+  m_SpeedMultiplier: 1
+  m_Indicator: {fileID: 0}
+  m_MinFallHeight: 0
+--- !u!114 &512936658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3f3d6359b66064e8c670007e31f435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &512936661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee072665942ca444b37230589464a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DebugDrawLookRay: 1
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1879048169
+  m_HipsAdjustmentSpeed: 2
+  m_LookAheadDistance: 100
+  m_LookAtOffset: {x: 0, y: 0, z: 0}
+  m_LookAtAimBodyWeight: 1
+  m_LookAtBodyWeight: 0.05
+  m_LookAtHeadWeight: 0
+  m_LookAtEyesWeight: 1
+  m_LookAtClampWeight: 0.35
+  m_LookAtIKAdjustmentSpeed: 0.4
+  m_HandIKWeight: 1
+  m_HandIKAdjustmentSpeed: 10
+  m_HipsMovingPositionAdjustmentSpeed: 2
+  m_HipsStillPositionAdjustmentSpeed: 20
+  m_FootPositionAdjustmentSpeed: 20
+  m_FootRotationAdjustmentSpeed: 10
+  m_FootWeightAdjustmentSpeed: 5
+--- !u!114 &512936664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b134d4ae5d45a47b5210ba8d50845e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PerFootSounds: 0
+  m_Feet:
+  - {fileID: 1341713613}
+  - {fileID: 574852915}
+  m_Footsteps: []
+--- !u!114 &512936666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14743d42198a8b4b8c7f6db14297f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AimType: 0
+--- !u!114 &512936667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b66f5a14ebd6c46828d4f97e4f7fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MovementType: 5
+  m_UseRootMotion: 1
+  m_RootMotionSpeedMultiplier: 1
+  m_RotationSpeed: 6
+  m_AimRotationSpeed: 15
+  m_TorsoLookThreshold: 0
+  m_IndependentLook: 0
+  m_AlignToGround: 0
+  m_AlignToGroundRotationSpeed: 15
+  m_GroundSpeed: {x: 1, y: 0, z: 1}
+  m_AirSpeed: {x: 0.5, y: 0, z: 0.5}
+  m_GroundDampening: 0.15
+  m_AirDampening: 0.15
+  m_GroundStickiness: 6
+  m_SkinWidth: 0.08
+  m_MovingPlatformSkinWidth: 0.5
+  m_MovementConstraint: 0
+  m_MinXPosition: 0
+  m_MaxXPosition: 0
+  m_MinZPosition: 0
+  m_MaxZPosition: 0
+  m_MaxStepHeight: 0.2
+  m_StepOffset: {x: 0, y: 0.07, z: 0.1}
+  m_StepSpeed: 1
+  m_SlopeLimit: 30
+  m_StopMovementThreshold: 0.5
+  m_AlwaysAim: 0
+  m_ItemUseRotationThreshold: 1
+  m_ItemForciblyUseDuration: 0.3
+  m_DualWieldItemForciblyUseDuration: 0.3
+  m_CapsuleCollider: {fileID: 0}
+  m_LinkedColliders: []
+  m_GroundedIdleFrictionMaterial: {fileID: 13400000, guid: 198796242f6646e40a1d017f5aac148c,
+    type: 2}
+  m_GroundedMovingFrictionMaterial: {fileID: 13400000, guid: 198796242f6646e40a1d017f5aac148c,
+    type: 2}
+  m_StepFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
+    type: 2}
+  m_SlopeFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
+    type: 2}
+  m_AirFrictionMaterial: {fileID: 13400000, guid: 6e1f114d7edaac3429f0739865834c8b,
+    type: 2}
+  m_Abilities:
+  - {fileID: 512936657}
+  - {fileID: 512936656}
+  m_SelectedAbility: -1
+--- !u!114 &512936668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34599dd6dd683bf4aae89854549639d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DebugStateChanges: 0
+  m_HorizontalInputDampTime: 0.1
+  m_ForwardInputDampTime: 0.1
+  m_BaseState:
+    m_Name: Movement
+    m_TransitionDuration: 0.1
+    m_SpeedMultiplier: 1
+    m_CanReplay: 0
+  m_UpperBodyState:
+    m_Name: Idle
+    m_TransitionDuration: 0.1
+    m_SpeedMultiplier: 1
+    m_CanReplay: 0
+  m_LeftArmState:
+    m_Name: Idle
+    m_TransitionDuration: 0.1
+    m_SpeedMultiplier: 1
+    m_CanReplay: 0
+  m_RightArmState:
+    m_Name: Idle
+    m_TransitionDuration: 0.1
+    m_SpeedMultiplier: 1
+    m_CanReplay: 0
+  m_LeftHandState:
+    m_Name: Idle
+    m_TransitionDuration: 0.1
+    m_SpeedMultiplier: 1
+    m_CanReplay: 0
+  m_RightHandState:
+    m_Name: Idle
+    m_TransitionDuration: 0.1
+    m_SpeedMultiplier: 1
+    m_CanReplay: 0
+  m_AdditiveState:
+    m_Name: Idle
+    m_TransitionDuration: 0.1
+    m_SpeedMultiplier: 1
+    m_CanReplay: 0
+--- !u!114 &512936669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf6faf40b1666b46939e7e2f4feb60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ForceMobileInput: 0
+  m_ForceStandaloneInput: 0
+  m_DisableWithEscape: 1
+  m_DisableCursor: 0
+  m_DisableWhenButtonDown: 0
+--- !u!54 &512936670
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 999
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &512936671
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!195 &512936672
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512936651}
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &565940599
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +685,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 565940600}
-  m_Layer: 0
+  - 136: {fileID: 565940603}
+  - 54: {fileID: 565940602}
+  - 144: {fileID: 565940601}
+  m_Layer: 2
   m_Name: genSWAT_RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,6 +709,76 @@ Transform:
   - {fileID: 1727918304}
   m_Father: {fileID: 2044766255}
   m_RootOrder: 0
+--- !u!144 &565940601
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565940599}
+  m_ConnectedBody: {fileID: 2044766256}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: -1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0.24403264, y: 0.0000018461027, z: 0.00000017025287}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: -1, z: 0}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -90
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!54 &565940602
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565940599}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &565940603
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 565940599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0920187
+  m_Height: 0.4600935
+  m_Direction: 0
+  m_Center: {x: 0.23004675, y: 0, z: 0}
 --- !u!1 &574852915
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +787,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 574852916}
-  m_Layer: 0
+  - 82: {fileID: 574852918}
+  - 114: {fileID: 574852917}
+  m_Layer: 2
   m_Name: genSWAT_RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,6 +810,91 @@ Transform:
   - {fileID: 1292514665}
   m_Father: {fileID: 1189199557}
   m_RootOrder: 0
+--- !u!114 &574852917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 574852915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6b8039500a22b43a2eb33f06b6290b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &574852918
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 574852915}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &580682035
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +903,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 580682036}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +933,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 659070504}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandMiddle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +962,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 747587820}
-  m_Layer: 0
+  - 136: {fileID: 747587823}
+  - 54: {fileID: 747587822}
+  - 144: {fileID: 747587821}
+  m_Layer: 2
   m_Name: genSWAT_LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,6 +987,76 @@ Transform:
   - {fileID: 1027171359}
   m_Father: {fileID: 926049861}
   m_RootOrder: 0
+--- !u!144 &747587821
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747587819}
+  m_ConnectedBody: {fileID: 926049862}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -0.24403243, y: -0.000000020861535, z: 0.0000000071651622}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 1, z: 0}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -90
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!54 &747587822
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747587819}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &747587823
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 747587819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.092018366
+  m_Height: 0.46009183
+  m_Direction: 0
+  m_Center: {x: -0.23004591, y: 0, z: 0}
 --- !u!1 &749134147
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +1065,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 749134148}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +1096,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 808991987}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +1125,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 836471204}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +1155,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 895293773}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +1184,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 926049861}
-  m_Layer: 0
+  - 136: {fileID: 926049864}
+  - 54: {fileID: 926049862}
+  - 144: {fileID: 926049863}
+  m_Layer: 2
   m_Name: genSWAT_LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,6 +1209,76 @@ Transform:
   - {fileID: 747587820}
   m_Father: {fileID: 1523152785}
   m_RootOrder: 0
+--- !u!54 &926049862
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 926049860}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!144 &926049863
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 926049860}
+  m_ConnectedBody: {fileID: 2050501678}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -0.21470541, y: 0.36963063, z: -0.000000007152557}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 0, z: 1}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -70
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 10
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 50
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!136 &926049864
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 926049860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.061008107
+  m_Height: 0.24403243
+  m_Direction: 0
+  m_Center: {x: -0.122016214, y: 0, z: 0}
 --- !u!1 &953824819
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +1287,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 953824820}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_AttachHandLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +1315,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 969558307}
-  m_Layer: 0
+  - 135: {fileID: 969558310}
+  - 54: {fileID: 969558309}
+  - 144: {fileID: 969558308}
+  m_Layer: 2
   m_Name: genSWAT_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,6 +1338,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1141327686}
   m_RootOrder: 0
+--- !u!144 &969558308
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 969558306}
+  m_ConnectedBody: {fileID: 2050501678}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -4.3906257e-33, y: 0.55995446, z: 0.057166845}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 0, z: 1}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -40
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 25
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 25
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!54 &969558309
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 969558306}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &969558310
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 969558306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.107352786
+  m_Center: {x: 0, y: 0.107352786, z: 0}
 --- !u!1 &977628238
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +1415,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 977628239}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +1443,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1027171359}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,6 +1466,7 @@ Transform:
   - {fileID: 411209108}
   - {fileID: 1558173515}
   - {fileID: 836471204}
+  - {fileID: 1785549888}
   m_Father: {fileID: 747587820}
   m_RootOrder: 0
 --- !u!1 &1141327685
@@ -789,7 +1477,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1141327686}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +1514,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1143962856
 MeshRenderer:
@@ -897,7 +1585,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1189199557}
-  m_Layer: 0
+  - 136: {fileID: 1189199560}
+  - 54: {fileID: 1189199559}
+  - 144: {fileID: 1189199558}
+  m_Layer: 2
   m_Name: genSWAT_RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -918,6 +1609,76 @@ Transform:
   - {fileID: 574852916}
   m_Father: {fileID: 1311633474}
   m_RootOrder: 0
+--- !u!144 &1189199558
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1189199556}
+  m_ConnectedBody: {fileID: 1311633476}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0.0000004246831, y: 0.43767086, z: 0.037541263}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 0, z: -1}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -80
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!54 &1189199559
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1189199556}
+  serializedVersion: 2
+  m_Mass: 1.875
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &1189199560
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1189199556}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.143419
+  m_Height: 0.573676
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.286838, z: 0}
 --- !u!1 &1240744566
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +1687,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1240744567}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandMiddle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +1716,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1252111388}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandThumb3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -983,7 +1744,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1292514665}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1011,7 +1772,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1311633474}
-  m_Layer: 0
+  - 136: {fileID: 1311633477}
+  - 54: {fileID: 1311633476}
+  - 144: {fileID: 1311633475}
+  m_Layer: 2
   m_Name: genSWAT_RightUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,6 +1796,76 @@ Transform:
   - {fileID: 1189199557}
   m_Father: {fileID: 1513171166}
   m_RootOrder: 1
+--- !u!144 &1311633475
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1311633473}
+  m_ConnectedBody: {fileID: 1513171167}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0.0950893, y: -0.06691003, z: 0}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 0, z: -1}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -20
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 70
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 30
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!54 &1311633476
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1311633473}
+  serializedVersion: 2
+  m_Mass: 1.875
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &1311633477
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1311633473}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.13130127
+  m_Height: 0.43767086
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.21883543, z: 0}
 --- !u!1 &1341713613
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1874,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1341713614}
-  m_Layer: 0
+  - 82: {fileID: 1341713616}
+  - 114: {fileID: 1341713615}
+  m_Layer: 2
   m_Name: genSWAT_LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,6 +1897,91 @@ Transform:
   - {fileID: 1578923370}
   m_Father: {fileID: 1422897289}
   m_RootOrder: 0
+--- !u!114 &1341713615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1341713613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6b8039500a22b43a2eb33f06b6290b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &1341713616
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1341713613}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1378298064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1990,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1378298065}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +2019,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1385184666}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_AttachHandRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +2047,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1422897289}
-  m_Layer: 0
+  - 136: {fileID: 1422897292}
+  - 54: {fileID: 1422897291}
+  - 144: {fileID: 1422897290}
+  m_Layer: 2
   m_Name: genSWAT_LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1147,6 +2071,76 @@ Transform:
   - {fileID: 1341713614}
   m_Father: {fileID: 1873657714}
   m_RootOrder: 0
+--- !u!144 &1422897290
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422897288}
+  m_ConnectedBody: {fileID: 1873657715}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -0.000000050638846, y: -0.43767083, z: -0.037541278}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 0, z: 1}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -80
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!54 &1422897291
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422897288}
+  serializedVersion: 2
+  m_Mass: 1.875
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &1422897292
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1422897288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.14333563
+  m_Height: 0.5733425
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.28667125, z: 0}
 --- !u!1 &1432966355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,7 +2149,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1432966356}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandIndex3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,7 +2177,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1441906257}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1423,7 +2417,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1513171166}
-  m_Layer: 0
+  - 65: {fileID: 1513171168}
+  - 54: {fileID: 1513171167}
+  m_Layer: 2
   m_Name: genSWAT_Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1446,6 +2442,33 @@ Transform:
   - {fileID: 2050501677}
   m_Father: {fileID: 1378298065}
   m_RootOrder: 0
+--- !u!54 &1513171167
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513171165}
+  serializedVersion: 2
+  m_Mass: 3.125
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1513171168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513171165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42941114, y: 0.194139, z: 0.28188503}
+  m_Center: {x: 0.00000016391277, y: 0.030159473, z: 0.000000029802322}
 --- !u!1 &1523152784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,7 +2477,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1523152785}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1475,6 +2498,69 @@ Transform:
   - {fileID: 926049861}
   m_Father: {fileID: 749134148}
   m_RootOrder: 0
+--- !u!1 &1538940365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1538940367}
+  - 108: {fileID: 1538940366}
+  m_Layer: 0
+  m_Name: Directional Light 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1538940366
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1538940365}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 1
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1.5
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 0.2
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1538940367
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1538940365}
+  m_LocalRotation: {x: 0, y: 0.9063079, z: -0.42261827, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 50, y: 180, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1 &1558173514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +2569,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1558173515}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandMiddle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1513,7 +2599,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1578923370}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftToeBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1541,7 +2627,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1590762084}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandIndex2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1570,7 +2656,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1727918304}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1592,6 +2678,7 @@ Transform:
   - {fileID: 2050814815}
   - {fileID: 105303416}
   - {fileID: 2068208363}
+  - {fileID: 1931084066}
   m_Father: {fileID: 565940600}
   m_RootOrder: 0
 --- !u!1 &1737463091
@@ -1602,7 +2689,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1737463092}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LeftHandThumb2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1624,6 +2711,46 @@ Transform:
   - {fileID: 977628239}
   m_Father: {fileID: 836471204}
   m_RootOrder: 0
+--- !u!1 &1785549887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1785549888}
+  - 114: {fileID: 1785549889}
+  m_Layer: 0
+  m_Name: Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1785549888
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1785549887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1027171359}
+  m_RootOrder: 4
+--- !u!114 &1785549889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1785549887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e29e28c5fb30a94494ede8747980e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1821641455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,7 +2759,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1821641456}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandMiddle3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1660,7 +2787,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1873657714}
-  m_Layer: 0
+  - 136: {fileID: 1873657717}
+  - 54: {fileID: 1873657715}
+  - 144: {fileID: 1873657716}
+  m_Layer: 2
   m_Name: genSWAT_LeftUpLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1681,6 +2811,76 @@ Transform:
   - {fileID: 1422897289}
   m_Father: {fileID: 1513171166}
   m_RootOrder: 0
+--- !u!54 &1873657715
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873657713}
+  serializedVersion: 2
+  m_Mass: 1.875
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!144 &1873657716
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873657713}
+  m_ConnectedBody: {fileID: 1513171167}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -0.09508931, y: -0.06691003, z: 0}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 0, z: 1}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -20
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 70
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 30
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!136 &1873657717
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1873657713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.13130125
+  m_Height: 0.43767083
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.21883541, z: 0}
 --- !u!1 &1896343519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,7 +2890,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1896343521}
   - 137: {fileID: 1896343520}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1711,7 +2911,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7dad81e927eb347b794a5de2bd6dbc17, type: 2}
+  - {fileID: 2100000, guid: 36a10c9280e324eae86984b96e1a026f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1793,6 +2993,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 512936654}
   m_RootOrder: 1
+--- !u!1 &1931084065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1931084066}
+  - 114: {fileID: 1931084067}
+  m_Layer: 0
+  m_Name: Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1931084066
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1931084065}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1727918304}
+  m_RootOrder: 4
+--- !u!114 &1931084067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1931084065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e29e28c5fb30a94494ede8747980e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1933858162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,7 +3043,7 @@ GameObject:
   - 4: {fileID: 1933858164}
   - 108: {fileID: 1933858163}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Directional Light 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1819,7 +3059,7 @@ Light:
   serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1850,7 +3090,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1933858162}
   m_LocalRotation: {x: 0.27162325, y: 0.694289, z: -0.32370797, w: 0.58257765}
-  m_LocalPosition: {x: -0.66, y: 3.23, z: -2.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 49.994003, y: 100, z: 0}
   m_Children: []
@@ -1865,7 +3105,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1943247077}
   - 137: {fileID: 1943247076}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1886,7 +3126,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7dad81e927eb347b794a5de2bd6dbc17, type: 2}
+  - {fileID: 2100000, guid: 36a10c9280e324eae86984b96e1a026f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1976,7 +3216,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2044766255}
-  m_Layer: 0
+  - 136: {fileID: 2044766258}
+  - 54: {fileID: 2044766256}
+  - 144: {fileID: 2044766257}
+  m_Layer: 2
   m_Name: genSWAT_RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1997,6 +3240,76 @@ Transform:
   - {fileID: 565940600}
   m_Father: {fileID: 808991987}
   m_RootOrder: 0
+--- !u!54 &2044766256
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2044766254}
+  serializedVersion: 2
+  m_Mass: 1.25
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!144 &2044766257
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2044766254}
+  m_ConnectedBody: {fileID: 2050501678}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 0, y: -1, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0.21470574, y: 0.3696311, z: 0.000000058619296}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 0, z: -1}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -70
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 10
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 50
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!136 &2044766258
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2044766254}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.06100816
+  m_Height: 0.24403264
+  m_Direction: 0
+  m_Center: {x: 0.12201632, y: 0, z: 0}
 --- !u!1 &2050501676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,7 +3318,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2050501677}
-  m_Layer: 0
+  - 65: {fileID: 2050501680}
+  - 54: {fileID: 2050501678}
+  - 144: {fileID: 2050501679}
+  m_Layer: 2
   m_Name: genSWAT_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2026,6 +3342,75 @@ Transform:
   - {fileID: 749134148}
   m_Father: {fileID: 1513171166}
   m_RootOrder: 2
+--- !u!54 &2050501678
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2050501676}
+  serializedVersion: 2
+  m_Mass: 3.125
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!144 &2050501679
+CharacterJoint:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2050501676}
+  m_ConnectedBody: {fileID: 1513171167}
+  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Axis: {x: 1, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0.12722898, z: 0}
+  serializedVersion: 2
+  m_SwingAxis: {x: 0, y: 0, z: 1}
+  m_TwistLimitSpring:
+    spring: 0
+    damper: 0
+  m_LowTwistLimit:
+    limit: -20
+    bounciness: 0
+    contactDistance: 0
+  m_HighTwistLimit:
+    limit: 20
+    bounciness: 0
+    contactDistance: 0
+  m_SwingLimitSpring:
+    spring: 0
+    damper: 0
+  m_Swing1Limit:
+    limit: 10
+    bounciness: 0
+    contactDistance: 0
+  m_Swing2Limit:
+    limit: 0
+    bounciness: 0
+    contactDistance: 0
+  m_EnableProjection: 0
+  m_ProjectionDistance: 0.1
+  m_ProjectionAngle: 180
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+--- !u!65 &2050501680
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2050501676}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42941114, y: 0.36963105, z: 0.28188503}
+  m_Center: {x: 0.00000016391277, y: 0.18481557, z: 0.000000029802322}
 --- !u!1 &2050814814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,7 +3419,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2050814815}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandIndex1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2063,7 +3448,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2068208363}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: genSWAT_RightHandThumb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
