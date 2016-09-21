@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 676bd75cbabdf45d9bc5a9bb0da9d4a3
-timeCreated: 1474085183
-licenseType: Free
+guid: 837ea4291d345e34bafda9c68c30fa63
+labels:
+- Controller
+- Animated
+- Combat
+- Rifle
 NativeFormatImporter:
   userData: 
   assetBundleName: 
