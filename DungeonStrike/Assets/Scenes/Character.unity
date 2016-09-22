@@ -270,7 +270,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &117119952
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +365,49 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 7
+--- !u!1 &173686887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 173686889}
+  - 114: {fileID: 173686888}
+  m_Layer: 0
+  m_Name: Input Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &173686888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 173686887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c2aba6e3bffdc498601c892e981544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _IsEnabled: 1
+  _IsXboxControllerEnabled: 0
+  _ViewActivator: 3
+--- !u!4 &173686889
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 173686887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_RootOrder: 8
 --- !u!1 &254512362
 GameObject:
@@ -444,7 +487,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &263559509
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,11 +496,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 263559512}
-  - 95: {fileID: 263559511}
   - 205: {fileID: 263559510}
   - 114: {fileID: 263559514}
-  - 195: {fileID: 263559513}
-  - 114: {fileID: 263559515}
+  - 114: {fileID: 263559513}
+  - 95: {fileID: 263559511}
   m_Layer: 0
   m_Name: genSWAT
   m_TagString: Untagged
@@ -495,16 +537,15 @@ LODGroup:
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: a980fb7137f2e194a8a2e064607659c8,
-    type: 3}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 263559509}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a980fb7137f2e194a8a2e064607659c8, type: 3}
-  m_Controller: {fileID: 9100000, guid: f9746cc68a0d24a118ba35b2734cbb0a, type: 2}
-  m_CullingMode: 1
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -525,27 +566,55 @@ Transform:
   - {fileID: 471413149}
   - {fileID: 535842512}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
---- !u!195 &263559513
-NavMeshAgent:
+  m_RootOrder: 4
+--- !u!114 &263559513
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 263559509}
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030037c7f181647488f269f2490d7486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _InputSourceOwner: {fileID: 173686887}
+  _AutoFindInputSource: 1
+  _UseSimulatedInput: 0
+  _CameraTransform: {fileID: 933689982}
+  _AutoFindCameraTransform: 1
+  _IsTimeSmoothingEnabled: 1
+  _MaxSpeed: 7
+  _RotationSpeed: 360
+  MotionLayers:
+  - _GUID: 
+    _Name: Locomotion
+    _AnimatorLayerIndex: 0
+    MotionDefinitions:
+    - '{, "Type" : "com.ootii.Actors.AnimationControllers.Idle, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
+      : "ActivateRotation", "IsEnabled" : "True", "ReactivationDelay" : "0", "RotateWithViewInputX"
+      : "True", "RotateWithMovementInputX" : "True", "ForceViewOnInput" : "True",
+      "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
+      "RotationToViewSpeed" : "360"}'
+    - '{, "Type" : "com.ootii.Actors.AnimationControllers.Fall, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "14", "ActionAlias"
+      : "Jump", "IsEnabled" : "True", "ReactivationDelay" : "0", "MinFallHeight" :
+      "0.3", "Impulse" : "0", "ConvertToHipBase" : "False", "HipBoneName" : "", "IsMomentumEnabled"
+      : "True", "IsControlEnabled" : "False", "ControlSpeed" : "2", "RequiredOverheadDistance"
+      : "0"}'
+    - '{, "Type" : "com.ootii.Actors.AnimationControllers.WalkRunRotate, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority"
+      : "5", "ActionAlias" : "Run", "IsEnabled" : "True", "ReactivationDelay" : "0",
+      "DefaultToRun" : "False", "RotateActionAlias" : "ActivateRotation", "StrafeLeftActionAlias"
+      : "StrafeLeft", "StrafeRightActionAlias" : "StrafeRight", "RotateWithViewInputX"
+      : "True", "RotateWithMovementInputX" : "True", "ForceViewOnInput" : "True",
+      "RotationSpeed" : "120", "RotationSmoothing" : "0.1", "RotationToViewSpeed"
+      : "360", "RemoveLateralMovement" : "True", "StartInWalk" : "False", "StartInRun"
+      : "False"}'
+  EditorShowAdvanced: 0
+  EditorLayerIndex: 0
+  EditorMotionIndex: 0
 --- !u!114 &263559514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,22 +623,70 @@ MonoBehaviour:
   m_GameObject: {fileID: 263559509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a569b035efcba4589b8a0b1b961cbade, type: 3}
+  m_Script: {fileID: 11500000, guid: c6696137b9a781c4ab59158926ed71cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingTarget: {fileID: 254512366}
---- !u!114 &263559515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 263559509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1823bfc5ac3448f99d784250465d348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isRecording: 0
+  _IsInternalUpdateEnabled: 1
+  _IsFixedUpdateEnabled: 0
+  _FixedUpdateFPS: 60
+  EditorComponentInitialized: 1
+  _ProcessInLateUpdate: 1
+  _StateCount: 20
+  _ExtrapolatePhysics: 0
+  _IsGravityEnabled: 1
+  _IsGravityRelative: 0
+  _Gravity: {x: 0, y: 0, z: 0}
+  _SkinWidth: 0.01
+  _Mass: 2
+  _GroundingStartOffset: 1
+  _GroundingDistance: 3
+  _IsGroundingLayersEnabled: 0
+  _GroundingLayers: 1
+  _BaseRadius: 0.1
+  _FixGroundPenetration: 1
+  _ForceGrounding: 1
+  _ForceGroundingDistance: 0.05
+  _IsCollisionEnabled: 1
+  _StopOnRotationCollision: 0
+  _AllowPushback: 0
+  _CollisionLayers: 1
+  _OverlapRadius: 0.9
+  _OverlapCenter: {x: 0, y: 0.9, z: 0}
+  _IsSlidingEnabled: 0
+  _MinSlopeAngle: 20
+  _MinSlopeGravityCoefficient: 1
+  _MaxSlopeAngle: 40
+  _SlopeMovementStep: 0.01
+  _OrientToGround: 0
+  _KeepOrientationInAir: 0
+  _OrientToGroundDistance: 2
+  _OrientToGroundSpeed: 1
+  _MinOrientToGroundAngleForSpeed: 5
+  _MaxStepHeight: 0.3
+  _StepUpSpeed: 1.5
+  _MaxStepUpAngle: 10
+  _StepDownSpeed: 1.5
+  _FreezePositionX: 0
+  _FreezePositionY: 0
+  _FreezePositionZ: 0
+  _FreezeRotationX: 0
+  _FreezeRotationY: 0
+  _FreezeRotationZ: 0
+  mBodyShapeDefinitions:
+  - '{, "Type" : "com.ootii.Actors.BodyCapsule, Assembly-CSharp, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null", "EndOffset" : "(0, 1.6, 0)", "Name" : "Body
+    Capsule", "IsEnabledOnGround" : "True", "IsEnabledOnSlope" : "True", "IsEnabledAboveGround"
+    : "True", "Offset" : "(0, 0.60000002, 0)", "Radius" : "0.25"}'
+  - '{, "Type" : "com.ootii.Actors.BodySphere, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null", "Name" : "Foot Sphere", "IsEnabledOnGround" : "False", "IsEnabledOnSlope"
+    : "False", "IsEnabledAboveGround" : "True", "Offset" : "(0, 0.25, 0)", "Radius"
+    : "0.25"}'
+  EditorBodyShapeIndex: -1
+  EditorShowAdvanced: 0
+  EditorCollideWithObjects: 1
+  EditorWalkOnWalls: 0
+  EditorSlideOnSlopes: 0
+  EditorRespondToColliders: 0
 --- !u!1 &405116125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1255,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!208 &645219078
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1440,6 +1557,58 @@ Transform:
   - {fileID: 1666823928}
   m_Father: {fileID: 585565974}
   m_RootOrder: 0
+--- !u!1 &933689980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 933689982}
+  - 114: {fileID: 933689981}
+  m_Layer: 0
+  m_Name: Camera Rig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &933689981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 933689980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97998fab329806d4aa8ec976cd3ef268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Mode: 0
+  _Anchor: {fileID: 263559512}
+  _FrameForceToFollowAnchor: 0
+  _IsInternalUpdateEnabled: 0
+  _IsFixedUpdateEnabled: 0
+  _FixedUpdateFPS: 60
+  _InputSourceOwner: {fileID: 173686887}
+  _AnchorOffset: {x: 0, y: 2, z: 0}
+  _Radius: 4
+  _RotationSpeed: 120
+  _InvertPitch: 1
+--- !u!4 &933689982
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 933689980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1448815426}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &934228732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,7 +1973,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1270720877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1980,7 +2149,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -2004,12 +2173,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1448815421}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 933689982}
   m_RootOrder: 0
 --- !u!114 &1448815427
 MonoBehaviour:
@@ -2211,7 +2380,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 47.987003, y: -5.379, z: 1.9670001}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1666823927
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,7 +2561,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 144.93399, y: -10.003998, z: 62.220993}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1944849592
 GameObject:
   m_ObjectHideFlags: 0
