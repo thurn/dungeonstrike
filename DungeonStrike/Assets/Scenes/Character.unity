@@ -457,6 +457,7 @@ GameObject:
   - 205: {fileID: 263559510}
   - 114: {fileID: 263559514}
   - 195: {fileID: 263559513}
+  - 114: {fileID: 263559515}
   m_Layer: 0
   m_Name: genSWAT
   m_TagString: Untagged
@@ -500,7 +501,7 @@ Animator:
   m_GameObject: {fileID: 263559509}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a980fb7137f2e194a8a2e064607659c8, type: 3}
-  m_Controller: {fileID: 9100000, guid: 837ea4291d345e34bafda9c68c30fa63, type: 2}
+  m_Controller: {fileID: 9100000, guid: f9746cc68a0d24a118ba35b2734cbb0a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -557,6 +558,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingTarget: {fileID: 254512366}
+--- !u!114 &263559515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 263559509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1823bfc5ac3448f99d784250465d348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRecording: 0
 --- !u!1 &405116125
 GameObject:
   m_ObjectHideFlags: 0
