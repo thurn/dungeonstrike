@@ -567,7 +567,7 @@ Animator:
   m_GameObject: {fileID: 263559509}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a980fb7137f2e194a8a2e064607659c8, type: 3}
-  m_Controller: {fileID: 9100000, guid: 48232326ff787a44c8f88bda3b9edbbf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 09c616286c2004c33bdb7fee468e87b2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -618,7 +618,7 @@ MonoBehaviour:
     MotionDefinitions:
     - '{, "Type" : "com.ootii.Actors.AnimationControllers.Idle, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
-      : "ActivateRotation", "IsEnabled" : "True", "ReactivationDelay" : "0", "RotateWithViewInputX"
+      : "ActivateRotation", "IsEnabled" : "False", "ReactivationDelay" : "0", "RotateWithViewInputX"
       : "False", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
       "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
       "RotationToViewSpeed" : "360"}'
@@ -639,13 +639,25 @@ MonoBehaviour:
       : "False"}'
     - '{, "Type" : "com.ootii.Actors.AnimationControllers.WalkRunPivot, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority"
-      : "5", "ActionAlias" : "Run", "IsEnabled" : "True", "ReactivationDelay" : "0",
+      : "5", "ActionAlias" : "Run", "IsEnabled" : "False", "ReactivationDelay" : "0",
       "DefaultToRun" : "False", "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed"
       : "180", "StopDelay" : "0.15", "RemoveLateralMovement" : "True", "StartInWalk"
       : "False", "StartInRun" : "False"}'
+    - '{, "Type" : "com.ootii.Extra.Motions.MAP_Idle, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
+      : "ActivateRotation", "IsEnabled" : "True", "ReactivationDelay" : "0", "RotateWithViewInputX"
+      : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
+      "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
+      "RotationToViewSpeed" : "360"}'
+    - '{, "Type" : "com.ootii.Extra.Motions.MAP_WalkRunPivot, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "5", "ActionAlias"
+      : "Run", "IsEnabled" : "True", "ReactivationDelay" : "0", "DefaultToRun" : "False",
+      "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed" : "180", "StopDelay"
+      : "0.1", "RemoveLateralMovement" : "True", "StartInWalk" : "False", "StartInRun"
+      : "False"}'
   EditorShowAdvanced: 1
   EditorLayerIndex: 0
-  EditorMotionIndex: 0
+  EditorMotionIndex: 5
 --- !u!114 &263559514
 MonoBehaviour:
   m_ObjectHideFlags: 0
