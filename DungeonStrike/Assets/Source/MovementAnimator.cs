@@ -15,11 +15,11 @@ namespace DungeonStrike
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _navMeshAgent.updatePosition = false;
             _navMeshAgent.updateRotation = false;
-            _navMeshAgent.speed = 1.65f;
+            _navMeshAgent.speed = 2.05f;
             _navMeshAgent.radius = 2;
-            _navMeshAgent.acceleration = 2;
+            _navMeshAgent.acceleration = 5;
             _navMeshAgent.stoppingDistance = 2;
-            _navMeshAgent.angularSpeed = 240;
+            _navMeshAgent.angularSpeed = 120;
         }
 
         void Update()
@@ -44,7 +44,7 @@ namespace DungeonStrike
         {
             return !_navMeshAgent.pathPending &&
                 _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance &&
-                (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude == 0f);
+                (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude <= 1.0f);
         }
     }
 }

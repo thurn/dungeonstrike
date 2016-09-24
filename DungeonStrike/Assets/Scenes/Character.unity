@@ -525,6 +525,7 @@ GameObject:
   - 95: {fileID: 263559511}
   - 114: {fileID: 263559515}
   - 195: {fileID: 263559516}
+  - 114: {fileID: 263559517}
   m_Layer: 0
   m_Name: genSWAT
   m_TagString: Untagged
@@ -616,33 +617,6 @@ MonoBehaviour:
     _Name: Locomotion
     _AnimatorLayerIndex: 0
     MotionDefinitions:
-    - '{, "Type" : "com.ootii.Actors.AnimationControllers.Idle, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
-      : "ActivateRotation", "IsEnabled" : "False", "ReactivationDelay" : "0", "RotateWithViewInputX"
-      : "False", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
-      "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
-      "RotationToViewSpeed" : "360"}'
-    - '{, "Type" : "com.ootii.Actors.AnimationControllers.Fall, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "14", "ActionAlias"
-      : "Jump", "IsEnabled" : "True", "ReactivationDelay" : "0", "MinFallHeight" :
-      "0.3", "Impulse" : "0", "ConvertToHipBase" : "False", "HipBoneName" : "", "IsMomentumEnabled"
-      : "True", "IsControlEnabled" : "False", "ControlSpeed" : "2", "RequiredOverheadDistance"
-      : "0"}'
-    - '{, "Type" : "com.ootii.Actors.AnimationControllers.WalkRunRotate, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority"
-      : "5", "ActionAlias" : "Run", "IsEnabled" : "False", "ReactivationDelay" : "0",
-      "DefaultToRun" : "False", "RotateActionAlias" : "ActivateRotation", "StrafeLeftActionAlias"
-      : "StrafeLeft", "StrafeRightActionAlias" : "StrafeRight", "RotateWithViewInputX"
-      : "True", "RotateWithMovementInputX" : "True", "ForceViewOnInput" : "True",
-      "RotationSpeed" : "120", "RotationSmoothing" : "0.1", "RotationToViewSpeed"
-      : "360", "RemoveLateralMovement" : "True", "StartInWalk" : "False", "StartInRun"
-      : "False"}'
-    - '{, "Type" : "com.ootii.Actors.AnimationControllers.WalkRunPivot, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority"
-      : "5", "ActionAlias" : "Run", "IsEnabled" : "False", "ReactivationDelay" : "0",
-      "DefaultToRun" : "False", "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed"
-      : "180", "StopDelay" : "0.15", "RemoveLateralMovement" : "True", "StartInWalk"
-      : "False", "StartInRun" : "False"}'
     - '{, "Type" : "com.ootii.Extra.Motions.MAP_Idle, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
       : "ActivateRotation", "IsEnabled" : "True", "ReactivationDelay" : "0", "RotateWithViewInputX"
@@ -650,14 +624,14 @@ MonoBehaviour:
       "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
       "RotationToViewSpeed" : "360"}'
     - '{, "Type" : "com.ootii.Extra.Motions.MAP_WalkRunPivot, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "5", "ActionAlias"
-      : "Run", "IsEnabled" : "True", "ReactivationDelay" : "0", "DefaultToRun" : "False",
-      "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed" : "180", "StopDelay"
-      : "0.1", "RemoveLateralMovement" : "True", "StartInWalk" : "False", "StartInRun"
-      : "False"}'
+      Culture=neutral, PublicKeyToken=null", "Name" : "Rifle WalkRunPivot", "Priority"
+      : "5", "ActionAlias" : "Run", "IsEnabled" : "True", "ReactivationDelay" : "0",
+      "DefaultToRun" : "False", "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed"
+      : "180", "StopDelay" : "0.1", "RemoveLateralMovement" : "True", "StartInWalk"
+      : "False", "StartInRun" : "False"}'
   EditorShowAdvanced: 1
   EditorLayerIndex: 0
-  EditorMotionIndex: 5
+  EditorMotionIndex: 0
 --- !u!114 &263559514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,6 +738,17 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &263559517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 263559509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61337247dd6434b01be7727e194d0092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &405116125
 GameObject:
   m_ObjectHideFlags: 0
