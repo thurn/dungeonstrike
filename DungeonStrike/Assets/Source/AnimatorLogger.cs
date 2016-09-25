@@ -18,7 +18,6 @@ namespace DungeonStrike
             var clipName = clipInfo[0].clip.name;
 			if (clipName != _currentClipName) {
                 Debug.Log("Playing animation clip: " + clipName);
-                Debug.Log("Input magnitude " + _animator.GetFloat("InputMagnitude"));
                 _currentClipName = clipName;
             }
         }
