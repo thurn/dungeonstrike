@@ -1,0 +1,425 @@
+; 
+;
+Basics Tutorial.pdf 96ad8977
+Basics Tutorial.pdf.meta d68b427a
+MadPixelMachine Products.pdf fdb3aad8
+MadPixelMachine Products.pdf.meta 569a79b9
+Materials/Unity UI Clear Mask.mat 7fbf3fdc
+Materials/Unity UI Clear Mask.mat.meta db0e82fc
+Materials.meta 13578fb8
+Offline Documentation.zip d2fc9752
+Offline Documentation.zip.meta b3a9ee1a
+Progress Bar Pack 1/Prefabs/bar 1.prefab 6e3fa6b9
+Progress Bar Pack 1/Prefabs/bar 1.prefab.meta 8621f560
+Progress Bar Pack 1/Prefabs/bar 2.prefab ea013ebe
+Progress Bar Pack 1/Prefabs/bar 2.prefab.meta ca714dbf
+Progress Bar Pack 1/Prefabs/bar 3.prefab 5b94802c
+Progress Bar Pack 1/Prefabs/bar 3.prefab.meta 2c2a1097
+Progress Bar Pack 1/Prefabs/bar 4.prefab 17924dc3
+Progress Bar Pack 1/Prefabs/bar 4.prefab.meta ac2f0ab3
+Progress Bar Pack 1/Prefabs/bar 5.prefab 4cb8d9bf
+Progress Bar Pack 1/Prefabs/bar 5.prefab.meta 8d92183e
+Progress Bar Pack 1/Prefabs/bar 6.prefab 2b7e51de
+Progress Bar Pack 1/Prefabs/bar 6.prefab.meta 105c6574
+Progress Bar Pack 1/Prefabs.meta 3da88867
+Progress Bar Pack 1/Scenes/ProgressBarPack1.unity 9d592d9f
+Progress Bar Pack 1/Scenes/ProgressBarPack1.unity.meta fe1c335c
+Progress Bar Pack 1/Scenes.meta 68b50ed8
+Progress Bar Pack 1/Sprites/bar1_bar.png 5ac3e97a
+Progress Bar Pack 1/Sprites/bar1_bar.png.meta bad03082
+Progress Bar Pack 1/Sprites/bar1_fg.png 05789ac0
+Progress Bar Pack 1/Sprites/bar1_fg.png.meta 8ea2afb8
+Progress Bar Pack 1/Sprites/bar2_bar.png 94b01b6b
+Progress Bar Pack 1/Sprites/bar2_bar.png.meta 676c547b
+Progress Bar Pack 1/Sprites/bar2_fg.png 726ffa8d
+Progress Bar Pack 1/Sprites/bar2_fg.png.meta 24866d0d
+Progress Bar Pack 1/Sprites/bar3_bar.png 5782efe7
+Progress Bar Pack 1/Sprites/bar3_bar.png.meta c1d3328c
+Progress Bar Pack 1/Sprites/bar3_fg.png cbec9296
+Progress Bar Pack 1/Sprites/bar3_fg.png.meta cafb7d4e
+Progress Bar Pack 1/Sprites/bar4_bar.png 1c103c2c
+Progress Bar Pack 1/Sprites/bar4_bar.png.meta ae9110e6
+Progress Bar Pack 1/Sprites/bar4_fg.png 15a2f0c7
+Progress Bar Pack 1/Sprites/bar4_fg.png.meta b2f366a4
+Progress Bar Pack 1/Sprites/bar5_bar.png 233ad813
+Progress Bar Pack 1/Sprites/bar5_bar.png.meta a3411e59
+Progress Bar Pack 1/Sprites/bar5_fg.png 845a4c2d
+Progress Bar Pack 1/Sprites/bar5_fg.png.meta 78a900cc
+Progress Bar Pack 1/Sprites/bar6_bar.png 0f37730d
+Progress Bar Pack 1/Sprites/bar6_bar.png.meta 225e532e
+Progress Bar Pack 1/Sprites/bar6_fg.png 5b42869d
+Progress Bar Pack 1/Sprites/bar6_fg.png.meta eca7a219
+Progress Bar Pack 1/Sprites.meta d9ee91b3
+Progress Bar Pack 1/_Depreacted/Atlas/Progress Bar Pack 1 Atlas.png acaf4c72
+Progress Bar Pack 1/_Depreacted/Atlas/Progress Bar Pack 1 Atlas.png.meta 583edbbb
+Progress Bar Pack 1/_Depreacted/Atlas/Progress Bar Pack 1 Atlas.prefab 156549c6
+Progress Bar Pack 1/_Depreacted/Atlas/Progress Bar Pack 1 Atlas.prefab.meta 3ff892ad
+Progress Bar Pack 1/_Depreacted/Atlas.meta 7df50036
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar1.prefab e220442b
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar1.prefab.meta 3b9950b7
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar2.prefab 74cc31b4
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar2.prefab.meta c6875243
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar3.prefab 3b290add
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar3.prefab.meta 7d7268c3
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar4.prefab 5255b951
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar4.prefab.meta c244701b
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar5.prefab 38472014
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar5.prefab.meta ceba167b
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar6.prefab fa10115f
+Progress Bar Pack 1/_Depreacted/Prefabs/Bar6.prefab.meta de136ec9
+Progress Bar Pack 1/_Depreacted/Prefabs.meta 40c3f3a7
+Progress Bar Pack 1/_Depreacted/Scenes/ProgressBarPack1Scene - Atlas.unity 3d810765
+Progress Bar Pack 1/_Depreacted/Scenes/ProgressBarPack1Scene - Atlas.unity.meta 0feca493
+Progress Bar Pack 1/_Depreacted/Scenes/ProgressBarPack1Scene.unity 491651b2
+Progress Bar Pack 1/_Depreacted/Scenes/ProgressBarPack1Scene.unity.meta 64312927
+Progress Bar Pack 1/_Depreacted/Scenes.meta d29b7629
+Progress Bar Pack 1/_Depreacted/Textures/bar1_bar.png 5ac3e97a
+Progress Bar Pack 1/_Depreacted/Textures/bar1_bar.png.meta 79ad63c7
+Progress Bar Pack 1/_Depreacted/Textures/bar1_fg.png 05789ac0
+Progress Bar Pack 1/_Depreacted/Textures/bar1_fg.png.meta 5ed1d8ed
+Progress Bar Pack 1/_Depreacted/Textures/bar2_bar.png 94b01b6b
+Progress Bar Pack 1/_Depreacted/Textures/bar2_bar.png.meta a1c5a4e2
+Progress Bar Pack 1/_Depreacted/Textures/bar2_fg.png 726ffa8d
+Progress Bar Pack 1/_Depreacted/Textures/bar2_fg.png.meta 674d833e
+Progress Bar Pack 1/_Depreacted/Textures/bar3_bar.png 5782efe7
+Progress Bar Pack 1/_Depreacted/Textures/bar3_bar.png.meta 8cbb08bf
+Progress Bar Pack 1/_Depreacted/Textures/bar3_fg.png cbec9296
+Progress Bar Pack 1/_Depreacted/Textures/bar3_fg.png.meta 4421a105
+Progress Bar Pack 1/_Depreacted/Textures/bar4_bar.png 1c103c2c
+Progress Bar Pack 1/_Depreacted/Textures/bar4_bar.png.meta 76a318bc
+Progress Bar Pack 1/_Depreacted/Textures/bar4_fg.png 15a2f0c7
+Progress Bar Pack 1/_Depreacted/Textures/bar4_fg.png.meta 01e5a972
+Progress Bar Pack 1/_Depreacted/Textures/bar5_bar.png 233ad813
+Progress Bar Pack 1/_Depreacted/Textures/bar5_bar.png.meta f273f756
+Progress Bar Pack 1/_Depreacted/Textures/bar5_fg.png 845a4c2d
+Progress Bar Pack 1/_Depreacted/Textures/bar5_fg.png.meta 34cef951
+Progress Bar Pack 1/_Depreacted/Textures/bar6_bar.png 0f37730d
+Progress Bar Pack 1/_Depreacted/Textures/bar6_bar.png.meta 34337e54
+Progress Bar Pack 1/_Depreacted/Textures/bar6_fg.png 5b42869d
+Progress Bar Pack 1/_Depreacted/Textures/bar6_fg.png.meta a515c76e
+Progress Bar Pack 1/_Depreacted/Textures.meta fef7fd3f
+Progress Bar Pack 1/_Depreacted.meta 9789dccb
+Progress Bar Pack 1.meta 87edf537
+Progress Bar Pack 2/Prefabs/Bar 1.prefab a39ff663
+Progress Bar Pack 2/Prefabs/Bar 1.prefab.meta b7a1212f
+Progress Bar Pack 2/Prefabs/Bar 2.prefab 9130bc01
+Progress Bar Pack 2/Prefabs/Bar 2.prefab.meta f206726b
+Progress Bar Pack 2/Prefabs/Bar 3.prefab 245acfcf
+Progress Bar Pack 2/Prefabs/Bar 3.prefab.meta a40ca971
+Progress Bar Pack 2/Prefabs/Bar 4.prefab 6d148723
+Progress Bar Pack 2/Prefabs/Bar 4.prefab.meta f529b64e
+Progress Bar Pack 2/Prefabs/Bar 5.prefab f6baa16e
+Progress Bar Pack 2/Prefabs/Bar 5.prefab.meta 7f82bfdb
+Progress Bar Pack 2/Prefabs/Bar 6.prefab ae42d3d5
+Progress Bar Pack 2/Prefabs/Bar 6.prefab.meta b5af72ff
+Progress Bar Pack 2/Prefabs.meta eb5638ec
+Progress Bar Pack 2/Scenes/EnergyBarPack2.unity 59597d73
+Progress Bar Pack 2/Scenes/EnergyBarPack2.unity.meta 12eb08c5
+Progress Bar Pack 2/Scenes.meta 11ec7475
+Progress Bar Pack 2/Sprites/bar1_bar.png 142ecb42
+Progress Bar Pack 2/Sprites/bar1_bar.png.meta 99f7caa9
+Progress Bar Pack 2/Sprites/bar1_bg.png b4987d34
+Progress Bar Pack 2/Sprites/bar1_bg.png.meta f216bfab
+Progress Bar Pack 2/Sprites/bar1_fg.png 497ec8c4
+Progress Bar Pack 2/Sprites/bar1_fg.png.meta 5b851e15
+Progress Bar Pack 2/Sprites/bar2_bar.png 56ec749a
+Progress Bar Pack 2/Sprites/bar2_bar.png.meta 21389138
+Progress Bar Pack 2/Sprites/bar2_bg.png 6aa736aa
+Progress Bar Pack 2/Sprites/bar2_bg.png.meta 3c2561d0
+Progress Bar Pack 2/Sprites/bar2_fg.png 4b5de0b3
+Progress Bar Pack 2/Sprites/bar2_fg.png.meta 1e287d17
+Progress Bar Pack 2/Sprites/bar3.png de538618
+Progress Bar Pack 2/Sprites/bar3.png.meta 3edcdd88
+Progress Bar Pack 2/Sprites/bar4.png 17569115
+Progress Bar Pack 2/Sprites/bar4.png.meta 9be211ea
+Progress Bar Pack 2/Sprites/bar5.png 8bca5334
+Progress Bar Pack 2/Sprites/bar5.png.meta 11911f1d
+Progress Bar Pack 2/Sprites/bar6.png c7af20da
+Progress Bar Pack 2/Sprites/bar6.png.meta 5220b584
+Progress Bar Pack 2/Sprites.meta 9251ce47
+Progress Bar Pack 2/_Deprecated/Atlas/Progress Bar Pack 2 Atlas.png 667eeada
+Progress Bar Pack 2/_Deprecated/Atlas/Progress Bar Pack 2 Atlas.png.meta 7f0158a4
+Progress Bar Pack 2/_Deprecated/Atlas/Progress Bar Pack 2 Atlas.prefab 9cee2fac
+Progress Bar Pack 2/_Deprecated/Atlas/Progress Bar Pack 2 Atlas.prefab.meta f44acd94
+Progress Bar Pack 2/_Deprecated/Atlas.meta 285b3edd
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar1.prefab 15ed973b
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar1.prefab.meta 7675c127
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar2.prefab d04fce04
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar2.prefab.meta f7610593
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar3.prefab d246093c
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar3.prefab.meta 8bddf73c
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar4.prefab 3ab4f174
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar4.prefab.meta 93875067
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar5.prefab 751ec3d4
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar5.prefab.meta 69fdeed9
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar6.prefab 05c6e40f
+Progress Bar Pack 2/_Deprecated/Prefabs/Bar6.prefab.meta e76e2ef4
+Progress Bar Pack 2/_Deprecated/Prefabs.meta 616baa34
+Progress Bar Pack 2/_Deprecated/Scenes/ProgressBarPack2Scene - Atlas.unity e4273d33
+Progress Bar Pack 2/_Deprecated/Scenes/ProgressBarPack2Scene - Atlas.unity.meta c05f2972
+Progress Bar Pack 2/_Deprecated/Scenes/ProgressBarPack2Scene.unity db0ce054
+Progress Bar Pack 2/_Deprecated/Scenes/ProgressBarPack2Scene.unity.meta abd09bc3
+Progress Bar Pack 2/_Deprecated/Scenes.meta 5d916b6d
+Progress Bar Pack 2/_Deprecated/Textures/bar1_bar.png 142ecb42
+Progress Bar Pack 2/_Deprecated/Textures/bar1_bar.png.meta 77890d89
+Progress Bar Pack 2/_Deprecated/Textures/bar1_bg.png b4987d34
+Progress Bar Pack 2/_Deprecated/Textures/bar1_bg.png.meta e91bc7af
+Progress Bar Pack 2/_Deprecated/Textures/bar1_fg.png 497ec8c4
+Progress Bar Pack 2/_Deprecated/Textures/bar1_fg.png.meta 40a3863b
+Progress Bar Pack 2/_Deprecated/Textures/bar2_bar.png 56ec749a
+Progress Bar Pack 2/_Deprecated/Textures/bar2_bar.png.meta e6a38aea
+Progress Bar Pack 2/_Deprecated/Textures/bar2_bg.png 6aa736aa
+Progress Bar Pack 2/_Deprecated/Textures/bar2_bg.png.meta 3a721b66
+Progress Bar Pack 2/_Deprecated/Textures/bar2_fg.png 4b5de0b3
+Progress Bar Pack 2/_Deprecated/Textures/bar2_fg.png.meta 013ac07b
+Progress Bar Pack 2/_Deprecated/Textures/bar3.png de538618
+Progress Bar Pack 2/_Deprecated/Textures/bar3.png.meta c28e045a
+Progress Bar Pack 2/_Deprecated/Textures/bar4.png 17569115
+Progress Bar Pack 2/_Deprecated/Textures/bar4.png.meta 27733833
+Progress Bar Pack 2/_Deprecated/Textures/bar5.png 8bca5334
+Progress Bar Pack 2/_Deprecated/Textures/bar5.png.meta 6afb8b0c
+Progress Bar Pack 2/_Deprecated/Textures/bar6.png c7af20da
+Progress Bar Pack 2/_Deprecated/Textures/bar6.png.meta 4dec0527
+Progress Bar Pack 2/_Deprecated/Textures.meta fe3fc2ea
+Progress Bar Pack 2/_Deprecated.meta 257296e9
+Progress Bar Pack 2.meta c03b88a2
+Progress Bar Pack 3/Prefabs/Bar 1.prefab f23a119e
+Progress Bar Pack 3/Prefabs/Bar 1.prefab.meta b66587fb
+Progress Bar Pack 3/Prefabs/Bar 2.prefab ca50de31
+Progress Bar Pack 3/Prefabs/Bar 2.prefab.meta 3b1092e9
+Progress Bar Pack 3/Prefabs/Bar 3.prefab 74ea1357
+Progress Bar Pack 3/Prefabs/Bar 3.prefab.meta fefe174b
+Progress Bar Pack 3/Prefabs/Bar 4.prefab 4bc9e357
+Progress Bar Pack 3/Prefabs/Bar 4.prefab.meta f142a154
+Progress Bar Pack 3/Prefabs.meta b63bf18e
+Progress Bar Pack 3/Scenes/ProgressBarPack3.unity 9794fc9d
+Progress Bar Pack 3/Scenes/ProgressBarPack3.unity.meta e8a84d79
+Progress Bar Pack 3/Scenes.meta b86ad756
+Progress Bar Pack 3/Sprites/bar1_bar.png 0fbcc27a
+Progress Bar Pack 3/Sprites/bar1_bar.png.meta 31ccc340
+Progress Bar Pack 3/Sprites/bar1_bg.png 8e95b72a
+Progress Bar Pack 3/Sprites/bar1_bg.png.meta 499d2895
+Progress Bar Pack 3/Sprites/bar1_fg.png ccc88dfb
+Progress Bar Pack 3/Sprites/bar1_fg.png.meta 99ce4c09
+Progress Bar Pack 3/Sprites.meta a6f6beca
+Progress Bar Pack 3/_Deprecated/Atlas/Progress Bar Pack 3 Atlas.png 207e5e22
+Progress Bar Pack 3/_Deprecated/Atlas/Progress Bar Pack 3 Atlas.png.meta 288b0107
+Progress Bar Pack 3/_Deprecated/Atlas/Progress Bar Pack 3 Atlas.prefab 61c98458
+Progress Bar Pack 3/_Deprecated/Atlas/Progress Bar Pack 3 Atlas.prefab.meta 4df40a9a
+Progress Bar Pack 3/_Deprecated/Atlas.meta f74541af
+Progress Bar Pack 3/_Deprecated/Prefabs/Bar1.prefab b1eec73c
+Progress Bar Pack 3/_Deprecated/Prefabs/Bar1.prefab.meta 85734600
+Progress Bar Pack 3/_Deprecated/Prefabs.meta 3fc6f409
+Progress Bar Pack 3/_Deprecated/Scenes/ProgressBarPack3Scene.unity 6782951d
+Progress Bar Pack 3/_Deprecated/Scenes/ProgressBarPack3Scene.unity.meta cd9fd751
+Progress Bar Pack 3/_Deprecated/Scenes.meta 5e82bf05
+Progress Bar Pack 3/_Deprecated/Textures/bar1_bar.png 0fbcc27a
+Progress Bar Pack 3/_Deprecated/Textures/bar1_bar.png.meta ff79dbce
+Progress Bar Pack 3/_Deprecated/Textures/bar1_bg.png 8e95b72a
+Progress Bar Pack 3/_Deprecated/Textures/bar1_bg.png.meta f68f4bb1
+Progress Bar Pack 3/_Deprecated/Textures/bar1_fg.png ccc88dfb
+Progress Bar Pack 3/_Deprecated/Textures/bar1_fg.png.meta 9f2b29ca
+Progress Bar Pack 3/_Deprecated/Textures.meta 7cc7aa69
+Progress Bar Pack 3/_Deprecated.meta ec5a6f86
+Progress Bar Pack 3.meta a43b70e5
+README.txt f5f1d3cc
+README.txt.meta 887aed64
+Resources/GUISkins/editorSkin.guiskin 46af17b8
+Resources/GUISkins/editorSkin.guiskin.meta c601c670
+Resources/GUISkins.meta 66ce53b9
+Resources/Mad2D/Textures/grid.png 41869c16
+Resources/Mad2D/Textures/grid.png.meta 1103f332
+Resources/Mad2D/Textures/icon_drag_drop.png 8b2d3c5a
+Resources/Mad2D/Textures/icon_drag_drop.png.meta b8318cfc
+Resources/Mad2D/Textures.meta 1c55a7d9
+Resources/Mad2D.meta 075a6acc
+Resources/Shaders/EBTCanvasClearMask.shader a54e84ac
+Resources/Shaders/EBTCanvasClearMask.shader.meta 6c43e5b8
+Resources/Shaders/ExpandFillShader.shader d158a83d
+Resources/Shaders/ExpandFillShader.shader.meta 55f228a0
+Resources/Shaders/ExpandFillShaderPre.shader 475c4a51
+Resources/Shaders/ExpandFillShaderPre.shader.meta 493a714b
+Resources/Shaders/Font DB.shader f478d773
+Resources/Shaders/Font DB.shader.meta 0627f2f6
+Resources/Shaders/Font White DB.shader edb5a9cd
+Resources/Shaders/Font White DB.shader.meta 30cde349
+Resources/Shaders/Font White.shader b1e169ab
+Resources/Shaders/Font White.shader.meta 44dfea02
+Resources/Shaders/Font.shader ab7e5da0
+Resources/Shaders/Font.shader.meta 606c1983
+Resources/Shaders/HorizontalFillShader.shader a975686d
+Resources/Shaders/HorizontalFillShader.shader.meta c72fcd97
+Resources/Shaders/HorizontalFillShaderPre.shader 87daa2ee
+Resources/Shaders/HorizontalFillShaderPre.shader.meta 2ba2be53
+Resources/Shaders/RadialFillShader.shader 1335b277
+Resources/Shaders/RadialFillShader.shader.meta 90754b96
+Resources/Shaders/RadialFillShaderPre.shader f38a8189
+Resources/Shaders/RadialFillShaderPre.shader.meta 9b2c76dc
+Resources/Shaders/UnlitShader.shader e695062b
+Resources/Shaders/UnlitShader.shader.meta 19690ddb
+Resources/Shaders/UnlitShaderPre.shader ae5348b8
+Resources/Shaders/UnlitShaderPre.shader.meta e9eaad45
+Resources/Shaders/UnlitTransparentTint DB.shader 82024d4a
+Resources/Shaders/UnlitTransparentTint DB.shader.meta 70ccbc19
+Resources/Shaders/UnlitTransparentTint.shader d8e69b25
+Resources/Shaders/UnlitTransparentTint.shader.meta 58c4498f
+Resources/Shaders/UnlitTransparentTintPre DB.shader 58c5163c
+Resources/Shaders/UnlitTransparentTintPre DB.shader.meta 3e4d56f4
+Resources/Shaders/UnlitTransparentTintPre.shader 27af1377
+Resources/Shaders/UnlitTransparentTintPre.shader.meta 0e6368c7
+Resources/Shaders/VerticalFillShader.shader 450a9d24
+Resources/Shaders/VerticalFillShader.shader.meta c59651a6
+Resources/Shaders/VerticalFillShaderPre.shader d356b990
+Resources/Shaders/VerticalFillShaderPre.shader.meta 2e34e63e
+Resources/Shaders.meta 258624d0
+Resources/Textures/white.png 34ab7224
+Resources/Textures/white.png.meta 6d520871
+Resources/Textures.meta 64e011fb
+Resources.meta d35f7bcb
+Scripts/3DRenderers/Editor/CreateMeshBarTool.cs 20eb0a04
+Scripts/3DRenderers/Editor/CreateMeshBarTool.cs.meta 1d2ecb1a
+Scripts/3DRenderers/Editor/FilledRenderer3DBuilder.cs dc69bdc2
+Scripts/3DRenderers/Editor/FilledRenderer3DBuilder.cs.meta 95c0aecb
+Scripts/3DRenderers/Editor/RepeatRenderer3DBuilder.cs c4651f34
+Scripts/3DRenderers/Editor/RepeatRenderer3DBuilder.cs.meta 91fc2276
+Scripts/3DRenderers/Editor/SequenceRenderer3DBuilder.cs 3a0b1134
+Scripts/3DRenderers/Editor/SequenceRenderer3DBuilder.cs.meta f29531e2
+Scripts/3DRenderers/Editor/TransformRenderer3DBuilder.cs 6e611be9
+Scripts/3DRenderers/Editor/TransformRenderer3DBuilder.cs.meta 0070c50b
+Scripts/3DRenderers/Editor.meta 59dfb351
+Scripts/3DRenderers/EnergyBar3DBase.cs 49a89026
+Scripts/3DRenderers/EnergyBar3DBase.cs.meta e30dfd5f
+Scripts/3DRenderers/FilledRenderer3D.cs 053d3319
+Scripts/3DRenderers/FilledRenderer3D.cs.meta 10ca5724
+Scripts/3DRenderers/RepeatedRenderer3D.cs 30337f07
+Scripts/3DRenderers/RepeatedRenderer3D.cs.meta 0ad3a831
+Scripts/3DRenderers/SequenceRenderer3D.cs 7b005d12
+Scripts/3DRenderers/SequenceRenderer3D.cs.meta 2a748c9a
+Scripts/3DRenderers/TransformRenderer3D.cs 2bba9f4f
+Scripts/3DRenderers/TransformRenderer3D.cs.meta bd21f08d
+Scripts/3DRenderers.meta b3598826
+Scripts/ColorBind.cs 2ea06c20
+Scripts/ColorBind.cs.meta 1e29ddbc
+Scripts/Editor/EditorBase.cs 83f0d47f
+Scripts/Editor/EditorBase.cs.meta 2f2345d1
+Scripts/Editor/EnergyBar3DInspectorBase.cs 83242952
+Scripts/Editor/EnergyBar3DInspectorBase.cs.meta 44b34ee6
+Scripts/Editor/EnergyBarInspector.cs de82b97b
+Scripts/Editor/EnergyBarInspector.cs.meta e72b2045
+Scripts/Editor/EnergyBarInspectorBase.cs 86c0bbb0
+Scripts/Editor/EnergyBarInspectorBase.cs.meta 5be831a1
+Scripts/Editor/EnergyBarOnGUIInspectorBase.cs ebd58ba7
+Scripts/Editor/EnergyBarOnGUIInspectorBase.cs.meta 7dfc2636
+Scripts/Editor/EnergyBarRendererInspector.cs 97434261
+Scripts/Editor/EnergyBarRendererInspector.cs.meta c4400203
+Scripts/Editor/EnergyBarRepeatRendererInspector.cs a4d49857
+Scripts/Editor/EnergyBarRepeatRendererInspector.cs.meta 1edb2020
+Scripts/Editor/EnergyBarSequenceRendererInspector.cs 5cdec029
+Scripts/Editor/EnergyBarSequenceRendererInspector.cs.meta 36278c30
+Scripts/Editor/EnergyBarTransformRendererInspector.cs 19e3c344
+Scripts/Editor/EnergyBarTransformRendererInspector.cs.meta 2eb70612
+Scripts/Editor/EnergyBarUtils.cs 9f1a654a
+Scripts/Editor/EnergyBarUtils.cs.meta dd1ea6bd
+Scripts/Editor/FilledRenderer3DInspector.cs ea73f077
+Scripts/Editor/FilledRenderer3DInspector.cs.meta d2bac1f6
+Scripts/Editor/Mad2D_Editor.dll ee9c89b0
+Scripts/Editor/Mad2D_Editor.dll.meta 693accb7
+Scripts/Editor/MadCommons_Editor.dll 5a832323
+Scripts/Editor/MadCommons_Editor.dll.meta e6283d6e
+Scripts/Editor/MenuItems.cs b8c7b4aa
+Scripts/Editor/MenuItems.cs.meta 46c2723b
+Scripts/Editor/ObjectFinderEditor.cs 83ad8aee
+Scripts/Editor/ObjectFinderEditor.cs.meta 5e894c48
+Scripts/Editor/RepeatRenderer3DInspector.cs f0ccdbbf
+Scripts/Editor/RepeatRenderer3DInspector.cs.meta fc662f8d
+Scripts/Editor/SequenceRenderer3DInspector.cs 31bb8d69
+Scripts/Editor/SequenceRenderer3DInspector.cs.meta f5440ccb
+Scripts/Editor/SimpleEventInspector.cs cd30658d
+Scripts/Editor/SimpleEventInspector.cs.meta 13577122
+Scripts/Editor/TransformRenderer3DInspector.cs bb10d731
+Scripts/Editor/TransformRenderer3DInspector.cs.meta 1b05cbda
+Scripts/Editor/UpgradeWindow.cs 3ec0e23f
+Scripts/Editor/UpgradeWindow.cs.meta 09adc0ec
+Scripts/Editor/Version.cs e7e85da0
+Scripts/Editor/Version.cs.meta b517f348
+Scripts/Editor.meta f144ec5e
+Scripts/EnergyBar.cs 878fcb5c
+Scripts/EnergyBar.cs.meta 8e466b60
+Scripts/EnergyBarBase.cs 6a01f1b5
+Scripts/EnergyBarBase.cs.meta dfebeb58
+Scripts/EnergyBarCommons.cs 81699e8c
+Scripts/EnergyBarCommons.cs.meta 71b3a80c
+Scripts/EnergyBarFollowObject.cs 18b3a4ed
+Scripts/EnergyBarFollowObject.cs.meta 18d121de
+Scripts/Mad2D.dll 13cf5ed9
+Scripts/Mad2D.dll.meta 9597ef55
+Scripts/MadCommons.dll e34ac7d0
+Scripts/MadCommons.dll.meta 7a9aaa69
+Scripts/OnGUI/EnergyBarOnGUIBase.cs e580f9a6
+Scripts/OnGUI/EnergyBarOnGUIBase.cs.meta 806403e2
+Scripts/OnGUI/EnergyBarRenderer.cs 16427a51
+Scripts/OnGUI/EnergyBarRenderer.cs.meta e18842e2
+Scripts/OnGUI/EnergyBarRepeatRenderer.cs 0af60e92
+Scripts/OnGUI/EnergyBarRepeatRenderer.cs.meta 0234f871
+Scripts/OnGUI/EnergyBarSequenceRenderer.cs 714a9fa3
+Scripts/OnGUI/EnergyBarSequenceRenderer.cs.meta 5ec86586
+Scripts/OnGUI/EnergyBarTransformRenderer.cs 41f5aa1a
+Scripts/OnGUI/EnergyBarTransformRenderer.cs.meta dd7e4776
+Scripts/OnGUI.meta 21c559bf
+Scripts/Other/ObjectFinder.cs a87995dc
+Scripts/Other/ObjectFinder.cs.meta 2393c480
+Scripts/Other.meta 1d3ab4e5
+Scripts/Screen2.cs 7f4f95d5
+Scripts/Screen2.cs.meta 3f8cf729
+Scripts/SimpleEvent.cs af17a0f9
+Scripts/SimpleEvent.cs.meta 5e2c3d6d
+Scripts/Sources/How To Build.txt ac1d6d0b
+Scripts/Sources/How To Build.txt.meta ac0b7171
+Scripts/Sources/Mad2D-Editor.zip aeb66745
+Scripts/Sources/Mad2D-Editor.zip.meta f022172f
+Scripts/Sources/Mad2D.zip 1c51cadf
+Scripts/Sources/Mad2D.zip.meta a1eda4c4
+Scripts/Sources/MadCommons-Editor.zip c86c91a5
+Scripts/Sources/MadCommons-Editor.zip.meta 4677fec2
+Scripts/Sources/MadCommons.zip 5940ff96
+Scripts/Sources/MadCommons.zip.meta d344909e
+Scripts/Sources.meta 47f01a07
+Scripts/Utils.cs 9e4ff025
+Scripts/Utils.cs.meta 83a8c764
+Scripts/uGUI/Editor/EBTPackerPolicy.cs 02f5da62
+Scripts/uGUI/Editor/EBTPackerPolicy.cs.meta e03868e6
+Scripts/uGUI/Editor/EnergyBarUGUIInspectorBase.cs 1e4bc391
+Scripts/uGUI/Editor/EnergyBarUGUIInspectorBase.cs.meta 3e757809
+Scripts/uGUI/Editor/FilledRendererUGUIInspector.cs 17f444bf
+Scripts/uGUI/Editor/FilledRendererUGUIInspector.cs.meta 9364ed65
+Scripts/uGUI/Editor/RepeatedRendererUGUIInspector.cs fa87af0a
+Scripts/uGUI/Editor/RepeatedRendererUGUIInspector.cs.meta c0fcf11c
+Scripts/uGUI/Editor/SequenceRendererUGUIInspector.cs de8c7b82
+Scripts/uGUI/Editor/SequenceRendererUGUIInspector.cs.meta 76db561f
+Scripts/uGUI/Editor/SlicedRendererUGUIInspector.cs 4e20c020
+Scripts/uGUI/Editor/SlicedRendererUGUIInspector.cs.meta 3eee3bca
+Scripts/uGUI/Editor/TransformRendererUGUIInspector.cs b8f35aa6
+Scripts/uGUI/Editor/TransformRendererUGUIInspector.cs.meta 272478cc
+Scripts/uGUI/Editor/UGUIBarsBuilder.cs 58c993a2
+Scripts/uGUI/Editor/UGUIBarsBuilder.cs.meta f0ae9a24
+Scripts/uGUI/Editor.meta 077abe5b
+Scripts/uGUI/EnergyBarSpawnerUGUI.cs 81425e26
+Scripts/uGUI/EnergyBarSpawnerUGUI.cs.meta b981884a
+Scripts/uGUI/EnergyBarUGUIBase.cs 033b99f0
+Scripts/uGUI/EnergyBarUGUIBase.cs.meta 41d1c11a
+Scripts/uGUI/FadeUGUI.cs c98f837a
+Scripts/uGUI/FadeUGUI.cs.meta 073c11b0
+Scripts/uGUI/FilledRendererUGUI.cs 285d7f57
+Scripts/uGUI/FilledRendererUGUI.cs.meta 25e24062
+Scripts/uGUI/Image2.cs 80edffdb
+Scripts/uGUI/Image2.cs.meta e641bd74
+Scripts/uGUI/RepeatedRendererUGUI.cs a663fc96
+Scripts/uGUI/RepeatedRendererUGUI.cs.meta eef0873b
+Scripts/uGUI/SequenceRendererUGUI.cs f18fb2de
+Scripts/uGUI/SequenceRendererUGUI.cs.meta 7fa9499e
+Scripts/uGUI/SlicedRendererUGUI.cs 7eba019b
+Scripts/uGUI/SlicedRendererUGUI.cs.meta ec5dac31
+Scripts/uGUI/TransformRendererUGUI.cs a80ce795
+Scripts/uGUI/TransformRendererUGUI.cs.meta 1c31db1e
+Scripts/uGUI.meta 4e3f67eb
+Scripts.meta 6bacce4e
