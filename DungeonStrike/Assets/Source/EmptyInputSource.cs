@@ -41,7 +41,7 @@ namespace DungeonStrike
 
             set
             {
-                throw new NotImplementedException();
+
             }
         }
 

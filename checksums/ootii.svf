@@ -1033,8 +1033,6 @@ MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion.tif.meta 6a4123fa
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion2.png cd464f5e
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion2.png.meta 929f9e0e
-MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion2.tif d79844f2
-MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion2.tif.meta 2417a7fd
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_Color.tif 6617c54d
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_Color.tif.meta 8b43b00b
 MotionController/Demos/Meshes/Construction Light/StandingLight_Emissive.tif 6c4dd96a
@@ -1173,8 +1171,6 @@ MotionController/Demos/Meshes/Structure.meta 7a7c97d2
 MotionController/Demos/Meshes.meta c4fefdde
 MotionController/Demos/Prefabs/Cube 2_5 x 2_5 x 2_5.prefab 5e66a2d2
 MotionController/Demos/Prefabs/Cube 2_5 x 2_5 x 2_5.prefab.meta 5f2faede
-MotionController/Demos/Prefabs/Ladder (1).prefab 24f81995
-MotionController/Demos/Prefabs/Ladder (1).prefab.meta 3b46ef75
 MotionController/Demos/Prefabs/Stone01.prefab 451708f1
 MotionController/Demos/Prefabs/Stone01.prefab.meta ae3e2f65
 MotionController/Demos/Prefabs/Stone02.prefab c283a684
@@ -1213,6 +1209,9 @@ MotionController/Extras.meta 77c4d5f0
 MotionController/Version.txt bff05c52
 MotionController/Version.txt.meta 49ed8442
 MotionController.meta 83b26c3d
+Unity/Characters/MineBot/Animations/Materials/minebot_diffuse.mat b11a9b04
+Unity/Characters/MineBot/Animations/Materials/minebot_diffuse.mat.meta 5beb60fb
+Unity/Characters/MineBot/Animations/Materials.meta 421fa8fd
 Unity/Characters/MineBot/Animations/mine_bot@awake.FBX 7c16de16
 Unity/Characters/MineBot/Animations/mine_bot@awake.FBX.meta eeb91e18
 Unity/Characters/MineBot/Animations/mine_bot@back.FBX 1bfc28d0
@@ -2358,8 +2357,6 @@ Unity/Labs/Textures/Gym/GymFloorAlbedo.tif 51ae1382
 Unity/Labs/Textures/Gym/GymFloorAlbedo.tif.meta affc7d26
 Unity/Labs/Textures/Gym/GymFloorOcclusion.tif 7b3b27ff
 Unity/Labs/Textures/Gym/GymFloorOcclusion.tif.meta 1b4f3244
-Unity/Labs/Textures/Gym/GymFloorTileAlbedo.tif 9d8518e1
-Unity/Labs/Textures/Gym/GymFloorTileAlbedo.tif.meta 55b19270
 Unity/Labs/Textures/Gym/GymFloorTileNormal.tif da2e9f96
 Unity/Labs/Textures/Gym/GymFloorTileNormal.tif.meta b88faaf6
 Unity/Labs/Textures/Gym/GymFloorTileOcclusion.tif f0035baa
