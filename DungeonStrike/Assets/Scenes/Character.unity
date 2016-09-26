@@ -1809,13 +1809,25 @@ MonoBehaviour:
     MotionDefinitions:
     - '{, "Type" : "DungeonStrike.IdleNoWeaponMotion, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
+      : "ActivateRotation", "IsEnabled" : "False", "ReactivationDelay" : "0", "RotateWithViewInputX"
+      : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
+      "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
+      "RotationToViewSpeed" : "360"}'
+    - '{, "Type" : "DungeonStrike.IdleRifleMotion, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
+      : "ActivateRotation", "IsEnabled" : "False", "ReactivationDelay" : "0", "RotateWithViewInputX"
+      : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
+      "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
+      "RotationToViewSpeed" : "360"}'
+    - '{, "Type" : "DungeonStrike.IdlePistolMotion, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
       : "ActivateRotation", "IsEnabled" : "True", "ReactivationDelay" : "0", "RotateWithViewInputX"
       : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
       "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
       "RotationToViewSpeed" : "360"}'
   EditorTabIndex: 1
   EditorLayerIndex: 0
-  EditorMotionIndex: 0
+  EditorMotionIndex: 2
   EditorPackIndex: 0
 --- !u!114 &1185363955
 MonoBehaviour:
@@ -2079,10 +2091,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1448815421}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
