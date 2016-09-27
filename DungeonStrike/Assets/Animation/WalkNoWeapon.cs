@@ -6,24 +6,20 @@ using com.ootii.Helpers;
 using UnityEditor;
 #endif
 
-namespace com.ootii.Extra.Motions
+namespace DungeonStrike
 {
     /// <summary>
     /// </summary>
-    [MotionName("MAP - Walk Run Pivot")]
-    [MotionDescription("Action/Adventure style movement using Movement Animset Pro animations.")]
-    public class MAP_WalkRunPivot : MotionControllerMotion
+    [MotionName("Walk - No Weapon")]
+    public class WalkNoWeaponMotion : MotionControllerMotion
     {
         /// <summary>
         /// Trigger values for th emotion
         /// </summary>
         public const int PHASE_UNKNOWN = 0;
-        public const int PHASE_START = 28100;
-        public const int PHASE_START_SHORTCUT_WALK = 28114;
-        public const int PHASE_START_SHORTCUT_RUN = 28115;
-
-        //public const int PHASE_STOP_RIGHT_DOWN = 28120;
-        //public const int PHASE_STOP_LEFT_DOWN = 28121;
+        public const int PHASE_START = 1055972000;
+        public const int PHASE_START_SHORTCUT_WALK = 1055973000;
+        public const int PHASE_START_SHORTCUT_RUN = 1055974000;
 
         /// <summary>
         /// Determines if we run by default or walk
@@ -141,7 +137,7 @@ namespace com.ootii.Extra.Motions
         /// <summary>
         /// Default constructor
         /// </summary>
-        public MAP_WalkRunPivot()
+        public WalkNoWeaponMotion()
             : base()
         {
             _Priority = 5;
@@ -150,7 +146,7 @@ namespace com.ootii.Extra.Motions
             //mIsGroundedExpected = true;
 
 #if UNITY_EDITOR
-            if (_EditorAnimatorSMName.Length == 0) { _EditorAnimatorSMName = "MAP_WalkRunPivot-SM"; }
+            if (_EditorAnimatorSMName.Length == 0) { _EditorAnimatorSMName = "WalkNoWeaponMotion-SM"; }
 #endif
         }
 
@@ -158,7 +154,7 @@ namespace com.ootii.Extra.Motions
         /// Controller constructor
         /// </summary>
         /// <param name="rController">Controller the motion belongs to</param>
-        public MAP_WalkRunPivot(MotionController rController)
+        public WalkNoWeaponMotion(MotionController rController)
             : base(rController)
         {
             _Priority = 5;
@@ -167,7 +163,7 @@ namespace com.ootii.Extra.Motions
             //mIsGroundedExpected = true;
 
 #if UNITY_EDITOR
-            if (_EditorAnimatorSMName.Length == 0) { _EditorAnimatorSMName = "MAP_WalkRunPivot-SM"; }
+            if (_EditorAnimatorSMName.Length == 0) { _EditorAnimatorSMName = "WalkNoWeaponMotion-SM"; }
 #endif
         }
 
@@ -212,22 +208,6 @@ namespace com.ootii.Extra.Motions
                 return false;
             }
 
-            // If there is no activation delay, continue
-            //if (ACTIVATE_DELAY > 0f)
-            //{
-            //    // Start the timer if it hasn't been
-            //    if (mInputActiveStartTime == 0f)
-            //    {
-            //        mInputActiveStartTime = Time.time;
-            //        return false;
-            //    }
-            //    // If we're delayed, see if we've waited long enough
-            //    else if (Time.time - mInputActiveStartTime < ACTIVATE_DELAY)
-            //    {
-            //        return false;
-            //    }
-            //}
-
             // We're good to move
             return true;
         }
@@ -262,7 +242,6 @@ namespace com.ootii.Extra.Motions
             int lTransitionID = mMotionLayer._AnimatorTransitionID;
 
             // If we're not in the normal traveral state, stop
-            //if (lState.Stance != EnumControllerStance.TRAVERSAL) { return false; }
 
             // If we're in the idle state with no movement, stop
             if (mAge > 0.2f && lStateID == STATE_IdlePose)
@@ -273,16 +252,10 @@ namespace com.ootii.Extra.Motions
                 }
             }
 
-            //// If we're in the idle state machine, we can get out
-            //if (mAge > 0.2f && lStateID == Idle.STATE_IdlePose)
-            //{
-            //    return false;
-            //}
-
             // One last check to make sure we're in this state
             if (!IsMotionState(lStateID) && !mStartInRun && !mStartInWalk)
             {
-                // This is a bit painful, but make sure we're not in a 
+                // This is a bit painful, but make sure we're not in a
                 // transition to this sub-state machine
                 if (lTransitionID != TRANS_EntryState_IdleToWalk &&
                     lTransitionID != TRANS_EntryState_IdleToRun &&
@@ -311,11 +284,7 @@ namespace com.ootii.Extra.Motions
         {
             if (rMotion is Idle)
             {
-                //int lStateID = mMotionController.State.AnimatorStates[mMotionLayer.AnimatorLayerIndex].StateInfo.fullPathHash;
-                //if (lStateID != STATE_IdlePose)
-                {
-                    return false;
-                }
+                return false;
             }
 
             return true;
@@ -328,14 +297,6 @@ namespace com.ootii.Extra.Motions
         /// <param name="rPrevMotion">Motion that this motion is taking over from</param>
         public override bool Activate(MotionControllerMotion rPrevMotion)
         {
-            //Utilities.Debug.Log.FileWrite("MAP_WRP.Activate() isAnimatorActive:" + mIsAnimatorActive);
-
-            // Update the current state information so that the animator
-            // believes we need to start moving at this time.
-            //MotionState lState = mMotionController.State;
-
-            //Log.FileWrite("WalkRunPivot.Activate() run:" + mStartInRun + " walk:" + mStartInWalk);
-
             if (mStartInRun)
             {
                 mMotionController.SetAnimatorMotionPhase(mMotionLayer.AnimatorLayerIndex, PHASE_START_SHORTCUT_RUN, true);
@@ -361,7 +322,6 @@ namespace com.ootii.Extra.Motions
                     mMotionController.State = lState;
                 }
 
-                //Utilities.Debug.Log.FileWrite("MAP_WRP.Activate() setting animator phase:" + PHASE_START);
                 mMotionController.SetAnimatorMotionPhase(mMotionLayer.AnimatorLayerIndex, PHASE_START, true);
             }
 
@@ -390,8 +350,8 @@ namespace com.ootii.Extra.Motions
         }
 
         /// <summary>
-        /// Allows the motion to modify the velocity before it is applied. 
-        /// 
+        /// Allows the motion to modify the velocity before it is applied.
+        ///
         /// NOTE:
         /// Be careful when removing rotations
         /// as some transitions will want rotations even if the state they are transitioning from don't.
@@ -437,13 +397,10 @@ namespace com.ootii.Extra.Motions
             }
 
             // Don't allow backwards movement when moving forward. Some animations have this
-            //if (lStateID == STATE_WalkFwdLoop && rVelocityDelta.z < 0f)
             if (rMovement.z < 0f)
             {
                 rMovement.z = 0f;
             }
-
-            //Log.FileWrite("Adv_Forward.UpdateRootMotion Final VDelta:" + StringHelper.ToString(rVelocityDelta));
         }
 
         /// <summary>
@@ -454,37 +411,6 @@ namespace com.ootii.Extra.Motions
         /// <param name="rUpdateIndex">Index of the update to help manage dynamic/fixed updates. [0: Invalid update, >=1: Valid update]</param>
         public override void Update(float rDeltaTime, int rUpdateIndex)
         {
-            //Utilities.Debug.Log.FileWrite("MAP_WRP.Update() isAnimatorActive:" + mIsAnimatorActive + " mp:" + mMotionController.State.AnimatorStates[0].MotionPhase);
-            // We want to be able to idle-pivot on a tab, but idle-turn-walk on a hold. So,
-            // we need to delay handling our input for a second
-            //if (mInputActiveStartTime != 0f)
-            //{
-            //    mInputActiveStartTime = mInputActiveStartTime - rDeltaTime;
-            //    if (mInputActiveStartTime < 0f)
-            //    {
-            //        // Now that we've waited long enough, determine if we're 
-            //        // pivoting-to-idle or pivoting-to-movement
-            //        bool lStartRunActivated = ((_DefaultToRun && !mMotionController._InputSource.IsPressed(_ActionAlias)) || (!_DefaultToRun && mMotionController._InputSource.IsPressed(_ActionAlias)));
-            //        if (lStartRunActivated)
-            //        {
-            //            MotionState lStartState = mMotionController.State;
-            //            lStartState.InputFromAvatarAngle = mInputFromAvatarAngleStart;
-
-            //            mMotionController.State = lStartState;
-            //        }
-
-            //        mMotionController.SetAnimatorMotionPhase(mMotionLayer.AnimatorLayerIndex, PHASE_START, true);
-
-            //        // Flag that we're done
-            //        mInputActiveStartTime = 0f;
-            //    }
-
-            //    // We're done for this frame
-            //    return;
-            //}
-
-
-
             // Initialize properties
             mRotation = Quaternion.identity;
 
@@ -513,8 +439,6 @@ namespace com.ootii.Extra.Motions
 
             if (lIsRunActivated)
             {
-                Utilities.Debug.Log.FileWrite("MAP_WRP() run active mag:" + lState.InputMagnitudeTrend.Value);
-
                 if (lState.InputMagnitudeTrend.Value < 0.51f)
                 {
                     lIsRunActivated = false;
@@ -652,7 +576,7 @@ namespace com.ootii.Extra.Motions
             // If we're in the idle pose and just turning a little to face in the input direction
             // cleanly, determine the rotation speed and use it to turn the actor.
             // Animations run from 0 to 0.4f
-            // [duration] = Exit Time 
+            // [duration] = Exit Time
             if (lStateID == STATE_IdleTurn20L || lStateID == STATE_IdleTurn20R)
             {
                 float lPercent = Mathf.Clamp01(lStateTime / 0.4f);
@@ -667,7 +591,6 @@ namespace com.ootii.Extra.Motions
             // If we need to update the animator state, do it once
             if (lUpdateAnimatorState)
             {
-                Utilities.Debug.Log.FileWrite("MAP_WRP() set state param:" + mMotionController.State.AnimatorStates[0].MotionParameter);
                 mMotionController.State = lState;
             }
         }
@@ -761,7 +684,7 @@ namespace com.ootii.Extra.Motions
 #endif
             }
         }
-        
+
         /// <summary>
         /// Allow the motion to render it's own GUI
         /// </summary>
@@ -1313,142 +1236,142 @@ namespace com.ootii.Extra.Motions
             /// These assignments go inside the 'LoadAnimatorData' function so that we can
             /// extract and assign the hash values for this run. These are typically used for debugging.
             /// </summary>
-            TRANS_EntryState_IdleTurn90L = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn90L");
-            TRANS_AnyState_IdleTurn90L = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn90L");
-            TRANS_EntryState_IdleTurn20L = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn20L");
-            TRANS_AnyState_IdleTurn20L = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn20L");
-            TRANS_EntryState_IdleTurn20R = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn20R");
-            TRANS_AnyState_IdleTurn20R = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn20R");
-            TRANS_EntryState_IdleTurn90R = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn90R");
-            TRANS_AnyState_IdleTurn90R = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn90R");
-            TRANS_EntryState_IdleTurn180R = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn180R");
-            TRANS_AnyState_IdleTurn180R = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.IdleTurn180R");
-            TRANS_EntryState_IdleToRun = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            TRANS_AnyState_IdleToRun = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            TRANS_EntryState_WalkFwdLoop = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_AnyState_WalkFwdLoop = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_EntryState_RunFwdLoop = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_AnyState_RunFwdLoop = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_EntryState_IdleToWalk = mMotionController.AddAnimatorName("Entry -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_AnyState_IdleToWalk = mMotionController.AddAnimatorName("AnyState -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            STATE_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_IdleToWalk_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_IdleToWalk_WalkToIdle_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk -> Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_LDown");
-            TRANS_IdleToWalk_WalkToIdle_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk -> Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_RDown");
-            STATE_IdleToRun = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            TRANS_IdleToRun_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_IdleToRun_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun -> Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown");
-            TRANS_IdleToRun_RunStop_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun -> Base Layer.MAP_WalkRunPivot-SM.RunStop_RDown");
-            STATE_IdleTurn90L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90L");
-            TRANS_IdleTurn90L_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90L -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_IdleTurn90L_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90L -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_IdleTurn90L_IdleToWalk90L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90L -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90L");
-            TRANS_IdleTurn90L_IdleToRun90L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90L -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun90L");
-            TRANS_IdleTurn90L_IdleToRun = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90L -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            STATE_IdleTurn180L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180L");
-            TRANS_IdleTurn180L_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180L -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_IdleTurn180L_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180L -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_IdleTurn180L_IdleToWalk180L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180L -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180L");
-            TRANS_IdleTurn180L_IdleToRun180L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180L -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun180L");
-            TRANS_IdleTurn180L_IdleToRun = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180L -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            STATE_IdleToWalk90L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90L");
-            TRANS_IdleToWalk90L_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90L -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_IdleToWalk90L_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90L -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            STATE_IdleToWalk180L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180L");
-            TRANS_IdleToWalk180L_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180L -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_IdleToWalk180L_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180L -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            STATE_IdleToRun90L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun90L");
-            TRANS_IdleToRun90L_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun90L -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_IdleToRun90L_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun90L -> Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown");
-            STATE_IdleToRun180L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun180L");
-            TRANS_IdleToRun180L_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun180L -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_IdleToRun180L_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun180L -> Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown");
-            STATE_IdleTurn90R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90R");
-            TRANS_IdleTurn90R_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90R -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_IdleTurn90R_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90R -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_IdleTurn90R_IdleToWalk90R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90R -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90R");
-            TRANS_IdleTurn90R_IdleToRun90R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90R -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun90R");
-            TRANS_IdleTurn90R_IdleToRun = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn90R -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            STATE_IdleTurn180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180R");
-            TRANS_IdleTurn180R_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180R -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_IdleTurn180R_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180R -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_IdleTurn180R_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180R -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180R");
-            TRANS_IdleTurn180R_IdleToRun180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180R -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun180R");
-            TRANS_IdleTurn180R_IdleToRun = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn180R -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            STATE_IdleToWalk90R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90R");
-            TRANS_IdleToWalk90R_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90R -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_IdleToWalk90R_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90R -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            STATE_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180R");
-            TRANS_IdleToWalk180R_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180R -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_IdleToWalk180R_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180R -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            STATE_IdleToRun90R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun90R");
-            TRANS_IdleToRun90R_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun90R -> Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown");
-            TRANS_IdleToRun90R_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun90R -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            STATE_IdleToRun180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun180R");
-            TRANS_IdleToRun180R_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun180R -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_IdleToRun180R_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleToRun180R -> Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown");
-            STATE_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_IdlePose_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180R");
-            TRANS_IdlePose_IdleToWalk90R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90R");
-            TRANS_IdlePose_IdleToWalk180L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180L");
-            TRANS_IdlePose_IdleToWalk90L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk90L");
-            TRANS_IdlePose_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_IdlePose_IdleToRun = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            TRANS_IdlePose_IdleToRun90L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun90L");
-            TRANS_IdlePose_IdleToRun180L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun180L");
-            TRANS_IdlePose_IdleToRun90R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun90R");
-            TRANS_IdlePose_IdleToRun180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdlePose -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun180R");
-            STATE_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_WalkFwdLoop_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_WalkFwdLoop_WalkToIdle_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_RDown");
-            TRANS_WalkFwdLoop_WalkToIdle_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_LDown");
-            TRANS_WalkFwdLoop_WalkPivot180_L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.WalkPivot180_L");
-            STATE_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_RunFwdLoop_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_RunFwdLoop_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown");
-            TRANS_RunFwdLoop_RunPivot180L_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.RunPivot180L_RDown");
-            TRANS_RunFwdLoop_RunPivot180R_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.RunPivot180R_LDown");
-            TRANS_RunFwdLoop_RunPivot180L_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.RunPivot180L_LDown");
-            TRANS_RunFwdLoop_RunPivot180R_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.RunPivot180R_RDown");
-            TRANS_RunFwdLoop_RunStop_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop -> Base Layer.MAP_WalkRunPivot-SM.RunStop_RDown");
-            STATE_RunPivot180L_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunPivot180L_RDown");
-            TRANS_RunPivot180L_RDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunPivot180L_RDown -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            STATE_RunPivot180R_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunPivot180R_LDown");
-            TRANS_RunPivot180R_LDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunPivot180R_LDown -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            STATE_WalkToIdle_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_RDown");
-            TRANS_WalkToIdle_RDown_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_RDown -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_WalkToIdle_RDown_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_RDown -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_WalkToIdle_RDown_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_RDown -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_WalkToIdle_RDown_WalkPivot180_L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_RDown -> Base Layer.MAP_WalkRunPivot-SM.WalkPivot180_L");
-            TRANS_WalkToIdle_RDown_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_RDown -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180R");
-            STATE_WalkToIdle_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_LDown");
-            TRANS_WalkToIdle_LDown_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_LDown -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_WalkToIdle_LDown_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_LDown -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
-            TRANS_WalkToIdle_LDown_WalkPivot180_L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_LDown -> Base Layer.MAP_WalkRunPivot-SM.WalkPivot180_L");
-            TRANS_WalkToIdle_LDown_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_LDown -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk180R");
-            TRANS_WalkToIdle_LDown_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkToIdle_LDown -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            STATE_RunStop_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunStop_RDown");
-            TRANS_RunStop_RDown_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunStop_RDown -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_RunStop_RDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunStop_RDown -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_RunStop_RDown_RunPivot180R_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunStop_RDown -> Base Layer.MAP_WalkRunPivot-SM.RunPivot180R_LDown");
-            STATE_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown");
-            TRANS_RunStop_LDown_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_RunStop_LDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            TRANS_RunStop_LDown_RunPivot180R_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunStop_LDown -> Base Layer.MAP_WalkRunPivot-SM.RunPivot180R_RDown");
-            STATE_RunPivot180L_LDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunPivot180L_LDown");
-            TRANS_RunPivot180L_LDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunPivot180L_LDown -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            STATE_RunPivot180R_RDown = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunPivot180R_RDown");
-            TRANS_RunPivot180R_RDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.RunPivot180R_RDown -> Base Layer.MAP_WalkRunPivot-SM.RunFwdLoop");
-            STATE_IdleTurn20R = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn20R");
-            TRANS_IdleTurn20R_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn20R -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_IdleTurn20R_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn20R -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_IdleTurn20R_IdleToRun = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn20R -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            STATE_IdleTurn20L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn20L");
-            TRANS_IdleTurn20L_IdlePose = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn20L -> Base Layer.MAP_WalkRunPivot-SM.IdlePose");
-            TRANS_IdleTurn20L_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn20L -> Base Layer.MAP_WalkRunPivot-SM.IdleToWalk");
-            TRANS_IdleTurn20L_IdleToRun = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.IdleTurn20L -> Base Layer.MAP_WalkRunPivot-SM.IdleToRun");
-            STATE_WalkPivot180_L = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkPivot180_L");
-            TRANS_WalkPivot180_L_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.MAP_WalkRunPivot-SM.WalkPivot180_L -> Base Layer.MAP_WalkRunPivot-SM.WalkFwdLoop");
+            TRANS_EntryState_IdleTurn90L = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn90L");
+            TRANS_AnyState_IdleTurn90L = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn90L");
+            TRANS_EntryState_IdleTurn20L = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn20L");
+            TRANS_AnyState_IdleTurn20L = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn20L");
+            TRANS_EntryState_IdleTurn20R = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn20R");
+            TRANS_AnyState_IdleTurn20R = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn20R");
+            TRANS_EntryState_IdleTurn90R = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn90R");
+            TRANS_AnyState_IdleTurn90R = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn90R");
+            TRANS_EntryState_IdleTurn180R = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn180R");
+            TRANS_AnyState_IdleTurn180R = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.IdleTurn180R");
+            TRANS_EntryState_IdleToRun = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            TRANS_AnyState_IdleToRun = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            TRANS_EntryState_WalkFwdLoop = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_AnyState_WalkFwdLoop = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_EntryState_RunFwdLoop = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_AnyState_RunFwdLoop = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_EntryState_IdleToWalk = mMotionController.AddAnimatorName("Entry -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_AnyState_IdleToWalk = mMotionController.AddAnimatorName("AnyState -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            STATE_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_IdleToWalk_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_IdleToWalk_WalkToIdle_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk -> Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_LDown");
+            TRANS_IdleToWalk_WalkToIdle_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk -> Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_RDown");
+            STATE_IdleToRun = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            TRANS_IdleToRun_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_IdleToRun_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun -> Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown");
+            TRANS_IdleToRun_RunStop_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun -> Base Layer.WalkNoWeaponMotion-SM.RunStop_RDown");
+            STATE_IdleTurn90L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90L");
+            TRANS_IdleTurn90L_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90L -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_IdleTurn90L_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90L -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_IdleTurn90L_IdleToWalk90L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90L -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90L");
+            TRANS_IdleTurn90L_IdleToRun90L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90L -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun90L");
+            TRANS_IdleTurn90L_IdleToRun = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90L -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            STATE_IdleTurn180L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180L");
+            TRANS_IdleTurn180L_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180L -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_IdleTurn180L_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180L -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_IdleTurn180L_IdleToWalk180L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180L -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180L");
+            TRANS_IdleTurn180L_IdleToRun180L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180L -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun180L");
+            TRANS_IdleTurn180L_IdleToRun = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180L -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            STATE_IdleToWalk90L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90L");
+            TRANS_IdleToWalk90L_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90L -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_IdleToWalk90L_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90L -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            STATE_IdleToWalk180L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180L");
+            TRANS_IdleToWalk180L_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180L -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_IdleToWalk180L_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180L -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            STATE_IdleToRun90L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun90L");
+            TRANS_IdleToRun90L_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun90L -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_IdleToRun90L_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun90L -> Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown");
+            STATE_IdleToRun180L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun180L");
+            TRANS_IdleToRun180L_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun180L -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_IdleToRun180L_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun180L -> Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown");
+            STATE_IdleTurn90R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90R");
+            TRANS_IdleTurn90R_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90R -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_IdleTurn90R_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90R -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_IdleTurn90R_IdleToWalk90R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90R -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90R");
+            TRANS_IdleTurn90R_IdleToRun90R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90R -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun90R");
+            TRANS_IdleTurn90R_IdleToRun = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn90R -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            STATE_IdleTurn180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180R");
+            TRANS_IdleTurn180R_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180R -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_IdleTurn180R_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180R -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_IdleTurn180R_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180R -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180R");
+            TRANS_IdleTurn180R_IdleToRun180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180R -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun180R");
+            TRANS_IdleTurn180R_IdleToRun = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn180R -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            STATE_IdleToWalk90R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90R");
+            TRANS_IdleToWalk90R_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90R -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_IdleToWalk90R_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90R -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            STATE_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180R");
+            TRANS_IdleToWalk180R_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180R -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_IdleToWalk180R_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180R -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            STATE_IdleToRun90R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun90R");
+            TRANS_IdleToRun90R_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun90R -> Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown");
+            TRANS_IdleToRun90R_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun90R -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            STATE_IdleToRun180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun180R");
+            TRANS_IdleToRun180R_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun180R -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_IdleToRun180R_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleToRun180R -> Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown");
+            STATE_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_IdlePose_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180R");
+            TRANS_IdlePose_IdleToWalk90R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90R");
+            TRANS_IdlePose_IdleToWalk180L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180L");
+            TRANS_IdlePose_IdleToWalk90L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk90L");
+            TRANS_IdlePose_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_IdlePose_IdleToRun = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            TRANS_IdlePose_IdleToRun90L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun90L");
+            TRANS_IdlePose_IdleToRun180L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun180L");
+            TRANS_IdlePose_IdleToRun90R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun90R");
+            TRANS_IdlePose_IdleToRun180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdlePose -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun180R");
+            STATE_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_WalkFwdLoop_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_WalkFwdLoop_WalkToIdle_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_RDown");
+            TRANS_WalkFwdLoop_WalkToIdle_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_LDown");
+            TRANS_WalkFwdLoop_WalkPivot180_L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.WalkPivot180_L");
+            STATE_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_RunFwdLoop_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_RunFwdLoop_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown");
+            TRANS_RunFwdLoop_RunPivot180L_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.RunPivot180L_RDown");
+            TRANS_RunFwdLoop_RunPivot180R_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.RunPivot180R_LDown");
+            TRANS_RunFwdLoop_RunPivot180L_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.RunPivot180L_LDown");
+            TRANS_RunFwdLoop_RunPivot180R_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.RunPivot180R_RDown");
+            TRANS_RunFwdLoop_RunStop_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop -> Base Layer.WalkNoWeaponMotion-SM.RunStop_RDown");
+            STATE_RunPivot180L_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunPivot180L_RDown");
+            TRANS_RunPivot180L_RDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunPivot180L_RDown -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            STATE_RunPivot180R_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunPivot180R_LDown");
+            TRANS_RunPivot180R_LDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunPivot180R_LDown -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            STATE_WalkToIdle_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_RDown");
+            TRANS_WalkToIdle_RDown_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_RDown -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_WalkToIdle_RDown_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_RDown -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_WalkToIdle_RDown_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_RDown -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_WalkToIdle_RDown_WalkPivot180_L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_RDown -> Base Layer.WalkNoWeaponMotion-SM.WalkPivot180_L");
+            TRANS_WalkToIdle_RDown_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_RDown -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180R");
+            STATE_WalkToIdle_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_LDown");
+            TRANS_WalkToIdle_LDown_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_LDown -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_WalkToIdle_LDown_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_LDown -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
+            TRANS_WalkToIdle_LDown_WalkPivot180_L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_LDown -> Base Layer.WalkNoWeaponMotion-SM.WalkPivot180_L");
+            TRANS_WalkToIdle_LDown_IdleToWalk180R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_LDown -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk180R");
+            TRANS_WalkToIdle_LDown_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkToIdle_LDown -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            STATE_RunStop_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunStop_RDown");
+            TRANS_RunStop_RDown_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunStop_RDown -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_RunStop_RDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunStop_RDown -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_RunStop_RDown_RunPivot180R_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunStop_RDown -> Base Layer.WalkNoWeaponMotion-SM.RunPivot180R_LDown");
+            STATE_RunStop_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown");
+            TRANS_RunStop_LDown_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_RunStop_LDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            TRANS_RunStop_LDown_RunPivot180R_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunStop_LDown -> Base Layer.WalkNoWeaponMotion-SM.RunPivot180R_RDown");
+            STATE_RunPivot180L_LDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunPivot180L_LDown");
+            TRANS_RunPivot180L_LDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunPivot180L_LDown -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            STATE_RunPivot180R_RDown = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunPivot180R_RDown");
+            TRANS_RunPivot180R_RDown_RunFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.RunPivot180R_RDown -> Base Layer.WalkNoWeaponMotion-SM.RunFwdLoop");
+            STATE_IdleTurn20R = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn20R");
+            TRANS_IdleTurn20R_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn20R -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_IdleTurn20R_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn20R -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_IdleTurn20R_IdleToRun = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn20R -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            STATE_IdleTurn20L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn20L");
+            TRANS_IdleTurn20L_IdlePose = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn20L -> Base Layer.WalkNoWeaponMotion-SM.IdlePose");
+            TRANS_IdleTurn20L_IdleToWalk = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn20L -> Base Layer.WalkNoWeaponMotion-SM.IdleToWalk");
+            TRANS_IdleTurn20L_IdleToRun = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.IdleTurn20L -> Base Layer.WalkNoWeaponMotion-SM.IdleToRun");
+            STATE_WalkPivot180_L = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkPivot180_L");
+            TRANS_WalkPivot180_L_WalkFwdLoop = mMotionController.AddAnimatorName("Base Layer.WalkNoWeaponMotion-SM.WalkPivot180_L -> Base Layer.WalkNoWeaponMotion-SM.WalkFwdLoop");
         }
 
 #if UNITY_EDITOR
@@ -1636,7 +1559,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28100f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START, "L0MotionPhase");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Less, -60f, "InputAngleFromAvatar");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, -160f, "InputAngleFromAvatar");
 
@@ -1649,7 +1572,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28100f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START, "L0MotionPhase");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Less, -10f, "InputAngleFromAvatar");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, -60f, "InputAngleFromAvatar");
 
@@ -1662,7 +1585,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28100f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START, "L0MotionPhase");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, 10f, "InputAngleFromAvatar");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Less, 60f, "InputAngleFromAvatar");
 
@@ -1675,7 +1598,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28100f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START, "L0MotionPhase");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, 60f, "InputAngleFromAvatar");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Less, 160f, "InputAngleFromAvatar");
 
@@ -1688,7 +1611,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28100f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START, "L0MotionPhase");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, 160f, "InputAngleFromAvatar");
 
             // Create the transition from the any state. Note that 'AnyState' transitions have to be added to the root
@@ -1700,7 +1623,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28100f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START, "L0MotionPhase");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, 0.6f, "InputMagnitude");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, -10f, "InputAngleFromAvatar");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Less, 10f, "InputAngleFromAvatar");
@@ -1714,7 +1637,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28114f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START_SHORTCUT_WALK, "L0MotionPhase");
 
             // Create the transition from the any state. Note that 'AnyState' transitions have to be added to the root
             lAnyStateTransition = lRootStateMachine.AddAnyStateTransition(lRunFwdLoop);
@@ -1725,7 +1648,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28115f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START_SHORTCUT_RUN, "L0MotionPhase");
 
             // Create the transition from the any state. Note that 'AnyState' transitions have to be added to the root
             lAnyStateTransition = lRootStateMachine.AddAnyStateTransition(lIdleToWalk);
@@ -1736,7 +1659,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28100f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START, "L0MotionPhase");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, 0.1f, "InputMagnitude");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Less, 0.6f, "InputMagnitude");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Greater, -10f, "InputAngleFromAvatar");
@@ -1751,7 +1674,7 @@ namespace com.ootii.Extra.Motions
             lAnyStateTransition.offset = 0f;
             lAnyStateTransition.mute = false;
             lAnyStateTransition.solo = false;
-            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, 28100f, "L0MotionPhase");
+            lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Equals, PHASE_START, "L0MotionPhase");
             lAnyStateTransition.AddCondition(UnityEditor.Animations.AnimatorConditionMode.Less, -160f, "InputAngleFromAvatar");
 
             UnityEditor.Animations.AnimatorStateTransition lStateTransition = null;
@@ -2962,31 +2885,31 @@ namespace com.ootii.Extra.Motions
         public override void OnSettingsGUI()
         {
             UnityEditor.EditorGUILayout.IntField(new GUIContent("Phase ID", "Phase ID used to transition to the state."), PHASE_START);
-            mWalkFwdStart = CreateAnimationField("IdleToWalk", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart.anim", "WalkFwdStart", mWalkFwdStart);
-            mRunFwdStart = CreateAnimationField("IdleToRun", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart.anim", "RunFwdStart", mRunFwdStart);
-            mTurnLt90_Loop = CreateAnimationField("IdleTurn90L", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/TurnLt90_Loop.anim", "TurnLt90_Loop", mTurnLt90_Loop);
-            mTurnLt180 = CreateAnimationField("IdleTurn180L", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/TurnLt180.anim", "TurnLt180", mTurnLt180);
-            mWalkFwdStart90_L = CreateAnimationField("IdleToWalk90L", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart90_L.anim", "WalkFwdStart90_L", mWalkFwdStart90_L);
-            mWalkFwdStart180_L = CreateAnimationField("IdleToWalk180L", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart180_L.anim", "WalkFwdStart180_L", mWalkFwdStart180_L);
-            mRunFwdStart90_L = CreateAnimationField("IdleToRun90L", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart90_L.anim", "RunFwdStart90_L", mRunFwdStart90_L);
-            mRunFwdStart180_L = CreateAnimationField("IdleToRun180L", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart180_L.anim", "RunFwdStart180_L", mRunFwdStart180_L);
-            mTurnRt90_Loop = CreateAnimationField("IdleTurn90R", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/TurnRt90_Loop.anim", "TurnRt90_Loop", mTurnRt90_Loop);
-            mTurnRt180 = CreateAnimationField("IdleTurn180R", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/TurnRt180.anim", "TurnRt180", mTurnRt180);
-            mWalkFwdStart90_R = CreateAnimationField("IdleToWalk90R", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart90_R.anim", "WalkFwdStart90_R", mWalkFwdStart90_R);
-            mWalkFwdStart180_R = CreateAnimationField("IdleToWalk180R", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart180_R.anim", "WalkFwdStart180_R", mWalkFwdStart180_R);
-            mRunFwdStart90_R = CreateAnimationField("IdleToRun90R", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart90_R.anim", "RunFwdStart90_R", mRunFwdStart90_R);
-            mRunFwdStart180_R = CreateAnimationField("IdleToRun180R", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart180_R.anim", "RunFwdStart180_R", mRunFwdStart180_R);
-            mIdle = CreateAnimationField("IdlePose", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/Idle.anim", "Idle", mIdle);
-            mWalkFwdLoop = CreateAnimationField("WalkFwdLoop", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdLoop.anim", "WalkFwdLoop", mWalkFwdLoop);
-            mRunFwdLoop = CreateAnimationField("RunFwdLoop", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdLoop.anim", "RunFwdLoop", mRunFwdLoop);
-            mRunFwdTurn180_L_LU = CreateAnimationField("RunPivot180L_RDown", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdTurn180_L_LU.anim", "RunFwdTurn180_L_LU", mRunFwdTurn180_L_LU);
-            mRunFwdTurn180_R_RU = CreateAnimationField("RunPivot180R_LDown", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdTurn180_R_RU.anim", "RunFwdTurn180_R_RU", mRunFwdTurn180_R_RU);
-            mWalkFwdStop_LU = CreateAnimationField("WalkToIdle_RDown", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStop_LU.anim", "WalkFwdStop_LU", mWalkFwdStop_LU);
-            mWalkFwdStop_RU = CreateAnimationField("WalkToIdle_LDown", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStop_RU.anim", "WalkFwdStop_RU", mWalkFwdStop_RU);
-            mRunFwdStop_LU = CreateAnimationField("RunStop_RDown", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStop_LU.anim", "RunFwdStop_LU", mRunFwdStop_LU);
-            mRunFwdStop_RU = CreateAnimationField("RunStop_LDown", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStop_RU.anim", "RunFwdStop_RU", mRunFwdStop_RU);
-            mRunFwdTurn180_L_RU = CreateAnimationField("RunPivot180L_LDown", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdTurn180_L_RU.anim", "RunFwdTurn180_L_RU", mRunFwdTurn180_L_RU);
-            mRunFwdTurn180_R_LU = CreateAnimationField("RunPivot180R_RDown", "Assets/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdTurn180_R_LU.anim", "RunFwdTurn180_R_LU", mRunFwdTurn180_R_LU);
+            mWalkFwdStart = CreateAnimationField("IdleToWalk", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart.anim", "WalkFwdStart", mWalkFwdStart);
+            mRunFwdStart = CreateAnimationField("IdleToRun", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart.anim", "RunFwdStart", mRunFwdStart);
+            mTurnLt90_Loop = CreateAnimationField("IdleTurn90L", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/TurnLt90_Loop.anim", "TurnLt90_Loop", mTurnLt90_Loop);
+            mTurnLt180 = CreateAnimationField("IdleTurn180L", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/TurnLt180.anim", "TurnLt180", mTurnLt180);
+            mWalkFwdStart90_L = CreateAnimationField("IdleToWalk90L", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart90_L.anim", "WalkFwdStart90_L", mWalkFwdStart90_L);
+            mWalkFwdStart180_L = CreateAnimationField("IdleToWalk180L", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart180_L.anim", "WalkFwdStart180_L", mWalkFwdStart180_L);
+            mRunFwdStart90_L = CreateAnimationField("IdleToRun90L", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart90_L.anim", "RunFwdStart90_L", mRunFwdStart90_L);
+            mRunFwdStart180_L = CreateAnimationField("IdleToRun180L", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart180_L.anim", "RunFwdStart180_L", mRunFwdStart180_L);
+            mTurnRt90_Loop = CreateAnimationField("IdleTurn90R", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/TurnRt90_Loop.anim", "TurnRt90_Loop", mTurnRt90_Loop);
+            mTurnRt180 = CreateAnimationField("IdleTurn180R", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/TurnRt180.anim", "TurnRt180", mTurnRt180);
+            mWalkFwdStart90_R = CreateAnimationField("IdleToWalk90R", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart90_R.anim", "WalkFwdStart90_R", mWalkFwdStart90_R);
+            mWalkFwdStart180_R = CreateAnimationField("IdleToWalk180R", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStart180_R.anim", "WalkFwdStart180_R", mWalkFwdStart180_R);
+            mRunFwdStart90_R = CreateAnimationField("IdleToRun90R", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart90_R.anim", "RunFwdStart90_R", mRunFwdStart90_R);
+            mRunFwdStart180_R = CreateAnimationField("IdleToRun180R", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStart180_R.anim", "RunFwdStart180_R", mRunFwdStart180_R);
+            mIdle = CreateAnimationField("IdlePose", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/Idle.anim", "Idle", mIdle);
+            mWalkFwdLoop = CreateAnimationField("WalkFwdLoop", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdLoop.anim", "WalkFwdLoop", mWalkFwdLoop);
+            mRunFwdLoop = CreateAnimationField("RunFwdLoop", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdLoop.anim", "RunFwdLoop", mRunFwdLoop);
+            mRunFwdTurn180_L_LU = CreateAnimationField("RunPivot180L_RDown", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdTurn180_L_LU.anim", "RunFwdTurn180_L_LU", mRunFwdTurn180_L_LU);
+            mRunFwdTurn180_R_RU = CreateAnimationField("RunPivot180R_LDown", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdTurn180_R_RU.anim", "RunFwdTurn180_R_RU", mRunFwdTurn180_R_RU);
+            mWalkFwdStop_LU = CreateAnimationField("WalkToIdle_RDown", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStop_LU.anim", "WalkFwdStop_LU", mWalkFwdStop_LU);
+            mWalkFwdStop_RU = CreateAnimationField("WalkToIdle_LDown", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/WalkFwdStop_RU.anim", "WalkFwdStop_RU", mWalkFwdStop_RU);
+            mRunFwdStop_LU = CreateAnimationField("RunStop_RDown", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStop_LU.anim", "RunFwdStop_LU", mRunFwdStop_LU);
+            mRunFwdStop_RU = CreateAnimationField("RunStop_LDown", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdStop_RU.anim", "RunFwdStop_RU", mRunFwdStop_RU);
+            mRunFwdTurn180_L_RU = CreateAnimationField("RunPivot180L_LDown", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdTurn180_L_RU.anim", "RunFwdTurn180_L_RU", mRunFwdTurn180_L_RU);
+            mRunFwdTurn180_R_LU = CreateAnimationField("RunPivot180R_RDown", "Assets/ThirdParty/MovementAnimsetPro/Animations/MovementAnimsetPro.fbx/RunFwdTurn180_R_LU.anim", "RunFwdTurn180_R_LU", mRunFwdTurn180_R_LU);
 
             // Add the remaining functionality
             base.OnSettingsGUI();

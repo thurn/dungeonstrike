@@ -6,45 +6,55 @@ namespace DungeonStrike
     public class MovementAnimator : MonoBehaviour
     {
         public Transform Target;
-        public MotionController MotionController;
-        public GameObject Cube;
+        public MovementStyle MovementStyle;
+        private MotionController _motionController;
         private NavMeshAgent _navMeshAgent;
+        private GameObject _indicator;
+        private bool _moving;
 
         void Start()
         {
+            _motionController = GetComponent<MotionController>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _navMeshAgent.updatePosition = false;
             _navMeshAgent.updateRotation = false;
-            _navMeshAgent.speed = 2.05f;
-            _navMeshAgent.radius = 2;
-            _navMeshAgent.acceleration = 5;
-            _navMeshAgent.stoppingDistance = 2;
-            _navMeshAgent.angularSpeed = 120;
+            MovementConstants.UpdateAgentForStyle(_navMeshAgent, MovementStyle.NoWeapon);
         }
 
         void Update()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
             {
+                _moving = true;
                 _navMeshAgent.SetDestination(Target.position);
             }
 
-            if (ReachedDestination())
+            if (_moving && ReachedDestination())
             {
-                MotionController.ClearTarget();
+                _motionController.ClearTarget();
+                Debug.Log("ClearTarget");
+                //                _navMeshAgent.Stop();
+                //                _navMeshAgent.ResetPath();
+                _moving = false;
             }
-            else
+            else if (_moving)
             {
-                MotionController.SetTargetPosition(_navMeshAgent.nextPosition, 1.0f);
-                Cube.transform.position = _navMeshAgent.nextPosition;
+                _motionController.SetTargetPosition(_navMeshAgent.nextPosition, 1.0f);
             }
+
+            if (_indicator == null)
+            {
+                _indicator = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                _indicator.transform.localScale = new Vector3(0.1f, 1, 0.1f);
+                GameObject.Destroy(_indicator.GetComponent<BoxCollider>());
+            }
+
+            _indicator.transform.position = _navMeshAgent.nextPosition;
         }
 
         private bool ReachedDestination()
         {
-            return !_navMeshAgent.pathPending &&
-                _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance &&
-                (!_navMeshAgent.hasPath || _navMeshAgent.velocity.sqrMagnitude <= 1.0f);
+            return !_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= 0.25f;
         }
     }
 }

@@ -1,8 +1,10 @@
 ; 
 ;
+.DS_Store 6b6b708e
 Materials/genSWAT.mat ab8bf488
 Materials/genSWAT.mat.meta 96d33513
 Materials.meta 03910ee7
+Textures/.DS_Store 634ed8c2
 Textures/DeltaForce/DeltaForce_D.tif b79c2aa8
 Textures/DeltaForce/DeltaForce_D.tif.meta 3443aa9e
 Textures/DeltaForce/DeltaForce_G.tif cee723ec

@@ -1033,6 +1033,8 @@ MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion.tif.meta 6a4123fa
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion2.png cd464f5e
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion2.png.meta 929f9e0e
+MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion2.tif d79844f2
+MotionController/Demos/Meshes/Construction Light/StandingLight_Base_BlobAmbient_Occlusion2.tif.meta 3d4581a1
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_Color.tif 6617c54d
 MotionController/Demos/Meshes/Construction Light/StandingLight_Base_Color.tif.meta 8b43b00b
 MotionController/Demos/Meshes/Construction Light/StandingLight_Emissive.tif 6c4dd96a
@@ -1118,8 +1120,6 @@ MotionController/Demos/Meshes/Crates/Crate_3__AOAmbient_Occlusion.tif 539242ce
 MotionController/Demos/Meshes/Crates/Crate_3__AOAmbient_Occlusion.tif.meta e7d02713
 MotionController/Demos/Meshes/Crates/Crates_Base_Color.tif 3c08f0f3
 MotionController/Demos/Meshes/Crates/Crates_Base_Color.tif.meta 762dd036
-MotionController/Demos/Meshes/Crates/Crates_Normal.tif 7e2296c9
-MotionController/Demos/Meshes/Crates/Crates_Normal.tif.meta 0cdaa654
 MotionController/Demos/Meshes/Crates/Materials/Crate 1 Blob.mat 95493761
 MotionController/Demos/Meshes/Crates/Materials/Crate 1 Blob.mat.meta bd07a1b5
 MotionController/Demos/Meshes/Crates/Materials/Crate 2 Blob.mat e723775e
@@ -2357,6 +2357,8 @@ Unity/Labs/Textures/Gym/GymFloorAlbedo.tif 51ae1382
 Unity/Labs/Textures/Gym/GymFloorAlbedo.tif.meta affc7d26
 Unity/Labs/Textures/Gym/GymFloorOcclusion.tif 7b3b27ff
 Unity/Labs/Textures/Gym/GymFloorOcclusion.tif.meta 1b4f3244
+Unity/Labs/Textures/Gym/GymFloorTileAlbedo.tif 9d8518e1
+Unity/Labs/Textures/Gym/GymFloorTileAlbedo.tif.meta 7eb392ab
 Unity/Labs/Textures/Gym/GymFloorTileNormal.tif da2e9f96
 Unity/Labs/Textures/Gym/GymFloorTileNormal.tif.meta b88faaf6
 Unity/Labs/Textures/Gym/GymFloorTileOcclusion.tif f0035baa
@@ -2519,8 +2521,6 @@ Unity/Labs/Textures/Shared/SharedSteelBrushedNormals.tif b04c2d4b
 Unity/Labs/Textures/Shared/SharedSteelBrushedNormals.tif.meta f08fcbd1
 Unity/Labs/Textures/Shared/SharedStripsAlbedo.tif b1ec8741
 Unity/Labs/Textures/Shared/SharedStripsAlbedo.tif.meta 8046ed1a
-Unity/Labs/Textures/Shared/SharedStripsNormals.tif 68ed622e
-Unity/Labs/Textures/Shared/SharedStripsNormals.tif.meta aba2a106
 Unity/Labs/Textures/Shared/SharedStripsOcclusion.tif 37532fa2
 Unity/Labs/Textures/Shared/SharedStripsOcclusion.tif.meta 9c2111a5
 Unity/Labs/Textures/Shared.meta 3075e0dd
