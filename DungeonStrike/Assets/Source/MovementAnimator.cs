@@ -21,7 +21,7 @@ namespace DungeonStrike
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _navMeshAgent.updatePosition = false;
             _navMeshAgent.updateRotation = false;
-            MovementConstants.UpdateAgentForStyle(_navMeshAgent, MovementStyle.NoWeapon);
+            MovementConstants.UpdateAgentForStyle(_navMeshAgent, MovementStyle);
         }
 
         void Update()

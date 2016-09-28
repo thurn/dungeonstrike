@@ -14,7 +14,7 @@ namespace DungeonStrike
     public class WalkNoWeaponMotion : MotionControllerMotion
     {
         /// <summary>
-        /// Trigger values for th emotion
+        /// Trigger values for the motion
         /// </summary>
         public const int PHASE_UNKNOWN = 0;
         public const int PHASE_START = 1055972000;
@@ -137,13 +137,11 @@ namespace DungeonStrike
         /// <summary>
         /// Default constructor
         /// </summary>
-        public WalkNoWeaponMotion()
-            : base()
+        public WalkNoWeaponMotion() : base()
         {
             _Priority = 5;
             _ActionAlias = "Run";
             mIsStartable = true;
-            //mIsGroundedExpected = true;
 
 #if UNITY_EDITOR
             if (_EditorAnimatorSMName.Length == 0) { _EditorAnimatorSMName = "WalkNoWeaponMotion-SM"; }
@@ -154,13 +152,11 @@ namespace DungeonStrike
         /// Controller constructor
         /// </summary>
         /// <param name="rController">Controller the motion belongs to</param>
-        public WalkNoWeaponMotion(MotionController rController)
-            : base(rController)
+        public WalkNoWeaponMotion(MotionController rController) : base(rController)
         {
             _Priority = 5;
             _ActionAlias = "Run";
             mIsStartable = true;
-            //mIsGroundedExpected = true;
 
 #if UNITY_EDITOR
             if (_EditorAnimatorSMName.Length == 0) { _EditorAnimatorSMName = "WalkNoWeaponMotion-SM"; }

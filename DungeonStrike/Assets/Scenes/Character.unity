@@ -1571,6 +1571,7 @@ GameObject:
   - 114: {fileID: 1185363954}
   - 195: {fileID: 1185363957}
   - 114: {fileID: 1185363958}
+  - 114: {fileID: 1185363956}
   m_Layer: 0
   m_Name: genSWAT
   m_TagString: Untagged
@@ -1629,7 +1630,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1185363950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4, y: 0, z: -5.45}
+  m_LocalPosition: {x: -0.58, y: 0, z: 4.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1665,13 +1666,13 @@ MonoBehaviour:
     MotionDefinitions:
     - '{, "Type" : "DungeonStrike.IdleNoWeaponMotion, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
-      : "ActivateRotation", "IsEnabled" : "True", "ReactivationDelay" : "0", "RotateWithViewInputX"
+      : "ActivateRotation", "IsEnabled" : "False", "ReactivationDelay" : "0", "RotateWithViewInputX"
       : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
       "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
       "RotationToViewSpeed" : "360"}'
     - '{, "Type" : "DungeonStrike.IdleRifleMotion, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
-      : "ActivateRotation", "IsEnabled" : "False", "ReactivationDelay" : "0", "RotateWithViewInputX"
+      : "ActivateRotation", "IsEnabled" : "True", "ReactivationDelay" : "0", "RotateWithViewInputX"
       : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
       "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
       "RotationToViewSpeed" : "360"}'
@@ -1682,6 +1683,12 @@ MonoBehaviour:
       "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
       "RotationToViewSpeed" : "360"}'
     - '{, "Type" : "DungeonStrike.WalkNoWeaponMotion, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "5", "ActionAlias"
+      : "Run", "IsEnabled" : "False", "ReactivationDelay" : "0", "DefaultToRun" :
+      "False", "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed" : "180",
+      "StopDelay" : "0.1", "RemoveLateralMovement" : "True", "StartInWalk" : "False",
+      "StartInRun" : "False"}'
+    - '{, "Type" : "DungeonStrike.WalkRifleMotion, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "5", "ActionAlias"
       : "Run", "IsEnabled" : "True", "ReactivationDelay" : "0", "DefaultToRun" : "False",
       "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed" : "180", "StopDelay"
@@ -1768,6 +1775,17 @@ MonoBehaviour:
   EditorWalkOnWalls: 0
   EditorSlideOnSlopes: 0
   EditorRespondToColliders: 0
+--- !u!114 &1185363956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1185363950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61337247dd6434b01be7727e194d0092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &1185363957
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1799,7 +1817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 350915d0e3af547cdbddda542538d8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementStyle: 0
+  MovementStyle: 1
 --- !u!1 &1228523162
 GameObject:
   m_ObjectHideFlags: 0

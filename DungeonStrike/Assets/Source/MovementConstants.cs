@@ -22,7 +22,12 @@ namespace DungeonStrike
                     agent.stoppingDistance = 0.0f;
                     agent.angularSpeed = 120f;
                     return;
-                default:
+                case MovementStyle.Rifle:
+                    agent.speed = 2.5f;
+                    agent.radius = 0.5f;
+                    agent.acceleration = 5.0f;
+                    agent.stoppingDistance = 0.0f;
+                    agent.angularSpeed = 120f;
                     return;
             }
         }
