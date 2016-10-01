@@ -2,7 +2,7 @@
 
 namespace DungeonStrike
 {
-    public class AnimatorLogger : MonoBehaviour
+    public class AnimationClipLogger : MonoBehaviour
     {
         private Animator _animator;
         private string _currentClipName;
