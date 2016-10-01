@@ -63,12 +63,14 @@ namespace DungeonStrike
                         _animator.SetBool("Walking", true);
                         _navMeshAgent.speed = 2.5f;
                         _navMeshAgent.angularSpeed = 250;
+                        _navMeshAgent.acceleration = 25;
                     }
                     else
                     {
                         _animator.SetBool("Running", true);
                         _navMeshAgent.speed = 5.0f;
                         _navMeshAgent.angularSpeed = 500;
+                        _navMeshAgent.acceleration = 50;
                     }
 
                     var turn = TurnToTarget(corner1);
