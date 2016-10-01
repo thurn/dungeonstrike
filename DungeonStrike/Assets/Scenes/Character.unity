@@ -557,7 +557,6 @@ GameObject:
   - 95: {fileID: 551467240}
   - 205: {fileID: 551467239}
   - 195: {fileID: 551467242}
-  - 114: {fileID: 551467244}
   - 114: {fileID: 551467245}
   m_Layer: 0
   m_Name: genSWAT
@@ -617,7 +616,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 551467238}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5, y: -0.0000009536743, z: 1.5}
+  m_LocalPosition: {x: -3.5, y: -0.0000009536743, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
@@ -635,7 +634,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 551467238}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 5
   m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -647,20 +646,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &551467244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 551467238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91b1b112d5c247346979e5fcae9b6257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  automaticallySnapToGridInEditor: 1
-  snapOffsetDistance: 0
-  occupiesCell: 1
 --- !u!114 &551467245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3285,7 +3270,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2052564713}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0, z: 0.28}
+  m_LocalPosition: {x: -0.05, y: 0, z: -1.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []

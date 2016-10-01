@@ -33,17 +33,16 @@ public class CharacterAnimation : MonoBehaviour
             _target = cell.CenterPoint3D;
             _animator.SetBool("Walking", true);
             var turn = TurnToTarget(_target);
-            Debug.Log("turn: " + turn);
             _animator.SetInteger("Turn", turn);
         }
 
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Walking"))
+        if (_animator.GetNextAnimatorStateInfo(0).IsName("Running"))
         {
             _animator.applyRootMotion = false;
             _navMeshAgent.SetDestination(_target);
         }
 
-        if (Vector3.Distance(transform.position, _target) < 0.3f)
+        if (Vector3.Distance(transform.position, _target) < 0.2f)
         {
             _animator.SetBool("Walking", false);
         }
@@ -77,13 +76,9 @@ public class CharacterAnimation : MonoBehaviour
     private float AngleToTarget(Vector3 target)
     {
         var targetDir = target - transform.position;
-		var angle = Vector3.Angle( targetDir, transform.forward );
-        Debug.Log("angle: " + angle);
-
-        var targetVector = target - transform.position;
-        var rotation = Quaternion.FromToRotation(transform.forward, targetVector);
-        var degrees = rotation.eulerAngles.y;
-        Debug.Log("degrees: " + degrees);
-        return degrees > 180 ? degrees - 360 : degrees;
+		var angle = Vector3.Angle(transform.forward, targetDir );
+        // Use cross product to determine the 'direction' of the angle.
+        var cross = Vector3.Cross(transform.forward, targetDir);
+        return cross.y < 0 ? -angle : angle;
     }
 }
