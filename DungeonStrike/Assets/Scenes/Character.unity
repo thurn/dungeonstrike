@@ -159,6 +159,7 @@ GameObject:
   - 65: {fileID: 113040663}
   - 23: {fileID: 113040662}
   - 208: {fileID: 113040661}
+  - 114: {fileID: 113040666}
   m_Layer: 0
   m_Name: Obstacle2
   m_TagString: Untagged
@@ -236,12 +237,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 113040660}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10, y: 0, z: 7}
+  m_LocalPosition: {x: 11, y: -0.0000009536743, z: 7}
   m_LocalScale: {x: 50, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &113040666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 113040660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1b112d5c247346979e5fcae9b6257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automaticallySnapToGridInEditor: 1
+  snapOffsetDistance: 0
+  occupiesCell: 1
 --- !u!1 &117119952
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,6 +269,7 @@ GameObject:
   - 65: {fileID: 117119955}
   - 23: {fileID: 117119954}
   - 208: {fileID: 117119953}
+  - 114: {fileID: 117119958}
   m_Layer: 0
   m_Name: Obstacle3
   m_TagString: Untagged
@@ -331,12 +347,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 117119952}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: 0, z: 7}
+  m_LocalPosition: {x: -9, y: -0.0000009536743, z: 7}
   m_LocalScale: {x: 30, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &117119958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 117119952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1b112d5c247346979e5fcae9b6257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automaticallySnapToGridInEditor: 1
+  snapOffsetDistance: 0
+  occupiesCell: 1
 --- !u!1 &233050363
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,6 +753,7 @@ GameObject:
   - 65: {fileID: 645219075}
   - 23: {fileID: 645219074}
   - 208: {fileID: 645219078}
+  - 114: {fileID: 645219079}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -785,7 +816,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 645219073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 7}
+  m_LocalPosition: {x: 1, y: 0.5, z: 7}
   m_LocalScale: {x: 50, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -806,6 +837,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &645219079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 645219073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1b112d5c247346979e5fcae9b6257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automaticallySnapToGridInEditor: 1
+  snapOffsetDistance: 0
+  occupiesCell: 1
 --- !u!1 &651600733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1105,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 981479403}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.21, y: 0, z: 17.83}
+  m_LocalPosition: {x: 8.21, y: 0, z: 8.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1306,6 +1351,7 @@ GameObject:
   - 65: {fileID: 1032664145}
   - 23: {fileID: 1032664144}
   - 208: {fileID: 1032664143}
+  - 114: {fileID: 1032664148}
   m_Layer: 0
   m_Name: Obstacle5
   m_TagString: Untagged
@@ -1383,12 +1429,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1032664142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.39, y: 0, z: -8.14}
+  m_LocalPosition: {x: -3, y: -0.0000009536743, z: -9}
   m_LocalScale: {x: 20, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1032664148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1032664142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1b112d5c247346979e5fcae9b6257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automaticallySnapToGridInEditor: 1
+  snapOffsetDistance: 0
+  occupiesCell: 1
 --- !u!1 &1055728747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,6 +1549,8 @@ GameObject:
   - 33: {fileID: 1143962858}
   - 64: {fileID: 1143962857}
   - 23: {fileID: 1143962856}
+  - 114: {fileID: 1143962860}
+  - 114: {fileID: 1143962861}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1551,12 +1613,572 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1143962855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0000009536743, z: -0.0000011920929}
+  m_LocalPosition: {x: 0, y: -0.0000009536743, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1143962860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1143962855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bdf3ae7c27f6f4486a2ca56eadf23a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableDebug: 0
+  drawGridDebug: 1
+  drawCellDebug: 1
+  drawObjectDebug: 1
+  debugTexture: {fileID: 2800000, guid: e3c53c47567bb454b8e45dc84e4b2275, type: 3}
+  m_nGridWidth: 16
+  m_nGridHeight: 16
+  m_fCellSize: 2
+  m_oCellsPathableFlags: 0d0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000b000000000000000d0000000f0000000f0000000b0000001d0000001f0000001f0000001f0000001700000017000000170000001700000017000000170000001300000000000000150000001700000017000000130000001d0000001f0000001f0000001b0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000001d0000001f0000001f000000130000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001d0000001f0000001b00000000000000000000000d0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000b0000001d0000001f0000001b00000000000000000000001d0000001f0000001f0000001f0000001f0000001f000000170000001f0000001f0000001f0000001b0000001d0000001f0000001f0000000b000000000000001d0000001f0000001f0000001f0000001f0000001b000000000000001d0000001f0000001f0000001b0000001d0000001f0000001f0000001b000000000000001d0000001f0000001f0000001f0000001f0000001b000000000000001d0000001f0000001f0000001b0000001d0000001f0000001f0000001f0000000f0000001f0000001f0000001f0000001f0000001f0000001f000000070000001f0000001f0000001f0000001b0000001d0000001f0000001f0000001f0000001f0000001f0000001f0000001f0000001f0000001f0000001b000000000000001d0000001f0000001f0000001b0000001d0000001f0000001f000000170000001f0000001f0000001f0000001f0000001f0000001f0000001f0000000f0000001f0000001f0000001f0000001b00000015000000170000001300000000000000150000001700000017000000170000001700000017000000170000001f0000001700000017000000170000001300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f0000000f000000070000000f0000000f0000000f0000000b00000015000000170000001700000017000000170000001700000017000000170000001700000017000000130000000000000015000000170000001700000013000000
+  m_oCellsPathableHeight:
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - 0.5
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - 0.5
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - 0.5
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - 0.5
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - 0.5
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - 0.5
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - 0.5
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - 0.5
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  - -0.0000009536743
+  m_fCellPathableMinHeight: -0.0000009536743
+  m_fCellPathableMaxHeight: 0.5
+  m_oCellsPathableNormal:
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.2204462e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  - {x: 0, y: 1, z: 2.220446e-18}
+  m_vecPathableCalcPos: {x: 0, y: -0.0000009536743, z: 0}
+  m_nPathableCalcGridWidth: 16
+  m_nPathableCalcGridHeight: 16
+  m_nLevelFloorLayer: 0
+  m_nLevelCollisionLayer: 0
+  m_fMaxJumpHeightInCells: 1
+  m_fMaxDropHeightInCells: 3
+  m_eAxisMode: 0
+  m_nPathableCalcLevelFloorLayer: 0
+  m_nPathableCalcLevelCollisionLayer: 0
+  m_fPathableCalcMaxJumpHeightInCells: 1
+  m_fPathableCalcMaxDropHeightInCells: 3
+  m_nPathableCalcAxisMode: 0
+--- !u!114 &1143962861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1143962855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e944626615b45c3bff92f9e0b38612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1185363950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,6 +2194,7 @@ GameObject:
   - 195: {fileID: 1185363957}
   - 114: {fileID: 1185363958}
   - 114: {fileID: 1185363956}
+  - 114: {fileID: 1185363959}
   m_Layer: 0
   m_Name: genSWAT
   m_TagString: Untagged
@@ -1630,7 +2253,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1185363950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.58, y: 0, z: 4.71}
+  m_LocalPosition: {x: -1, y: -0.0000009536743, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1666,29 +2289,11 @@ MonoBehaviour:
     MotionDefinitions:
     - '{, "Type" : "DungeonStrike.IdleNoWeaponMotion, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
-      : "ActivateRotation", "IsEnabled" : "False", "ReactivationDelay" : "0", "RotateWithViewInputX"
-      : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
-      "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
-      "RotationToViewSpeed" : "360"}'
-    - '{, "Type" : "DungeonStrike.IdleRifleMotion, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
       : "ActivateRotation", "IsEnabled" : "True", "ReactivationDelay" : "0", "RotateWithViewInputX"
       : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
       "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
       "RotationToViewSpeed" : "360"}'
-    - '{, "Type" : "DungeonStrike.IdlePistolMotion, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "0", "ActionAlias"
-      : "ActivateRotation", "IsEnabled" : "False", "ReactivationDelay" : "0", "RotateWithViewInputX"
-      : "True", "RotateWithMovementInputX" : "False", "ForceViewOnInput" : "False",
-      "RotateWithView" : "False", "RotationSpeed" : "240", "RotationSmoothing" : "0.1",
-      "RotationToViewSpeed" : "360"}'
     - '{, "Type" : "DungeonStrike.WalkNoWeaponMotion, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "5", "ActionAlias"
-      : "Run", "IsEnabled" : "False", "ReactivationDelay" : "0", "DefaultToRun" :
-      "False", "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed" : "180",
-      "StopDelay" : "0.1", "RemoveLateralMovement" : "True", "StartInWalk" : "False",
-      "StartInRun" : "False"}'
-    - '{, "Type" : "DungeonStrike.WalkRifleMotion, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null", "Name" : "", "Priority" : "5", "ActionAlias"
       : "Run", "IsEnabled" : "True", "ReactivationDelay" : "0", "DefaultToRun" : "False",
       "RotationSpeed" : "180", "MinPivotAngle" : "40", "PivotSpeed" : "180", "StopDelay"
@@ -1696,7 +2301,7 @@ MonoBehaviour:
       : "False"}'
   EditorTabIndex: 1
   EditorLayerIndex: 0
-  EditorMotionIndex: 3
+  EditorMotionIndex: 1
   EditorPackIndex: 0
 --- !u!114 &1185363955
 MonoBehaviour:
@@ -1817,7 +2422,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 350915d0e3af547cdbddda542538d8f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementStyle: 1
+--- !u!114 &1185363959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1185363950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b1b112d5c247346979e5fcae9b6257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automaticallySnapToGridInEditor: 1
+  snapOffsetDistance: 0
+  occupiesCell: 1
 --- !u!1 &1228523162
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ namespace DungeonStrike
     public class GridOverlay : MonoBehaviour
     {
         private GGGrid _grid;
+        private const float OverlayHeight = 0.2f;
 
         private void Start()
         {
@@ -18,11 +19,11 @@ namespace DungeonStrike
                 {
                     var cell = _grid.Cells[x, y];
                     var pointArray = new List<Vector3>() {
-                      new Vector3(cell.MinPoint3D.x, 1.0f, cell.MinPoint3D.z),
-                      new Vector3(cell.MaxPoint3D.x, 1.0f, cell.MinPoint3D.z),
-                      new Vector3(cell.MaxPoint3D.x, 1.0f, cell.MaxPoint3D.z),
-                      new Vector3(cell.MinPoint3D.x, 1.0f, cell.MaxPoint3D.z),
-                      new Vector3(cell.MinPoint3D.x, 1.0f, cell.MinPoint3D.z)
+                      new Vector3(cell.MinPoint3D.x, OverlayHeight, cell.MinPoint3D.z),
+                      new Vector3(cell.MaxPoint3D.x, OverlayHeight, cell.MinPoint3D.z),
+                      new Vector3(cell.MaxPoint3D.x, OverlayHeight, cell.MaxPoint3D.z),
+                      new Vector3(cell.MinPoint3D.x, OverlayHeight, cell.MaxPoint3D.z),
+                      new Vector3(cell.MinPoint3D.x, OverlayHeight, cell.MinPoint3D.z)
                     };
 
                     var color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
