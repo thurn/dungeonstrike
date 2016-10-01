@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace DungeonStrike
 {
+    // This class is left over from an attempt to make root motion work in a
+    // natural way. It turns out it's kind of hard.
     public class MovementAnimator : MonoBehaviour
     {
         private MotionController _motionController;
@@ -10,6 +12,7 @@ namespace DungeonStrike
         private GameObject _steeringIndicator;
         private GameObject _nextPositionIndicator;
         private GameObject _destinationIndicator;
+        private Animator _animator;
         private bool _moving;
         private bool _steer;
         private bool _stopping;
@@ -27,21 +30,11 @@ namespace DungeonStrike
             _navMeshAgent.acceleration = 5.0f;
             _navMeshAgent.stoppingDistance = 0.0f;
             _navMeshAgent.angularSpeed = 120f;
+            _animator = GetComponent<Animator>();
         }
 
         void Update()
         {
-            if (_stopping)
-            {
-                if (Vector3.Distance(transform.position, _target.Value) < 0.001f)
-                {
-                    _stopping = false;
-                }
-                else
-                {
-                    transform.position = Vector3.Lerp(transform.position, _target.Value, 0.1f * Time.deltaTime);
-                }
-            }
             if (_moving && ReachedDestination())
             {
                 _motionController.ClearTarget();
