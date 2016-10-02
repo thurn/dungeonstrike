@@ -6,11 +6,12 @@ namespace DungeonStrike
     {
         public Transform RightHandAttachPoint;
         public GameObject M16;
+        public ModelType ModelType;
         private GameObject _currentWeapon;
 
         void Start()
         {
-            _currentWeapon = WeaponConstants.EquipM16(RightHandAttachPoint, M16, ModelType.AssaultCharacter);
+            _currentWeapon = WeaponConstants.EquipM16(RightHandAttachPoint, M16, ModelType);
         }
     }
 }
