@@ -1,0 +1,319 @@
+; 
+;
+FBX Files/10mm Pistol.fbx 2be5993d
+FBX Files/10mm Pistol.fbx.meta cf8edbef
+FBX Files/12 Gauge Automatic Shotgun.fbx 8f37b373
+FBX Files/12 Gauge Automatic Shotgun.fbx.meta 42ff7ca9
+FBX Files/357 M-gun Revolver.fbx 662b7317
+FBX Files/357 M-gun Revolver.fbx.meta 0d41d252
+FBX Files/38 Revolver.fbx 4650ef50
+FBX Files/38 Revolver.fbx.meta 1bab7ddd
+FBX Files/44 M-gun Revolver.fbx 27ddaa74
+FBX Files/44 M-gun Revolver.fbx.meta e954e282
+FBX Files/45 Automatic Pistol.fbx 0dac8b95
+FBX Files/45 Automatic Pistol.fbx.meta bb604422
+FBX Files/50 Automatic Pistol.fbx 43541018
+FBX Files/50 Automatic Pistol.fbx.meta c662a1d5
+FBX Files/500 M-gun Revolver.fbx 526239cc
+FBX Files/500 M-gun Revolver.fbx.meta c4193441
+FBX Files/9mm Automatic Pistol.fbx 626d74bb
+FBX Files/9mm Automatic Pistol.fbx.meta 68d35c29
+FBX Files/9mm Heavy Pistol.fbx 88aad767
+FBX Files/9mm Heavy Pistol.fbx.meta ce479322
+FBX Files/AGU Assault Rifle.fbx f4b1a56b
+FBX Files/AGU Assault Rifle.fbx.meta 4fb94cbb
+FBX Files/BM4 Shotgun.fbx a50f0ae2
+FBX Files/BM4 Shotgun.fbx.meta f22b84d2
+FBX Files/Cowboy Rifle.fbx 2090e435
+FBX Files/Cowboy Rifle.fbx.meta 681a1898
+FBX Files/Czech Machine Pistol 61-608-Extended.fbx 3d382303
+FBX Files/Czech Machine Pistol 61-608-Extended.fbx.meta 149bca83
+FBX Files/Czech Machine Pistol 61-608.fbx 6a311105
+FBX Files/Czech Machine Pistol 61-608.fbx.meta 8790fa99
+FBX Files/Field Rifle.fbx c031c6f9
+FBX Files/Field Rifle.fbx.meta 36bb9001
+FBX Files/French Assault Rifle.fbx ea68aa45
+FBX Files/French Assault Rifle.fbx.meta 94f7f466
+FBX Files/Kalash.fbx cecbbd8e
+FBX Files/Kalash.fbx.meta 447e1a43
+FBX Files/MG5 Submachinegun.fbx 5718ba3a
+FBX Files/MG5 Submachinegun.fbx.meta f8431c7b
+FBX Files/Materials/Diffuse.mat d4f07520
+FBX Files/Materials/Diffuse.mat.meta 8291d583
+FBX Files/Materials.meta 8616ac60
+FBX Files/Model 10 Submachinegun.fbx 97efb1bd
+FBX Files/Model 10 Submachinegun.fbx.meta 123ccdac
+FBX Files/Model 16 Assault Rifle.fbx f92f4236
+FBX Files/Model 16 Assault Rifle.fbx.meta 9a3bff33
+FBX Files/Model 37 Shotgun.fbx 8849ea4b
+FBX Files/Model 37 Shotgun.fbx.meta 10fde0c1
+FBX Files/Model 500 Protector Shotgun.fbx 4b8424f8
+FBX Files/Model 500 Protector Shotgun.fbx.meta babb98ea
+FBX Files/Model 700 Rifle.fbx 9859915f
+FBX Files/Model 700 Rifle.fbx.meta 2ff5399f
+FBX Files/Model 82 Heavy Sniper.fbx a39c951f
+FBX Files/Model 82 Heavy Sniper.fbx.meta d788d2f2
+FBX Files/Model 870 Shotgun.fbx cb34b9b9
+FBX Files/Model 870 Shotgun.fbx.meta 963ed619
+FBX Files/SC Assault Rifle.fbx 6a4262e6
+FBX Files/SC Assault Rifle.fbx.meta 65959915
+FBX Files/SDV Sniper Rifle.fbx 82a784f1
+FBX Files/SDV Sniper Rifle.fbx.meta 40a9d004
+FBX Files/Snub-nosed .38 Revolver.fbx 622587b8
+FBX Files/Snub-nosed .38 Revolver.fbx.meta 07da7d35
+FBX Files/U-Z Machinegun.fbx a22c3127
+FBX Files/U-Z Machinegun.fbx.meta 8cd14853
+FBX Files/UMG Submachinegun.fbx 4dd1427a
+FBX Files/UMG Submachinegun.fbx.meta cda2f70a
+FBX Files.meta 0d0176c3
+Materials/10mm Pistol.mat 88c52c5f
+Materials/10mm Pistol.mat.meta e1cb6778
+Materials/12 Gauge Automatic Shotgun.mat edd8f0e0
+Materials/12 Gauge Automatic Shotgun.mat.meta ef2e30f3
+Materials/357 M-gun revolver.mat b1220b4d
+Materials/357 M-gun revolver.mat.meta 4f28be1f
+Materials/38 Revolver.mat cd755b4b
+Materials/38 Revolver.mat.meta e4d5e0a4
+Materials/44 M-gun revolver.mat b13c8a9c
+Materials/44 M-gun revolver.mat.meta 165b5af2
+Materials/45 Automatic Pistol.mat 4689a236
+Materials/45 Automatic Pistol.mat.meta 8206d9cf
+Materials/50 Automatic Pistol.mat c793a13a
+Materials/50 Automatic Pistol.mat.meta 5d74432d
+Materials/500 M-gun Revolver.mat 111b955d
+Materials/500 M-gun Revolver.mat.meta 12a8fef7
+Materials/9mm Automatic Pistol.mat d3dd8fc0
+Materials/9mm Automatic Pistol.mat.meta 94096138
+Materials/9mm Heavy Pistol.mat 6e7b2e15
+Materials/9mm Heavy Pistol.mat.meta 264b840b
+Materials/AGU Assault Rifle.mat 49b2871a
+Materials/AGU Assault Rifle.mat.meta 518b2e59
+Materials/BM4 Shotgun.mat 07183b4c
+Materials/BM4 Shotgun.mat.meta f559e952
+Materials/Cowboy Rifle.mat b154b38a
+Materials/Cowboy Rifle.mat.meta 8b62904c
+Materials/Czech Machine Pistol.mat afaf45eb
+Materials/Czech Machine Pistol.mat.meta 4766b703
+Materials/Field Rifle.mat 5293c4ee
+Materials/Field Rifle.mat.meta 510accf7
+Materials/French Assault Rifle.mat 55afcb48
+Materials/French Assault Rifle.mat.meta 050bc1f5
+Materials/Kalash.mat e097148d
+Materials/Kalash.mat.meta 1a65ae0a
+Materials/MG5 Submachinegun.mat 02026f8d
+Materials/MG5 Submachinegun.mat.meta 1fadc05a
+Materials/Model 10 Submachinegun.mat e5877fe4
+Materials/Model 10 Submachinegun.mat.meta 99a244a3
+Materials/Model 16 Assault Rifle.mat 195b7ae2
+Materials/Model 16 Assault Rifle.mat.meta 10e411c0
+Materials/Model 37 Shotgun.mat 4bdaa0a6
+Materials/Model 37 Shotgun.mat.meta c3354500
+Materials/Model 500 Protector Shotgun.mat cd2a1cd1
+Materials/Model 500 Protector Shotgun.mat.meta 22e8840a
+Materials/Model 700 Rifle.mat be8dff5c
+Materials/Model 700 Rifle.mat.meta 020b2f60
+Materials/Model 82 Heavy Sniper.mat f7db4c06
+Materials/Model 82 Heavy Sniper.mat.meta df0bbf36
+Materials/Model 870 Shotgun.mat bdc1018b
+Materials/Model 870 Shotgun.mat.meta ad23cbc2
+Materials/SC Assault Rifle.mat d354007b
+Materials/SC Assault Rifle.mat.meta 32b40011
+Materials/SDV Sniper.mat 2d55d4a6
+Materials/SDV Sniper.mat.meta 4c71cb74
+Materials/Snub-nosed 38 Revolver.mat 1cce00d9
+Materials/Snub-nosed 38 Revolver.mat.meta a9af0d86
+Materials/U-Z Machinegun.mat b6514b94
+Materials/U-Z Machinegun.mat.meta b5d8c251
+Materials/UMG Submachinegun.mat 101e0029
+Materials/UMG Submachinegun.mat.meta acd70688
+Materials.meta ac05ad65
+Prefabs/10mm Pistol.prefab d9477a9e
+Prefabs/10mm Pistol.prefab.meta f83255dd
+Prefabs/12 Gauge Automatic Shotgun.prefab 37a97721
+Prefabs/12 Gauge Automatic Shotgun.prefab.meta 2482f5c4
+Prefabs/357 M-gun Revolver.prefab 05dc8ae6
+Prefabs/357 M-gun Revolver.prefab.meta 8e7bd622
+Prefabs/38 Revolver.prefab 95e326e8
+Prefabs/38 Revolver.prefab.meta 604857c7
+Prefabs/44 M-gun Revolver.prefab b1dcfd32
+Prefabs/44 M-gun Revolver.prefab.meta 41d692c8
+Prefabs/45 Automatic Pistol.prefab da600c72
+Prefabs/45 Automatic Pistol.prefab.meta 7591a4e4
+Prefabs/50 Automatic Pistol.prefab e52aed69
+Prefabs/50 Automatic Pistol.prefab.meta 78725da3
+Prefabs/500 M-gun Revolver.prefab 6e99b324
+Prefabs/500 M-gun Revolver.prefab.meta a1ab08a3
+Prefabs/9mm Automatic Pistol.prefab fc8db7fc
+Prefabs/9mm Automatic Pistol.prefab.meta 9f39d4f1
+Prefabs/9mm Heavy Pistol.prefab 851fed71
+Prefabs/9mm Heavy Pistol.prefab.meta ccf8804c
+Prefabs/AGU Assault Rifle.prefab f90b59b9
+Prefabs/AGU Assault Rifle.prefab.meta c20930d6
+Prefabs/BM4 Shotgun.prefab 2816cbdf
+Prefabs/BM4 Shotgun.prefab.meta f8ebc47b
+Prefabs/Cowboy Rifle.prefab efb69992
+Prefabs/Cowboy Rifle.prefab.meta 3a4344b5
+Prefabs/Czech Machine Pistol Extended.prefab c9949818
+Prefabs/Czech Machine Pistol Extended.prefab.meta bec61f03
+Prefabs/Czech Machine Pistol.prefab 3c5e3665
+Prefabs/Czech Machine Pistol.prefab.meta 9b400ea9
+Prefabs/Field Rifle.prefab d6edb7ed
+Prefabs/Field Rifle.prefab.meta 7804f46b
+Prefabs/French Assault Rifle.prefab 97df72a3
+Prefabs/French Assault Rifle.prefab.meta 30f11a1b
+Prefabs/Kalash.prefab 9fe7fa3c
+Prefabs/Kalash.prefab.meta 7814d775
+Prefabs/MG5 Submachinegun.prefab 63871b48
+Prefabs/MG5 Submachinegun.prefab.meta 776fc8c0
+Prefabs/Model 10 Submachinegun.prefab d2ba0da0
+Prefabs/Model 10 Submachinegun.prefab.meta 99db1d73
+Prefabs/Model 16 Assault Rifle.prefab 7603cb9b
+Prefabs/Model 16 Assault Rifle.prefab.meta c285a62e
+Prefabs/Model 37 Shotgun.prefab 4bacca28
+Prefabs/Model 37 Shotgun.prefab.meta 01679b7f
+Prefabs/Model 500 Protector Shotgun.prefab 2a1d9881
+Prefabs/Model 500 Protector Shotgun.prefab.meta 87177b27
+Prefabs/Model 700 Rifle.prefab 86ed2f9c
+Prefabs/Model 700 Rifle.prefab.meta be4753ea
+Prefabs/Model 82 Heavy Sniper Rifle.prefab 6de295c5
+Prefabs/Model 82 Heavy Sniper Rifle.prefab.meta cc4d0dc7
+Prefabs/Model 870 Shotgun.prefab ff686f5b
+Prefabs/Model 870 Shotgun.prefab.meta 90841bbf
+Prefabs/SC Assault Rifle.prefab 949026e2
+Prefabs/SC Assault Rifle.prefab.meta 8aaa3fb5
+Prefabs/SDV Sniper Rifle.prefab 47eb1ddf
+Prefabs/SDV Sniper Rifle.prefab.meta 94322f60
+Prefabs/Snub-nosed 38 Revolver.prefab a211b4a0
+Prefabs/Snub-nosed 38 Revolver.prefab.meta d49347e4
+Prefabs/U-Z Submachinegun.prefab eb3a421e
+Prefabs/U-Z Submachinegun.prefab.meta 2269f568
+Prefabs/UMG Submachinegun.prefab 4835c798
+Prefabs/UMG Submachinegun.prefab.meta 73735de1
+Prefabs.meta d041f072
+Textures/10mm Pistol - Diffuse.png 0b837660
+Textures/10mm Pistol - Diffuse.png.meta 12a04419
+Textures/10mm Pistol - Normal.png a1128516
+Textures/10mm Pistol - Normal.png.meta a3923b4a
+Textures/12 Gauge Automatic Shotgun - Diffuse.png c659d605
+Textures/12 Gauge Automatic Shotgun - Diffuse.png.meta 9ef66c2f
+Textures/12 Gauge Automatic Shotgun - Normal.png 8754a252
+Textures/12 Gauge Automatic Shotgun - Normal.png.meta ce9987d7
+Textures/357 M-gun Revolver - Diffuse.png 0ef259c0
+Textures/357 M-gun Revolver - Diffuse.png.meta e21750a6
+Textures/357 M-gun Revolver - Normal.png dd18f0be
+Textures/357 M-gun Revolver - Normal.png.meta 23c01c7a
+Textures/38 Revolver - Diffuse.png bc1707bb
+Textures/38 Revolver - Diffuse.png.meta ab209ea0
+Textures/38 Revolver - Normal.png d46c0452
+Textures/38 Revolver - Normal.png.meta b2485305
+Textures/44 M-gun Revolver - Diffuse.png 984e67d9
+Textures/44 M-gun Revolver - Diffuse.png.meta 9c1b92a2
+Textures/44 M-gun Revolver - Normal.png b1116068
+Textures/44 M-gun Revolver - Normal.png.meta 6e718851
+Textures/45 Automatic Pistol - Diffuse.png 8364f8f2
+Textures/45 Automatic Pistol - Diffuse.png.meta c2811fd5
+Textures/45 Automatic Pistol - Normal.png f02da926
+Textures/45 Automatic Pistol - Normal.png.meta 5f4cee2d
+Textures/50 Automatic Pistol - Diffuse.png b5e35dd9
+Textures/50 Automatic Pistol - Diffuse.png.meta 5218a9be
+Textures/50 Automatic Pistol - Diffuse_Golden.png 1a83dc28
+Textures/50 Automatic Pistol - Diffuse_Golden.png.meta 827e5444
+Textures/50 Automatic Pistol - Normal.png b18ce296
+Textures/50 Automatic Pistol - Normal.png.meta b5a88737
+Textures/500 M-gun Revolver - Diffuse.png cf89425a
+Textures/500 M-gun Revolver - Diffuse.png.meta 7f237713
+Textures/500 M-gun Revolver - Normal.png 83f7ff18
+Textures/500 M-gun Revolver - Normal.png.meta 9f38d4fc
+Textures/9mm Automatic Pistol - Diffuse.png 0b17a990
+Textures/9mm Automatic Pistol - Diffuse.png.meta 15a27d3e
+Textures/9mm Automatic Pistol - Normal.png 12133447
+Textures/9mm Automatic Pistol - Normal.png.meta d1928613
+Textures/9mm Heavy Pistol - Diffuse.png 253f430c
+Textures/9mm Heavy Pistol - Diffuse.png.meta d0a9e314
+Textures/9mm Heavy Pistol - Normal.png 4b4ccea7
+Textures/9mm Heavy Pistol - Normal.png.meta be56c8e4
+Textures/AGU Assault Rifle - Diffuse.png daecf302
+Textures/AGU Assault Rifle - Diffuse.png.meta 13321c30
+Textures/AGU Assault Rifle - Normal.png 11bf9a2e
+Textures/AGU Assault Rifle - Normal.png.meta 7a8a5c0a
+Textures/BM4 Shotgun - Diffuse.png e01f0d54
+Textures/BM4 Shotgun - Diffuse.png.meta 3f391401
+Textures/BM4 Shotgun - Normal.png a55bafe1
+Textures/BM4 Shotgun - Normal.png.meta ad61520f
+Textures/Cowboy Rifle - Diffuse.png eec78628
+Textures/Cowboy Rifle - Diffuse.png.meta e3290962
+Textures/Cowboy Rifle - Normal.png 68de253f
+Textures/Cowboy Rifle - Normal.png.meta 54aff242
+Textures/Czech Machine Pistol - Diffuse.png c398de51
+Textures/Czech Machine Pistol - Diffuse.png.meta 4e70a5c7
+Textures/Czech Machine Pistol - Normal.png 3a3e5fd2
+Textures/Czech Machine Pistol - Normal.png.meta 66849165
+Textures/Field Rifle - Diffuse.png 23425815
+Textures/Field Rifle - Diffuse.png.meta 48987a1a
+Textures/Field Rifle - Normal.png 1d069a65
+Textures/Field Rifle - Normal.png.meta 36fc9b44
+Textures/French Assault Rifle - Diffuse.png 0190315e
+Textures/French Assault Rifle - Diffuse.png.meta d6c9d840
+Textures/French Assault Rifle - Normal.png f92ee5dd
+Textures/French Assault Rifle - Normal.png.meta 832ba7a2
+Textures/Kalash - Diffuse.png 512d4ee5
+Textures/Kalash - Diffuse.png.meta 199b8797
+Textures/Kalash - Diffuse_golden.png 225dddee
+Textures/Kalash - Diffuse_golden.png.meta 40306670
+Textures/Kalash - Normal.png b2931181
+Textures/Kalash - Normal.png.meta 5bb75314
+Textures/MG5 Submachinegun - Diffuse.png c5bd5758
+Textures/MG5 Submachinegun - Diffuse.png.meta 7db18fd5
+Textures/MG5 Submachinegun - Normal.png 34ed20df
+Textures/MG5 Submachinegun - Normal.png.meta 5249efee
+Textures/Model 10 Submachinegun - Diffuse.png 94173837
+Textures/Model 10 Submachinegun - Diffuse.png.meta 22621df7
+Textures/Model 10 Submachinegun - Normal.png 7cd06aa5
+Textures/Model 10 Submachinegun - Normal.png.meta 7ace8a2d
+Textures/Model 16 Assault Rifle - Diffuse.png 2ce3ae27
+Textures/Model 16 Assault Rifle - Diffuse.png.meta bda60477
+Textures/Model 16 Assault Rifle - Normal.png 40a27bbe
+Textures/Model 16 Assault Rifle - Normal.png.meta b41ae0d2
+Textures/Model 37 Shotgun - Diffuse.png cec38160
+Textures/Model 37 Shotgun - Diffuse.png.meta f2cc67e3
+Textures/Model 37 Shotgun - Normal.png 8ac7f5a0
+Textures/Model 37 Shotgun - Normal.png.meta 3f20d740
+Textures/Model 500 Protector Shotgun - Diffuse.png 02750ee8
+Textures/Model 500 Protector Shotgun - Diffuse.png.meta 00c7eff2
+Textures/Model 500 Protector Shotgun - Diffuse_Golden.png 101b475e
+Textures/Model 500 Protector Shotgun - Diffuse_Golden.png.meta e7d2beaa
+Textures/Model 500 Protector Shotgun - Normal.png 8e845254
+Textures/Model 500 Protector Shotgun - Normal.png.meta 3f000f49
+Textures/Model 700 Rifle - Diffuse.png b4b31fde
+Textures/Model 700 Rifle - Diffuse.png.meta 73e70d09
+Textures/Model 700 Rifle - Normal.png 3393ba09
+Textures/Model 700 Rifle - Normal.png.meta 3bb8b99a
+Textures/Model 82 Heavy Sniper - Diffuse.png cdeac0bf
+Textures/Model 82 Heavy Sniper - Diffuse.png.meta 56a5523a
+Textures/Model 82 Heavy Sniper - Normal.png c220dcd5
+Textures/Model 82 Heavy Sniper - Normal.png.meta 1ac109c0
+Textures/Model 870 Shotgun - Diffuse.png 28198558
+Textures/Model 870 Shotgun - Diffuse.png.meta f330dec2
+Textures/Model 870 Shotgun - Nomal.png 38722924
+Textures/Model 870 Shotgun - Nomal.png.meta 03116fa6
+Textures/SC Assault Rifle - Diffuse.png 807ad354
+Textures/SC Assault Rifle - Diffuse.png.meta 53e94274
+Textures/SC Assault Rifle - Normal.png 4458e95e
+Textures/SC Assault Rifle - Normal.png.meta e3cd5bba
+Textures/SDV Sniper - Diffuse.png bf9513cd
+Textures/SDV Sniper - Diffuse.png.meta 3be37eda
+Textures/SDV Sniper - Normal.png 2846c8d6
+Textures/SDV Sniper - Normal.png.meta 557d9ee6
+Textures/Snub-Nosed 38 Revolver - Diffuse.png 593e1ef3
+Textures/Snub-Nosed 38 Revolver - Diffuse.png.meta 99a6194f
+Textures/Snub-Nosed 38 Revolver - Normal.png 8ae55960
+Textures/Snub-Nosed 38 Revolver - Normal.png.meta 29acd8ff
+Textures/U-Z Machinegun - Diffuse.png 0b35845d
+Textures/U-Z Machinegun - Diffuse.png.meta 8152205d
+Textures/U-Z Machinegun - Normal.png b435d4ee
+Textures/U-Z Machinegun - Normal.png.meta f932f8dd
+Textures/UMG Submachinegun - Diffuse.png 0bd95b99
+Textures/UMG Submachinegun - Diffuse.png.meta 4c9e716e
+Textures/UMG Submachinegun - Normal.png 2e87dadb
+Textures/UMG Submachinegun - Normal.png.meta f5c313d2
+Textures.meta bb1f4b86
