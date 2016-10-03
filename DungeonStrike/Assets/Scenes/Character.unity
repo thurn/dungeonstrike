@@ -732,6 +732,7 @@ GameObject:
   - 4: {fileID: 207968794}
   - 95: {fileID: 207968793}
   - 205: {fileID: 207968792}
+  - 114: {fileID: 207968791}
   m_Layer: 0
   m_Name: Agnar
   m_TagString: Untagged
@@ -739,6 +740,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &207968791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 207968790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac485cb6d1854be0baf771ffdc43f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightHandAttachPoint: {fileID: 1666528172}
+  ModelType: 0
+  WeaponType: 17
 --- !u!205 &207968792
 LODGroup:
   m_ObjectHideFlags: 0
@@ -2774,6 +2789,7 @@ GameObject:
   - 4: {fileID: 594979230}
   - 95: {fileID: 594979229}
   - 205: {fileID: 594979228}
+  - 114: {fileID: 594979227}
   m_Layer: 0
   m_Name: Valruk
   m_TagString: Untagged
@@ -2781,6 +2797,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &594979227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 594979226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac485cb6d1854be0baf771ffdc43f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightHandAttachPoint: {fileID: 323982428}
+  ModelType: 0
+  WeaponType: 24
 --- !u!205 &594979228
 LODGroup:
   m_ObjectHideFlags: 0
@@ -4688,6 +4718,7 @@ GameObject:
   - 4: {fileID: 929622737}
   - 95: {fileID: 929622736}
   - 205: {fileID: 929622735}
+  - 114: {fileID: 929622734}
   m_Layer: 0
   m_Name: Torthas
   m_TagString: Untagged
@@ -4695,6 +4726,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &929622734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929622733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac485cb6d1854be0baf771ffdc43f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightHandAttachPoint: {fileID: 59097136}
+  ModelType: 0
+  WeaponType: 1
 --- !u!205 &929622735
 LODGroup:
   m_ObjectHideFlags: 0
@@ -6324,8 +6369,8 @@ GameObject:
   - 4: {fileID: 1365005376}
   - 95: {fileID: 1365005375}
   - 195: {fileID: 1365005374}
-  - 114: {fileID: 1365005372}
   - 114: {fileID: 1365005373}
+  - 114: {fileID: 1365005372}
   m_Layer: 0
   m_Name: Orc
   m_TagString: Untagged
@@ -6341,12 +6386,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1365005371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac485cb6d1854be0baf771ffdc43f8e, type: 3}
+  m_Script: {fileID: 11500000, guid: bca7ad44573b749a583ac942cf09d156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightHandAttachPoint: {fileID: 174682482}
-  ModelType: 1
-  WeaponType: 11
 --- !u!114 &1365005373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6355,9 +6397,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1365005371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bca7ad44573b749a583ac942cf09d156, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ac485cb6d1854be0baf771ffdc43f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RightHandAttachPoint: {fileID: 174682482}
+  ModelType: 1
+  WeaponType: 16
 --- !u!195 &1365005374
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8233,8 +8278,7 @@ Transform:
   m_LocalPosition: {x: 0.08576793, y: 0.038135443, z: -0.021669757}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1889705853}
+  m_Children: []
   m_Father: {fileID: 1614411958}
   m_RootOrder: 0
 --- !u!1 &1670596609
@@ -8850,60 +8894,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1054239416}
   m_RootOrder: 0
---- !u!1001 &1889705852
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1666528172}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &1889705853 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 962caa1ed15d5e340b5767a29c7342b5, type: 2}
-  m_PrefabInternal: {fileID: 1889705852}
 --- !u!1 &1892485833
 GameObject:
   m_ObjectHideFlags: 0
