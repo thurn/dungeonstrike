@@ -5,13 +5,18 @@ namespace DungeonStrike
     public class CharacterWeapons : MonoBehaviour
     {
         public Transform RightHandAttachPoint;
-        public GameObject M16;
         public ModelType ModelType;
-        private GameObject _currentWeapon;
+        public WeaponType WeaponType;
+        private Animator _animator;
 
         void Start()
         {
-            _currentWeapon = WeaponConstants.EquipM16(RightHandAttachPoint, M16, ModelType);
+            _animator = GetComponent<Animator>();
+            WeaponConstants.EquipWeapon(RightHandAttachPoint, WeaponType, ModelType);
+
+            // Jump to a random frame to avoid different characters in the idle state
+            // from synchronizing their movements
+            _animator.Play("Idle", 0, UnityEngine.Random.Range(0.0f, 1.0f));
         }
     }
 }

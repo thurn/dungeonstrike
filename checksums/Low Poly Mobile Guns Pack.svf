@@ -23,7 +23,7 @@ FBX Files/9mm Heavy Pistol.fbx.meta ce479322
 FBX Files/AGU Assault Rifle.fbx f4b1a56b
 FBX Files/AGU Assault Rifle.fbx.meta 4fb94cbb
 FBX Files/BM4 Shotgun.fbx a50f0ae2
-FBX Files/BM4 Shotgun.fbx.meta f22b84d2
+FBX Files/BM4 Shotgun.fbx.meta 170e46b9
 FBX Files/Cowboy Rifle.fbx 2090e435
 FBX Files/Cowboy Rifle.fbx.meta 681a1898
 FBX Files/Czech Machine Pistol 61-608-Extended.fbx 3d382303
@@ -35,7 +35,7 @@ FBX Files/Field Rifle.fbx.meta 36bb9001
 FBX Files/French Assault Rifle.fbx ea68aa45
 FBX Files/French Assault Rifle.fbx.meta 94f7f466
 FBX Files/Kalash.fbx cecbbd8e
-FBX Files/Kalash.fbx.meta 447e1a43
+FBX Files/Kalash.fbx.meta 68e3f5f4
 FBX Files/MG5 Submachinegun.fbx 5718ba3a
 FBX Files/MG5 Submachinegun.fbx.meta f8431c7b
 FBX Files/Materials/Diffuse.mat d4f07520
@@ -48,7 +48,7 @@ FBX Files/Model 16 Assault Rifle.fbx.meta 9a3bff33
 FBX Files/Model 37 Shotgun.fbx 8849ea4b
 FBX Files/Model 37 Shotgun.fbx.meta 10fde0c1
 FBX Files/Model 500 Protector Shotgun.fbx 4b8424f8
-FBX Files/Model 500 Protector Shotgun.fbx.meta babb98ea
+FBX Files/Model 500 Protector Shotgun.fbx.meta 1490ee9d
 FBX Files/Model 700 Rifle.fbx 9859915f
 FBX Files/Model 700 Rifle.fbx.meta 2ff5399f
 FBX Files/Model 82 Heavy Sniper.fbx a39c951f
@@ -56,7 +56,7 @@ FBX Files/Model 82 Heavy Sniper.fbx.meta d788d2f2
 FBX Files/Model 870 Shotgun.fbx cb34b9b9
 FBX Files/Model 870 Shotgun.fbx.meta 963ed619
 FBX Files/SC Assault Rifle.fbx 6a4262e6
-FBX Files/SC Assault Rifle.fbx.meta 65959915
+FBX Files/SC Assault Rifle.fbx.meta f0b3fc57
 FBX Files/SDV Sniper Rifle.fbx 82a784f1
 FBX Files/SDV Sniper Rifle.fbx.meta 40a9d004
 FBX Files/Snub-nosed .38 Revolver.fbx 622587b8
@@ -128,67 +128,67 @@ Materials/UMG Submachinegun.mat 101e0029
 Materials/UMG Submachinegun.mat.meta acd70688
 Materials.meta ac05ad65
 Prefabs/10mm Pistol.prefab d9477a9e
-Prefabs/10mm Pistol.prefab.meta f83255dd
+Prefabs/10mm Pistol.prefab.meta a48d128d
 Prefabs/12 Gauge Automatic Shotgun.prefab 37a97721
-Prefabs/12 Gauge Automatic Shotgun.prefab.meta 2482f5c4
+Prefabs/12 Gauge Automatic Shotgun.prefab.meta 3b4467bf
 Prefabs/357 M-gun Revolver.prefab 05dc8ae6
-Prefabs/357 M-gun Revolver.prefab.meta 8e7bd622
+Prefabs/357 M-gun Revolver.prefab.meta 012691e0
 Prefabs/38 Revolver.prefab 95e326e8
-Prefabs/38 Revolver.prefab.meta 604857c7
+Prefabs/38 Revolver.prefab.meta b3a9fb12
 Prefabs/44 M-gun Revolver.prefab b1dcfd32
-Prefabs/44 M-gun Revolver.prefab.meta 41d692c8
+Prefabs/44 M-gun Revolver.prefab.meta df050825
 Prefabs/45 Automatic Pistol.prefab da600c72
-Prefabs/45 Automatic Pistol.prefab.meta 7591a4e4
+Prefabs/45 Automatic Pistol.prefab.meta 8b8bacf6
 Prefabs/50 Automatic Pistol.prefab e52aed69
-Prefabs/50 Automatic Pistol.prefab.meta 78725da3
+Prefabs/50 Automatic Pistol.prefab.meta 3cbf58bf
 Prefabs/500 M-gun Revolver.prefab 6e99b324
-Prefabs/500 M-gun Revolver.prefab.meta a1ab08a3
+Prefabs/500 M-gun Revolver.prefab.meta f93da0c2
 Prefabs/9mm Automatic Pistol.prefab fc8db7fc
-Prefabs/9mm Automatic Pistol.prefab.meta 9f39d4f1
+Prefabs/9mm Automatic Pistol.prefab.meta 9ebc5e8c
 Prefabs/9mm Heavy Pistol.prefab 851fed71
-Prefabs/9mm Heavy Pistol.prefab.meta ccf8804c
+Prefabs/9mm Heavy Pistol.prefab.meta 3a92a8e6
 Prefabs/AGU Assault Rifle.prefab f90b59b9
-Prefabs/AGU Assault Rifle.prefab.meta c20930d6
+Prefabs/AGU Assault Rifle.prefab.meta c72eaacd
 Prefabs/BM4 Shotgun.prefab 2816cbdf
-Prefabs/BM4 Shotgun.prefab.meta f8ebc47b
+Prefabs/BM4 Shotgun.prefab.meta 60a6f8c5
 Prefabs/Cowboy Rifle.prefab efb69992
-Prefabs/Cowboy Rifle.prefab.meta 3a4344b5
+Prefabs/Cowboy Rifle.prefab.meta 04b5ef0d
 Prefabs/Czech Machine Pistol Extended.prefab c9949818
-Prefabs/Czech Machine Pistol Extended.prefab.meta bec61f03
+Prefabs/Czech Machine Pistol Extended.prefab.meta f064142d
 Prefabs/Czech Machine Pistol.prefab 3c5e3665
-Prefabs/Czech Machine Pistol.prefab.meta 9b400ea9
+Prefabs/Czech Machine Pistol.prefab.meta e98bcf81
 Prefabs/Field Rifle.prefab d6edb7ed
-Prefabs/Field Rifle.prefab.meta 7804f46b
+Prefabs/Field Rifle.prefab.meta 208a26c9
 Prefabs/French Assault Rifle.prefab 97df72a3
-Prefabs/French Assault Rifle.prefab.meta 30f11a1b
+Prefabs/French Assault Rifle.prefab.meta f905a7a5
 Prefabs/Kalash.prefab 9fe7fa3c
-Prefabs/Kalash.prefab.meta 7814d775
+Prefabs/Kalash.prefab.meta e085ec8d
 Prefabs/MG5 Submachinegun.prefab 63871b48
-Prefabs/MG5 Submachinegun.prefab.meta 776fc8c0
+Prefabs/MG5 Submachinegun.prefab.meta 81270bc4
 Prefabs/Model 10 Submachinegun.prefab d2ba0da0
-Prefabs/Model 10 Submachinegun.prefab.meta 99db1d73
+Prefabs/Model 10 Submachinegun.prefab.meta c2b9b9a8
 Prefabs/Model 16 Assault Rifle.prefab 7603cb9b
-Prefabs/Model 16 Assault Rifle.prefab.meta c285a62e
+Prefabs/Model 16 Assault Rifle.prefab.meta ea548780
 Prefabs/Model 37 Shotgun.prefab 4bacca28
-Prefabs/Model 37 Shotgun.prefab.meta 01679b7f
+Prefabs/Model 37 Shotgun.prefab.meta db739be0
 Prefabs/Model 500 Protector Shotgun.prefab 2a1d9881
-Prefabs/Model 500 Protector Shotgun.prefab.meta 87177b27
+Prefabs/Model 500 Protector Shotgun.prefab.meta 57cc33ee
 Prefabs/Model 700 Rifle.prefab 86ed2f9c
-Prefabs/Model 700 Rifle.prefab.meta be4753ea
+Prefabs/Model 700 Rifle.prefab.meta 000bc731
 Prefabs/Model 82 Heavy Sniper Rifle.prefab 6de295c5
-Prefabs/Model 82 Heavy Sniper Rifle.prefab.meta cc4d0dc7
+Prefabs/Model 82 Heavy Sniper Rifle.prefab.meta 70954bf2
 Prefabs/Model 870 Shotgun.prefab ff686f5b
-Prefabs/Model 870 Shotgun.prefab.meta 90841bbf
+Prefabs/Model 870 Shotgun.prefab.meta be506d9b
 Prefabs/SC Assault Rifle.prefab 949026e2
-Prefabs/SC Assault Rifle.prefab.meta 8aaa3fb5
+Prefabs/SC Assault Rifle.prefab.meta 18cc9395
 Prefabs/SDV Sniper Rifle.prefab 47eb1ddf
-Prefabs/SDV Sniper Rifle.prefab.meta 94322f60
+Prefabs/SDV Sniper Rifle.prefab.meta 56f7443f
 Prefabs/Snub-nosed 38 Revolver.prefab a211b4a0
-Prefabs/Snub-nosed 38 Revolver.prefab.meta d49347e4
+Prefabs/Snub-nosed 38 Revolver.prefab.meta b3c833f3
 Prefabs/U-Z Submachinegun.prefab eb3a421e
-Prefabs/U-Z Submachinegun.prefab.meta 2269f568
+Prefabs/U-Z Submachinegun.prefab.meta 68104e10
 Prefabs/UMG Submachinegun.prefab 4835c798
-Prefabs/UMG Submachinegun.prefab.meta 73735de1
+Prefabs/UMG Submachinegun.prefab.meta 836b20c0
 Prefabs.meta d041f072
 Textures/10mm Pistol - Diffuse.png 0b837660
 Textures/10mm Pistol - Diffuse.png.meta 12a04419
@@ -317,3 +317,5 @@ Textures/UMG Submachinegun - Diffuse.png.meta 4c9e716e
 Textures/UMG Submachinegun - Normal.png 2e87dadb
 Textures/UMG Submachinegun - Normal.png.meta f5c313d2
 Textures.meta bb1f4b86
+UPDATES 862c7a99
+UPDATES.meta 4ef3d6f8

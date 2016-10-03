@@ -44,12 +44,8 @@ namespace DungeonStrike
 
             if (UnityEngine.Input.GetMouseButtonUp(0) && _state == AnimationState.Idle)
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                var cell = GGGrid.GetCellFromRay(ray, 1000f);
-                if (cell == null) return;
                 _animator.applyRootMotion = true;
-
-                _target = cell.CenterPoint3D;
+                _target = GetClickedPoint();
                 _nextPath = new NavMeshPath();
                 _navMeshAgent.CalculatePath(_target, _nextPath);
 
@@ -107,6 +103,18 @@ namespace DungeonStrike
                 SetAnimationState(AnimationState.Idle);
                 _nextPath = null;
             }
+        }
+
+        private Vector3 GetClickedPoint()
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //var cell = GGGrid.GetCellFromRay(ray, 1000f);
+            //if (cell == null) return;
+            //return cell.CenterPoint3D;
+
+            RaycastHit raycastHit;
+            Physics.Raycast(ray, out raycastHit, Mathf.Infinity);
+            return raycastHit.point;
         }
 
         private float GetStopDistance()

@@ -1,0 +1,22 @@
+; 
+;
+AssetBundleLoadOperation.cs be70fe7a
+AssetBundleLoadOperation.cs.meta d915bade
+AssetBundleManager.cs ff84d22c
+AssetBundleManager.cs.meta 244e1fa2
+Editor/AssetBundleServer.exe 6ddf90b1
+Editor/AssetBundleServer.exe.meta 669165cf
+Editor/AssetbundlesMenuItems.cs c9203196
+Editor/AssetbundlesMenuItems.cs.meta 0fbe7762
+Editor/BuildScript.cs a0926490
+Editor/BuildScript.cs.meta 28a559df
+Editor/ExecuteInternalMono.cs 6ded515c
+Editor/ExecuteInternalMono.cs.meta 155641f0
+Editor/LaunchAssetBundleServer.cs f1433e9d
+Editor/LaunchAssetBundleServer.cs.meta 1b3c0195
+Editor.meta 1fdcc6d6
+Resources/AssetBundleServerURL.bytes c450fc10
+Resources/AssetBundleServerURL.bytes.meta 01d7ff0e
+Resources.meta 7f726439
+Utility.cs 6ba9a91e
+Utility.cs.meta 73efda07
