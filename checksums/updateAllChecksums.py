@@ -5,7 +5,7 @@ import subprocess
 
 THIRD_PARTY = 'DungeonStrike/Assets/ThirdParty'
 
-if not os.getcwd().endswith("dungeonstrike"):
+if not os.getcwd().endswith("ds"):
   print("This script must be invoked from the root directory.")
   exit()
 

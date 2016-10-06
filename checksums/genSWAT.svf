@@ -1,10 +1,8 @@
 ; 
 ;
-.DS_Store 6b6b708e
 Materials/genSWAT.mat ab8bf488
 Materials/genSWAT.mat.meta 96d33513
-Materials.meta 03910ee7
-Textures/.DS_Store 634ed8c2
+Materials.meta a341cb0a
 Textures/DeltaForce/DeltaForce_D.tif b79c2aa8
 Textures/DeltaForce/DeltaForce_D.tif.meta 3443aa9e
 Textures/DeltaForce/DeltaForce_G.tif cee723ec
@@ -13,7 +11,7 @@ Textures/DeltaForce/DeltaForce_NM.tif bcdbe1b4
 Textures/DeltaForce/DeltaForce_NM.tif.meta 2813917f
 Textures/DeltaForce/DeltaForce_S.tif 4d8277b1
 Textures/DeltaForce/DeltaForce_S.tif.meta a1afe8a2
-Textures/DeltaForce.meta e14febef
+Textures/DeltaForce.meta e6c0ff62
 Textures/Generic_AO.tif e918adb4
 Textures/Generic_AO.tif.meta 5ceb1da4
 Textures/Mercenary/MERC_D.tif f91096a9
@@ -24,7 +22,7 @@ Textures/Mercenary/MERC_NM.tif a8c91bbd
 Textures/Mercenary/MERC_NM.tif.meta 9a4e65ff
 Textures/Mercenary/MERC_S.tif 45cd6818
 Textures/Mercenary/MERC_S.tif.meta e269052a
-Textures/Mercenary.meta efd27613
+Textures/Mercenary.meta 7b7b5506
 Textures/Military/Military_D.tif 54a75602
 Textures/Military/Military_D.tif.meta a4ad86d1
 Textures/Military/Military_G.tif 8434896a
@@ -33,7 +31,7 @@ Textures/Military/Military_NM.tif d237c173
 Textures/Military/Military_NM.tif.meta cb65de04
 Textures/Military/Military_S.tif c1383343
 Textures/Military/Military_S.tif.meta ccfe2601
-Textures/Military.meta 3af4a259
+Textures/Military.meta cf044536
 Textures/North/North_D.tif 69243f6f
 Textures/North/North_D.tif.meta 1b03570b
 Textures/North/North_G.tif 79360471
@@ -42,7 +40,7 @@ Textures/North/North_NM.tif 95fcda99
 Textures/North/North_NM.tif.meta b0b2aa7d
 Textures/North/North_S.tif 68ac521d
 Textures/North/North_S.tif.meta 8a128586
-Textures/North.meta 63e70b8a
+Textures/North.meta 107c7deb
 Textures/SWAT/SWAT_D.tif 9d6360b0
 Textures/SWAT/SWAT_D.tif.meta 126b47b3
 Textures/SWAT/SWAT_G.tif 84f82c34
@@ -51,12 +49,10 @@ Textures/SWAT/SWAT_NM.tif 3eaec572
 Textures/SWAT/SWAT_NM.tif.meta 3092d31a
 Textures/SWAT/SWAT_S.tif 54bbc2f7
 Textures/SWAT/SWAT_S.tif.meta b9cdc013
-Textures/SWAT.meta 09398670
-Textures.meta 5feb592b
-UPDATES 8bc4481e
-UPDATES.meta d3a0ebed
+Textures/SWAT.meta b528b108
+Textures.meta 28533b65
 genSWAT.fbx b30c8449
-genSWAT.fbx.meta 904bdc79
+genSWAT.fbx.meta 059cbe7a
 genSWAT.rar 20e0d2c3
 genSWAT.rar.meta 0a75dfb8
 genSWAT.unity 9241f821
@@ -69,13 +65,13 @@ weaponPack/Materials/knife.mat 053b0090
 weaponPack/Materials/knife.mat.meta 41dbc926
 weaponPack/Materials/m16.mat c7902198
 weaponPack/Materials/m16.mat.meta 3d6edc3e
-weaponPack/Materials/m16_1.mat 260b9a3e
-weaponPack/Materials/m16_1.mat.meta ea5ad1af
+weaponPack/Materials/m16_1.mat 5f3775d6
+weaponPack/Materials/m16_1.mat.meta d41f936e
 weaponPack/Materials/shotgun.mat 5709cb3d
 weaponPack/Materials/shotgun.mat.meta 59f06169
 weaponPack/Materials/smokeGrenade.mat 8162a701
 weaponPack/Materials/smokeGrenade.mat.meta 947a8af1
-weaponPack/Materials.meta 8dbd4b9f
+weaponPack/Materials.meta 6666f2c6
 weaponPack/Textures/glock/glock_AO.tif f51f9715
 weaponPack/Textures/glock/glock_AO.tif.meta 1a838b18
 weaponPack/Textures/glock/glock_D.tif 76377f0b
@@ -86,7 +82,7 @@ weaponPack/Textures/glock/glock_NM.tif 7e1ce12d
 weaponPack/Textures/glock/glock_NM.tif.meta fe078a29
 weaponPack/Textures/glock/glock_S.tif 357a28cb
 weaponPack/Textures/glock/glock_S.tif.meta a6e0066a
-weaponPack/Textures/glock.meta ee13f1e7
+weaponPack/Textures/glock.meta ad695c77
 weaponPack/Textures/handGrenade/handGrenade_AO.tif 334c296a
 weaponPack/Textures/handGrenade/handGrenade_AO.tif.meta 81e6c34e
 weaponPack/Textures/handGrenade/handGrenade_D.tif e97f786d
@@ -97,7 +93,7 @@ weaponPack/Textures/handGrenade/handGrenade_NM.tif 407cef09
 weaponPack/Textures/handGrenade/handGrenade_NM.tif.meta 6d5dfab5
 weaponPack/Textures/handGrenade/handGrenade_S.tif b5421580
 weaponPack/Textures/handGrenade/handGrenade_S.tif.meta 708fe441
-weaponPack/Textures/handGrenade.meta 7f27dc3f
+weaponPack/Textures/handGrenade.meta f8a287d4
 weaponPack/Textures/knife/knife_AO.tif 37b475ec
 weaponPack/Textures/knife/knife_AO.tif.meta dd8a84a9
 weaponPack/Textures/knife/knife_D.tif dbd7a38a
@@ -108,7 +104,7 @@ weaponPack/Textures/knife/knife_NM.tif 06aa94d4
 weaponPack/Textures/knife/knife_NM.tif.meta 6ae674d0
 weaponPack/Textures/knife/knife_S.tif 6e41cc80
 weaponPack/Textures/knife/knife_S.tif.meta 40c1a907
-weaponPack/Textures/knife.meta 62bf8747
+weaponPack/Textures/knife.meta 59392c38
 weaponPack/Textures/m16/m16_AO.tif 59d8bd96
 weaponPack/Textures/m16/m16_AO.tif.meta e1e3a38b
 weaponPack/Textures/m16/m16_D.tif e8240ee7
@@ -119,7 +115,7 @@ weaponPack/Textures/m16/m16_NM.tif 92440dd6
 weaponPack/Textures/m16/m16_NM.tif.meta d2fd399e
 weaponPack/Textures/m16/m16_S.tif e823d101
 weaponPack/Textures/m16/m16_S.tif.meta e3dbba1f
-weaponPack/Textures/m16.meta 154294ec
+weaponPack/Textures/m16.meta a331e32c
 weaponPack/Textures/shotgun/shotgun_AO.tif ea0a9d00
 weaponPack/Textures/shotgun/shotgun_AO.tif.meta 7cbc0d9c
 weaponPack/Textures/shotgun/shotgun_D.tif f6db86dc
@@ -130,7 +126,7 @@ weaponPack/Textures/shotgun/shotgun_NM.tif 906f6209
 weaponPack/Textures/shotgun/shotgun_NM.tif.meta 872f9598
 weaponPack/Textures/shotgun/shotgun_S.tif c2f13730
 weaponPack/Textures/shotgun/shotgun_S.tif.meta 18ba6584
-weaponPack/Textures/shotgun.meta 25744b4a
+weaponPack/Textures/shotgun.meta e0cacacb
 weaponPack/Textures/smokeGrenade/smokeGranade_AO.tif cce840ef
 weaponPack/Textures/smokeGrenade/smokeGranade_AO.tif.meta a7e12b8e
 weaponPack/Textures/smokeGrenade/smokeGranade_D.tif 83d50822
@@ -141,8 +137,8 @@ weaponPack/Textures/smokeGrenade/smokeGranade_NM.tif f6de459a
 weaponPack/Textures/smokeGrenade/smokeGranade_NM.tif.meta 097efd92
 weaponPack/Textures/smokeGrenade/smokeGranade_S.tif 9b0384ab
 weaponPack/Textures/smokeGrenade/smokeGranade_S.tif.meta b58cb514
-weaponPack/Textures/smokeGrenade.meta 23446e12
-weaponPack/Textures.meta 6408cd23
+weaponPack/Textures/smokeGrenade.meta 3f059aa6
+weaponPack/Textures.meta e44bee93
 weaponPack/WeaponPack_glock.fbx 954528a6
 weaponPack/WeaponPack_glock.fbx.meta bee2345f
 weaponPack/WeaponPack_handGrenade.fbx a75cc294
@@ -155,6 +151,6 @@ weaponPack/WeaponPack_shotgun.fbx 7430ed64
 weaponPack/WeaponPack_shotgun.fbx.meta 85423234
 weaponPack/WeaponPack_smokeGrenade.fbx c26b1d9d
 weaponPack/WeaponPack_smokeGrenade.fbx.meta 38332976
-weaponPack/weaponPack.unity 6ce9c2e3
+weaponPack/weaponPack.unity 9f317644
 weaponPack/weaponPack.unity.meta 32aed06f
-weaponPack.meta 92e0e3db
+weaponPack.meta 4a861a9c

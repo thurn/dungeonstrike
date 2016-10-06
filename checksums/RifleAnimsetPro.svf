@@ -1,5 +1,7 @@
 ; 
 ;
+Animations/GetMoreAnimations.txt 21fce6eb
+Animations/GetMoreAnimations.txt.meta 0b8e87df
 Animations/Materials/Dummy.mat ea78fd17
 Animations/Materials/Dummy.mat.meta c28dbaab
 Animations/Materials.meta 9cd682f1
@@ -16,9 +18,3 @@ Animations/RifleAnimsetPro_Platformer_Jumps.fbx.meta d57468fc
 Animations/RifleAnimsetPro_Sprint.fbx fb887541
 Animations/RifleAnimsetPro_Sprint.fbx.meta 891cacd5
 Animations.meta 012080de
-AnimationsDescriptions.pdf a1174f50
-AnimationsDescriptions.pdf.meta d620b893
-HowToInstall.txt 96d2c53c
-HowToInstall.txt.meta 652d4d9b
-InputForX360GamePad.jpg a525757d
-InputForX360GamePad.jpg.meta 0914324e
