@@ -1,2 +1,3 @@
 - Changed wrap mode for Orc "idleCombat" and "idleNormal" animations to Loop
 - Changed all to "Humanoid"
+- Changed "Right Fingers > Index 1 Stretch" to be -50 to 0.
