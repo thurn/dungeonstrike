@@ -1,0 +1,2 @@
+- Changed wrap mode for Orc "idleCombat" and "idleNormal" animations to Loop
+- Changed all to "Humanoid"

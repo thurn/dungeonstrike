@@ -2,10 +2,11 @@
 
 namespace DungeonStrike
 {
-    public class Test : MonoBehaviour
+    class EnableAnimator : MonoBehaviour
     {
         private Animation _animation;
         private Animator _animator;
+        private bool _updated;
 
         void Start()
         {
@@ -15,11 +16,12 @@ namespace DungeonStrike
 
         void Update()
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            if (_updated)
             {
-                Debug.Log("space");
-                _animator.SetTrigger("Shoot");
+                _animation.enabled = false;
+                _animator.enabled = true;
             }
+            _updated = true;
         }
     }
 }
