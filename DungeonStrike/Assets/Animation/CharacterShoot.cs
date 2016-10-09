@@ -12,6 +12,8 @@ namespace DungeonStrike
         public Transform _firingPoint;
         public Transform Target;
         private bool _log;
+        private bool _aiming;
+        private float _aimAngle;
 
         void Start()
         {
@@ -24,18 +26,48 @@ namespace DungeonStrike
             {
                 _firingPoint = GameObjects.FindChildTransformWithTag(WeaponTransform, FiringPointTag);
                 _log = true;
-				Debug.Log("AngleToTarget(): " + AngleToTarget());
+                _animator.SetTrigger("Aim");
+                _aiming = true;
+                // var angleToTarget = AngleToTarget(Vector3.up);
+                // Debug.Log("angleToTarget: " + angleToTarget);
+                // _animator.SetFloat("AimHorizontal", angleToTarget);
+                // var verticalAngle = AngleToTarget(Vector3.right);
+                // _animator.SetFloat("AimVertical", -7.5f);
+                _animator.SetFloat("AimVertical", -7.5f);
+            }
+
+            if (_aiming)
+            {
+                var angleToTarget = AngleToTarget(Vector3.up);
+                Debug.Log("angleToTarget: " + angleToTarget);
+                if (angleToTarget > 10)
+                {
+                    _aimAngle += 1.0f;
+                }
+                else if (angleToTarget < -10)
+                {
+                    _aimAngle -= 1.0f;
+                }
+                else
+                {
+					Debug.Log("done");
+                    _aiming = false;
+                }
+                _animator.SetFloat("AimHorizontal", _aimAngle);
             }
 
             if (_log)
             {
-                Debug.DrawRay(_firingPoint.position, _firingPoint.forward * 5, Color.yellow);
+                var direction = _firingPoint.forward * 5;
+                Debug.DrawRay(_firingPoint.position, direction, Color.yellow);
             }
         }
 
-        private float AngleToTarget()
+        private float AngleToTarget(Vector3 projectionNormal)
         {
-            var targetDir = Target.position - _firingPoint.position;
+            var targetPosition = Vector3.ProjectOnPlane(Target.position, projectionNormal);
+            var firingPosition = Vector3.ProjectOnPlane(_firingPoint.position, projectionNormal);
+            var targetDir = targetPosition - firingPosition;
             var angle = Vector3.Angle(_firingPoint.forward, targetDir);
             // Use cross product to determine the 'direction' of the angle.
             var cross = Vector3.Cross(_firingPoint.forward, targetDir);
