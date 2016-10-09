@@ -10,22 +10,21 @@ namespace DungeonStrike
         public WeaponType WeaponType;
         private Animator _animator;
         private Transform _rightHandAttachPoint;
+        private CharacterShoot _characterShoot;
 
         void Start()
         {
             _animator = GetComponent<Animator>();
-            foreach (var childTransform in GetComponentsInChildren<Transform>())
+            _characterShoot = GetComponent<CharacterShoot>();
+            _rightHandAttachPoint = GameObjects.FindChildTransformWithTag(this.transform, RightHandAttachPointTag);
+
+            WeaponConstants.EquipWeapon(_rightHandAttachPoint, WeaponType, ModelType, (GameObject weapon) =>
             {
-                if (childTransform.tag == RightHandAttachPointTag)
+                if (_characterShoot != null)
                 {
-                    _rightHandAttachPoint = childTransform;
-                    Debug.Log("Got attach point: " + _rightHandAttachPoint);
-                    break;
+                    _characterShoot.WeaponTransform = weapon.transform;
                 }
-            }
-
-            WeaponConstants.EquipWeapon(_rightHandAttachPoint, WeaponType, ModelType);
-
+            });
             // Jump to a random frame to prevent different characters in the idle state
             // from synchronizing their movements
             _animator.Play("Idle", 0, UnityEngine.Random.Range(0.0f, 1.0f));

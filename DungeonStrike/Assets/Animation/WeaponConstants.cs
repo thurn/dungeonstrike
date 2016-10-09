@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DungeonStrike
 {
@@ -32,7 +33,7 @@ namespace DungeonStrike
             return System.Enum.GetName(typeof(WeaponType), weaponType);
         }
 
-        public static void EquipWeapon(Transform attachPoint, WeaponType weaponType, ModelType modelType)
+        public static void EquipWeapon(Transform attachPoint, WeaponType weaponType, ModelType modelType, Action<GameObject> onSuccess)
         {
             var assetName = AssetNameForWeapon(weaponType);
             AssetLoaderService.Instance.InstantiateGameObject("guns", assetName, (GameObject weapon) =>
@@ -49,6 +50,7 @@ namespace DungeonStrike
                     default:
                         throw new System.SystemException("Unknown weapon type " + weaponType);
                 }
+                onSuccess(weapon);
             });
         }
 
