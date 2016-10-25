@@ -14,9 +14,7 @@ for directory in os.listdir(THIRD_PARTY):
   path = THIRD_PARTY + "/" + directory
   if not os.path.isdir(path): continue
   file = CHECKSUMS + directory + ".svf"
-  check = subprocess.call(["cfv", "-rr", "-p", path, '-f', file])
-  if check != 0:
-    print("INVALID CHECKSUM for directory " + directory)
-    exit(1)
+  subprocess.check_output(["cfv", "-rr", "-p", path, '-f', file])
+  print(directory + " OK")
 
 print("\nALL OK")

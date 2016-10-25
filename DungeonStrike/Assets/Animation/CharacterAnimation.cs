@@ -69,8 +69,8 @@ namespace DungeonStrike
                         _navMeshAgent.acceleration = 50;
                     }
 
-                    var turn = TurnToTarget(corner1);
-                    _animator.SetInteger("Turn", turn);
+                    var turn = TurnAngleToTarget(corner1);
+                    _animator.SetFloat("TurnAngle", turn);
                     _animator.SetTrigger("Move");
                     SetAnimationState(AnimationState.Starting);
                 }
@@ -143,7 +143,7 @@ namespace DungeonStrike
             return result;
         }
 
-        private int TurnToTarget(Vector3 target)
+        private int TurnAngleToTarget(Vector3 target)
         {
             var angle = AngleToTarget(target);
             if (angle < -135)

@@ -6,72 +6,76 @@ namespace DungeonStrike
     public class CharacterShoot : MonoBehaviour
     {
         private const string FiringPointTag = "FiringPoint";
+        private const float AimingSpeedFactor = 0.07f;
 
         private Animator _animator;
         public Transform WeaponTransform { get; set; }
         public Transform _firingPoint;
         public Transform Target;
-        private bool _log;
+        private int _spaces;
+        private CharacterTurning _characterTurning;
         private bool _aiming;
-        private float _aimAngle;
+        private float _horizontalAimAngle;
+        private float _verticalAimAngle;
 
         void Start()
         {
             _animator = GetComponent<Animator>();
+            _characterTurning = GetComponent<CharacterTurning>();
         }
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (_firingPoint)
             {
-                _firingPoint = GameObjects.FindChildTransformWithTag(WeaponTransform, FiringPointTag);
-                _log = true;
-                _animator.SetTrigger("Aim");
-                _aiming = true;
-                // var angleToTarget = AngleToTarget(Vector3.up);
-                // Debug.Log("angleToTarget: " + angleToTarget);
-                // _animator.SetFloat("AimHorizontal", angleToTarget);
-                // var verticalAngle = AngleToTarget(Vector3.right);
-                // _animator.SetFloat("AimVertical", -7.5f);
-                _animator.SetFloat("AimVertical", -7.5f);
+                Debug.DrawRay(_firingPoint.position, _firingPoint.forward * 5.0f, Color.yellow);
             }
+
+            // if (_aiming)
+            // {
+            //     var horizontalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Horizontal);
+            //     var verticalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Vertical);
+            //     Debug.Log("h: " + horizontalAngle + " v: " + verticalAngle);
+            // }
 
             if (_aiming)
             {
-                var angleToTarget = AngleToTarget(Vector3.up);
-                Debug.Log("angleToTarget: " + angleToTarget);
-                if (angleToTarget > 10)
+                var horizontalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Horizontal);
+                _horizontalAimAngle += horizontalAngle * AimingSpeedFactor;
+                _animator.SetFloat("HorizontalAimAngle", _horizontalAimAngle);
+
+                var verticalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Vertical);
+                _verticalAimAngle += verticalAngle * AimingSpeedFactor;
+                _animator.SetFloat("VerticalAimAngle", _verticalAimAngle);
+
+                if (Mathf.Abs(horizontalAngle) < 1.0f && Mathf.Abs(verticalAngle) < 1.0f)
                 {
-                    _aimAngle += 1.0f;
-                }
-                else if (angleToTarget < -10)
-                {
-                    _aimAngle -= 1.0f;
-                }
-                else
-                {
-					Debug.Log("done");
                     _aiming = false;
                 }
-                _animator.SetFloat("AimHorizontal", _aimAngle);
             }
 
-            if (_log)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                var direction = _firingPoint.forward * 5;
-                Debug.DrawRay(_firingPoint.position, direction, Color.yellow);
+                Debug.Log("space " + _spaces);
+                switch (_spaces++)
+                {
+                    case 0:
+                        _firingPoint = Transforms.FindChildTransformWithTag(WeaponTransform, FiringPointTag);
+                        _characterTurning.TurnToAngle(90.0f, StartAiming);
+                        break;
+                    case 1:
+                        _animator.SetTrigger("Shoot");
+                        break;
+                }
             }
         }
 
-        private float AngleToTarget(Vector3 projectionNormal)
+        private void StartAiming()
         {
-            var targetPosition = Vector3.ProjectOnPlane(Target.position, projectionNormal);
-            var firingPosition = Vector3.ProjectOnPlane(_firingPoint.position, projectionNormal);
-            var targetDir = targetPosition - firingPosition;
-            var angle = Vector3.Angle(_firingPoint.forward, targetDir);
-            // Use cross product to determine the 'direction' of the angle.
-            var cross = Vector3.Cross(_firingPoint.forward, targetDir);
-            return cross.y < 0 ? -angle : angle;
+            _animator.SetBool("Aiming", true);
+            _aiming = true;
+            _horizontalAimAngle = 0.0f;
+            _verticalAimAngle = 0.0f;
         }
     }
 }

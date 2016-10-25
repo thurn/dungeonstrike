@@ -16,7 +16,7 @@ namespace DungeonStrike
         {
             _animator = GetComponent<Animator>();
             _characterShoot = GetComponent<CharacterShoot>();
-            _rightHandAttachPoint = GameObjects.FindChildTransformWithTag(this.transform, RightHandAttachPointTag);
+            _rightHandAttachPoint = Transforms.FindChildTransformWithTag(this.transform, RightHandAttachPointTag);
 
             WeaponConstants.EquipWeapon(_rightHandAttachPoint, WeaponType, ModelType, (GameObject weapon) =>
             {
