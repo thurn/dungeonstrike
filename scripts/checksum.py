@@ -6,7 +6,7 @@ import subprocess
 THIRD_PARTY = 'DungeonStrike/Assets/ThirdParty'
 CHECKSUMS = '../../../../checksums/'
 
-if not os.getcwd().endswith("ds"):
+if not os.getcwd().endswith("dungeonstrike"):
   print("This script must be invoked from the root directory.")
   exit(1)
 

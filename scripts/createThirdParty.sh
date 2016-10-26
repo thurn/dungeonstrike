@@ -1,7 +1,14 @@
 #!/bin/sh
+
 if [ "$#" -ne 2 ]; then
     echo "Usage: createThirdParty [password] [outputPath]"
     exit
+fi
+
+if [[ $(pwd) != *"dungeonstrike" ]]
+then
+  echo "You must invoke this script from the root directory."
+  exit
 fi
 
 rm -f $2/ThirdParty.tgz.gpg
