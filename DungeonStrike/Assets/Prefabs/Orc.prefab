@@ -478,6 +478,8 @@ GameObject:
   - 111: {fileID: 111000010965722430}
   - 114: {fileID: 114000013943704356}
   - 114: {fileID: 114000014262813316}
+  - 114: {fileID: 114000013953259298}
+  - 114: {fileID: 114000011714591414}
   m_Layer: 0
   m_Name: Orc
   m_TagString: Untagged
@@ -1400,10 +1402,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011711164822}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.80183, y: 0.03662403, z: -0.3450961}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 20.11, y: 0.03662403, z: 0.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 4000011878894878}
   - {fileID: 4000011067788442}
@@ -1787,7 +1789,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010414822432}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.66, y: -18.44, z: 1.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1953,6 +1955,17 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114000011714591414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011711164822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c160757e2884294bf2ab04e5d0e7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013943704356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1964,6 +1977,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de46fc24aa8bf45d487bb3bd91d90111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000013953259298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011711164822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ddd382e1d7146c393be0b8795bac73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firingPoint: {fileID: 0}
+  Target: {fileID: 0}
 --- !u!114 &114000014262813316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1976,7 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModelType: 1
-  WeaponType: 3
+  WeaponType: 0
 --- !u!137 &137000011418671904
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -5,6 +5,14 @@ namespace DungeonStrike
 {
     public class CharacterShoot : MonoBehaviour
     {
+        enum State
+        {
+            Default,
+            Aiming,
+            Shooting,
+        }
+
+        private const bool DrawDebugFiringLine = false;
         private const string FiringPointTag = "FiringPoint";
         private const float AimingSpeedFactor = 0.07f;
 
@@ -14,7 +22,7 @@ namespace DungeonStrike
         public Transform Target;
         private int _spaces;
         private CharacterTurning _characterTurning;
-        private bool _aiming;
+        private State _state;
         private float _horizontalAimAngle;
         private float _verticalAimAngle;
 
@@ -22,23 +30,17 @@ namespace DungeonStrike
         {
             _animator = GetComponent<Animator>();
             _characterTurning = GetComponent<CharacterTurning>();
+            _state = State.Default;
         }
 
         void Update()
         {
-            if (_firingPoint)
+            if (DrawDebugFiringLine && _firingPoint)
             {
                 Debug.DrawRay(_firingPoint.position, _firingPoint.forward * 5.0f, Color.yellow);
             }
 
-            // if (_aiming)
-            // {
-            //     var horizontalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Horizontal);
-            //     var verticalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Vertical);
-            //     Debug.Log("h: " + horizontalAngle + " v: " + verticalAngle);
-            // }
-
-            if (_aiming)
+            if (_state == State.Aiming)
             {
                 var horizontalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Horizontal);
                 _horizontalAimAngle += horizontalAngle * AimingSpeedFactor;
@@ -50,8 +52,16 @@ namespace DungeonStrike
 
                 if (Mathf.Abs(horizontalAngle) < 1.0f && Mathf.Abs(verticalAngle) < 1.0f)
                 {
-                    _aiming = false;
+                    _state = State.Shooting;
+                    _animator.SetBool("Aiming", true);
+                    _animator.SetTrigger("Shoot");
                 }
+            }
+
+            if (_state == State.Shooting && _animator.GetNextAnimatorStateInfo(2).IsName("Empty State"))
+            {
+                _animator.SetBool("Aiming", false);
+                _state = State.Default;
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -61,10 +71,8 @@ namespace DungeonStrike
                 {
                     case 0:
                         _firingPoint = Transforms.FindChildTransformWithTag(WeaponTransform, FiringPointTag);
-                        _characterTurning.TurnToAngle(90.0f, StartAiming);
-                        break;
-                    case 1:
-                        _animator.SetTrigger("Shoot");
+                        var horizontalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Horizontal);
+                        _characterTurning.TurnToAngle(horizontalAngle, StartAiming);
                         break;
                 }
             }
@@ -72,8 +80,10 @@ namespace DungeonStrike
 
         private void StartAiming()
         {
+            _animator.SetFloat("HorizontalAimAngle", 0);
+            _animator.SetFloat("VerticalAimAngle", 0);
             _animator.SetBool("Aiming", true);
-            _aiming = true;
+            _state = State.Aiming;
             _horizontalAimAngle = 0.0f;
             _verticalAimAngle = 0.0f;
         }
