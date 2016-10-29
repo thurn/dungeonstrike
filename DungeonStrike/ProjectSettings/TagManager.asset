@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RightHandAttachPoint
   - FiringPoint
+  - TargetPoint
   layers:
   - Default
   - TransparentFX

@@ -31,7 +31,7 @@ namespace DungeonStrike
         /// Computes the angle in degrees between <c>source.forward </c> and <c>target</c>.
         /// </summary>
         /// <param name="source">The source transform.</param>
-        /// <param name="target">The target transform.</param>
+        /// <param name="target">The target position.</param>
         /// <param name="angleType">
         /// The type of angle to return, either vertical (the angle projected onto the source's forward/upward plane)
         /// or horizontal (the angle projected onto the source's forward/rightward plane).
@@ -41,11 +41,11 @@ namespace DungeonStrike
         /// <c>target.position</c>. The angle is projected onto a two-dimensional plane indicated by
         /// <paramref name="angleType" />.
         /// </returns>
-        public static float AngleToTarget(Transform source, Transform target, AngleType angleType = AngleType.Horizontal)
+        public static float AngleToTarget(Transform source, Vector3 target, AngleType angleType = AngleType.Horizontal)
         {
             var projectionNormal = angleType == AngleType.Horizontal ? Vector3.up : source.right;
             var forwardDirection = Vector3.ProjectOnPlane(source.forward, projectionNormal);
-            var targetDir = Vector3.ProjectOnPlane(target.position - source.position, projectionNormal);
+            var targetDir = Vector3.ProjectOnPlane(target - source.position, projectionNormal);
             var angle = Vector3.Angle(forwardDirection, targetDir);
             // Use cross product to determine the 'direction' of the angle.
             var cross = Vector3.Cross(forwardDirection, targetDir);

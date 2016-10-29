@@ -18540,8 +18540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ddd382e1d7146c393be0b8795bac73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firingPoint: {fileID: 0}
-  Target: {fileID: 159812821}
 --- !u!95 &1625584081
 Animator:
   serializedVersion: 3

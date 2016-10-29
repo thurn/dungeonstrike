@@ -12,15 +12,15 @@ namespace DungeonStrike
             Shooting,
         }
 
+        public Transform WeaponTransform { get; set; }
+
         private const bool DrawDebugFiringLine = false;
         private const string FiringPointTag = "FiringPoint";
         private const float AimingSpeedFactor = 0.07f;
 
+        private Transform _target;
         private Animator _animator;
-        public Transform WeaponTransform { get; set; }
-        public Transform _firingPoint;
-        public Transform Target;
-        private int _spaces;
+        private Transform _firingPoint;
         private CharacterTurning _characterTurning;
         private State _state;
         private float _horizontalAimAngle;
@@ -40,13 +40,14 @@ namespace DungeonStrike
                 Debug.DrawRay(_firingPoint.position, _firingPoint.forward * 5.0f, Color.yellow);
             }
 
+            // Slowly turn to aim at target
             if (_state == State.Aiming)
             {
-                var horizontalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Horizontal);
+                var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target.position, AngleType.Horizontal);
                 _horizontalAimAngle += horizontalAngle * AimingSpeedFactor;
                 _animator.SetFloat("HorizontalAimAngle", _horizontalAimAngle);
 
-                var verticalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Vertical);
+                var verticalAngle = Transforms.AngleToTarget(_firingPoint, _target.position, AngleType.Vertical);
                 _verticalAimAngle += verticalAngle * AimingSpeedFactor;
                 _animator.SetFloat("VerticalAimAngle", _verticalAimAngle);
 
@@ -58,24 +59,21 @@ namespace DungeonStrike
                 }
             }
 
+            // Finished playing Shoot animation
             if (_state == State.Shooting && _animator.GetNextAnimatorStateInfo(2).IsName("Empty State"))
             {
                 _animator.SetBool("Aiming", false);
                 _state = State.Default;
+                _target = null;
             }
+        }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("space " + _spaces);
-                switch (_spaces++)
-                {
-                    case 0:
-                        _firingPoint = Transforms.FindChildTransformWithTag(WeaponTransform, FiringPointTag);
-                        var horizontalAngle = Transforms.AngleToTarget(_firingPoint, Target, AngleType.Horizontal);
-                        _characterTurning.TurnToAngle(horizontalAngle, StartAiming);
-                        break;
-                }
-            }
+        public void ShootAtTarget(Transform target)
+        {
+            _target = target;
+            _firingPoint = Transforms.FindChildTransformWithTag(WeaponTransform, FiringPointTag);
+            var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target.position, AngleType.Horizontal);
+            _characterTurning.TurnToAngle(horizontalAngle, StartAiming);
         }
 
         private void StartAiming()
