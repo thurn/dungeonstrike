@@ -1,3 +1,5 @@
+using System;
+
 namespace DungeonStrike
 {
     public class Preconditions
@@ -6,7 +8,7 @@ namespace DungeonStrike
         {
             if (!expression)
             {
-                throw new System.ArgumentException(message);
+                throw new ArgumentException(message);
             }
         }
 
@@ -14,7 +16,7 @@ namespace DungeonStrike
         {
             if (!expression)
             {
-                throw new System.InvalidOperationException(message);
+                throw new InvalidOperationException(message);
             }
         }
 
@@ -22,8 +24,13 @@ namespace DungeonStrike
         {
             if (valueToCheck == null)
             {
-                throw new System.ArgumentNullException(message);
+                throw new ArgumentNullException(message);
             }
+        }
+
+        public static Exception UnexpectedEnumValue(Enum value)
+        {
+            return new SystemException("Unexpected " + value.GetType() + " enum value: " + value);
         }
     }
 }

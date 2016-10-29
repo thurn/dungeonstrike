@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using Vectrosity;
+using System.Collections.Generic;
 
 namespace DungeonStrike
 {
@@ -12,19 +13,16 @@ namespace DungeonStrike
             Shooting,
         }
 
-        public Transform WeaponTransform { get; set; }
-
-        private const bool DrawDebugFiringLine = false;
-        private const string FiringPointTag = "FiringPoint";
         private const float AimingSpeedFactor = 0.07f;
 
-        private Transform _target;
+        private Vector3 _target;
         private Animator _animator;
         private Transform _firingPoint;
         private CharacterTurning _characterTurning;
         private State _state;
         private float _horizontalAimAngle;
         private float _verticalAimAngle;
+        private VectorLine _aimLine;
 
         void Start()
         {
@@ -35,19 +33,16 @@ namespace DungeonStrike
 
         void Update()
         {
-            if (DrawDebugFiringLine && _firingPoint)
-            {
-                Debug.DrawRay(_firingPoint.position, _firingPoint.forward * 5.0f, Color.yellow);
-            }
+            UpdateDebugLines();
 
             // Slowly turn to aim at target
             if (_state == State.Aiming)
             {
-                var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target.position, AngleType.Horizontal);
+                var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Horizontal);
                 _horizontalAimAngle += horizontalAngle * AimingSpeedFactor;
                 _animator.SetFloat("HorizontalAimAngle", _horizontalAimAngle);
 
-                var verticalAngle = Transforms.AngleToTarget(_firingPoint, _target.position, AngleType.Vertical);
+                var verticalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Vertical);
                 _verticalAimAngle += verticalAngle * AimingSpeedFactor;
                 _animator.SetFloat("VerticalAimAngle", _verticalAimAngle);
 
@@ -64,15 +59,14 @@ namespace DungeonStrike
             {
                 _animator.SetBool("Aiming", false);
                 _state = State.Default;
-                _target = null;
             }
         }
 
         public void ShootAtTarget(Transform target)
         {
-            _target = target;
-            _firingPoint = Transforms.FindChildTransformWithTag(WeaponTransform, FiringPointTag);
-            var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target.position, AngleType.Horizontal);
+            _firingPoint = Transforms.FindChildTransformWithTag(this.transform, Tags.FiringPointTag);
+            _target = Transforms.FindChildTransformWithTag(target, Tags.TargetPointTag).position;
+            var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Horizontal);
             _characterTurning.TurnToAngle(horizontalAngle, StartAiming);
         }
 
@@ -84,6 +78,39 @@ namespace DungeonStrike
             _state = State.Aiming;
             _horizontalAimAngle = 0.0f;
             _verticalAimAngle = 0.0f;
+        }
+
+        private void UpdateDebugLines()
+        {
+            if (DebugManager.Instance != null && DebugManager.Instance.ShowAimLines && _firingPoint != null)
+            {
+                if (_aimLine == null)
+                {
+                    var points = new List<Vector3>(2);
+                    _aimLine = new VectorLine("aimLine", points, 5.0f /* width */);
+                }
+
+                Color color;
+                switch (_state)
+                {
+                    case State.Default:
+                        color = Color.green;
+                        break;
+                    case State.Aiming:
+                        color = Color.yellow;
+                        break;
+                    case State.Shooting:
+                        color = Color.red;
+                        break;
+                    default:
+                        throw Preconditions.UnexpectedEnumValue(_state);
+                }
+
+                _aimLine.points3[0] = _firingPoint.position;
+                _aimLine.points3[1] = _firingPoint.position + (_firingPoint.forward * 5.0f);
+                _aimLine.color = color;
+                _aimLine.Draw3D();
+            }
         }
     }
 }

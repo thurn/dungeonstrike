@@ -6,29 +6,37 @@ namespace DungeonStrike
 {
     public class CharacterSelectionService
     {
-        private VectorLine _selectionCircle;
+        private Dictionary<string, VectorLine> _selectionCircles;
 
-        public void SelectCharacter(Transform characterTransform)
+        public CharacterSelectionService()
         {
-            if (_selectionCircle != null)
+            _selectionCircles = new Dictionary<string, VectorLine>();
+        }
+
+        public void SelectCharacter(string selectionKey, Transform characterTransform, Color color)
+        {
+            if (_selectionCircles.ContainsKey(selectionKey))
             {
-                VectorLine.Destroy(ref _selectionCircle);
+                var circle = _selectionCircles[selectionKey];
+                _selectionCircles.Remove(selectionKey);
+                VectorLine.Destroy(ref circle);
             }
             var linePoints = new List<Vector3>(60);
-            _selectionCircle = new VectorLine("selectionCircle", linePoints, null /* texture */,
+            var selectionCircle = new VectorLine("selectionCircle", linePoints, null /* texture */,
                     5.0f /* width */, LineType.Continuous)
             {
-                color = Color.green
+                color = color
             };
-            _selectionCircle.MakeCircle(Vector3.zero, Vector3.up, 0.75f /* radius */);
-            _selectionCircle.drawTransform = characterTransform;
+            selectionCircle.MakeCircle(Vector3.zero, Vector3.up, 0.75f /* radius */);
+            selectionCircle.drawTransform = characterTransform;
+            _selectionCircles[selectionKey] = selectionCircle;
         }
 
         public void Update()
         {
-            if (_selectionCircle != null)
+            foreach (var circle in _selectionCircles.Values)
             {
-                _selectionCircle.Draw3D();
+                circle.Draw3D();
             }
         }
     }

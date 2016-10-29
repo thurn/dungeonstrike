@@ -39,6 +39,7 @@ namespace DungeonStrike
             if (rightAngle == 0.0f)
             {
                 _onComplete();
+                _onComplete = null;
                 return;
             }
             else

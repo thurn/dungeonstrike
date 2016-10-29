@@ -6,8 +6,8 @@ namespace DungeonStrike
     {
         Vertical,
         Horizontal
-
     }
+
     public class Transforms
     {
         public static Transform FindChildTransformWithTag(Transform transform, string tag)

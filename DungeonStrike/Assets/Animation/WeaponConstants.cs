@@ -47,10 +47,13 @@ namespace DungeonStrike
                     case WeaponType.AssaultRifle02:
                         EquipAssaultRifle02(attachPoint, weapon, modelType);
                         break;
+                    case WeaponType.AssaultRifle03:
+                        EquipAssaultRifle03(attachPoint, weapon, modelType);
+                        break;
                     default:
                         throw new System.SystemException("Unknown weapon type " + weaponType);
                 }
-                onSuccess(weapon);
+                if (onSuccess != null) onSuccess(weapon);
             });
         }
 
@@ -75,6 +78,20 @@ namespace DungeonStrike
                 case ModelType.AssaultCharacter:
                     item.transform.localPosition = new Vector3(-0.04f, -0.04f, -0.10f);
                     item.transform.localEulerAngles = new Vector3(87, 0, 90);
+                    item.transform.localScale = new Vector3(1f, 1f, 1f);
+                    return item;
+                default:
+                    throw new System.SystemException("Unknown model type " + modelType);
+            }
+        }
+
+        private static GameObject EquipAssaultRifle03(Transform attachPoint, GameObject item, ModelType modelType)
+        {
+            switch (modelType)
+            {
+                case ModelType.AssaultCharacter:
+                    item.transform.localPosition = new Vector3(-0.05f, -0.03f, -0.20f);
+                    item.transform.localEulerAngles = new Vector3(85, 0, 90);
                     item.transform.localScale = new Vector3(1f, 1f, 1f);
                     return item;
                 default:

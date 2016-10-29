@@ -1,27 +1,44 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class DebugManager : MonoBehaviour {
+public class DebugManager : MonoBehaviour
+{
 
     public static DebugManager Instance;
-    public bool ShowAimLines { get; private set;  }
+    public Toggle ShowAimLinesToggle;
+    public Toggle ShowNavigationDebugToggle;
 
-    public bool ShowNavigationDebug { get; private set; }
-
-    void Start () {
+    void Start()
+    {
         Instance = this;
+        ShowAimLinesToggle.isOn = ShowAimLines;
+        ShowNavigationDebugToggle.isOn = ShowNavigationDebug;
     }
 
-	void Update () {
-
-	}
-
-	public void SetShowAimLines(bool value)
-	{
-        ShowAimLines = value;
+    public void SetShowAimLines(bool value)
+    {
+        PlayerPrefs.SetInt("ShowAimLines", Convert.ToInt32(value));
     }
 
-	public void SetShowNavigationDebug(bool value)
-	{
-        ShowNavigationDebug = value;
+    public void SetShowNavigationDebug(bool value)
+    {
+        PlayerPrefs.SetInt("ShowNavigationDebug", Convert.ToInt32(value));
+    }
+
+    public bool ShowAimLines
+    {
+        get
+        {
+            return Convert.ToBoolean(PlayerPrefs.GetInt("ShowAimLines"));
+        }
+    }
+
+    public bool ShowNavigationDebug
+    {
+        get
+        {
+            return Convert.ToBoolean(PlayerPrefs.GetInt("ShowNavigationDebug"));
+        }
     }
 }

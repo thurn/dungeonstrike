@@ -9,6 +9,7 @@ namespace DungeonStrike
         private CharacterSelectionService _characterSelectionService;
         private WorldPointSelectionService _worldPointSelectionService;
         private int _currentCharacterNumber;
+        private int _currentTargetNumber;
 
         void Start()
         {
@@ -16,7 +17,7 @@ namespace DungeonStrike
             _characterSelectionService = new CharacterSelectionService();
             _worldPointSelectionService = new WorldPointSelectionService();
 
-            _characterSelectionService.SelectCharacter(CurrentCharacter().transform);
+            UpdateSelection();
         }
 
         void Update()
@@ -27,9 +28,14 @@ namespace DungeonStrike
 
         public void OnNext()
         {
-            _currentCharacterNumber = (_currentCharacterNumber + 1) % Characters.Length;
-            _characterSelectionService.SelectCharacter(CurrentCharacter().transform);
+            IncrementCharacterNumber(ref _currentCharacterNumber);
+            UpdateSelection();
             InputManager.SetMessage("Selected character " + _currentCharacterNumber);
+        }
+
+        private void UpdateSelection()
+        {
+            _characterSelectionService.SelectCharacter("current", CurrentCharacter().transform, Color.green);
         }
 
         public void OnMove()
@@ -45,17 +51,36 @@ namespace DungeonStrike
 
         public void OnShoot()
         {
-
+            InputManager.SetMessage("Shooting selected target...");
+            var shooting = CurrentCharacter().GetComponent<CharacterShoot>();
+            shooting.ShootAtTarget(CurrentTarget().transform);
         }
 
         public void OnTarget()
         {
+            IncrementCharacterNumber(ref _currentTargetNumber);
+            if (_currentTargetNumber == _currentCharacterNumber)
+            {
+				// Avoid self-targeting
+                IncrementCharacterNumber(ref _currentTargetNumber);
+            }
+            _characterSelectionService.SelectCharacter("target", CurrentTarget().transform, Color.red);
+            InputManager.SetMessage("Targeted character " + _currentTargetNumber);
+        }
 
+        private void IncrementCharacterNumber(ref int number)
+        {
+            number = (number + 1) % Characters.Length;
         }
 
         private GameObject CurrentCharacter()
         {
             return Characters[_currentCharacterNumber];
+        }
+
+        private GameObject CurrentTarget()
+        {
+            return Characters[_currentTargetNumber];
         }
     }
 }
