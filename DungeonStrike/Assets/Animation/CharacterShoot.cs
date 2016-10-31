@@ -9,8 +9,7 @@ namespace DungeonStrike
         enum State
         {
             Default,
-            HorizontalAiming,
-            VerticalAiming,
+            Aiming,
             Shooting,
         }
 
@@ -36,25 +35,17 @@ namespace DungeonStrike
         {
             UpdateDebugLines();
 
-            if (_state == State.VerticalAiming)
+            if (_state == State.Aiming)
             {
                 var verticalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Vertical);
                 _verticalAimAngle += verticalAngle * AimingSpeedFactor;
                 _animator.SetFloat("VerticalAimAngle", _verticalAimAngle);
 
-                if (Mathf.Abs(verticalAngle) < 1.0f)
-                {
-                    _state = State.HorizontalAiming;
-                }
-            }
-
-            if (_state == State.HorizontalAiming)
-            {
                 var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Horizontal);
                 _horizontalAimAngle += horizontalAngle * AimingSpeedFactor;
                 _animator.SetFloat("HorizontalAimAngle", _horizontalAimAngle);
 
-                if (Mathf.Abs(horizontalAngle) < 1.0f)
+                if (Mathf.Abs(horizontalAngle) < 1.0f && Mathf.Abs(verticalAngle) < 1.0f)
                 {
                     _state = State.Shooting;
                     _animator.SetTrigger("Shoot");
@@ -83,7 +74,7 @@ namespace DungeonStrike
             _animator.SetFloat("VerticalAimAngle", 0);
             _animator.SetBool("Aiming", true);
 
-            _state = State.VerticalAiming;
+            _state = State.Aiming;
             _horizontalAimAngle = 0.0f;
             _verticalAimAngle = 0.0f;
         }
@@ -104,11 +95,8 @@ namespace DungeonStrike
                     case State.Default:
                         color = Color.green;
                         break;
-                    case State.VerticalAiming:
+                    case State.Aiming:
                         color = Color.yellow;
-                        break;
-                    case State.HorizontalAiming:
-                        color = Color.blue;
                         break;
                     case State.Shooting:
                         color = Color.red;
