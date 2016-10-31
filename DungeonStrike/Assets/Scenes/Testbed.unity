@@ -528,7 +528,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 724088727}
+      - m_Target: {fileID: 0}
         m_MethodName: SetShowAimLines
         m_Mode: 0
         m_Arguments:
@@ -2567,7 +2567,6 @@ GameObject:
   - 224: {fileID: 724088724}
   - 222: {fileID: 724088726}
   - 114: {fileID: 724088725}
-  - 114: {fileID: 724088727}
   m_Layer: 5
   m_Name: DebugPanel
   m_TagString: Untagged
@@ -2629,17 +2628,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 724088723}
---- !u!114 &724088727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 724088723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bde7859c3a2448a4b7b7b1fee01a833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &744926428
 GameObject:
   m_ObjectHideFlags: 0
@@ -3965,7 +3953,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013593689382, guid: 83de7e9b478ef430d97d668257d29da4, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000013593689382, guid: 83de7e9b478ef430d97d668257d29da4, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6163,6 +6151,7 @@ GameObject:
   - 4: {fileID: 1725581622}
   - 114: {fileID: 1725581621}
   - 114: {fileID: 1725581623}
+  - 114: {fileID: 1725581624}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -6209,6 +6198,19 @@ MonoBehaviour:
   - {fileID: 169506595}
   - {fileID: 1625584079}
   InputManager: {fileID: 1460375441}
+--- !u!114 &1725581624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1725581620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bde7859c3a2448a4b7b7b1fee01a833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowAimLinesToggle: {fileID: 42725016}
+  ShowNavigationDebugToggle: {fileID: 2028840844}
 --- !u!1 &1726529205
 GameObject:
   m_ObjectHideFlags: 0
@@ -6665,7 +6667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011954978922, guid: 8be4eea93427742ef8a11d109fdcaccb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4000011954978922, guid: 8be4eea93427742ef8a11d109fdcaccb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6693,19 +6695,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011067788442, guid: 8be4eea93427742ef8a11d109fdcaccb, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013794396436, guid: 8be4eea93427742ef8a11d109fdcaccb, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000011034207140, guid: 8be4eea93427742ef8a11d109fdcaccb, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000011878894878, guid: 8be4eea93427742ef8a11d109fdcaccb, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8be4eea93427742ef8a11d109fdcaccb, type: 2}
@@ -6842,7 +6844,7 @@ GameObject:
   - 224: {fileID: 2028840843}
   - 114: {fileID: 2028840844}
   m_Layer: 5
-  m_Name: Navigation
+  m_Name: NavigationDebug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6910,7 +6912,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 724088727}
+      - m_Target: {fileID: 0}
         m_MethodName: SetShowNavigationDebug
         m_Mode: 0
         m_Arguments:

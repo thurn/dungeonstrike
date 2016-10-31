@@ -9,11 +9,12 @@ namespace DungeonStrike
         enum State
         {
             Default,
-            Aiming,
+            HorizontalAiming,
+            VerticalAiming,
             Shooting,
         }
 
-        private const float AimingSpeedFactor = 0.07f;
+        private const float AimingSpeedFactor = 0.1f;
 
         private Vector3 _target;
         private Animator _animator;
@@ -35,21 +36,27 @@ namespace DungeonStrike
         {
             UpdateDebugLines();
 
-            // Slowly turn to aim at target
-            if (_state == State.Aiming)
+            if (_state == State.VerticalAiming)
+            {
+                var verticalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Vertical);
+                _verticalAimAngle += verticalAngle * AimingSpeedFactor;
+                _animator.SetFloat("VerticalAimAngle", _verticalAimAngle);
+
+                if (Mathf.Abs(verticalAngle) < 1.0f)
+                {
+                    _state = State.HorizontalAiming;
+                }
+            }
+
+            if (_state == State.HorizontalAiming)
             {
                 var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Horizontal);
                 _horizontalAimAngle += horizontalAngle * AimingSpeedFactor;
                 _animator.SetFloat("HorizontalAimAngle", _horizontalAimAngle);
 
-                var verticalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Vertical);
-                _verticalAimAngle += verticalAngle * AimingSpeedFactor;
-                _animator.SetFloat("VerticalAimAngle", _verticalAimAngle);
-
-                if (Mathf.Abs(horizontalAngle) < 1.0f && Mathf.Abs(verticalAngle) < 1.0f)
+                if (Mathf.Abs(horizontalAngle) < 1.0f)
                 {
                     _state = State.Shooting;
-                    _animator.SetBool("Aiming", true);
                     _animator.SetTrigger("Shoot");
                 }
             }
@@ -75,7 +82,8 @@ namespace DungeonStrike
             _animator.SetFloat("HorizontalAimAngle", 0);
             _animator.SetFloat("VerticalAimAngle", 0);
             _animator.SetBool("Aiming", true);
-            _state = State.Aiming;
+
+            _state = State.VerticalAiming;
             _horizontalAimAngle = 0.0f;
             _verticalAimAngle = 0.0f;
         }
@@ -96,8 +104,11 @@ namespace DungeonStrike
                     case State.Default:
                         color = Color.green;
                         break;
-                    case State.Aiming:
+                    case State.VerticalAiming:
                         color = Color.yellow;
+                        break;
+                    case State.HorizontalAiming:
+                        color = Color.blue;
                         break;
                     case State.Shooting:
                         color = Color.red;

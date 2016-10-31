@@ -43,13 +43,23 @@ namespace DungeonStrike
         /// </returns>
         public static float AngleToTarget(Transform source, Vector3 target, AngleType angleType = AngleType.Horizontal)
         {
-            var projectionNormal = angleType == AngleType.Horizontal ? Vector3.up : source.right;
+            var projectionNormal = angleType == AngleType.Horizontal ? source.up : source.right;
             var forwardDirection = Vector3.ProjectOnPlane(source.forward, projectionNormal);
             var targetDir = Vector3.ProjectOnPlane(target - source.position, projectionNormal);
             var angle = Vector3.Angle(forwardDirection, targetDir);
             // Use cross product to determine the 'direction' of the angle.
-            var cross = Vector3.Cross(forwardDirection, targetDir);
-            return cross.y < 0 ? -angle : angle;
+            // For vertical angles, CrossProduct using a rightward-facing normal returns
+            // the opposite of the expected semantics (positive being 'up'), so we invert
+            // the result.
+            var crossProduct = Vector3.Cross(forwardDirection, targetDir);
+            if (Vector3.Dot(projectionNormal, crossProduct) < 0)
+            {
+                return angleType == AngleType.Horizontal ? -angle : angle;
+            }
+            else
+            {
+                return angleType == AngleType.Horizontal ? angle : -angle;
+            }
         }
 
         /// <summary>Rounds an angle to the nearest 90 degrees.</summary>
