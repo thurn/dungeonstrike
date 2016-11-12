@@ -19,7 +19,7 @@ namespace DungeonStrike
             var clipName = clipInfo[0].clip.name;
             if (clipName != _currentClipName)
             {
-                Debug.Log("clip: <" + clipName + ">");
+                Debug.Log("clip: <" + clipName + "> " + clipInfo[0].clip.events.Length);
                 _currentClipName = clipName;
             }
         }

@@ -68,6 +68,17 @@ namespace DungeonStrike
             InputManager.SetMessage("Targeted character " + _currentTargetNumber);
         }
 
+        public void OnEquip()
+        {
+            var characterWeapons = CurrentCharacter().GetComponent<CharacterWeapons>();
+            characterWeapons.EquipOrHolsterWeapon();
+        }
+
+        public void OnCast()
+        {
+
+        }
+
         private void IncrementCharacterNumber(ref int number)
         {
             number = (number + 1) % Characters.Length;

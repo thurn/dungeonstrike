@@ -50,7 +50,7 @@ namespace DungeonStrike
                 SetAnimationState(AnimationState.Stopping);
             }
 
-            if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle") &&
+            if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Rifle Idle") &&
                 _state == AnimationState.Stopping)
             {
                 SetAnimationState(AnimationState.Idle);

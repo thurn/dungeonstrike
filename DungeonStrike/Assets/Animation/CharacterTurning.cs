@@ -17,7 +17,7 @@ namespace DungeonStrike
 
         void Update()
         {
-            if (_idleNext && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            if (_idleNext && _animator.GetCurrentAnimatorStateInfo(0).IsName("Rifle Idle"))
             {
                 _onComplete();
                 _turning = false;
@@ -25,7 +25,7 @@ namespace DungeonStrike
                 _idleNext = false;
             }
 
-            if (_turning && _animator.GetNextAnimatorStateInfo(0).IsName("Idle"))
+            if (_turning && _animator.GetNextAnimatorStateInfo(0).IsName("Rifle Idle"))
             {
                 _idleNext = true;
             }

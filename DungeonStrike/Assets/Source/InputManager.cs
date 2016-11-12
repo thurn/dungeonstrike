@@ -28,6 +28,12 @@ namespace DungeonStrike
             } else if (Input.GetKeyDown(KeyCode.B))
             {
                 OnDebugClicked();
+            } else if (Input.GetKeyDown(KeyCode.U))
+            {
+                OnEquipClicked();
+            } else if (Input.GetKeyDown(KeyCode.C))
+            {
+                OnCastClicked();
             }
         }
 
@@ -59,6 +65,16 @@ namespace DungeonStrike
         public void OnDebugClicked()
         {
             DebugPanel.SetActive(!DebugPanel.activeSelf);
+        }
+
+        public void OnEquipClicked()
+        {
+            MainController.OnEquip();
+        }
+
+        public void OnCastClicked()
+        {
+            MainController.OnCast();
         }
     }
 
