@@ -25,7 +25,7 @@ namespace DungeonStrike
             });
             // Jump to a random frame to prevent different characters in the idle state
             // from synchronizing their movements
-            _animator.Play(AnimationStates.RIFLE_IDLE, 0, UnityEngine.Random.Range(0.0f, 1.0f));
+            _animator.Play(AnimationStates.RifleIdle, 0, UnityEngine.Random.Range(0.0f, 1.0f));
             _rifleEquipped = true;
 
             AddAnimationEvents();

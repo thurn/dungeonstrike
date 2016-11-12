@@ -14,6 +14,7 @@ namespace DungeonStrike
         void Start()
         {
             _currentCharacterNumber = 0;
+            _currentTargetNumber = -1;
             _characterSelectionService = new CharacterSelectionService();
             _worldPointSelectionService = new WorldPointSelectionService();
 
@@ -61,7 +62,7 @@ namespace DungeonStrike
             IncrementCharacterNumber(ref _currentTargetNumber);
             if (_currentTargetNumber == _currentCharacterNumber)
             {
-				// Avoid self-targeting
+                // Avoid self-targeting
                 IncrementCharacterNumber(ref _currentTargetNumber);
             }
             _characterSelectionService.SelectCharacter("target", CurrentTarget().transform, Color.red);
@@ -76,7 +77,9 @@ namespace DungeonStrike
 
         public void OnCast()
         {
-
+            InputManager.SetMessage("Casting spell on selected target...");
+            var characterSpellcasting = CurrentCharacter().GetComponent<CharacterSpellcasting>();
+            characterSpellcasting.CastSpellWithTarget(CurrentTarget().transform);
         }
 
         private void IncrementCharacterNumber(ref int number)
@@ -91,6 +94,7 @@ namespace DungeonStrike
 
         private GameObject CurrentTarget()
         {
+            Preconditions.CheckState(_currentTargetNumber != -1, "No target selected");
             return Characters[_currentTargetNumber];
         }
     }

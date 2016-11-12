@@ -31,7 +31,7 @@ namespace DungeonStrike
             } else if (Input.GetKeyDown(KeyCode.U))
             {
                 OnEquipClicked();
-            } else if (Input.GetKeyDown(KeyCode.C))
+            } else if (Input.GetKeyDown(KeyCode.G))
             {
                 OnCastClicked();
             }

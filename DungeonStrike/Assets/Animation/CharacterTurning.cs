@@ -5,10 +5,13 @@ namespace DungeonStrike
 {
     public class CharacterTurning : MonoBehaviour
     {
+        private const float TurnSpeed = 10.0f;
+
         private Animator _animator;
         private Action _onComplete;
         private bool _turning;
         private bool _idleNext;
+        private Vector3 _target;
 
         void Start()
         {
@@ -17,26 +20,71 @@ namespace DungeonStrike
 
         void Update()
         {
-            if (_idleNext && _animator.GetCurrentAnimatorStateInfo(0).IsName("Rifle Idle"))
+            if (_idleNext && AnimationStates.IsCurrentStateIdle(_animator))
             {
-                _onComplete();
+                if (_onComplete != null)
+                {
+                    _onComplete();
+                }
                 _turning = false;
                 _onComplete = null;
                 _idleNext = false;
             }
 
-            if (_turning && _animator.GetNextAnimatorStateInfo(0).IsName("Rifle Idle"))
+            if (_turning && AnimationStates.IsNextStateIdle(_animator))
             {
                 _idleNext = true;
             }
+
+            if (_turning)
+            {
+                var angle = Transforms.AngleToTarget(transform, _target);
+                if (angle > 1.0f)
+                {
+                    transform.eulerAngles = new Vector3(
+                        transform.eulerAngles.x,
+                        transform.eulerAngles.y + 1.0f,
+                        transform.eulerAngles.z
+                    );
+                }
+                else if (angle < -1.0f)
+                {
+                    transform.eulerAngles = new Vector3(
+                        transform.eulerAngles.x,
+                        transform.eulerAngles.y - 1.0f,
+                        transform.eulerAngles.z
+                    );
+                }
+            }
         }
 
-        public void TurnToAngle(float angle, Action onComplete)
+        public void TurnToFaceTarget(Vector3 target, Action onComplete)
+        {
+            Preconditions.CheckState(_onComplete == null);
+            var angle = Transforms.AngleToTarget(transform, target);
+            if (Mathf.Abs(angle) < 5.0f)
+            {
+                onComplete();
+                return;
+            }
+
+            _target = target;
+            _onComplete = onComplete;
+            _turning = true;
+            _animator.applyRootMotion = true;
+            _animator.SetTrigger("Turning");
+            _animator.SetFloat("TurnAngle", angle);
+        }
+
+        public void TurnToAngle(float angle, Action onComplete, bool nearestNinetyDegrees = true)
         {
             Preconditions.CheckState(_onComplete == null);
             _onComplete = onComplete;
-            var rightAngle = Transforms.ToRightAngle(angle);
-            if (rightAngle == 0.0f)
+            if (nearestNinetyDegrees)
+            {
+                angle = Transforms.ToRightAngle(angle);
+            }
+            if (angle == 0.0f)
             {
                 _onComplete();
                 _onComplete = null;
@@ -47,7 +95,7 @@ namespace DungeonStrike
                 _turning = true;
                 _animator.applyRootMotion = true;
                 _animator.SetTrigger("Turning");
-                _animator.SetFloat("TurnAngle", rightAngle);
+                _animator.SetFloat("TurnAngle", angle);
             }
         }
     }

@@ -53,7 +53,7 @@ namespace DungeonStrike
             }
 
             // Finished playing Shoot animation
-            if (_state == State.Shooting && _animator.GetNextAnimatorStateInfo(2).IsName("Empty State"))
+            if (_state == State.Shooting && _animator.GetNextAnimatorStateInfo(2).IsName(AnimationStates.ShootingEmptyState))
             {
                 _animator.SetBool("Aiming", false);
                 _state = State.Default;
