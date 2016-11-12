@@ -19,4 +19,4 @@ for directory in os.listdir(THIRD_PARTY):
   os.rename(sfv, newPath)
   subprocess.call(["perl", "-p", "-i", "-e", "s/Generated.*//g", newPath])
 
-print("Checksums updated. Remember to run ./checksums/createThirdParty.sh")
+print("Checksums updated. Remember to run ./scripts/createThirdParty.sh")
