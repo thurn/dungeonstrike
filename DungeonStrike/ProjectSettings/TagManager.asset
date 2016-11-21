@@ -7,6 +7,7 @@ TagManager:
   - RightHandAttachPoint
   - FiringPoint
   - TargetPoint
+  - SpineBone
   layers:
   - Default
   - TransparentFX

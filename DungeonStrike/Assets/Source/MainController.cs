@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace DungeonStrike
 {
@@ -10,6 +11,7 @@ namespace DungeonStrike
         private WorldPointSelectionService _worldPointSelectionService;
         private int _currentCharacterNumber;
         private int _currentTargetNumber;
+        private Action _onConfirmTarget;
 
         void Start()
         {
@@ -52,9 +54,21 @@ namespace DungeonStrike
 
         public void OnShoot()
         {
-            InputManager.SetMessage("Shooting selected target...");
-            var shooting = CurrentCharacter().GetComponent<CharacterShoot>();
-            shooting.ShootAtTarget(CurrentTarget().transform);
+            InputManager.SetMessage("Select Target");
+            _onConfirmTarget = () =>
+            {
+                InputManager.SetMessage("Shooting selected target...");
+                var shooting = CurrentCharacter().GetComponent<CharacterShoot>();
+                shooting.ShootAtTarget(CurrentTarget().transform);
+            };
+        }
+
+        public void OnConfirmTarget()
+        {
+            if (_onConfirmTarget != null)
+            {
+                _onConfirmTarget();
+            }
         }
 
         public void OnTarget()
@@ -66,7 +80,9 @@ namespace DungeonStrike
                 IncrementCharacterNumber(ref _currentTargetNumber);
             }
             _characterSelectionService.SelectCharacter("target", CurrentTarget().transform, Color.red);
-            InputManager.SetMessage("Targeted character " + _currentTargetNumber);
+
+            //var currentCharacterTurning = CurrentCharacter().GetComponent<CharacterTurning>();
+            //currentCharacterTurning.TurnToFaceTarget(CurrentTarget().transform.position, null);
         }
 
         public void OnEquip()
@@ -77,9 +93,13 @@ namespace DungeonStrike
 
         public void OnCast()
         {
-            InputManager.SetMessage("Casting spell on selected target...");
-            var characterSpellcasting = CurrentCharacter().GetComponent<CharacterSpellcasting>();
-            characterSpellcasting.CastSpellWithTarget(CurrentTarget().transform);
+            InputManager.SetMessage("Select Spell Target");
+            _onConfirmTarget = () =>
+            {
+                InputManager.SetMessage("Casting spell on selected target...");
+                var characterSpellcasting = CurrentCharacter().GetComponent<CharacterSpellcasting>();
+                characterSpellcasting.CastSpellWithTarget(CurrentTarget().transform);
+            };
         }
 
         private void IncrementCharacterNumber(ref int number)

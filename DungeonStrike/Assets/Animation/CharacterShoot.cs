@@ -62,8 +62,8 @@ namespace DungeonStrike
 
         public void ShootAtTarget(Transform target)
         {
-            _firingPoint = Transforms.FindChildTransformWithTag(this.transform, Tags.FiringPointTag);
-            _target = Transforms.FindChildTransformWithTag(target, Tags.TargetPointTag).position;
+            _firingPoint = Transforms.FindChildTransformWithTag(this.transform, Tags.FiringPoint);
+            _target = Transforms.FindChildTransformWithTag(target, Tags.TargetPoint).position;
             var horizontalAngle = Transforms.AngleToTarget(_firingPoint, _target, AngleType.Horizontal);
             _characterTurning.TurnToAngle(horizontalAngle, StartAiming);
         }

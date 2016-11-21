@@ -7,6 +7,7 @@ namespace DungeonStrike
         public const string ShootingEmptyState = "Empty State";
         public const string RifleIdle = "Rifle Idle";
         public const string NoWeaponIdle = "No Weapon Idle";
+        public const string Casting = "Casting";
 
         public static bool IsCurrentStateIdle(Animator animator, int layerNumber = 0)
         {

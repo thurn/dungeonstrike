@@ -4,8 +4,6 @@ namespace DungeonStrike
 {
     public class CharacterWeapons : MonoBehaviour
     {
-        private const string RightHandAttachPointTag = "RightHandAttachPoint";
-
         public ModelType ModelType;
         public WeaponType WeaponType;
         public GameObject RootObject;
@@ -17,7 +15,7 @@ namespace DungeonStrike
         void Start()
         {
             _animator = GetComponent<Animator>();
-            _rightHandAttachPoint = Transforms.FindChildTransformWithTag(this.transform, RightHandAttachPointTag);
+            _rightHandAttachPoint = Transforms.FindChildTransformWithTag(this.transform, Tags.RightHandAttachPoint);
 
             WeaponConstants.EquipWeapon(_rightHandAttachPoint, WeaponType, ModelType, (GameObject rifle) =>
             {

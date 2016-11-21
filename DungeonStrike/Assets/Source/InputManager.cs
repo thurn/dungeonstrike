@@ -34,6 +34,9 @@ namespace DungeonStrike
             } else if (Input.GetKeyDown(KeyCode.G))
             {
                 OnCastClicked();
+            } else if (Input.GetKeyDown(KeyCode.Return))
+            {
+                MainController.OnConfirmTarget();
             }
         }
 
