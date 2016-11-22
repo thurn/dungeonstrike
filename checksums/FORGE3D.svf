@@ -1,0 +1,1687 @@
+; 
+;
+HelpMenu/Editor/F3DHelpMenu.cs b927a90d
+HelpMenu/Editor/F3DHelpMenu.cs.meta c69e019a
+HelpMenu/Editor.meta 48ec0353
+HelpMenu.meta bed98e3c
+PoolManager/Editor/F3DPoolManagerEditor.cs 6e13696b
+PoolManager/Editor/F3DPoolManagerEditor.cs.meta 22e15ff2
+PoolManager/Editor.meta 616cf814
+PoolManager/F3DPool.cs ecc52ca4
+PoolManager/F3DPool.cs.meta 8d6f913f
+PoolManager/F3DPoolContainer.cs cf90ea0d
+PoolManager/F3DPoolContainer.cs.meta a251b974
+PoolManager/F3DPoolManager.cs a30bc49b
+PoolManager/F3DPoolManager.cs.meta 397ca481
+PoolManager/F3DPoolManagerDB.cs 6fb8f94a
+PoolManager/F3DPoolManagerDB.cs.meta fdf408c0
+PoolManager.meta 2d72a1ac
+Resources/F3DPoolManagerCache/MissleDatabase.asset 9e43fa81
+Resources/F3DPoolManagerCache/MissleDatabase.asset.meta 43cd61f7
+Resources/F3DPoolManagerCache/WeaponRange.asset c5f943df
+Resources/F3DPoolManagerCache/WeaponRange.asset.meta 27270833
+Resources/F3DPoolManagerCache.meta 570cd9fd
+Resources.meta 590dd6a0
+Sci-Fi Effects/Code/F3DAudioController.cs a5424e00
+Sci-Fi Effects/Code/F3DAudioController.cs.meta 2bd6f228
+Sci-Fi Effects/Code/F3DBeam.cs a114848a
+Sci-Fi Effects/Code/F3DBeam.cs.meta 5126c6a6
+Sci-Fi Effects/Code/F3DCurvedBeam.cs fb0db5d8
+Sci-Fi Effects/Code/F3DCurvedBeam.cs.meta 30e8b2fa
+Sci-Fi Effects/Code/F3DDespawn.cs d0017e89
+Sci-Fi Effects/Code/F3DDespawn.cs.meta b1fddce2
+Sci-Fi Effects/Code/F3DFXController.cs 58f99a3c
+Sci-Fi Effects/Code/F3DFXController.cs.meta 264d972f
+Sci-Fi Effects/Code/F3DFlameThrower.cs dc294e78
+Sci-Fi Effects/Code/F3DFlameThrower.cs.meta f83fffa6
+Sci-Fi Effects/Code/F3DLightning.cs e202fca4
+Sci-Fi Effects/Code/F3DLightning.cs.meta 143b75a9
+Sci-Fi Effects/Code/F3DMissile.cs 421c3c50
+Sci-Fi Effects/Code/F3DMissile.cs.meta 2caabb6f
+Sci-Fi Effects/Code/F3DParticleScale.cs 1d182a38
+Sci-Fi Effects/Code/F3DParticleScale.cs.meta 24f97cc7
+Sci-Fi Effects/Code/F3DPool_Legacy.cs 3ec0e354
+Sci-Fi Effects/Code/F3DPool_Legacy.cs.meta e2c19578
+Sci-Fi Effects/Code/F3DPredictTrajectory.cs 4c642b18
+Sci-Fi Effects/Code/F3DPredictTrajectory.cs.meta 6fad01a1
+Sci-Fi Effects/Code/F3DProjectile.cs 37cffb99
+Sci-Fi Effects/Code/F3DProjectile.cs.meta 16627fcb
+Sci-Fi Effects/Code/F3DPulsewave.cs 4e2f4cbb
+Sci-Fi Effects/Code/F3DPulsewave.cs.meta 80425b47
+Sci-Fi Effects/Code/F3DRandomize.cs 722827f8
+Sci-Fi Effects/Code/F3DRandomize.cs.meta 299d57eb
+Sci-Fi Effects/Code/F3DRift.cs c7cc9308
+Sci-Fi Effects/Code/F3DRift.cs.meta 7f06f2da
+Sci-Fi Effects/Code/F3DShotgun.cs bf878c51
+Sci-Fi Effects/Code/F3DShotgun.cs.meta 79204e1a
+Sci-Fi Effects/Code/F3DTime.cs 5dd67c8b
+Sci-Fi Effects/Code/F3DTime.cs.meta 5d8e424c
+Sci-Fi Effects/Code/F3DTurret_Legacy.cs 2c400bfc
+Sci-Fi Effects/Code/F3DTurret_Legacy.cs.meta c52fbc73
+Sci-Fi Effects/Code/F3DWarpJump.cs 32d73d46
+Sci-Fi Effects/Code/F3DWarpJump.cs.meta 3adf9f34
+Sci-Fi Effects/Code/F3DWarpJumpTunnel.cs bdf75bd5
+Sci-Fi Effects/Code/F3DWarpJumpTunnel.cs.meta 5bb25a6b
+Sci-Fi Effects/Code/F3DWarpTunnel.cs 0d1afe81
+Sci-Fi Effects/Code/F3DWarpTunnel.cs.meta 82568d85
+Sci-Fi Effects/Code/Lib/F3DMath.cs c6122e2f
+Sci-Fi Effects/Code/Lib/F3DMath.cs.meta 332efd29
+Sci-Fi Effects/Code/Lib.meta 51557b47
+Sci-Fi Effects/Code/MeshCombine/CombineChildren.cs a4c1f676
+Sci-Fi Effects/Code/MeshCombine/CombineChildren.cs.meta e393ce06
+Sci-Fi Effects/Code/MeshCombine/MeshCombineUtility.cs bf4b0416
+Sci-Fi Effects/Code/MeshCombine/MeshCombineUtility.cs.meta da80e4a9
+Sci-Fi Effects/Code/MeshCombine.meta 997fb69e
+Sci-Fi Effects/Code/Player/F3DPlayerController_Legacy.cs 643762f3
+Sci-Fi Effects/Code/Player/F3DPlayerController_Legacy.cs.meta c1b4875a
+Sci-Fi Effects/Code/Player/F3DPlayerTurretController.cs 79fa30af
+Sci-Fi Effects/Code/Player/F3DPlayerTurretController.cs.meta 3bbac4cc
+Sci-Fi Effects/Code/Player.meta 3f864e45
+Sci-Fi Effects/Code/Turrets/Constructor/Editor/F3DTurretConstructorEditor.cs 392dceb3
+Sci-Fi Effects/Code/Turrets/Constructor/Editor/F3DTurretConstructorEditor.cs.meta 48112e71
+Sci-Fi Effects/Code/Turrets/Constructor/Editor/F3DTurretEditorWindow.cs 4d799eb5
+Sci-Fi Effects/Code/Turrets/Constructor/Editor/F3DTurretEditorWindow.cs.meta 4f07f935
+Sci-Fi Effects/Code/Turrets/Constructor/Editor.meta ac0df578
+Sci-Fi Effects/Code/Turrets/Constructor/F3DTurretConstructor.cs 7f250426
+Sci-Fi Effects/Code/Turrets/Constructor/F3DTurretConstructor.cs.meta c4a67c33
+Sci-Fi Effects/Code/Turrets/Constructor/F3DTurretScriptable.cs 6db41ed8
+Sci-Fi Effects/Code/Turrets/Constructor/F3DTurretScriptable.cs.meta 4cf716a4
+Sci-Fi Effects/Code/Turrets/Constructor.meta 81e77ace
+Sci-Fi Effects/Code/Turrets/Editor/F3DTurretEditor.cs 4a478375
+Sci-Fi Effects/Code/Turrets/Editor/F3DTurretEditor.cs.meta e14bc218
+Sci-Fi Effects/Code/Turrets/Editor/F3DTurretHandles.cs 2a33733d
+Sci-Fi Effects/Code/Turrets/Editor/F3DTurretHandles.cs.meta 121feea2
+Sci-Fi Effects/Code/Turrets/Editor.meta ed671d8f
+Sci-Fi Effects/Code/Turrets/F3DTurret.cs a206b918
+Sci-Fi Effects/Code/Turrets/F3DTurret.cs.meta d517b08b
+Sci-Fi Effects/Code/Turrets.meta ad4d6e0e
+Sci-Fi Effects/Code.meta e176c925
+Sci-Fi Effects/Effects/Burnout/Materials/Burnout_Heat_001.mat bc14e836
+Sci-Fi Effects/Effects/Burnout/Materials/Burnout_Heat_001.mat.meta ad20cad7
+Sci-Fi Effects/Effects/Burnout/Materials/Burnout_gamma.mat 9d95bfb6
+Sci-Fi Effects/Effects/Burnout/Materials/Burnout_gamma.mat.meta afb3fd1f
+Sci-Fi Effects/Effects/Burnout/Materials/Burnout_linear.mat 80e0ceb2
+Sci-Fi Effects/Effects/Burnout/Materials/Burnout_linear.mat.meta 9cffb7bd
+Sci-Fi Effects/Effects/Burnout/Materials.meta ea1c2c75
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_damage.tga 583d9719
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_damage.tga.meta bf07aade
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_emission.tga 328cd365
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_emission.tga.meta e487acc8
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_glow.tga 844b30dc
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_glow.tga.meta c6826636
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_loop.tga 8106acf0
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_loop.tga.meta 4f9a7d1f
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_mask.tga 023f50e0
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_mask.tga.meta d22ea414
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_opacity.tga 2d8a155a
+Sci-Fi Effects/Effects/Burnout/Textures/burnout_opacity.tga.meta 181c317d
+Sci-Fi Effects/Effects/Burnout/Textures.meta 3694b0df
+Sci-Fi Effects/Effects/Burnout.meta 01943d86
+Sci-Fi Effects/Effects/Debris/Materials/debris_junk.mat f5728096
+Sci-Fi Effects/Effects/Debris/Materials/debris_junk.mat.meta 44479fce
+Sci-Fi Effects/Effects/Debris/Materials/debris_rock.mat dc9fb539
+Sci-Fi Effects/Effects/Debris/Materials/debris_rock.mat.meta 5773a72a
+Sci-Fi Effects/Effects/Debris/Materials.meta 16cc185c
+Sci-Fi Effects/Effects/Debris/Meshes/Materials/scene root.mat 05c29322
+Sci-Fi Effects/Effects/Debris/Meshes/Materials/scene root.mat.meta 399479e0
+Sci-Fi Effects/Effects/Debris/Meshes/Materials.meta c2d91fdb
+Sci-Fi Effects/Effects/Debris/Meshes/debris_junk.FBX 7cb1b89c
+Sci-Fi Effects/Effects/Debris/Meshes/debris_junk.FBX.meta f45c1c4e
+Sci-Fi Effects/Effects/Debris/Meshes/debris_rock.FBX b9aee06d
+Sci-Fi Effects/Effects/Debris/Meshes/debris_rock.FBX.meta 3f721f24
+Sci-Fi Effects/Effects/Debris/Meshes.meta 08725858
+Sci-Fi Effects/Effects/Debris/Textures/debris_junk.png b18d2e2a
+Sci-Fi Effects/Effects/Debris/Textures/debris_junk.png.meta ecfdba27
+Sci-Fi Effects/Effects/Debris/Textures/debris_junk_norm.png d3833d77
+Sci-Fi Effects/Effects/Debris/Textures/debris_junk_norm.png.meta 68528b74
+Sci-Fi Effects/Effects/Debris/Textures/debris_junk_spec.png 0d77e8bc
+Sci-Fi Effects/Effects/Debris/Textures/debris_junk_spec.png.meta 2c7cce96
+Sci-Fi Effects/Effects/Debris/Textures/debris_rock.png a1c0da7b
+Sci-Fi Effects/Effects/Debris/Textures/debris_rock.png.meta dea0013d
+Sci-Fi Effects/Effects/Debris/Textures/debris_rock_norm.png 5b47df53
+Sci-Fi Effects/Effects/Debris/Textures/debris_rock_norm.png.meta dc1f100a
+Sci-Fi Effects/Effects/Debris/Textures.meta abbeb6b9
+Sci-Fi Effects/Effects/Debris/debris_junk.prefab b2b6d2f3
+Sci-Fi Effects/Effects/Debris/debris_junk.prefab.meta 90075e47
+Sci-Fi Effects/Effects/Debris/debris_rock.prefab 9aa1cd2e
+Sci-Fi Effects/Effects/Debris/debris_rock.prefab.meta 90a51f96
+Sci-Fi Effects/Effects/Debris.meta f2a88fd5
+Sci-Fi Effects/Effects/Explosions/Explosion_001.prefab 8e113a54
+Sci-Fi Effects/Effects/Explosions/Explosion_001.prefab.meta aa6f751f
+Sci-Fi Effects/Effects/Explosions/Explosion_002.prefab 393204b6
+Sci-Fi Effects/Effects/Explosions/Explosion_002.prefab.meta 1b2accfa
+Sci-Fi Effects/Effects/Explosions/Explosion_003.prefab bdc62815
+Sci-Fi Effects/Effects/Explosions/Explosion_003.prefab.meta 30f41dce
+Sci-Fi Effects/Effects/Explosions/Explosion_004.prefab e9f6365c
+Sci-Fi Effects/Effects/Explosions/Explosion_004.prefab.meta 168d83d8
+Sci-Fi Effects/Effects/Explosions/Explosion_005.prefab a3a08fbf
+Sci-Fi Effects/Effects/Explosions/Explosion_005.prefab.meta 8483caad
+Sci-Fi Effects/Effects/Explosions/Explosion_006.prefab abf524d2
+Sci-Fi Effects/Effects/Explosions/Explosion_006.prefab.meta ef3527da
+Sci-Fi Effects/Effects/Explosions/Explosion_007.prefab 1fccf1bd
+Sci-Fi Effects/Effects/Explosions/Explosion_007.prefab.meta 297a1776
+Sci-Fi Effects/Effects/Explosions/Fire_001.prefab 41b3a547
+Sci-Fi Effects/Effects/Explosions/Fire_001.prefab.meta 44107b43
+Sci-Fi Effects/Effects/Explosions/Materials/Debris_01.mat 15cab536
+Sci-Fi Effects/Effects/Explosions/Materials/Debris_01.mat.meta 1f6f846e
+Sci-Fi Effects/Effects/Explosions/Materials/Debris_02.mat 015b284b
+Sci-Fi Effects/Effects/Explosions/Materials/Debris_02.mat.meta 1070cb39
+Sci-Fi Effects/Effects/Explosions/Materials/Debris_03.mat fa8a70e8
+Sci-Fi Effects/Effects/Explosions/Materials/Debris_03.mat.meta bbf7f6ff
+Sci-Fi Effects/Effects/Explosions/Materials/Debris_04.mat e4e2c9ae
+Sci-Fi Effects/Effects/Explosions/Materials/Debris_04.mat.meta f770b656
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flames_001.mat af4d8057
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flames_001.mat.meta 919f7f2e
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flames_002.mat be417b3a
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flames_002.mat.meta db711915
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flames_003.mat 42b2eefd
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flames_003.mat.meta e825fccc
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flare_001.mat b948e5a8
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flare_001.mat.meta 1d730b18
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flare_002.mat f5826bb9
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flare_002.mat.meta c7698cf2
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flare_FlameTail_001.mat 50c9ba4b
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flare_FlameTail_001.mat.meta 6ebbd7ef
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flare_FlameTail_Sparks_001.mat 90bebd5d
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Flare_FlameTail_Sparks_001.mat.meta d3a41674
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Halo.mat f6d3efa7
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Halo.mat.meta c712404d
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Halo_Glow.mat afdb9323
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Halo_Glow.mat.meta 90fd2528
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Plasma_001.mat 75b34c6a
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Plasma_001.mat.meta 195388b6
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Sparks_001.mat 47df30ae
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Sparks_001.mat.meta f4cebd80
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Sparks_002.mat 3db9ea8a
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Sparks_002.mat.meta 54e2a629
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Sparks_003.mat f1f1ef60
+Sci-Fi Effects/Effects/Explosions/Materials/Explosion_Sparks_003.mat.meta 258cd421
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Fire_001.mat ec113c82
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Fire_001.mat.meta 58fc5496
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Fire_002.mat 8b68e035
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Fire_002.mat.meta b0ad0b1c
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Fire_003.mat de482b6e
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Fire_003.mat.meta 4c242eb6
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Fire_Spark.mat bd9ec64e
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Fire_Spark.mat.meta 310d1105
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Hit.mat 3759ba89
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Hit.mat.meta 30bcb9b8
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Hit_Sparks.mat 970db170
+Sci-Fi Effects/Effects/Explosions/Materials/Hull_Hit_Sparks.mat.meta 8aa7921c
+Sci-Fi Effects/Effects/Explosions/Materials/Shock_Ring.mat c166dade
+Sci-Fi Effects/Effects/Explosions/Materials/Shock_Ring.mat.meta 89127a66
+Sci-Fi Effects/Effects/Explosions/Materials.meta 780925e9
+Sci-Fi Effects/Effects/Explosions/Textures/Debris_001.tga ea2644b0
+Sci-Fi Effects/Effects/Explosions/Textures/Debris_001.tga.meta 700fa3f7
+Sci-Fi Effects/Effects/Explosions/Textures/Debris_002.tga bd6abce6
+Sci-Fi Effects/Effects/Explosions/Textures/Debris_002.tga.meta b7834ee1
+Sci-Fi Effects/Effects/Explosions/Textures/Explosion_001.tga 44c09c98
+Sci-Fi Effects/Effects/Explosions/Textures/Explosion_001.tga.meta f0143c5c
+Sci-Fi Effects/Effects/Explosions/Textures/Explosion_002.tga 2c85a0cc
+Sci-Fi Effects/Effects/Explosions/Textures/Explosion_002.tga.meta a6fc3aa3
+Sci-Fi Effects/Effects/Explosions/Textures/Explosion_003.tga 25e749d6
+Sci-Fi Effects/Effects/Explosions/Textures/Explosion_003.tga.meta 9f860b3a
+Sci-Fi Effects/Effects/Explosions/Textures/Explosion_004.tga 7c05b431
+Sci-Fi Effects/Effects/Explosions/Textures/Explosion_004.tga.meta 0fd50645
+Sci-Fi Effects/Effects/Explosions/Textures/Fire_001.tga 1153cd13
+Sci-Fi Effects/Effects/Explosions/Textures/Fire_001.tga.meta af24d027
+Sci-Fi Effects/Effects/Explosions/Textures/Fire_002.tga 3e5139e1
+Sci-Fi Effects/Effects/Explosions/Textures/Fire_002.tga.meta 43ff82c8
+Sci-Fi Effects/Effects/Explosions/Textures/Fire_003.tga ad58f039
+Sci-Fi Effects/Effects/Explosions/Textures/Fire_003.tga.meta 1b36b25d
+Sci-Fi Effects/Effects/Explosions/Textures/Flare_001.tga bff9b42b
+Sci-Fi Effects/Effects/Explosions/Textures/Flare_001.tga.meta a9fb4953
+Sci-Fi Effects/Effects/Explosions/Textures/Flare_Glow_001.tga 6cc7d2eb
+Sci-Fi Effects/Effects/Explosions/Textures/Flare_Glow_001.tga.meta f23a7636
+Sci-Fi Effects/Effects/Explosions/Textures/particle_01.tga 9b4ead79
+Sci-Fi Effects/Effects/Explosions/Textures/particle_01.tga.meta fe958161
+Sci-Fi Effects/Effects/Explosions/Textures/particle_02.tga 603981d3
+Sci-Fi Effects/Effects/Explosions/Textures/particle_02.tga.meta 34e012b1
+Sci-Fi Effects/Effects/Explosions/Textures/shock_noise_001.png 9b372e3b
+Sci-Fi Effects/Effects/Explosions/Textures/shock_noise_001.png.meta 3b62c18a
+Sci-Fi Effects/Effects/Explosions/Textures/spark_001.tga e4d3c653
+Sci-Fi Effects/Effects/Explosions/Textures/spark_001.tga.meta b49c10bc
+Sci-Fi Effects/Effects/Explosions/Textures.meta 6db1d480
+Sci-Fi Effects/Effects/Explosions.meta 437a4056
+Sci-Fi Effects/Effects/Flames/Materials/flames_flame_blue.mat f792afc9
+Sci-Fi Effects/Effects/Flames/Materials/flames_flame_blue.mat.meta 6c5cc733
+Sci-Fi Effects/Effects/Flames/Materials/flames_flame_green.mat bcf4823c
+Sci-Fi Effects/Effects/Flames/Materials/flames_flame_green.mat.meta 5d843918
+Sci-Fi Effects/Effects/Flames/Materials/flames_flame_red.mat 766b44fd
+Sci-Fi Effects/Effects/Flames/Materials/flames_flame_red.mat.meta c8c6b190
+Sci-Fi Effects/Effects/Flames/Materials/flames_impact_blue.mat f03737c2
+Sci-Fi Effects/Effects/Flames/Materials/flames_impact_blue.mat.meta 390dd1d1
+Sci-Fi Effects/Effects/Flames/Materials/flames_impact_green.mat f8bcd2a7
+Sci-Fi Effects/Effects/Flames/Materials/flames_impact_green.mat.meta 99818de0
+Sci-Fi Effects/Effects/Flames/Materials/flames_impact_red.mat 25202dfa
+Sci-Fi Effects/Effects/Flames/Materials/flames_impact_red.mat.meta 80bfed99
+Sci-Fi Effects/Effects/Flames/Materials/flames_muzzle_blue.mat 57e3ec72
+Sci-Fi Effects/Effects/Flames/Materials/flames_muzzle_blue.mat.meta 2e57bd78
+Sci-Fi Effects/Effects/Flames/Materials/flames_muzzle_green.mat 51a5a60b
+Sci-Fi Effects/Effects/Flames/Materials/flames_muzzle_green.mat.meta 1fe6c318
+Sci-Fi Effects/Effects/Flames/Materials/flames_muzzle_red.mat ac38d0da
+Sci-Fi Effects/Effects/Flames/Materials/flames_muzzle_red.mat.meta c5db389b
+Sci-Fi Effects/Effects/Flames/Materials/flames_spark_blue.mat a54c949b
+Sci-Fi Effects/Effects/Flames/Materials/flames_spark_blue.mat.meta e3fdf325
+Sci-Fi Effects/Effects/Flames/Materials/flames_spark_green.mat 20e7dffe
+Sci-Fi Effects/Effects/Flames/Materials/flames_spark_green.mat.meta df507a9c
+Sci-Fi Effects/Effects/Flames/Materials/flames_spark_red.mat 7751b524
+Sci-Fi Effects/Effects/Flames/Materials/flames_spark_red.mat.meta efd57099
+Sci-Fi Effects/Effects/Flames/Materials.meta 18dcbc9c
+Sci-Fi Effects/Effects/Flames/Textures/flames_blue_sprites.tga 00cad937
+Sci-Fi Effects/Effects/Flames/Textures/flames_blue_sprites.tga.meta bc9c563a
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_001.tga aa50ef9d
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_001.tga.meta 7dbf0cda
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_002.tga c0ebe19b
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_002.tga.meta ace3ae96
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_003.tga 77d76e7c
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_003.tga.meta cc84b6cf
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_004.tga 70e797cd
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_004.tga.meta 2a77cd2e
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_005.tga 7320d22a
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_005.tga.meta 596bfd3b
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_006.tga 51480844
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_006.tga.meta fb58c4f9
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_007.tga b54ed9cf
+Sci-Fi Effects/Effects/Flames/Textures/flames_fire_frames_007.tga.meta e8986719
+Sci-Fi Effects/Effects/Flames/Textures/flames_flash_blue.tga aa3a8c6a
+Sci-Fi Effects/Effects/Flames/Textures/flames_flash_blue.tga.meta 9f0a7857
+Sci-Fi Effects/Effects/Flames/Textures/flames_flash_green.tga 7214b769
+Sci-Fi Effects/Effects/Flames/Textures/flames_flash_green.tga.meta a0330acd
+Sci-Fi Effects/Effects/Flames/Textures/flames_flash_red.tga fe032d34
+Sci-Fi Effects/Effects/Flames/Textures/flames_flash_red.tga.meta 2cb8257b
+Sci-Fi Effects/Effects/Flames/Textures/flames_green_sprites.tga cb1525c0
+Sci-Fi Effects/Effects/Flames/Textures/flames_green_sprites.tga.meta 3319021e
+Sci-Fi Effects/Effects/Flames/Textures/flames_impact_blue.tga 1035087d
+Sci-Fi Effects/Effects/Flames/Textures/flames_impact_blue.tga.meta 830c4ced
+Sci-Fi Effects/Effects/Flames/Textures/flames_impact_green.tga 25f7d494
+Sci-Fi Effects/Effects/Flames/Textures/flames_impact_green.tga.meta cce5ee70
+Sci-Fi Effects/Effects/Flames/Textures/flames_impact_red.tga c1b8d9e4
+Sci-Fi Effects/Effects/Flames/Textures/flames_impact_red.tga.meta 2bd857ab
+Sci-Fi Effects/Effects/Flames/Textures/flames_red_sprites.tga 02994112
+Sci-Fi Effects/Effects/Flames/Textures/flames_red_sprites.tga.meta 2ca7666f
+Sci-Fi Effects/Effects/Flames/Textures.meta 88019aba
+Sci-Fi Effects/Effects/Flames/flames_flame_blue.prefab 63b30701
+Sci-Fi Effects/Effects/Flames/flames_flame_blue.prefab.meta fe6b5803
+Sci-Fi Effects/Effects/Flames/flames_flame_green.prefab 45635c79
+Sci-Fi Effects/Effects/Flames/flames_flame_green.prefab.meta 1fd7c2c5
+Sci-Fi Effects/Effects/Flames/flames_flame_red.prefab c1a791a4
+Sci-Fi Effects/Effects/Flames/flames_flame_red.prefab.meta f1cae50d
+Sci-Fi Effects/Effects/Flames/flames_impact_blue.prefab 0a32409f
+Sci-Fi Effects/Effects/Flames/flames_impact_blue.prefab.meta 75226c7e
+Sci-Fi Effects/Effects/Flames/flames_impact_green.prefab 081064ae
+Sci-Fi Effects/Effects/Flames/flames_impact_green.prefab.meta 5cefcf09
+Sci-Fi Effects/Effects/Flames/flames_impact_red.prefab f3e36318
+Sci-Fi Effects/Effects/Flames/flames_impact_red.prefab.meta cdb88956
+Sci-Fi Effects/Effects/Flames.meta 7d523c35
+Sci-Fi Effects/Effects/Heat/Materials/Engine_Heat_001.mat b1b707a2
+Sci-Fi Effects/Effects/Heat/Materials/Engine_Heat_001.mat.meta 73549ad8
+Sci-Fi Effects/Effects/Heat/Materials/Explosions_Heat_001.mat 2dffffc6
+Sci-Fi Effects/Effects/Heat/Materials/Explosions_Heat_001.mat.meta 7362e6d5
+Sci-Fi Effects/Effects/Heat/Materials/Explosions_Heat_002.mat 9b097aa1
+Sci-Fi Effects/Effects/Heat/Materials/Explosions_Heat_002.mat.meta 61b3964c
+Sci-Fi Effects/Effects/Heat/Materials/Flame_Heat_001.mat da938afb
+Sci-Fi Effects/Effects/Heat/Materials/Flame_Heat_001.mat.meta af1a987d
+Sci-Fi Effects/Effects/Heat/Materials/Flame_Heat_002.mat 339084fd
+Sci-Fi Effects/Effects/Heat/Materials/Flame_Heat_002.mat.meta 0f4cb21a
+Sci-Fi Effects/Effects/Heat/Materials.meta e35bd64d
+Sci-Fi Effects/Effects/Heat/Textures/heat_001.tga 79e48953
+Sci-Fi Effects/Effects/Heat/Textures/heat_001.tga.meta 40aaa112
+Sci-Fi Effects/Effects/Heat/Textures/heat_002.tga 6586b4e5
+Sci-Fi Effects/Effects/Heat/Textures/heat_002.tga.meta a92b83bb
+Sci-Fi Effects/Effects/Heat/Textures/heat_003.tga 185c7c0e
+Sci-Fi Effects/Effects/Heat/Textures/heat_003.tga.meta 6bfb6da2
+Sci-Fi Effects/Effects/Heat/Textures/heat_004.tga d1a9f72b
+Sci-Fi Effects/Effects/Heat/Textures/heat_004.tga.meta 58bffd7a
+Sci-Fi Effects/Effects/Heat/Textures/heat_005.tga 93e7c8b5
+Sci-Fi Effects/Effects/Heat/Textures/heat_005.tga.meta f662d3fc
+Sci-Fi Effects/Effects/Heat/Textures.meta 09a6d3a9
+Sci-Fi Effects/Effects/Heat.meta 27330a63
+Sci-Fi Effects/Effects/Holographic/Material/Holographic_Blue.mat 07a56bec
+Sci-Fi Effects/Effects/Holographic/Material/Holographic_Blue.mat.meta 04797d59
+Sci-Fi Effects/Effects/Holographic/Material/Holographic_Green.mat 6db4c738
+Sci-Fi Effects/Effects/Holographic/Material/Holographic_Green.mat.meta 16c405ba
+Sci-Fi Effects/Effects/Holographic/Material/Holographic_Red.mat 541d232c
+Sci-Fi Effects/Effects/Holographic/Material/Holographic_Red.mat.meta 31a69a3a
+Sci-Fi Effects/Effects/Holographic/Material.meta 95a60106
+Sci-Fi Effects/Effects/Holographic/Textures/Holo_001.tga 5b28ac62
+Sci-Fi Effects/Effects/Holographic/Textures/Holo_001.tga.meta 92a87dde
+Sci-Fi Effects/Effects/Holographic/Textures.meta 7afe0163
+Sci-Fi Effects/Effects/Holographic.meta 4e9e1025
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_001.mat 254222e3
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_001.mat.meta c6b26159
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_002.mat 45f1dd2e
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_002.mat.meta b59f63ee
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_003.mat 610fe8dd
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_003.mat.meta e05b395c
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_004.mat c73149e0
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_004.mat.meta 7250cdee
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_005.mat 0994e2e9
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_005.mat.meta e516e115
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_006.mat 2b411792
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_006.mat.meta c05f1db2
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_007.mat 0fbf2261
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_flare_007.mat.meta 3e3ac7e7
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_muzzle_001.mat 3a7aa39d
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_muzzle_001.mat.meta b895deea
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_muzzle_002.mat b4d8a0a5
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_muzzle_002.mat.meta aaf6f778
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_muzzle_003.mat c5f47e7b
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_muzzle_003.mat.meta 34bc7979
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_projectile_001.mat 051955e4
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_projectile_001.mat.meta aab405d9
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_projectile_002.mat 9b79d183
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_projectile_002.mat.meta 5b855382
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_spark_bolt.mat f755fde7
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_spark_bolt.mat.meta 0e366cb3
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_star.mat d71fa66c
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_star.mat.meta 25c82ed6
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_wave.mat 08556812
+Sci-Fi Effects/Effects/Laser Impulse/Materials/laser_impulse_wave.mat.meta a05aa3c9
+Sci-Fi Effects/Effects/Laser Impulse/Materials.meta 0b2f6692
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_001.tga 18e4db9f
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_001.tga.meta 57159c23
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_impact_bolts_001.tga d47e54b6
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_impact_bolts_001.tga.meta c22b717f
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_impact_flare_001.tga e653dd04
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_impact_flare_001.tga.meta 09390613
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_impact_ring_001.tga 98248220
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_impact_ring_001.tga.meta ec7cdba2
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_impact_star_001.tga d2c385a8
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_impact_star_001.tga.meta 7ce236a6
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_light_muzzle_001.tga 5d541e08
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_light_muzzle_001.tga.meta a43336d5
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_light_muzzle_flare_001.tga 144785a5
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red/laser_impulse_light_muzzle_flare_001.tga.meta 449ea58e
+Sci-Fi Effects/Effects/Laser Impulse/Textures/Red.meta da6ad292
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_001.psd cbfad7d6
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_001.psd.meta 4f1e1bf1
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_flare_001.tga 611ac8d0
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_flare_001.tga.meta 02f5ff49
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_flare_002.tga 794a0ad1
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_flare_002.tga.meta ea850c32
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_001.tga 778489dc
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_001.tga.meta 694e7504
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_002.tga 6d3eaa3c
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_002.tga.meta ec5f2542
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_003.tga f740d948
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_003.tga.meta 77900ec5
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_004.tga 051b967b
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_004.tga.meta 58de0cde
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_005.tga f0513e75
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_005.tga.meta 9e3520e5
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_black.tga ad210daf
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_black.tga.meta cb44e88c
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_bolts_001.tga 91fa2bfc
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_bolts_001.tga.meta 331bae35
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_flare_001.tga ebf0241a
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_flare_001.tga.meta 793a6014
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_ring_001.tga 119b354d
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_ring_001.tga.meta 6644974b
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_star_001.tga f589d947
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_impact_star_001.tga.meta 89b579ef
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_light_muzzle_001.tga 89a0b887
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_light_muzzle_001.tga.meta 40848114
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_light_muzzle_flare_001.tga de519e27
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_light_muzzle_flare_001.tga.meta 3aa91320
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_medium_001.tga 5e7e69f4
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_medium_001.tga.meta 769b07fe
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_medium_muzzle_001.tga f284e9fb
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_medium_muzzle_001.tga.meta 7ae9d6a1
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_medium_muzzle_flare_001.tga 5455a0a6
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_medium_muzzle_flare_001.tga.meta 82eb5631
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_muzzle_001.tga fd41a51d
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_muzzle_001.tga.meta bb71b3b9
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_muzzle_flare_001.tga 06029269
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_muzzle_flare_001.tga.meta e4552334
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_particle_001.tga 1f2cf3aa
+Sci-Fi Effects/Effects/Laser Impulse/Textures/laser_impulse_particle_001.tga.meta df20b733
+Sci-Fi Effects/Effects/Laser Impulse/Textures.meta 58cf8502
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_flare_001.prefab 00a0c5f7
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_flare_001.prefab.meta dfbdcd46
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_flare_002.prefab 71c025fd
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_flare_002.prefab.meta 9221fe4a
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_flare_003.prefab 52477dea
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_flare_003.prefab.meta bbc9d1bd
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_muzzle_001.prefab 05a2f3ac
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_muzzle_001.prefab.meta d64679a7
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_muzzle_002.prefab d655901d
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_muzzle_002.prefab.meta 49d1e9e3
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_muzzle_003.prefab 2e35eeb0
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_muzzle_003.prefab.meta 6a428633
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_projectile_001.prefab ed81dbd2
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_projectile_001.prefab.meta ccdf81d0
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_projectile_002.prefab 72fba917
+Sci-Fi Effects/Effects/Laser Impulse/laser_impulse_projectile_002.prefab.meta 32ac6b95
+Sci-Fi Effects/Effects/Laser Impulse.meta 60fc110a
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_beam_001.mat f78d95d5
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_beam_001.mat.meta 5bc9f560
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_beam_002.mat 4c8e552d
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_beam_002.mat.meta c796e55c
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_flare.mat 6cc9819d
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_flare.mat.meta 081d8f2b
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_impact.mat e4d14955
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_impact.mat.meta 3eb5369a
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_muzzle.mat 2fcde246
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_muzzle.mat.meta a8e98e0f
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_ring.mat a25dcec2
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_ring.mat.meta da7380f6
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_spark_001.mat b4906de1
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_spark_001.mat.meta 64067f43
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_spark_002.mat df837e11
+Sci-Fi Effects/Effects/Lightning Gun/Materials/lightning_gun_spark_002.mat.meta 5d3abbaa
+Sci-Fi Effects/Effects/Lightning Gun/Materials.meta a5d89663
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_beam.tga 92ed86ce
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_beam.tga.meta 14ab8c8e
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt.tga 2be61afc
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt.tga.meta cd66c3a3
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_001.tga ffa1b993
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_001.tga.meta 99fbe602
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_002.tga 04f5039e
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_002.tga.meta eb012c52
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_003.tga 8c79f8b4
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_003.tga.meta 8791e4f1
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_004.tga 0eee080b
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_004.tga.meta 749c1279
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_005.tga 4e938cf1
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_005.tga.meta 98b87afa
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_006.tga c81b90ea
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_006.tga.meta 9ccb73c9
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_007.tga b4ec7bcf
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_007.tga.meta ea7b3bfe
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_008.tga 13fb8527
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_bolt_008.tga.meta 7dc9ff98
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_flare_001.tga e370e854
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_flare_001.tga.meta 60526f2c
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_flare_003.tga 82a70c22
+Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_flare_003.tga.meta 9563075d
+Sci-Fi Effects/Effects/Lightning Gun/Textures.meta 205d8da1
+Sci-Fi Effects/Effects/Lightning Gun/lightning_gun_beam.prefab d4e19766
+Sci-Fi Effects/Effects/Lightning Gun/lightning_gun_beam.prefab.meta 1828c601
+Sci-Fi Effects/Effects/Lightning Gun.meta 1c570615
+Sci-Fi Effects/Effects/Missiles/Example/missile_example.prefab 9147d817
+Sci-Fi Effects/Effects/Missiles/Example/missile_example.prefab.meta 04e440af
+Sci-Fi Effects/Effects/Missiles/Example.meta 589e4251
+Sci-Fi Effects/Effects/Missiles/Materials/missile_001.mat ff1b0813
+Sci-Fi Effects/Effects/Missiles/Materials/missile_001.mat.meta 7b138e3c
+Sci-Fi Effects/Effects/Missiles/Materials/missile_002.mat 7ce3506c
+Sci-Fi Effects/Effects/Missiles/Materials/missile_002.mat.meta 4c585ee0
+Sci-Fi Effects/Effects/Missiles/Materials/missile_003.mat 8adf64e9
+Sci-Fi Effects/Effects/Missiles/Materials/missile_003.mat.meta e9fe3772
+Sci-Fi Effects/Effects/Missiles/Materials/missile_004.mat 22c6c2ea
+Sci-Fi Effects/Effects/Missiles/Materials/missile_004.mat.meta a14b9fe9
+Sci-Fi Effects/Effects/Missiles/Materials/missile_005.mat be57d055
+Sci-Fi Effects/Effects/Missiles/Materials/missile_005.mat.meta 274546af
+Sci-Fi Effects/Effects/Missiles/Materials/missile_006.mat 7a670dff
+Sci-Fi Effects/Effects/Missiles/Materials/missile_006.mat.meta ee500c10
+Sci-Fi Effects/Effects/Missiles/Materials/missile_007.mat 7e3bf3c1
+Sci-Fi Effects/Effects/Missiles/Materials/missile_007.mat.meta b2a01abf
+Sci-Fi Effects/Effects/Missiles/Materials/missile_008.mat 48664390
+Sci-Fi Effects/Effects/Missiles/Materials/missile_008.mat.meta 5db82cfd
+Sci-Fi Effects/Effects/Missiles/Materials/missile_flame.mat 42996c9c
+Sci-Fi Effects/Effects/Missiles/Materials/missile_flame.mat.meta 8aade4bd
+Sci-Fi Effects/Effects/Missiles/Materials/missile_smoke.mat b5d82637
+Sci-Fi Effects/Effects/Missiles/Materials/missile_smoke.mat.meta 78c07479
+Sci-Fi Effects/Effects/Missiles/Materials.meta 221e120f
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_001_lod0.FBX 04934514
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_001_lod0.FBX.meta 99f46fd8
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_001_lod1.FBX 101a2f85
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_001_lod1.FBX.meta a016c9d1
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_002_lod0.FBX c287d5c4
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_002_lod0.FBX.meta 00b6f020
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_002_lod1.FBX 4cbd63c8
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_002_lod1.FBX.meta 232a324a
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_003_lod0.FBX 8e95bd00
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_003_lod0.FBX.meta 2f74829c
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_003_lod1.FBX 0303173c
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_003_lod1.FBX.meta 37628375
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_004_lod0.FBX a3df6944
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_004_lod0.FBX.meta 037027bd
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_004_lod1.FBX 6528ef97
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_004_lod1.FBX.meta e71a7639
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_005_lod0.FBX 74a0bb08
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_005_lod0.FBX.meta 36a36bc1
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_005_lod1.FBX 93409a56
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_005_lod1.FBX.meta fdb8ba98
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_006_lod0.FBX db9ddc17
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_006_lod0.FBX.meta bd443a2d
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_006_lod1.FBX 0e276d99
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_006_lod1.FBX.meta 34d619af
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_007_lod0.FBX d9a903ba
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_007_lod0.FBX.meta 9a575a09
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_007_lod1.FBX f30f80fa
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_007_lod1.FBX.meta 7e66b592
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_008_lod0.FBX 60847113
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_008_lod0.FBX.meta e3c7b275
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_008_lod1.FBX 079a0eed
+Sci-Fi Effects/Effects/Missiles/Meshes/missile_008_lod1.FBX.meta e09cda35
+Sci-Fi Effects/Effects/Missiles/Meshes.meta 68607edc
+Sci-Fi Effects/Effects/Missiles/MissileFlame.prefab 25b25d25
+Sci-Fi Effects/Effects/Missiles/MissileFlame.prefab.meta 113c5529
+Sci-Fi Effects/Effects/Missiles/MissileSmokeTrail.prefab a374df5e
+Sci-Fi Effects/Effects/Missiles/MissileSmokeTrail.prefab.meta 23e6958c
+Sci-Fi Effects/Effects/Missiles/Textures/missile_001_color.tga 5c2c474c
+Sci-Fi Effects/Effects/Missiles/Textures/missile_001_color.tga.meta a216d392
+Sci-Fi Effects/Effects/Missiles/Textures/missile_001_glow.tga 1a6fac61
+Sci-Fi Effects/Effects/Missiles/Textures/missile_001_glow.tga.meta ab040560
+Sci-Fi Effects/Effects/Missiles/Textures/missile_001_normal.tga f43e993b
+Sci-Fi Effects/Effects/Missiles/Textures/missile_001_normal.tga.meta d1287009
+Sci-Fi Effects/Effects/Missiles/Textures/missile_002_color.tga 30555d84
+Sci-Fi Effects/Effects/Missiles/Textures/missile_002_color.tga.meta 4cf4526e
+Sci-Fi Effects/Effects/Missiles/Textures/missile_002_glow.tga e20306fe
+Sci-Fi Effects/Effects/Missiles/Textures/missile_002_glow.tga.meta 59bb8665
+Sci-Fi Effects/Effects/Missiles/Textures/missile_002_normal.tga 00517886
+Sci-Fi Effects/Effects/Missiles/Textures/missile_002_normal.tga.meta bfdd4912
+Sci-Fi Effects/Effects/Missiles/Textures/missile_003_color.tga f9d37cf2
+Sci-Fi Effects/Effects/Missiles/Textures/missile_003_color.tga.meta 123831e7
+Sci-Fi Effects/Effects/Missiles/Textures/missile_003_glow.tga 2aa60c08
+Sci-Fi Effects/Effects/Missiles/Textures/missile_003_glow.tga.meta 08b64098
+Sci-Fi Effects/Effects/Missiles/Textures/missile_003_normal.tga b0eaae95
+Sci-Fi Effects/Effects/Missiles/Textures/missile_003_normal.tga.meta 5ba6a25e
+Sci-Fi Effects/Effects/Missiles/Textures/missile_004_color.tga 638af785
+Sci-Fi Effects/Effects/Missiles/Textures/missile_004_color.tga.meta 6c65b96a
+Sci-Fi Effects/Effects/Missiles/Textures/missile_004_glow.tga 0a8bd5e3
+Sci-Fi Effects/Effects/Missiles/Textures/missile_004_glow.tga.meta c4760114
+Sci-Fi Effects/Effects/Missiles/Textures/missile_004_normal.tga 0a027b19
+Sci-Fi Effects/Effects/Missiles/Textures/missile_004_normal.tga.meta 788ea6af
+Sci-Fi Effects/Effects/Missiles/Textures/missile_005_color.tga 1b738d90
+Sci-Fi Effects/Effects/Missiles/Textures/missile_005_color.tga.meta 9344e25f
+Sci-Fi Effects/Effects/Missiles/Textures/missile_005_glow.tga f1d01538
+Sci-Fi Effects/Effects/Missiles/Textures/missile_005_glow.tga.meta ac2553d0
+Sci-Fi Effects/Effects/Missiles/Textures/missile_005_normal.tga b83fd7b6
+Sci-Fi Effects/Effects/Missiles/Textures/missile_005_normal.tga.meta ef476c4f
+Sci-Fi Effects/Effects/Missiles/Textures/missile_006_007_glow.tga ca5d40a5
+Sci-Fi Effects/Effects/Missiles/Textures/missile_006_007_glow.tga.meta 7744a22d
+Sci-Fi Effects/Effects/Missiles/Textures/missile_006_007_normal.tga 43e92442
+Sci-Fi Effects/Effects/Missiles/Textures/missile_006_007_normal.tga.meta 98889d49
+Sci-Fi Effects/Effects/Missiles/Textures/missile_006_color.tga f3634ee5
+Sci-Fi Effects/Effects/Missiles/Textures/missile_006_color.tga.meta 0502827a
+Sci-Fi Effects/Effects/Missiles/Textures/missile_007_color.tga f0519918
+Sci-Fi Effects/Effects/Missiles/Textures/missile_007_color.tga.meta 404001d8
+Sci-Fi Effects/Effects/Missiles/Textures/missile_008_color.tga 3cb8ad63
+Sci-Fi Effects/Effects/Missiles/Textures/missile_008_color.tga.meta c1df7a6e
+Sci-Fi Effects/Effects/Missiles/Textures/missile_008_glow.tga c63b4b6d
+Sci-Fi Effects/Effects/Missiles/Textures/missile_008_glow.tga.meta b1673ca2
+Sci-Fi Effects/Effects/Missiles/Textures/missile_008_normal.tga 8026d8fe
+Sci-Fi Effects/Effects/Missiles/Textures/missile_008_normal.tga.meta d2a508d7
+Sci-Fi Effects/Effects/Missiles/Textures.meta 8a2e5910
+Sci-Fi Effects/Effects/Missiles/missile_001_lod0.prefab fb93e7c9
+Sci-Fi Effects/Effects/Missiles/missile_001_lod0.prefab.meta 45cb5e56
+Sci-Fi Effects/Effects/Missiles/missile_002_lod0.prefab 5bce712c
+Sci-Fi Effects/Effects/Missiles/missile_002_lod0.prefab.meta 47666de7
+Sci-Fi Effects/Effects/Missiles/missile_003_lod0.prefab f92c4aa9
+Sci-Fi Effects/Effects/Missiles/missile_003_lod0.prefab.meta a9deced3
+Sci-Fi Effects/Effects/Missiles/missile_004_lod0.prefab 62d203b6
+Sci-Fi Effects/Effects/Missiles/missile_004_lod0.prefab.meta f7ed271b
+Sci-Fi Effects/Effects/Missiles/missile_005_lod0.prefab 781b5884
+Sci-Fi Effects/Effects/Missiles/missile_005_lod0.prefab.meta 5eef46b5
+Sci-Fi Effects/Effects/Missiles/missile_006_lod0.prefab 229cd87c
+Sci-Fi Effects/Effects/Missiles/missile_006_lod0.prefab.meta 3f77b443
+Sci-Fi Effects/Effects/Missiles/missile_007_lod0.prefab f12c29e8
+Sci-Fi Effects/Effects/Missiles/missile_007_lod0.prefab.meta b5e78e6f
+Sci-Fi Effects/Effects/Missiles/missile_008_lod0.prefab a631d72b
+Sci-Fi Effects/Effects/Missiles/missile_008_lod0.prefab.meta 026de4a7
+Sci-Fi Effects/Effects/Missiles.meta 90ec34e5
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Blue_001.mat c7941919
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Blue_001.mat.meta 241a8da6
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Blue_002.mat 5b8d6766
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Blue_002.mat.meta 334b3466
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Dust.mat 200504d9
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Dust.mat.meta 876800d3
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Pink_001.mat 0ede91b3
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Pink_001.mat.meta 2d167e8c
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Red_001.mat 5eae88e8
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Red_001.mat.meta 5c288643
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Red_002.mat 0b4bce6c
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Red_002.mat.meta f5456914
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Tunnel_Example_Blue_001.mat 0a9daf5a
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Tunnel_Example_Blue_001.mat.meta caaa28b9
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Tunnel_Example_Blue_002.mat 274aeaa1
+Sci-Fi Effects/Effects/Nebula/Materials/Nebula_Tunnel_Example_Blue_002.mat.meta 3f9f94fa
+Sci-Fi Effects/Effects/Nebula/Materials.meta a8c7e823
+Sci-Fi Effects/Effects/Nebula/Nebulas.prefab 76fd3a83
+Sci-Fi Effects/Effects/Nebula/Nebulas.prefab.meta 79664db7
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_blue_001.tga 5a32a962
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_blue_001.tga.meta 1f0294b4
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_blue_002.tga bf80acb8
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_blue_002.tga.meta 07ff736d
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_blue_003.tga 6a5a6ae2
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_blue_003.tga.meta 1869eb34
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_pink_001.tga 519f28ef
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_pink_001.tga.meta dacc5799
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_red_001.tga c7a543e3
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_red_001.tga.meta 0f663f7e
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_red_002.tga 587c6ddf
+Sci-Fi Effects/Effects/Nebula/Textures/nebula_red_002.tga.meta 37ddc67e
+Sci-Fi Effects/Effects/Nebula/Textures.meta 3fd685b8
+Sci-Fi Effects/Effects/Nebula.meta eaf22863
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_blue.mat 1428a8cc
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_blue.mat.meta 6647b4c1
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_blue_001.mat 7673fed7
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_blue_001.mat.meta a7885a20
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_blue_002.mat 466fcf8e
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_blue_002.mat.meta cec18b44
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_green_001.mat e8756dcf
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_green_001.mat.meta 1060dcda
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_green_002.mat 9f74280f
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_green_002.mat.meta 88f54a51
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_red_001.mat 0ea93d2f
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_red_001.mat.meta f236f192
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_red_002.mat 98e87ed1
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_flare_red_002.mat.meta e43c72a8
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_green.mat 3aef5744
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_green.mat.meta 34b9d313
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_heavy_blue.mat 17539cf8
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_heavy_blue.mat.meta 25579b4a
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_heavy_green.mat aa49ddb9
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_heavy_green.mat.meta 4c269a92
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_heavy_red.mat 345f1c82
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_heavy_red.mat.meta b8ac7744
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_red.mat f7e03c50
+Sci-Fi Effects/Effects/Plasma Beam/Materials/plasma_beam_red.mat.meta 618aaa03
+Sci-Fi Effects/Effects/Plasma Beam/Materials.meta 1f19c291
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_flare_green.tga 39373fc3
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_flare_green.tga.meta 910874ff
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_flare_red.tga 90afe8ff
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_flare_red.tga.meta c5cd6053
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_heavy_blue.tga fcc8d730
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_heavy_blue.tga.meta 3d0f129a
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_heavy_green.tga 86f9227a
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_heavy_green.tga.meta f081767f
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_heavy_red.tga 30f02ea9
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_heavy_red.tga.meta dc2e72f2
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_hit_blue.tga 573ecf86
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_hit_blue.tga.meta 641b7168
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_hit_green.tga f78c4ca6
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_hit_green.tga.meta fef23a10
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_hit_red.tga 2defa518
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_hit_red.tga.meta e53b86f3
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_stream_blue.tga 3e7dcc51
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_stream_blue.tga.meta 61ff44ab
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_stream_green.tga 34a72342
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_stream_green.tga.meta 875f1536
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_stream_red.tga be7fb9a2
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_stream_red.tga.meta 54a280b6
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beamflare_blue.tga 2c63cfbf
+Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beamflare_blue.tga.meta 69bede74
+Sci-Fi Effects/Effects/Plasma Beam/Textures.meta 67b8a300
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_blue.prefab e8d2b989
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_blue.prefab.meta f12a881d
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_blue.prefab 5e7a6373
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_blue.prefab.meta 88bd8244
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_green.prefab 64841265
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_green.prefab.meta cc24805b
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_red.prefab cdb031b7
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_red.prefab.meta 7a91c505
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_green.prefab 777dbd36
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_green.prefab.meta 63bc6310
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_blue.prefab d0980296
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_blue.prefab.meta b1d5070e
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_green.prefab 9e49bb0e
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_green.prefab.meta c2bd1ace
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_red.prefab d37982b7
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_red.prefab.meta 93a2039e
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_blue.prefab 7ee3fe65
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_blue.prefab.meta b575e63d
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_green.prefab 03dc5a16
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_green.prefab.meta c7a1341d
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_red.prefab a28f466c
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_red.prefab.meta d5c83df8
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_red.prefab 6cdf0510
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_red.prefab.meta 1e21ec89
+Sci-Fi Effects/Effects/Plasma Beam.meta 6048900f
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_bolt.mat 8b63660c
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_bolt.mat.meta 6510c319
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flames_001.mat 9760aea9
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flames_001.mat.meta 68c8c3da
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flames_002.mat 5fc54fc7
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flames_002.mat.meta 99cbb17a
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flames_003.mat 0ed941aa
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flames_003.mat.meta 7b024af6
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flare_001.mat 1e23500c
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flare_001.mat.meta 32f08721
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flare_002.mat 6326e298
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_flare_002.mat.meta 3b000ffc
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_trail_001.mat cc0b9a11
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_trail_001.mat.meta ef3a50f7
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_trail_002.mat 9139d605
+Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_trail_002.mat.meta ca7eb2c7
+Sci-Fi Effects/Effects/Plasma Gun/Materials.meta 0df5e71d
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_bolt_01.tga 6b987868
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_bolt_01.tga.meta 6058d40b
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flames_01.tga aec57a36
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flames_01.tga.meta 25d56a3f
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flames_02.tga f324c8e4
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flames_02.tga.meta 9d979045
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flames_03.tga 28ffb93b
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flames_03.tga.meta 366e8e32
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flare_01.tga 671d11b6
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flare_01.tga.meta 4196079d
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flare_02.tga 6e64cad0
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_flare_02.tga.meta f8f78a1f
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_trail_01.tga 4e4fc7fb
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_trail_01.tga.meta d8d19f7b
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_trail_02.tga b4417540
+Sci-Fi Effects/Effects/Plasma Gun/Textures/plasma_gun_trail_02.tga.meta 7352d2f7
+Sci-Fi Effects/Effects/Plasma Gun/Textures.meta 3a084b24
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_bolt.prefab 1ec09bb5
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_bolt.prefab.meta 9468e799
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_flare.prefab 714babaf
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_flare.prefab.meta 92988ff4
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_muzzle_flash.prefab 3d50050b
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_muzzle_flash.prefab.meta ba65c90f
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_projectile_001.prefab 773cfb0b
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_projectile_001.prefab.meta 98f93611
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_projectile_002.prefab 94b8044c
+Sci-Fi Effects/Effects/Plasma Gun/plasma_gun_projectile_002.prefab.meta dd3d68db
+Sci-Fi Effects/Effects/Plasma Gun.meta ab93e7ff
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_001.mat f07510b8
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_001.mat.meta c808c879
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_002.mat 24fc1d5b
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_002.mat.meta 501b67a7
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_003.mat b59af89f
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_003.mat.meta d5b28a59
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_004.mat 44526466
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_004.mat.meta 203d8ca7
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_005.mat 385b6ac8
+Sci-Fi Effects/Effects/Pulsewave/Materials/pulsewave_005.mat.meta a1fedfc9
+Sci-Fi Effects/Effects/Pulsewave/Materials.meta b6258924
+Sci-Fi Effects/Effects/Pulsewave/Textures/pulsewave_01.tga 7ac4ac82
+Sci-Fi Effects/Effects/Pulsewave/Textures/pulsewave_01.tga.meta acf6671a
+Sci-Fi Effects/Effects/Pulsewave/Textures/pulsewave_02.tga 39d0bf4d
+Sci-Fi Effects/Effects/Pulsewave/Textures/pulsewave_02.tga.meta eef95364
+Sci-Fi Effects/Effects/Pulsewave/Textures.meta e0ab44be
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_001.prefab 4a40f847
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_001.prefab.meta 6b3733b6
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_002.prefab c65acafa
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_002.prefab.meta ff1cf990
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_003.prefab 36646c92
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_003.prefab.meta cb50ef02
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_004.prefab 621dcaa5
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_004.prefab.meta 68d392b8
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_005.prefab b517490b
+Sci-Fi Effects/Effects/Pulsewave/pulsewave_005.prefab.meta 50ab9e8b
+Sci-Fi Effects/Effects/Pulsewave.meta 8bcbfb41
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_beam.mat 0916f279
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_beam.mat.meta 1c1fe48e
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_flare_001.mat 12c0f3b5
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_flare_001.mat.meta 5375ddfd
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_flare_002.mat 815171ba
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_flare_002.mat.meta 930c8b31
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_flare_003.mat ed180586
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_flare_003.mat.meta b3e075a4
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_spark.mat 3ee30337
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_spark.mat.meta e557ab5f
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_wave.mat 8afe6297
+Sci-Fi Effects/Effects/Rail Gun/Materials/railgun_wave.mat.meta efef54d8
+Sci-Fi Effects/Effects/Rail Gun/Materials.meta e1d1f6e7
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_001.tga 4fff3fcf
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_001.tga.meta f8b2ce7c
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_002.tga ac55880d
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_002.tga.meta 04101bb6
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_003.tga c82950c1
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_003.tga.meta 72eae4c7
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_004.tga dac28632
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_004.tga.meta 6185b0e2
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_005.tga 1fa25041
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_005.tga.meta bbeef415
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_006.tga c086be08
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_beam_006.tga.meta e0dc5aad
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_flare_001.tga 9f96b055
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_flare_001.tga.meta 2109bec7
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_flare_002.tga c56860cb
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_flare_002.tga.meta 1f5286e1
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_flare_003.tga 1e3933a4
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_flare_003.tga.meta 496fe920
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_spark.tga 423b5b0b
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_spark.tga.meta b04b137a
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_wave.tga c8d8b9b3
+Sci-Fi Effects/Effects/Rail Gun/Textures/railgun_wave.tga.meta 6a2eb12f
+Sci-Fi Effects/Effects/Rail Gun/Textures.meta 5282bccf
+Sci-Fi Effects/Effects/Rail Gun/railgun_beam.prefab 736b1b1d
+Sci-Fi Effects/Effects/Rail Gun/railgun_beam.prefab.meta b71c9e18
+Sci-Fi Effects/Effects/Rail Gun/railgun_flare_001.prefab 08b2c82b
+Sci-Fi Effects/Effects/Rail Gun/railgun_flare_001.prefab.meta 64eba9c9
+Sci-Fi Effects/Effects/Rail Gun/railgun_flare_002.prefab c6919e2e
+Sci-Fi Effects/Effects/Rail Gun/railgun_flare_002.prefab.meta a62bbe04
+Sci-Fi Effects/Effects/Rail Gun/railgun_flare_003.prefab 26453799
+Sci-Fi Effects/Effects/Rail Gun/railgun_flare_003.prefab.meta 7281f0c5
+Sci-Fi Effects/Effects/Rail Gun.meta b1886604
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_explosion_01.mat a5605035
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_explosion_01.mat.meta 020cd1f9
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_explosion_02.mat dd80f094
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_explosion_02.mat.meta 9fb39d3b
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_flare.mat 144d20d3
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_flare.mat.meta 58d68c02
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_fragment.mat 3183812d
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_fragment.mat.meta dc39a495
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_muzzle.mat c433b186
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_muzzle.mat.meta 90bea984
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_smoke_01.mat a9466c03
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_smoke_01.mat.meta 269bb0f5
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_smoke_02.mat 25fccfa5
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_smoke_02.mat.meta dcd3257d
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_sparks.mat 4c8e3178
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_sparks.mat.meta 7f8672a2
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_sparks_01.mat 2c7d32a8
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_sparks_01.mat.meta 129f3b37
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_sparks_02.mat 7f0509d4
+Sci-Fi Effects/Effects/Seeker Bolt/Materials/seeker_bolt_sparks_02.mat.meta 518a48ca
+Sci-Fi Effects/Effects/Seeker Bolt/Materials.meta 07e7adb6
+Sci-Fi Effects/Effects/Seeker Bolt/Textures/seeker_bolt_flare.tga d22e09fc
+Sci-Fi Effects/Effects/Seeker Bolt/Textures/seeker_bolt_flare.tga.meta 2cecede3
+Sci-Fi Effects/Effects/Seeker Bolt/Textures/seeker_bolt_muzzle.tga b481c389
+Sci-Fi Effects/Effects/Seeker Bolt/Textures/seeker_bolt_muzzle.tga.meta 29912c94
+Sci-Fi Effects/Effects/Seeker Bolt/Textures.meta 2941cdf4
+Sci-Fi Effects/Effects/Seeker Bolt/seeker_bolt_flare.prefab 1d0a3937
+Sci-Fi Effects/Effects/Seeker Bolt/seeker_bolt_flare.prefab.meta 5d96a2dc
+Sci-Fi Effects/Effects/Seeker Bolt/seeker_bolt_hit.prefab 43e01a75
+Sci-Fi Effects/Effects/Seeker Bolt/seeker_bolt_hit.prefab.meta 6d039368
+Sci-Fi Effects/Effects/Seeker Bolt/seeker_bolt_muzzle.prefab 0abe41a4
+Sci-Fi Effects/Effects/Seeker Bolt/seeker_bolt_muzzle.prefab.meta 5dac9365
+Sci-Fi Effects/Effects/Seeker Bolt.meta 3e7d5056
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_flare_001.mat 0241549f
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_flare_001.mat.meta 04e68a7b
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_flare_002.mat 5ad58726
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_flare_002.mat.meta 9cee4d46
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_fragment_001.mat ff92e4f4
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_fragment_001.mat.meta 66e5b4a1
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_fragment_002.mat fee749fc
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_fragment_002.mat.meta 94496235
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_smoke.mat afc8eb1f
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_smoke.mat.meta e5c13f68
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_spark.mat 3fd04abf
+Sci-Fi Effects/Effects/Shot Gun/Materials/shot_gun_spark.mat.meta 675f90aa
+Sci-Fi Effects/Effects/Shot Gun/Materials.meta 97788f7d
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_flare_001.tga a0dca9c2
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_flare_001.tga.meta 81916219
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_flare_002.tga 9f172569
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_flare_002.tga.meta 7702e70f
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_fragment_001.tga 9cf9c86a
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_fragment_001.tga.meta 4d5175a8
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_fragment_002.tga 79dc5623
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_fragment_002.tga.meta 6ea4c913
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_smoke.tga c52a0b2f
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_smoke.tga.meta 82030797
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_spark.tga 1a099a0b
+Sci-Fi Effects/Effects/Shot Gun/Textures/shot_gun_spark.tga.meta 563d45b0
+Sci-Fi Effects/Effects/Shot Gun/Textures.meta dbb0b80f
+Sci-Fi Effects/Effects/Shot Gun/shot_gun_flare.prefab 97ec0012
+Sci-Fi Effects/Effects/Shot Gun/shot_gun_flare.prefab.meta 256da361
+Sci-Fi Effects/Effects/Shot Gun/shot_gun_fragment.prefab 7bc5d7b3
+Sci-Fi Effects/Effects/Shot Gun/shot_gun_fragment.prefab.meta 7bae1c80
+Sci-Fi Effects/Effects/Shot Gun.meta 1dbbaedc
+Sci-Fi Effects/Effects/Sniper/Materials/sniper_beam.mat c5c27916
+Sci-Fi Effects/Effects/Sniper/Materials/sniper_beam.mat.meta deef318e
+Sci-Fi Effects/Effects/Sniper/Materials/sniper_flare.mat a1dc701a
+Sci-Fi Effects/Effects/Sniper/Materials/sniper_flare.mat.meta f15552cd
+Sci-Fi Effects/Effects/Sniper/Materials/sniper_smoke.mat 0bbdf34c
+Sci-Fi Effects/Effects/Sniper/Materials/sniper_smoke.mat.meta 070c7d31
+Sci-Fi Effects/Effects/Sniper/Materials/sniper_spark.mat cffeecd8
+Sci-Fi Effects/Effects/Sniper/Materials/sniper_spark.mat.meta aa2c0d88
+Sci-Fi Effects/Effects/Sniper/Materials.meta 2c1f77c7
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_001.tga f99e41a8
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_001.tga.meta 9a894a8c
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_002.tga 26e83c62
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_002.tga.meta 2e603ebf
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_003.tga 7ad69252
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_003.tga.meta 076a232a
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_004.tga 1879ba21
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_004.tga.meta a9ad7230
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_005.tga 637d60ca
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_005.tga.meta 5e0187a2
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_006.tga 16292d28
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_beam_006.tga.meta 706a7230
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_flare.tga 8b15c294
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_flare.tga.meta 6390b565
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_smoke.tga e01559ed
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_smoke.tga.meta 0474ca88
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_spark.tga d717b498
+Sci-Fi Effects/Effects/Sniper/Textures/sniper_spark.tga.meta ab93db4b
+Sci-Fi Effects/Effects/Sniper/Textures.meta 9bf99833
+Sci-Fi Effects/Effects/Sniper/sniper_beam.prefab 2e1a0724
+Sci-Fi Effects/Effects/Sniper/sniper_beam.prefab.meta 11e44919
+Sci-Fi Effects/Effects/Sniper/sniper_flare.prefab 36585b17
+Sci-Fi Effects/Effects/Sniper/sniper_flare.prefab.meta efb22214
+Sci-Fi Effects/Effects/Sniper.meta 11cf189e
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flames_01.mat 4f1ef7c1
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flames_01.mat.meta 00735915
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flames_02.mat 1db56e82
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flames_02.mat.meta ee0e6acf
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flare_01.mat e18f97d7
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flare_01.mat.meta 59fded1f
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flare_02.mat b26f589e
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flare_02.mat.meta 298dc58c
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flare_03.mat 40bba6ee
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_flare_03.mat.meta 38e2ec4a
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_muzzle.mat 7480fc10
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_muzzle.mat.meta 5529ba20
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_smoke.mat a4a02f88
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_smoke.mat.meta c96ab864
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_sparks.mat d162b7c2
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_sparks.mat.meta 41168c20
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_trail.mat 341bdfcd
+Sci-Fi Effects/Effects/Solo Gun/Materials/solo_gun_trail.mat.meta 54fe14c6
+Sci-Fi Effects/Effects/Solo Gun/Materials.meta c217766a
+Sci-Fi Effects/Effects/Solo Gun/Textures/Debris_003.tga c5051b0c
+Sci-Fi Effects/Effects/Solo Gun/Textures/Debris_003.tga.meta 5dc956c7
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flames_01.tga af13140f
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flames_01.tga.meta 8e4f0180
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flames_02.tga e163fe37
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flames_02.tga.meta 09c21247
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flare_01.tga 5aff9f91
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flare_01.tga.meta d836ca3b
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flare_02.tga e66d1c7f
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flare_02.tga.meta 68394d71
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flare_03.tga 84b56a3b
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_flare_03.tga.meta b56a3f5a
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_muzzle.tga a4ca080c
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_muzzle.tga.meta cf8f4119
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_smoke.tga b168cccb
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_smoke.tga.meta aaf1f9a1
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_sparks.tga 6edfe0ec
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_sparks.tga.meta ce24953c
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_trail.tga 3711783a
+Sci-Fi Effects/Effects/Solo Gun/Textures/solo_gun_trail.tga.meta 2f8487cf
+Sci-Fi Effects/Effects/Solo Gun/Textures.meta 647112a4
+Sci-Fi Effects/Effects/Solo Gun/solo_gun_flames.prefab 07bb4889
+Sci-Fi Effects/Effects/Solo Gun/solo_gun_flames.prefab.meta ca799519
+Sci-Fi Effects/Effects/Solo Gun/solo_gun_flare_trail.prefab f5eb7a9e
+Sci-Fi Effects/Effects/Solo Gun/solo_gun_flare_trail.prefab.meta fdae27c7
+Sci-Fi Effects/Effects/Solo Gun/solo_gun_muzzle.prefab e9244673
+Sci-Fi Effects/Effects/Solo Gun/solo_gun_muzzle.prefab.meta f42ac02c
+Sci-Fi Effects/Effects/Solo Gun.meta f31c9057
+Sci-Fi Effects/Effects/Trails/Materials/trail_001.mat 7acfd90c
+Sci-Fi Effects/Effects/Trails/Materials/trail_001.mat.meta 3228d172
+Sci-Fi Effects/Effects/Trails/Materials/trail_002.mat 7862863f
+Sci-Fi Effects/Effects/Trails/Materials/trail_002.mat.meta 936c9963
+Sci-Fi Effects/Effects/Trails/Materials/trail_003.mat a7e895e4
+Sci-Fi Effects/Effects/Trails/Materials/trail_003.mat.meta e361f18f
+Sci-Fi Effects/Effects/Trails/Materials/trail_004.mat 46abaaaf
+Sci-Fi Effects/Effects/Trails/Materials/trail_004.mat.meta 4467e9f5
+Sci-Fi Effects/Effects/Trails/Materials.meta c967ecef
+Sci-Fi Effects/Effects/Trails/Textures/trail_001.tga 612f418e
+Sci-Fi Effects/Effects/Trails/Textures/trail_001.tga.meta eed8addf
+Sci-Fi Effects/Effects/Trails/Textures/trail_002.tga 8116a930
+Sci-Fi Effects/Effects/Trails/Textures/trail_002.tga.meta 6533e5bd
+Sci-Fi Effects/Effects/Trails/Textures/trail_003.tga 9c523814
+Sci-Fi Effects/Effects/Trails/Textures/trail_003.tga.meta d12c7ee9
+Sci-Fi Effects/Effects/Trails/Textures/trail_004.tga 5b28ac62
+Sci-Fi Effects/Effects/Trails/Textures/trail_004.tga.meta 8a6facc5
+Sci-Fi Effects/Effects/Trails/Textures.meta 2c86ff65
+Sci-Fi Effects/Effects/Trails/trail_001.prefab 1d934929
+Sci-Fi Effects/Effects/Trails/trail_001.prefab.meta cba8cc5d
+Sci-Fi Effects/Effects/Trails/trail_002.prefab a0516685
+Sci-Fi Effects/Effects/Trails/trail_002.prefab.meta 4255a318
+Sci-Fi Effects/Effects/Trails/trail_003.prefab d28734ac
+Sci-Fi Effects/Effects/Trails/trail_003.prefab.meta d4dd5306
+Sci-Fi Effects/Effects/Trails/trail_004.prefab 2e6d1f0d
+Sci-Fi Effects/Effects/Trails/trail_004.prefab.meta 58246da4
+Sci-Fi Effects/Effects/Trails/trail_005.prefab a15837b3
+Sci-Fi Effects/Effects/Trails/trail_005.prefab.meta 8add2bd8
+Sci-Fi Effects/Effects/Trails/trail_006.prefab 826d690e
+Sci-Fi Effects/Effects/Trails/trail_006.prefab.meta 6a539de8
+Sci-Fi Effects/Effects/Trails/trail_007.prefab 6a870728
+Sci-Fi Effects/Effects/Trails/trail_007.prefab.meta 21f006c2
+Sci-Fi Effects/Effects/Trails/trail_008.prefab ba09a23e
+Sci-Fi Effects/Effects/Trails/trail_008.prefab.meta cd570204
+Sci-Fi Effects/Effects/Trails/trail_009.prefab 24fa9f01
+Sci-Fi Effects/Effects/Trails/trail_009.prefab.meta 15318a73
+Sci-Fi Effects/Effects/Trails/trail_010.prefab 549c9eca
+Sci-Fi Effects/Effects/Trails/trail_010.prefab.meta 01bcf082
+Sci-Fi Effects/Effects/Trails/trail_011.prefab 994340ec
+Sci-Fi Effects/Effects/Trails/trail_011.prefab.meta e39349c0
+Sci-Fi Effects/Effects/Trails/trail_012.prefab 3bf04bd6
+Sci-Fi Effects/Effects/Trails/trail_012.prefab.meta f50e5420
+Sci-Fi Effects/Effects/Trails/trail_013.prefab 7f465057
+Sci-Fi Effects/Effects/Trails/trail_013.prefab.meta 71d063b9
+Sci-Fi Effects/Effects/Trails/trail_014.prefab 14ba28dd
+Sci-Fi Effects/Effects/Trails/trail_014.prefab.meta 051ead52
+Sci-Fi Effects/Effects/Trails/trail_015.prefab bdbb258f
+Sci-Fi Effects/Effects/Trails/trail_015.prefab.meta 9be03419
+Sci-Fi Effects/Effects/Trails/trail_016.prefab 15aa2b37
+Sci-Fi Effects/Effects/Trails/trail_016.prefab.meta d0aed5d5
+Sci-Fi Effects/Effects/Trails/trail_017.prefab 985f9bfb
+Sci-Fi Effects/Effects/Trails/trail_017.prefab.meta 11e6bc95
+Sci-Fi Effects/Effects/Trails/trail_018.prefab beae974d
+Sci-Fi Effects/Effects/Trails/trail_018.prefab.meta fa547ed9
+Sci-Fi Effects/Effects/Trails/trail_019.prefab 72505f22
+Sci-Fi Effects/Effects/Trails/trail_019.prefab.meta aa5c9cf4
+Sci-Fi Effects/Effects/Trails/trail_020.prefab 9ccce09f
+Sci-Fi Effects/Effects/Trails/trail_020.prefab.meta 74c6fac0
+Sci-Fi Effects/Effects/Trails.meta 1d655676
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_heavy_mpact.mat 7120ffab
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_heavy_mpact.mat.meta 3fc148bd
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_light_impact.mat b9b376e2
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_light_impact.mat.meta 8ade757f
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_medium_impact.mat 92742b36
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_medium_impact.mat.meta f772bfe8
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_muzzle.mat 5ec7b2c5
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_muzzle.mat.meta e469593e
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_projectile.mat dfd633ee
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_projectile.mat.meta a70fbcca
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_shell.mat 572d45e7
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_shell.mat.meta 7033fe62
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_smoke.mat f3405ec9
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_smoke.mat.meta a8276a49
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_spark.mat 4614790f
+Sci-Fi Effects/Effects/Vulcan/Materials/vulcan_spark.mat.meta 75a949e3
+Sci-Fi Effects/Effects/Vulcan/Materials.meta b6c7d1c3
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_heavy_impact.tga 7e4d368e
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_heavy_impact.tga.meta fafc766f
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_light_impact.tga 8bd99b7e
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_light_impact.tga.meta f73ebf78
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_medium_impact.tga d58631aa
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_medium_impact.tga.meta 7fe8c537
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_muzzle.tga 5519bcfd
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_muzzle.tga.meta 089210b8
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_projectile.tga 9c91a2d1
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_projectile.tga.meta a85819be
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_shell.psd f7654d91
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_shell.psd.meta 26e37801
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_spark.tga 31ca6740
+Sci-Fi Effects/Effects/Vulcan/Textures/vulcan_spark.tga.meta b266c520
+Sci-Fi Effects/Effects/Vulcan/Textures.meta bef3e2a8
+Sci-Fi Effects/Effects/Vulcan/vulcan_impact.prefab fe01e3d7
+Sci-Fi Effects/Effects/Vulcan/vulcan_impact.prefab.meta dd871652
+Sci-Fi Effects/Effects/Vulcan/vulcan_muzzle.prefab 77f931b1
+Sci-Fi Effects/Effects/Vulcan/vulcan_muzzle.prefab.meta 9f10bafa
+Sci-Fi Effects/Effects/Vulcan/vulcan_projectile.prefab 0a190dab
+Sci-Fi Effects/Effects/Vulcan/vulcan_projectile.prefab.meta ccfc1b3c
+Sci-Fi Effects/Effects/Vulcan/vulcan_shell.prefab 42b4dd4c
+Sci-Fi Effects/Effects/Vulcan/vulcan_shell.prefab.meta bf2f8ead
+Sci-Fi Effects/Effects/Vulcan/vulcan_spark.prefab eed61067
+Sci-Fi Effects/Effects/Vulcan/vulcan_spark.prefab.meta b4707eeb
+Sci-Fi Effects/Effects/Vulcan.meta 5370fc1c
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpAura_blue_gamma.mat 1998edd6
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpAura_blue_gamma.mat.meta 96aac7e7
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpAura_green_gamma.mat 681e0a5a
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpAura_green_gamma.mat.meta 7ee016c5
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpAura_red_gamma.mat f14aa421
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpAura_red_gamma.mat.meta d15ab2d5
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpParticles_blue_gamma.mat 33aed975
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpParticles_blue_gamma.mat.meta d7962cb7
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpParticles_green_gamma.mat 1b37ad46
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpParticles_green_gamma.mat.meta 27fa9450
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpParticles_red_gamma.mat 5f3bbec4
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpParticles_red_gamma.mat.meta 9051b40b
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpRings_blue_gamma.mat 252db96f
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpRings_blue_gamma.mat.meta c8b3abf4
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpRings_green_gamma.mat f21df2c5
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpRings_green_gamma.mat.meta 31db474b
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpRings_red_gamma.mat 60933dc9
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpRings_red_gamma.mat.meta b162146c
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpSpark_blue_gamma.mat 4d6b0e05
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpSpark_blue_gamma.mat.meta ea90cee5
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpSpark_green_gamma.mat faa7bafa
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpSpark_green_gamma.mat.meta d3339fa1
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpSpark_red_gamma.mat 4c2d6388
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpSpark_red_gamma.mat.meta 3c21b4f4
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_001_blue_gamma.mat 0b8b0cda
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_001_blue_gamma.mat.meta 648f4e00
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_001_green_gamma.mat 15981a55
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_001_green_gamma.mat.meta aa69f492
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_001_red_gamma.mat 4397ca26
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_001_red_gamma.mat.meta 629bcaf5
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_002_blue_gamma.mat e4caf5be
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_002_blue_gamma.mat.meta b058ff4a
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_002_green_gamma.mat 7bd5d947
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_002_green_gamma.mat.meta 8454306a
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_002_red_gamma.mat 7d2e93e4
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_002_red_gamma.mat.meta 3ae8874f
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_003_blue_gamma.mat c38b4dba
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_003_blue_gamma.mat.meta 84b6dea3
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_003_green_gamma.mat 9b17f26b
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_003_green_gamma.mat.meta bbbf2e36
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_003_red_gamma.mat ae4c2394
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma/WarpJumpTunnel_003_red_gamma.mat.meta 2103f136
+Sci-Fi Effects/Effects/Warp Jump/Materials/Gamma.meta 78c5c461
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpAura_blue_linear.mat ac3b9124
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpAura_blue_linear.mat.meta 9b3500e4
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpAura_green_linear.mat 0347d84f
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpAura_green_linear.mat.meta 83bfa576
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpAura_red_linear.mat cb31c1e7
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpAura_red_linear.mat.meta 4a0e147a
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpDistortion.mat 2725d185
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpDistortion.mat.meta c6500a47
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpParticles_blue_linear.mat 51454029
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpParticles_blue_linear.mat.meta e39a6cb0
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpParticles_green_linear.mat c2f59f24
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpParticles_green_linear.mat.meta ec2e5b98
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpParticles_red_linear.mat ae5a9ebb
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpParticles_red_linear.mat.meta 3775863c
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpRings_blue_linear.mat bf89f8e4
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpRings_blue_linear.mat.meta 9e7395ef
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpRings_green_linear.mat 1c9e5b7f
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpRings_green_linear.mat.meta 9fff1730
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpRings_red_linear.mat a68b25c6
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpRings_red_linear.mat.meta 3cdce43c
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpSpark_blue_linear.mat 32d1c320
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpSpark_blue_linear.mat.meta d509ae98
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpSpark_green_linear.mat 51de0acd
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpSpark_green_linear.mat.meta 2ccb44b5
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpSpark_red_linear.mat 5480af97
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpSpark_red_linear.mat.meta e0fd66e3
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_001_blue_linear.mat 02a8ca69
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_001_blue_linear.mat.meta 99f2a8c3
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_001_green_linear.mat 732282e8
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_001_green_linear.mat.meta 6c19202c
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_001_red_linear.mat b3eeab67
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_001_red_linear.mat.meta 747ddc36
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_002_blue_linear.mat ee3b402e
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_002_blue_linear.mat.meta a7817823
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_002_green_linear.mat 47234fd5
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_002_green_linear.mat.meta d123202a
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_002_red_linear.mat 1beffda6
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_002_red_linear.mat.meta ba2a5e89
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_003_blue_linear.mat 5915bdd4
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_003_blue_linear.mat.meta 97b9eaf5
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_003_green_linear.mat affb6bdb
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_003_green_linear.mat.meta ee716593
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_003_red_linear.mat 9bc51f93
+Sci-Fi Effects/Effects/Warp Jump/Materials/WarpJumpTunnel_003_red_linear.mat.meta b778f99a
+Sci-Fi Effects/Effects/Warp Jump/Materials.meta de1b4747
+Sci-Fi Effects/Effects/Warp Jump/Models/warp_jump_cone.FBX f87cf6bf
+Sci-Fi Effects/Effects/Warp Jump/Models/warp_jump_cone.FBX.meta f65e5a0a
+Sci-Fi Effects/Effects/Warp Jump/Models.meta bf7d620b
+Sci-Fi Effects/Effects/Warp Jump/Textures/warpjump_aura.psd 41f27603
+Sci-Fi Effects/Effects/Warp Jump/Textures/warpjump_aura.psd.meta bbcca3e8
+Sci-Fi Effects/Effects/Warp Jump/Textures/warpjump_ring.psd 07d30d5e
+Sci-Fi Effects/Effects/Warp Jump/Textures/warpjump_ring.psd.meta 96b1aa86
+Sci-Fi Effects/Effects/Warp Jump/Textures/warpjump_spark.psd 69af4b1d
+Sci-Fi Effects/Effects/Warp Jump/Textures/warpjump_spark.psd.meta 4c5a5160
+Sci-Fi Effects/Effects/Warp Jump/Textures/warpjump_tunnel.psd 91264f46
+Sci-Fi Effects/Effects/Warp Jump/Textures/warpjump_tunnel.psd.meta b3721935
+Sci-Fi Effects/Effects/Warp Jump/Textures.meta b44f724d
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_blue_gamma.prefab f47646aa
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_blue_gamma.prefab.meta 8c6e0a33
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_blue_linear.prefab a54f4b88
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_blue_linear.prefab.meta d2e3b250
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_green_gamma.prefab 74f5249a
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_green_gamma.prefab.meta b6e47fec
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_green_linear.prefab 1b7411f1
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_green_linear.prefab.meta 0e4311fe
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_red_gamma.prefab 2acc2a59
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_red_gamma.prefab.meta f335f5cd
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_red_linear.prefab 462503e4
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpIn_red_linear.prefab.meta e6b0dde4
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_blue_gamma.prefab bed927eb
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_blue_gamma.prefab.meta f56d8ee8
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_blue_linear.prefab ade8da0e
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_blue_linear.prefab.meta 51bf0d03
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_green_gamma.prefab af94744f
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_green_gamma.prefab.meta 1b4c7fdc
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_green_linear.prefab 4942540a
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_green_linear.prefab.meta 52704f95
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_red_gamma.prefab fd47b89d
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_red_gamma.prefab.meta 3eae0afa
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_red_linear.prefab 41afa72f
+Sci-Fi Effects/Effects/Warp Jump/WarpJumpOut_red_linear.prefab.meta 1e6d9d31
+Sci-Fi Effects/Effects/Warp Jump.meta 91eaef9c
+Sci-Fi Effects/Effects/Warp Tunnel/Materials/Editable_PolyMat.mat c3257ec1
+Sci-Fi Effects/Effects/Warp Tunnel/Materials/Editable_PolyMat.mat.meta d257f18c
+Sci-Fi Effects/Effects/Warp Tunnel/Materials/StarsParticle 1.mat aef13147
+Sci-Fi Effects/Effects/Warp Tunnel/Materials/StarsParticle 1.mat.meta cf614334
+Sci-Fi Effects/Effects/Warp Tunnel/Materials/warp_tunnel_001.mat 9be40a63
+Sci-Fi Effects/Effects/Warp Tunnel/Materials/warp_tunnel_001.mat.meta 7c0619d6
+Sci-Fi Effects/Effects/Warp Tunnel/Materials/warp_tunnel_distortion_001.mat 6e2d27be
+Sci-Fi Effects/Effects/Warp Tunnel/Materials/warp_tunnel_distortion_001.mat.meta c3a96d8f
+Sci-Fi Effects/Effects/Warp Tunnel/Materials.meta a06ed767
+Sci-Fi Effects/Effects/Warp Tunnel/Textures/star_bw.png ca40fec5
+Sci-Fi Effects/Effects/Warp Tunnel/Textures/star_bw.png.meta c797d149
+Sci-Fi Effects/Effects/Warp Tunnel/Textures/warp_tunnel_color.png e56ab51f
+Sci-Fi Effects/Effects/Warp Tunnel/Textures/warp_tunnel_color.png.meta 85105519
+Sci-Fi Effects/Effects/Warp Tunnel/Textures/warp_tunnel_mask.png 47ce0fa1
+Sci-Fi Effects/Effects/Warp Tunnel/Textures/warp_tunnel_mask.png.meta 84dfdd50
+Sci-Fi Effects/Effects/Warp Tunnel/Textures/warp_tunnel_normal.png 3dc77b05
+Sci-Fi Effects/Effects/Warp Tunnel/Textures/warp_tunnel_normal.png.meta acf469b7
+Sci-Fi Effects/Effects/Warp Tunnel/Textures.meta d5f73e84
+Sci-Fi Effects/Effects/Warp Tunnel/Warp Tunnel.prefab 5622f0cd
+Sci-Fi Effects/Effects/Warp Tunnel/Warp Tunnel.prefab.meta 6e77322b
+Sci-Fi Effects/Effects/Warp Tunnel/warp_tunnel.obj 4106cbb9
+Sci-Fi Effects/Effects/Warp Tunnel/warp_tunnel.obj.meta c715afd0
+Sci-Fi Effects/Effects/Warp Tunnel.meta 10cf1db4
+Sci-Fi Effects/Effects.meta 0f6644cc
+Sci-Fi Effects/Examples/01_turret_demo.unity 054e72b1
+Sci-Fi Effects/Examples/01_turret_demo.unity.meta 0e6a9544
+Sci-Fi Effects/Examples/02_effects_preview.unity 909f7b71
+Sci-Fi Effects/Examples/02_effects_preview.unity.meta 1e1df334
+Sci-Fi Effects/Examples/03_burnout_example_gamma.unity 85cdb38f
+Sci-Fi Effects/Examples/03_burnout_example_gamma.unity.meta 2a56574b
+Sci-Fi Effects/Examples/03_burnout_example_linear.unity fd31f1c5
+Sci-Fi Effects/Examples/03_burnout_example_linear.unity.meta c676a4f3
+Sci-Fi Effects/Examples/04_warp_tunnel_example.unity 03a3009e
+Sci-Fi Effects/Examples/04_warp_tunnel_example.unity.meta 39064616
+Sci-Fi Effects/Examples/05_holographic_example.unity c0928ac7
+Sci-Fi Effects/Examples/05_holographic_example.unity.meta a91a3c0f
+Sci-Fi Effects/Examples/06_nebula_example.unity 5242367d
+Sci-Fi Effects/Examples/06_nebula_example.unity.meta 01bfa666
+Sci-Fi Effects/Examples/07_debris_field_example.unity e5d0ce93
+Sci-Fi Effects/Examples/07_debris_field_example.unity.meta 7174c4ed
+Sci-Fi Effects/Examples/08_warp_jump_example_gamma.unity 821c9574
+Sci-Fi Effects/Examples/08_warp_jump_example_gamma.unity.meta 307e99c0
+Sci-Fi Effects/Examples/08_warp_jump_example_linear.unity d7d28832
+Sci-Fi Effects/Examples/08_warp_jump_example_linear.unity.meta cceebf5a
+Sci-Fi Effects/Examples/09_missiles_example.unity 04fa20fe
+Sci-Fi Effects/Examples/09_missiles_example.unity.meta 6c707e53
+Sci-Fi Effects/Examples/Code/F3DBurnoutExample.cs 3ffad7ef
+Sci-Fi Effects/Examples/Code/F3DBurnoutExample.cs.meta 6dc18c59
+Sci-Fi Effects/Examples/Code/F3DDummyEvent.cs 1e044439
+Sci-Fi Effects/Examples/Code/F3DDummyEvent.cs.meta 21d24a58
+Sci-Fi Effects/Examples/Code/F3DMissileLauncher.cs dfee2eb6
+Sci-Fi Effects/Examples/Code/F3DMissileLauncher.cs.meta 65fec189
+Sci-Fi Effects/Examples/Code/F3DNebula.cs 3e850759
+Sci-Fi Effects/Examples/Code/F3DNebula.cs.meta 3060afe1
+Sci-Fi Effects/Examples/Code/F3DTrailExample.cs abb5ee08
+Sci-Fi Effects/Examples/Code/F3DTrailExample.cs.meta 58022b25
+Sci-Fi Effects/Examples/Code/F3DTurnTable.cs 8e29c9a4
+Sci-Fi Effects/Examples/Code/F3DTurnTable.cs.meta d2637b96
+Sci-Fi Effects/Examples/Code.meta ab4b9ae0
+Sci-Fi Effects/Examples/Legacy Turret/Materials/Turret.mat a3e5f96d
+Sci-Fi Effects/Examples/Legacy Turret/Materials/Turret.mat.meta 92f3d7d4
+Sci-Fi Effects/Examples/Legacy Turret/Materials.meta 816c1113
+Sci-Fi Effects/Examples/Legacy Turret/Meshes/turret.FBX b04bcfac
+Sci-Fi Effects/Examples/Legacy Turret/Meshes/turret.FBX.meta e46c63dc
+Sci-Fi Effects/Examples/Legacy Turret/Meshes.meta c0f8f800
+Sci-Fi Effects/Examples/Legacy Turret/Textures/turret_color.tga 4ed01075
+Sci-Fi Effects/Examples/Legacy Turret/Textures/turret_color.tga.meta 53f4247e
+Sci-Fi Effects/Examples/Legacy Turret/Textures/turret_glow.tga 0afa1208
+Sci-Fi Effects/Examples/Legacy Turret/Textures/turret_glow.tga.meta 086cb0c3
+Sci-Fi Effects/Examples/Legacy Turret/Textures/turret_norm.tga d80b4061
+Sci-Fi Effects/Examples/Legacy Turret/Textures/turret_norm.tga.meta f9c4c415
+Sci-Fi Effects/Examples/Legacy Turret/Textures.meta f4cfdfda
+Sci-Fi Effects/Examples/Legacy Turret/turret.prefab ac59ea4a
+Sci-Fi Effects/Examples/Legacy Turret/turret.prefab.meta 9cb296b4
+Sci-Fi Effects/Examples/Legacy Turret.meta 0ed44f77
+Sci-Fi Effects/Examples/Materials/prototype_black_grid_cube.mat ffe48acc
+Sci-Fi Effects/Examples/Materials/prototype_black_grid_cube.mat.meta bd30d4e3
+Sci-Fi Effects/Examples/Materials/prototype_black_grid_floor.mat 2449563b
+Sci-Fi Effects/Examples/Materials/prototype_black_grid_floor.mat.meta 996dc98a
+Sci-Fi Effects/Examples/Materials/prototype_black_grid_sphere.mat 5248ba8e
+Sci-Fi Effects/Examples/Materials/prototype_black_grid_sphere.mat.meta 879dd75b
+Sci-Fi Effects/Examples/Materials.meta c4fb4d56
+Sci-Fi Effects/Examples/Prefabs/Explosion_007_example.prefab 646fde94
+Sci-Fi Effects/Examples/Prefabs/Explosion_007_example.prefab.meta 46907dfc
+Sci-Fi Effects/Examples/Prefabs/flames_flame_red_example.prefab 73be2b98
+Sci-Fi Effects/Examples/Prefabs/flames_flame_red_example.prefab.meta 4a6b1aba
+Sci-Fi Effects/Examples/Prefabs/laser_impulse_flare_001_example.prefab f57dc153
+Sci-Fi Effects/Examples/Prefabs/laser_impulse_flare_001_example.prefab.meta 74c855c6
+Sci-Fi Effects/Examples/Prefabs/laser_impulse_muzzle_001_example.prefab 7927eaea
+Sci-Fi Effects/Examples/Prefabs/laser_impulse_muzzle_001_example.prefab.meta ef69e1ed
+Sci-Fi Effects/Examples/Prefabs/laser_impulse_projectile_001_example.prefab fdc2c590
+Sci-Fi Effects/Examples/Prefabs/laser_impulse_projectile_001_example.prefab.meta 033d74d6
+Sci-Fi Effects/Examples/Prefabs/lightning_gun_beam_001_example.prefab a4509f7c
+Sci-Fi Effects/Examples/Prefabs/lightning_gun_beam_001_example.prefab.meta 1dfaa062
+Sci-Fi Effects/Examples/Prefabs/plasma_beam_blue_example.prefab b4bb010b
+Sci-Fi Effects/Examples/Prefabs/plasma_beam_blue_example.prefab.meta d0b280d5
+Sci-Fi Effects/Examples/Prefabs/plasma_beam_heavy_red_example.prefab ac88675f
+Sci-Fi Effects/Examples/Prefabs/plasma_beam_heavy_red_example.prefab.meta a7a2beb1
+Sci-Fi Effects/Examples/Prefabs/plasma_gun_flare_example.prefab e0d015d2
+Sci-Fi Effects/Examples/Prefabs/plasma_gun_flare_example.prefab.meta 932e3084
+Sci-Fi Effects/Examples/Prefabs/plasma_gun_muzzle_flash_example.prefab 782869ef
+Sci-Fi Effects/Examples/Prefabs/plasma_gun_muzzle_flash_example.prefab.meta b7e14186
+Sci-Fi Effects/Examples/Prefabs/plasma_gun_projectile_001_example.prefab 4e4aeae6
+Sci-Fi Effects/Examples/Prefabs/plasma_gun_projectile_001_example.prefab.meta 239429ac
+Sci-Fi Effects/Examples/Prefabs/railgun_beam_example.prefab cc71aa7c
+Sci-Fi Effects/Examples/Prefabs/railgun_beam_example.prefab.meta d5e7ebab
+Sci-Fi Effects/Examples/Prefabs/railgun_flare_003_example.prefab ee4fa8ae
+Sci-Fi Effects/Examples/Prefabs/railgun_flare_003_example.prefab.meta c981f52d
+Sci-Fi Effects/Examples/Prefabs/seeker_bolt_flare_example.prefab ed2350f1
+Sci-Fi Effects/Examples/Prefabs/seeker_bolt_flare_example.prefab.meta 66fdd03f
+Sci-Fi Effects/Examples/Prefabs/seeker_bolt_hit_example.prefab 5fbc61ce
+Sci-Fi Effects/Examples/Prefabs/seeker_bolt_hit_example.prefab.meta 8ea85511
+Sci-Fi Effects/Examples/Prefabs/seeker_bolt_muzzle_example.prefab d4e5ce04
+Sci-Fi Effects/Examples/Prefabs/seeker_bolt_muzzle_example.prefab.meta ddead6e6
+Sci-Fi Effects/Examples/Prefabs/shot_gun_flare_001_example.prefab 3f9508ed
+Sci-Fi Effects/Examples/Prefabs/shot_gun_flare_001_example.prefab.meta 4f1bca45
+Sci-Fi Effects/Examples/Prefabs/shot_gun_fragment_001_example.prefab c192338d
+Sci-Fi Effects/Examples/Prefabs/shot_gun_fragment_001_example.prefab.meta c30f4b3a
+Sci-Fi Effects/Examples/Prefabs/sniper_beam_example.prefab a0fffa6a
+Sci-Fi Effects/Examples/Prefabs/sniper_beam_example.prefab.meta da8db329
+Sci-Fi Effects/Examples/Prefabs/sniper_flare_example.prefab b6f90065
+Sci-Fi Effects/Examples/Prefabs/sniper_flare_example.prefab.meta 5d397f98
+Sci-Fi Effects/Examples/Prefabs/solo_gun_flames_01_example.prefab 33c5db28
+Sci-Fi Effects/Examples/Prefabs/solo_gun_flames_01_example.prefab.meta c84f3eea
+Sci-Fi Effects/Examples/Prefabs/solo_gun_flare_trail_example.prefab 5719385e
+Sci-Fi Effects/Examples/Prefabs/solo_gun_flare_trail_example.prefab.meta a39eaaa1
+Sci-Fi Effects/Examples/Prefabs/solo_gun_muzzle_example.prefab af1f7a06
+Sci-Fi Effects/Examples/Prefabs/solo_gun_muzzle_example.prefab.meta 4dbd67fd
+Sci-Fi Effects/Examples/Prefabs/vulcan_impact_example.prefab fde38561
+Sci-Fi Effects/Examples/Prefabs/vulcan_impact_example.prefab.meta 00b0848c
+Sci-Fi Effects/Examples/Prefabs/vulcan_muzzle_example.prefab 0253b82b
+Sci-Fi Effects/Examples/Prefabs/vulcan_muzzle_example.prefab.meta b3eef3f8
+Sci-Fi Effects/Examples/Prefabs/vulcan_projectile_example.prefab 6b563f25
+Sci-Fi Effects/Examples/Prefabs/vulcan_projectile_example.prefab.meta 4cff2da0
+Sci-Fi Effects/Examples/Prefabs.meta 59f5e8d6
+Sci-Fi Effects/Examples/Scene/Light Rig.prefab 05544902
+Sci-Fi Effects/Examples/Scene/Light Rig.prefab.meta 4671e0bd
+Sci-Fi Effects/Examples/Scene/Scene.prefab 9402e113
+Sci-Fi Effects/Examples/Scene/Scene.prefab.meta e229f097
+Sci-Fi Effects/Examples/Scene.meta 878aaec7
+Sci-Fi Effects/Examples/Textures/blank.tga 7b976461
+Sci-Fi Effects/Examples/Textures/blank.tga.meta d8f581f9
+Sci-Fi Effects/Examples/Textures/normal_blank.tga b14e4ccf
+Sci-Fi Effects/Examples/Textures/normal_blank.tga.meta ede26578
+Sci-Fi Effects/Examples/Textures/prototype_black_dff.png 11386367
+Sci-Fi Effects/Examples/Textures/prototype_black_dff.png.meta e8f2fd90
+Sci-Fi Effects/Examples/Textures/silver_blurred_cubemap.tga 0b0a9f84
+Sci-Fi Effects/Examples/Textures/silver_blurred_cubemap.tga.meta 35826f50
+Sci-Fi Effects/Examples/Textures/silver_sharp_cubemap.tga 9b2e389b
+Sci-Fi Effects/Examples/Textures/silver_sharp_cubemap.tga.meta fda8e53a
+Sci-Fi Effects/Examples/Textures.meta 42bc8614
+Sci-Fi Effects/Examples.meta ea09c81f
+Sci-Fi Effects/Misc/AudioSource.prefab bf55c54b
+Sci-Fi Effects/Misc/AudioSource.prefab.meta 80a06ce9
+Sci-Fi Effects/Misc/Billboard_Quad.FBX ccb355c9
+Sci-Fi Effects/Misc/Billboard_Quad.FBX.meta 07b3da4d
+Sci-Fi Effects/Misc/Demo Physic Material.physicMaterial f1dad848
+Sci-Fi Effects/Misc/Demo Physic Material.physicMaterial.meta 848c49de
+Sci-Fi Effects/Misc/Materials/prototype_black_dff.mat a2ab3241
+Sci-Fi Effects/Misc/Materials/prototype_black_dff.mat.meta 5eceae7e
+Sci-Fi Effects/Misc/Materials.meta 41553f2e
+Sci-Fi Effects/Misc/crate.FBX 5a64dbed
+Sci-Fi Effects/Misc/crate.FBX.meta b8bb258b
+Sci-Fi Effects/Misc/pulsewave_z_up.FBX 124ab5a7
+Sci-Fi Effects/Misc/pulsewave_z_up.FBX.meta 90d2ed52
+Sci-Fi Effects/Misc.meta 1a3c6027
+Sci-Fi Effects/Shaders/Additive.shader d29eee2f
+Sci-Fi Effects/Shaders/Additive.shader.meta 0e458b7c
+Sci-Fi Effects/Shaders/AlphaBlended.shader e4dd0b98
+Sci-Fi Effects/Shaders/AlphaBlended.shader.meta f2653cef
+Sci-Fi Effects/Shaders/Billboard.shader a00edcda
+Sci-Fi Effects/Shaders/Billboard.shader.meta e3fb16a5
+Sci-Fi Effects/Shaders/Burnout.shader c1bb8359
+Sci-Fi Effects/Shaders/Burnout.shader.meta 8ba410c7
+Sci-Fi Effects/Shaders/Debris.shader b8d99656
+Sci-Fi Effects/Shaders/Debris.shader.meta 4675a43c
+Sci-Fi Effects/Shaders/ExhaustFlame.shader b322a4b2
+Sci-Fi Effects/Shaders/ExhaustFlame.shader.meta ea6ebec5
+Sci-Fi Effects/Shaders/Heat.shader 54561d65
+Sci-Fi Effects/Shaders/Heat.shader.meta 9c128996
+Sci-Fi Effects/Shaders/Holographic.shader 60036b6a
+Sci-Fi Effects/Shaders/Holographic.shader.meta 7ddee875
+Sci-Fi Effects/Shaders/NebulaStaticBoard.shader e96f5cdf
+Sci-Fi Effects/Shaders/NebulaStaticBoard.shader.meta 99f03c98
+Sci-Fi Effects/Shaders/Projectile.shader b114d10e
+Sci-Fi Effects/Shaders/Projectile.shader.meta d1f7c523
+Sci-Fi Effects/Shaders/SmokeTurbulent.shader 9c171d66
+Sci-Fi Effects/Shaders/SmokeTurbulent.shader.meta 8bdd8480
+Sci-Fi Effects/Shaders/Surface.shader ab5d808c
+Sci-Fi Effects/Shaders/Surface.shader.meta c4800ad5
+Sci-Fi Effects/Shaders/Trail.shader 37545dc4
+Sci-Fi Effects/Shaders/Trail.shader.meta 4fb167d7
+Sci-Fi Effects/Shaders/WarpJump.shader 5676993e
+Sci-Fi Effects/Shaders/WarpJump.shader.meta 82eb76e6
+Sci-Fi Effects/Shaders/WarpJumpDistortion.shader 70857a40
+Sci-Fi Effects/Shaders/WarpJumpDistortion.shader.meta b0d9ef47
+Sci-Fi Effects/Shaders/WarpJumpTwist.shader d86104ae
+Sci-Fi Effects/Shaders/WarpJumpTwist.shader.meta 1be3b6b4
+Sci-Fi Effects/Shaders/WarpTunnel.shader 37c99a05
+Sci-Fi Effects/Shaders/WarpTunnel.shader.meta 4e03456d
+Sci-Fi Effects/Shaders/WarpTunnelDistortion.shader f650d6ee
+Sci-Fi Effects/Shaders/WarpTunnelDistortion.shader.meta dbce0eb3
+Sci-Fi Effects/Shaders.meta 3f690b81
+Sci-Fi Effects/Sounds/engine_flyby_001.wav 6a547673
+Sci-Fi Effects/Sounds/engine_flyby_001.wav.meta 10782e65
+Sci-Fi Effects/Sounds/engine_flyby_002.wav d4ac3183
+Sci-Fi Effects/Sounds/engine_flyby_002.wav.meta 3fbbed6a
+Sci-Fi Effects/Sounds/engine_flyby_003.wav 139d8b18
+Sci-Fi Effects/Sounds/engine_flyby_003.wav.meta c7da51ba
+Sci-Fi Effects/Sounds/engine_flyby_004.wav 270268e9
+Sci-Fi Effects/Sounds/engine_flyby_004.wav.meta 35e09ead
+Sci-Fi Effects/Sounds/engine_inwarp.wav 0547f074
+Sci-Fi Effects/Sounds/engine_inwarp.wav.meta 625f9e6c
+Sci-Fi Effects/Sounds/engine_start_001.wav 3d9bec75
+Sci-Fi Effects/Sounds/engine_start_001.wav.meta 14954427
+Sci-Fi Effects/Sounds/engine_start_002.wav 64da8bc7
+Sci-Fi Effects/Sounds/engine_start_002.wav.meta 1f5a9191
+Sci-Fi Effects/Sounds/engine_start_003.wav 028fc931
+Sci-Fi Effects/Sounds/engine_start_003.wav.meta db5c2b6f
+Sci-Fi Effects/Sounds/engine_start_004.wav c0ca2391
+Sci-Fi Effects/Sounds/engine_start_004.wav.meta 2f1b7bd9
+Sci-Fi Effects/Sounds/engine_start_005.wav aab21e2d
+Sci-Fi Effects/Sounds/engine_start_005.wav.meta f4042a67
+Sci-Fi Effects/Sounds/engine_start_006.wav e125cf1b
+Sci-Fi Effects/Sounds/engine_start_006.wav.meta 4e12513f
+Sci-Fi Effects/Sounds/engine_warp_001.wav 5581f78b
+Sci-Fi Effects/Sounds/engine_warp_001.wav.meta 20f604ac
+Sci-Fi Effects/Sounds/engine_warp_002.wav 5ea7008a
+Sci-Fi Effects/Sounds/engine_warp_002.wav.meta f04109b0
+Sci-Fi Effects/Sounds/engine_warp_003.wav 26749d6e
+Sci-Fi Effects/Sounds/engine_warp_003.wav.meta 9df34333
+Sci-Fi Effects/Sounds/engine_warp_004.wav af791c69
+Sci-Fi Effects/Sounds/engine_warp_004.wav.meta a6d4e4ab
+Sci-Fi Effects/Sounds/engine_warp_005.wav abe57b9c
+Sci-Fi Effects/Sounds/engine_warp_005.wav.meta ab098d42
+Sci-Fi Effects/Sounds/impact_projectile_001.wav 467b2c1d
+Sci-Fi Effects/Sounds/impact_projectile_001.wav.meta c5901900
+Sci-Fi Effects/Sounds/impact_projectile_002.wav 791858d6
+Sci-Fi Effects/Sounds/impact_projectile_002.wav.meta e9d95df0
+Sci-Fi Effects/Sounds/impact_projectile_003.wav ca78d5f9
+Sci-Fi Effects/Sounds/impact_projectile_003.wav.meta 2d04bf9e
+Sci-Fi Effects/Sounds/impact_projectile_004.wav 534f0f83
+Sci-Fi Effects/Sounds/impact_projectile_004.wav.meta ad6627cb
+Sci-Fi Effects/Sounds/impact_projectile_005.wav cd8a1a48
+Sci-Fi Effects/Sounds/impact_projectile_005.wav.meta d8bfc76a
+Sci-Fi Effects/Sounds/impact_projectile_006.wav 052d74e1
+Sci-Fi Effects/Sounds/impact_projectile_006.wav.meta f976fa22
+Sci-Fi Effects/Sounds/impact_projectile_metal_001.wav dd2049a3
+Sci-Fi Effects/Sounds/impact_projectile_metal_001.wav.meta 2a3605b2
+Sci-Fi Effects/Sounds/impact_projectile_metal_002.wav 369027e8
+Sci-Fi Effects/Sounds/impact_projectile_metal_002.wav.meta c60555e1
+Sci-Fi Effects/Sounds/impact_projectile_metal_004.wav 1c2b9293
+Sci-Fi Effects/Sounds/impact_projectile_metal_004.wav.meta 1cc0b0b9
+Sci-Fi Effects/Sounds/impact_projectile_metal_005.wav 8982a1c5
+Sci-Fi Effects/Sounds/impact_projectile_metal_005.wav.meta 038fb66f
+Sci-Fi Effects/Sounds/impact_projectile_metal_006.wav cd6d34d7
+Sci-Fi Effects/Sounds/impact_projectile_metal_006.wav.meta 4c97fb81
+Sci-Fi Effects/Sounds/impact_projectile_metal_007.wav df3f9925
+Sci-Fi Effects/Sounds/impact_projectile_metal_007.wav.meta 444811c5
+Sci-Fi Effects/Sounds/weapon_blaster_001.wav e763d630
+Sci-Fi Effects/Sounds/weapon_blaster_001.wav.meta 66380a57
+Sci-Fi Effects/Sounds/weapon_blaster_002.wav d6aed2b5
+Sci-Fi Effects/Sounds/weapon_blaster_002.wav.meta 1a7c1cc4
+Sci-Fi Effects/Sounds/weapon_blaster_003.wav ea3e90c5
+Sci-Fi Effects/Sounds/weapon_blaster_003.wav.meta ab241a2c
+Sci-Fi Effects/Sounds/weapon_blaster_004.wav 509928fc
+Sci-Fi Effects/Sounds/weapon_blaster_004.wav.meta 5c887b2d
+Sci-Fi Effects/Sounds/weapon_energy_beam_003_close.wav cc470a0d
+Sci-Fi Effects/Sounds/weapon_energy_beam_003_close.wav.meta 2e4b3c69
+Sci-Fi Effects/Sounds/weapon_energy_beam_003_loop.wav 2ab34c86
+Sci-Fi Effects/Sounds/weapon_energy_beam_003_loop.wav.meta 82a65c45
+Sci-Fi Effects/Sounds/weapon_energy_beam_003_open.wav 011e3d1d
+Sci-Fi Effects/Sounds/weapon_energy_beam_003_open.wav.meta 5da6d46a
+Sci-Fi Effects/Sounds/weapon_energy_beam_006.wav 474129c9
+Sci-Fi Effects/Sounds/weapon_energy_beam_006.wav.meta 104cf3e6
+Sci-Fi Effects/Sounds/weapon_flame_001.wav 3855bc3d
+Sci-Fi Effects/Sounds/weapon_flame_001.wav.meta 7a45ffb0
+Sci-Fi Effects/Sounds/weapon_flame_003.wav 72384feb
+Sci-Fi Effects/Sounds/weapon_flame_003.wav.meta 03c6049b
+Sci-Fi Effects/Sounds/weapon_flame_004.wav d1bfc0ea
+Sci-Fi Effects/Sounds/weapon_flame_004.wav.meta 4f4582cf
+Sci-Fi Effects/Sounds/weapon_flame_006.wav c286157e
+Sci-Fi Effects/Sounds/weapon_flame_006.wav.meta 74f0f41f
+Sci-Fi Effects/Sounds/weapon_flame_008.wav aa06c695
+Sci-Fi Effects/Sounds/weapon_flame_008.wav.meta 20288342
+Sci-Fi Effects/Sounds/weapon_gatling_006.wav a7ab8583
+Sci-Fi Effects/Sounds/weapon_gatling_006.wav.meta faa5b0ee
+Sci-Fi Effects/Sounds/weapon_laser_001.wav 30d0e3c2
+Sci-Fi Effects/Sounds/weapon_laser_001.wav.meta 036e4466
+Sci-Fi Effects/Sounds/weapon_laser_003.wav a2edccc0
+Sci-Fi Effects/Sounds/weapon_laser_003.wav.meta 35fd17df
+Sci-Fi Effects/Sounds/weapon_laser_005.wav 462b2881
+Sci-Fi Effects/Sounds/weapon_laser_005.wav.meta 15210bf3
+Sci-Fi Effects/Sounds/weapon_laser_006.wav db096fc5
+Sci-Fi Effects/Sounds/weapon_laser_006.wav.meta 2fcf1129
+Sci-Fi Effects/Sounds/weapon_laser_007.wav e80f8dac
+Sci-Fi Effects/Sounds/weapon_laser_007.wav.meta 71738de6
+Sci-Fi Effects/Sounds/weapon_laser_008.wav abaeff01
+Sci-Fi Effects/Sounds/weapon_laser_008.wav.meta 4dff8ce1
+Sci-Fi Effects/Sounds/weapon_laser_009.wav 3b88cbb1
+Sci-Fi Effects/Sounds/weapon_laser_009.wav.meta c83fed45
+Sci-Fi Effects/Sounds/weapon_laser_010.wav dfebb88d
+Sci-Fi Effects/Sounds/weapon_laser_010.wav.meta 10b31365
+Sci-Fi Effects/Sounds/weapon_laser_011.wav 2b22e068
+Sci-Fi Effects/Sounds/weapon_laser_011.wav.meta d9820592
+Sci-Fi Effects/Sounds/weapon_lightning_005_cut.wav 4e346ec2
+Sci-Fi Effects/Sounds/weapon_lightning_005_cut.wav.meta b38d3e36
+Sci-Fi Effects/Sounds/weapon_lightning_006.wav 0a31ad36
+Sci-Fi Effects/Sounds/weapon_lightning_006.wav.meta 2448c185
+Sci-Fi Effects/Sounds/weapon_lightning_008_cut.wav ccf0319d
+Sci-Fi Effects/Sounds/weapon_lightning_008_cut.wav.meta 9dabd0c1
+Sci-Fi Effects/Sounds/weapon_mortar_001.wav 7fd078ce
+Sci-Fi Effects/Sounds/weapon_mortar_001.wav.meta 6dd00b1d
+Sci-Fi Effects/Sounds/weapon_mortar_002.wav 0ccab72a
+Sci-Fi Effects/Sounds/weapon_mortar_002.wav.meta af760c3a
+Sci-Fi Effects/Sounds/weapon_mortar_003.wav 6e98b1b5
+Sci-Fi Effects/Sounds/weapon_mortar_003.wav.meta 435e18cd
+Sci-Fi Effects/Sounds/weapon_railgun_001.wav f151ef70
+Sci-Fi Effects/Sounds/weapon_railgun_001.wav.meta f2a5b625
+Sci-Fi Effects/Sounds/weapon_railgun_002.wav 2629c2f7
+Sci-Fi Effects/Sounds/weapon_railgun_002.wav.meta e05c9ff2
+Sci-Fi Effects/Sounds/weapon_railgun_003.wav c7bd095a
+Sci-Fi Effects/Sounds/weapon_railgun_003.wav.meta 0b835436
+Sci-Fi Effects/Sounds/weapon_railgun_004.wav 9fa09b85
+Sci-Fi Effects/Sounds/weapon_railgun_004.wav.meta bd7b2471
+Sci-Fi Effects/Sounds/weapon_shotgun_001.wav 071046ff
+Sci-Fi Effects/Sounds/weapon_shotgun_001.wav.meta f2c636e1
+Sci-Fi Effects/Sounds/weapon_shotgun_002.wav e87a3e78
+Sci-Fi Effects/Sounds/weapon_shotgun_002.wav.meta d25bc193
+Sci-Fi Effects/Sounds/weapon_shotgun_006.wav d2653f65
+Sci-Fi Effects/Sounds/weapon_shotgun_006.wav.meta ac5c5b29
+Sci-Fi Effects/Sounds/weapon_sniper_003.wav dc00f3ff
+Sci-Fi Effects/Sounds/weapon_sniper_003.wav.meta d634eab7
+Sci-Fi Effects/Sounds/weapon_sniper_004.wav 3068fb5c
+Sci-Fi Effects/Sounds/weapon_sniper_004.wav.meta 7e2e8bf3
+Sci-Fi Effects/Sounds.meta cde993c6
+Sci-Fi Effects/Turrets/Animation/TURRET.controller 1b1dbafa
+Sci-Fi Effects/Turrets/Animation/TURRET.controller.meta 7fc3d503
+Sci-Fi Effects/Turrets/Animation/TURRET_BARREL.anim be0d4fad
+Sci-Fi Effects/Turrets/Animation/TURRET_BARREL.anim.meta e4cb82ce
+Sci-Fi Effects/Turrets/Animation/TURRET_BARREL_Idle.anim 7b369702
+Sci-Fi Effects/Turrets/Animation/TURRET_BARREL_Idle.anim.meta f006de91
+Sci-Fi Effects/Turrets/Animation/TURRET_BARREL_Loop.anim 0c4641a7
+Sci-Fi Effects/Turrets/Animation/TURRET_BARREL_Loop.anim.meta 238b2ae2
+Sci-Fi Effects/Turrets/Animation.meta 4a80918c
+Sci-Fi Effects/Turrets/Database/database.asset c92c5f33
+Sci-Fi Effects/Turrets/Database/database.asset.meta 0cf067d3
+Sci-Fi Effects/Turrets/Database.meta f65c1faf
+Sci-Fi Effects/Turrets/Materials/TURRET.mat 47f2aeba
+Sci-Fi Effects/Turrets/Materials/TURRET.mat.meta a85cb870
+Sci-Fi Effects/Turrets/Materials/TURRET_Mobile.mat 8c095c99
+Sci-Fi Effects/Turrets/Materials/TURRET_Mobile.mat.meta 9d8585c4
+Sci-Fi Effects/Turrets/Materials.meta 8920fc9f
+Sci-Fi Effects/Turrets/Meshes/TURRET.FBX 214cfb9d
+Sci-Fi Effects/Turrets/Meshes/TURRET.FBX.meta d389e17c
+Sci-Fi Effects/Turrets/Meshes.meta 65c8e8ba
+Sci-Fi Effects/Turrets/Prefabs/Assembled Turrets.prefab 91769d03
+Sci-Fi Effects/Turrets/Prefabs/Assembled Turrets.prefab.meta 7cc7ed13
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Electric_LOD0.prefab ff1df50c
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Electric_LOD0.prefab.meta 12a8aa9d
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Electric_Mobile_LOD0.prefab 3ed60dbe
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Electric_Mobile_LOD0.prefab.meta 5537f483
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Flack_LOD0.prefab c6897d0d
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Flack_LOD0.prefab.meta 1c0ada17
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Flack_Mobile_LOD0.prefab 228b603c
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Flack_Mobile_LOD0.prefab.meta d3cd88c1
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Flamer_LOD0.prefab aa97434b
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Flamer_LOD0.prefab.meta 73697ef2
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Flamer_Mobile_LOD0.prefab 973fecdb
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Flamer_Mobile_LOD0.prefab.meta 896b67e9
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Gatling_LOD0.prefab b42f8394
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Gatling_LOD0.prefab.meta 1e2372f3
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Gatling_Mobile_LOD0.prefab d4828adb
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Gatling_Mobile_LOD0.prefab.meta c3b29dd7
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Gauss_LOD0.prefab 81f00a28
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Gauss_LOD0.prefab.meta 10543803
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Gauss_Mobile_LOD0.prefab d5fb6059
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Gauss_Mobile_LOD0.prefab.meta 71be8f36
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_HeavyMissle_LOD0.prefab c0834a4a
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_HeavyMissle_LOD0.prefab.meta 022f2c69
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_HeavyMissle_Mobile_LOD0.prefab 0ba8ef1b
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_HeavyMissle_Mobile_LOD0.prefab.meta 06d3ccaf
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Laser_LOD0.prefab b89fa705
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Laser_LOD0.prefab.meta f3de2ac2
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Laser_Mobile_LOD0.prefab bd8d8a7b
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Laser_Mobile_LOD0.prefab.meta 96f18541
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_MLRS_LOD0.prefab b54da3a7
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_MLRS_LOD0.prefab.meta 16151ab0
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_MLRS_Mobile_LOD0.prefab 86d962c2
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_MLRS_Mobile_LOD0.prefab.meta 6a7297ec
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Mortar_LOD0.prefab 472cb98d
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Mortar_LOD0.prefab.meta ad7c18e1
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Mortar_Mobile_LOD0.prefab e71abd70
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Mortar_Mobile_LOD0.prefab.meta b9779f8d
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Repeater_LOD0.prefab 43900359
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Repeater_LOD0.prefab.meta 5f4f6447
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Repeater_Mobile_LOD0.prefab 6f4c3e30
+Sci-Fi Effects/Turrets/Prefabs/Barrels/TURRET_BARREL_Repeater_Mobile_LOD0.prefab.meta e359a115
+Sci-Fi Effects/Turrets/Prefabs/Barrels.meta 4f3f628d
+Sci-Fi Effects/Turrets/Prefabs/Bases/TURRET_BASE_LOD0.prefab 37c5fb35
+Sci-Fi Effects/Turrets/Prefabs/Bases/TURRET_BASE_LOD0.prefab.meta 293bc1de
+Sci-Fi Effects/Turrets/Prefabs/Bases/TURRET_BASE_Mobile_LOD0.prefab c47804c5
+Sci-Fi Effects/Turrets/Prefabs/Bases/TURRET_BASE_Mobile_LOD0.prefab.meta 38d672bb
+Sci-Fi Effects/Turrets/Prefabs/Bases.meta ebca2d20
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Ballistic_LOD0.prefab e86c98a7
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Ballistic_LOD0.prefab.meta b529531f
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Ballistic_Mobile_LOD0.prefab 96400a28
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Ballistic_Mobile_LOD0.prefab.meta 6d74d2af
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Common_LOD0.prefab 8ebf42a2
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Common_LOD0.prefab.meta 74974bec
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Common_Mobile_LOD0.prefab df98b7fb
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Common_Mobile_LOD0.prefab.meta 74562156
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Energy_LOD0.prefab 10151907
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Energy_LOD0.prefab.meta ded713d0
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Energy_Mobile_LOD0.prefab f092f136
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Energy_Mobile_LOD0.prefab.meta 15b1b390
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Heavy_LOD0.prefab 35007ca9
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Heavy_LOD0.prefab.meta 15cf73c6
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Heavy_Mobile_LOD0.prefab a5e7a650
+Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Heavy_Mobile_LOD0.prefab.meta 28d5fd4e
+Sci-Fi Effects/Turrets/Prefabs/Breeches.meta 68fb78f4
+Sci-Fi Effects/Turrets/Prefabs/ConstructorBase.prefab cf17f38e
+Sci-Fi Effects/Turrets/Prefabs/ConstructorBase.prefab.meta 57a0cbdd
+Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Double_LOD0.prefab 82c9897a
+Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Double_LOD0.prefab.meta 72bc4c42
+Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Double_Mobile_LOD0.prefab 1dd01515
+Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Double_Mobile_LOD0.prefab.meta c0dd093a
+Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Single_LOD0.prefab 4a81f53c
+Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Single_LOD0.prefab.meta 03cce66d
+Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Single_Mobile_LOD0.prefab 15aab472
+Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Single_Mobile_LOD0.prefab.meta 20c489c1
+Sci-Fi Effects/Turrets/Prefabs/Heads.meta 16164903
+Sci-Fi Effects/Turrets/Prefabs/Mounts/TURRET_MOUNT_Double_LOD0.prefab 47213164
+Sci-Fi Effects/Turrets/Prefabs/Mounts/TURRET_MOUNT_Double_LOD0.prefab.meta 14d707f8
+Sci-Fi Effects/Turrets/Prefabs/Mounts/TURRET_MOUNT_Double_Mobile_LOD0.prefab 34851b6d
+Sci-Fi Effects/Turrets/Prefabs/Mounts/TURRET_MOUNT_Double_Mobile_LOD0.prefab.meta dae90651
+Sci-Fi Effects/Turrets/Prefabs/Mounts/TURRET_MOUNT_Single_LOD0.prefab 244e6c8a
+Sci-Fi Effects/Turrets/Prefabs/Mounts/TURRET_MOUNT_Single_LOD0.prefab.meta c5b9e3bc
+Sci-Fi Effects/Turrets/Prefabs/Mounts/TURRET_MOUNT_Single_Mobile_LOD0.prefab 322f9559
+Sci-Fi Effects/Turrets/Prefabs/Mounts/TURRET_MOUNT_Single_Mobile_LOD0.prefab.meta 8384f09b
+Sci-Fi Effects/Turrets/Prefabs/Mounts.meta f5793875
+Sci-Fi Effects/Turrets/Prefabs/Swivels/TURRET_SWIVEL_LOD0.prefab 11311891
+Sci-Fi Effects/Turrets/Prefabs/Swivels/TURRET_SWIVEL_LOD0.prefab.meta 1d8e1e53
+Sci-Fi Effects/Turrets/Prefabs/Swivels/TURRET_SWIVEL_Mobile_LOD0.prefab b73ed5d1
+Sci-Fi Effects/Turrets/Prefabs/Swivels/TURRET_SWIVEL_Mobile_LOD0.prefab.meta 1b543786
+Sci-Fi Effects/Turrets/Prefabs/Swivels.meta 79ac5593
+Sci-Fi Effects/Turrets/Prefabs/TURRET_NEW_SKELETON_TEMPLATE.prefab 05e1998f
+Sci-Fi Effects/Turrets/Prefabs/TURRET_NEW_SKELETON_TEMPLATE.prefab.meta 23a3af13
+Sci-Fi Effects/Turrets/Prefabs.meta 3f52b51f
+Sci-Fi Effects/Turrets/Textures/Mobile/TURRET_Mobile_DiffuseSpec.png 8edc981f
+Sci-Fi Effects/Turrets/Textures/Mobile/TURRET_Mobile_DiffuseSpec.png.meta 721f7628
+Sci-Fi Effects/Turrets/Textures/Mobile/TURRET_Mobile_Normal_GL.png 6a235e46
+Sci-Fi Effects/Turrets/Textures/Mobile/TURRET_Mobile_Normal_GL.png.meta f7b42620
+Sci-Fi Effects/Turrets/Textures/Mobile.meta e068ac07
+Sci-Fi Effects/Turrets/Textures/TURRET_AlbedoTransparency.png f1ef4462
+Sci-Fi Effects/Turrets/Textures/TURRET_AlbedoTransparency.png.meta abe9cfcc
+Sci-Fi Effects/Turrets/Textures/TURRET_MetallicSmoothness.png 1cd018bc
+Sci-Fi Effects/Turrets/Textures/TURRET_MetallicSmoothness.png.meta 943614ed
+Sci-Fi Effects/Turrets/Textures/TURRET_Normal_DX.png 258affc5
+Sci-Fi Effects/Turrets/Textures/TURRET_Normal_DX.png.meta 9c3d1dd1
+Sci-Fi Effects/Turrets/Textures/TURRET_Normal_GL.png a8ae16f9
+Sci-Fi Effects/Turrets/Textures/TURRET_Normal_GL.png.meta a9073562
+Sci-Fi Effects/Turrets/Textures.meta 7111ba5c
+Sci-Fi Effects/Turrets.meta 0b129cb2
+Sci-Fi Effects/[DEPRECATED] FORGE3D Sci-Fi Effects 1.15 Manual.pdf fb004e6b
+Sci-Fi Effects/[DEPRECATED] FORGE3D Sci-Fi Effects 1.15 Manual.pdf.meta ff7b462c
+Sci-Fi Effects.meta a41dab29
