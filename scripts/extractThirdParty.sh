@@ -12,4 +12,4 @@ then
 fi
 
 mkdir -p ./DungeonStrike/Assets/ThirdParty
-gpg --batch --decrypt --passphrase dungeonstr1ke ~/Dropbox/ThirdParty/ThirdParty.tgz.gpg | pv --progress --size 2g | tar xz
+gpg --batch --decrypt --passphrase $1 $2 | pv --progress --size 2g | tar xz

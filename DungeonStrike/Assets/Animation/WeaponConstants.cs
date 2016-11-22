@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DungeonStrike
 {
@@ -14,88 +13,95 @@ namespace DungeonStrike
 
     public enum WeaponType
     {
-        AssaultRifle01,
-        AssaultRifle02,
-        AssaultRifle03,
-        AssaultRifle04,
-        AssaultRifle05,
-        AssaultRifle06,
-        AssaultRifle07,
-        AssaultRifle08,
-        AssaultRifle09,
-        AssaultRifle10
+        None,
+        Rifle1,
+        Rifle2,
     }
 
     public class WeaponConstants
     {
-        public static string AssetNameForWeapon(WeaponType weaponType)
+        private static string RandomColor()
         {
-            return System.Enum.GetName(typeof(WeaponType), weaponType);
+            switch (Random.Range(0, 5))
+            {
+                case 0:
+                    return "Beige";
+                case 1:
+                    return "Black";
+                case 2:
+                    return "Blue";
+                case 3:
+                    return "Red";
+                default:
+                    return "Yellow";
+            }
         }
 
-        public static void EquipWeapon(Transform attachPoint, WeaponType weaponType, ModelType modelType, Action<GameObject> onSuccess)
+        public static string AssetNameForWeapon(WeaponType weaponType)
         {
+            switch (weaponType)
+            {
+                case WeaponType.Rifle1:
+                    return "ScifiRifle1AnimatedYellow";
+                case WeaponType.Rifle2:
+                    return "ScifiRifle2AnimatedRed";
+                default:
+                    throw Preconditions.UnexpectedEnumValue(weaponType);
+            }
+        }
+
+        public static void EquipWeapon(Transform attachPoint, WeaponType weaponType, ModelType modelType, System.Action<Optional<GameObject>> onSuccess)
+        {
+            if (weaponType == WeaponType.None)
+            {
+                onSuccess(Optional<GameObject>.Empty);
+                return;
+            }
+
             var assetName = AssetNameForWeapon(weaponType);
             AssetLoaderService.Instance.InstantiateGameObject("guns", assetName, (GameObject weapon) =>
             {
                 weapon.transform.SetParent(attachPoint);
                 switch (weaponType)
                 {
-                    case WeaponType.AssaultRifle01:
-                        EquipAssaultRifle01(attachPoint, weapon, modelType);
+                    case WeaponType.Rifle1:
+                        EquipRifle1(attachPoint, weapon, modelType);
                         break;
-                    case WeaponType.AssaultRifle02:
-                        EquipAssaultRifle02(attachPoint, weapon, modelType);
-                        break;
-                    case WeaponType.AssaultRifle03:
-                        EquipAssaultRifle03(attachPoint, weapon, modelType);
+                    case WeaponType.Rifle2:
+                        EquipRifle2(attachPoint, weapon, modelType);
                         break;
                     default:
-                        throw new System.SystemException("Unknown weapon type " + weaponType);
+                        throw Preconditions.UnexpectedEnumValue(weaponType);
                 }
-                if (onSuccess != null) onSuccess(weapon);
+                if (onSuccess != null) onSuccess(Optional<GameObject>.Of(weapon));
             });
         }
 
-        private static GameObject EquipAssaultRifle01(Transform attachPoint, GameObject item, ModelType modelType)
+        private static GameObject EquipRifle1(Transform attachPoint, GameObject item, ModelType modelType)
+        {
+            switch (modelType)
+            {
+                case ModelType.AssaultCharacter:
+                    item.transform.localPosition = new Vector3(0f, -0.02f, -0.02f);
+                    item.transform.localEulerAngles = new Vector3(178, -10, 90);
+                    item.transform.localScale = new Vector3(1f, 1f, 1f);
+                    return item;
+                default:
+                    throw Preconditions.UnexpectedEnumValue(modelType);
+            }
+        }
+
+        private static GameObject EquipRifle2(Transform attachPoint, GameObject item, ModelType modelType)
         {
             switch (modelType)
             {
                 case ModelType.Orc:
-                    item.transform.localPosition = new Vector3(-0.30f, 0.10f, 0f);
-                    item.transform.localEulerAngles = new Vector3(105, 80, 90);
+                    item.transform.localPosition = new Vector3(-0.18f, 0.05f, 0.04f);
+                    item.transform.localEulerAngles = new Vector3(-15, -100, -90);
                     item.transform.localScale = new Vector3(2f, 2f, 2f);
                     return item;
                 default:
-                    throw new System.SystemException("Unknown model type " + modelType);
-            }
-        }
-
-        private static GameObject EquipAssaultRifle02(Transform attachPoint, GameObject item, ModelType modelType)
-        {
-            switch (modelType)
-            {
-                case ModelType.AssaultCharacter:
-                    item.transform.localPosition = new Vector3(-0.04f, -0.04f, -0.10f);
-                    item.transform.localEulerAngles = new Vector3(87, 0, 90);
-                    item.transform.localScale = new Vector3(1f, 1f, 1f);
-                    return item;
-                default:
-                    throw new System.SystemException("Unknown model type " + modelType);
-            }
-        }
-
-        private static GameObject EquipAssaultRifle03(Transform attachPoint, GameObject item, ModelType modelType)
-        {
-            switch (modelType)
-            {
-                case ModelType.AssaultCharacter:
-                    item.transform.localPosition = new Vector3(-0.05f, -0.03f, -0.20f);
-                    item.transform.localEulerAngles = new Vector3(85, 0, 90);
-                    item.transform.localScale = new Vector3(1f, 1f, 1f);
-                    return item;
-                default:
-                    throw new System.SystemException("Unknown model type " + modelType);
+                    throw Preconditions.UnexpectedEnumValue(modelType);
             }
         }
     }

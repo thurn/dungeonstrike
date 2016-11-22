@@ -10,14 +10,14 @@ namespace DungeonStrike
         private Animator _animator;
         private Transform _rightHandAttachPoint;
         private bool _rifleEquipped;
-        private GameObject _rifleObject;
+        private Optional<GameObject> _rifleObject;
 
         void Start()
         {
             _animator = GetComponent<Animator>();
             _rightHandAttachPoint = Transforms.FindChildTransformWithTag(this.transform, Tags.RightHandAttachPoint);
 
-            WeaponConstants.EquipWeapon(_rightHandAttachPoint, WeaponType, ModelType, (GameObject rifle) =>
+            WeaponConstants.EquipWeapon(_rightHandAttachPoint, WeaponType, ModelType, (Optional<GameObject> rifle) =>
             {
                 _rifleObject = rifle;
             });
@@ -46,17 +46,17 @@ namespace DungeonStrike
         public void OnHolsterRifle()
         {
             Debug.Log("OnHolster " + this);
-            Preconditions.CheckState(_rifleObject != null, "Cannot holster rifle twice");
-            GameObject.Destroy(_rifleObject);
-            _rifleObject = null;
+            Preconditions.CheckState(_rifleObject.HasValue, "Cannot holster rifle twice");
+            GameObject.Destroy(_rifleObject.Value);
+            _rifleObject = Optional<GameObject>.Empty;
         }
 
         public void OnEquipRifle()
         {
             Debug.Log("OnEquip " + this);
-            WeaponConstants.EquipWeapon(_rightHandAttachPoint, WeaponType, ModelType, (GameObject rifle) =>
+            WeaponConstants.EquipWeapon(_rightHandAttachPoint, WeaponType, ModelType, (Optional<GameObject> rifle) =>
             {
-                Preconditions.CheckState(_rifleObject == null, "Cannot equip rifle object twice.");
+                Preconditions.CheckState(!_rifleObject.HasValue, "Cannot equip rifle object twice.");
                 _rifleObject = rifle;
             });
         }

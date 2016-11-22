@@ -7,9 +7,9 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: deltaForce
-  m_Shader: {fileID: 9, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 13, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _NORMALMAP _SPECGLOSSMAP
-  m_LightmapFlags: 1
+  m_LightmapFlags: 2
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -58,6 +58,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _Illum
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _MainTex
       second:
         m_Texture: {fileID: 2800000, guid: 2ef5fc67d6acdae418e40f359e9abeb9, type: 3}
@@ -84,7 +90,7 @@ Material:
     - first:
         name: _OcclusionMap
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 5a0fa22c9bb449c4a97d70b4c27e4787, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -153,6 +159,9 @@ Material:
       second: 0
     - first:
         name: _DstBlend
+      second: 0
+    - first:
+        name: _Emission
       second: 0
     - first:
         name: _Fresnel
@@ -283,7 +292,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0.6985294, g: 0.6985294, b: 0.6985294, a: 1}
     - first:
         name: _Color2
       second: {r: 1, g: 1, b: 1, a: 1}
@@ -295,7 +304,7 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _EmissionColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _SnowAccumulation
       second: {r: 0, g: 1, b: 0, a: 0}
