@@ -1,5 +1,6 @@
 ; 
 ;
+.DS_Store 32582c4a
 Editor/ImageEffects/AntialiasingEditor.cs 0eb43878
 Editor/ImageEffects/AntialiasingEditor.cs.meta 48e0e050
 Editor/ImageEffects/BloomAndFlaresEditor.cs ba0a7fed

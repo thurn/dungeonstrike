@@ -29,7 +29,7 @@ echo "Starting pre-commit checks..."
 key="KEY: $(date "+%Y-%m-%d %H:%M" | md5)"
 
 for arg in "$@";
-do echo "$arg";
+do
    if [[ "$arg" == "--amendHead" ]]
    then
        echo "Amending previous commit."
@@ -40,4 +40,5 @@ do echo "$arg";
    fi
 done
 
-git commit "$@" -m $key
+echo "Creating commit..."
+git commit "$@" -m "$key"
