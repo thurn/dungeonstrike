@@ -1,7 +1,10 @@
 ; 
 ;
-Editor/VSCode.cs 35173b3d
-Editor/VSCode.cs.meta 50c73f1d
+Editor/Rider/RiderAssetPostprocessor.cs 7962296f
+Editor/Rider/RiderAssetPostprocessor.cs.meta dcf76d0d
+Editor/Rider/RiderPlugin.cs f7daf280
+Editor/Rider/RiderPlugin.cs.meta 2ff0b75a
+Editor/Rider.meta e40d4a30
 Editor.meta 8922501d
 Vectrosity/Vectrosity.dll 7a690498
 Vectrosity/Vectrosity.dll.meta dfa83f99

@@ -1,0 +1,7 @@
+- Import the package to a new empty unity project, or else the PoolManager
+  in the demo scenes inexplicably loses its prefab instances.
+- Import everything except Code/MeshCombine
+- Copy folder from clean unity project into ThirdParty
+- Replace CombineChildren references in "06_nebula_example" demo scene with a reference
+  to the one in SciFi Rifles, because it caused name collisions. Uncheck "generate
+  triangles".

@@ -16,9 +16,9 @@ PoolManager/F3DPoolManager.cs.meta 397ca481
 PoolManager/F3DPoolManagerDB.cs 6fb8f94a
 PoolManager/F3DPoolManagerDB.cs.meta fdf408c0
 PoolManager.meta 2d72a1ac
-Resources/F3DPoolManagerCache/MissleDatabase.asset 9e43fa81
+Resources/F3DPoolManagerCache/MissleDatabase.asset 1161e3ad
 Resources/F3DPoolManagerCache/MissleDatabase.asset.meta 43cd61f7
-Resources/F3DPoolManagerCache/WeaponRange.asset c5f943df
+Resources/F3DPoolManagerCache/WeaponRange.asset 0a9c56a0
 Resources/F3DPoolManagerCache/WeaponRange.asset.meta 27270833
 Resources/F3DPoolManagerCache.meta 570cd9fd
 Resources.meta 590dd6a0
@@ -67,11 +67,6 @@ Sci-Fi Effects/Code/F3DWarpTunnel.cs.meta 82568d85
 Sci-Fi Effects/Code/Lib/F3DMath.cs c6122e2f
 Sci-Fi Effects/Code/Lib/F3DMath.cs.meta 332efd29
 Sci-Fi Effects/Code/Lib.meta 51557b47
-Sci-Fi Effects/Code/MeshCombine/CombineChildren.cs a4c1f676
-Sci-Fi Effects/Code/MeshCombine/CombineChildren.cs.meta e393ce06
-Sci-Fi Effects/Code/MeshCombine/MeshCombineUtility.cs bf4b0416
-Sci-Fi Effects/Code/MeshCombine/MeshCombineUtility.cs.meta da80e4a9
-Sci-Fi Effects/Code/MeshCombine.meta 997fb69e
 Sci-Fi Effects/Code/Player/F3DPlayerController_Legacy.cs 643762f3
 Sci-Fi Effects/Code/Player/F3DPlayerController_Legacy.cs.meta c1b4875a
 Sci-Fi Effects/Code/Player/F3DPlayerTurretController.cs 79fa30af
@@ -496,10 +491,10 @@ Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_flare_001.tga.meta 6
 Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_flare_003.tga 82a70c22
 Sci-Fi Effects/Effects/Lightning Gun/Textures/lightning_gun_flare_003.tga.meta 9563075d
 Sci-Fi Effects/Effects/Lightning Gun/Textures.meta 205d8da1
-Sci-Fi Effects/Effects/Lightning Gun/lightning_gun_beam.prefab d4e19766
+Sci-Fi Effects/Effects/Lightning Gun/lightning_gun_beam.prefab 3634759e
 Sci-Fi Effects/Effects/Lightning Gun/lightning_gun_beam.prefab.meta 1828c601
 Sci-Fi Effects/Effects/Lightning Gun.meta 1c570615
-Sci-Fi Effects/Effects/Missiles/Example/missile_example.prefab 9147d817
+Sci-Fi Effects/Effects/Missiles/Example/missile_example.prefab 6e3e9c46
 Sci-Fi Effects/Effects/Missiles/Example/missile_example.prefab.meta 04e440af
 Sci-Fi Effects/Effects/Missiles/Example.meta 589e4251
 Sci-Fi Effects/Effects/Missiles/Materials/missile_001.mat ff1b0813
@@ -705,7 +700,7 @@ Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beam_stream_red.tga.meta 54a2
 Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beamflare_blue.tga 2c63cfbf
 Sci-Fi Effects/Effects/Plasma Beam/Textures/plasma_beamflare_blue.tga.meta 69bede74
 Sci-Fi Effects/Effects/Plasma Beam/Textures.meta 67b8a300
-Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_blue.prefab e8d2b989
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_blue.prefab 17a38bd9
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_blue.prefab.meta f12a881d
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_blue.prefab 5e7a6373
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_blue.prefab.meta 88bd8244
@@ -713,13 +708,13 @@ Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_green.prefab 64841265
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_green.prefab.meta cc24805b
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_red.prefab cdb031b7
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_flare_red.prefab.meta 7a91c505
-Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_green.prefab 777dbd36
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_green.prefab d187c71c
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_green.prefab.meta 63bc6310
-Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_blue.prefab d0980296
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_blue.prefab b573c072
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_blue.prefab.meta b1d5070e
-Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_green.prefab 9e49bb0e
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_green.prefab a93a309d
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_green.prefab.meta c2bd1ace
-Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_red.prefab d37982b7
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_red.prefab 245cccfd
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_heavy_red.prefab.meta 93a2039e
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_blue.prefab 7ee3fe65
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_blue.prefab.meta b575e63d
@@ -727,7 +722,7 @@ Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_green.prefab 03dc5a16
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_green.prefab.meta c7a1341d
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_red.prefab a28f466c
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_muzzle_red.prefab.meta d5c83df8
-Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_red.prefab 6cdf0510
+Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_red.prefab 7b8d827d
 Sci-Fi Effects/Effects/Plasma Beam/plasma_beam_red.prefab.meta 1e21ec89
 Sci-Fi Effects/Effects/Plasma Beam.meta 6048900f
 Sci-Fi Effects/Effects/Plasma Gun/Materials/plasma_gun_bolt.mat 8b63660c
@@ -1242,19 +1237,19 @@ Sci-Fi Effects/Effects/Warp Tunnel/warp_tunnel.obj 4106cbb9
 Sci-Fi Effects/Effects/Warp Tunnel/warp_tunnel.obj.meta c715afd0
 Sci-Fi Effects/Effects/Warp Tunnel.meta 10cf1db4
 Sci-Fi Effects/Effects.meta 0f6644cc
-Sci-Fi Effects/Examples/01_turret_demo.unity 054e72b1
+Sci-Fi Effects/Examples/01_turret_demo.unity f550e593
 Sci-Fi Effects/Examples/01_turret_demo.unity.meta 0e6a9544
-Sci-Fi Effects/Examples/02_effects_preview.unity 909f7b71
+Sci-Fi Effects/Examples/02_effects_preview.unity e7f890de
 Sci-Fi Effects/Examples/02_effects_preview.unity.meta 1e1df334
 Sci-Fi Effects/Examples/03_burnout_example_gamma.unity 85cdb38f
 Sci-Fi Effects/Examples/03_burnout_example_gamma.unity.meta 2a56574b
 Sci-Fi Effects/Examples/03_burnout_example_linear.unity fd31f1c5
 Sci-Fi Effects/Examples/03_burnout_example_linear.unity.meta c676a4f3
-Sci-Fi Effects/Examples/04_warp_tunnel_example.unity 03a3009e
+Sci-Fi Effects/Examples/04_warp_tunnel_example.unity d6f596a4
 Sci-Fi Effects/Examples/04_warp_tunnel_example.unity.meta 39064616
 Sci-Fi Effects/Examples/05_holographic_example.unity c0928ac7
 Sci-Fi Effects/Examples/05_holographic_example.unity.meta a91a3c0f
-Sci-Fi Effects/Examples/06_nebula_example.unity 5242367d
+Sci-Fi Effects/Examples/06_nebula_example.unity dedc60fb
 Sci-Fi Effects/Examples/06_nebula_example.unity.meta 01bfa666
 Sci-Fi Effects/Examples/07_debris_field_example.unity e5d0ce93
 Sci-Fi Effects/Examples/07_debris_field_example.unity.meta 7174c4ed
@@ -1262,7 +1257,7 @@ Sci-Fi Effects/Examples/08_warp_jump_example_gamma.unity 821c9574
 Sci-Fi Effects/Examples/08_warp_jump_example_gamma.unity.meta 307e99c0
 Sci-Fi Effects/Examples/08_warp_jump_example_linear.unity d7d28832
 Sci-Fi Effects/Examples/08_warp_jump_example_linear.unity.meta cceebf5a
-Sci-Fi Effects/Examples/09_missiles_example.unity 04fa20fe
+Sci-Fi Effects/Examples/09_missiles_example.unity 6f20a0fa
 Sci-Fi Effects/Examples/09_missiles_example.unity.meta 6c707e53
 Sci-Fi Effects/Examples/Code/F3DBurnoutExample.cs 3ffad7ef
 Sci-Fi Effects/Examples/Code/F3DBurnoutExample.cs.meta 6dc18c59
@@ -1308,25 +1303,25 @@ Sci-Fi Effects/Examples/Prefabs/laser_impulse_flare_001_example.prefab f57dc153
 Sci-Fi Effects/Examples/Prefabs/laser_impulse_flare_001_example.prefab.meta 74c855c6
 Sci-Fi Effects/Examples/Prefabs/laser_impulse_muzzle_001_example.prefab 7927eaea
 Sci-Fi Effects/Examples/Prefabs/laser_impulse_muzzle_001_example.prefab.meta ef69e1ed
-Sci-Fi Effects/Examples/Prefabs/laser_impulse_projectile_001_example.prefab fdc2c590
+Sci-Fi Effects/Examples/Prefabs/laser_impulse_projectile_001_example.prefab fab4ddbc
 Sci-Fi Effects/Examples/Prefabs/laser_impulse_projectile_001_example.prefab.meta 033d74d6
-Sci-Fi Effects/Examples/Prefabs/lightning_gun_beam_001_example.prefab a4509f7c
+Sci-Fi Effects/Examples/Prefabs/lightning_gun_beam_001_example.prefab 9c2163fe
 Sci-Fi Effects/Examples/Prefabs/lightning_gun_beam_001_example.prefab.meta 1dfaa062
-Sci-Fi Effects/Examples/Prefabs/plasma_beam_blue_example.prefab b4bb010b
+Sci-Fi Effects/Examples/Prefabs/plasma_beam_blue_example.prefab e07b311b
 Sci-Fi Effects/Examples/Prefabs/plasma_beam_blue_example.prefab.meta d0b280d5
-Sci-Fi Effects/Examples/Prefabs/plasma_beam_heavy_red_example.prefab ac88675f
+Sci-Fi Effects/Examples/Prefabs/plasma_beam_heavy_red_example.prefab 16568c63
 Sci-Fi Effects/Examples/Prefabs/plasma_beam_heavy_red_example.prefab.meta a7a2beb1
 Sci-Fi Effects/Examples/Prefabs/plasma_gun_flare_example.prefab e0d015d2
 Sci-Fi Effects/Examples/Prefabs/plasma_gun_flare_example.prefab.meta 932e3084
 Sci-Fi Effects/Examples/Prefabs/plasma_gun_muzzle_flash_example.prefab 782869ef
 Sci-Fi Effects/Examples/Prefabs/plasma_gun_muzzle_flash_example.prefab.meta b7e14186
-Sci-Fi Effects/Examples/Prefabs/plasma_gun_projectile_001_example.prefab 4e4aeae6
+Sci-Fi Effects/Examples/Prefabs/plasma_gun_projectile_001_example.prefab 589b5d72
 Sci-Fi Effects/Examples/Prefabs/plasma_gun_projectile_001_example.prefab.meta 239429ac
-Sci-Fi Effects/Examples/Prefabs/railgun_beam_example.prefab cc71aa7c
+Sci-Fi Effects/Examples/Prefabs/railgun_beam_example.prefab 7055aba1
 Sci-Fi Effects/Examples/Prefabs/railgun_beam_example.prefab.meta d5e7ebab
 Sci-Fi Effects/Examples/Prefabs/railgun_flare_003_example.prefab ee4fa8ae
 Sci-Fi Effects/Examples/Prefabs/railgun_flare_003_example.prefab.meta c981f52d
-Sci-Fi Effects/Examples/Prefabs/seeker_bolt_flare_example.prefab ed2350f1
+Sci-Fi Effects/Examples/Prefabs/seeker_bolt_flare_example.prefab 06224851
 Sci-Fi Effects/Examples/Prefabs/seeker_bolt_flare_example.prefab.meta 66fdd03f
 Sci-Fi Effects/Examples/Prefabs/seeker_bolt_hit_example.prefab 5fbc61ce
 Sci-Fi Effects/Examples/Prefabs/seeker_bolt_hit_example.prefab.meta 8ea85511
@@ -1336,13 +1331,13 @@ Sci-Fi Effects/Examples/Prefabs/shot_gun_flare_001_example.prefab 3f9508ed
 Sci-Fi Effects/Examples/Prefabs/shot_gun_flare_001_example.prefab.meta 4f1bca45
 Sci-Fi Effects/Examples/Prefabs/shot_gun_fragment_001_example.prefab c192338d
 Sci-Fi Effects/Examples/Prefabs/shot_gun_fragment_001_example.prefab.meta c30f4b3a
-Sci-Fi Effects/Examples/Prefabs/sniper_beam_example.prefab a0fffa6a
+Sci-Fi Effects/Examples/Prefabs/sniper_beam_example.prefab a4703683
 Sci-Fi Effects/Examples/Prefabs/sniper_beam_example.prefab.meta da8db329
 Sci-Fi Effects/Examples/Prefabs/sniper_flare_example.prefab b6f90065
 Sci-Fi Effects/Examples/Prefabs/sniper_flare_example.prefab.meta 5d397f98
 Sci-Fi Effects/Examples/Prefabs/solo_gun_flames_01_example.prefab 33c5db28
 Sci-Fi Effects/Examples/Prefabs/solo_gun_flames_01_example.prefab.meta c84f3eea
-Sci-Fi Effects/Examples/Prefabs/solo_gun_flare_trail_example.prefab 5719385e
+Sci-Fi Effects/Examples/Prefabs/solo_gun_flare_trail_example.prefab 5be13c62
 Sci-Fi Effects/Examples/Prefabs/solo_gun_flare_trail_example.prefab.meta a39eaaa1
 Sci-Fi Effects/Examples/Prefabs/solo_gun_muzzle_example.prefab af1f7a06
 Sci-Fi Effects/Examples/Prefabs/solo_gun_muzzle_example.prefab.meta 4dbd67fd
@@ -1350,7 +1345,7 @@ Sci-Fi Effects/Examples/Prefabs/vulcan_impact_example.prefab fde38561
 Sci-Fi Effects/Examples/Prefabs/vulcan_impact_example.prefab.meta 00b0848c
 Sci-Fi Effects/Examples/Prefabs/vulcan_muzzle_example.prefab 0253b82b
 Sci-Fi Effects/Examples/Prefabs/vulcan_muzzle_example.prefab.meta b3eef3f8
-Sci-Fi Effects/Examples/Prefabs/vulcan_projectile_example.prefab 6b563f25
+Sci-Fi Effects/Examples/Prefabs/vulcan_projectile_example.prefab ac69b978
 Sci-Fi Effects/Examples/Prefabs/vulcan_projectile_example.prefab.meta 4cff2da0
 Sci-Fi Effects/Examples/Prefabs.meta 59f5e8d6
 Sci-Fi Effects/Examples/Scene/Light Rig.prefab 05544902
@@ -1563,7 +1558,7 @@ Sci-Fi Effects/Turrets/Animation/TURRET_BARREL_Idle.anim.meta f006de91
 Sci-Fi Effects/Turrets/Animation/TURRET_BARREL_Loop.anim 0c4641a7
 Sci-Fi Effects/Turrets/Animation/TURRET_BARREL_Loop.anim.meta 238b2ae2
 Sci-Fi Effects/Turrets/Animation.meta 4a80918c
-Sci-Fi Effects/Turrets/Database/database.asset c92c5f33
+Sci-Fi Effects/Turrets/Database/database.asset 6926ad10
 Sci-Fi Effects/Turrets/Database/database.asset.meta 0cf067d3
 Sci-Fi Effects/Turrets/Database.meta f65c1faf
 Sci-Fi Effects/Turrets/Materials/TURRET.mat 47f2aeba
@@ -1639,7 +1634,7 @@ Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Heavy_LOD0.prefab.meta 15c
 Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Heavy_Mobile_LOD0.prefab a5e7a650
 Sci-Fi Effects/Turrets/Prefabs/Breeches/TURRET_BREECH_Heavy_Mobile_LOD0.prefab.meta 28d5fd4e
 Sci-Fi Effects/Turrets/Prefabs/Breeches.meta 68fb78f4
-Sci-Fi Effects/Turrets/Prefabs/ConstructorBase.prefab cf17f38e
+Sci-Fi Effects/Turrets/Prefabs/ConstructorBase.prefab 896b2554
 Sci-Fi Effects/Turrets/Prefabs/ConstructorBase.prefab.meta 57a0cbdd
 Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Double_LOD0.prefab 82c9897a
 Sci-Fi Effects/Turrets/Prefabs/Heads/TURRET_HEAD_Double_LOD0.prefab.meta 72bc4c42
