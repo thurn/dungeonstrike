@@ -1,0 +1,80 @@
+; 
+;
+Documentation/ChangeLog.txt 8f862b0d
+Documentation/ChangeLog.txt.meta 7b972906
+Documentation/ReadMe.rtf 4c712ca7
+Documentation/ReadMe.rtf.meta 5c9e0b37
+Documentation.meta b2724f89
+Editor/FPUniversalDespawnerEditor.cs 4e37ae24
+Editor/FPUniversalDespawnerEditor.cs.meta d1c974c7
+Editor/FastPoolEditor.cs fb9680db
+Editor/FastPoolEditor.cs.meta 95e09d05
+Editor/FastPoolManagerEditor.cs 4f52557f
+Editor/FastPoolManagerEditor.cs.meta c38a6413
+Editor.meta 3b953892
+Examples/Example 1 (spawn with default pool settings).unity 6e7a5018
+Examples/Example 1 (spawn with default pool settings).unity.meta 81f3fcbc
+Examples/Example 2 (spawn with custom pool settings).unity b5a1c221
+Examples/Example 2 (spawn with custom pool settings).unity.meta 689d02d8
+Examples/Example 3 (pool objects notification).unity 9fd17181
+Examples/Example 3 (pool objects notification).unity.meta bc0eec04
+Examples/Example 4 (create pool from script).unity deb3d5b3
+Examples/Example 4 (create pool from script).unity.meta 08d74e06
+Examples/Example 5 (using extension).unity 46ef28e2
+Examples/Example 5 (using extension).unity.meta 63a7982c
+Examples/Example 6 (no manager spawn).unity 58e720be
+Examples/Example 6 (no manager spawn).unity.meta 7c6f2ca5
+Examples/Example 7 (autodespawn).unity a60d8e7a
+Examples/Example 7 (autodespawn).unity.meta 21fe3045
+Examples/Example 8 (custom pool IDs).unity 62079ae0
+Examples/Example 8 (custom pool IDs).unity.meta 64402067
+Examples/FastPool Benchmarking.unity ef56e5f4
+Examples/FastPool Benchmarking.unity.meta 8da5e602
+Examples/Prefabs/Cube.prefab d875e5b9
+Examples/Prefabs/Cube.prefab.meta d6768483
+Examples/Prefabs/Notified_Cube.prefab 7450078d
+Examples/Prefabs/Notified_Cube.prefab.meta b8b81591
+Examples/Prefabs/Suicide_Cube(audio).prefab 1b159ec1
+Examples/Prefabs/Suicide_Cube(audio).prefab.meta f00b429b
+Examples/Prefabs/Suicide_Cube(delay).prefab d0f024e0
+Examples/Prefabs/Suicide_Cube(delay).prefab.meta 3f9f3ceb
+Examples/Prefabs/Suicide_Cube(mixed).prefab 1280fabb
+Examples/Prefabs/Suicide_Cube(mixed).prefab.meta 4771b3eb
+Examples/Prefabs/Suicide_Cube(particles).prefab d5806978
+Examples/Prefabs/Suicide_Cube(particles).prefab.meta 01026d4a
+Examples/Prefabs.meta 7252434b
+Examples/Scripts/AdvancedSpawn.cs 3e73f493
+Examples/Scripts/AdvancedSpawn.cs.meta 4c16953a
+Examples/Scripts/CustomPoolIDSpawn.cs b7a88aec
+Examples/Scripts/CustomPoolIDSpawn.cs.meta 1228bebc
+Examples/Scripts/FastPoolBenchmark.cs ad5a8a58
+Examples/Scripts/FastPoolBenchmark.cs.meta 2f70ddb1
+Examples/Scripts/MyNotifiedObject.cs 5d5b9e82
+Examples/Scripts/MyNotifiedObject.cs.meta 4cce063e
+Examples/Scripts/NoManagerSpawn.cs bec38146
+Examples/Scripts/NoManagerSpawn.cs.meta a17e0f85
+Examples/Scripts/SimpleSpawn.cs 58da9ea4
+Examples/Scripts/SimpleSpawn.cs.meta f9b6278f
+Examples/Scripts/UsingExtensions.cs ff7649f1
+Examples/Scripts/UsingExtensions.cs.meta 04829980
+Examples/Scripts.meta 2bcdf0ce
+Examples/Sounds/testSound.mp3 4ccad347
+Examples/Sounds/testSound.mp3.meta 5e3f86ad
+Examples/Sounds.meta 39405046
+Examples.meta 48737d73
+Prefabs/FastPoolManager.prefab 49e7c045
+Prefabs/FastPoolManager.prefab.meta b3edfbad
+Prefabs.meta b44e1fdc
+Scripts/FastPool.cs 7a501ee2
+Scripts/FastPool.cs.meta 0e97f7ad
+Scripts/FastPoolManager.cs cdb5d6f3
+Scripts/FastPoolManager.cs.meta a302724a
+Scripts/Stuff/FastPoolExtensions.cs b710de16
+Scripts/Stuff/FastPoolExtensions.cs.meta fab6c4ee
+Scripts/Stuff/IFastPoolObject.cs 8f322c83
+Scripts/Stuff/IFastPoolObject.cs.meta 8e8a6ad1
+Scripts/Stuff.meta 7d6fc79b
+Scripts/Tools/FPUniversalDespawner.cs b933c3fc
+Scripts/Tools/FPUniversalDespawner.cs.meta d5d7aa63
+Scripts/Tools.meta 8a3fc205
+Scripts.meta 10669e76
