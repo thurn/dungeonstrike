@@ -7,6 +7,7 @@ namespace DungeonStrike
     {
         public GameObject[] Characters;
         public InputManager InputManager;
+        public F3DEffects F3DEffects;
         private CharacterSelectionService _characterSelectionService;
         private WorldPointSelectionService _worldPointSelectionService;
         private int _currentCharacterNumber;
@@ -54,13 +55,14 @@ namespace DungeonStrike
 
         public void OnShoot()
         {
-            InputManager.SetMessage("Select Target");
-            _onConfirmTarget = () =>
-            {
-                InputManager.SetMessage("Shooting selected target...");
-                var shooting = CurrentCharacter().GetComponent<CharacterShoot>();
-                shooting.ShootAtTarget(CurrentTarget().transform);
-            };
+            F3DEffects.FireVulcan(this.transform);
+//            InputManager.SetMessage("Select Target");
+//            _onConfirmTarget = () =>
+//            {
+//                InputManager.SetMessage("Shooting selected target...");
+//                var shooting = CurrentCharacter().GetComponent<CharacterShoot>();
+//                shooting.ShootAtTarget(CurrentTarget().transform);
+//            };
         }
 
         public void OnConfirmTarget()
