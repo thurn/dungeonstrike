@@ -1,0 +1,2 @@
+- Fix createIfNotExists being ignored
+- Throw exceptions in Despawner if it can't find pool
