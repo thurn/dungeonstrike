@@ -14,7 +14,7 @@ namespace DungeonStrike
         private int _currentTargetNumber;
         private Action _onConfirmTarget;
 
-        void Start()
+        private void Start()
         {
             _currentCharacterNumber = 0;
             _currentTargetNumber = -1;
@@ -24,7 +24,7 @@ namespace DungeonStrike
             UpdateSelection();
         }
 
-        void Update()
+        private void Update()
         {
             _characterSelectionService.Update();
             _worldPointSelectionService.Update();
@@ -45,7 +45,7 @@ namespace DungeonStrike
         public void OnMove()
         {
             InputManager.SetMessage("Select movement destination");
-            _worldPointSelectionService.GetUserSelectedWorldPoint((Vector3 point) =>
+            _worldPointSelectionService.GetUserSelectedWorldPoint(point =>
             {
                 InputManager.SetMessage("Moving to selected position");
                 var characterMovement = CurrentCharacter().GetComponent<CharacterMovement>();
@@ -55,14 +55,13 @@ namespace DungeonStrike
 
         public void OnShoot()
         {
-            F3DEffects.FireVulcan(this.transform);
-//            InputManager.SetMessage("Select Target");
-//            _onConfirmTarget = () =>
-//            {
-//                InputManager.SetMessage("Shooting selected target...");
-//                var shooting = CurrentCharacter().GetComponent<CharacterShoot>();
-//                shooting.ShootAtTarget(CurrentTarget().transform);
-//            };
+            InputManager.SetMessage("Select Target");
+            _onConfirmTarget = () =>
+            {
+                InputManager.SetMessage("Shooting selected target...");
+                var shooting = CurrentCharacter().GetComponent<CharacterShoot>();
+                shooting.ShootAtTarget(CurrentTarget().transform);
+            };
         }
 
         public void OnConfirmTarget()
@@ -82,9 +81,6 @@ namespace DungeonStrike
                 IncrementCharacterNumber(ref _currentTargetNumber);
             }
             _characterSelectionService.SelectCharacter("target", CurrentTarget().transform, Color.red);
-
-            //var currentCharacterTurning = CurrentCharacter().GetComponent<CharacterTurning>();
-            //currentCharacterTurning.TurnToFaceTarget(CurrentTarget().transform.position, null);
         }
 
         public void OnEquip()

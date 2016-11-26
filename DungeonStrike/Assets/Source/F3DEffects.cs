@@ -3,20 +3,29 @@ using UnityEngine;
 
 namespace DungeonStrike
 {
-
     public class F3DEffects : MonoBehaviour
     {
+        private static F3DEffects _instance;
+
+        public static F3DEffects Instance
+        {
+            get { return _instance ?? (_instance = FindObjectOfType<F3DEffects>()); }
+        }
+
         private void Start()
         {
             LoadPrefab(Prefab.VulcanMuzzle);
             LoadPrefab(Prefab.VulcanProjectile);
             LoadPrefab(Prefab.VulcanImpact);
+            LoadPrefab(Prefab.VulcanShotAudio);
         }
 
         public void FireVulcan(Transform parentTransform)
         {
-            var muzzleFlash = CreateFromPrefab(Prefab.VulcanMuzzle, parentTransform);
-            var audioSource = muzzleFlash.GetComponent<AudioSource>();
+            CreateFromPrefab(Prefab.VulcanMuzzle, parentTransform);
+
+            var shotAudio = CreateFromPrefab(Prefab.VulcanShotAudio, parentTransform);
+            var audioSource = shotAudio.GetComponent<AudioSource>();
             audioSource.pitch = Random.Range(0.95f, 1f);
             audioSource.volume = Random.Range(0.8f, 1f);
             audioSource.minDistance = 5f;

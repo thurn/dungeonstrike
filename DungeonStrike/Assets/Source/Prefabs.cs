@@ -8,7 +8,8 @@ namespace DungeonStrike
         Unknown,
         VulcanMuzzle,
         VulcanImpact,
-        VulcanProjectile
+        VulcanProjectile,
+        VulcanShotAudio
     }
 
     public sealed class Prefabs
@@ -23,6 +24,9 @@ namespace DungeonStrike
                     return "vulcan_projectile";
                 case Prefab.VulcanImpact:
                     return "vulcan_impact";
+                case Prefab.VulcanShotAudio:
+                    return "vulcan_shot_audio";
+
                 default:
                     throw Preconditions.UnexpectedEnumValue(prefab);
             }

@@ -40,7 +40,6 @@ namespace DungeonStrike
         {
             Preconditions.CheckState(_onComplete == null);
             angle = Transforms.ToRightAngle(angle);
-            Debug.Log("Turning to angle: " + angle);
             if (angle == 0.0f)
             {
                 onComplete();

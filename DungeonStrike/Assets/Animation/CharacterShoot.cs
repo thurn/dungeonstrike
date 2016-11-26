@@ -13,6 +13,8 @@ namespace DungeonStrike
             Shooting,
         }
 
+        public GameObject RootObject;
+
         private const float AimingSpeedFactor = 0.1f;
 
         private Vector3 _target;
@@ -24,14 +26,16 @@ namespace DungeonStrike
         private float _verticalAimAngle;
         private VectorLine _aimLine;
 
-        void Start()
+        private void Start()
         {
             _animator = GetComponent<Animator>();
             _characterTurning = GetComponent<CharacterTurning>();
             _state = State.Default;
+
+            AddAnimationEvents();
         }
 
-        void Update()
+        private void Update()
         {
             UpdateDebugLines();
 
@@ -81,35 +85,46 @@ namespace DungeonStrike
 
         private void UpdateDebugLines()
         {
-            if (DebugManager.Instance != null && DebugManager.Instance.ShowAimLines && _firingPoint != null)
+            if (DebugManager.Instance == null || !DebugManager.Instance.ShowAimLines || _firingPoint == null) return;
+
+            if (_aimLine == null)
             {
-                if (_aimLine == null)
-                {
-                    var points = new List<Vector3>(2);
-                    _aimLine = new VectorLine("aimLine", points, 5.0f /* width */);
-                }
-
-                Color color;
-                switch (_state)
-                {
-                    case State.Default:
-                        color = Color.green;
-                        break;
-                    case State.Aiming:
-                        color = Color.yellow;
-                        break;
-                    case State.Shooting:
-                        color = Color.red;
-                        break;
-                    default:
-                        throw Preconditions.UnexpectedEnumValue(_state);
-                }
-
-                _aimLine.points3[0] = _firingPoint.position;
-                _aimLine.points3[1] = _firingPoint.position + (_firingPoint.forward * 5.0f);
-                _aimLine.color = color;
-                _aimLine.Draw3D();
+                var points = new List<Vector3>(2);
+                _aimLine = new VectorLine("aimLine", points, 5.0f /* width */);
             }
+
+            Color color;
+            switch (_state)
+            {
+                case State.Default:
+                    color = Color.green;
+                    break;
+                case State.Aiming:
+                    color = Color.yellow;
+                    break;
+                case State.Shooting:
+                    color = Color.red;
+                    break;
+                default:
+                    throw Preconditions.UnexpectedEnumValue(_state);
+            }
+
+            _aimLine.points3[0] = _firingPoint.position;
+            _aimLine.points3[1] = _firingPoint.position + (_firingPoint.forward * 5.0f);
+            _aimLine.color = color;
+            _aimLine.Draw3D();
+        }
+
+        private void OnFireRifle()
+        {
+            F3DEffects.Instance.FireVulcan(_firingPoint);
+        }
+
+        private void AddAnimationEvents()
+        {
+            var animationConfiguration = RootObject.GetComponent<AnimatorConfiguration>();
+            animationConfiguration.AddAnimationCallback(_animator, AnimationClips.RifleShootOnce,
+                "OnFireRifle", 0.01f);
         }
     }
 }

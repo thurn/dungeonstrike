@@ -575,7 +575,7 @@ GameObject:
   - 4: {fileID: 4000011718316956}
   m_Layer: 0
   m_Name: ORC_ Spine
-  m_TagString: Untagged
+  m_TagString: SpineBone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1434,7 +1434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011711164822}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 5.26, y: 0, z: -4.74}
+  m_LocalPosition: {x: -6.55, y: 0, z: -9.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
@@ -1998,6 +1998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ddd382e1d7146c393be0b8795bac73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RootObject: {fileID: 0}
 --- !u!114 &114000010732086316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2054,7 +2055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModelType: 1
-  WeaponType: 0
+  WeaponType: 2
   RootObject: {fileID: 0}
 --- !u!137 &137000011418671904
 SkinnedMeshRenderer:
@@ -2069,7 +2070,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 40e6610757dcf2d4fb28a1d4c4eddf2e, type: 2}
+  - {fileID: 2100000, guid: dfa80bc0cf6679145a4103760abbf978, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -2120,7 +2121,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1ae63d9050799ff4f981f9adf4ae7e4d, type: 2}
+  - {fileID: 2100000, guid: 7225e7dd70d7f3544831d6285c00de19, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -2166,7 +2167,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1ae63d9050799ff4f981f9adf4ae7e4d, type: 2}
+  - {fileID: 2100000, guid: 7225e7dd70d7f3544831d6285c00de19, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}

@@ -6,13 +6,10 @@ namespace DungeonStrike
 {
     public class AnimatorConfiguration : MonoBehaviour
     {
-        private bool _eventsAdded = false;
-        // Clip Name -> Function Name -> Event Time:
-        private Dictionary<string, Dictionary<string, float>> _animationEvents =
-            new Dictionary<string, Dictionary<string, float>>();
-
+        private bool _eventsAdded;
         private HashSet<Animator> _animators = new HashSet<Animator>();
-        private HashSet<Type> _eventCallers;
+        private Dictionary<string, List<AnimationEvent>> _animationEvents =
+            new Dictionary<string, List<AnimationEvent>>();
 
         private void Start()
         {
@@ -25,13 +22,18 @@ namespace DungeonStrike
             Preconditions.CheckState(!_eventsAdded, "Animation events must be added in Start()!");
             if (!_animationEvents.ContainsKey(clipName))
             {
-                _animationEvents[clipName] = new Dictionary<string, float>();
+                _animationEvents[clipName] = new List<AnimationEvent>();
             }
-            _animationEvents[clipName][callbackFunctionName] = eventTime;
+            var animationEvent = new AnimationEvent
+            {
+                functionName = callbackFunctionName,
+                time = eventTime
+            };
+            _animationEvents[clipName].Add(animationEvent);
             _animators.Add(animator);
         }
 
-        private IEnumerator<WaitForSeconds> AddAllAnimationEvents()
+        private IEnumerator<YieldInstruction> AddAllAnimationEvents()
         {
             yield return new WaitForSeconds(1);
 
@@ -48,11 +50,8 @@ namespace DungeonStrike
             foreach (var item in _animationEvents)
             {
                 var animationClip = animationClips[item.Key];
-                foreach (var eventTimeItem in _animationEvents[item.Key])
+                foreach (var animationEvent in _animationEvents[item.Key])
                 {
-                    var animationEvent = new AnimationEvent();
-                    animationEvent.functionName = eventTimeItem.Key;
-                    animationEvent.time = eventTimeItem.Value;
                     animationClip.AddEvent(animationEvent);
                 }
             }
