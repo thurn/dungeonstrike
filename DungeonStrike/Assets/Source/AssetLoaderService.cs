@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using AssetBundles;
-using System;
 
 namespace DungeonStrike
 {
@@ -17,13 +16,13 @@ namespace DungeonStrike
         }
 
         // Use this for initialization
-        IEnumerator Start()
+        private IEnumerator<Coroutine> Start()
         {
             yield return StartCoroutine(Initialize());
         }
 
         // Initialize the downloading url and AssetBundleManifest object.
-        private IEnumerator Initialize()
+        private IEnumerator<Coroutine> Initialize()
         {
             // Don't destroy this gameObject as we depend on it to run the loading script.
             DontDestroyOnLoad(gameObject);
@@ -36,8 +35,6 @@ namespace DungeonStrike
 #else
 		// Use the following code if AssetBundles are embedded in the project for example via StreamingAssets folder etc:
 		AssetBundleManager.SetSourceAssetBundleURL(Application.dataPath + "/");
-		// Or customize the URL based on your deployment or configuration
-		//AssetBundleManager.SetSourceAssetBundleURL("http://www.MyWebsite/MyAssetBundles");
 #endif
 
             // Initialize AssetBundleManifest which loads the AssetBundleManifest object.
@@ -46,25 +43,27 @@ namespace DungeonStrike
                 yield return StartCoroutine(request);
         }
 
-        public void InstantiateGameObject(string bundleName, string assetName, Action<GameObject> onLoadCallback)
+        public void InstantiateGameObject(string bundleName, string assetName, System.Action<GameObject> onLoadCallback)
         {
-            StartCoroutine(InstantiateGameObjecCoroutine(bundleName, assetName, onLoadCallback));
+            StartCoroutine(InstantiateGameObjectCoroutine(bundleName, assetName, onLoadCallback));
         }
 
-        private IEnumerator InstantiateGameObjecCoroutine(string assetBundleName, string assetName, Action<GameObject> onLoadCallback)
+        private IEnumerator<Coroutine> InstantiateGameObjectCoroutine(string assetBundleName,
+            string assetName,
+            System.Action<GameObject> onLoadCallback)
         {
             // Load asset from assetBundle.
-            AssetBundleLoadAssetOperation request = AssetBundleManager.LoadAssetAsync(assetBundleName, assetName, typeof(GameObject));
+            var request = AssetBundleManager.LoadAssetAsync(assetBundleName, assetName, typeof(GameObject));
             if (request == null)
                 yield break;
             yield return StartCoroutine(request);
 
             // Get the asset.
-            GameObject prefab = request.GetAsset<GameObject>();
+            var prefab = request.GetAsset<GameObject>();
 
             if (prefab != null)
             {
-                var result = GameObject.Instantiate(prefab);
+                var result = Object.Instantiate(prefab);
                 onLoadCallback(result);
             }
         }

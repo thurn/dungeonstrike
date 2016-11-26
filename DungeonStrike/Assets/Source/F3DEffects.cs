@@ -1,69 +1,54 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace DungeonStrike
 {
 
     public class F3DEffects : MonoBehaviour
     {
-        // TODO:
-        // Replace with AssetLoader. Direct prefab references are scary! Mutations at
-        // runtime persist in the editor!
-
-        public GameObject VulcanMuzzle;
-        public GameObject VulcanProjectile;
-        public GameObject VulcanImpact;
-        public GameObject VulcanShell;
-        public GameObject VulcanSpark;
-        public AudioClip VulcanShotAudio;
-        public AudioClip VulcanImpactAudio;
-
         private void Start()
         {
-            InitializePools(
-                VulcanMuzzle,
-                VulcanProjectile,
-                VulcanImpact,
-                VulcanShell,
-                VulcanSpark
-            );
+            LoadPrefab(Prefab.VulcanMuzzle);
+            LoadPrefab(Prefab.VulcanProjectile);
+            LoadPrefab(Prefab.VulcanImpact);
         }
 
         public void FireVulcan(Transform parentTransform)
         {
-            CreateFromPrefab(VulcanMuzzle, parentTransform);
-            CreateFromPrefab(VulcanProjectile, parentTransform);
-
-            var audioSource = parentTransform.GetComponent<AudioSource>();
-            Preconditions.CheckState(audioSource != null, "Firing source must have an AudioSource.");
-            audioSource.clip = VulcanShotAudio;
+            var muzzleFlash = CreateFromPrefab(Prefab.VulcanMuzzle, parentTransform);
+            var audioSource = muzzleFlash.GetComponent<AudioSource>();
             audioSource.pitch = Random.Range(0.95f, 1f);
             audioSource.volume = Random.Range(0.8f, 1f);
             audioSource.minDistance = 5f;
-            audioSource.loop = false;
             audioSource.Play();
+
+            var projectileObject = CreateFromPrefab(Prefab.VulcanProjectile, parentTransform);
+            var projectile = projectileObject.GetComponent<Projectile>();
+            projectile.OnImpact = (impactPosition) =>
+            {
+                var impact = CreateFromPrefab(Prefab.VulcanImpact, null);
+                impact.transform.position = impactPosition;
+            };
         }
 
-        private static void InitializePools(params GameObject[] prefabs)
+        private static void LoadPrefab(Prefab prefab)
         {
-            foreach (var prefab in prefabs)
+            var prefabName = Prefabs.GetAssetName(prefab);
+            AssetLoaderService.Instance.InstantiateGameObject("gun_effects", prefabName, (instance) =>
             {
-                var pool = FastPoolManager.GetPool(prefab);
-                pool.Capacity = 10;
-                pool.PreloadCount = 1;
+                foreach (var poolIdConsumer in instance.GetComponents<IPoolIdConsumer>()) {
+                    poolIdConsumer.PoolId = (int)prefab;
+                }
+
+                var pool = FastPoolManager.CreatePool((int)prefab, instance, true, 1, 10);
                 pool.NotificationType = PoolItemNotificationType.Interface;
 
-                var despawner = prefab.GetComponent<Despawner>();
-                if (despawner != null)
-                {
-                    Debug.Log("Setting pool ID");
-                    despawner.PoolId = pool.ID;
-                }
-            }
+            });
         }
 
-        private static GameObject CreateFromPrefab(GameObject prefab, Transform parent)
+        private static GameObject CreateFromPrefab(Prefab prefab, Transform parent)
         {
-            var pool = FastPoolManager.GetPool(prefab, createIfNotExists: false);
+            var pool = FastPoolManager.GetPool((int)prefab, null, createIfNotExists: false);
             var result = pool.FastInstantiate(parent);
             return result;
         }

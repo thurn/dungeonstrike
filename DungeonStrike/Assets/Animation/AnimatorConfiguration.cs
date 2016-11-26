@@ -6,18 +6,15 @@ namespace DungeonStrike
 {
     public class AnimatorConfiguration : MonoBehaviour
     {
-        private struct EventInfo {
-            float eventTime;
-            string callbackFunctionName;
-        }
-
         private bool _eventsAdded = false;
         // Clip Name -> Function Name -> Event Time:
-        private Dictionary<string, Dictionary<string, float>> _animationEvents = new Dictionary<string, Dictionary<string, float>>();
+        private Dictionary<string, Dictionary<string, float>> _animationEvents =
+            new Dictionary<string, Dictionary<string, float>>();
+
         private HashSet<Animator> _animators = new HashSet<Animator>();
         private HashSet<Type> _eventCallers;
 
-        void Start()
+        private void Start()
         {
             StartCoroutine(AddAllAnimationEvents());
         }
@@ -26,7 +23,8 @@ namespace DungeonStrike
             float eventTime)
         {
             Preconditions.CheckState(!_eventsAdded, "Animation events must be added in Start()!");
-            if (!_animationEvents.ContainsKey(clipName)) {
+            if (!_animationEvents.ContainsKey(clipName))
+            {
                 _animationEvents[clipName] = new Dictionary<string, float>();
             }
             _animationEvents[clipName][callbackFunctionName] = eventTime;

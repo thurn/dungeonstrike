@@ -1,12 +1,25 @@
 ﻿using UnityEngine;
+using System;
 
 namespace DungeonStrike
 {
-    public class Projectile : MonoBehaviour
+    public class Projectile : MonoBehaviour, IPoolIdConsumer
     {
         public float Velocity;
+        public Action<Vector3> OnImpact { get; set; }
         public LayerMask LayerMask;
-        private ParticleSystem[] _childParticleSystems;
+
+        [HideInInspector] [SerializeField] private int _poolId;
+
+        public int PoolId
+        {
+            get { return _poolId; }
+            set
+            {
+                Preconditions.CheckArgument(value != 0, "PoolID cannot be 0");
+                _poolId = value;
+            }
+        }
 
         private void Update()
         {
@@ -17,7 +30,11 @@ namespace DungeonStrike
             // Raycast for targets with ray length based on frame step by ray cast advance multiplier
             if (Physics.Raycast(transform.position, transform.forward, out hitPoint, step.magnitude * 2.0f, LayerMask))
             {
-                FastPoolManager.GetPool(gameObject).FastDestroy(gameObject);
+                if (OnImpact != null)
+                {
+                    OnImpact(hitPoint.point);
+                }
+                FastPoolManager.GetPool(_poolId, null).FastDestroy(gameObject);
             }
 
             // Advances projectile forward
