@@ -22,7 +22,7 @@ GameObject:
   - 82: {fileID: 82000014051117798}
   - 114: {fileID: 114000010622025624}
   m_Layer: 0
-  m_Name: vulcan_impact_audio
+  m_Name: vulcan_shot_audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

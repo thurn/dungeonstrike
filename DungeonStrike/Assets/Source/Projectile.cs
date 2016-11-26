@@ -14,13 +14,17 @@ namespace DungeonStrike
             // Projectile step per frame based on velocity and time
             var step = transform.forward * Time.deltaTime * Velocity;
 
-            RaycastHit hitPoint;
+            RaycastHit raycastHit;
             // Raycast for targets with ray length based on frame step by ray cast advance multiplier
-            if (Physics.Raycast(transform.position, transform.forward, out hitPoint, step.magnitude * 5.0f, LayerMask))
+            if (Physics.Raycast(transform.position, transform.forward, out raycastHit, step.magnitude * 5.0f, LayerMask))
             {
+                foreach (var onProjectileHit in raycastHit.collider.GetComponents<IOnProjectileHit>())
+                {
+                    onProjectileHit.OnProjectileHit();
+                }
                 if (OnImpact != null)
                 {
-                        OnImpact(hitPoint.point);
+                        OnImpact(raycastHit.point);
                 }
                 Pool.FastDestroy(gameObject);
             }
