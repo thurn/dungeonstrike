@@ -2,7 +2,6 @@
 ;
 !About Standard Assets.txt 0c3fd18e
 !About Standard Assets.txt.meta 901006fd
-.DS_Store 7804e5ee
 Demo/Animations/Animation 1.anim 34fa687c
 Demo/Animations/Animation 1.anim.meta 40beda30
 Demo/Animations/Animation 2.anim 4a980745
@@ -820,7 +819,6 @@ Scripts/MovementScript.cs.meta 02e4185a
 Scripts/fpscounter.cs 03e91855
 Scripts/fpscounter.cs.meta 9ef4a1a2
 Scripts.meta 9fd7fa0d
-_source/.DS_Store f3dead22
 _source/Materials/Addons.mat c025887b
 _source/Materials/Addons.mat.meta 6e9a0b7b
 _source/Materials/Bricks1.mat 2674aabd

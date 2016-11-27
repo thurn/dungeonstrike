@@ -1,10 +1,8 @@
 ; 
 ;
-.DS_Store 95e7cbd8
 Fonts/FrankGothMed.zip d41c9cc1
 Fonts/FrankGothMed.zip.meta b0ba4e8a
 Fonts.meta 8ec79be1
-Mine/.DS_Store 60ec9c6c
 Mine/Screen Shot 2015-09-21 at 8.43.43 AM.png 86cb860b
 Mine/Screen Shot 2015-09-21 at 8.43.43 AM.png.meta d0676abb
 Mine/current3.pxm e75fd012
@@ -62,7 +60,6 @@ PSD Files/tech_resized.psd.meta 7526fd74
 PSD Files.meta 3671f80e
 Read Me.rtf fddcf41b
 Read Me.rtf.meta 2f22d85d
-Sliced/.DS_Store 47bd3818
 Sliced/Beast Card/Beast Actual Size/beast_backside_big.png c65b9795
 Sliced/Beast Card/Beast Actual Size/beast_backside_big.png.meta c7ca12fe
 Sliced/Beast Card/Beast Actual Size/beast_frontside_big.png f524d31b
@@ -197,7 +194,6 @@ Sliced/Mystic Card/Mystic Resized/uncommon_small.png 57c906b1
 Sliced/Mystic Card/Mystic Resized/uncommon_small.png.meta 1981fcd2
 Sliced/Mystic Card/Mystic Resized.meta 2dbbe5d8
 Sliced/Mystic Card.meta b9a32e22
-Sliced/Tech Card/.DS_Store 01a450e7
 Sliced/Tech Card/Tech Actual Size/attack_slot_big.png b3ad3454
 Sliced/Tech Card/Tech Actual Size/attack_slot_big.png.meta 6ec70354
 Sliced/Tech Card/Tech Actual Size/card_cost_big.png b976a196

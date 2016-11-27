@@ -1,7 +1,5 @@
 ; 
 ;
-.DS_Store b7ac548f
-green_ice/.DS_Store c97fa8c4
 green_ice/back_(ice)/back_(ice).PSD cc2f4267
 green_ice/back_(ice)/back_(ice).PSD.meta 1edb116b
 green_ice/back_(ice)/back_(ice).pxm 0081c176
@@ -27,8 +25,6 @@ green_ice/card_title_(ice)/frame_title_ice.png ed4c1d69
 green_ice/card_title_(ice)/frame_title_ice.png.meta 184b787f
 green_ice/card_title_(ice).meta adb4b58d
 green_ice.meta a16d289b
-grey_wood/.DS_Store 23c66fc0
-grey_wood/back_(grey_wood)/.DS_Store 3895c162
 grey_wood/back_(grey_wood)/back_grey_wood.PSD dd95a336
 grey_wood/back_(grey_wood)/back_grey_wood.PSD.meta 3441f7ce
 grey_wood/back_(grey_wood)/back_grey_wood.png de247169
@@ -58,7 +54,6 @@ grey_wood/card_title_(grey_wood)/slot_grey_wood.png c703f5e0
 grey_wood/card_title_(grey_wood)/slot_grey_wood.png.meta e7481d16
 grey_wood/card_title_(grey_wood).meta 503d6eeb
 grey_wood.meta 0ecc99e8
-ice_style/.DS_Store 90874007
 ice_style/back_(ice)/back_(ice).PSD cc2f4267
 ice_style/back_(ice)/back_(ice).PSD.meta 6ef39c02
 ice_style/back_(ice)/bg_back_ice.PNG 8ec5598f
@@ -72,7 +67,6 @@ ice_style/card_title_(ice)/frame_title_ice.png ed4c1d69
 ice_style/card_title_(ice)/frame_title_ice.png.meta dbfdb49c
 ice_style/card_title_(ice).meta 050c8394
 ice_style.meta 8fb974bd
-lava_style/.DS_Store c42f57e1
 lava_style/back_(lava)/back_(lava).PSD d52e5149
 lava_style/back_(lava)/back_(lava).PSD.meta 2ee63ed4
 lava_style/back_(lava)/back_(lava).pxm aa2afe33
@@ -98,8 +92,6 @@ lava_style/card_title_(lava)/mana_point_lava.PNG 37c5dad5
 lava_style/card_title_(lava)/mana_point_lava.PNG.meta 645fa56f
 lava_style/card_title_(lava).meta b30a7d0b
 lava_style.meta afacf713
-sci-fi_style/.DS_Store d8762ffd
-sci-fi_style/back_(sci-fi)/.DS_Store 6d88006a
 sci-fi_style/back_(sci-fi)/back_(sci-fi).PSD 3b45f87d
 sci-fi_style/back_(sci-fi)/back_(sci-fi).PSD.meta 9054648b
 sci-fi_style/back_(sci-fi)/back_(sci-fi).pxm ca1eab8a
@@ -123,7 +115,6 @@ sci-fi_style/card_title_(sci-fi)/frame_title_sci-fi.png 10e29144
 sci-fi_style/card_title_(sci-fi)/frame_title_sci-fi.png.meta e92360c3
 sci-fi_style/card_title_(sci-fi).meta 7d659e73
 sci-fi_style.meta c915b4e6
-wooden_style/.DS_Store 658f75c4
 wooden_style/back_(wood)/back_wood.PSD 7abfcfb6
 wooden_style/back_(wood)/back_wood.PSD.meta c593e07c
 wooden_style/back_(wood)/back_wood.png 09f87d1b

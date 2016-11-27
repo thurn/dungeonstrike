@@ -1,12 +1,15 @@
 ; 
 ;
-.DS_Store 32582c4a
 Editor/ImageEffects/AntialiasingEditor.cs 0eb43878
 Editor/ImageEffects/AntialiasingEditor.cs.meta 48e0e050
 Editor/ImageEffects/BloomAndFlaresEditor.cs ba0a7fed
 Editor/ImageEffects/BloomAndFlaresEditor.cs.meta ed8baf0b
+Editor/ImageEffects/BloomAndLensFlaresEditor.js 4235cbdd
+Editor/ImageEffects/BloomAndLensFlaresEditor.js.meta b97214f6
 Editor/ImageEffects/BloomEditor.cs de00a431
 Editor/ImageEffects/BloomEditor.cs.meta 296fda7c
+Editor/ImageEffects/BloomEditor.js 1e09c7cd
+Editor/ImageEffects/BloomEditor.js.meta 2480bdf3
 Editor/ImageEffects/CameraMotionBlurEditor.cs 0f6f3b86
 Editor/ImageEffects/CameraMotionBlurEditor.cs.meta c8e386bd
 Editor/ImageEffects/ColorCorrectionCurvesEditor.cs a026d248
@@ -30,6 +33,9 @@ Editor/ImageEffects/TonemappingEditor.cs.meta 41a55c29
 Editor/ImageEffects/VignetteAndChromaticAberrationEditor.cs 533d8f76
 Editor/ImageEffects/VignetteAndChromaticAberrationEditor.cs.meta 7c6079f9
 Editor/ImageEffects.meta 4f843331
+Editor/Scripts/EffectSettingsEditor.cs e88483bd
+Editor/Scripts/EffectSettingsEditor.cs.meta e3951f74
+Editor/Scripts.meta e0f8b1f6
 Editor.meta 42a46042
 Effects/GlassRefraction/Materials/GlassRefractive.mat 8857c293
 Effects/GlassRefraction/Materials/GlassRefractive.mat.meta cc7238fe
