@@ -14,8 +14,7 @@ namespace DungeonStrike
         public void OnProjectileHit()
         {
             _animator.applyRootMotion = false;
-            var hitNumber = Random.Range(1, 4);
-            Debug.Log("hit number " + hitNumber);
+            var hitNumber = Random.Range(1, 5);
             _animator.SetFloat("HitNumber", hitNumber);
             _animator.SetTrigger("GetHit");
         }
