@@ -57,7 +57,8 @@ namespace DungeonStrike
             }
 
             // Finished playing Shoot animation
-            if (_state == State.Shooting && _animator.GetNextAnimatorStateInfo(2).IsName(AnimationStates.ShootingEmptyState))
+            if (_state == State.Shooting &&
+                _animator.GetNextAnimatorStateInfo(2).IsName(AnimationStates.ShootingEmptyState))
             {
                 _animator.SetBool("Aiming", false);
                 _state = State.Default;
@@ -123,8 +124,16 @@ namespace DungeonStrike
         private void AddAnimationEvents()
         {
             var animationConfiguration = RootObject.GetComponent<AnimatorConfiguration>();
-            animationConfiguration.AddAnimationCallback(_animator, AnimationClips.RifleShootOnce,
-                "OnFireRifle", 0.01f);
+            animationConfiguration.AddAnimationCallback(_animator, GetType(),
+                new List<AnimationDescription>
+                {
+                    new AnimationDescription()
+                    {
+                        ClipName = AnimationClips.RifleShootOnce,
+                        CallbackFunctionName = "OnFireRifle",
+                        EventTime = 0.01f
+                    },
+                });
         }
     }
 }

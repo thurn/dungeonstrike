@@ -6,6 +6,11 @@
 
 set -e
 
+if [ "$#" -eq 0 ]; then
+    echo "Usage: gitCommit.sh [--amendHead] [args ...]"
+    exit
+fi
+
 if [[ $(pwd) != *"dungeonstrike" ]]
 then
   echo "You must invoke this script from the root directory."

@@ -1,13 +1,23 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 
 namespace DungeonStrike
 {
+    public struct AnimationDescription
+    {
+        public string ClipName { get; set; }
+        public string CallbackFunctionName { get; set; }
+        public float EventTime { get; set; }
+    }
+
+
     public class AnimatorConfiguration : MonoBehaviour
     {
         private bool _eventsAdded;
         private HashSet<Animator> _animators = new HashSet<Animator>();
+        private HashSet<Type> _processedComponents = new HashSet<Type>();
+
         private Dictionary<string, List<AnimationEvent>> _animationEvents =
             new Dictionary<string, List<AnimationEvent>>();
 
@@ -16,20 +26,29 @@ namespace DungeonStrike
             StartCoroutine(AddAllAnimationEvents());
         }
 
-        public void AddAnimationCallback(Animator animator, string clipName, string callbackFunctionName,
-            float eventTime)
+        public void AddAnimationCallback(Animator animator, Type sourceComponent, List<AnimationDescription> animations)
         {
-            Preconditions.CheckState(!_eventsAdded, "Animation events must be added in Start()!");
-            if (!_animationEvents.ContainsKey(clipName))
+            if (_processedComponents.Contains(sourceComponent))
             {
-                _animationEvents[clipName] = new List<AnimationEvent>();
+                return;
             }
-            var animationEvent = new AnimationEvent
+
+            _processedComponents.Add(sourceComponent);
+            Preconditions.CheckState(!_eventsAdded, "Animation events must be added in Start()!");
+
+            foreach (var animationDescription in animations)
             {
-                functionName = callbackFunctionName,
-                time = eventTime
-            };
-            _animationEvents[clipName].Add(animationEvent);
+                if (!_animationEvents.ContainsKey(animationDescription.ClipName))
+                {
+                    _animationEvents[animationDescription.ClipName] = new List<AnimationEvent>();
+                }
+                var animationEvent = new AnimationEvent
+                {
+                    functionName = animationDescription.CallbackFunctionName,
+                    time = animationDescription.EventTime
+                };
+                _animationEvents[animationDescription.ClipName].Add(animationEvent);
+            }
             _animators.Add(animator);
         }
 
@@ -59,6 +78,7 @@ namespace DungeonStrike
             _eventsAdded = true;
             _animationEvents = null;
             _animators = null;
+            _processedComponents = null;
         }
     }
 }

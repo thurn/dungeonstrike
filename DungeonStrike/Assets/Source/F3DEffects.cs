@@ -51,7 +51,6 @@ namespace DungeonStrike
 
                 var pool = FastPoolManager.CreatePool((int)prefab, instance, true, 1, 10);
                 pool.NotificationType = PoolItemNotificationType.Interface;
-
             });
         }
 

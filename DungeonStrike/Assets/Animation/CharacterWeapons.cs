@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace DungeonStrike
 {
@@ -25,23 +26,13 @@ namespace DungeonStrike
             // Jump to a random frame to prevent different characters in the idle state
             // from synchronizing their movements
             _animator.Play(AnimationStates.RifleIdle, 0, Random.Range(0.0f, 1.0f));
-            _rifleEquipped = true;
 
             AddAnimationEvents();
         }
 
         public void EquipOrHolsterWeapon()
         {
-            if (_rifleEquipped)
-            {
-                _animator.SetInteger("WeaponNumber", 1);
-                _rifleEquipped = false;
-            }
-            else
-            {
-                _animator.SetInteger("WeaponNumber", 0);
-                _rifleEquipped = true;
-            }
+            _animator.SetInteger("WeaponNumber", _rifleObject.HasValue ? 1 : 0);
         }
 
         public void OnHolsterRifle()
@@ -62,11 +53,24 @@ namespace DungeonStrike
 
         private void AddAnimationEvents()
         {
+            Debug.Log("AddAnimationEvents");
             var animationConfiguration = RootObject.GetComponent<AnimatorConfiguration>();
-            animationConfiguration.AddAnimationCallback(_animator, AnimationClips.HolsterRifle,
-                "OnHolsterRifle", 1.00f);
-            animationConfiguration.AddAnimationCallback(_animator, AnimationClips.EquipRifle,
-                "OnEquipRifle", 0.30f);
+            animationConfiguration.AddAnimationCallback(_animator, GetType(),
+                new List<AnimationDescription>
+                {
+                    new AnimationDescription()
+                    {
+                        ClipName = AnimationClips.HolsterRifle,
+                        CallbackFunctionName = "OnHolsterRifle",
+                        EventTime = 1.00f
+                    },
+                    new AnimationDescription()
+                    {
+                        ClipName = AnimationClips.EquipRifle,
+                        CallbackFunctionName = "OnEquipRifle",
+                        EventTime = 0.30f
+                    },
+                });
         }
     }
 }
