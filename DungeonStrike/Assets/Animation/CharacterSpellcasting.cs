@@ -15,6 +15,7 @@ namespace DungeonStrike
         private float? _spineAngle;
         private Transform _spineBone;
         private bool _hitTarget;
+        private EffectSettings _effectSettings;
 
         private void Start()
         {
@@ -57,6 +58,7 @@ namespace DungeonStrike
             _spineAngle = Transforms.AngleToTarget(this.transform, _targetPosition);
             _casting = true;
             _animator.SetTrigger("Casting");
+            StartCasting();
         }
 
         private void OnHitTarget(object sender, CollisionInfo collisionInfo)
@@ -75,17 +77,22 @@ namespace DungeonStrike
 
         private void OnCastSpell()
         {
+            _effectSettings.MoveSpeed = 10;
+        }
+
+        private void StartCasting()
+        {
             _hitTarget = false;
             AssetLoaderService.Instance.InstantiateGameObject("spell_effects",
                 SpellConstants.AssetNameForSpell(SpellType), (instance) =>
                 {
                     instance.transform.SetParent(this.transform, false);
                     instance.transform.localPosition = new Vector3(0.0f, 1.5f, 1.0f);
-                    var effectSettings = instance.GetComponent<EffectSettings>();
-                    effectSettings.Target = _target;
-                    effectSettings.IsHomingMove = true;
-                    effectSettings.MoveSpeed = 10;
-                    effectSettings.CollisionEnter += OnHitTarget;
+                    _effectSettings = instance.GetComponent<EffectSettings>();
+                    _effectSettings.Target = _target;
+                    _effectSettings.IsHomingMove = true;
+                    _effectSettings.MoveSpeed = 0;
+                    _effectSettings.CollisionEnter += OnHitTarget;
                 });
         }
 
