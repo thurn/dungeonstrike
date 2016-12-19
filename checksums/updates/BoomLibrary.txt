@@ -1,0 +1,2 @@
+- audio clips are "hits" cropped to have the impact occur at around 1.9s
+- each audio clip is in the spell_audio bundle

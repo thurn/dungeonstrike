@@ -1,14 +1,10 @@
 ; 
 ;
-MADS Fire Ball 01 Cast.wav 967f32d2
-MADS Fire Ball 01 Cast.wav.meta abd0c4d3
-MADS Fire Ball 01 Hit.wav 1cf8423b
-MADS Fire Ball 01 Hit.wav.meta dd8d0c39
-MADS Fire Ball 02 Cast.wav 3e8d5dc1
-MADS Fire Ball 02 Cast.wav.meta 9f671256
-MADS Fire Ball 02 Hit.wav a27ce83e
-MADS Fire Ball 02 Hit.wav.meta 7712306c
-MADS Ice Ball 02 Cast.wav b9ad4a5d
-MADS Ice Ball 02 Cast.wav.meta 84308dc1
-MADS Ice Ball 02 Hit.wav c4492244
-MADS Ice Ball 02 Hit.wav.meta d5ea0526
+FireArrow01.wav 212067f1
+FireArrow01.wav.meta c9f9a2f2
+FireBall01.wav 03c1a35a
+FireBall01.wav.meta b460e272
+FireBall02.wav ec29e1cd
+FireBall02.wav.meta 536d3569
+IceArrow01.wav 3aca2c52
+IceArrow01.wav.meta aecc475d

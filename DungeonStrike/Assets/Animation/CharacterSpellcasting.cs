@@ -16,6 +16,7 @@ namespace DungeonStrike
         private Transform _spineBone;
         private bool _hitTarget;
         private EffectSettings _effectSettings;
+        private AudioSource _audioSource;
 
         private void Start()
         {
@@ -23,6 +24,8 @@ namespace DungeonStrike
             _animator = GetComponent<Animator>();
             _spineBone = Transforms.FindChildTransformWithTag(this.transform, Tags.SpineBone);
             AddAnimationEvents();
+            _audioSource = GetComponent<AudioSource>();
+            SpellConstants.PreloadAudioForSpell(SpellType);
         }
 
         private void Update()
@@ -83,6 +86,9 @@ namespace DungeonStrike
         private void StartCasting()
         {
             _hitTarget = false;
+            var clip = SpellConstants.AudioClipForSpell(SpellType);
+            _audioSource.PlayOneShot(clip);
+
             AssetLoaderService.Instance.InstantiateGameObject("spell_effects",
                 SpellConstants.AssetNameForSpell(SpellType), (instance) =>
                 {

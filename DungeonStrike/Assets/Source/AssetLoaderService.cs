@@ -33,7 +33,7 @@ namespace DungeonStrike
 #if DEVELOPMENT_BUILD || UNITY_EDITOR
             AssetBundleManager.SetDevelopmentAssetBundleServer();
 #else
-		// Use the following code if AssetBundles are embedded in the project for example via StreamingAssets folder etc:
+// Use the following code if AssetBundles are embedded in the project for example via StreamingAssets folder etc:
 		AssetBundleManager.SetSourceAssetBundleURL(Application.dataPath + "/");
 #endif
 
@@ -46,6 +46,26 @@ namespace DungeonStrike
         public void InstantiateGameObject(string bundleName, string assetName, System.Action<GameObject> onLoadCallback)
         {
             StartCoroutine(InstantiateGameObjectCoroutine(bundleName, assetName, onLoadCallback));
+        }
+
+        public void InstantiateObject<T>(string bundleName, string assetName, System.Action<T> onLoadCallback)
+            where T : Object
+        {
+            StartCoroutine(InstantiateObjectAsync<T>(bundleName, assetName, onLoadCallback));
+        }
+
+        private IEnumerator<Coroutine> InstantiateObjectAsync<T>(string bundleName, string assetName,
+            System.Action<T> onLoadCallback) where T : Object
+        {
+            var loadRequest = AssetBundleManager.LoadAssetAsync(bundleName, assetName, typeof(T));
+            if (loadRequest == null) yield break;
+            yield return StartCoroutine(loadRequest);
+            var instance = loadRequest.GetAsset<T>();
+            if (instance != null)
+            {
+                var result = Object.Instantiate(instance);
+                onLoadCallback(instance);
+            }
         }
 
         private IEnumerator<Coroutine> InstantiateGameObjectCoroutine(string assetBundleName,

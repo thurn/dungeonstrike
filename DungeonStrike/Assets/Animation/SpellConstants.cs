@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEngine;
 
 namespace DungeonStrike
 {
@@ -29,6 +30,31 @@ namespace DungeonStrike
         public static string AssetNameForSpell(SpellType spellType)
         {
             return Prefabs.GetAssetName(PrefabForSpell(spellType));
+        }
+
+        public static string AudioClipNameForSpell(SpellType spellType)
+        {
+            switch (spellType)
+            {
+                case SpellType.Fireball1:
+                    return AudioConstants.FireBall01;
+                case SpellType.FireMeteor1:
+                    return AudioConstants.FireBall02;
+                case SpellType.Frostbolt1:
+                    return AudioConstants.IceArrow01;
+                default:
+                    throw Preconditions.UnexpectedEnumValue(spellType);
+            }
+        }
+
+        public static void PreloadAudioForSpell(SpellType spellType)
+        {
+            AudioManager.Instance.PreloadClip("spell_audio", AudioClipNameForSpell(spellType));
+        }
+
+        public static AudioClip AudioClipForSpell(SpellType spellType)
+        {
+            return AudioManager.Instance.GetClip(AudioClipNameForSpell(spellType));
         }
     }
 }
