@@ -3,6 +3,7 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Aa]ssets/ThirdParty/
+/[Aa]ssets/StreamingAssets/
 /[Aa]ssets/[Pp]lugins/ThirdParty/
 /[Aa]ssetBundles/
 /[Oo]ut/

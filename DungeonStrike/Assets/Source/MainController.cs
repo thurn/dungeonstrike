@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using AssetBundles;
 
 namespace DungeonStrike
 {

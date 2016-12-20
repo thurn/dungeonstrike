@@ -13,11 +13,11 @@ namespace DungeonStrike
 
     public class CharacterMovement : MonoBehaviour
     {
-        private NavMeshAgent _navMeshAgent;
+        private UnityEngine.AI.NavMeshAgent _navMeshAgent;
         private Animator _animator;
         private Vector3 _target;
         private AnimationState _state;
-        private NavMeshPath _nextPath;
+        private UnityEngine.AI.NavMeshPath _nextPath;
         private CharacterTurning _characterTurning;
         private GameObject _steeringIndicator;
         private GameObject _nextPositionIndicator;
@@ -25,7 +25,7 @@ namespace DungeonStrike
 
         void Start()
         {
-            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             _animator = GetComponent<Animator>();
             _state = AnimationState.Idle;
             _characterTurning = GetComponent<CharacterTurning>();
@@ -70,10 +70,10 @@ namespace DungeonStrike
         private void BeginMoving()
         {
             _animator.applyRootMotion = false;
-            _nextPath = new NavMeshPath();
+            _nextPath = new UnityEngine.AI.NavMeshPath();
             _navMeshAgent.CalculatePath(_target, _nextPath);
 
-            Preconditions.CheckState(_nextPath.status == NavMeshPathStatus.PathComplete);
+            Preconditions.CheckState(_nextPath.status == UnityEngine.AI.NavMeshPathStatus.PathComplete);
             var corner1 = _nextPath.corners[1];
             var targetDistance = Vector3.Distance(transform.position, _target);
             var corner1Distance = Vector3.Distance(transform.position, corner1);

@@ -43,14 +43,18 @@ namespace DungeonStrike
         private static void LoadPrefab(Prefab prefab)
         {
             var prefabName = Prefabs.GetAssetName(prefab);
-            AssetLoaderService.Instance.InstantiateGameObject("gun_effects", prefabName, (instance) =>
+            AssetLoaderService.Instance.LoadAssetsWithBlock(assetLoader =>
             {
-                foreach (var poolIdConsumer in instance.GetComponents<IPoolIdConsumer>()) {
-                    poolIdConsumer.PoolId = (int)prefab;
-                }
+                assetLoader.InstantiateObject("gun_effects", prefabName, (GameObject instance) =>
+                {
+                    foreach (var poolIdConsumer in instance.GetComponents<IPoolIdConsumer>())
+                    {
+                        poolIdConsumer.PoolId = (int) prefab;
+                    }
 
-                var pool = FastPoolManager.CreatePool((int)prefab, instance, true, 1, 10);
-                pool.NotificationType = PoolItemNotificationType.Interface;
+                    var pool = FastPoolManager.CreatePool((int) prefab, instance, true, 1, 10);
+                    pool.NotificationType = PoolItemNotificationType.Interface;
+                });
             });
         }
 

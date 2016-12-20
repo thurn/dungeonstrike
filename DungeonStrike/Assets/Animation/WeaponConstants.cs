@@ -50,7 +50,8 @@ namespace DungeonStrike
             }
         }
 
-        public static void EquipWeapon(Transform attachPoint, WeaponType weaponType, ModelType modelType, System.Action<Optional<GameObject>> onSuccess)
+        public static void EquipWeapon(Transform attachPoint, WeaponType weaponType, ModelType modelType,
+            System.Action<Optional<GameObject>> onSuccess)
         {
             if (weaponType == WeaponType.None)
             {
@@ -59,21 +60,24 @@ namespace DungeonStrike
             }
 
             var assetName = AssetNameForWeapon(weaponType);
-            AssetLoaderService.Instance.InstantiateGameObject("guns", assetName, (GameObject weapon) =>
+            AssetLoaderService.Instance.LoadAssetsWithBlock(assetLoader =>
             {
-                weapon.transform.SetParent(attachPoint);
-                switch (weaponType)
+                assetLoader.InstantiateObject("guns", assetName, (GameObject weapon) =>
                 {
-                    case WeaponType.Rifle1:
-                        EquipRifle1(attachPoint, weapon, modelType);
-                        break;
-                    case WeaponType.Rifle2:
-                        EquipRifle2(attachPoint, weapon, modelType);
-                        break;
-                    default:
-                        throw Preconditions.UnexpectedEnumValue(weaponType);
-                }
-                if (onSuccess != null) onSuccess(Optional<GameObject>.Of(weapon));
+                    weapon.transform.SetParent(attachPoint);
+                    switch (weaponType)
+                    {
+                        case WeaponType.Rifle1:
+                            EquipRifle1(attachPoint, weapon, modelType);
+                            break;
+                        case WeaponType.Rifle2:
+                            EquipRifle2(attachPoint, weapon, modelType);
+                            break;
+                        default:
+                            throw Preconditions.UnexpectedEnumValue(weaponType);
+                    }
+                    if (onSuccess != null) onSuccess(Optional<GameObject>.Of(weapon));
+                });
             });
         }
 
