@@ -6,14 +6,35 @@ using Object = UnityEngine.Object;
 
 namespace DungeonStrike
 {
-    public interface IAssetLoader
+    public class AssetLoaderService : MonoBehaviour
     {
-        void InstantiateObject<T>(string bundleName, string assetName, System.Action<T> onLoadCallback)
-            where T : Object;
-    }
+        interface ILoadRequest
+        {
+            AssetBundleLoadAssetOperation NewLoadOperation();
+            void HandleCompletedLoad(AssetBundleLoadAssetOperation operation);
+        }
 
-    public class AssetLoaderService : MonoBehaviour, IAssetLoader
-    {
+        class LoadRequest<T> : ILoadRequest where T : Object
+        {
+            public string BundleName { get; set; }
+            public string AssetName { get; set; }
+            public Action<T> OnLoadCallback { get; set; }
+
+            public AssetBundleLoadAssetOperation NewLoadOperation()
+            {
+                return AssetBundleManager.LoadAssetAsync(BundleName, AssetName, typeof(T));
+            }
+
+            public void HandleCompletedLoad(AssetBundleLoadAssetOperation operation)
+            {
+                var instance = operation.GetAsset<T>();
+                if (instance != null)
+                {
+                    OnLoadCallback(Instantiate(instance));
+                }
+            }
+        }
+
         private static AssetLoaderService _instance;
 
         public static AssetLoaderService Instance
@@ -22,7 +43,7 @@ namespace DungeonStrike
         }
 
         private bool _initialized = false;
-        private readonly List<System.Action<IAssetLoader>> _loadAssetBlocks = new List<Action<IAssetLoader>>();
+        private HashSet<ILoadRequest> _loadRequests = new HashSet<ILoadRequest>();
 
         void Awake()
         {
@@ -45,44 +66,36 @@ namespace DungeonStrike
 
             Debug.Log("Done initializing AssetManager.");
             _initialized = true;
-            foreach (var actionBlock in _loadAssetBlocks)
+
+            foreach (var loadRequest in _loadRequests)
             {
-                actionBlock(this);
+                StartCoroutine(LoadAssetAsync(loadRequest));
             }
         }
 
-        public void LoadAssetsWithBlock(System.Action<IAssetLoader> actionBlock)
+        public void LoadAsset<T>(string bundleName, string assetName, Action<T> onLoadCallback) where T : Object
         {
+            var loadRequest = new LoadRequest<T>
+            {
+                BundleName = bundleName,
+                AssetName = assetName,
+                OnLoadCallback = onLoadCallback
+            };
             if (_initialized)
             {
-                actionBlock(this);
+                StartCoroutine(LoadAssetAsync(loadRequest));
             }
-            else
             {
-                _loadAssetBlocks.Add(actionBlock);
+                _loadRequests.Add(loadRequest);
             }
         }
 
-        public void InstantiateObject<T>(string bundleName, string assetName, System.Action<T> onLoadCallback)
-            where T : Object
+        private IEnumerator<Coroutine> LoadAssetAsync(ILoadRequest loadRequest)
         {
-            Preconditions.CheckState(_initialized,
-                "You must wait for AssetLoaderService to be initialized before invoking InstantiateObject()!");
-            StartCoroutine(InstantiateObjectAsync<T>(bundleName, assetName, onLoadCallback));
+            var loadAssetRequest = loadRequest.NewLoadOperation();
+            if (loadAssetRequest == null) yield break;
+            yield return StartCoroutine(loadAssetRequest);
+            loadRequest.HandleCompletedLoad(loadAssetRequest);
         }
-
-        private IEnumerator<Coroutine> InstantiateObjectAsync<T>(string bundleName, string assetName,
-            System.Action<T> onLoadCallback) where T : Object
-        {
-            var loadRequest = AssetBundleManager.LoadAssetAsync(bundleName, assetName, typeof(T));
-            if (loadRequest == null) yield break;
-            yield return StartCoroutine(loadRequest);
-            var instance = loadRequest.GetAsset<T>();
-            if (instance != null)
-            {
-                onLoadCallback(Instantiate(instance));
-            }
-        }
-
     }
 }

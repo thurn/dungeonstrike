@@ -89,21 +89,17 @@ namespace DungeonStrike
             var clip = SpellConstants.AudioClipForSpell(SpellType);
             _audioSource.PlayOneShot(clip);
 
-            AssetLoaderService.Instance.LoadAssetsWithBlock(assetLoader =>
-            {
-                assetLoader.InstantiateObject("spell_effects",
-                    SpellConstants.AssetNameForSpell(SpellType), (GameObject instance) =>
-                    {
-                        instance.transform.SetParent(this.transform, false);
-                        instance.transform.localPosition = new Vector3(0.0f, 1.5f, 1.0f);
-                        _effectSettings = instance.GetComponent<EffectSettings>();
-                        _effectSettings.Target = _target;
-                        _effectSettings.IsHomingMove = true;
-                        _effectSettings.MoveSpeed = 0;
-                        _effectSettings.CollisionEnter += OnHitTarget;
-                    });
-            });
-
+            AssetLoaderService.Instance.LoadAsset("spell_effects",
+                SpellConstants.AssetNameForSpell(SpellType), (GameObject instance) =>
+                {
+                    instance.transform.SetParent(this.transform, false);
+                    instance.transform.localPosition = new Vector3(0.0f, 1.5f, 1.0f);
+                    _effectSettings = instance.GetComponent<EffectSettings>();
+                    _effectSettings.Target = _target;
+                    _effectSettings.IsHomingMove = true;
+                    _effectSettings.MoveSpeed = 0;
+                    _effectSettings.CollisionEnter += OnHitTarget;
+                });
         }
 
         private void AddAnimationEvents()

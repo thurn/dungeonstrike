@@ -18,13 +18,8 @@ namespace DungeonStrike
         {
             if (!_clips.ContainsKey(clipName))
             {
-                AssetLoaderService.Instance.LoadAssetsWithBlock(assetLoader =>
-                {
-                    assetLoader.InstantiateObject(bundleName, clipName, (AudioClip clip) =>
-                    {
-                        _clips[clipName] = clip;
-                    });
-                });
+                AssetLoaderService.Instance.LoadAsset(bundleName, clipName,
+                    (AudioClip clip) => { _clips[clipName] = clip; });
             }
         }
 

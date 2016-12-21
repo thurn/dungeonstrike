@@ -6696,13 +6696,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1725581622}
-  - component: {fileID: 1725581621}
   - component: {fileID: 1725581623}
   - component: {fileID: 1725581624}
   - component: {fileID: 1725581625}
   - component: {fileID: 1725581627}
   - component: {fileID: 1725581626}
   - component: {fileID: 1725581628}
+  - component: {fileID: 1725581621}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -6718,7 +6718,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1725581620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdbd7a29d2d518942b7af8c0a583c7d6, type: 3}
+  m_Script: {fileID: 11500000, guid: bd745df80c7b24a0aa6885e7cddc5b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1725581622

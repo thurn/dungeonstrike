@@ -60,24 +60,21 @@ namespace DungeonStrike
             }
 
             var assetName = AssetNameForWeapon(weaponType);
-            AssetLoaderService.Instance.LoadAssetsWithBlock(assetLoader =>
+            AssetLoaderService.Instance.LoadAsset("guns", assetName, (GameObject weapon) =>
             {
-                assetLoader.InstantiateObject("guns", assetName, (GameObject weapon) =>
+                weapon.transform.SetParent(attachPoint);
+                switch (weaponType)
                 {
-                    weapon.transform.SetParent(attachPoint);
-                    switch (weaponType)
-                    {
-                        case WeaponType.Rifle1:
-                            EquipRifle1(attachPoint, weapon, modelType);
-                            break;
-                        case WeaponType.Rifle2:
-                            EquipRifle2(attachPoint, weapon, modelType);
-                            break;
-                        default:
-                            throw Preconditions.UnexpectedEnumValue(weaponType);
-                    }
-                    if (onSuccess != null) onSuccess(Optional<GameObject>.Of(weapon));
-                });
+                    case WeaponType.Rifle1:
+                        EquipRifle1(attachPoint, weapon, modelType);
+                        break;
+                    case WeaponType.Rifle2:
+                        EquipRifle2(attachPoint, weapon, modelType);
+                        break;
+                    default:
+                        throw Preconditions.UnexpectedEnumValue(weaponType);
+                }
+                if (onSuccess != null) onSuccess(Optional<GameObject>.Of(weapon));
             });
         }
 
