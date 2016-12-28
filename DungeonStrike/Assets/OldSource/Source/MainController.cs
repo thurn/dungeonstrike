@@ -33,6 +33,7 @@ namespace DungeonStrike
 
         public void OnNext()
         {
+            throw new System.InvalidOperationException("Exception!");
             IncrementCharacterNumber(ref _currentCharacterNumber);
             UpdateSelection();
             InputManager.SetMessage("Selected character " + _currentCharacterNumber);
