@@ -9,7 +9,8 @@
                  [reagent "0.6.0"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
-            [lein-figwheel "0.5.8"]]
+            [lein-figwheel "0.5.8"]
+            [lein-marginalia "0.9.0"]]
 
   :min-lein-version "2.5.3"
 
@@ -26,8 +27,6 @@
                                 "cemerick.piggieback/wrap-cljs-repl"]
              :repl false
              :css-dirs ["public/css"]}
-
-
 
 
   :cljsbuild {:builds

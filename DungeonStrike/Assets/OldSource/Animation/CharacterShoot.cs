@@ -60,8 +60,8 @@ namespace DungeonStrike
             if (_state == State.Shooting &&
                 _animator.GetNextAnimatorStateInfo(2).IsName(AnimationStates.ShootingEmptyState))
             {
-                _animator.SetBool("Aiming", false);
                 _state = State.Default;
+                _animator.SetBool("Aiming", false);
             }
         }
 
