@@ -9,7 +9,7 @@ fi
 xml_output=$(mktemp)
 filtered=$(mktemp)
 
-echo "Outputting unfiltered results to $xml_output"
+echo "Outputting unfiltered gendarme results to $xml_output"
 gendarme.sh --config "scripts/gendarme.xml" --ignore "scripts/gendarme.ignore" --xml $xml_output --quiet ./DungeonStrike/Library/ScriptAssemblies/Assembly-CSharp.dll
 xmllint --xpath "/gendarme-output/results/rule/target[contains(defect/@Source, 'DungeonStrike/Assets/Source')]" $xml_output > $filtered
 

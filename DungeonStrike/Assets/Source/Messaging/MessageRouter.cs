@@ -36,7 +36,7 @@ namespace DungeonStrike.Assets.Source.Messaging
             if (message.EntityId != null)
             {
                 ErrorHandler.CheckState(_entityMessageHandlers.ContainsKey(messageType) &&
-                                        _entityMessageHandlers[messageType].ContainsKey(message.EntityId),
+                    _entityMessageHandlers[messageType].ContainsKey(message.EntityId),
                     "No entity handler registered for message", new {message});
                 _entityMessageHandlers[messageType][message.EntityId].HandleMessageFromDriver(message);
             }

@@ -11,12 +11,10 @@
 
         public void Log(string message)
         {
-
         }
 
         public void Log<T>(string message, T value)
         {
-
         }
     }
 }

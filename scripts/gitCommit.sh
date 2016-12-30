@@ -27,9 +27,7 @@ fi
 
 echo "Starting pre-commit checks..."
 
-./scripts/checksum.py
-
-./scripts/backup.sh
+./scripts/presubmit.sh
 
 key="KEY: $(date "+%Y-%m-%d %H:%M" | md5)"
 
