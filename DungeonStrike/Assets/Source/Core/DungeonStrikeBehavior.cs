@@ -14,28 +14,47 @@ namespace DungeonStrike.Assets.Source.Core
             get { return _logger ?? (_logger = new StandardLogger(this)); }
         }
 
-        private IErrorHandler _errorHandler;
+        private ErrorHandler _errorHandler;
 
-        protected IErrorHandler ErrorHandler
+        protected ErrorHandler ErrorHandler
         {
-            get { return _errorHandler ?? (_errorHandler = new StandardErrorHandler(this)); }
+            get { return _errorHandler ?? (_errorHandler = new ErrorHandler(this)); }
         }
 
-        protected T GetSingleton<T>() where T : Component
+        private Root _root;
+
+        public Root RootObjectForTests
         {
-            return Root.Instance.GetComponent<T>();
+            get { return _root; }
+            set
+            {
+                if (_root != null)
+                {
+                    throw new InvalidOperationException("Cannot override existing root object.");
+                }
+                _root = value;
+            }
         }
 
-        public int MyInt()
+        protected T GetService<T>() where T : Component
         {
-            return 4;
+            if (_root != null) return _root.GetComponent<T>();
+            var roots = FindObjectsOfType<Root>();
+            if (roots.Length != 1)
+            {
+                throw new InvalidOperationException("Exactly one Root object must be created.");
+            }
+            _root = roots[0];
+            var result = _root.GetComponent<T>();
+            ErrorHandler.CheckState(result != null, "Unable to locate service " + typeof(T));
+            return result;
         }
 
         private MessageRouter _messageRouter;
 
         protected MessageRouter MessageRouter
         {
-            get { return _messageRouter ?? (_messageRouter = GetSingleton<MessageRouter>()); }
+            get { return _messageRouter ?? (_messageRouter = GetService<MessageRouter>()); }
         }
 
         public void Awake()
@@ -56,6 +75,16 @@ namespace DungeonStrike.Assets.Source.Core
                     MessageRouter.RegisterForMessage(messageType, this);
                 }
             }
+
+            DungeonStrikeBehaviorAwake();
+        }
+
+        public virtual void DungeonStrikeBehaviorAwake()
+        {
+        }
+
+        public virtual void Start()
+        {
         }
 
         public Optional<string> CurrentMessageId { get; private set; }
@@ -69,7 +98,7 @@ namespace DungeonStrike.Assets.Source.Core
         {
             Logger.Log("Received message", new {message});
             ErrorHandler.CheckState(!CurrentMessageId.HasValue, "Component is already handling a message",
-                new {CurrentMessageId.Value, message});
+                () => new {CurrentMessageId.Value, message});
             CurrentMessageId = Optional<string>.Of(message.MessageId);
             HandleMessage(message, () =>
             {

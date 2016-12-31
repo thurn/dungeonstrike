@@ -40,6 +40,11 @@ namespace DungeonStrike.Assets.Source.Core
             Empty = new Optional<T>();
         }
 
+        public override string ToString()
+        {
+            return _hasValue ? _value.ToString() : "[Optional.Empty]";
+        }
+
         public static bool operator ==(Optional<T> lhs, Optional<T> rhs)
         {
             return lhs.Equals(rhs);

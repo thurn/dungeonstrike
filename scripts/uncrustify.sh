@@ -20,12 +20,15 @@ find "./DungeonStrike/Assets/Source" -type f -iname "*.cs" -print0 | while IFS= 
         then
             echo "Reformatting: $line"
             uncrustify -l CS -c scripts/uncrustify.cfg -q --no-backup $line
+            rm $temp
         else
-            echo "File requires formatting: $line"
+            echo "File requires formatting: $line."
+            echo "diff $line $temp"
             echo "needs_fixing" >> $needs_fixing
         fi
+    else
+        rm $temp
     fi
-    rm $temp
 done
 
 if [ -s $needs_fixing ]

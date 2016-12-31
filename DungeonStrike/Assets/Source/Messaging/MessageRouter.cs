@@ -15,7 +15,7 @@ namespace DungeonStrike.Assets.Source.Messaging
         {
             ErrorHandler.CheckNotNull(new {messageType, behavior});
             ErrorHandler.CheckArgument(!_messageTypeHandlers.ContainsKey(messageType),
-                "Handler already registered for message", new {messageType, behavior});
+                "Handler already registered for message", () => new {messageType, behavior});
             _messageTypeHandlers[messageType] = behavior;
         }
 
@@ -26,24 +26,25 @@ namespace DungeonStrike.Assets.Source.Messaging
                 _entityMessageHandlers[messageType] = new Dictionary<string, DungeonStrikeBehavior>();
             }
             ErrorHandler.CheckArgument(!_entityMessageHandlers[messageType].ContainsKey(entityId),
-                "Handler already registered for entity message", new {messageType, entityId, behavior});
+                "Handler already registered for entity message", () => new {messageType, entityId, behavior});
             _entityMessageHandlers[messageType][entityId] = behavior;
         }
 
         public void RouteMessageToFrontend(Message message)
         {
+            ErrorHandler.CheckNotNull(new {message});
             var messageType = message.MessageType;
             if (message.EntityId != null)
             {
                 ErrorHandler.CheckState(_entityMessageHandlers.ContainsKey(messageType) &&
                     _entityMessageHandlers[messageType].ContainsKey(message.EntityId),
-                    "No entity handler registered for message", new {message});
+                    "No entity handler registered for message", () => new {message});
                 _entityMessageHandlers[messageType][message.EntityId].HandleMessageFromDriver(message);
             }
             else
             {
                 ErrorHandler.CheckArgument(_messageTypeHandlers.ContainsKey(messageType),
-                    "No handler registered for message", new {messageType});
+                    "No handler registered for message", () => new {messageType});
                 _messageTypeHandlers[messageType].HandleMessageFromDriver(message);
             }
         }
