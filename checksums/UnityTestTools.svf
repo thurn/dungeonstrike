@@ -448,7 +448,7 @@ Examples/IntegrationTestsFrameworkExamples/ExampleIntegrationTests.unity.meta 68
 Examples/IntegrationTestsFrameworkExamples/ThrowCustomException.cs 1fc6143a
 Examples/IntegrationTestsFrameworkExamples/ThrowCustomException.cs.meta c4455d4c
 Examples/IntegrationTestsFrameworkExamples.meta c967dced
-Examples/UnitTestExamples/Editor/SampleTests.cs 07575698
+Examples/UnitTestExamples/Editor/SampleTests.cs 370a6dee
 Examples/UnitTestExamples/Editor/SampleTests.cs.meta 3572507d
 Examples/UnitTestExamples/Editor.meta 5e58b9d7
 Examples/UnitTestExamples.meta 65fd9551

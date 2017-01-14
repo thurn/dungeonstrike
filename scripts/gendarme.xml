@@ -18,6 +18,5 @@
 		<rules include="*" from="Gendarme.Rules.Ui.dll" />
     <rules include="*" from="Gendarme.Rules.Gendarme.dll"/>
     <rules include="*" from="Gendarme.Rules.NUnit.dll"/>
-    <rules include="*" from="Gendarme.Rules.Smells.dll"/>
 	</ruleset>
 </gendarme>

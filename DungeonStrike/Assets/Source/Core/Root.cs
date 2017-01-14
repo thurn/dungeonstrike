@@ -1,13 +1,25 @@
-﻿using System;
-using DungeonStrike.Assets.Source.Messaging;
+﻿using DungeonStrike.Source.Services;
+using UnityEngine;
 
-namespace DungeonStrike.Assets.Source.Core
+namespace DungeonStrike.Source.Core
 {
-    public sealed class Root : DungeonStrikeBehavior
+    /// <summary>
+    /// Central registration system for <see cref="Service"/> components.
+    /// </summary>
+    /// <remarks>
+    /// The Root component should be added to exactly one GameObject in each scene. It is responsible for registering
+    /// all <see cref="Service"/> components in its Awake() method. These components can retrieved by calling
+    /// <see cref="DungeonStrikeComponent.GetService{T}"/>.
+    /// </remarks>
+    public sealed class Root : MonoBehaviour
     {
-        public override void DungeonStrikeBehaviorAwake()
+        /// <summary>
+        /// Central registration point for services. Add all service components here.
+        /// </summary>
+        public void Awake()
         {
             gameObject.AddComponent<MessageRouter>();
+            gameObject.AddComponent<SceneLoader>();
         }
     }
 }

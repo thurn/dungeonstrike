@@ -4,9 +4,6 @@ A: *
 R: Gendarme.Rules.Naming.AvoidDeepNamespaceHierarchyRule
 A: *
 
-R: Gendarme.Rules.Smells.AvoidSpeculativeGeneralityRule
-A: *
-
 R: Gendarme.Rules.Performance.AvoidUnusedParametersRule
 A: *
 
@@ -14,4 +11,13 @@ R: Gendarme.Rules.Correctness.CheckParametersNullityInVisibleMethodsRule
 A: *
 
 R: Gendarme.Rules.Design.Generic.DoNotDeclareStaticMembersOnGenericTypesRule
+A: *
+
+R: Gendarme.Rules.Exceptions.InstantiateArgumentExceptionCorrectlyRule
+A: *
+
+R: Gendarme.Rules.BadPractice.AvoidVisibleConstantFieldRule
+A: *
+
+R: Gendarme.Rules.Performance.ImplementEqualsTypeRule
 A: *

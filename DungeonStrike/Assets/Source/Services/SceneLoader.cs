@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using DungeonStrike.Assets.Source.Core;
-using DungeonStrike.Assets.Source.Messaging;
+using DungeonStrike.Source.Core;
+using DungeonStrike.Source.Messaging;
 using UnityEngine.SceneManagement;
 
-namespace DungeonStrike.Assets.Source.Services
+namespace DungeonStrike.Source.Services
 {
-    public class SceneLoader : DungeonStrikeBehavior
+    public sealed class SceneLoader : Service
     {
         protected override IList<string> SupportedMessageTypes
         {

@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e
 
 if [[ $(pwd) != *"dungeonstrike" ]]
@@ -11,6 +12,9 @@ fi
 
 # Create a backup
 ./scripts/backup.sh
+
+# Run Editor tests
+./scripts/runEditorTests.sh
 
 # Run Gendarme static analyzer
 ./scripts/gendarme.sh
