@@ -1,4 +1,5 @@
-﻿using DungeonStrike.Source.Services;
+﻿using DungeonStrike.Source.Messaging;
+using DungeonStrike.Source.Services;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Core
@@ -19,6 +20,7 @@ namespace DungeonStrike.Source.Core
         public void Awake()
         {
             gameObject.AddComponent<MessageRouter>();
+            gameObject.AddComponent<WebsocketManager>();
             gameObject.AddComponent<SceneLoader>();
         }
     }

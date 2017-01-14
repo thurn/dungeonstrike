@@ -160,6 +160,21 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
+        /// The stadard Unity <c>OnDisable</c> method, added here for use in test code.
+        /// </summary>
+        protected virtual void OnDisable()
+        {
+        }
+
+        /// <summary>
+        /// Exposes <see cref="OnDisable"/> for use in tests.
+        /// </summary>
+        public void OnDisableForTests()
+        {
+            OnDisable();
+        }
+
+        /// <summary>
         /// Called when this component receives a message from the driver of a type it has registered for.
         /// </summary>
         /// <para>

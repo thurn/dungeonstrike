@@ -27,6 +27,17 @@ namespace DungeonStrike.Tests.Editor
         [TearDown]
         public void TearDownTest()
         {
+            foreach (var managedObject in _managedObjects)
+            {
+                foreach (var component in managedObject.GetComponents<DungeonStrikeComponent>())
+                {
+                    component.OnDisableForTests();
+                }
+            }
+            foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
+            {
+                component.OnDisableForTests();
+            }
             foreach (var obj in _managedObjects)
             {
                 Object.DestroyImmediate(obj);

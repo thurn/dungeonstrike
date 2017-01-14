@@ -29,6 +29,7 @@ namespace DungeonStrike.Source.Core
         /// <param name="message">Message to log.</param>
         public void Log(string message)
         {
+            Debug.Log(message);
         }
 
         /// <summary>

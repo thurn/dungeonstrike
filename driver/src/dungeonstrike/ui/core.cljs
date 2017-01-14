@@ -20,4 +20,4 @@
 (defn init! []
   (mount-root))
 
-(def dthurn 2342)
+(def dthurn 234)

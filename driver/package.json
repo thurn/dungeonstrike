@@ -4,6 +4,9 @@
   "description": "The dungeonstrike driver",
   "main": "public/main/main.js",
   "license": "Apache-2.0",
+  "dependencies": {
+    "ws": "latest"
+  },
   "devDependencies": {
     "ws": "latest",
     "source-map-support": "latest"

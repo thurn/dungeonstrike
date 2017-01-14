@@ -5,7 +5,11 @@
 (def electron (js/require "electron"))
 (def app (.-app electron))
 (def BrowserWindow (.-BrowserWindow electron))
+(def ws (js/require "ws"))
+(def Server (.-Server ws))
 (def main-window (atom nil))
+(def server (atom nil))
+(def websocket (atom nil))
 
 (nodejs/enable-util-print!)
 
@@ -23,7 +27,31 @@
   (.openDevTools (.-webContents @main-window))
   (.on @main-window "closed" #(reset! main-window nil)))
 
+(defn handle-message [message-string]
+  (println "Got message")
+  (let [message (js->clj (.parse js/JSON message-string))]
+    (println (message "hello"))))
+
+(defn send-message [message]
+  (.send @websocket message))
+
+(defn send-test []
+  (println "sending test message")
+  (send-message (.stringify js/JSON (clj->js {:hello "world"}))))
+
+(defn handle-connection [socket]
+  (println "Got connection")
+  (reset! websocket socket)
+  (.on @websocket "message" handle-message)
+  (.setTimeout js/global send-test 3000))
+
+(defn create-server []
+  (println "Creating server")
+  (reset! server (Server. (clj->js {:port 59005})))
+  (.on @server "connection" handle-connection))
+
 (.on app "ready" create-window)
+(.on app "ready" create-server)
 
 (.on app "window-all-closed"
      #(when-not (= js/process.platform "darwin")
@@ -35,7 +63,7 @@
 
 (defonce my-state (atom "dthurn"))
 
-(def dthurn 322)
+(def three-twenty 320)
 
 (def load-scene
   {::message-type :load-scene,
@@ -43,7 +71,7 @@
    ::game-version "0.1.0",
    ::scene-name "flat"})
 
-(defn what [] (str "foo" dthurn @my-state))
+(defn what [] (str "foo" three-twenty @my-state))
 
 (defn message-type? [value]
   (value #{
@@ -62,8 +90,8 @@
            :object-action
            :draw-card
            :update-card
-           :destroy-card
-           }))
+           :destroy-card}))
+
 
 (spec/def ::message (spec/keys :req [::message-type
                                      ::message-id

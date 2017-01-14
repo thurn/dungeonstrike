@@ -14,7 +14,10 @@ result=$?
 if [ $result -eq 0 ]; then
     echo "All Editor Tests Passed"
     exit
+elif [ $result -eq 1 ]; then
+    echo "Unable to run editor tests (Unity is already running?)"
+    exit 1
 else
-    echo "FAILURES in Editor Tests!"
+    echo "FAILURES in Editor Tests! Code $result."
     exit 1
 fi
