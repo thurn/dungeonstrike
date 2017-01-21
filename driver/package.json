@@ -8,8 +8,9 @@
     "ws": "latest"
   },
   "devDependencies": {
-    "ws": "latest",
-    "source-map-support": "latest"
+    "electron": "^1.4.14",
+    "source-map-support": "latest",
+    "ws": "latest"
   },
   "repository": {
     "type": "git",

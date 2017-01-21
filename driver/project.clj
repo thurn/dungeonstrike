@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.9.0-alpha14" :scope "provided"]
                  [org.clojure/clojurescript "1.9.293" :scope "provided"]
                  [cljsjs/react-bootstrap "0.30.6-0"]
+                 [reagent-forms "0.5.28"]
                  [reagent "0.6.0"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
@@ -25,13 +26,14 @@
              :nrepl-port 7888
              :nrepl-middleware ["cider.nrepl/cider-middleware"
                                 "cemerick.piggieback/wrap-cljs-repl"]
-             :repl false
+             ;:repl false
              :css-dirs ["public/css"]}
 
 
   :cljsbuild {:builds
               [{:id "ui"
-                :source-paths ["src/dungeonstrike/ui" "env"]
+                :source-paths ["src/dungeonstrike/ui" "src/dungeonstrike/common" "env"]
+                ;:figwheel true
                 :compiler {:main "dungeonstrike.ui.dev"
                            :output-to "public/js/app.js"
                            :output-dir "public/js/out"
@@ -42,8 +44,8 @@
                            :source-map true
                            :pretty-print true}}
                {:id "main"
-                :source-paths ["src/dungeonstrike/main"]
-                :figwheel true
+                :source-paths ["src/dungeonstrike/main" "src/dungeonstrike/common"]
+                ;:figwheel true
                 :compiler {:main "dungeonstrike.main.core"
                            :output-to "public/main/main.js"
                            :output-dir "public/main/out"
