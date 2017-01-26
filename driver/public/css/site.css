@@ -33,3 +33,16 @@ a:hover {
 .message-input {
     padding: 0 20px 0 20px;
 }
+
+.form-row {
+    margin-top: 10px;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.send-message-button {
+    margin-top: 15px;
+}

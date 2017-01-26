@@ -16,12 +16,14 @@ namespace DungeonStrike.Source.Services
 
         protected override void HandleMessage(Message receivedMessage, Action onComplete)
         {
+            Logger.Log("Handling message " + receivedMessage);
             var message = (LoadSceneMessage) receivedMessage;
             StartCoroutine(LoadSceneAsync(message, onComplete));
         }
 
         private IEnumerator<YieldInstruction> LoadSceneAsync(LoadSceneMessage message, Action onComplete)
         {
+            Logger.Log("Loading scene " + message.SceneName);
             yield return SceneManager.LoadSceneAsync(message.SceneName);
             onComplete();
         }

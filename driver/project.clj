@@ -5,9 +5,9 @@
 
   :dependencies [[org.clojure/clojure "1.9.0-alpha14" :scope "provided"]
                  [org.clojure/clojurescript "1.9.293" :scope "provided"]
-                 [cljsjs/react-bootstrap "0.30.6-0"]
                  [reagent-forms "0.5.28"]
-                 [reagent "0.6.0"]]
+                 [reagent "0.6.0"]
+                 [camel-snake-kebab "0.4.0"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
             [lein-figwheel "0.5.8"]

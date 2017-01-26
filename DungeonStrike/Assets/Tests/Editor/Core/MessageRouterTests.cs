@@ -89,6 +89,7 @@ namespace DungeonStrike.Tests.Editor.Core
 
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
             _messageRouter.RouteMessageToFrontend(_testMessage1);
+            _messageRouter.Update();
             Assert.IsTrue(receiver.CurrentMessageId.HasValue);
             Assert.AreEqual(receiver.ReceivedMessage, _testMessage1);
             receiver.OnComplete();
@@ -111,6 +112,7 @@ namespace DungeonStrike.Tests.Editor.Core
             Assert.IsFalse(receiver1.CurrentMessageId.HasValue);
             Assert.IsFalse(receiver2.CurrentMessageId.HasValue);
             _messageRouter.RouteMessageToFrontend(_testMessage2);
+            _messageRouter.Update();
             Assert.IsTrue(receiver1.CurrentMessageId.HasValue);
             Assert.IsFalse(receiver2.CurrentMessageId.HasValue);
             Assert.AreEqual(receiver1.ReceivedMessage, _testMessage2);
@@ -127,7 +129,9 @@ namespace DungeonStrike.Tests.Editor.Core
             AwakeAndStartObjects();
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
             _messageRouter.RouteMessageToFrontend(_testMessage1);
+            _messageRouter.Update();
             _messageRouter.RouteMessageToFrontend(_testMessage3);
+            _messageRouter.Update();
         }
 
         [Test]
@@ -172,6 +176,7 @@ namespace DungeonStrike.Tests.Editor.Core
         public void TestNoHandlerRegistered()
         {
             _messageRouter.RouteMessageToFrontend(_testMessage1);
+            _messageRouter.Update();
         }
     }
 }

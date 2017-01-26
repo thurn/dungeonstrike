@@ -3,6 +3,7 @@
             [clojure.spec :as spec]))
 
 (def electron (js/require "electron"))
+(def ipc-main (.-ipcMain electron))
 (def app (.-app electron))
 (def BrowserWindow (.-BrowserWindow electron))
 (def ws (js/require "ws"))
@@ -20,8 +21,7 @@
 
 (defn create-window []
   (println "Opening window")
-  (reset! main-window (BrowserWindow.))
-  (.maximize @main-window)
+  (reset! main-window (BrowserWindow. (clj->js {:width 1440 :height 900})))
   (.loadURL @main-window
             (str "file://" js/__dirname "/../../../../index.html"))
   (.openDevTools (.-webContents @main-window))
@@ -32,18 +32,32 @@
   (let [message (js->clj (.parse js/JSON message-string))]
     (println (message "hello"))))
 
-(defn send-message [message]
-  (.send @websocket message))
+(defn send-error [error-message]
+  (let [web-contents (.-webContents @main-window)]
+    (.send web-contents "error" error-message)))
 
-(defn send-test []
-  (println "sending test message")
-  (send-message (.stringify js/JSON (clj->js {:hello "world"}))))
+(defn send-ready-state-error [socket]
+  (case (.-readyState socket)
+    0 (send-error "Socket connecting.")
+    2 (send-error "Socket closing.")
+    3 (send-error "Socket closed.")
+    (send-error "Unknown error.")))
+
+(defn send-message [event message]
+  (cond
+    (nil? @websocket) (send-error "Not connected.")
+    (not= 1 (.-readyState @websocket)) (send-ready-state-error @websocket)
+    :else (.send @websocket (.stringify js/JSON message))))
+
+(.on ipc-main "send-message" send-message)
 
 (defn handle-connection [socket]
   (println "Got connection")
-  (reset! websocket socket)
-  (.on @websocket "message" handle-message)
-  (.setTimeout js/global send-test 3000))
+  (.on socket "message" handle-message)
+  (.on socket "open" #(println "Connection opened"))
+  (.on socket "error" send-error)
+  (.on socket "close" #(println "Connection closed"))
+  (reset! websocket socket))
 
 (defn create-server []
   (println "Creating server")

@@ -56,12 +56,18 @@ namespace DungeonStrike.Source.Core
         public static void AppendValueParameters<T>(DungeonStrikeComponent component, StringBuilder builder,
             T value = default(T))
         {
-            if (value == null) return;
-            var properties = value.GetType().GetProperties();
-            builder.Append("\n").Append("In ").Append(component);
-            foreach (var property in properties)
+            if (value == null)
             {
-                builder.Append("\n").Append(property.Name).Append("=").Append(property.GetValue(value, null));
+                builder.Append("{null}");
+            }
+            else
+            {
+                var properties = value.GetType().GetProperties();
+                builder.Append("\n").Append("In ").Append(component);
+                foreach (var property in properties)
+                {
+                    builder.Append("\n").Append(property.Name).Append("=").Append(property.GetValue(value, null));
+                }
             }
         }
     }

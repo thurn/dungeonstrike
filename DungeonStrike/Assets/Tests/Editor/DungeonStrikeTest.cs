@@ -94,6 +94,17 @@ namespace DungeonStrike.Tests.Editor
             }
             foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
             {
+                component.OnEnableForTests();
+            }
+            foreach (var managedObject in _managedObjects)
+            {
+                foreach (var component in managedObject.GetComponents<DungeonStrikeComponent>())
+                {
+                    component.OnEnableForTests();
+                }
+            }
+            foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
+            {
                 component.StartForTests();
             }
             foreach (var managedObject in _managedObjects)

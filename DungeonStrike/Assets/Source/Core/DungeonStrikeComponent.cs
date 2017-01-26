@@ -160,6 +160,21 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
+        /// The stadard Unity <c>OnEnablee</c> method, added here for use in test code.
+        /// </summary>
+        protected virtual void OnEnable()
+        {
+        }
+
+        /// <summary>
+        /// Exposes <see cref="OnEnable"/> for use in tests.
+        /// </summary>
+        public void OnEnableForTests()
+        {
+            OnEnable();
+        }
+
+        /// <summary>
         /// The stadard Unity <c>OnDisable</c> method, added here for use in test code.
         /// </summary>
         protected virtual void OnDisable()

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DisruptorUnity3d;
 using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Utilities;
 
@@ -10,11 +11,24 @@ namespace DungeonStrike.Source.Core
     public sealed class MessageRouter : Service
     {
         // Map from message type to the registered message handler
-        private readonly Dictionary<string, Service> _serviceMessageHandlers = new Dictionary<string, Service>();
+        private readonly Dictionary<string, DungeonStrikeComponent> _serviceMessageHandlers =
+            new Dictionary<string, DungeonStrikeComponent>();
 
         // Map from (message type, entityId) to the registered message handler
-        private readonly Dictionary<Tuple<string, string>, EntityComponent> _entityComponentMessageHandlers =
-            new Dictionary<Tuple<string, string>, EntityComponent>();
+        private readonly Dictionary<Tuple<string, string>, DungeonStrikeComponent> _entityComponentMessageHandlers =
+            new Dictionary<Tuple<string, string>, DungeonStrikeComponent>();
+
+        private readonly RingBuffer<Tuple<Message, DungeonStrikeComponent>> _messages =
+            new RingBuffer<Tuple<Message, DungeonStrikeComponent>>(16);
+
+        public void Update()
+        {
+            Tuple<Message, DungeonStrikeComponent> messageTarget;
+            if (_messages.TryDequeue(out messageTarget))
+            {
+                messageTarget.Item2.HandleMessageFromDriver(messageTarget.Item1);
+            }
+        }
 
         /// <summary>
         /// Register a <see cref="Service"/> to be the exclusive receiver of a specific type of messages
@@ -58,13 +72,13 @@ namespace DungeonStrike.Source.Core
                 var key = Tuple.Create(messageType, message.EntityId);
                 ErrorHandler.CheckState(_entityComponentMessageHandlers.ContainsKey(key),
                     "No entity component message handler registered for message", new {message});
-                _entityComponentMessageHandlers[key].HandleMessageFromDriver(message);
+                _messages.Enqueue(Tuple.Create(message, _entityComponentMessageHandlers[key]));
             }
             else
             {
                 ErrorHandler.CheckArgument(_serviceMessageHandlers.ContainsKey(messageType),
                     "No service message handler registered for message", new {messageType});
-                _serviceMessageHandlers[messageType].HandleMessageFromDriver(message);
+                _messages.Enqueue(Tuple.Create(message, _serviceMessageHandlers[messageType]));
             }
         }
     }
