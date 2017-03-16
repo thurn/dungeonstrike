@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Core
@@ -26,23 +27,27 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Logs a new message.
         /// </summary>
+        /// <param name="type">Keyword identifying the type of message being logged. Can only contain letters and
+        /// numbers. Should be written in camelCase.</param>
         /// <param name="message">Message to log.</param>
-        public void Log(string message)
+        public void Log(string type, string message)
         {
-            Debug.Log(message);
+            LogWithTimestamp(type, new StringBuilder(message));
         }
 
         /// <summary>
         /// Logs a new message and some associated values.
         /// </summary>
+        /// <param name="type">Keyword identifying the type of message being logged. Can only contain letters and
+        /// numbers. Should be written in camelCase.</param>
         /// <param name="message">Message to log.</param>
         /// <param name="value">Anonymous type value containing the associated values to log.</param>
         /// <typeparam name="T">The anyonmous type of <paramref name="value"/></typeparam>
-        public void Log<T>(string message, T value)
+        public void Log<T>(string type, string message, T value)
         {
             var messageBuilder = new StringBuilder(message);
             AppendValueParameters(_component, messageBuilder, value);
-            Debug.Log(message);
+            LogWithTimestamp(type, messageBuilder);
         }
 
         /// <summary>
@@ -53,22 +58,33 @@ namespace DungeonStrike.Source.Core
         /// <param name="builder">The <see cref="StringBuilder"/> to which the properties should be appended.</param>
         /// <param name="value">An anonymous type value whose properties contain the values to append.</param>
         /// <typeparam name="T">The type of <paramref name="value" />.</typeparam>
-        public static void AppendValueParameters<T>(DungeonStrikeComponent component, StringBuilder builder,
-            T value = default(T))
+        public static void AppendValueParameters<T>(DungeonStrikeComponent component, StringBuilder builder, T value)
         {
-            if (value == null)
-            {
-                builder.Append("{null}");
-            }
-            else
+            builder.Append("\n").Append("In ").Append(component);
+            if (value != null)
             {
                 var properties = value.GetType().GetProperties();
-                builder.Append("\n").Append("In ").Append(component);
                 foreach (var property in properties)
                 {
                     builder.Append("\n").Append(property.Name).Append("=").Append(property.GetValue(value, null));
                 }
             }
+        }
+
+        /// <summary>
+        /// Logs a message to disk with an associated timestamp.
+        /// </summary>
+        /// <param name="type">Keyword identifying the type of message being logged. Can only contain letters and
+        /// numbers. Should be written in camelCase.</param>
+        /// <param name="message">Full message to log.</param>
+        private static void LogWithTimestamp(string type, StringBuilder message)
+        {
+            var output = new StringBuilder();
+            output.Append("DSLOG[");
+            var unixTimestamp = (long) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds;
+            output.Append(unixTimestamp);
+            output.Append("][").Append(type).Append("]\t").Append(message).Append("\n");
+            Debug.Log(output);
         }
     }
 }

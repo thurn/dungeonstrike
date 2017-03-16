@@ -242,13 +242,13 @@ namespace DungeonStrike.Source.Core
         /// <param name="message">The received message object.</param>
         public void HandleMessageFromDriver(Message message)
         {
-            Logger.Log("Received message", new {message});
+            Logger.Log("messages", "Received message", new {message});
             ErrorHandler.CheckState(!CurrentMessageId.HasValue, "Component is already handling a message",
                 new {CurrentMessageId, message});
             CurrentMessageId = Optional.Of(message.MessageId);
             HandleMessage(message, () =>
             {
-                Logger.Log("Finished processing message", new {message});
+                Logger.Log("messages", "Finished processing message", new {message});
                 CurrentMessageId = Utilities.Optional<string>.Empty;
             });
         }

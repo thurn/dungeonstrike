@@ -19,9 +19,15 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public void Awake()
         {
+            Debug.Log("DSAWAKE");
             gameObject.AddComponent<MessageRouter>();
             gameObject.AddComponent<WebsocketManager>();
             gameObject.AddComponent<SceneLoader>();
+        }
+
+        public void OnEnable()
+        {
+            Debug.Log("DSENABLE");
         }
     }
 }

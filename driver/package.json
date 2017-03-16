@@ -1,19 +1,19 @@
 {
-  "name": "dungeonstrike",
-  "version": "0.1.0",
-  "description": "The dungeonstrike driver",
-  "main": "public/main/main.js",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "ws": "latest"
-  },
-  "devDependencies": {
-    "electron": "^1.4.14",
-    "source-map-support": "latest",
-    "ws": "latest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/thurn/dungeonstrike.git"
-  }
+    "name": "dungeonstrike",
+    "version": "0.1.0",
+    "description": "The dungeonstrike driver",
+    "main": "public/main/main.js",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "ws": "latest",
+        "tail": "latest"
+    },
+    "devDependencies": {
+        "electron": "^1.4.14",
+        "source-map-support": "latest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/thurn/dungeonstrike.git"
+    }
 }

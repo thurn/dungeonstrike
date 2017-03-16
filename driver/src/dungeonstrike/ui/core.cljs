@@ -6,10 +6,9 @@
 (def electron (js/require "electron"))
 (def ipc-renderer (.-ipcRenderer electron))
 
-(defonce click-count (reagent/atom 0))
-
-(def form-state (reagent/atom {}))
-(def error (reagent/atom ""))
+(defonce form-state (reagent/atom {}))
+(defonce error (reagent/atom ""))
+(defonce logs (reagent/atom (sorted-map)))
 
 (defn to-json-format [value]
   (cond
@@ -25,6 +24,11 @@
                         [(to-json-format key) (to-json-format value)]))]
     (println json)
     (.send ipc-renderer "send-message" (clj->js json))))
+
+(defn error-alert [message]
+  [:div.row.alert.alert-danger {:role "alert"}
+   message
+   [:button.close {:type "button" :on-click #(reset! error "")} [:span "×"]]])
 
 (defn row [label input]
   [:div.row.form-row.flex-center
@@ -50,10 +54,20 @@
    (input "Message ID" :text :message-id :disabled true)
    (input "Game Version" :text :game-version :disabled true)])
 
-(defn error-alert [message]
-  [:div.row.alert.alert-danger {:role "alert"}
-   message
-   [:button.close {:type "button" :on-click #(reset! error "")} [:span "×"]]])
+(defn add-log-entry [event log-entry]
+  (let [entry (js->clj log-entry)]
+    (swap! logs assoc (int (entry "timestamp")) entry)))
+
+(defn log-entry [{:strs [type message timestamp source]}]
+  [:li (str type " " timestamp " " source " " message)])
+
+(defn log-entries []
+  [:ul
+   (for [[timestamp entry] @logs]
+     ^{:key timestamp} [log-entry (js->clj entry)])])
+
+(defn clear-logs []
+  (reset! logs (sorted-map)))
 
 (defn root []
   [:div
@@ -67,7 +81,11 @@
        {:on-click send-message}
        "Send Message"]]
      [:div.col-xs-6
-      [:h2 "Logs"]]]]])
+      [:h2 "Logs"]
+      [:button.btn.btn-default
+       {:on-click clear-logs}
+       "Clear"]
+      [log-entries]]]]])
 
 ;; -------------------------
 ;; Initialize app
@@ -78,9 +96,8 @@
   (reagent/render [root] (.getElementById js/document "app")))
 
 (defn init! []
-  (.on ipc-renderer "error"
-       (fn [event error-message]
-         (reset! error error-message)))
+  (.on ipc-renderer "error" #(reset! error %2))
+  (.on ipc-renderer "log" add-log-entry)
   (mount-root))
 
 (def dthurn 234)
