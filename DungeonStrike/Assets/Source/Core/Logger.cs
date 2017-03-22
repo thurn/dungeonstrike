@@ -72,19 +72,12 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// Logs a message to disk with an associated timestamp.
+        /// Logs a new message with an appropriate log header.
         /// </summary>
-        /// <param name="type">Keyword identifying the type of message being logged. Can only contain letters and
-        /// numbers. Should be written in camelCase.</param>
-        /// <param name="message">Full message to log.</param>
         private static void LogWithTimestamp(string type, StringBuilder message)
         {
-            var output = new StringBuilder();
-            output.Append("DSLOG[");
-            var unixTimestamp = (long) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds;
-            output.Append(unixTimestamp);
-            output.Append("][").Append(type).Append("]\t").Append(message).Append("\n");
-            Debug.Log(output);
+            var header = LogWriter.CreateLogHeader(type);
+            Debug.Log(header.Append(message));
         }
     }
 }

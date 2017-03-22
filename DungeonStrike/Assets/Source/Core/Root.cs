@@ -1,4 +1,6 @@
-﻿using DungeonStrike.Source.Messaging;
+﻿using System;
+using System.IO;
+using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Services;
 using UnityEngine;
 
@@ -14,20 +16,23 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class Root : MonoBehaviour
     {
+        private int _callbacks = 4;
+
         /// <summary>
         /// Central registration point for services. Add all service components here.
         /// </summary>
         public void Awake()
         {
-            Debug.Log("DSAWAKE");
+            Application.logMessageReceivedThreaded += LogWriter.HandleUnityLog;
+            Debug.Log("Awake");
             gameObject.AddComponent<MessageRouter>();
             gameObject.AddComponent<WebsocketManager>();
             gameObject.AddComponent<SceneLoader>();
         }
 
-        public void OnEnable()
+        public void HandleUnityLog(string logString, string stackTrace, LogType logType)
         {
-            Debug.Log("DSENABLE");
+            _callbacks++;
         }
     }
 }

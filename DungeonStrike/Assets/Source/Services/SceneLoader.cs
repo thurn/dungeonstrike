@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Messaging;
 using UnityEngine;
@@ -10,12 +9,6 @@ namespace DungeonStrike.Source.Services
 {
     public sealed class SceneLoader : Service
     {
-        protected override void OnEnable()
-        {
-            Logger.Log("dt", "SceneLoaderException");
-            //throw new InvalidOperationException("ioe");
-        }
-
         protected override IList<string> SupportedMessageTypes
         {
             get { return new List<string> {"LoadScene"}; }

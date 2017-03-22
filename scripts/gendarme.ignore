@@ -24,3 +24,9 @@ A: *
 
 R: Gendarme.Rules.Correctness.TypesWithDisposableFieldsShouldBeDisposableRule
 A: *
+
+R: Gendarme.Rules.Performance.AvoidConcatenatingCharsRule
+A: *
+
+R: Gendarme.Rules.Correctness.EnsureLocalDisposalRule
+A: *

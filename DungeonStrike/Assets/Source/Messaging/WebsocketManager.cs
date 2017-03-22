@@ -16,7 +16,7 @@ namespace DungeonStrike.Source.Messaging
             _websocket = new WebSocket("ws://localhost:59005");
             _websocket.OnOpen += (sender, eventArgs) => { Logger.Log("websockets", "Connection established"); };
             _websocket.OnError += (sender, args) => { Logger.Log("websockets", "WebSocketError ", new {args}); };
-            _websocket.OnClose += (sender, args) => { Debug.Log("DSCLOSE"); };
+            _websocket.OnClose += (sender, args) => { Logger.Log("websockets", "Connection closed"); };
             _websocket.OnMessage += OnMessageReceived;
             _websocket.Connect();
         }
