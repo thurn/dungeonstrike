@@ -1,5 +1,6 @@
 (ns dungeonstrike.ui.core
-  (:require [reagent.core :as reagent]
+  (:require [clojure.string :as string]
+            [reagent.core :as reagent]
             [reagent-forms.core :as forms]
             [camel-snake-kebab.core :as case]))
 
@@ -54,17 +55,21 @@
    (input "Message ID" :text :message-id :disabled true)
    (input "Game Version" :text :game-version :disabled true)])
 
-(defn add-log-entry [event log-entry]
-  (let [entry (js->clj log-entry)]
-    (swap! logs assoc (int (entry "timestamp")) entry)))
+(defn log-key [log-entry]
+  (+ (rand-int 1000000)
+     (* 1000000 (int (log-entry :timestamp)))))
 
-(defn log-entry [{:strs [type message timestamp source]}]
-  [:li (str type " " timestamp " " source " " message)])
+(defn add-log-entry [event log-entry]
+  (let [entry (js->clj log-entry :keywordize-keys true)]
+    (swap! logs assoc (log-key entry) entry)))
+
+(defn log-entry [{:keys [type message timestamp]}]
+  [:li (str type " " timestamp " " (string/join " " message))])
 
 (defn log-entries []
   [:ul
-   (for [[timestamp entry] @logs]
-     ^{:key timestamp} [log-entry (js->clj entry)])])
+   (for [[log-key entry] @logs]
+     ^{:key log-key} [log-entry entry])])
 
 (defn clear-logs []
   (reset! logs (sorted-map)))

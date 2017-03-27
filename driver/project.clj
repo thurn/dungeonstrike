@@ -7,6 +7,7 @@
                  [org.clojure/clojurescript "1.9.293" :scope "provided"]
                  [reagent-forms "0.5.28"]
                  [reagent "0.6.0"]
+                 [com.stuartsierra/component "0.3.2"]
                  [camel-snake-kebab "0.4.0"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
@@ -45,7 +46,7 @@
                            :pretty-print true}}
                {:id "main"
                 :source-paths ["src/dungeonstrike/main" "src/dungeonstrike/common"]
-                ;:figwheel true
+                :figwheel {:on-jsload "dungeonstrike.main.core/restart!"}
                 :compiler {:main "dungeonstrike.main.core"
                            :output-to "public/main/main.js"
                            :output-dir "public/main/out"

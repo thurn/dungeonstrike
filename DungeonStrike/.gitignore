@@ -4,6 +4,7 @@
 /[Bb]uild/
 /[Aa]ssets/ThirdParty/
 /[Aa]ssets/StreamingAssets/
+/[Aa]ssets/Logs/
 /[Aa]ssets/[Pp]lugins/ThirdParty/
 /[Aa]ssetBundles/
 /[Oo]ut/
