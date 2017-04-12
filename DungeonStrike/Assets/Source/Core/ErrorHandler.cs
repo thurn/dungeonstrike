@@ -42,7 +42,7 @@ namespace DungeonStrike.Source.Core
         public void ReportError<T>(string message, T value = default(T))
         {
             var error = new StringBuilder(message);
-            Logger.AppendValueParameters(_component, error, value);
+            //Logger.AppendValueParameters(error, value);
             throw new InvalidOperationException(error.ToString());
         }
 
@@ -66,7 +66,7 @@ namespace DungeonStrike.Source.Core
         {
             if (expression) return;
             var error = new StringBuilder(message);
-            Logger.AppendValueParameters(_component, error, value);
+            //Logger.AppendValueParameters(error, value);
             throw new ArgumentException(error.ToString());
         }
 
@@ -90,7 +90,7 @@ namespace DungeonStrike.Source.Core
         {
             if (expression) return;
             var error = new StringBuilder(message);
-            Logger.AppendValueParameters(_component, error, value);
+            //Logger.AppendValueParameters(error, value);
             throw new InvalidOperationException(error.ToString());
         }
 

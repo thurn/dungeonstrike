@@ -1,4 +1,5 @@
-﻿using DungeonStrike.Source.Core;
+﻿using System.Collections;
+using DungeonStrike.Source.Core;
 using Newtonsoft.Json;
 using UnityEngine;
 using WebSocketSharp;
@@ -13,10 +14,13 @@ namespace DungeonStrike.Source.Messaging
         protected override void OnEnable()
         {
             _messageRouter = GetService<MessageRouter>();
-            _websocket = new WebSocket("ws://localhost:59005");
-            _websocket.OnOpen += (sender, eventArgs) => { Logger.Log("websockets", "Unity got connection"); };
-            _websocket.OnError += (sender, args) => { Logger.Log("websockets", "Unity WebSocketError ", new {args}); };
-            _websocket.OnClose += (sender, args) => { Logger.Log("websockets", "Unity connection closed"); };
+            _websocket = new WebSocket("ws://localhost:59005?client-id=client");
+            _websocket.OnOpen += (sender, eventArgs) => { Logger.Log("Unity got connection"); };
+            _websocket.OnError += (sender, args) => {
+                Logger.Log("Unity WebSocketError: " + args.Message + " " +
+                    args.Exception);
+            };
+            _websocket.OnClose += (sender, args) => { Logger.Log("Unity connection closed"); };
             _websocket.OnMessage += OnMessageReceived;
             _websocket.Connect();
         }
@@ -29,11 +33,22 @@ namespace DungeonStrike.Source.Messaging
             }
         }
 
+        protected override void Start()
+        {
+            StartCoroutine(SendMessage());
+        }
+
+        private IEnumerator SendMessage()
+        {
+            yield return new WaitForSeconds(4.0f);
+            _websocket.SendAsync("Hello, world", success => Logger.Log("Message sent"));
+        }
+
         private void OnMessageReceived(object sender, MessageEventArgs messageArgs)
         {
-            var message = JsonConvert.DeserializeObject<Message>(messageArgs.Data, new MessageConverter());
-            Logger.Log("websockets", "Got Message " + message.MessageId);
-            _messageRouter.RouteMessageToFrontend(message);
+            //var message = JsonConvert.DeserializeObject<Message>(messageArgs.Data, new MessageConverter());
+            Logger.Log("Got Message " + messageArgs.Data);
+            //_messageRouter.RouteMessageToFrontend(message);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace DungeonStrike.Source.Core
     /// <see cref="Message.EntityId"/> match.
     /// </para>
     /// </remarks>
-    public class EntityComponent : DungeonStrikeComponent
+    public abstract class EntityComponent : DungeonStrikeComponent
     {
         /// <summary>
         /// Registers this EntityComponent to receive messages requested directed at its specific EntityID.

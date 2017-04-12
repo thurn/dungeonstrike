@@ -16,8 +16,6 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class Root : MonoBehaviour
     {
-        private int _callbacks = 4;
-
         /// <summary>
         /// Central registration point for services. Add all service components here.
         /// </summary>
@@ -28,11 +26,6 @@ namespace DungeonStrike.Source.Core
             gameObject.AddComponent<MessageRouter>();
             gameObject.AddComponent<WebsocketManager>();
             gameObject.AddComponent<SceneLoader>();
-        }
-
-        public void HandleUnityLog(string logString, string stackTrace, LogType logType)
-        {
-            _callbacks++;
         }
     }
 }

@@ -1,11 +1,30 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Utilities;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Core
 {
+    public class LogContext
+    {
+        private readonly string _sourceName;
+        private readonly string _objectName;
+
+        internal LogContext(string sourceName, string objectName)
+        {
+            _sourceName = sourceName;
+            _objectName = objectName;
+        }
+
+        public void AppendContextParameters(StringBuilder stringBuilder)
+        {
+            stringBuilder.Append(":source \"").Append(_sourceName).Append("\", ");
+            stringBuilder.Append(":object-name \"").Append(_objectName).Append("\", ");
+        }
+    }
+
     /// <summary>
     /// The abstract base class for all <c>MonoBehaviour</c>s in the DungeonStrike project.
     /// </summary>
@@ -49,7 +68,7 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         protected Logger Logger
         {
-            get { return _logger ?? (_logger = new Logger(this)); }
+            get { return _logger ?? (_logger = new Logger(new LogContext(GetType().ToString(), gameObject.name))); }
         }
 
         private ErrorHandler _errorHandler;
@@ -241,13 +260,13 @@ namespace DungeonStrike.Source.Core
         /// <param name="message">The received message object.</param>
         public void HandleMessageFromDriver(Message message)
         {
-            Logger.Log("messages", "Received message", new {message});
+            Logger.Log("Received message: " + message.MessageId);
             ErrorHandler.CheckState(!CurrentMessageId.HasValue, "Component is already handling a message",
                 new {CurrentMessageId, message});
             CurrentMessageId = Optional.Of(message.MessageId);
             HandleMessage(message, () =>
             {
-                Logger.Log("messages", "Finished processing message", new {message});
+                Logger.Log("Finished processing message: " + message.MessageId);
                 CurrentMessageId = Utilities.Optional<string>.Empty;
             });
         }

@@ -7,6 +7,7 @@ namespace DungeonStrike.Tests.Editor.Core
 {
     public class MyService : Service
     {
+
     }
 
     public class MyComponent : EntityComponent
