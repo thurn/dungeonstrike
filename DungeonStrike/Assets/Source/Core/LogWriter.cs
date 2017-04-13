@@ -10,6 +10,10 @@ namespace DungeonStrike.Source.Core
         private static StreamWriter _logFile;
         private const string MetadataSeparator = "\t\t»";
 
+        /// <summary>
+        /// Initialize the log file. Must be invoked at startup. In order to avoid logging during unit test execution,
+        /// this method should not be called during tests.
+        /// </summary>
         public static void Initialize()
         {
             var logDir = Path.Combine(Application.dataPath, "../Logs");
@@ -36,25 +40,65 @@ namespace DungeonStrike.Source.Core
                 AppendTimestampAndType(result);
             }
 
-            result.Append(StackTraceMetadata(stackTrace));
+            AppendStackTraceMetadata(result, stackTrace);
             WriteLog(result);
+        }
+
+        /// <summary>
+        /// Prepares a string for logging output via Debug.Log or an exception message. The resulting string will
+        /// contain the *start* of a log metadata entry, but not the *end* of that entry, so that the metadata can be
+        /// expanded by the log handler in <see cref="HandleUnityLog"/> above.
+        /// </summary>
+        /// <param name="message">Message to log</param>
+        /// <param name="logContext">Log context for message</param>
+        /// <param name="error">True if this should be considered an error</param>
+        /// <param name="arguments">Additional arguments to append to the log message. With two or more values, will
+        /// be formatted in key=value format.</param>
+        /// <returns>String appropriate for output to the unity logs.</returns>
+        public static string FormatForLogOutput(string message, ILogContext logContext, bool error, object[] arguments)
+        {
+            var result = new StringBuilder(message);
+            if (arguments.Length == 1)
+            {
+                result.Append("[").Append(arguments[0]).Append("]");
+            }
+            else if (arguments.Length > 1)
+            {
+                result.Append("[");
+                for (var i = 0; i < arguments.Length; ++i)
+                {
+                    result.Append(arguments[i]);
+                    result.Append(i % 2 == 0 ? "=" : ", ");
+                }
+                result.Append("]");
+            }
+            result.Append(StartLogMetadata(logContext, false));
+            return result.ToString();
         }
 
         /// <summary>
         /// Creates a string builder containing the first part of a log metadata entry.
         /// </summary>
         /// <param name="logContext">The log context for this metadata.</param>
+        /// <param name="error">True to indicate that this entry should be considered an error.</param>
         /// <returns>A log metadata entry with the associated context and current timestamp.</returns>
-        public static StringBuilder StartLogMetadata(LogContext logContext)
+        private static StringBuilder StartLogMetadata(ILogContext logContext, bool error)
         {
             var result = new StringBuilder();
             result.Append(MetadataSeparator);
             result.Append("{");
             logContext.AppendContextParameters(result);
+            if (error)
+            {
+                result.Append(":error? true, ");
+            }
             AppendTimestampAndType(result);
             return result;
         }
 
+        /// <summary>
+        /// Adds a timestamp and log type entry to the partial log in "builder".
+        /// </summary>
         private static void AppendTimestampAndType(StringBuilder builder)
         {
             var unixTimestamp = (long) DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds;
@@ -62,11 +106,12 @@ namespace DungeonStrike.Source.Core
             builder.Append(":log-type :client, ");
         }
 
-        private static StringBuilder StackTraceMetadata(string stackTrace)
+        /// <summary>
+        /// Appends a "stackTrace" to the partial log entry in "result".
+        /// </summary>
+        private static void AppendStackTraceMetadata(StringBuilder result, string stackTrace)
         {
-            var result = new StringBuilder();
             result.Append(":stack-trace \"").Append(stackTrace.Replace("\n", "\\n")).Append("\"}\n");
-            return result;
         }
 
         /// <summary>

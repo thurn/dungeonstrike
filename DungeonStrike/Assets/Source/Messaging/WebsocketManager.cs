@@ -17,8 +17,7 @@ namespace DungeonStrike.Source.Messaging
             _websocket = new WebSocket("ws://localhost:59005?client-id=client");
             _websocket.OnOpen += (sender, eventArgs) => { Logger.Log("Unity got connection"); };
             _websocket.OnError += (sender, args) => {
-                Logger.Log("Unity WebSocketError: " + args.Message + " " +
-                    args.Exception);
+                Logger.Log("Unity WebSocketError", "Message", args.Message, "Exception", args.Exception);
             };
             _websocket.OnClose += (sender, args) => { Logger.Log("Unity connection closed"); };
             _websocket.OnMessage += OnMessageReceived;

@@ -1,5 +1,4 @@
-﻿using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DungeonStrike.Source.Core
 {
@@ -12,32 +11,25 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class Logger
     {
-        private readonly LogContext _logContext;
+        private readonly ILogContext _logContext;
 
         /// <summary>
         /// Create a new Logger.
         /// </summary>
-        /// <param name="componentName">The name of the component which owns this Logger, included in logs.</param>
-        public Logger(LogContext componentName)
+        /// <param name="logContext">The log context in which to log.</param>
+        public Logger(ILogContext logContext)
         {
-            _logContext = componentName;
+            _logContext = logContext;
         }
 
         /// <summary>
         /// Logs a new message.
         /// </summary>
         /// <param name="message">Message to log.</param>
-        public void Log(string message)
+        /// <param name="arguments">Additional log parameters</param>
+        public void Log(string message, params object[] arguments)
         {
-            LogWithBuilder(new StringBuilder(message));
-        }
-
-        /// <summary>
-        /// Logs a new message with an appropriate log header.
-        /// </summary>
-        private void LogWithBuilder(StringBuilder message)
-        {
-            Debug.Log(message.Append(LogWriter.StartLogMetadata(_logContext)));
+            Debug.Log(LogWriter.FormatForLogOutput(message, _logContext, false, arguments));
         }
     }
 }

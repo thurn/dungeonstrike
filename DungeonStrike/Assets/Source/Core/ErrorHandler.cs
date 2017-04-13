@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace DungeonStrike.Source.Core
 {
@@ -14,101 +13,153 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class ErrorHandler
     {
-        private readonly DungeonStrikeComponent _component;
+        private readonly ILogContext _logContext;
 
         /// <summary>
-        /// Constructs a new ErrorHandler.
+        /// Create a new ErrorHandler.
         /// </summary>
-        /// <param name="component">The component which owns this ErrorHandler, included in error reports.</param>
-        public ErrorHandler(DungeonStrikeComponent component)
+        /// <param name="logContext">The log context in which to log.</param>
+        public ErrorHandler(ILogContext logContext)
         {
-            _component = component;
-        }
-
-        /// <see cref="ReportError{T}" />
-        public void ReportError(string message)
-        {
-            ReportError<object>(message);
+            _logContext = logContext;
         }
 
         /// <summary>
-        /// Unconditionally reports that an error has occurred.
+        /// Unconditionally throws an error.
         /// </summary>
-        /// <param name="message">Error message to report</param>
-        /// <param name="value">An anonymous type value containing any relevant local state to log. Any properties of
-        /// this object will be logged alongside the error message.</param>
-        /// <typeparam name="T">The anonymous type mentioned above.</typeparam>
-        /// <exception cref="InvalidOperationException">The exception thrown by this method.</exception>
-        public void ReportError<T>(string message, T value = default(T))
+        public void ReportError(string message, params object[] arguments)
         {
-            var error = new StringBuilder(message);
-            //Logger.AppendValueParameters(error, value);
-            throw new InvalidOperationException(error.ToString());
-        }
-
-        /// <see cref="CheckArgument{T}" />
-        public void CheckArgument(bool expression, string message)
-        {
-            CheckArgument<object>(expression, message);
+            throw new SystemException(LogWriter.FormatForLogOutput(message, _logContext, true, arguments));
         }
 
         /// <summary>
-        /// Checks the value of an <paramref name="expression" /> related to method arguments.
+        /// Throws an ArgumentException if "expression" is false.
         /// </summary>
-        /// <param name="expression">The expression to validate.</param>
-        /// <param name="message">Error message to report</param>
-        /// <param name="value">An anonymous type value containing any relevant local state to log. Any properties of
-        /// this object will be logged alongside the error message.</param>
-        /// <typeparam name="T">The anonymous type mentioned above.</typeparam>
-        /// <exception cref="ArgumentException">The exception thrown by this method if
-        /// <paramref name="expression" /> is false.</exception>
-        public void CheckArgument<T>(bool expression, string message, T value = default(T))
+        public void CheckArgument(bool expression, string message, params object[] arguments)
         {
             if (expression) return;
-            var error = new StringBuilder(message);
-            //Logger.AppendValueParameters(error, value);
-            throw new ArgumentException(error.ToString());
-        }
-
-        /// <see cref="CheckState{T}" />
-        public void CheckState(bool expression, string message)
-        {
-            CheckState<object>(expression, message);
+            throw new ArgumentException(LogWriter.FormatForLogOutput(message, _logContext, true, arguments));
         }
 
         /// <summary>
-        /// Checks the value of an <paramref name="expression" /> related to program state.
+        /// Throws an InvalidOperationException if "expression" is false.
         /// </summary>
-        /// <param name="expression">The expression to validate.</param>
-        /// <param name="message">Error message to report</param>
-        /// <param name="value">An anonymous type value containing any relevant local state to log. Any properties of
-        /// this object will be logged alongside the error message.</param>
-        /// <typeparam name="T">The anonymous type mentioned above.</typeparam>
-        /// <exception cref="ArgumentException">The exception thrown by this method if
-        /// <paramref name="expression" /> is false.</exception>
-        public void CheckState<T>(bool expression, string message, T value = default(T))
+        public void CheckState(bool expression, string message, params object[] arguments)
         {
             if (expression) return;
-            var error = new StringBuilder(message);
-            //Logger.AppendValueParameters(error, value);
-            throw new InvalidOperationException(error.ToString());
+            throw new InvalidOperationException(LogWriter.FormatForLogOutput(message, _logContext, true, arguments));
         }
 
         /// <summary>
-        /// Validates that none of the arguments to a method are null.
+        /// Throws an ArgumentNullException if a parameter is null.
         /// </summary>
-        /// <param name="values">An anonymous type value containing the arguments to check as properties.</param>
-        /// <typeparam name="T">The anonymous type mentioned above.</typeparam>
-        /// <exception cref="ArgumentNullException">If any of the arguments are null.</exception>
-        public void CheckArgumentsNotNull<T>(T values)
+        public void CheckNotNull(string parameterName, object parameterValue)
         {
-            var properties = values.GetType().GetProperties();
-            foreach (var property in properties)
+            if (parameterValue == null)
             {
-                if (property.GetValue(values, null) == null)
-                {
-                    throw new ArgumentNullException("Argument " + property.Name + " cannot be null");
-                }
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {parameterName, "null"}));
+            }
+        }
+
+        /// <summary>
+        /// Throws an ArgumentNullException if a parameter is null.
+        /// </summary>
+        public void CheckNotNull(string param1, object value1, string param2, object value2)
+        {
+            if (value1 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param1, "null"}));
+            }
+            if (value2 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param2, "null"}));
+            }
+        }
+
+        /// <summary>
+        /// Throws an ArgumentNullException if a parameter is null.
+        /// </summary>
+        public void CheckNotNull(string param1, object value1, string param2, object value2,
+            string param3, object value3)
+        {
+            if (value1 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param1, "null"}));
+            }
+            if (value2 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param2, "null"}));
+            }
+            if (value3 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param3, "null"}));
+            }
+        }
+
+        /// <summary>
+        /// Throws an ArgumentNullException if a parameter is null.
+        /// </summary>
+        public void CheckNotNull(string param1, object value1, string param2, object value2,
+            string param3, object value3, string param4, object value4)
+        {
+            if (value1 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param1, "null"}));
+            }
+            if (value2 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param2, "null"}));
+            }
+            if (value3 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param3, "null"}));
+            }
+            if (value4 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param4, "null"}));
+            }
+        }
+
+        /// <summary>
+        /// Throws an ArgumentNullException if a parameter is null.
+        /// </summary>
+        public void CheckNotNull(string param1, object value1, string param2, object value2,
+            string param3, object value3, string param4, object value4, string param5, object value5)
+        {
+            if (value1 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param1, "null"}));
+            }
+            if (value2 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param2, "null"}));
+            }
+            if (value3 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param3, "null"}));
+            }
+            if (value4 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param4, "null"}));
+            }
+            if (value5 == null)
+            {
+                throw new ArgumentNullException(LogWriter.FormatForLogOutput("Parameter cannot be null",
+                        _logContext, true, new object[] {param5, "null"}));
             }
         }
 
@@ -119,7 +170,8 @@ namespace DungeonStrike.Source.Core
         /// <returns>An <see cref="Exception"/> which should be thrown.</returns>
         public Exception UnexpectedEnumValue(Enum value)
         {
-            return new ArgumentException("Unexpected " + value.GetType() + " enum value: " + value);
+            return new ArgumentException(LogWriter.FormatForLogOutput("Unexpected enum value", _logContext, true,
+                    new object[] {"type", value.GetType(), "enumValue", value}));
         }
     }
 }

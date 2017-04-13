@@ -3,9 +3,9 @@
 namespace DungeonStrike.Source.Messaging
 {
     // Note:
-    // All of the code in this file is documented in and based on the code in the file "messages.cljs" in the driver.
+    // All of the code in this file is documented in and based on the code in the file "messages.clj" in the driver.
     // Eventually, it could be automatically generated from that specification, but currently the structure is kept in
-    // sync manually. If you change anything here, it must also be changed in "messages.cljs" and vice-versa.
+    // sync manually. If you change anything here, it must also be changed in "messages.clj" and vice-versa.
 
 
     public abstract class Message

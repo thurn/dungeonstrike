@@ -7,24 +7,6 @@ using UnityEngine;
 
 namespace DungeonStrike.Source.Core
 {
-    public class LogContext
-    {
-        private readonly string _sourceName;
-        private readonly string _objectName;
-
-        internal LogContext(string sourceName, string objectName)
-        {
-            _sourceName = sourceName;
-            _objectName = objectName;
-        }
-
-        public void AppendContextParameters(StringBuilder stringBuilder)
-        {
-            stringBuilder.Append(":source \"").Append(_sourceName).Append("\", ");
-            stringBuilder.Append(":object-name \"").Append(_objectName).Append("\", ");
-        }
-    }
-
     /// <summary>
     /// The abstract base class for all <c>MonoBehaviour</c>s in the DungeonStrike project.
     /// </summary>
@@ -61,10 +43,31 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public abstract class DungeonStrikeComponent : MonoBehaviour
     {
+        /// <summary>
+        /// Private ILogContext implementation to store information about components.
+        /// </summary>
+        private class LogContext : ILogContext
+        {
+            private readonly string _sourceName;
+            private readonly string _objectName;
+
+            public LogContext(string sourceName, string objectName)
+            {
+                _sourceName = sourceName;
+                _objectName = objectName;
+            }
+
+            public void AppendContextParameters(StringBuilder stringBuilder)
+            {
+                stringBuilder.Append(":source \"").Append(_sourceName).Append("\", ");
+                stringBuilder.Append(":object-name \"").Append(_objectName).Append("\", ");
+            }
+        }
+
         private Logger _logger;
 
         /// <summary>
-        /// A <see cref="Logger" /> instance initialized with this component.
+        /// A <see cref="Logger" /> instance initialized for this component.
         /// </summary>
         protected Logger Logger
         {
@@ -74,11 +77,15 @@ namespace DungeonStrike.Source.Core
         private ErrorHandler _errorHandler;
 
         /// <summary>
-        /// An <see cref="ErrorHandler" /> instance initialized with this component.
+        /// An <see cref="ErrorHandler" /> instance for this component.
         /// </summary>
         protected ErrorHandler ErrorHandler
         {
-            get { return _errorHandler ?? (_errorHandler = new ErrorHandler(this)); }
+            get
+            {
+                return _errorHandler ?? (_errorHandler = new ErrorHandler(
+                               new LogContext(GetType().ToString(), gameObject.name)));
+            }
         }
 
         // Root component, used for service lookups.
@@ -113,7 +120,7 @@ namespace DungeonStrike.Source.Core
         /// <para>
         /// This implements a singleton pattern for components. Each scene must contain exactly one GameObject with the
         /// <see cref="Root" /> component added to it. Components which only have one logic instance per scene are
-        /// called Services, and should be added to the root game object in <see cref="Root.Awake()"/>.
+        /// called Services, and should be added to the root game object in <see cref="Root.RegisterServices()"/>.
         /// </para>
         /// <typeparam name="T">The type of the component to return.</typeparam>
         /// <returns>The service of type T on the root object.</returns>
@@ -126,14 +133,13 @@ namespace DungeonStrike.Source.Core
                 var roots = FindObjectsOfType<Root>();
                 if (roots.Length != 1)
                 {
-                    throw new InvalidOperationException("[" + GetType().Name +
-                            "]: Exactly one Root object must be created.");
+                    throw new InvalidOperationException("Exactly one Root object must be created.");
                 }
                 _root = roots[0];
             }
 
             var result = _root.GetComponent<T>();
-            ErrorHandler.CheckState(result != null, "Unable to locate service " + typeof(T));
+            ErrorHandler.CheckState(result != null, "Unable to locate service", typeof(T));
             return result;
         }
 
@@ -141,9 +147,10 @@ namespace DungeonStrike.Source.Core
         /// Performs initial configuration, such as registering this component to receive message notifications.
         /// </summary>
         /// <para>
-        /// This is where <c>DungeonStrikeBehavior</c> subclasses perform their setup. Component setup code should
-        /// typically happen by implementing the <see cref="Start"/> method instead of this method. If you do need to
-        /// override Awake, you *must* ensure that you call <c>base.Awake()</c> at the start of your overriding method.
+        /// This is where <see cref="Service"/> and <see cref="EntityComponent"/> perform their setup. Client setup
+        /// code should typically happen by implementing the <see cref="Start"/> method instead of this method. If you
+        /// do need to override Awake, you *must* ensure that you call <c>base.Awake()</c> at the start of your
+        /// overriding method.
         /// </para>
         protected virtual void Awake()
         {
@@ -178,7 +185,7 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// The stadard Unity <c>OnEnablee</c> method, added here for use in test code.
+        /// The stadard Unity <c>OnEnable</c> method, added here for use in test code.
         /// </summary>
         protected virtual void OnEnable()
         {
@@ -261,13 +268,12 @@ namespace DungeonStrike.Source.Core
         /// <param name="message">The received message object.</param>
         public void HandleMessageFromDriver(Message message)
         {
-            Logger.Log("Received message: " + message.MessageId);
-            ErrorHandler.CheckState(!CurrentMessageId.HasValue, "Component is already handling a message",
-                new {CurrentMessageId, message});
+            Logger.Log("Received message", message.MessageId);
+            ErrorHandler.CheckState(!CurrentMessageId.HasValue, "Component is already handling a message");
             CurrentMessageId = Optional.Of(message.MessageId);
             HandleMessage(message, () =>
             {
-                Logger.Log("Finished processing message: " + message.MessageId);
+                Logger.Log("Finished processing message", message.MessageId);
                 CurrentMessageId = Utilities.Optional<string>.Empty;
             });
         }

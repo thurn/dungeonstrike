@@ -37,7 +37,7 @@
         /// <param name="entityId">Sets the entity ID.</param>
         public void Initialize(string entityType, string entityId)
         {
-            ErrorHandler.CheckArgumentsNotNull(new {entityType, entityId});
+            ErrorHandler.CheckNotNull("entityType", entityType, "entityId", entityId);
             EntityType = entityType;
             EntityId = entityId;
             Initialized = true;

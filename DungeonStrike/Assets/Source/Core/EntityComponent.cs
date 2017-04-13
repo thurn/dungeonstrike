@@ -28,7 +28,7 @@ namespace DungeonStrike.Source.Core
         /// </para>
         protected override void Awake()
         {
-            ErrorHandler.CheckArgumentsNotNull(new {SupportedMessageTypes});
+            ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var entity = GetComponent<Entity>();
             if (entity == null)
             {

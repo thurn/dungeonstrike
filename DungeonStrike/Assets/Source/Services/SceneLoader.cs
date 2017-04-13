@@ -22,14 +22,9 @@ namespace DungeonStrike.Source.Services
 
         private IEnumerator<YieldInstruction> LoadSceneAsync(LoadSceneMessage message, Action onComplete)
         {
-            Logger.Log("Loading scene " + message.SceneName);
+            Logger.Log("Loading scene", message.SceneName);
             yield return SceneManager.LoadSceneAsync(message.SceneName);
             onComplete();
-        }
-
-        protected override void Start()
-        {
-            Logger.Log("SLStart");
         }
     }
 }

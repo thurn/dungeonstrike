@@ -19,13 +19,9 @@
         /// </para>
         protected override void Awake()
         {
-            ErrorHandler.CheckArgumentsNotNull(new {SupportedMessageTypes});
+            ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var root = GetComponent<Root>();
-            if (root == null)
-            {
-                ErrorHandler.ReportError("Service components must be attached to the Root object!");
-                return;
-            }
+            ErrorHandler.CheckState(root != null, "Service components must be attached to the Root object!");
             var messageRouter = GetService<MessageRouter>();
             foreach (var messageType in SupportedMessageTypes)
             {
