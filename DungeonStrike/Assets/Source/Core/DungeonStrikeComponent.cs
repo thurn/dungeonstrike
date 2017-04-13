@@ -230,6 +230,7 @@ namespace DungeonStrike.Source.Core
         /// handling a previous message.</param>
         protected virtual void HandleMessage(Message receivedMessage, Action onComplete)
         {
+            onComplete();
         }
 
         /// <summary>

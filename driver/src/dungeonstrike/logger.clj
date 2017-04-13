@@ -141,7 +141,6 @@
   (stop [{:keys [driver-log-file debug-log-channel system-log-context
                  clear-on-stop?]
           :as component}]
-    (log system-log-context "Stopped Logger")
     (when clear-on-stop?
       (io/delete-file driver-log-file true))
     (when debug-log-channel (async/close! debug-log-channel))

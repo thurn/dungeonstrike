@@ -1,4 +1,0 @@
-[submodule "DungeonStrike/Assets/Arcadia"]
-	path = DungeonStrike/Assets/Arcadia
-	url = git@github.com:arcadia-unity/Arcadia.git
-	branch = develop
