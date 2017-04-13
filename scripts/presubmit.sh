@@ -7,17 +7,11 @@ then
   exit
 fi
 
+# Run Uncrustify formatter
+./scripts/uncrustify.sh
+
 # Check for ThirdParty modifications
 ./scripts/checksum.py
 
-# Create a backup
-./scripts/backup.sh
-
 # Run Editor tests
 ./scripts/runEditorTests.sh
-
-# Run Gendarme static analyzer
-./scripts/gendarme.sh
-
-# Run Uncrustify formatter
-./scripts/uncrustify.sh

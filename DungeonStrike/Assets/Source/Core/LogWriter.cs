@@ -7,15 +7,15 @@ namespace DungeonStrike.Source.Core
 {
     public static class LogWriter
     {
-        private static readonly StreamWriter LogFile;
+        private static StreamWriter _logFile;
         private const string MetadataSeparator = "\t\t»";
 
-        static LogWriter()
+        public static void Initialize()
         {
-            var logDir = Path.Combine(Application.dataPath, "Logs");
+            var logDir = Path.Combine(Application.dataPath, "../Logs");
             Directory.CreateDirectory(logDir);
             var logFile = Path.Combine(logDir, "client_logs.txt");
-            LogFile = new StreamWriter(logFile, true /* append */) {AutoFlush = true};
+            _logFile = new StreamWriter(logFile, true /* append */) {AutoFlush = true};
         }
 
         /// <summary>
@@ -75,7 +75,10 @@ namespace DungeonStrike.Source.Core
         /// <param name="message">Log message, including log metadata.</param>
         private static void WriteLog(StringBuilder message)
         {
-            LogFile.Write(message.ToString());
+            if (_logFile != null)
+            {
+                _logFile.Write(message.ToString());
+            }
         }
     }
 }

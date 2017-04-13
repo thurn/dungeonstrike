@@ -14,7 +14,7 @@
 
 (defn client-log-file []
   (str (System/getProperty "user.dir")
-       "/../DungeonStrike/Assets/Logs/client_logs.txt"))
+       "/../DungeonStrike/Logs/client_logs.txt"))
 
 (defn create-system []
   (let [driver-log-file (driver-log-file)

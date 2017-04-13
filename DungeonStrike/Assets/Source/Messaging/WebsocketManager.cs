@@ -33,9 +33,14 @@ namespace DungeonStrike.Source.Messaging
             }
         }
 
+        public void ToCreate2()
+        {
+            _messageRouter.RouteMessageToFrontend(null);
+        }
+
         protected override void Start()
         {
-            StartCoroutine(SendMessage());
+            //StartCoroutine(SendMessage());
         }
 
         private IEnumerator SendMessage()

@@ -16,7 +16,7 @@ namespace DungeonStrike.Tests.Editor
         {
             _rootObject = new GameObject("Root");
             _rootComponent = _rootObject.AddComponent<Root>();
-            _rootComponent.Awake();
+            _rootComponent.RegisterServices();
             _managedObjects = new List<GameObject>();
             foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
             {

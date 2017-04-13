@@ -6,16 +6,20 @@ then
   exit
 fi
 
+# Create a backup to run tests on
+./scripts/backup.sh
+
 echo "Running editor tests..."
 unity_bin="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
-$unity_bin -batchmode -projectPath "$(pwd)/DungeonStrike" -runEditorTests
+project_path="$HOME/backup/DungeonStrike"
+$unity_bin -batchmode -projectPath $project_path -runEditorTests
 result=$?
 
 if [ $result -eq 0 ]; then
     echo "All Editor Tests Passed"
     exit
 elif [ $result -eq 1 ]; then
-    echo "Unable to run editor tests (Unity is already running?)"
+    echo "Unable to run editor tests (Project is already open/not found?)"
     exit 1
 else
     echo "FAILURES in Editor Tests! Code $result."

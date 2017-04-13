@@ -7,4 +7,4 @@ then
 fi
 
 echo "Backing up to ~/backup"
-rsync -a -i . ~/backup | pv --progress --line-mode --size $(find . | wc -l) > /dev/null
+rsync -a -i --delete . ~/backup | pv --progress --line-mode --size $(find . | wc -l) > /dev/null

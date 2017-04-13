@@ -9,6 +9,8 @@ if not os.getcwd().endswith("dungeonstrike"):
   print("This script must be invoked from the root directory.")
   exit()
 
+subprocess.call(["find", ".", "-name" ,".DS_Store", "-delete"])
+
 for directory in os.listdir(THIRD_PARTY):
   path = THIRD_PARTY + "/" + directory
   if not os.path.isdir(path): continue

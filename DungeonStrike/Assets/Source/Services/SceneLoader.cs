@@ -26,5 +26,10 @@ namespace DungeonStrike.Source.Services
             yield return SceneManager.LoadSceneAsync(message.SceneName);
             onComplete();
         }
+
+        protected override void Start()
+        {
+            Logger.Log("SLStart");
+        }
     }
 }

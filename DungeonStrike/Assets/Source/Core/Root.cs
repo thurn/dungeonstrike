@@ -16,13 +16,20 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class Root : MonoBehaviour
     {
-        /// <summary>
-        /// Central registration point for services. Add all service components here.
-        /// </summary>
         public void Awake()
         {
+            LogWriter.Initialize();
             Application.logMessageReceivedThreaded += LogWriter.HandleUnityLog;
             Debug.Log("Awake");
+            RegisterServices();
+        }
+
+        /// <summary>
+        /// Central registration point for services. Add all service components here. This method should only be
+        /// invoked from test code.
+        /// </summary>
+        public void RegisterServices()
+        {
             gameObject.AddComponent<MessageRouter>();
             gameObject.AddComponent<WebsocketManager>();
             gameObject.AddComponent<SceneLoader>();
