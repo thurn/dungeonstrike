@@ -1,37 +1,38 @@
 (ns dungeonstrike.log-tailer
-  (:require [clojure.string :as string]
+  "A component which monitors changes to a given log file. Broadcasts messages
+   on the debug log channel when new log entries are appended to the end of the
+   file."
+  (:require [clojure.core.async :as async]
             [clojure.java.io :as io]
-            [clojure.core.async :as async]
+            [clojure.spec :as s]
+            [clojure.string :as string]
             [com.stuartsierra.component :as component]
-            [dungeonstrike.logger :as logger :refer [dbg! log]]
+            [dungeonstrike.logger :as logger :refer [log error]]
             [dev])
-  (:import (org.apache.commons.io.input
-            Tailer TailerListener TailerListenerAdapter)))
-(dev/require-dev-helpers!)
+  (:import (org.apache.commons.io.input Tailer TailerListener
+                                        TailerListenerAdapter)))
+(dev/require-dev-helpers)
 
-(defn handle-log-line [log-channel line]
-  (async/put! log-channel line))
-
-(def listen-count (atom 0))
-
-(defrecord LogTailer [log-file logger tailer log-channel]
+(defrecord LogTailer []
   component/Lifecycle
 
-  (start [{:keys [log-file logger] :as component}]
-    (reset! listen-count 0)
-    (let [listener (proxy [TailerListenerAdapter] []
+  (start [{:keys [::log-file ::logger] :as component}]
+    (let [log-context (logger/component-log-context logger "LogTailer")
+          listener (proxy [TailerListenerAdapter] []
                      (handle [line]
-                       (swap! listen-count inc)
-                       (handle-log-line (:debug-log-channel logger) line)))
+                       (async/put! (logger/debug-log-channel logger) line)))
           file (io/file log-file)
           tailer (Tailer/create file listener 1000 true true)]
-      (log (:system-log-context logger) "Started LogTailer" (.getName file))
-      (assoc component :tailer tailer)))
-  (stop [{:keys [tailer log-file logger foo] :as component}]
-    (reset! listen-count -1000)
+      (log log-context "Started LogTailer" (.getName file))
+      (assoc component ::tailer tailer ::log-context log-context)))
+  (stop [{:keys [::tailer ::log-context] :as component}]
     (when tailer (.stop tailer))
-    (log (:system-log-context logger) "Stopped LogTailer")
-    (dissoc component :tailer)))
+    (log log-context "Stopped LogTailer")
+    (dissoc component ::tailer ::log-context)))
 
-(defn new-log-tailer [log-file]
-  (map->LogTailer {:log-file log-file}))
+(s/fdef new-log-tailer :args (s/cat :log-file string?))
+(defn new-log-tailer
+  "Returns a new LogTailer instance which will monitor changes to the log file
+   at the path indicated by the `log-file` path string."
+  [log-file]
+  (map->LogTailer {::log-file log-file}))

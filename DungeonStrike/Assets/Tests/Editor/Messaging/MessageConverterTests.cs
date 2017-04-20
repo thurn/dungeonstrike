@@ -17,8 +17,7 @@ namespace DungeonStrike.Tests.Editor.Messaging
         {
             MessageType = "LoadScene",
             MessageId = "123",
-            GameVersion = "0.1.0",
-            SceneName = "Flat"
+            SceneName = SceneName.Flat
         };
 
         [Test]

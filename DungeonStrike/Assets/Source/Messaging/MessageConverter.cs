@@ -25,17 +25,8 @@ namespace DungeonStrike.Source.Messaging
             JsonSerializer serializer)
         {
             var jObject = JObject.Load(reader);
-
             var type = (string) jObject.Property("MessageType");
-            Message target;
-            switch (type)
-            {
-                case LoadSceneMessage.MessageTypeString:
-                    target = new LoadSceneMessage();
-                    break;
-                default:
-                    throw new InvalidOperationException();
-            }
+            var target = Messages.EmptyMessageForType(type);
             serializer.Populate(jObject.CreateReader(), target);
             return target;
         }

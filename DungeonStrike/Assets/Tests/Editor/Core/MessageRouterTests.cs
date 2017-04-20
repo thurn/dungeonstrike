@@ -59,23 +59,20 @@ namespace DungeonStrike.Tests.Editor.Core
             {
                 MessageType = "TestMessage",
                 MessageId = "123",
-                GameVersion = "0.0",
-                SceneName = "Test"
+                SceneName = SceneName.Empty
             };
             _testMessage2 = new LoadSceneMessage()
             {
                 MessageType = "TestMessage",
                 MessageId = "123",
                 EntityId = "321",
-                GameVersion = "0.0",
-                SceneName = "Test"
+                SceneName = SceneName.Empty
             };
             _testMessage3 = new LoadSceneMessage()
             {
                 MessageType = "TestMessage",
                 MessageId = "789",
-                GameVersion = "0.0",
-                SceneName = "Test"
+                SceneName = SceneName.Empty
             };
         }
 

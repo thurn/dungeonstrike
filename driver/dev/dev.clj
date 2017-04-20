@@ -4,24 +4,18 @@
   (:require [clojure.tools.namespace]
             [clojure.tools.namespace.repl]))
 
+(defmacro require-dev-helpers
+  "Helper macro to require functions and macros which assist with development.
+   Should be included in every file, but should not be used in production."
+  []
+  '(require '[clojure.repl :refer [apropos dir doc find-doc pst source]]
+            '[com.gfredericks.debug-repl :refer [break! unbreak!]]
+            '[clojure.pprint :refer [pprint]]
+            '[clojure.reflect :refer [reflect]]
+            '[clojure.java.javadoc :refer [javadoc]]))
+
 (defn stop! []
   (println "Stopping system..."))
 
 (defn start! []
   (println "Starting system... "))
-
-(def dev-helpers
-  '[[clojure.java.javadoc :refer [javadoc]]
-    [clojure.pprint :refer [pprint]]
-    [clojure.reflect :refer [reflect]]
-    [clojure.tools.namespace]
-    [clojure.tools.namespace.repl]
-    [clojure.test :as test]
-    [clojure.string :as string]
-    [com.gfredericks.debug-repl :refer [break! unbreak!]]
-    [clojure.repl :refer [apropos dir doc find-doc pst source]]])
-
-(defmacro require-dev-helpers!
-  "Require helpers from the dev-requires list"
-  []
-  `(apply require dev/dev-helpers))
