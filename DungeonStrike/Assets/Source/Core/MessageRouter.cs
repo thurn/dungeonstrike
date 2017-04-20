@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DisruptorUnity3d;
 using DungeonStrike.Source.Messaging;
-using DungeonStrike.Source.Utilities;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Tuple = DungeonStrike.Source.Utilities.Tuple;
 
 namespace DungeonStrike.Source.Core
 {
@@ -10,20 +13,61 @@ namespace DungeonStrike.Source.Core
     /// </summary>
     public sealed class MessageRouter : Service
     {
+        // True if 'OnEnable' has been been invoked since the last 'OnDisable'.
+        private bool _initialized;
+
         // Map from message type to the registered message handler
-        private readonly Dictionary<string, DungeonStrikeComponent> _serviceMessageHandlers =
-            new Dictionary<string, DungeonStrikeComponent>();
+        private Dictionary<string, DungeonStrikeComponent> _serviceMessageHandlers;
 
         // Map from (message type, entityId) to the registered message handler
-        private readonly Dictionary<Tuple<string, string>, DungeonStrikeComponent> _entityComponentMessageHandlers =
-            new Dictionary<Tuple<string, string>, DungeonStrikeComponent>();
+        private Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent> _entityComponentMessageHandlers;
 
-        private readonly RingBuffer<Tuple<Message, DungeonStrikeComponent>> _messages =
-            new RingBuffer<Tuple<Message, DungeonStrikeComponent>>(16);
+        private RingBuffer<Exception> _errors;
+
+        private RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>> _messages;
+
+        // Captured ErrorHandler instance, since ErrorHandler property can only be accessed from the main thread.
+        private ErrorHandler _errorHandler;
+
+        /// <summary>
+        /// Initialize the message router. Called from the OnEnable method of each entity and service component.
+        /// </summary>
+        /// <para>
+        /// We avoid using the normal 'OnEnable' method because this component is used by every other component's
+        /// OnEnable method.
+        /// </para>
+        public void Initialize()
+        {
+            if (_initialized) return;
+            _serviceMessageHandlers = new Dictionary<string, DungeonStrikeComponent>();
+            _entityComponentMessageHandlers =
+                new Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent>();
+            _errors = new RingBuffer<Exception>(16);
+            _messages = new RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>>(16);
+            _errorHandler = ErrorHandler;
+            _initialized = true;
+        }
+
+        protected override void OnDisable()
+        {
+            _initialized = false;
+            _serviceMessageHandlers = null;
+            _entityComponentMessageHandlers = null;
+            _errors = null;
+            _messages = null;
+        }
 
         public void Update()
         {
-            Tuple<Message, DungeonStrikeComponent> messageTarget;
+            if (!_initialized) return;
+
+            Exception error;
+            if (_errors.TryDequeue(out error))
+            {
+                throw error;
+            }
+
+            Utilities.Tuple<Message, DungeonStrikeComponent> messageTarget;
             if (_messages.TryDequeue(out messageTarget))
             {
                 messageTarget.Item2.HandleMessageFromDriver(messageTarget.Item1);
@@ -62,25 +106,37 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Called when new messages are received from the driver. Should not be invoked in user code.
         /// </summary>
-        /// <param name="message">The newly-received message, which should be delivered to the frontend.</param>
-        public void RouteMessageToFrontend(Message message)
+        /// <param name="messageInput">The newly-received message JSON string, which should be delivered to the
+        /// frontend.</param>
+        public void RouteMessageToFrontend(string messageInput)
         {
-            ErrorHandler.CheckNotNull("message", message);
-            var messageType = message.MessageType;
-            if (message.EntityId != null)
+            try
             {
-                var key = Tuple.Create(messageType, message.EntityId);
-                ErrorHandler.CheckState(_entityComponentMessageHandlers.ContainsKey(key),
-                    "No entity component message handler registered for message", "MessageId", message.MessageId,
-                    "MessageType", message.MessageType, "EntityId", message.EntityId);
-                _messages.Enqueue(Tuple.Create(message, _entityComponentMessageHandlers[key]));
+                var message = JsonConvert.DeserializeObject<Message>(messageInput, new MessageConverter(),
+                        new StringEnumConverter());
+                _errorHandler.CheckNotNull("message", message);
+                var messageType = message.MessageType;
+                if (message.EntityId != null)
+                {
+                    var key = Tuple.Create(messageType, message.EntityId);
+                    _errorHandler.CheckState(_entityComponentMessageHandlers.ContainsKey(key),
+                        "No entity component message handler registered for message", "MessageId", message.MessageId,
+                        "MessageType", message.MessageType, "EntityId", message.EntityId);
+                    _messages.Enqueue(Tuple.Create(message, _entityComponentMessageHandlers[key]));
+                }
+                else
+                {
+                    _errorHandler.CheckArgument(_serviceMessageHandlers.ContainsKey(messageType),
+                        "No service message handler registered for message", "MessageId", message.MessageId,
+                        "MessageType", message.MessageType);
+                    _messages.Enqueue(Tuple.Create(message, _serviceMessageHandlers[messageType]));
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ErrorHandler.CheckArgument(_serviceMessageHandlers.ContainsKey(messageType),
-                    "No service message handler registered for message", "MessageId", message.MessageId,
-                    "MessageType", message.MessageType);
-                _messages.Enqueue(Tuple.Create(message, _serviceMessageHandlers[messageType]));
+                // Forward exceptions to the UI thread so WebSocketSharp doesn't swallow them.
+                _errors.Enqueue(ex);
+                throw;
             }
         }
     }

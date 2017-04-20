@@ -2,6 +2,7 @@
   "A Component which renders a Swing UI window showing various debugging
    tools."
   (:require [clojure.core.async :as async :refer [<!]]
+            [clojure.spec :as s]
             [clojure.string :as string]
             [com.stuartsierra.component :as component]
             [dungeonstrike.logger :as logger :refer [log error]]
@@ -34,11 +35,11 @@
     [[(seesaw/label (str field-name))]
      [(cond
         (set? field)
-        (seesaw/combobox :model field)
-        (= uuid? field)
-        (seesaw/text (str (java.util.UUID/randomUUID)))
+        (seesaw/combobox :id field-name :model field)
+        (#{:m/entity-id} field)
+        (seesaw/text :id field-name (str (java.util.UUID/randomUUID)))
         (= messages/position-spec field)
-        (seesaw/text "<position>")
+        (seesaw/text :id field-name "")
         :otherwise
         (seesaw/text "Unknown field type")) "wrap"]]))
 
@@ -49,9 +50,11 @@
     [(seesaw/label "Message Type")]
     [message-picker "wrap"]
     [(seesaw/label "Message ID")]
-    [(seesaw/text (str (java.util.UUID/randomUUID))) "wrap"]]
+    [(seesaw/text :id :m/message-id
+                  :text (str (java.util.UUID/randomUUID))) "wrap"]]
    (mapcat form-for-field (message-type messages/messages))
-   [[(seesaw/button :text "Send!") "skip, span, wrap"]]))
+   [[(seesaw/button :text "Send!" :id :send-button :enabled? false)
+     "skip, span, wrap"]]))
 
 (defn- message-selected-fn [panel message-picker]
   (fn [event]
@@ -63,9 +66,11 @@
   "UI for 'Send Message' window."
   [message-sender]
   (let [message-types (keys messages/messages)
-        message-picker (seesaw/combobox :model message-types)
-        panel (mig/mig-panel :items (message-form-items message-picker
-                                                        :m/load-scene))]
+        message-picker (seesaw/combobox :id :m/message-type
+                                        :model message-types)
+        form-items (message-form-items message-picker :m/load-scene)
+        panel (mig/mig-panel :id :message-form :items form-items)]
+    (seesaw/selection! message-picker :m/load-scene)
     (seesaw/listen message-picker :selection
                    (message-selected-fn panel message-picker))
     panel))
@@ -176,10 +181,31 @@
          (seesaw/scroll! logs-view :to :bottom)))
       (recur))))
 
+(defn- on-send-button-clicked
+  "Returns a click handler function for the 'send' button."
+  [message-sender message-form]
+  (fn [event]
+    (let [form-value (seesaw/value message-form)
+          filter-keys (fn [[key value]] (= "m" (namespace key)))
+          message (into {} (filter filter-keys form-value))]
+      (messages/send-message! message-sender message))))
+
+(defn- start-send-button
+  "Attaches a listener to the send button to send the current message to the
+   client on click. Monitors message channel events and enables/disables the
+   send button based on connection status."
+  [send-button message-form message-sender status-channel]
+  (seesaw/listen send-button :action (on-send-button-clicked message-sender
+                                                             message-form))
+  (async/go-loop []
+    (when-some [{:keys [:data]} (<! status-channel)]
+      (seesaw/config! send-button :enabled? (= :connection-opened data))
+      (recur))))
+
 (defrecord DebugGui []
   component/Lifecycle
 
-  (start [{:keys [::logger ::message-sender] :as component}]
+  (start [{:keys [::logger ::message-sender ::status-channel] :as component}]
     ; Instruct Seesaw to try to make things look as native as possible
     (seesaw/native!)
 
@@ -187,20 +213,27 @@
           frame (seesaw/frame :title "The DungeonStrike Driver"
                               :minimum-size [1440 :by 878]
                               :content (frame-content message-sender))
-          logs (seesaw/select frame [:#logs])]
+          logs (seesaw/select frame [:#logs])
+          message-form (seesaw/select frame [:#message-form])
+          send-button (seesaw/select frame [:#send-button])]
       (start-logs logs (logger/debug-log-channel logger))
+      (start-send-button send-button message-form message-sender status-channel)
       (seesaw/show! frame)
       (log log-context "Started DebugGui")
       (assoc component ::frame frame ::log-context log-context)))
 
-  (stop [{:keys [::frame ::log-context] :as component}]
+  (stop [{:keys [::frame ::log-context ::message-pub] :as component}]
+    (when message-pub
+      (async/unsub-all message-pub :status))
     (when frame
       (seesaw/config! frame :visible? false)
       (seesaw/dispose! frame))
     (log log-context "Stopped DebugGui")
     (dissoc component ::frame ::log-context)))
 
+(s/fdef new-debug-gui :args (s/cat :status-channel some?))
 (defn new-debug-gui
-  "Creates a new DebugGui component"
-  []
-  (map->DebugGui {}))
+  "Creates a new DebugGui component with `status-channel` as a publication
+   subscriber for socket status messages."
+  [status-channel]
+  (map->DebugGui {::status-channel status-channel}))

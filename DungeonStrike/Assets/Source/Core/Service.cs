@@ -1,4 +1,6 @@
-﻿namespace DungeonStrike.Source.Core
+﻿using UnityEngine;
+
+namespace DungeonStrike.Source.Core
 {
     /// <summary>
     /// Represents a singleton component attached to the <see cref="Root"/> object.
@@ -14,19 +16,23 @@
         /// <summary>
         /// Registers this Service to receive messages requested based on <c>SupportedMessageTypes</c>.
         /// </summary>
-        /// <para>
-        /// Note that if you override this method, you *must* call <c>base.Awake()</c> before running any other code.
-        /// </para>
-        protected override void Awake()
+        protected sealed override void OnEnable()
         {
             ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var root = GetComponent<Root>();
             ErrorHandler.CheckState(root != null, "Service components must be attached to the Root object!");
             var messageRouter = GetService<MessageRouter>();
+            messageRouter.Initialize();
+
             foreach (var messageType in SupportedMessageTypes)
             {
                 messageRouter.RegisterServiceForMessage(messageType, this);
             }
+            OnEnableService();
+        }
+
+        protected virtual void OnEnableService()
+        {
         }
     }
 }

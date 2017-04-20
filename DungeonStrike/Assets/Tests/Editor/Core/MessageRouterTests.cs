@@ -55,22 +55,22 @@ namespace DungeonStrike.Tests.Editor.Core
         public void SetUp()
         {
             _messageRouter = GetService<MessageRouter>();
-            _testMessage1 = new LoadSceneMessage()
+            _testMessage1 = new TestMessage()
             {
-                MessageType = "TestMessage",
+                MessageType = "Test",
                 MessageId = "123",
                 SceneName = SceneName.Empty
             };
-            _testMessage2 = new LoadSceneMessage()
+            _testMessage2 = new TestMessage()
             {
-                MessageType = "TestMessage",
+                MessageType = "Test",
                 MessageId = "123",
                 EntityId = "321",
                 SceneName = SceneName.Empty
             };
-            _testMessage3 = new LoadSceneMessage()
+            _testMessage3 = new TestMessage()
             {
-                MessageType = "TestMessage",
+                MessageType = "Test",
                 MessageId = "789",
                 SceneName = SceneName.Empty
             };
@@ -85,7 +85,7 @@ namespace DungeonStrike.Tests.Editor.Core
             AwakeAndStartObjects();
 
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
-            _messageRouter.RouteMessageToFrontend(_testMessage1);
+            _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
             _messageRouter.Update();
             Assert.IsTrue(receiver.CurrentMessageId.HasValue);
             Assert.AreEqual(receiver.ReceivedMessage, _testMessage1);
@@ -108,7 +108,7 @@ namespace DungeonStrike.Tests.Editor.Core
 
             Assert.IsFalse(receiver1.CurrentMessageId.HasValue);
             Assert.IsFalse(receiver2.CurrentMessageId.HasValue);
-            _messageRouter.RouteMessageToFrontend(_testMessage2);
+            _messageRouter.RouteMessageToFrontend(_testMessage2.ToJson());
             _messageRouter.Update();
             Assert.IsTrue(receiver1.CurrentMessageId.HasValue);
             Assert.IsFalse(receiver2.CurrentMessageId.HasValue);
@@ -125,9 +125,9 @@ namespace DungeonStrike.Tests.Editor.Core
             receiver.MessageTypes = new List<string> {_testMessage1.MessageType};
             AwakeAndStartObjects();
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
-            _messageRouter.RouteMessageToFrontend(_testMessage1);
+            _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
             _messageRouter.Update();
-            _messageRouter.RouteMessageToFrontend(_testMessage3);
+            _messageRouter.RouteMessageToFrontend(_testMessage3.ToJson());
             _messageRouter.Update();
         }
 
@@ -172,7 +172,8 @@ namespace DungeonStrike.Tests.Editor.Core
         [ExpectedException(typeof(ArgumentException))]
         public void TestNoHandlerRegistered()
         {
-            _messageRouter.RouteMessageToFrontend(_testMessage1);
+            AwakeAndStartObjects();
+            _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
             _messageRouter.Update();
         }
     }

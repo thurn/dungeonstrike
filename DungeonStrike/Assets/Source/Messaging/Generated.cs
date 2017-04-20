@@ -21,6 +21,11 @@ namespace DungeonStrike.Source.Messaging
         Soldier
     }
 
+    public sealed class TestMessage : Message
+    {
+        public SceneName SceneName { get; set; }
+    }
+
     public sealed class LoadSceneMessage : Message
     {
         public SceneName SceneName { get; set; }
@@ -47,6 +52,8 @@ namespace DungeonStrike.Source.Messaging
         {
             switch (messageType)
             {
+                case "Test":
+                    return new TestMessage();
                 case "LoadScene":
                     return new LoadSceneMessage();
                 case "CreateEntity":

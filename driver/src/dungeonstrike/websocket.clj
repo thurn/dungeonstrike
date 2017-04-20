@@ -14,58 +14,78 @@
 
 (defn- channel-closed-handler
   "Handler for websocket channel close events."
-  [log-context]
+  [log-context inbound-channel]
   (fn [status]
-    (log log-context "Websocket closed" status)))
+    (log log-context "Driver connection closed" status)
+    (async/put! inbound-channel {:event-type :status
+                                 :data :connection-closed})))
 
 (defn- channel-receive-handler
   "Handler invoked when the websocket server receives a new message."
-  [log-context]
+  [log-context inbound-channel]
   (fn [data]
     (let [parsed (json/read-str data :key-fn #(keyword (case/->kebab-case %)))]
-      (log log-context "Websocket got message" parsed))))
+      (log log-context "Websocket got message" parsed)
+      (async/put! inbound-channel {:event-type :message
+                                   :data parsed}))))
+
+(defn- to-json
+  "Converts a message map into a JSON string."
+  [message]
+  (let [key-fn (fn [key] (case/->PascalCase (name key)))
+        value-fn (fn [_ value] (if (keyword? value)
+                                 (case/->PascalCase (name value))
+                                 value))]
+    (json/write-str message :key-fn key-fn :value-fn value-fn)))
 
 (defn- create-handler
   "Returns a new handler function for websocket connections suitable for being
-   passed to http-kit's run-server function. When a connection is established,
-   starts a go loop which consumes messages from `outbound-channel` and sends
-   them to the client."
-  [log-context outbound-channel]
+   passed to http-kit's run-server function.  When a connection is established,
+   updates `socket-atom` with a websocket channel reference. When messages are
+   received or connection status changes, publishes events to
+   `inbound-channel`."
+  [log-context socket-atom inbound-channel]
   (fn [request]
     (http-kit/with-channel request channel
       (log log-context "Driver got connection")
+      (async/put! inbound-channel {:event-type :status
+                                   :data :connection-opened})
+      (reset! socket-atom channel)
 
-      (async/go-loop []
-        (if (http-kit/open? channel)
-          (when-some [message (<! outbound-channel)]
-            (log log-context "Websocket sending message" message)
-            (let [json (json/write-str message
-                                       :key-fn #(case/->PascalCase (name %)))
-                  result (http-kit/send! channel json)]
-              (when-not result
-                (error log-context "Unable to send message" message)))
-            (recur))))
+      (http-kit/on-close channel (channel-closed-handler log-context
+                                                         inbound-channel))
+      (http-kit/on-receive channel (channel-receive-handler log-context
+                                                            inbound-channel)))))
 
-      (http-kit/on-close channel (channel-closed-handler log-context))
-      (http-kit/on-receive channel (channel-receive-handler log-context)))))
-
-(defprotocol MessageSender
-  (send-message! [component message]
-    "Sends a `message` to the client via `component`."))
-
-(defonce ^:private stop-server-fn (atom nil))
+(defonce stop-server-fn (atom nil))
 
 (defrecord Websocket []
   component/Lifecycle
 
-  (start [{:keys [::logger ::port] :as component}]
+  (start [{:keys [::logger ::port ::inbound-channel] :as component}]
     (let [log-context (logger/component-log-context logger "Websocket")
-          outbound-channel (async/chan (async/buffer 1024))
+          outbound-channel (async/chan 1024)
+          socket-atom (atom nil)
           stop-server! (http-kit/run-server
-                        (create-handler log-context outbound-channel)
+                        (create-handler log-context
+                                        socket-atom
+                                        inbound-channel)
                         {:port port})]
-      (log log-context "Started Websocket" port)
+      (async/go-loop []
+        (when-some [message (<! outbound-channel)]
+          (let [socket @socket-atom]
+            (if (and (some? socket) (http-kit/open? socket))
+              (do
+                (log log-context "Websocket sending message" message)
+                (let [json (to-json message)
+                      result (http-kit/send! socket json)]
+                  (when-not result
+                    (error log-context "Unable to send message" message))))
+              (log log-context "Unable to send: Channel is closed" message))
+            (recur))))
+
       (reset! stop-server-fn stop-server!)
+      (log log-context "Started Websocket" port)
       (assoc component
              ::log-context log-context
              ::stop-server! stop-server!
@@ -80,13 +100,15 @@
 
   messages/MessageSender
   (send-message! [websocket message]
-    (async/put! (::outbound-channel websocket) message)))
+    (if (s/valid? :m/message message)
+      (async/put! (::outbound-channel websocket) message)
+      (throw (RuntimeException. (s/explain :m/message message))))))
 
 (s/def ::websocket #(instance? Websocket %))
 
-(s/fdef new-websocket :args (s/cat :port integer?))
+(s/fdef new-websocket :args (s/cat :port integer? :inbound-channel some?))
 (defn new-websocket
   "Creates a new Websocket instance which will listen for connections on the
-   indicated `port`."
-  [port]
-  (map->Websocket {::port port}))
+   indicated `port` and publish the resulting messages on `inbound-channel`."
+  [port inbound-channel]
+  (map->Websocket {::port port ::inbound-channel inbound-channel}))

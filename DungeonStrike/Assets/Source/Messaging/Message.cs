@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace DungeonStrike.Source.Messaging
 {
@@ -36,7 +38,14 @@ namespace DungeonStrike.Source.Messaging
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(this);
+            return "<[" + MessageType + "Message] id=" + MessageId + ">";
+        }
+
+        public string ToJson()
+        {
+            var settings = new JsonSerializerSettings {NullValueHandling = NullValueHandling.Ignore};
+            settings.Converters.Add(new StringEnumConverter());
+            return JsonConvert.SerializeObject(this, settings);
         }
 
         /// <see cref="object.Equals(object)" />

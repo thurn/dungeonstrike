@@ -32,12 +32,22 @@
   (str (System/getProperty "user.dir")
        "/../DungeonStrike/Assets/Source/Messaging/Generated.cs"))
 
+(defn- subscriber-channel
+  "Creates and returns a new channel subscribed to `topic` on the publication
+   `pub`."
+  [pub topic]
+  (let [channel (async/chan)]
+    (async/sub pub topic channel)
+    channel))
+
 (defn- create-system
   "Creates a new component framework 'System Map' which instantiates all
    components used by the application and binds their dependencies."
   []
   (let [driver-log-file (driver-log-file)
-        client-log-file (client-log-file)]
+        client-log-file (client-log-file)
+        inbound-message-channel (async/chan 1024)
+        message-pub (async/pub inbound-message-channel :event-type)]
     (component/system-map
      ::logger
      (logger/new-logger driver-log-file :clear-on-stop? false)
@@ -56,16 +66,17 @@
                       {:dungeonstrike.code-generator/logger ::logger})
 
      ::websocket
-     (component/using (websocket/new-websocket 59005)
+     (component/using (websocket/new-websocket 59005 inbound-message-channel)
                       {:dungeonstrike.websocket/logger ::logger})
 
      ::debug-gui
-     (component/using (gui/new-debug-gui)
+     (component/using (gui/new-debug-gui
+                       (subscriber-channel message-pub :status))
                       {:dungeonstrike.gui/logger ::logger
                        :dungeonstrike.gui/message-sender ::websocket}))))
 
 ; Atom containing the system -- for development use only
-(defonce ^:private system (atom nil))
+(defonce system (atom nil))
 
 (defn stop!
   "Stops all components in the current system. For development use only."

@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DungeonStrike.Source.Core;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using UnityEditor;
 using UnityEngine;
 using WebSocketSharp;
 
@@ -11,15 +14,13 @@ namespace DungeonStrike.Source.Messaging
         private MessageRouter _messageRouter;
         private WebSocket _websocket;
 
-        protected override void OnEnable()
+        protected override void OnEnableService()
         {
             _messageRouter = GetService<MessageRouter>();
             _websocket = new WebSocket("ws://localhost:59005?client-id=client");
-            _websocket.OnOpen += (sender, eventArgs) => { Logger.Log("Unity got connection"); };
-            _websocket.OnError += (sender, args) => {
-                Logger.Log("Unity WebSocketError", "Message", args.Message, "Exception", args.Exception);
-            };
-            _websocket.OnClose += (sender, args) => { Logger.Log("Unity connection closed"); };
+            _websocket.OnOpen += OnOpen;
+            _websocket.OnError += OnError;
+            _websocket.OnClose += OnClosed;
             _websocket.OnMessage += OnMessageReceived;
             _websocket.Connect();
         }
@@ -28,7 +29,12 @@ namespace DungeonStrike.Source.Messaging
         {
             if (_websocket != null)
             {
+                _websocket.OnOpen -= OnOpen;
+                _websocket.OnError -= OnError;
+                _websocket.OnClose -= OnClosed;
+                _websocket.OnMessage -= OnMessageReceived;
                 _websocket.Close();
+                _websocket = null;
             }
         }
 
@@ -37,9 +43,12 @@ namespace DungeonStrike.Source.Messaging
             _messageRouter.RouteMessageToFrontend(null);
         }
 
-        protected override void Start()
+        private void Update()
         {
-            //StartCoroutine(SendMessage());
+            if (!_websocket.IsConnected)
+            {
+                _websocket.Connect();
+            }
         }
 
         private IEnumerator SendMessage()
@@ -48,11 +57,25 @@ namespace DungeonStrike.Source.Messaging
             _websocket.SendAsync("Hello, world", success => Logger.Log("Message sent"));
         }
 
+        private void OnOpen(object sender, EventArgs args)
+        {
+            Logger.Log("Unity got connection");
+        }
+
+        private void OnError(object sender, ErrorEventArgs args)
+        {
+            Logger.Log("Unity WebSocketError", "Message", args.Message, "Exception", args.Exception);
+        }
+
+        private void OnClosed(object sender, CloseEventArgs args)
+        {
+            Logger.Log("Unity connection closed");
+        }
+
         private void OnMessageReceived(object sender, MessageEventArgs messageArgs)
         {
-            //var message = JsonConvert.DeserializeObject<Message>(messageArgs.Data, new MessageConverter());
-            Logger.Log("Got Message " + messageArgs.Data);
-            //_messageRouter.RouteMessageToFrontend(message);
+            Logger.Log("Unity got message", messageArgs.Data.Substring(0, 25) + "...");
+            _messageRouter.RouteMessageToFrontend(messageArgs.Data);
         }
     }
 }

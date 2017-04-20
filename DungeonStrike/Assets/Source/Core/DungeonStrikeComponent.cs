@@ -15,11 +15,6 @@ namespace DungeonStrike.Source.Core
     /// <c>DungeonStrikeBehavior</c> provides useful shared functionality applicable to all or almost all components
     /// in the game, such as logging, error handling, and message routing.
     /// </para>
-    /// <para>
-    /// Note that this class and its subclasses set up important shared functionality in its <see cref="Awake"/> method.
-    /// Subclasses that wish to override <c>Awake()</c> must ensure that <c>base.Awake()</c> is invoked *before* any
-    /// other code runs. This is not required when overriding <c>Start()</c>.
-    /// </para>
     ///
     /// <example>
     /// This class sets up the standard message-routing system used by all components. Message subscriptions can be
@@ -115,7 +110,7 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// Returns a specific component on the Root object.
+        /// Returns a specific component on the Root object. Must be called from the main thread.
         /// </summary>
         /// <para>
         /// This implements a singleton pattern for components. Each scene must contain exactly one GameObject with the
@@ -138,20 +133,15 @@ namespace DungeonStrike.Source.Core
                 _root = roots[0];
             }
 
-            var result = _root.GetComponent<T>();
-            ErrorHandler.CheckState(result != null, "Unable to locate service", typeof(T));
-            return result;
+            var results = _root.GetComponents<T>();
+            ErrorHandler.CheckState(results.Length != 0, "Unable to locate service", typeof(T));
+            ErrorHandler.CheckState(results.Length == 1, "Multiple services found", typeof(T));
+            return results[0];
         }
 
         /// <summary>
-        /// Performs initial configuration, such as registering this component to receive message notifications.
+        /// The standard Unity <c>Awake</c> method.
         /// </summary>
-        /// <para>
-        /// This is where <see cref="Service"/> and <see cref="EntityComponent"/> perform their setup. Client setup
-        /// code should typically happen by implementing the <see cref="Start"/> method instead of this method. If you
-        /// do need to override Awake, you *must* ensure that you call <c>base.Awake()</c> at the start of your
-        /// overriding method.
-        /// </para>
         protected virtual void Awake()
         {
         }
@@ -167,11 +157,6 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// The standard Unity <c>Start</c> method.
         /// </summary>
-        /// <para>
-        /// This is implemented as an empty virtual method in order to enable components to be started in tests without
-        /// using reflection. No code should be added here. Unlike with <see cref="Awake"/>, you do *not* need to call
-        /// <c>base.Start()</c> if you override this method.
-        /// </para>
         protected virtual void Start()
         {
         }

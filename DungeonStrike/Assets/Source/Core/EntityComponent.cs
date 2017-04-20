@@ -23,10 +23,7 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Registers this EntityComponent to receive messages requested directed at its specific EntityID.
         /// </summary>
-        /// <para>
-        /// Note that if you override this method, you *must* call <c>base.Awake()</c> before running any other code.
-        /// </para>
-        protected override void Awake()
+        protected sealed override void OnEnable()
         {
             ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var entity = GetComponent<Entity>();
@@ -38,10 +35,17 @@ namespace DungeonStrike.Source.Core
             }
             ErrorHandler.CheckState(entity.Initialized, "Entity component must be initialized before Awake()");
             var messageRouter = GetService<MessageRouter>();
+            messageRouter.Initialize();
+
             foreach (var messageType in SupportedMessageTypes)
             {
                 messageRouter.RegisterEntityComponentForMessage(messageType, entity.EntityId, this);
             }
+            OnEnableEntityComponent();
+        }
+
+        protected virtual void OnEnableEntityComponent()
+        {
         }
     }
 }

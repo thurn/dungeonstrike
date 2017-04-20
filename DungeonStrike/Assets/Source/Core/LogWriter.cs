@@ -12,10 +12,11 @@ namespace DungeonStrike.Source.Core
 
         /// <summary>
         /// Initialize the log file. Must be invoked at startup. In order to avoid logging during unit test execution,
-        /// this method should not be called during tests.
+        /// this method should not be called during tests. This method is safe to call multiple times.
         /// </summary>
         public static void Initialize()
         {
+            if (_logFile != null) return;
             var logDir = Path.Combine(Application.dataPath, "../Logs");
             Directory.CreateDirectory(logDir);
             var logFile = Path.Combine(logDir, "client_logs.txt");
@@ -27,6 +28,13 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public static void HandleUnityLog(string logString, string stackTrace, LogType logType)
         {
+            if ((logType == LogType.Warning) && (logString.Contains("Assets/ThirdParty") ||
+                logString.Contains("Assets/OldSource")))
+            {
+                // Ignore warnings in third-party code.
+                return;
+            }
+
             var result = new StringBuilder(logString);
             if (!logString.Contains(MetadataSeparator))
             {
@@ -60,11 +68,11 @@ namespace DungeonStrike.Source.Core
             var result = new StringBuilder(message);
             if (arguments.Length == 1)
             {
-                result.Append("[").Append(arguments[0]).Append("]");
+                result.Append(" [").Append(arguments[0]).Append("]");
             }
             else if (arguments.Length > 1)
             {
-                result.Append("[");
+                result.Append(" [");
                 for (var i = 0; i < arguments.Length; ++i)
                 {
                     result.Append(arguments[i]);

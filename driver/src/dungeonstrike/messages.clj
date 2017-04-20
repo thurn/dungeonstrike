@@ -44,7 +44,7 @@
    by field keyword."
   (into {}
         [(deffield :m/scene-name scene-names)
-         (deffield :m/entity-id uuid?)
+         (deffield :m/entity-id string?)
          (deffield :m/entity-type entity-types)
          (deffield :m/position position-spec)]))
 
@@ -58,7 +58,7 @@
        (s/keys :req [:m/message-id :m/message-type ~@fields]))
      [~type ~fields]))
 
-(s/def :m/message-id uuid?)
+(s/def :m/message-id string?)
 
 (s/def :m/message-type keyword?)
 
@@ -70,7 +70,8 @@
   "All possible message specifications. A map from message type keywords to the
    required field keywords for that message type."
   (into {}
-        [(defmessage :m/load-scene [:m/scene-name])
+        [(defmessage :m/test [:m/entity-id :m/scene-name])
+         (defmessage :m/load-scene [:m/scene-name])
          (defmessage :m/create-entity [:m/entity-id :m/entity-type :m/position])
          (defmessage :m/destroy-entity [:m/entity-id])
          (defmessage :m/move-to-position [:m/entity-id :m/position])]))

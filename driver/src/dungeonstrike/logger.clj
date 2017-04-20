@@ -16,8 +16,14 @@
 (defn- reduce-info-map
   "Reducer helper function for use by `info`. Creates a summarized version of a
    map entry."
-  [map key value]
-  (assoc map (subs (str key) 0 10) (subs (str value) 0 10)))
+  [map key-form value-form]
+  (let [key (str key-form)
+        value (str value-form)
+        shorten (fn [s]
+                  (if (> (count s) 10)
+                    (str (subs s 0 10) "...")
+                    s))]
+    (assoc map (shorten key) (shorten value))))
 
 (defn- info
   "Returns a concise summary of `value` appropriate for including in a log
