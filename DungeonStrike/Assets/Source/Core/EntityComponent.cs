@@ -21,10 +21,14 @@ namespace DungeonStrike.Source.Core
     public abstract class EntityComponent : DungeonStrikeComponent
     {
         /// <summary>
-        /// Registers this EntityComponent to receive messages requested directed at its specific EntityID.
+        /// Registers this EntityComponent to receive messages requested directed at its specific EntityID. Subclasses
+        /// should put their setup logic in <see cref="OnEnableEntityComponent"/>.
         /// </summary>
         protected sealed override void OnEnable()
         {
+            if (InitializeStarted) return;
+            InitializeStarted = true;
+
             ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var entity = GetComponent<Entity>();
             if (entity == null)
@@ -35,7 +39,6 @@ namespace DungeonStrike.Source.Core
             }
             ErrorHandler.CheckState(entity.Initialized, "Entity component must be initialized before Awake()");
             var messageRouter = GetService<MessageRouter>();
-            messageRouter.Initialize();
 
             foreach (var messageType in SupportedMessageTypes)
             {
@@ -44,7 +47,27 @@ namespace DungeonStrike.Source.Core
             OnEnableEntityComponent();
         }
 
+        /// <summary>
+        /// Should be used to implement any required setup logic for EntityComponents.
+        /// </summary>
         protected virtual void OnEnableEntityComponent()
+        {
+        }
+
+        /// <summary>
+        /// Standard Unity disable callback. Subclasses should put any required tear-down logic in
+        /// <see cref="OnDisableEntityComponent"/>.
+        /// </summary>
+        protected sealed override void OnDisable()
+        {
+            OnDisableEntityComponent();
+            InitializeStarted = false;
+        }
+
+        /// <summary>
+        /// Should be used to implement any required tear-down logic for EntityComponents.
+        /// </summary>
+        protected virtual void OnDisableEntityComponent()
         {
         }
     }

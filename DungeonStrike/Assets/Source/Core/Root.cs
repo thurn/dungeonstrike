@@ -17,30 +17,19 @@ namespace DungeonStrike.Source.Core
         public void Awake()
         {
             LogWriter.Initialize();
+            RegisterServices(false);
         }
 
         public void OnEnable()
         {
             LogWriter.Initialize();
-            Debug.Log("System Enabled ");
             Application.logMessageReceivedThreaded += LogWriter.HandleUnityLog;
-            DestroyAllServices();
-            RegisterServices(false);
+            Debug.Log("System Enabled");
         }
 
         public void OnDisable()
         {
             Application.logMessageReceivedThreaded -= LogWriter.HandleUnityLog;
-        }
-
-        private void DestroyAllServices()
-        {
-            foreach (var service in GetComponents<Service>())
-            {
-                // Must DestroyImmediate, or else you can get into very confusing states with multiple copies of the
-                // same service.
-                DestroyImmediate(service);
-            }
         }
 
         /// <summary>
@@ -50,12 +39,20 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public void RegisterServices(bool forTests)
         {
+            foreach (var service in GetComponents<Service>())
+            {
+                // Must DestroyImmediate, or else you can get into very confusing states with multiple copies of the
+                // same service.
+                DestroyImmediate(service);
+            }
+
             gameObject.AddComponent<MessageRouter>();
+            gameObject.AddComponent<SceneLoader>();
+
             if (!forTests)
             {
                 gameObject.AddComponent<WebsocketManager>();
             }
-            gameObject.AddComponent<SceneLoader>();
         }
     }
 }

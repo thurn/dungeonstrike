@@ -159,6 +159,7 @@
   (mig/mig-panel
    :items [[(seesaw/label :text "Logs" :font (title-font))
             "alignx center, wrap 20px"]
+           [(seesaw/button :text "Clear" :id :clear-button) "alignx right, wrap"]
            [(log-split)
             "aligny top, grow, push"]]))
 
@@ -202,6 +203,14 @@
       (seesaw/config! send-button :enabled? (= :connection-opened data))
       (recur))))
 
+(defn- register-listeners
+  "Registers button listeners for controls."
+  [frame]
+  (let [clear-button (seesaw/select frame [:#clear-button])
+        logs-table (seesaw/select frame [:#logs])
+        on-clear (fn [e] (.setRowCount (.getModel logs-table) 0))]
+    (seesaw/listen clear-button :action on-clear)))
+
 (defrecord DebugGui []
   component/Lifecycle
 
@@ -218,6 +227,7 @@
           send-button (seesaw/select frame [:#send-button])]
       (start-logs logs (logger/debug-log-channel logger))
       (start-send-button send-button message-form message-sender status-channel)
+      (register-listeners frame)
       (seesaw/show! frame)
       (log log-context "Started DebugGui")
       (assoc component ::frame frame ::log-context log-context)))

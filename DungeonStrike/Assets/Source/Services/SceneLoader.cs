@@ -21,7 +21,7 @@ namespace DungeonStrike.Source.Services
 
         private IEnumerator<YieldInstruction> LoadSceneAsync(LoadSceneMessage message, Action onComplete)
         {
-            Logger.Log("Loading scene", message.SceneName);
+            Logger.Log("Loading scenxe", message.SceneName);
             //yield return SceneManager.LoadSceneAsync(message.SceneName.ToString());
             onComplete();
             yield return null;

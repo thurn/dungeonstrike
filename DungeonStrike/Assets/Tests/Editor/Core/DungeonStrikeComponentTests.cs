@@ -27,7 +27,10 @@ namespace DungeonStrike.Tests.Editor.Core
         {
             var root = NewTestGameObject("Root");
             var rootComponent = root.AddComponent<Root>();
+            var router = root.AddComponent<MessageRouter>();
+            router.RootObjectForTests = rootComponent;
             var myService = root.AddComponent<MyService>();
+            myService.RootObjectForTests = rootComponent;
             var obj = NewTestGameObject("Object");
             var myComponent = obj.AddComponent<MyComponent>();
             myComponent.RootObjectForTests = rootComponent;

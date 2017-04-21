@@ -82,7 +82,7 @@ namespace DungeonStrike.Tests.Editor.Core
             var receiver = CreateTestService<TestServiceMessageReceiver>();
             receiver.MessageTypes = new List<string> {_testMessage1.MessageType};
 
-            AwakeAndStartObjects();
+            EnableObjects();
 
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
             _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
@@ -104,7 +104,7 @@ namespace DungeonStrike.Tests.Editor.Core
             var receiver2 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity2);
             receiver2.MessageTypes = new List<string> {_testMessage2.MessageType};
 
-            AwakeAndStartObjects();
+            EnableObjects();
 
             Assert.IsFalse(receiver1.CurrentMessageId.HasValue);
             Assert.IsFalse(receiver2.CurrentMessageId.HasValue);
@@ -123,7 +123,7 @@ namespace DungeonStrike.Tests.Editor.Core
         {
             var receiver = CreateTestService<TestServiceMessageReceiver>();
             receiver.MessageTypes = new List<string> {_testMessage1.MessageType};
-            AwakeAndStartObjects();
+            EnableObjects();
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
             _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
             _messageRouter.Update();
@@ -140,7 +140,7 @@ namespace DungeonStrike.Tests.Editor.Core
             var receiver2 = CreateTestService<TestServiceMessageReceiver>();
             receiver2.MessageTypes = new List<string> {_testMessage1.MessageType};
 
-            AwakeAndStartObjects();
+            EnableObjects();
         }
 
         [Test]
@@ -155,7 +155,7 @@ namespace DungeonStrike.Tests.Editor.Core
             var receiver2 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity2);
             receiver2.MessageTypes = new List<string> {_testMessage2.MessageType};
 
-            AwakeAndStartObjects();
+            EnableObjects();
         }
 
         [Test]
@@ -165,14 +165,14 @@ namespace DungeonStrike.Tests.Editor.Core
             var receiver = CreateTestService<TestServiceMessageReceiver>();
             receiver.MessageTypes = null;
 
-            AwakeAndStartObjects();
+            EnableObjects();
         }
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void TestNoHandlerRegistered()
         {
-            AwakeAndStartObjects();
+            EnableObjects();
             _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
             _messageRouter.Update();
         }

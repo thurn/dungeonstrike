@@ -39,6 +39,12 @@ namespace DungeonStrike.Source.Core
     public abstract class DungeonStrikeComponent : MonoBehaviour
     {
         /// <summary>
+        /// Keeps track of whether this component's OnEnable method has started to run. Used to ensure components
+        /// obtained through GetService are always initialized, even if GetService is called from an OnEnable method.
+        /// </summary>
+        protected bool InitializeStarted;
+
+        /// <summary>
         /// Private ILogContext implementation to store information about components.
         /// </summary>
         private class LogContext : ILogContext
@@ -110,12 +116,13 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// Returns a specific component on the Root object. Must be called from the main thread.
+        /// Returns a specific component on the Root object and ensures that it has been initialized. Must be called
+        /// from the main thread.
         /// </summary>
         /// <para>
         /// This implements a singleton pattern for components. Each scene must contain exactly one GameObject with the
         /// <see cref="Root" /> component added to it. Components which only have one logic instance per scene are
-        /// called Services, and should be added to the root game object in <see cref="Root.RegisterServices()"/>.
+        /// called Services, and should be added to the root game object in <see cref="Root.RegisterServices(bool)"/>.
         /// </para>
         /// <typeparam name="T">The type of the component to return.</typeparam>
         /// <returns>The service of type T on the root object.</returns>
@@ -136,37 +143,29 @@ namespace DungeonStrike.Source.Core
             var results = _root.GetComponents<T>();
             ErrorHandler.CheckState(results.Length != 0, "Unable to locate service", typeof(T));
             ErrorHandler.CheckState(results.Length == 1, "Multiple services found", typeof(T));
-            return results[0];
+            var result = results[0];
+            if (!result.InitializeStarted)
+            {
+                // Ensure initialization order is always correct.
+                result.OnEnable();
+            }
+            return result;
         }
 
         /// <summary>
-        /// The standard Unity <c>Awake</c> method.
+        /// The standard Unity <c>Awake</c> method, declared here to prevent overriding. Put setup logic in an
+        /// appropriate "OnEnable" method instead.
         /// </summary>
-        protected virtual void Awake()
+        protected void Awake()
         {
         }
 
         /// <summary>
-        /// Exposes the <see cref="Awake"/> method for use in test code *only*.
+        /// The standard Unity <c>Start</c> method, declared here to prevent overriding. Put setup logic in an
+        /// appropriate "OnEnable" method instead.
         /// </summary>
-        public void AwakeForTests()
+        protected void Start()
         {
-            Awake();
-        }
-
-        /// <summary>
-        /// The standard Unity <c>Start</c> method.
-        /// </summary>
-        protected virtual void Start()
-        {
-        }
-
-        /// <summary>
-        /// Exposes the <see cref="Start"/> method for use in test code *only*.
-        /// </summary>
-        public void StartForTests()
-        {
-            Start();
         }
 
         /// <summary>

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using DungeonStrike.Source.Core;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using UnityEditor;
 using UnityEngine;
 using WebSocketSharp;
 
@@ -13,6 +10,7 @@ namespace DungeonStrike.Source.Messaging
     {
         private MessageRouter _messageRouter;
         private WebSocket _websocket;
+        private IEnumerator<WaitForSeconds> _autoReconnect;
 
         protected override void OnEnableService()
         {
@@ -23,10 +21,13 @@ namespace DungeonStrike.Source.Messaging
             _websocket.OnClose += OnClosed;
             _websocket.OnMessage += OnMessageReceived;
             _websocket.Connect();
+            _autoReconnect = AutoReconnect();
+            StartCoroutine(_autoReconnect);
         }
 
-        protected override void OnDisable()
+        protected override void OnDisableService()
         {
+            StopCoroutine(_autoReconnect);
             if (_websocket != null)
             {
                 _websocket.OnOpen -= OnOpen;
@@ -38,23 +39,16 @@ namespace DungeonStrike.Source.Messaging
             }
         }
 
-        public void ToCreate2()
+        private IEnumerator<WaitForSeconds> AutoReconnect()
         {
-            _messageRouter.RouteMessageToFrontend(null);
-        }
-
-        private void Update()
-        {
-            if (!_websocket.IsConnected)
+            while (true)
             {
-                _websocket.Connect();
+                yield return new WaitForSeconds(1.0f);
+                if (!_websocket.IsConnected)
+                {
+                    _websocket.Connect();
+                }
             }
-        }
-
-        private IEnumerator SendMessage()
-        {
-            yield return new WaitForSeconds(4.0f);
-            _websocket.SendAsync("Hello, world", success => Logger.Log("Message sent"));
         }
 
         private void OnOpen(object sender, EventArgs args)

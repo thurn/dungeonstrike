@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace DungeonStrike.Source.Core
+﻿namespace DungeonStrike.Source.Core
 {
     /// <summary>
     /// Represents a singleton component attached to the <see cref="Root"/> object.
@@ -14,15 +12,18 @@ namespace DungeonStrike.Source.Core
     public abstract class Service : DungeonStrikeComponent
     {
         /// <summary>
-        /// Registers this Service to receive messages requested based on <c>SupportedMessageTypes</c>.
+        /// Registers this Service to receive messages requested based on <c>SupportedMessageTypes</c>. Services with
+        /// setup logic should put it in <see cref="OnEnableService" />.
         /// </summary>
         protected sealed override void OnEnable()
         {
+            if (InitializeStarted) return;
+            InitializeStarted = true;
+
             ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var root = GetComponent<Root>();
             ErrorHandler.CheckState(root != null, "Service components must be attached to the Root object!");
             var messageRouter = GetService<MessageRouter>();
-            messageRouter.Initialize();
 
             foreach (var messageType in SupportedMessageTypes)
             {
@@ -31,7 +32,26 @@ namespace DungeonStrike.Source.Core
             OnEnableService();
         }
 
+        /// <summary>
+        /// Should be used to implement any required setup logic for services.
+        /// </summary>
         protected virtual void OnEnableService()
+        {
+        }
+
+        /// <summary>
+        /// Standard Unity OnDisable method. Disable logic for services should be put in <see cref="OnDisableService"/>.
+        /// </summary>
+        protected sealed override void OnDisable()
+        {
+            OnDisableService();
+            InitializeStarted = false;
+        }
+
+        /// <summary>
+        /// Should be used to implement any required tear-down logic for services.
+        /// </summary>
+        protected virtual void OnDisableService()
         {
         }
     }

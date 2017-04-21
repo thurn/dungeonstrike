@@ -13,9 +13,6 @@ namespace DungeonStrike.Source.Core
     /// </summary>
     public sealed class MessageRouter : Service
     {
-        // True if 'OnEnable' has been been invoked since the last 'OnDisable'.
-        private bool _initialized;
-
         // Map from message type to the registered message handler
         private Dictionary<string, DungeonStrikeComponent> _serviceMessageHandlers;
 
@@ -26,31 +23,17 @@ namespace DungeonStrike.Source.Core
 
         private RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>> _messages;
 
-        // Captured ErrorHandler instance, since ErrorHandler property can only be accessed from the main thread.
-        private ErrorHandler _errorHandler;
-
-        /// <summary>
-        /// Initialize the message router. Called from the OnEnable method of each entity and service component.
-        /// </summary>
-        /// <para>
-        /// We avoid using the normal 'OnEnable' method because this component is used by every other component's
-        /// OnEnable method.
-        /// </para>
-        public void Initialize()
+        protected override void OnEnableService()
         {
-            if (_initialized) return;
             _serviceMessageHandlers = new Dictionary<string, DungeonStrikeComponent>();
             _entityComponentMessageHandlers =
                 new Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent>();
             _errors = new RingBuffer<Exception>(16);
             _messages = new RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>>(16);
-            _errorHandler = ErrorHandler;
-            _initialized = true;
         }
 
-        protected override void OnDisable()
+        protected override void OnDisableService()
         {
-            _initialized = false;
             _serviceMessageHandlers = null;
             _entityComponentMessageHandlers = null;
             _errors = null;
@@ -59,8 +42,6 @@ namespace DungeonStrike.Source.Core
 
         public void Update()
         {
-            if (!_initialized) return;
-
             Exception error;
             if (_errors.TryDequeue(out error))
             {
@@ -114,19 +95,19 @@ namespace DungeonStrike.Source.Core
             {
                 var message = JsonConvert.DeserializeObject<Message>(messageInput, new MessageConverter(),
                         new StringEnumConverter());
-                _errorHandler.CheckNotNull("message", message);
+                ErrorHandler.CheckNotNull("message", message);
                 var messageType = message.MessageType;
                 if (message.EntityId != null)
                 {
                     var key = Tuple.Create(messageType, message.EntityId);
-                    _errorHandler.CheckState(_entityComponentMessageHandlers.ContainsKey(key),
+                    ErrorHandler.CheckState(_entityComponentMessageHandlers.ContainsKey(key),
                         "No entity component message handler registered for message", "MessageId", message.MessageId,
                         "MessageType", message.MessageType, "EntityId", message.EntityId);
                     _messages.Enqueue(Tuple.Create(message, _entityComponentMessageHandlers[key]));
                 }
                 else
                 {
-                    _errorHandler.CheckArgument(_serviceMessageHandlers.ContainsKey(messageType),
+                    ErrorHandler.CheckArgument(_serviceMessageHandlers.ContainsKey(messageType),
                         "No service message handler registered for message", "MessageId", message.MessageId,
                         "MessageType", message.MessageType);
                     _messages.Enqueue(Tuple.Create(message, _serviceMessageHandlers[messageType]));

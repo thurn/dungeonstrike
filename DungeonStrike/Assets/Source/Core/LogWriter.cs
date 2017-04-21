@@ -28,8 +28,8 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public static void HandleUnityLog(string logString, string stackTrace, LogType logType)
         {
-            if ((logType == LogType.Warning) && (logString.Contains("Assets/ThirdParty") ||
-                logString.Contains("Assets/OldSource")))
+            if ((logType == LogType.Warning) &&
+                (logString.Contains("Assets/ThirdParty") || logString.Contains("Assets/OldSource")))
             {
                 // Ignore warnings in third-party code.
                 return;

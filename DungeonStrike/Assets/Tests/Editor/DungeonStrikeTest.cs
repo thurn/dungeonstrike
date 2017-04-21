@@ -79,19 +79,8 @@ namespace DungeonStrike.Tests.Editor
             return _rootObject.GetComponent<T>();
         }
 
-        public void AwakeAndStartObjects()
+        public void EnableObjects()
         {
-            foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
-            {
-                component.AwakeForTests();
-            }
-            foreach (var managedObject in _managedObjects)
-            {
-                foreach (var component in managedObject.GetComponents<DungeonStrikeComponent>())
-                {
-                    component.AwakeForTests();
-                }
-            }
             foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
             {
                 component.OnEnableForTests();
@@ -101,17 +90,6 @@ namespace DungeonStrike.Tests.Editor
                 foreach (var component in managedObject.GetComponents<DungeonStrikeComponent>())
                 {
                     component.OnEnableForTests();
-                }
-            }
-            foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
-            {
-                component.StartForTests();
-            }
-            foreach (var managedObject in _managedObjects)
-            {
-                foreach (var component in managedObject.GetComponents<DungeonStrikeComponent>())
-                {
-                    component.StartForTests();
                 }
             }
         }
