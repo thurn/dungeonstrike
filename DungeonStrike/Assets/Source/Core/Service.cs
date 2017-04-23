@@ -17,19 +17,25 @@
         /// </summary>
         protected sealed override void OnEnable()
         {
-            if (InitializeStarted) return;
-            InitializeStarted = true;
+            base.OnEnable();
+            if (LifecycleState != ComponentLifecycleState.NotStarted) return;
+            LifecycleState = ComponentLifecycleState.Starting;
 
             ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var root = GetComponent<Root>();
             ErrorHandler.CheckState(root != null, "Service components must be attached to the Root object!");
-            var messageRouter = GetService<MessageRouter>();
 
-            foreach (var messageType in SupportedMessageTypes)
+            if (GetType() != typeof(MessageRouter))
             {
-                messageRouter.RegisterServiceForMessage(messageType, this);
+                var messageRouter = GetService<MessageRouter>();
+
+                foreach (var messageType in SupportedMessageTypes)
+                {
+                    messageRouter.RegisterServiceForMessage(messageType, this);
+                }
             }
             OnEnableService();
+            LifecycleState = ComponentLifecycleState.Started;
         }
 
         /// <summary>
@@ -44,8 +50,9 @@
         /// </summary>
         protected sealed override void OnDisable()
         {
+            base.OnDisable();
             OnDisableService();
-            InitializeStarted = false;
+            LifecycleState = ComponentLifecycleState.NotStarted;
         }
 
         /// <summary>

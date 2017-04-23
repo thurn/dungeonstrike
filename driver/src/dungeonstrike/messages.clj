@@ -36,8 +36,8 @@
    generator to introspect on the specifications defined here."
   [keyword predicate]
   `(do
-    (s/def ~keyword ~predicate)
-    [~keyword ~predicate]))
+     (s/def ~keyword ~predicate)
+     [~keyword ~predicate]))
 
 (def message-fields
   "A map containing all possible fields which can be found in a message, keyed

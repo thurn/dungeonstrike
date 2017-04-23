@@ -68,7 +68,6 @@ namespace DungeonStrike.Source.Messaging
 
         private void OnMessageReceived(object sender, MessageEventArgs messageArgs)
         {
-            Logger.Log("Unity got message", messageArgs.Data.Substring(0, 25) + "...");
             _messageRouter.RouteMessageToFrontend(messageArgs.Data);
         }
     }

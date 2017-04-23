@@ -26,8 +26,9 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         protected sealed override void OnEnable()
         {
-            if (InitializeStarted) return;
-            InitializeStarted = true;
+            base.OnEnable();
+            if (LifecycleState != ComponentLifecycleState.NotStarted) return;
+            LifecycleState = ComponentLifecycleState.Starting;
 
             ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var entity = GetComponent<Entity>();
@@ -38,6 +39,7 @@ namespace DungeonStrike.Source.Core
                 return;
             }
             ErrorHandler.CheckState(entity.Initialized, "Entity component must be initialized before Awake()");
+
             var messageRouter = GetService<MessageRouter>();
 
             foreach (var messageType in SupportedMessageTypes)
@@ -45,6 +47,8 @@ namespace DungeonStrike.Source.Core
                 messageRouter.RegisterEntityComponentForMessage(messageType, entity.EntityId, this);
             }
             OnEnableEntityComponent();
+
+            LifecycleState = ComponentLifecycleState.Started;
         }
 
         /// <summary>
@@ -60,8 +64,9 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         protected sealed override void OnDisable()
         {
+            base.OnDisable();
             OnDisableEntityComponent();
-            InitializeStarted = false;
+            LifecycleState = ComponentLifecycleState.NotStarted;
         }
 
         /// <summary>

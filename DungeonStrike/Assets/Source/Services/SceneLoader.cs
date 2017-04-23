@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Messaging;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DungeonStrike.Source.Services
 {
@@ -21,8 +22,8 @@ namespace DungeonStrike.Source.Services
 
         private IEnumerator<YieldInstruction> LoadSceneAsync(LoadSceneMessage message, Action onComplete)
         {
-            Logger.Log("Loading scenxe", message.SceneName);
-            //yield return SceneManager.LoadSceneAsync(message.SceneName.ToString());
+            Logger.Log("Loading scene", message.SceneName);
+            yield return SceneManager.LoadSceneAsync(message.SceneName.ToString());
             onComplete();
             yield return null;
         }

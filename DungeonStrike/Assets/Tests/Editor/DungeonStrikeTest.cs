@@ -14,9 +14,12 @@ namespace DungeonStrike.Tests.Editor
         [SetUp]
         public void SetUpTest()
         {
+            LogWriter.DisableForTests();
             _rootObject = new GameObject("Root");
             _rootComponent = _rootObject.AddComponent<Root>();
-            _rootComponent.RegisterServices(true);
+            _rootComponent.IsUnitTest = true;
+            _rootComponent.Awake();
+            _rootComponent.OnEnable();
             _managedObjects = new List<GameObject>();
             foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
             {
@@ -57,6 +60,7 @@ namespace DungeonStrike.Tests.Editor
             var result = NewTestGameObject(name);
             var entity = result.AddComponent<Entity>();
             entity.Initialize(entityType, entityId);
+            entity.RootObjectForTests = _rootComponent;
             return result;
         }
 

@@ -71,6 +71,7 @@
                                         socket-atom
                                         inbound-channel)
                         {:port port})]
+      (reset! stop-server-fn stop-server!)
       (async/go-loop []
         (when-some [message (<! outbound-channel)]
           (let [socket @socket-atom]
@@ -81,10 +82,9 @@
                       result (http-kit/send! socket json)]
                   (when-not result
                     (error log-context "Unable to send message" message))))
-              (log log-context "Unable to send: Channel is closed" message))
+              (error log-context "Unable to send: Channel is closed" message))
             (recur))))
 
-      (reset! stop-server-fn stop-server!)
       (log log-context "Started Websocket" port)
       (assoc component
              ::log-context log-context

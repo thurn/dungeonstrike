@@ -5,6 +5,7 @@
 
   :plugins [[lein-kibit "0.1.3"]
             [jonase/eastwood "0.2.3"]
+            [lein-cljfmt "0.5.6"]
             [lein-codox "0.10.3"]]
 
   :dependencies [[org.clojure/clojure "1.9.0-alpha15"]

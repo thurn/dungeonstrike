@@ -7,6 +7,7 @@
             [com.stuartsierra.component :as component]
             [dungeonstrike.logger :as logger :refer [log error]]
             [dungeonstrike.messages :as messages]
+            [dungeonstrike.uuid :as uuid]
             [seesaw.core :as seesaw]
             [seesaw.font :as font]
             [seesaw.mig :as mig]
@@ -36,8 +37,6 @@
      [(cond
         (set? field)
         (seesaw/combobox :id field-name :model field)
-        (#{:m/entity-id} field)
-        (seesaw/text :id field-name (str (java.util.UUID/randomUUID)))
         (= messages/position-spec field)
         (seesaw/text :id field-name "")
         :otherwise
@@ -50,8 +49,8 @@
     [(seesaw/label "Message Type")]
     [message-picker "wrap"]
     [(seesaw/label "Message ID")]
-    [(seesaw/text :id :m/message-id
-                  :text (str (java.util.UUID/randomUUID))) "wrap"]]
+    [(seesaw/label :id :message-id-label
+                   :text "M:0000000000000000000000") "wrap"]]
    (mapcat form-for-field (message-type messages/messages))
    [[(seesaw/button :text "Send!" :id :send-button :enabled? false)
      "skip, span, wrap"]]))
@@ -78,13 +77,16 @@
 (defn- on-log-selected
   "Callback when a log entry is selected"
   [log-table log-info event]
-  (let [index (.getSelectedRow log-table)
-        log-entry (.getValueAt (.getModel log-table) index 0)
+  (let [index (seesaw/selection log-table)
         info-model (.getModel log-info)]
-    (when-not (.getValueIsAdjusting event)
-      (.setRowCount info-model 0)
-      (doseq [[key value] log-entry :when value]
-        (.addRow info-model (to-array [(name key) value]))))))
+    (when (and (integer? index)
+               (>= index 0)
+               (< index (.getRowCount (.getModel log-table)))
+               (not (.getValueIsAdjusting event)))
+      (let [log-entry (.getValueAt (.getModel log-table) index 0)]
+        (.setRowCount info-model 0)
+        (doseq [[key value] log-entry :when value]
+          (.addRow info-model (to-array [(name key) value])))))))
 
 (defn- log-table
   "Returns the JTable instance for showing log entries."
@@ -98,7 +100,7 @@
         column1 (.getColumn column-model 1)]
     (.setCellRenderer
      column0
-     (proxy [DefaultTableCellRenderer][]
+     (proxy [DefaultTableCellRenderer] []
        (getTableCellRendererComponent [table value s f r c]
          (if (= :client (:log-type value))
            (if (:error? value)
@@ -109,7 +111,7 @@
              (.setBackground this (Color. 0xF1 0xF8 0xE9))))
          (proxy-super getTableCellRendererComponent
                       table (:message value) s f r c))))
-    (.setSelectionMode table ListSelectionModel/SINGLE_SELECTION)
+    (.setSelectionMode table ListSelectionModel/MULTIPLE_INTERVAL_SELECTION)
     (.setMinWidth column1 200)
     (.setMaxWidth column1 200)
     (.addListSelectionListener selection-model
@@ -127,7 +129,11 @@
     (let [row (.getSelectedRow table)
           value (.getValueAt (.getModel table) row 1)]
       (when (> (count (str value)) 100)
-        (JOptionPane/showMessageDialog nil value)))))
+        (let [text-area (seesaw/text :text value
+                                     :multi-line? true
+                                     :editable? true
+                                     :font (font/font :name :monospaced))]
+          (JOptionPane/showMessageDialog nil (seesaw/scrollable text-area)))))))
 
 (defn- log-info-table
   "Returns a JTable instance for showing log entry metadata"
@@ -158,10 +164,11 @@
   []
   (mig/mig-panel
    :items [[(seesaw/label :text "Logs" :font (title-font))
-            "alignx center, wrap 20px"]
-           [(seesaw/button :text "Clear" :id :clear-button) "alignx right, wrap"]
+            "alignx center, span, wrap 20px"]
+           [(seesaw/button :text "Start Recording" :id :new-recording-button)]
+           [(seesaw/button :text "Clear" :id :clear-button) "wrap"]
            [(log-split)
-            "aligny top, grow, push"]]))
+            "aligny top, span, grow, push"]]))
 
 (defn- frame-content
   "Constructs all UI for the debug window"
@@ -188,8 +195,12 @@
   (fn [event]
     (let [form-value (seesaw/value message-form)
           filter-keys (fn [[key value]] (= "m" (namespace key)))
-          message (into {} (filter filter-keys form-value))]
-      (messages/send-message! message-sender message))))
+          message (into {} (filter filter-keys form-value))
+          message-id (uuid/new-message-id)
+          message-id-label (seesaw/select message-form [:#message-id-label])
+          message-with-id (assoc message :m/message-id message-id)]
+      (seesaw/config! message-id-label :text message-id)
+      (messages/send-message! message-sender message-with-id))))
 
 (defn- start-send-button
   "Attaches a listener to the send button to send the current message to the
@@ -203,12 +214,31 @@
       (seesaw/config! send-button :enabled? (= :connection-opened data))
       (recur))))
 
+(defn- start-recording
+  [component]
+  (seesaw/alert "Start Recording?"))
+
+(defn- stop-recording
+  [component])
+
+(defn- new-recording-fn
+  "Returns a function to act as the listener for the 'New Recording' button."
+  [{:keys [::frame ::log-context ::recording-state] :as component}]
+  (fn [e]
+    (let [is-recording? (some? @recording-state)]
+      (if is-recording?
+        (stop-recording component)
+        (start-recording component)))))
+
 (defn- register-listeners
   "Registers button listeners for controls."
-  [frame]
+  [{:keys [::frame] :as component}]
   (let [clear-button (seesaw/select frame [:#clear-button])
+        new-recording-button (seesaw/select frame [:#new-recording-button])
         logs-table (seesaw/select frame [:#logs])
         on-clear (fn [e] (.setRowCount (.getModel logs-table) 0))]
+    (seesaw/listen new-recording-button :action
+                   (new-recording-fn component))
     (seesaw/listen clear-button :action on-clear)))
 
 (defrecord DebugGui []
@@ -227,10 +257,14 @@
           send-button (seesaw/select frame [:#send-button])]
       (start-logs logs (logger/debug-log-channel logger))
       (start-send-button send-button message-form message-sender status-channel)
-      (register-listeners frame)
-      (seesaw/show! frame)
-      (log log-context "Started DebugGui")
-      (assoc component ::frame frame ::log-context log-context)))
+      (let [result (assoc component
+                          ::frame frame
+                          ::log-context log-context
+                          ::recording-state (atom nil))]
+        (register-listeners result)
+        (seesaw/show! frame)
+        (log log-context "Started DebugGui")
+        result)))
 
   (stop [{:keys [::frame ::log-context ::message-pub] :as component}]
     (when message-pub
@@ -239,7 +273,7 @@
       (seesaw/config! frame :visible? false)
       (seesaw/dispose! frame))
     (log log-context "Stopped DebugGui")
-    (dissoc component ::frame ::log-context)))
+    (dissoc component ::frame ::log-context ::recording-state)))
 
 (s/fdef new-debug-gui :args (s/cat :status-channel some?))
 (defn new-debug-gui

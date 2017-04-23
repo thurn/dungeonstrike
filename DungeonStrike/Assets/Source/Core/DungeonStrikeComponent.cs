@@ -38,11 +38,17 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public abstract class DungeonStrikeComponent : MonoBehaviour
     {
+        protected enum ComponentLifecycleState
+        {
+            NotStarted,
+            Starting,
+            Started,
+        }
+
         /// <summary>
-        /// Keeps track of whether this component's OnEnable method has started to run. Used to ensure components
-        /// obtained through GetService are always initialized, even if GetService is called from an OnEnable method.
+        /// Keeps track of this component's Unity lifecycle state.
         /// </summary>
-        protected bool InitializeStarted;
+        protected ComponentLifecycleState LifecycleState = ComponentLifecycleState.NotStarted;
 
         /// <summary>
         /// Private ILogContext implementation to store information about components.
@@ -122,7 +128,7 @@ namespace DungeonStrike.Source.Core
         /// <para>
         /// This implements a singleton pattern for components. Each scene must contain exactly one GameObject with the
         /// <see cref="Root" /> component added to it. Components which only have one logic instance per scene are
-        /// called Services, and should be added to the root game object in <see cref="Root.RegisterServices(bool)"/>.
+        /// called Services, and should be added to the root game object in <see cref="Root.RegisterServices()"/>.
         /// </para>
         /// <typeparam name="T">The type of the component to return.</typeparam>
         /// <returns>The service of type T on the root object.</returns>
@@ -130,21 +136,14 @@ namespace DungeonStrike.Source.Core
         /// component attached to it, or if this service cannot be found.</exception>
         protected T GetService<T>() where T : Service
         {
-            if (_root == null)
-            {
-                var roots = FindObjectsOfType<Root>();
-                if (roots.Length != 1)
-                {
-                    throw new InvalidOperationException("Exactly one Root object must be created.");
-                }
-                _root = roots[0];
-            }
-
+            ErrorHandler.CheckState(_root.IsInitialized, "Root is not initialized!", typeof(T));
             var results = _root.GetComponents<T>();
             ErrorHandler.CheckState(results.Length != 0, "Unable to locate service", typeof(T));
             ErrorHandler.CheckState(results.Length == 1, "Multiple services found", typeof(T));
             var result = results[0];
-            if (!result.InitializeStarted)
+            ErrorHandler.CheckState(result.LifecycleState != ComponentLifecycleState.Starting,
+                "Circular dependency detected in Service graph", typeof(T));
+            if (result.LifecycleState == ComponentLifecycleState.NotStarted)
             {
                 // Ensure initialization order is always correct.
                 result.OnEnable();
@@ -169,10 +168,24 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// The stadard Unity <c>OnEnable</c> method, added here for use in test code.
+        /// The standard Unity <c>OnEnable</c> method, added here for use in test code. If overriding, please ensure
+        /// that base.OnEnable() is included as the first line of your implementation.
         /// </summary>
         protected virtual void OnEnable()
         {
+            if (_root == null)
+            {
+                var roots = FindObjectsOfType<Root>();
+                ErrorHandler.CheckState(roots.Length == 1, "Exactly one Root object must be created!");
+                _root = roots[0];
+            }
+
+            if (!_root.IsInitialized)
+            {
+                // As of 5.5, Unity seems to not properly respect script execution order during hot reloads.
+                // Ensure that the Root component has been properly initialized before continuing.
+                _root.OnEnable();
+            }
         }
 
         /// <summary>

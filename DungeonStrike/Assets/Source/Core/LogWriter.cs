@@ -8,6 +8,7 @@ namespace DungeonStrike.Source.Core
     public static class LogWriter
     {
         private static StreamWriter _logFile;
+        private static bool _disabled;
         private const string MetadataSeparator = "\t\t»";
 
         /// <summary>
@@ -16,11 +17,17 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public static void Initialize()
         {
-            if (_logFile != null) return;
+            if (_disabled || (_logFile != null)) return;
             var logDir = Path.Combine(Application.dataPath, "../Logs");
             Directory.CreateDirectory(logDir);
             var logFile = Path.Combine(logDir, "client_logs.txt");
             _logFile = new StreamWriter(logFile, true /* append */) {AutoFlush = true};
+            Application.logMessageReceivedThreaded += HandleUnityLog;
+        }
+
+        public static void DisableForTests()
+        {
+            _disabled = true;
         }
 
         /// <summary>
@@ -128,7 +135,7 @@ namespace DungeonStrike.Source.Core
         /// <param name="message">Log message, including log metadata.</param>
         private static void WriteLog(StringBuilder message)
         {
-            if (_logFile != null)
+            if (!_disabled)
             {
                 _logFile.Write(message.ToString());
             }

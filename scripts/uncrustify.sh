@@ -6,8 +6,6 @@ then
   exit
 fi
 
-#find "./DungeonStrike/Assets/Source" -name "*.cs" -print0 | xargs -0 -I @ uncrustify -c scripts/uncrustify.cfg --no-backup @
-
 needs_fixing=$(mktemp)
 
 find "./DungeonStrike/Assets/Source" -type f -iname "*.cs" -print0 | while IFS= read -r -d $'\0' line; do

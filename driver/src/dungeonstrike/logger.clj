@@ -6,6 +6,7 @@
             [clojure.java.io :as io]
             [clojure.spec :as s]
             [clojure.string :as string]
+            [dungeonstrike.uuid :as uuid]
             [com.stuartsierra.component :as component]
             [io.aviso.exception :as exception]
             [taoensso.timbre :as timbre]
@@ -31,6 +32,8 @@
   [value]
   (cond
     (string? value) value
+    (:m/message-type value) (str "<[" (name (:m/message-type value)) "] "
+                                 (:m/message-id value) ">")
     (map? value) (str (reduce-kv reduce-info-map {} value))
     :otherwise (str value)))
 
@@ -40,12 +43,12 @@
 (s/def ::log-context #(instance? LogContext %))
 
 (defn- new-system-log-context
-   "Creates a new system-level log context. This log context should be used for
+  "Creates a new system-level log context. This log context should be used for
    entries which are not scoped to any specific external stimulus -- i.e. they
    are operations of the system itself. Only one system log context should ever
    be created."
   []
-  (map->LogContext {::driver-id (str (java.util.UUID/randomUUID))}))
+  (map->LogContext {::driver-id (uuid/new-driver-id)}))
 
 (s/fdef component-log-context :args (s/cat :logger ::logger
                                            :component-name string?))
@@ -72,9 +75,10 @@
                     message
                     (str message " ["
                          (string/join "; " (map format-fn args)) "]"))]
-    (merge log-context {:message formatted
-                        :error? error?
-                        :line line})))
+    (apply merge log-context {:message formatted
+                              :error? error?
+                              :line line}
+           (filter map? arguments))))
 
 (defmacro log
   "Logs a message with an associated LogContext and optional details. Argument
@@ -110,7 +114,6 @@
                             ~(:line (meta &form))
                             '~arguments
                             ~@arguments)))
-
 
 (s/fdef debug-log-channel :args (s/cat :logger ::logger))
 (defn debug-log-channel
@@ -166,29 +169,29 @@
   an exception when one is logged."
   [thread exception]
   (binding [exception/*fonts* {}]
-   (let [builder (StringBuilder.)
-         analyzed (exception/analyze-exception exception {:properties false
-                                                          :frame-limit 10})
-         root-cause (last analyzed)
+    (let [builder (StringBuilder.)
+          analyzed (exception/analyze-exception exception {:properties false
+                                                           :frame-limit 10})
+          root-cause (last analyzed)
 
          ;; Find the first stack frame that contains 'dungeonstrike', since it
          ;; likely to be relevant:
 
-         relevant? (fn [trace]
-                     (string/includes? (:formatted-name trace) "dungeonstrike"))
+          relevant? (fn [trace]
+                      (string/includes? (:formatted-name trace) "dungeonstrike"))
 
-         proximate-cause (first (filter relevant? (:stack-trace root-cause)))]
+          proximate-cause (first (filter relevant? (:stack-trace root-cause)))]
 
-     (exception/write-exception builder exception)
-     {:message (if proximate-cause
-                 (str (:formatted-name proximate-cause) "("
-                      (:line proximate-cause) "): "
-                      (:message root-cause))
-                 (str (:class-name root-cause) ": "
-                      (:message root-cause)))
-      :exception-class (:class-name root-cause)
-      :thead-name (.getName thread)
-      :stack-trace (str builder)})))
+      (exception/write-exception builder exception)
+      {:message (if proximate-cause
+                  (str (:formatted-name proximate-cause) "("
+                       (:line proximate-cause) "): "
+                       (:message root-cause))
+                  (str (:class-name root-cause) ": "
+                       (:message root-cause)))
+       :exception-class (:class-name root-cause)
+       :thead-name (.getName thread)
+       :stack-trace (str builder)})))
 
 (defrecord Logger []
   component/Lifecycle

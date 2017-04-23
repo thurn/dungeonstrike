@@ -10,6 +10,9 @@ fi
 # Run Uncrustify formatter
 ./scripts/uncrustify.sh
 
+# Run Clojure formatter
+./scripts/cljfmt.sh
+
 # Check for ThirdParty modifications
 ./scripts/checksum.py
 
