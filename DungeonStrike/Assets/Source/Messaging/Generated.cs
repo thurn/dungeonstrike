@@ -23,26 +23,31 @@ namespace DungeonStrike.Source.Messaging
 
     public sealed class TestMessage : Message
     {
+        public static readonly string Type = "Test";
         public SceneName SceneName { get; set; }
     }
 
     public sealed class LoadSceneMessage : Message
     {
+        public static readonly string Type = "LoadScene";
         public SceneName SceneName { get; set; }
     }
 
     public sealed class CreateEntityMessage : Message
     {
+        public static readonly string Type = "CreateEntity";
         public EntityType EntityType { get; set; }
         public Position Position { get; set; }
     }
 
     public sealed class DestroyEntityMessage : Message
     {
+        public static readonly string Type = "DestroyEntity";
     }
 
     public sealed class MoveToPositionMessage : Message
     {
+        public static readonly string Type = "MoveToPosition";
         public Position Position { get; set; }
     }
 

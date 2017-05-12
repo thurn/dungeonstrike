@@ -44,15 +44,18 @@
    by field keyword."
   (into {}
         [(deffield :m/scene-name scene-names)
+
          (deffield :m/entity-id string?)
+
          (deffield :m/entity-type entity-types)
+
          (deffield :m/position position-spec)]))
 
 (defmacro defmessage
   "As with `deffield`, this macro both defines a specification and returns a
    parallel version of the specification as a data structure for metaprogramming
    purposes."
-  [type fields]
+  [type docstring fields]
   `(do
      (defmethod message-type ~type [~'_]
        (s/keys :req [:m/message-id :m/message-type ~@fields]))
@@ -64,17 +67,29 @@
 
 (defmulti message-type :m/message-type)
 
-(defmessage :m/load-scene [:m/scene-name])
-
 (def messages
   "All possible message specifications. A map from message type keywords to the
    required field keywords for that message type."
   (into {}
-        [(defmessage :m/test [:m/entity-id :m/scene-name])
-         (defmessage :m/load-scene [:m/scene-name])
-         (defmessage :m/create-entity [:m/entity-id :m/entity-type :m/position])
-         (defmessage :m/destroy-entity [:m/entity-id])
-         (defmessage :m/move-to-position [:m/entity-id :m/position])]))
+        [(defmessage :m/test
+           "Message for use in unit tests."
+           [:m/entity-id :m/scene-name])
+
+         (defmessage :m/load-scene
+           "Loads a scene by name"
+           [:m/scene-name])
+
+         (defmessage :m/create-entity
+           "Creates a new entity with the specified type and position"
+           [:m/entity-id :m/entity-type :m/position])
+
+         (defmessage :m/destroy-entity
+           "Destroys an entity by ID."
+           [:m/entity-id])
+
+         (defmessage :m/move-to-position
+           "Instructs an entity to move itself to a given position."
+           [:m/entity-id :m/position])]))
 
 ;; The core message specification, a multi-spec which identifies the message
 ;; type in question via the :m/message-type key and then validates it.

@@ -42,7 +42,7 @@ namespace DungeonStrike.Source.Core
                 return;
             }
 
-            var result = new StringBuilder(logString);
+            var result = new StringBuilder(logString.Replace("\n", " \\n "));
             if (!logString.Contains(MetadataSeparator))
             {
                 result.Append(MetadataSeparator);
@@ -70,9 +70,9 @@ namespace DungeonStrike.Source.Core
         /// <param name="arguments">Additional arguments to append to the log message. With two or more values, will
         /// be formatted in key=value format.</param>
         /// <returns>String appropriate for output to the unity logs.</returns>
-        public static string FormatForLogOutput(string message, ILogContext logContext, bool error, object[] arguments)
+        public static string FormatForLogOutput(string message, LogContext logContext, bool error, object[] arguments)
         {
-            var result = new StringBuilder(message);
+            var result = new StringBuilder(message.Replace("\n", " \\n "));
             if (arguments.Length == 1)
             {
                 result.Append(" [").Append(arguments[0]).Append("]");
@@ -97,7 +97,7 @@ namespace DungeonStrike.Source.Core
         /// <param name="logContext">The log context for this metadata.</param>
         /// <param name="error">True to indicate that this entry should be considered an error.</param>
         /// <returns>A log metadata entry with the associated context and current timestamp.</returns>
-        private static StringBuilder StartLogMetadata(ILogContext logContext, bool error)
+        private static StringBuilder StartLogMetadata(LogContext logContext, bool error)
         {
             var result = new StringBuilder();
             result.Append(MetadataSeparator);

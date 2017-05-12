@@ -12,7 +12,14 @@
             '[com.gfredericks.debug-repl :refer [break! unbreak!]]
             '[clojure.pprint :refer [pprint]]
             '[clojure.reflect :refer [reflect]]
-            '[clojure.java.javadoc :refer [javadoc]]))
+            '[clojure.java.javadoc :refer [javadoc]]
+            '[dev :refer [get-component]]))
+
+(defn get-component
+  "Returns the component named `component-name` from the system atom."
+  [component-name]
+  ((keyword "dungeonstrike.core" (name component-name))
+   @@(resolve 'dungeonstrike.core/system)))
 
 (defn stop! []
   (println "Stopping system..."))

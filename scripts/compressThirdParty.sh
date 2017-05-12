@@ -8,7 +8,7 @@ then
 fi
 
 if [ "$#" -ne 2 ]; then
-    echo "Usage: createThirdParty [password] [outputPath]"
+    echo "Usage: compressThirdParty [password] [outputPath]"
     exit
 fi
 

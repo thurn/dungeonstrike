@@ -22,12 +22,10 @@ namespace DungeonStrike.Tests.Editor.Utilities
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void TestOptionalNoValueException()
         {
             var empty = Optional<string>.Empty;
-            var value = empty.Value;
-            Assert.Fail("Value should have thrown an exception: " + value);
+            Assert.Throws<InvalidOperationException>(delegate { var _ = empty.Value; });
         }
 
         [Test]

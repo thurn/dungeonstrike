@@ -44,13 +44,13 @@
    updates `socket-atom` with a websocket channel reference. When messages are
    received or connection status changes, publishes events to
    `inbound-channel`."
-  [log-context socket-atom inbound-channel]
+  [log-context socket-atom on-start-channel inbound-channel]
   (fn [request]
     (http-kit/with-channel request channel
-      (log log-context "Driver got connection")
       (async/put! inbound-channel {:event-type :status
                                    :data :connection-opened})
       (reset! socket-atom channel)
+      (async/put! on-start-channel #(log log-context ">> driver connected <<"))
 
       (http-kit/on-close channel (channel-closed-handler log-context
                                                          inbound-channel))
@@ -62,13 +62,15 @@
 (defrecord Websocket []
   component/Lifecycle
 
-  (start [{:keys [::logger ::port ::inbound-channel] :as component}]
+  (start [{:keys [::logger ::port ::on-start-channel ::inbound-channel]
+           :as component}]
     (let [log-context (logger/component-log-context logger "Websocket")
           outbound-channel (async/chan 1024)
           socket-atom (atom nil)
           stop-server! (http-kit/run-server
                         (create-handler log-context
                                         socket-atom
+                                        on-start-channel
                                         inbound-channel)
                         {:port port})]
       (reset! stop-server-fn stop-server!)
@@ -91,10 +93,11 @@
              ::stop-server! stop-server!
              ::outbound-channel outbound-channel)))
 
-  (stop [{:keys [::log-context ::port ::stop-server! ::outbound-channel]
-          :as component}]
+  (stop [{:keys [::log-context ::port ::stop-server! ::inbound-channel
+                 ::outbound-channel] :as component}]
     (stop-server!)
     (async/close! outbound-channel)
+    (async/close! inbound-channel)
     (log log-context "Stopped Websocket" port)
     (dissoc component ::stop-server! ::port ::log-context ::outbound-channel))
 
@@ -106,9 +109,11 @@
 
 (s/def ::websocket #(instance? Websocket %))
 
-(s/fdef new-websocket :args (s/cat :port integer? :inbound-channel some?))
+(s/fdef new-websocket :args (s/cat :port integer?
+                                   :inbound-channel some?))
 (defn new-websocket
   "Creates a new Websocket instance which will listen for connections on the
    indicated `port` and publish the resulting messages on `inbound-channel`."
   [port inbound-channel]
-  (map->Websocket {::port port ::inbound-channel inbound-channel}))
+  (map->Websocket {::port port
+                   ::inbound-channel inbound-channel}))

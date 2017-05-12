@@ -34,6 +34,7 @@ namespace DungeonStrike.Source.Messaging
     {{#messages}}
     public sealed class {{messageName}}Message : Message
     {
+        public static readonly string Type = \"{{messageName}}\";
         {{#fields}}
         public {{fieldType}} {{fieldName}} { get; set; }
         {{/fields}}
@@ -113,7 +114,6 @@ namespace DungeonStrike.Source.Messaging
   component/Lifecycle
   (start [{:keys [::logger] :as component}]
     (let [log-context (logger/component-log-context logger "CodeGenerator")]
-      (log log-context "Generating C# code")
       (generate! component)
       (assoc component ::log-context log-context)))
   (stop [component]

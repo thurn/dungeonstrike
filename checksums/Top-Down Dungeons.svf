@@ -812,7 +812,7 @@ Scripts/Misc/ShowFps.js.meta 47063c46
 Scripts/Misc.meta 73b942f8
 Scripts/MobileBloom.mat 5eb991d3
 Scripts/MobileBloom.mat.meta 29fd5b3a
-Scripts/MobileBloom.shader 6f4a0d1e
+Scripts/MobileBloom.shader 58431236
 Scripts/MobileBloom.shader.meta c4836e49
 Scripts/MovementScript.cs 58975e38
 Scripts/MovementScript.cs.meta 02e4185a
@@ -859,7 +859,7 @@ _source/Materials/Wood1.mat 585a3dfc
 _source/Materials/Wood1.mat.meta e5470208
 _source/Materials/base_texture1.mat 39bc2608
 _source/Materials/base_texture1.mat.meta ff44b648
-_source/Materials/black.mat 0355f0bb
+_source/Materials/black.mat 2ba84443
 _source/Materials/black.mat.meta 7a1b3c70
 _source/Materials/watershader.mat e4c1196c
 _source/Materials/watershader.mat.meta 58f47717

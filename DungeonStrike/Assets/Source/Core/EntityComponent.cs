@@ -13,7 +13,7 @@ namespace DungeonStrike.Source.Core
     /// </para>
     /// <para>
     /// EntityComponents participate in message routing keyed based on both their
-    /// <see cref="DungeonStrikeComponent.SupportedMessageTypes"/> and their Entity ID, meaning that a component
+    /// <see cref="DungeonStrikeComponent.MessageType"/> and their Entity ID, meaning that a component
     /// instance will only receive a message if both <see cref="Message.MessageType"/> and
     /// <see cref="Message.EntityId"/> match.
     /// </para>
@@ -24,13 +24,13 @@ namespace DungeonStrike.Source.Core
         /// Registers this EntityComponent to receive messages requested directed at its specific EntityID. Subclasses
         /// should put their setup logic in <see cref="OnEnableEntityComponent"/>.
         /// </summary>
-        protected sealed override void OnEnable()
+        public override void Enable(LogContext parentContext)
         {
-            base.OnEnable();
-            if (LifecycleState != ComponentLifecycleState.NotStarted) return;
+            base.Enable(parentContext);
+            ErrorHandler.CheckState(LifecycleState == ComponentLifecycleState.NotStarted,
+                "Attempted to start entity component twice!");
             LifecycleState = ComponentLifecycleState.Starting;
 
-            ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var entity = GetComponent<Entity>();
             if (entity == null)
             {
@@ -42,9 +42,9 @@ namespace DungeonStrike.Source.Core
 
             var messageRouter = GetService<MessageRouter>();
 
-            foreach (var messageType in SupportedMessageTypes)
+            if (MessageType != null)
             {
-                messageRouter.RegisterEntityComponentForMessage(messageType, entity.EntityId, this);
+                messageRouter.RegisterEntityComponentForMessage(MessageType, entity.EntityId, this);
             }
             OnEnableEntityComponent();
 

@@ -8,9 +8,12 @@
             [lein-cljfmt "0.5.6"]
             [lein-codox "0.10.3"]]
 
+  :main dungeonstrike.core
+
   :dependencies [[org.clojure/clojure "1.9.0-alpha15"]
                  [org.clojure/core.async "0.3.442"]
                  [org.clojure/data.json "0.2.6"]
+                 [org.clojure/tools.cli "0.3.5"]
                  [camel-snake-kebab "0.4.0"]
                  [clojure-watch "0.1.13"]
                  [com.stuartsierra/component "0.3.2"]

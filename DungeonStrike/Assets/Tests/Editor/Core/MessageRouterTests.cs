@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Messaging;
 using NUnit.Framework;
@@ -9,12 +8,12 @@ namespace DungeonStrike.Tests.Editor.Core
     public class TestEntityComponentMessageReceiver : EntityComponent
     {
         public Message ReceivedMessage { get; private set; }
-        public IList<string> MessageTypes { get; set; }
+        public string TestMessageType { get; set; }
         public Action OnComplete { get; private set; }
 
-        protected override IList<string> SupportedMessageTypes
+        protected override string MessageType
         {
-            get { return MessageTypes; }
+            get { return TestMessageType; }
         }
 
         protected override void HandleMessage(Message receivedMessage, Action onComplete)
@@ -27,12 +26,12 @@ namespace DungeonStrike.Tests.Editor.Core
     public class TestServiceMessageReceiver : Service
     {
         public Message ReceivedMessage { get; private set; }
-        public IList<string> MessageTypes { get; set; }
+        public string TestMessageType { get; set; }
         public Action OnComplete { get; private set; }
 
-        protected override IList<string> SupportedMessageTypes
+        protected override string MessageType
         {
-            get { return MessageTypes; }
+            get { return TestMessageType; }
         }
 
         protected override void HandleMessage(Message receivedMessage, Action onComplete)
@@ -80,7 +79,7 @@ namespace DungeonStrike.Tests.Editor.Core
         public void TestReceiveMessage()
         {
             var receiver = CreateTestService<TestServiceMessageReceiver>();
-            receiver.MessageTypes = new List<string> {_testMessage1.MessageType};
+            receiver.TestMessageType = _testMessage1.MessageType;
 
             EnableObjects();
 
@@ -98,11 +97,11 @@ namespace DungeonStrike.Tests.Editor.Core
         {
             var testEntity1 = NewTestEntityObject("entityObject", "entityId", _testMessage2.EntityId);
             var receiver1 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity1);
-            receiver1.MessageTypes = new List<string> {_testMessage2.MessageType};
+            receiver1.TestMessageType = _testMessage2.MessageType;
 
             var testEntity2 = NewTestEntityObject("entityObject", "entityId", "SomeOtherEntityId");
             var receiver2 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity2);
-            receiver2.MessageTypes = new List<string> {_testMessage2.MessageType};
+            receiver2.TestMessageType = _testMessage2.MessageType;
 
             EnableObjects();
 
@@ -118,63 +117,57 @@ namespace DungeonStrike.Tests.Editor.Core
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void TestAlreadyHandlingMessage()
         {
             var receiver = CreateTestService<TestServiceMessageReceiver>();
-            receiver.MessageTypes = new List<string> {_testMessage1.MessageType};
+            receiver.TestMessageType = _testMessage1.MessageType;
             EnableObjects();
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
             _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
             _messageRouter.Update();
             _messageRouter.RouteMessageToFrontend(_testMessage3.ToJson());
-            _messageRouter.Update();
+            Assert.Throws<InvalidOperationException>(delegate { _messageRouter.Update(); });
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestTwoHandlersRegistered()
         {
             var receiver1 = CreateTestService<TestServiceMessageReceiver>();
-            receiver1.MessageTypes = new List<string> {_testMessage1.MessageType};
+            receiver1.TestMessageType = _testMessage1.MessageType;
             var receiver2 = CreateTestService<TestServiceMessageReceiver>();
-            receiver2.MessageTypes = new List<string> {_testMessage1.MessageType};
+            receiver2.TestMessageType = _testMessage1.MessageType;
 
-            EnableObjects();
+            Assert.Throws<ArgumentException>(EnableObjects);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestTwoEntityIdHandlersRegistered()
         {
             var testEntity1 = NewTestEntityObject("entityObject", "entityId", _testMessage2.EntityId);
             var receiver1 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity1);
-            receiver1.MessageTypes = new List<string> {_testMessage2.MessageType};
+            receiver1.TestMessageType = _testMessage2.MessageType;
 
             var testEntity2 = NewTestEntityObject("entityObject", "entityId", _testMessage2.EntityId);
             var receiver2 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity2);
-            receiver2.MessageTypes = new List<string> {_testMessage2.MessageType};
+            receiver2.TestMessageType = _testMessage2.MessageType;
 
-            EnableObjects();
+            Assert.Throws<ArgumentException>(EnableObjects);
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestNullMessageType()
-        {
-            var receiver = CreateTestService<TestServiceMessageReceiver>();
-            receiver.MessageTypes = null;
-
-            EnableObjects();
-        }
-
-        [Test]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestNoHandlerRegistered()
         {
-            EnableObjects();
-            _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
-            _messageRouter.Update();
+            try
+            {
+                EnableObjects();
+                _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
+                _messageRouter.Update();
+                Assert.Fail("Expected exception!");
+            }
+            catch (ArgumentException _)
+            {
+                // Expected
+            }
         }
     }
 }

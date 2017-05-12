@@ -38,7 +38,7 @@ namespace DungeonStrike.Source.Messaging
 
         public override string ToString()
         {
-            return "<[" + MessageType + "Message] id=" + MessageId + ">";
+            return "<[" + MessageType + "] " + MessageId + ">";
         }
 
         public string ToJson()

@@ -11,8 +11,9 @@ namespace DungeonStrike.Source.Messaging
         private MessageRouter _messageRouter;
         private WebSocket _websocket;
         private IEnumerator<WaitForSeconds> _autoReconnect;
+        private bool _connectionClosed;
 
-        protected override void OnEnableService()
+        protected override void OnEnableService(Action onStart)
         {
             _messageRouter = GetService<MessageRouter>();
             _websocket = new WebSocket("ws://localhost:59005?client-id=client");
@@ -23,6 +24,7 @@ namespace DungeonStrike.Source.Messaging
             _websocket.Connect();
             _autoReconnect = AutoReconnect();
             StartCoroutine(_autoReconnect);
+            onStart();
         }
 
         protected override void OnDisableService()
@@ -44,7 +46,7 @@ namespace DungeonStrike.Source.Messaging
             while (true)
             {
                 yield return new WaitForSeconds(1.0f);
-                if (!_websocket.IsConnected)
+                if (_connectionClosed)
                 {
                     _websocket.Connect();
                 }
@@ -53,7 +55,8 @@ namespace DungeonStrike.Source.Messaging
 
         private void OnOpen(object sender, EventArgs args)
         {
-            Logger.Log("Unity got connection");
+            _connectionClosed = false;
+            Root.RunWhenReady(() => Logger.Log(">> client connected <<"));
         }
 
         private void OnError(object sender, ErrorEventArgs args)
@@ -63,6 +66,7 @@ namespace DungeonStrike.Source.Messaging
 
         private void OnClosed(object sender, CloseEventArgs args)
         {
+            _connectionClosed = true;
             Logger.Log("Unity connection closed");
         }
 

@@ -1,4 +1,6 @@
-﻿namespace DungeonStrike.Source.Core
+﻿using System;
+
+namespace DungeonStrike.Source.Core
 {
     /// <summary>
     /// Represents a GameObject with a known identity in game logic.
@@ -37,7 +39,10 @@
         /// <param name="entityId">Sets the entity ID.</param>
         public void Initialize(string entityType, string entityId)
         {
-            ErrorHandler.CheckNotNull("entityType", entityType, "entityId", entityId);
+            if ((entityType == null) || (entityId == null))
+            {
+                throw new ArgumentNullException("entityType and entityId cannot be null");
+            }
             EntityType = entityType;
             EntityId = entityId;
             Initialized = true;

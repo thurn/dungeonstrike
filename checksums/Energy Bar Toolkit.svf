@@ -229,19 +229,19 @@ Resources/Mad2D/Textures/icon_drag_drop.png 8b2d3c5a
 Resources/Mad2D/Textures/icon_drag_drop.png.meta b8318cfc
 Resources/Mad2D/Textures.meta 1c55a7d9
 Resources/Mad2D.meta 075a6acc
-Resources/Shaders/EBTCanvasClearMask.shader a54e84ac
+Resources/Shaders/EBTCanvasClearMask.shader 2fc22192
 Resources/Shaders/EBTCanvasClearMask.shader.meta 6c43e5b8
 Resources/Shaders/ExpandFillShader.shader d158a83d
 Resources/Shaders/ExpandFillShader.shader.meta 55f228a0
 Resources/Shaders/ExpandFillShaderPre.shader 475c4a51
 Resources/Shaders/ExpandFillShaderPre.shader.meta 493a714b
-Resources/Shaders/Font DB.shader f478d773
+Resources/Shaders/Font DB.shader b76bfa64
 Resources/Shaders/Font DB.shader.meta 0627f2f6
 Resources/Shaders/Font White DB.shader edb5a9cd
 Resources/Shaders/Font White DB.shader.meta 30cde349
 Resources/Shaders/Font White.shader b1e169ab
 Resources/Shaders/Font White.shader.meta 44dfea02
-Resources/Shaders/Font.shader ab7e5da0
+Resources/Shaders/Font.shader 52418e80
 Resources/Shaders/Font.shader.meta 606c1983
 Resources/Shaders/HorizontalFillShader.shader a975686d
 Resources/Shaders/HorizontalFillShader.shader.meta c72fcd97
@@ -255,9 +255,9 @@ Resources/Shaders/UnlitShader.shader e695062b
 Resources/Shaders/UnlitShader.shader.meta 19690ddb
 Resources/Shaders/UnlitShaderPre.shader ae5348b8
 Resources/Shaders/UnlitShaderPre.shader.meta e9eaad45
-Resources/Shaders/UnlitTransparentTint DB.shader 82024d4a
+Resources/Shaders/UnlitTransparentTint DB.shader a6c9739e
 Resources/Shaders/UnlitTransparentTint DB.shader.meta 70ccbc19
-Resources/Shaders/UnlitTransparentTint.shader d8e69b25
+Resources/Shaders/UnlitTransparentTint.shader 152d0c9c
 Resources/Shaders/UnlitTransparentTint.shader.meta 58c4498f
 Resources/Shaders/UnlitTransparentTintPre DB.shader 58c5163c
 Resources/Shaders/UnlitTransparentTintPre DB.shader.meta 3e4d56f4

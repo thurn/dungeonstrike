@@ -13,6 +13,7 @@
     (.putLong byte-buffer (.getLeastSignificantBits uuid))
     (let [encoded (.encodeToString encoder (.array byte-buffer))]
       (subs encoded 0 (- (count encoded) 2)))))
+
 (defn new-driver-id
   "Creates a new random driver ID"
   []

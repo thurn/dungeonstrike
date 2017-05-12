@@ -11,13 +11,13 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class Logger
     {
-        private readonly ILogContext _logContext;
+        private readonly LogContext _logContext;
 
         /// <summary>
         /// Create a new Logger.
         /// </summary>
         /// <param name="logContext">The log context in which to log.</param>
-        public Logger(ILogContext logContext)
+        public Logger(LogContext logContext)
         {
             _logContext = logContext;
         }

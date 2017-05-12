@@ -9,9 +9,9 @@ namespace DungeonStrike.Source.Services
 {
     public sealed class SceneLoader : Service
     {
-        protected override IList<string> SupportedMessageTypes
+        protected override string MessageType
         {
-            get { return new List<string> {"LoadScene"}; }
+            get { return LoadSceneMessage.Type; }
         }
 
         protected override void HandleMessage(Message receivedMessage, Action onComplete)
@@ -24,8 +24,9 @@ namespace DungeonStrike.Source.Services
         {
             Logger.Log("Loading scene", message.SceneName);
             yield return SceneManager.LoadSceneAsync(message.SceneName.ToString());
+
+            // Note: Because LoadSceneAsync causes a full restart, this code will never actually be invoked:
             onComplete();
-            yield return null;
         }
     }
 }

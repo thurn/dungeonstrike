@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Utilities;
 using UnityEngine;
@@ -50,27 +48,6 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         protected ComponentLifecycleState LifecycleState = ComponentLifecycleState.NotStarted;
 
-        /// <summary>
-        /// Private ILogContext implementation to store information about components.
-        /// </summary>
-        private class LogContext : ILogContext
-        {
-            private readonly string _sourceName;
-            private readonly string _objectName;
-
-            public LogContext(string sourceName, string objectName)
-            {
-                _sourceName = sourceName;
-                _objectName = objectName;
-            }
-
-            public void AppendContextParameters(StringBuilder stringBuilder)
-            {
-                stringBuilder.Append(":source \"").Append(_sourceName).Append("\", ");
-                stringBuilder.Append(":object-name \"").Append(_objectName).Append("\", ");
-            }
-        }
-
         private Logger _logger;
 
         /// <summary>
@@ -78,7 +55,14 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         protected Logger Logger
         {
-            get { return _logger ?? (_logger = new Logger(new LogContext(GetType().ToString(), gameObject.name))); }
+            get
+            {
+                if (_logger == null)
+                {
+                    throw new InvalidOperationException("Attempted to access logger before Enable().");
+                }
+                return _logger;
+            }
         }
 
         private ErrorHandler _errorHandler;
@@ -90,32 +74,57 @@ namespace DungeonStrike.Source.Core
         {
             get
             {
-                return _errorHandler ?? (_errorHandler = new ErrorHandler(
-                               new LogContext(GetType().ToString(), gameObject.name)));
+                if (_errorHandler == null)
+                {
+                    throw new InvalidOperationException("Attempted to access error handler before Enable().");
+                }
+                return _errorHandler;
             }
         }
 
-        // Root component, used for service lookups.
+        /// <summary>
+        /// Method which should be called by the component creator to activate each component.
+        /// </summary>
+        /// <para>
+        /// DungeonStrikeComponents do not participate in the normal Unity Awake->OnEnable->Start lifecycle. Their
+        /// initial 'startup' logic is instead invoked by a call to this method, typically immediately after a component
+        /// is created. The <paramref name="parentContext"/> parameter is used to track the chain of ownership between
+        /// a component and its creator.
+        /// </para>
+        /// <para>
+        /// If this method is overridden, the first line of the new implementation should invoke
+        /// "base.Enable(parentContext)".
+        /// </para>
+        /// <param name="parentContext">The LogContext of the component which created this component.</param>
+        public virtual void Enable(LogContext parentContext)
+        {
+            if (_root == null)
+            {
+                throw new InvalidOperationException("Root must be specified before calling Enable()!");
+            }
+            var logContext = LogContext.NewContext(parentContext, GetType(), gameObject);
+            _logger = new Logger(logContext);
+            _errorHandler = new ErrorHandler(logContext);
+        }
+
+        /// <summary>
+        /// The private root object property.
+        /// </summary>
         private Root _root;
 
         /// <summary>
-        /// Sets the Root object to use for <see cref="GetService&lt;T&gt;()" /> calls.
-        /// <para>
-        /// This property is *only* intended to be used for unit testing, and must only be set before any service
-        /// lookups occur. The <c>DungeonStrikeTest</c> class should be used in lieu of accessing this property
-        /// directly, as it offers a <c>CreateTestBehavior()</c> method to populate the root object automatically.
-        /// </para>
+        /// A reference to the global root component, used for service lookups. This property should be set by the
+        /// creator of a component, immediately after creation. It is an error to modify this property after it has
+        /// been set.
         /// </summary>
-        /// <exception cref="InvalidOperationException">Thrown if the root object is set after a service lookup has
-        /// already happened.</exception>
-        public Root RootObjectForTests
+        public Root Root
         {
             get { return _root; }
             set
             {
                 if (_root != null)
                 {
-                    throw new InvalidOperationException("Cannot replace existing root object.");
+                    throw new InvalidOperationException("Root property cannot be changed!");
                 }
                 _root = value;
             }
@@ -128,7 +137,7 @@ namespace DungeonStrike.Source.Core
         /// <para>
         /// This implements a singleton pattern for components. Each scene must contain exactly one GameObject with the
         /// <see cref="Root" /> component added to it. Components which only have one logic instance per scene are
-        /// called Services, and should be added to the root game object in <see cref="Root.RegisterServices()"/>.
+        /// called Services, and should be added to the root game object in <see cref="Root#RegisterServices()"/>.
         /// </para>
         /// <typeparam name="T">The type of the component to return.</typeparam>
         /// <returns>The service of type T on the root object.</returns>
@@ -136,18 +145,18 @@ namespace DungeonStrike.Source.Core
         /// component attached to it, or if this service cannot be found.</exception>
         protected T GetService<T>() where T : Service
         {
-            ErrorHandler.CheckState(_root.IsInitialized, "Root is not initialized!", typeof(T));
+            if (_root == null)
+            {
+                throw new InvalidOperationException("Root must be specified before calling GetService()!");
+            }
             var results = _root.GetComponents<T>();
             ErrorHandler.CheckState(results.Length != 0, "Unable to locate service", typeof(T));
             ErrorHandler.CheckState(results.Length == 1, "Multiple services found", typeof(T));
             var result = results[0];
+            ErrorHandler.CheckState(result.LifecycleState != ComponentLifecycleState.NotStarted,
+                "Incorrect dependency order detected in RegisterServices()!", "not-yet-started", typeof(T));
             ErrorHandler.CheckState(result.LifecycleState != ComponentLifecycleState.Starting,
                 "Circular dependency detected in Service graph", typeof(T));
-            if (result.LifecycleState == ComponentLifecycleState.NotStarted)
-            {
-                // Ensure initialization order is always correct.
-                result.OnEnable();
-            }
             return result;
         }
 
@@ -161,39 +170,18 @@ namespace DungeonStrike.Source.Core
 
         /// <summary>
         /// The standard Unity <c>Start</c> method, declared here to prevent overriding. Put setup logic in an
-        /// appropriate "OnEnable" method instead.
+        /// appropriate method like <c>OnEnableService()</c> instead.
         /// </summary>
         protected void Start()
         {
         }
 
         /// <summary>
-        /// The standard Unity <c>OnEnable</c> method, added here for use in test code. If overriding, please ensure
-        /// that base.OnEnable() is included as the first line of your implementation.
+        /// The standard Unity <c>OnEnable</c> method, declared here to prevent overriding. Put setup logic in an
+        /// appropriate method like <c>OnEnableService()</c> instead.
         /// </summary>
-        protected virtual void OnEnable()
+        protected void OnEnable()
         {
-            if (_root == null)
-            {
-                var roots = FindObjectsOfType<Root>();
-                ErrorHandler.CheckState(roots.Length == 1, "Exactly one Root object must be created!");
-                _root = roots[0];
-            }
-
-            if (!_root.IsInitialized)
-            {
-                // As of 5.5, Unity seems to not properly respect script execution order during hot reloads.
-                // Ensure that the Root component has been properly initialized before continuing.
-                _root.OnEnable();
-            }
-        }
-
-        /// <summary>
-        /// Exposes <see cref="OnEnable"/> for use in tests.
-        /// </summary>
-        public void OnEnableForTests()
-        {
-            OnEnable();
         }
 
         /// <summary>
@@ -221,7 +209,7 @@ namespace DungeonStrike.Source.Core
         /// <see cref="Message"/> class. Each message must be consumed by exactly one component instance. The component
         /// instance to receive a given message is determined by examining the <see cref="Message.MessageType"/>
         /// property. A component indicates the types of messages it wishes to register for by overriding the
-        /// <see cref="SupportedMessageTypes"/> property of this class. When a message is received matching one of your
+        /// <see cref="MessageType"/> property of this class. When a message is received matching one of your
         /// component's supported message types, this method will be invoked.
         /// </para>
         /// <para>
@@ -238,16 +226,17 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// A list of the unique MessageTypes this component wishes to handle.
+        /// The unique MessageType for this component, or null if this component is not associated with any message
+        /// type.
         /// </summary>
         /// <para>
         /// As discussed in the documentation for <see cref="HandleMessage"/>, this property allows components to
         /// register to receive messages. For singleton-scoped messages, only one instance of your component can
         /// register for a given message type, while for entity-scoped messages, multiple components can register.
         /// </para>
-        protected virtual IList<string> SupportedMessageTypes
+        protected virtual string MessageType
         {
-            get { return new List<string>(); }
+            get { return null; }
         }
 
         /// <summary>
@@ -265,12 +254,12 @@ namespace DungeonStrike.Source.Core
         /// <param name="message">The received message object.</param>
         public void HandleMessageFromDriver(Message message)
         {
-            Logger.Log("Received message", message.MessageId);
+            Logger.Log("Received message", message);
             ErrorHandler.CheckState(!CurrentMessageId.HasValue, "Component is already handling a message");
             CurrentMessageId = Optional.Of(message.MessageId);
             HandleMessage(message, () =>
             {
-                Logger.Log("Finished processing message", message.MessageId);
+                Logger.Log("Finished processing message", message);
                 CurrentMessageId = Utilities.Optional<string>.Empty;
             });
         }

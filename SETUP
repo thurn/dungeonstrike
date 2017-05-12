@@ -1,0 +1,8 @@
+Steps required to set up (OSX):
+- Obtain a copy of ThirdParty.tgz.gpg and its password
+- Install Homebrew, Unity3D, and leiningen
+- Download and install Mono: http://www.mono-project.com/download/
+- Install Project Rider (if desired) and the Unity3D plugin, and make it the default editor in Unity
+- Enable the Unity Cache Server in Local mode
+- brew install gpg pv cfv uncrustify
+- Run ./scripts/extractThirdParty.sh <password> <path/to/ThirdParty.tgz.gpg>

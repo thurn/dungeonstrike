@@ -1,0 +1,33 @@
+{:name "load-scene-empty",
+ :prerequisite nil,
+ :message->client
+ {:m/message-type :m/load-scene,
+  :m/scene-name :empty,
+  :m/message-id "M:7QdJKBJYSGObo4Dbs3qsFQ"},
+ :entries
+ [{:message
+   "Received message [<[LoadScene] M:7QdJKBJYSGObo4Dbs3qsFQ>]",
+   :source "DungeonStrike.Source.Services.SceneLoader",
+   :log-type :client}
+  {:message
+   "Websocket sending message [message=<[load-scene] M:7QdJKBJYSGObo4Dbs3qsFQ>]",
+   :source "dungeonstrike.websocket",
+   :log-type :driver}
+  {:message "Loading scene [Empty]",
+   :source "DungeonStrike.Source.Services.SceneLoader",
+   :log-type :client}
+  {:message "Driver connection closed [status=:normal]",
+   :source "dungeonstrike.websocket",
+   :log-type :driver}
+  {:message "Root::OnDisable()",
+   :source "DungeonStrike.Source.Core.Root",
+   :log-type :client}
+  {:message ">> driver connected <<",
+   :source "dungeonstrike.websocket",
+   :log-type :driver}
+  {:message "Root::OnEnable()",
+   :source "DungeonStrike.Source.Core.Root",
+   :log-type :client}
+  {:message ">> client connected <<",
+   :source "DungeonStrike.Source.Messaging.WebsocketManager",
+   :log-type :client}]}

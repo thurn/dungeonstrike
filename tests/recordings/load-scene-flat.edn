@@ -1,0 +1,33 @@
+{:name "load-scene-flat",
+ :prerequisite nil,
+ :message->client
+ {:m/message-type :m/load-scene,
+  :m/scene-name :flat,
+  :m/message-id "M:1WdHQEZ3T56v+RYxACrT0A"},
+ :entries
+ [{:message
+   "Websocket sending message [message=<[load-scene] M:1WdHQEZ3T56v+RYxACrT0A>]",
+   :source "dungeonstrike.websocket",
+   :log-type :driver}
+  {:message
+   "Received message [<[LoadScene] M:1WdHQEZ3T56v+RYxACrT0A>]",
+   :source "DungeonStrike.Source.Services.SceneLoader",
+   :log-type :client}
+  {:message "Driver connection closed [status=:normal]",
+   :source "dungeonstrike.websocket",
+   :log-type :driver}
+  {:message "Loading scene [Flat]",
+   :source "DungeonStrike.Source.Services.SceneLoader",
+   :log-type :client}
+  {:message ">> driver connected <<",
+   :source "dungeonstrike.websocket",
+   :log-type :driver}
+  {:message "Root::OnDisable()",
+   :source "DungeonStrike.Source.Core.Root",
+   :log-type :client}
+  {:message "Root::OnEnable()",
+   :source "DungeonStrike.Source.Core.Root",
+   :log-type :client}
+  {:message ">> client connected <<",
+   :source "DungeonStrike.Source.Messaging.WebsocketManager",
+   :log-type :client}]}

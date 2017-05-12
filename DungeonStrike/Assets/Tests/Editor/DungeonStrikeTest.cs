@@ -10,21 +10,21 @@ namespace DungeonStrike.Tests.Editor
         private GameObject _rootObject;
         private Root _rootComponent;
         private List<GameObject> _managedObjects;
+        private List<Service> _testServices;
+        private LogContext _rootLogContext;
 
         [SetUp]
         public void SetUpTest()
         {
             LogWriter.DisableForTests();
+            _rootLogContext = LogContext.NewRootContext(GetType());
             _rootObject = new GameObject("Root");
             _rootComponent = _rootObject.AddComponent<Root>();
             _rootComponent.IsUnitTest = true;
             _rootComponent.Awake();
             _rootComponent.OnEnable();
             _managedObjects = new List<GameObject>();
-            foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
-            {
-                component.RootObjectForTests = _rootComponent;
-            }
+            _testServices = new List<Service>();
         }
 
         [TearDown]
@@ -60,21 +60,21 @@ namespace DungeonStrike.Tests.Editor
             var result = NewTestGameObject(name);
             var entity = result.AddComponent<Entity>();
             entity.Initialize(entityType, entityId);
-            entity.RootObjectForTests = _rootComponent;
             return result;
         }
 
         public T AddTestEntityComponent<T>(GameObject gameObject) where T : EntityComponent
         {
             var result = gameObject.AddComponent<T>();
-            result.RootObjectForTests = _rootComponent;
+            result.Root = _rootComponent;
             return result;
         }
 
         public T CreateTestService<T>() where T : Service
         {
             var service = _rootObject.AddComponent<T>();
-            service.RootObjectForTests = _rootComponent;
+            service.Root = _rootComponent;
+            _testServices.Add(service);
             return service;
         }
 
@@ -85,15 +85,15 @@ namespace DungeonStrike.Tests.Editor
 
         public void EnableObjects()
         {
-            foreach (var component in _rootObject.GetComponents<DungeonStrikeComponent>())
+            foreach (var service in _testServices)
             {
-                component.OnEnableForTests();
+                service.Enable(_rootLogContext);
             }
             foreach (var managedObject in _managedObjects)
             {
-                foreach (var component in managedObject.GetComponents<DungeonStrikeComponent>())
+                foreach (var component in managedObject.GetComponents<EntityComponent>())
                 {
-                    component.OnEnableForTests();
+                    component.Enable(_rootLogContext);
                 }
             }
         }

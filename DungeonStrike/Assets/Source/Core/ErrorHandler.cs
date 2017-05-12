@@ -13,13 +13,13 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class ErrorHandler
     {
-        private readonly ILogContext _logContext;
+        private readonly LogContext _logContext;
 
         /// <summary>
         /// Create a new ErrorHandler.
         /// </summary>
         /// <param name="logContext">The log context in which to log.</param>
-        public ErrorHandler(ILogContext logContext)
+        public ErrorHandler(LogContext logContext)
         {
             _logContext = logContext;
         }

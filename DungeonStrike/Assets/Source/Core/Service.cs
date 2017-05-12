@@ -1,4 +1,6 @@
-﻿namespace DungeonStrike.Source.Core
+﻿using System;
+
+namespace DungeonStrike.Source.Core
 {
     /// <summary>
     /// Represents a singleton component attached to the <see cref="Root"/> object.
@@ -7,21 +9,23 @@
     /// A Service is a component which only has one instance per scene. These components must be attached to the
     /// <see cref="Root"/> GameObject by being registered in <see cref="Root.Awake()"/>. The service instance can be
     /// obtained by calling <see cref="DungeonStrikeComponent.GetService{T}"/>. Services can receive messages by
-    /// overriding <see cref="DungeonStrikeComponent.SupportedMessageTypes"/> as normal.
+    /// overriding <see cref="DungeonStrikeComponent.MessageType"/> as normal.
     /// </remarks>
     public abstract class Service : DungeonStrikeComponent
     {
         /// <summary>
         /// Registers this Service to receive messages requested based on <c>SupportedMessageTypes</c>. Services with
-        /// setup logic should put it in <see cref="OnEnableService" />.
+        /// setup logic should put it in <see cref="OnEnableService" />. This method should only be invoked from
+        /// "Root"!
         /// </summary>
-        protected sealed override void OnEnable()
+        public override void Enable(LogContext parentContext)
         {
-            base.OnEnable();
-            if (LifecycleState != ComponentLifecycleState.NotStarted) return;
+            base.Enable(parentContext);
+            ErrorHandler.CheckState(LifecycleState == ComponentLifecycleState.NotStarted,
+                "Attempted to start service twice!");
             LifecycleState = ComponentLifecycleState.Starting;
+            Root.BeganStartingService();
 
-            ErrorHandler.CheckNotNull("SupportedMessageTypes", SupportedMessageTypes);
             var root = GetComponent<Root>();
             ErrorHandler.CheckState(root != null, "Service components must be attached to the Root object!");
 
@@ -29,20 +33,24 @@
             {
                 var messageRouter = GetService<MessageRouter>();
 
-                foreach (var messageType in SupportedMessageTypes)
+                if (MessageType != null)
                 {
-                    messageRouter.RegisterServiceForMessage(messageType, this);
+                    messageRouter.RegisterServiceForMessage(MessageType, this);
                 }
             }
-            OnEnableService();
-            LifecycleState = ComponentLifecycleState.Started;
+            OnEnableService(() =>
+            {
+                LifecycleState = ComponentLifecycleState.Started;
+                Root.FinishedStartingService();
+            });
         }
 
         /// <summary>
         /// Should be used to implement any required setup logic for services.
         /// </summary>
-        protected virtual void OnEnableService()
+        protected virtual void OnEnableService(Action onStarted)
         {
+            onStarted();
         }
 
         /// <summary>

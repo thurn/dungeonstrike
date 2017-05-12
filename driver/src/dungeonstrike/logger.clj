@@ -1,7 +1,7 @@
 (ns dungeonstrike.logger
   "Component which provides utilities for logging application behavior. Any
    non-trivial application state transition should be logged."
-  (:require [clojure.core.async :as async]
+  (:require [clojure.core.async :as async :refer [<! >!]]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.spec :as s]
@@ -60,6 +60,7 @@
 
 (s/fdef log-helper :args (s/cat :log-context ::log-context
                                 :message string?
+                                :important? boolean?
                                 :error? boolean?
                                 :line integer?
                                 :rest (s/* any?)))
@@ -68,7 +69,7 @@
    map which includes the provided log context and a `:message` entry with a
    formatted version of the log message and its arguments. Do not invoke this
    function directly."
-  [log-context message error? line & [arg-names & arguments]]
+  [log-context message important? error? line & [arg-names & arguments]]
   (let [args (map list arg-names arguments)
         format-fn (fn [[key value]] (str key "=" (info value)))
         formatted (if (empty? arg-names)
@@ -76,9 +77,22 @@
                     (str message " ["
                          (string/join "; " (map format-fn args)) "]"))]
     (apply merge log-context {:message formatted
+                              :important? important?
                               :error? error?
                               :line line}
            (filter map? arguments))))
+
+(defmacro log-important!
+  "Logs a message as in `log`, but flags it as 'important' for special handling
+   in the logging UI."
+  [log-context message & arguments]
+  `(timbre/info (log-helper ~log-context
+                            ~message
+                            true
+                            false
+                            ~(:line (meta &form))
+                            '~arguments
+                            ~@arguments)))
 
 (defmacro log
   "Logs a message with an associated LogContext and optional details. Argument
@@ -89,6 +103,7 @@
   `(timbre/info (log-helper ~log-context
                             ~message
                             false
+                            false
                             ~(:line (meta &form))
                             '~arguments
                             ~@arguments)))
@@ -97,12 +112,13 @@
   "Logs an error in the style of `log` with an associated LogContext and
    optional details."
   [log-context message & arguments]
-  `(timbre/info (log-helper ~log-context
-                            ~message
-                            true
-                            ~(:line (meta &form))
-                            '~arguments
-                            ~@arguments)))
+  `(timbre/error (log-helper ~log-context
+                             ~message
+                             false
+                             true
+                             ~(:line (meta &form))
+                             '~arguments
+                             ~@arguments)))
 
 (defmacro dbg!
   "Logs a message as in `log` without a LogContext for debugging use only.
@@ -115,13 +131,6 @@
                             '~arguments
                             ~@arguments)))
 
-(s/fdef debug-log-channel :args (s/cat :logger ::logger))
-(defn debug-log-channel
-  "Returns a channel which consumes unparsed log entry lines and produces parsed
-   log entries. Intended to be used for debugging tools."
-  [logger]
-  (::debug-log-channel logger))
-
 (def ^:private metadata-separator
   "The unique string used to separate log messages from log metadata in lines of
    a log file."
@@ -132,12 +141,15 @@
    timbre log maps into our custom log string format."
   [{:keys [instant vargs error-level? ?ns-str ?file trace ?msg-fmt] :as data}]
   (when error-level?)
-  (let [[{:keys [message] :as entry} & rest] vargs]
-    (str (or message ?msg-fmt (str "<" ?ns-str ">"))
+  (let [[{:keys [message] :as entry} & rest] vargs
+        strip-newlines (fn [msg] (string/replace msg "\n" " \\n "))
+        msg (or message ?msg-fmt (str "<" ?ns-str ">"))]
+    (str (strip-newlines msg)
          metadata-separator
-         (into {} (remove (comp nil? val)
-                          (merge (dissoc entry :message)
+         (into {} (remove #(nil? (val %))
+                          (merge (dissoc entry :message :?msg-fmt)
                                  {:source ?ns-str
+                                  :formatted msg
                                   :timestamp (.getTime instant)
                                   :log-type :driver
                                   :rest rest
@@ -193,37 +205,28 @@
        :thead-name (.getName thread)
        :stack-trace (str builder)})))
 
+(def debug-log-transducer
+  "A transducer for parsing log entry strings."
+  (map parse-log-entry))
+
 (defrecord Logger []
   component/Lifecycle
 
-  (start [{:keys [::driver-log-file] :as component}]
-    (let [system-log-context (new-system-log-context)
-          debug-log-channel (async/chan (async/sliding-buffer 1024)
-                                        (map parse-log-entry))]
-      (timbre/set-config! (timbre-config driver-log-file))
+  (start [{:keys [::log-file-path] :as component}]
+    (let [system-log-context (new-system-log-context)]
+      (timbre/set-config! (timbre-config log-file-path))
+
       (Thread/setDefaultUncaughtExceptionHandler
        (reify Thread$UncaughtExceptionHandler
          (uncaughtException [_ thread ex]
-           (timbre/error (error-info thread ex))
-           (throw ex))))
-      (assoc component
-             ::system-log-context system-log-context
-             ::debug-log-channel debug-log-channel)))
+           (println "==== Uncaught Exception! ===")
+           (println ex)
+           (timbre/error (error-info thread ex)))))
 
-  (stop [{:keys [::driver-log-file ::debug-log-channel ::system-log-context
-                 ::clear-on-stop?]
+      (assoc component ::system-log-context system-log-context)))
+
+  (stop [{:keys [::system-log-context]
           :as component}]
-    (when clear-on-stop?
-      (io/delete-file driver-log-file true))
-    (when debug-log-channel (async/close! debug-log-channel))
-    (dissoc component ::system-log-context ::debug-log-channel)))
+    (dissoc component ::system-log-context)))
 
 (s/def ::logger #(instance? Logger %))
-
-(s/fdef new-logger :args (s/cat :driver-log-file string? :rest (s/* any?)))
-(defn new-logger
-  "Create a new logger for the provided log file. If :clear-on-stop? is true,
-   delete the logfile on component stop."
-  [driver-log-file & {:keys [clear-on-stop?]}]
-  (map->Logger {::driver-log-file driver-log-file
-                ::clear-on-stop? clear-on-stop?}))
