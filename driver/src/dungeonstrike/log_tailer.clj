@@ -6,6 +6,7 @@
             [clojure.java.io :as io]
             [clojure.spec :as s]
             [clojure.string :as string]
+            [dungeonstrike.channels :as channels]
             [com.stuartsierra.component :as component]
             [dev])
   (:import (org.apache.commons.io.input Tailer TailerListener
@@ -18,7 +19,7 @@
   (start [{:keys [::log-file-path ::debug-log-channel] :as component}]
     (let [listener (proxy [TailerListenerAdapter] []
                      (handle [line]
-                       (async/put! (:channel debug-log-channel) line)))
+                       (channels/put! debug-log-channel line)))
           file (io/file log-file-path)
           tailer (Tailer/create file listener 1000 true true)]
       (assoc component ::tailer tailer)))

@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ "$#" -ne 2 ]; then
-    echo "Usage: extractThirdParty [password] [ThirdParty.tgz.gpg path]"
+if [ "$#" -ne 1 ]; then
+    echo "Usage: extractThirdParty [.tgz path]"
     exit
 fi
 
@@ -11,5 +11,7 @@ then
   exit
 fi
 
+rm -r ./DungeonStrike/Assets/ThirdParty
 mkdir -p ./DungeonStrike/Assets/ThirdParty
-gpg --batch --decrypt --passphrase $1 $2 | pv --progress --size 2g | tar xz
+SIZE=$(du -k $1 | cut -f 1)
+pv --progress --size ${SIZE}k $1 | tar xzf -

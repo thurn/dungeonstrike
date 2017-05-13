@@ -7,11 +7,12 @@
             [clojure.spec :as s]
             [clojure.string :as string]
             [clojure-watch.core :as watch]
-            [com.stuartsierra.component :as component]
+            [dungeonstrike.channels :as channels]
             [dungeonstrike.logger :as logger :refer [log error log-important!]]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.test-runner :as test-runner]
             [dungeonstrike.uuid :as uuid]
+            [com.stuartsierra.component :as component]
             [seesaw.core :as seesaw]
             [seesaw.font :as font]
             [seesaw.mig :as mig]
@@ -112,8 +113,8 @@
 
 (defn- tests-panel
   "UI for the 'Tests' panel"
-  [{:keys [::test-recordings-directory] :as component}]
-  (let [file-names (recording-file-names test-recordings-directory)
+  [{:keys [::test-recordings-path] :as component}]
+  (let [file-names (recording-file-names test-recordings-path)
         run-selected-button (seesaw/button :text "Run Selected" :enabled? false)
         run-all-button (seesaw/button :text "Run All")
         test-list (test-list-table file-names)]
@@ -263,10 +264,10 @@
 (defn- start-logs
   "Starts a go loop to pull logs out of the debug log channel and render them
    in the log entry table."
-  [{:keys [::debug-log-channel ::frame ::recording-state]}]
+  [{:keys [::log-channel ::frame ::recording-state]}]
   (let [logs-view (seesaw/select frame [:#logs])]
     (async/go-loop []
-      (when-some [{:keys [source] :as entry} (<! debug-log-channel)]
+      (when-some [{:keys [source] :as entry} (<! log-channel)]
         (when (:recording? @recording-state)
           (swap! recording-state update :entries conj
                  (select-keys entry [:message :source :log-type :error?])))
@@ -304,8 +305,8 @@
         send-button (seesaw/select frame [:#send-button])]
     (seesaw/listen send-button :action (on-send-button-clicked component))
     (async/go-loop []
-      (when-some [{:keys [:data]} (<! status-channel)]
-        (reset! send-button-enabled? (= :connection-opened data))
+      (when-some [status (<! status-channel)]
+        (reset! send-button-enabled? (= :connection-opened status))
         (seesaw/config! send-button :enabled? @send-button-enabled?)
         (recur)))))
 
@@ -321,12 +322,12 @@
   (with-out-str (pprint/pprint form)))
 
 (defn- save-recording-frame
-  [initial-message entries test-recordings-directory on-close]
+  [initial-message entries test-recordings-path on-close]
   (let [save-button (seesaw/button :text "Save")
         cancel-button (seesaw/button :text "Cancel")
         prerequisite (seesaw/combobox
                       :model (into [nil] (recording-file-names
-                                          test-recordings-directory)))
+                                          test-recordings-path)))
         recording-name (seesaw/text)
         text-area (seesaw/text :text (pretty-string entries)
                                :multi-line? true
@@ -367,19 +368,19 @@
     frame))
 
 (defn- stop-recording
-  [{:keys [::frame ::recording-state ::test-recordings-directory ::log-context]
+  [{:keys [::frame ::recording-state ::test-recordings-path ::log-context]
     :as component}]
   (let [recording-button (seesaw/select frame [:#recording-button])
         initial-message (:message->client @recording-state)
         entries (:entries @recording-state)]
     (seesaw/show!
      (save-recording-frame
-      initial-message entries test-recordings-directory
+      initial-message entries test-recordings-path
       (fn [recording-name prerequisite]
         (when recording-name
           (reset! recording-state {:recording? false :entries []})
           (seesaw/config! recording-button :text "Start Recording")
-          (let [output-file (io/file test-recordings-directory
+          (let [output-file (io/file test-recordings-path
                                      (str recording-name ".edn"))
                 output (pretty-string {:name recording-name
                                        :prerequisite prerequisite
@@ -410,19 +411,26 @@
 (defrecord DebugGui []
   component/Lifecycle
 
-  (start [{:keys [::logger ::message-sender ::status-channel] :as component}]
+  (start [{:keys [::logger ::message-sender ::connection-status-channel
+                  ::debug-log-channel]
+           :as component}]
     ; Instruct Seesaw to try to make things look as native as possible
     (seesaw/native!)
 
     (let [log-context (logger/component-log-context logger "DebugGui")
-          updated-component (assoc component
-                                   ::log-context log-context
-                                   ::send-button-enabled? (atom false)
-                                   ::recording-state (atom {:recording? false}))
+          updated (assoc component
+                         ::log-context log-context
+                         ::log-channel (channels/get-tap debug-log-channel
+                                                         ::debug-log-channel)
+                         ::status-channel (channels/get-tap
+                                           connection-status-channel
+                                           ::connection-status-channel)
+                         ::send-button-enabled? (atom false)
+                         ::recording-state (atom {:recording? false}))
           frame (seesaw/frame :title "The DungeonStrike Driver"
                               :minimum-size [1440 :by 878]
-                              :content (frame-content updated-component))
-          result (assoc updated-component ::frame frame)]
+                              :content (frame-content updated))
+          result (assoc updated ::frame frame)]
       (start-logs result)
       (register-listeners result)
       (start-send-button result)
@@ -436,14 +444,3 @@
       (seesaw/dispose! frame))
     (log log-context "Stopped DebugGui")
     (dissoc component ::frame ::log-context ::recording-state)))
-
-(s/fdef new-debug-gui :args (s/cat :test-recordings-directory string?
-                                   :debug-log-channel some?
-                                   :status-channel some?))
-(defn new-debug-gui
-  "Creates a new DebugGui component with `status-channel` as a publication
-   subscriber for socket status messages."
-  [test-recordings-directory debug-log-channel status-channel]
-  (map->DebugGui {::test-recordings-directory test-recordings-directory
-                  ::debug-log-channel debug-log-channel
-                  ::status-channel status-channel}))

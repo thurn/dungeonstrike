@@ -8,13 +8,19 @@
             [clojure.tools.cli :as cli]
             [com.stuartsierra.component :as component]
             [dungeonstrike.channels :as channels]
-            [dungeonstrike.code-generator :as code-generator]
-            [dungeonstrike.gui :as gui]
-            [dungeonstrike.log-tailer :as log-tailer]
+            [dungeonstrike.code-generator]
+            [dungeonstrike.gui]
+            [dungeonstrike.log-tailer]
             [dungeonstrike.logger :as logger]
-            [dungeonstrike.test-runner :as test-runner]
-            [dungeonstrike.websocket :as websocket]
-            [dev]))
+            [dungeonstrike.test-runner]
+            [dungeonstrike.websocket]
+            [dev])
+  (:import (dungeonstrike.code_generator CodeGenerator)
+           (dungeonstrike.gui DebugGui)
+           (dungeonstrike.log_tailer LogTailer)
+           (dungeonstrike.logger Logger)
+           (dungeonstrike.test_runner TestRunner)
+           (dungeonstrike.websocket Websocket)))
 (dev/require-dev-helpers)
 
 (defn- get-path
@@ -43,7 +49,8 @@
 
    ::on-start-channel
    (channels/new-channel
-    [(async/dropping-buffer 1024)])
+    [(async/dropping-buffer 1024)]
+    [])
 
    ::debug-log-channel
    (channels/new-channel
@@ -58,7 +65,7 @@
 
    ::driver-log-tailer
    (component/using
-    (log-tailer/LogTailer.)
+    (LogTailer.)
     {:dungeonstrike.log-tailer/debug-log-channel
      ::debug-log-channel
      :dungeonstrike.log-tailer/log-file-path
@@ -66,7 +73,7 @@
 
    ::client-log-tailer
    (component/using
-    (log-tailer/LogTailer.)
+    (LogTailer.)
     {:dungeonstrike.log-tailer/debug-log-channel
      ::debug-log-channel
      :dungeonstrike.log-tailer/log-file-path
@@ -74,7 +81,7 @@
 
    ::logger
    (component/using
-    (logger/Logger.)
+    (Logger.)
     {:dungeonstrike.logger/log-file-path
      ::driver-log-path
      :dungeonstrike.logger/driver-log-tailer
@@ -84,13 +91,15 @@
 
    ::code-generator
    (component/using
-    (code-generator/CodeGenerator.)
-    {:dungeonstrike.code-generator/code-generator-output-path
+    (CodeGenerator.)
+    {:dungeonstrike.code-generator/logger
+     ::logger
+     :dungeonstrike.code-generator/code-generator-output-path
      ::code-generator-output-path})
 
    ::websocket
    (component/using
-    (websocket/Websocket. options)
+    (Websocket. options)
     {:dungeonstrike.websocket/logger
      ::logger
      :dungeonstrike.websocket/connection-status-channel
@@ -100,7 +109,7 @@
 
    ::test-runner
    (component/using
-    (test-runner/TestRunner. options)
+    (TestRunner. options)
     {:dungeonstrike.test-runner/message-sender
      ::websocket
      :dungeonstrike.test-runner/test-recordings-path
@@ -110,7 +119,7 @@
 
    ::debug-gui
    (component/using
-    (gui/DebugGui.)
+    (DebugGui.)
     {:dungeonstrike.gui/logger
      ::logger
      :dungeonstrike.gui/test-runner
@@ -133,9 +142,9 @@
    map."
   [options]
   (let [started (component/start (create-system options))
-        on-start-channel (::on-start-channel started)]
+        on-start-channel (channels/unwrap (::on-start-channel started))]
     (async/go-loop []
-      (when-some [function (<! on-start-channel)]
+      (when-let [function (<! on-start-channel)]
         (function)
         (recur)))
     started))

@@ -7,10 +7,16 @@ then
   exit
 fi
 
-if [ "$#" -ne 2 ]; then
-    echo "Usage: compressThirdParty [password] [outputPath]"
+if [ "$#" -ne 1 ]; then
+    echo "Usage: compressThirdParty [outputPath]"
     exit
 fi
 
-rm -f $2/ThirdParty.tgz.gpg
-tar cz ./DungeonStrike/Assets/ThirdParty | pv --progress --size 2g | gpg --symmetric --batch --passphrase $1 --output $2/ThirdParty.tgz.gpg
+# TODO: This only works on OSX, update to support GNU find
+CHECKSUM=$(./scripts/metasum.sh)
+OUT="$1/$CHECKSUM.tgz"
+SIZE=$(du -sk ./DungeonStrike/Assets/ThirdParty | cut -f 1)
+
+rm -f "$1/*.tgz"
+
+tar cf - ./DungeonStrike/Assets/ThirdParty | pv --progress --size ${SIZE}k | gzip > $OUT

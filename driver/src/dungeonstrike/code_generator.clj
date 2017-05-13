@@ -106,9 +106,9 @@ namespace DungeonStrike.Source.Messaging
 (defn generate!
   "Generates C# code based on the message specifications found in
    `dungeonstrike.messages` and outputs it to the configured output file."
-  [{:keys [::output-path]}]
+  [{:keys [::code-generator-output-path]}]
   (let [output (templates/render template (template-parameters))]
-    (spit output-path output)))
+    (spit code-generator-output-path output)))
 
 (defrecord CodeGenerator []
   component/Lifecycle
@@ -118,6 +118,3 @@ namespace DungeonStrike.Source.Messaging
       (assoc component ::log-context log-context)))
   (stop [component]
     (dissoc component ::log-context)))
-
-(defn new-code-generator [output-path]
-  (map->CodeGenerator {::output-path output-path}))

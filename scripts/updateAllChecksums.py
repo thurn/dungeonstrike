@@ -21,4 +21,8 @@ for directory in os.listdir(THIRD_PARTY):
   os.rename(sfv, newPath)
   subprocess.call(["perl", "-p", "-i", "-e", "s/Generated.*//g", newPath])
 
+metasum = subprocess.check_output(["./scripts/metasum.sh"])
+with open("./DungeonStrike/assets_version.md5", "w") as assets_version:
+  assets_version.write(metasum)
+
 print("Checksums updated. Remember to run ./scripts/createThirdParty.sh")

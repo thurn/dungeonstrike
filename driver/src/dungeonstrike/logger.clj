@@ -1,8 +1,7 @@
 (ns dungeonstrike.logger
   "Component which provides utilities for logging application behavior. Any
    non-trivial application state transition should be logged."
-  (:require [clojure.core.async :as async :refer [<! >!]]
-            [clojure.edn :as edn]
+  (:require [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.spec :as s]
             [clojure.string :as string]

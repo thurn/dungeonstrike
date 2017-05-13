@@ -4,6 +4,7 @@
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.spec :as s]
+            [dungeonstrike.channels :as channels]
             [dungeonstrike.messages :as messages]
             [com.stuartsierra.component :as component]
             [dev]))
@@ -21,16 +22,16 @@
 
 (defn- run-recording
   "Runs a single recording. Sends the appropriate message for the recording via
-   `message-sender` and then listens for logs on `debug-log-channel` and
+   `message-sender` and then listens for logs on `log-channel` and
     verifies that they match the logs in the provided log entry. Returns a
     channel which will receive a value describing the success or failure of the
     test."
-  [{:keys [::message-sender ::debug-log-channel]}
+  [{:keys [::message-sender ::log-channel]}
    {:keys [:name :entries :message->client]}]
   (messages/send-message! message-sender message->client)
   (let [timeout (async/timeout 10000)]
     (async/go-loop [missing-entries (group-by :source entries)]
-      (let [[value port] (async/alts! [timeout debug-log-channel])]
+      (let [[value port] (async/alts! [timeout log-channel])]
         (if (= port timeout)
           ;; Timeout exceeded, return failure value.
           {:status :timeout
@@ -77,8 +78,8 @@
   "Returns the sequence of recording objects consisting of all of the recursive
    prerequisites of `test-name` followed by the recording object for `test-name`
    itself."
-  [{:keys [::test-recordings-directory] :as test-runner} test-name]
-  (let [recording (edn/read-string (slurp (io/file test-recordings-directory
+  [{:keys [::test-recordings-path] :as test-runner} test-name]
+  (let [recording (edn/read-string (slurp (io/file test-recordings-path
                                                    test-name)))]
     (when (empty? recording)
       (throw (RuntimeException. (str "Recording not found" test-name))))
@@ -122,12 +123,12 @@
 (defn- start-test-runner
   "Starts a go loop which awaits new recordings on `test-channel` and then runs
    and verifies them via `run-recording`."
-  [{:keys [::test-channel ::message-sender ::debug-log-channel]
+  [{:keys [::test-channel ::message-sender ::log-channel]
     :as test-runner}]
   (async/go-loop []
-    (let [[value port] (async/alts! [test-channel debug-log-channel]
+    (let [[value port] (async/alts! [test-channel log-channel]
                                     :priority true)]
-      (if (= port debug-log-channel)
+      (if (= port log-channel)
         ;; If no tests are available, ignore all log entries
         (recur)
         (when-let [{:keys [recordings result-channel]} value]
@@ -145,29 +146,20 @@
      :source "DungeonStrike.Source.Messaging.WebsocketManager"
      :log-type :client}]})
 
-(defrecord TestRunner []
+(defrecord TestRunner [options]
   component/Lifecycle
 
-  (start [{:keys [::to-run] :as component}]
+  (start [{:keys [::debug-log-channel] :as component}]
     (let [test-channel (async/chan (async/dropping-buffer 1024))
-          result (assoc component ::test-channel test-channel)]
+          log-channel (channels/get-tap debug-log-channel ::debug-log-channel)
+          result (assoc component
+                        ::log-channel log-channel
+                        ::test-channel test-channel)]
       (start-test-runner result)
       result))
 
   (stop [{:keys [::test-channel] :as component}]
-    (when test-channel
-      (async/close! test-channel))
+    (when test-channel (async/close! test-channel))
     component))
 
 (s/def ::test-runner #(instance? TestRunner %))
-
-(s/fdef new-test-runner :args (s/cat :test-recordings-directory string?
-                                     :debug-log-channel some?
-                                     :to-run any?))
-(defn new-test-runner
-  "Creates a new TestRunner component. The provided directory should contain the
-  'golden files', canonical log recordings for each integration test."
-  [test-recordings-directory debug-log-channel to-run]
-  (map->TestRunner {::test-recordings-directory test-recordings-directory
-                    ::debug-log-channel debug-log-channel
-                    ::to-run to-run}))

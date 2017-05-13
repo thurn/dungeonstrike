@@ -46,7 +46,7 @@ namespace DungeonStrike.Source.Messaging
             while (true)
             {
                 yield return new WaitForSeconds(1.0f);
-                if (_connectionClosed)
+                if (_connectionClosed && (_websocket.ReadyState == WebSocketState.Closed))
                 {
                     _websocket.Connect();
                 }
@@ -66,8 +66,11 @@ namespace DungeonStrike.Source.Messaging
 
         private void OnClosed(object sender, CloseEventArgs args)
         {
+            if (!_connectionClosed)
+            {
+                Logger.Log("Unity connection closed");
+            }
             _connectionClosed = true;
-            Logger.Log("Unity connection closed");
         }
 
         private void OnMessageReceived(object sender, MessageEventArgs messageArgs)
