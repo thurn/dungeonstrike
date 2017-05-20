@@ -17,7 +17,7 @@
             [seesaw.font :as font]
             [seesaw.mig :as mig]
             [seesaw.table :as table]
-            [dev])
+            [dungeonstrike.dev :as dev])
   (:import (java.awt Color)
            (java.util Comparator)
            (javax.swing ListSelectionModel SwingUtilities JOptionPane)

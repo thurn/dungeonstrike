@@ -16,5 +16,14 @@ fi
 # Check for ThirdParty modifications
 ./scripts/checksum.py
 
+# Create a mirror of the code to run tests on
+./scripts/backup.sh
+
+# Chang to mirror directory
+cd ~/backup
+
 # Run Editor tests
 ./scripts/runEditorTests.sh
+
+# Run Integration tests
+./scripts/runIntegrationTests.sh all

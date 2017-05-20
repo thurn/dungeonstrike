@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 namespace DungeonStrike.Source.Services
 {
+    /// <summary>
+    /// Handles loading new game scenes.
+    /// </summary>
     public sealed class SceneLoader : Service
     {
         protected override string MessageType

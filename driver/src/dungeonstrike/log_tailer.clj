@@ -8,12 +8,12 @@
             [clojure.string :as string]
             [dungeonstrike.channels :as channels]
             [com.stuartsierra.component :as component]
-            [dev])
+            [dungeonstrike.dev :as dev])
   (:import (org.apache.commons.io.input Tailer TailerListener
                                         TailerListenerAdapter)))
 (dev/require-dev-helpers)
 
-(defrecord LogTailer []
+(defrecord LogTailer [options]
   component/Lifecycle
 
   (start [{:keys [::log-file-path ::debug-log-channel] :as component}]

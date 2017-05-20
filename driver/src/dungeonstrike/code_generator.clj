@@ -9,7 +9,7 @@
             [camel-snake-kebab.core :as case]
             [clostache.parser :as templates]
             [com.stuartsierra.component :as component]
-            [dev]))
+            [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
 (def ^:private template

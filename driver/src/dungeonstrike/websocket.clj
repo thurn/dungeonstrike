@@ -10,7 +10,7 @@
             [camel-snake-kebab.core :as case]
             [com.stuartsierra.component :as component]
             [org.httpkit.server :as http-kit]
-            [dev]))
+            [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
 (defn- channel-closed-handler
@@ -70,7 +70,7 @@
                          ::log-context log-context
                          ::outbound-channel outbound-channel
                          ::socket-atom socket-atom)
-          port (get options :port 59005)
+          port (Integer/parseInt (get options :port "59005"))
           stop-server! (http-kit/run-server (create-handler updated)
                                             {:port port})]
       (reset! stop-server-fn stop-server!)

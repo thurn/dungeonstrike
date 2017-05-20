@@ -8,7 +8,7 @@
             [lein-cljfmt "0.5.6"]
             [lein-codox "0.10.3"]]
 
-  :main dungeonstrike.core
+  :main dungeonstrike.main
 
   :dependencies [[org.clojure/clojure "1.9.0-alpha15"]
                  [org.clojure/core.async "0.3.442"]
@@ -30,12 +30,12 @@
                  :init
                  (do
                    (println "Initializing...")
-                   (require 'clojure.tools.namespace.repl 'dev 'cider)
-                   (clojure.tools.namespace.repl/set-refresh-dirs "dev"
-                                                                  "src"
+                   (require 'clojure.tools.namespace.repl 'cider)
+                   (clojure.tools.namespace.repl/set-refresh-dirs "src"
                                                                   "test"))}
 
-  :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.11"]
+  :profiles {:uberjar {:aot [dungeonstrike.main]}
+             :dev {:dependencies [[org.clojure/tools.namespace "0.2.11"]
                                   [com.stuartsierra/component.repl "0.2.0"]
                                   [debugger "0.2.0"]
                                   [com.gfredericks/debug-repl "0.0.8"]]

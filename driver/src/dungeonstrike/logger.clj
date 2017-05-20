@@ -10,7 +10,7 @@
             [io.aviso.exception :as exception]
             [taoensso.timbre :as timbre]
             [taoensso.timbre.appenders.core :as appenders]
-            [dev]))
+            [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
 (defn- reduce-info-map
@@ -208,7 +208,7 @@
   "A transducer for parsing log entry strings."
   (map parse-log-entry))
 
-(defrecord Logger []
+(defrecord Logger [options]
   component/Lifecycle
 
   (start [{:keys [::log-file-path] :as component}]
@@ -220,7 +220,10 @@
          (uncaughtException [_ thread ex]
            (println "==== Uncaught Exception! ===")
            (println ex)
-           (timbre/error (error-info thread ex)))))
+           (timbre/error (error-info thread ex))
+           (when (:crash-on-exceptions options)
+             (println "Terminating.")
+             (System/exit 1)))))
 
       (assoc component ::system-log-context system-log-context)))
 

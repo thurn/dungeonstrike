@@ -1,17 +1,8 @@
 #!/bin/bash
-
-if [[ $(pwd) != *"dungeonstrike" ]]
-then
-  echo "You must invoke this script from the root directory."
-  exit
-fi
-
-# Create a backup to run tests on
-./scripts/backup.sh
-
 echo "Running editor tests..."
+
 unity_bin="/Applications/Unity/Unity.app/Contents/MacOS/Unity"
-project_path="$HOME/backup/DungeonStrike"
+project_path="$(pwd)/DungeonStrike"
 $unity_bin -batchmode -projectPath $project_path -runEditorTests
 result=$?
 

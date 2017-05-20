@@ -7,7 +7,7 @@
             [dungeonstrike.channels :as channels]
             [dungeonstrike.messages :as messages]
             [com.stuartsierra.component :as component]
-            [dev]))
+            [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
 (defn- equivalent-log-entries?
@@ -28,7 +28,8 @@
     test."
   [{:keys [::message-sender ::log-channel]}
    {:keys [:name :entries :message->client]}]
-  (messages/send-message! message-sender message->client)
+  (when message->client
+    (messages/send-message! message-sender message->client))
   (let [timeout (async/timeout 10000)]
     (async/go-loop [missing-entries (group-by :source entries)]
       (let [[value port] (async/alts! [timeout log-channel])]
@@ -66,13 +67,26 @@
   "Runs a sequence of recordings via the `run-recording` function. Returns a
    channel which will receieve either the *final* success value returned or the
    *first* failure value returned."
-  [test-runner recordings]
+  [{:keys [options] :as test-runner} recordings]
   (async/go-loop [[recording & remaining] recordings]
+    (when (:verbose options)
+      (println (str "RUNNING: '" (:name recording) "'")))
     (when-let [{:keys [:status] :as result}
                (<! (run-recording test-runner recording))]
-      (if (or (empty? remaining) (= status :failed))
+      (when (and (:verbose options) (= status :success))
+        (println (str "SUCCESS: '" (:name recording) "'")))
+      (if (or (empty? remaining) (not= status :success))
         result
         (recur remaining)))))
+
+(defn- all-tests
+  "Returns a sequence containing the names of all tests in the recordings
+   directory which are *not* found as prerequisites of any other test."
+  [{:keys [::test-recordings-path]}]
+  (let [files (filter #(.isFile %) (file-seq (io/file test-recordings-path)))
+        recordings (map #(edn/read-string (slurp %)) files)
+        prerequisites (into #{} (remove nil? (map :prerequisite recordings)))]
+    (remove prerequisites (map :name recordings))))
 
 (defn- recording-sequence-for-test
   "Returns the sequence of recording objects consisting of all of the recursive
@@ -86,6 +100,14 @@
     (if-let [prerequisite (:prerequisite recording)]
       (conj (recording-sequence-for-test test-runner prerequisite) recording)
       [recording])))
+
+(defn- recording-sequence-for-all-tests
+  "Returns the sequence of recording objects required to run all recording-based
+   tests along with their respective prerequisites."
+  [test-runner]
+  (let [all-tests (all-tests test-runner)]
+    (flatten (map #(recording-sequence-for-test test-runner (str % ".edn"))
+                  all-tests))))
 
 (s/fdef run-integration-test :args (s/cat :test-runner ::test-runner
                                           :test-name string?))
@@ -114,12 +136,6 @@
                         :result-channel result-channel})
       (<! result-channel))))
 
-(defn dthurn [tr tn]
-  (async/go
-    (let [result (<! (run-integration-test tr tn))]
-      (println "test result:")
-      (pprint result))))
-
 (defn- start-test-runner
   "Starts a go loop which awaits new recordings on `test-channel` and then runs
    and verifies them via `run-recording`."
@@ -146,6 +162,58 @@
      :source "DungeonStrike.Source.Messaging.WebsocketManager"
      :log-type :client}]})
 
+(def ^:private shutdown-recording
+  {:name "shutdown"
+   :prerequisite nil
+   :message->client {:m/message-type :m/quit-game
+                     :m/message-id "M:QUIT"}
+   :entries
+   [{:message "Quitting Client"
+     :source "DungeonStrike.Source.Services.QuitGame"
+     :log-type :client}]})
+
+(defn- recordings-for-options
+  [{{test :test} :options :as test-runner}]
+  (cond
+    (= "all" test)
+    (concat [startup-recording]
+            (recording-sequence-for-all-tests test-runner)
+            [shutdown-recording])
+
+    (= "changed" test)
+    (throw (UnsupportedOperationException. "'changed' is not yet implemented."))
+
+    :otherwise
+    (concat [startup-recording]
+            (recording-sequence-for-test test-runner test)
+            [shutdown-recording])))
+
+(defn- fail-test
+  "Prints a test failure message for the provided test result and then
+   terminates the program."
+  [options {:keys [:status :message :test-name :detail]}]
+  (println (str "FAILURE in '" test-name "' " status))
+  (println message)
+  (if (:verbose options)
+    (pprint detail)
+    (println "Pass --verbose to display full failure details."))
+  (System/exit 42))
+
+(defn- run-tests-from-options
+  [{:keys [:options ::test-channel ::message-sender] :as test-runner}]
+  (async/go
+    (let [test (:test options)
+          done (async/chan)]
+      (println (str "Starting test runner for '" test "'"))
+      (>! test-channel {:recordings (recordings-for-options test-runner)
+                        :result-channel done})
+      (let [{:keys [:status] :as result} (<! done)]
+        (if (= status :success)
+          (do
+            (println (str "Test run '" test "' passed."))
+            (System/exit 0))
+          (fail-test options result))))))
+
 (defrecord TestRunner [options]
   component/Lifecycle
 
@@ -156,6 +224,8 @@
                         ::log-channel log-channel
                         ::test-channel test-channel)]
       (start-test-runner result)
+      (when (:test options)
+        (run-tests-from-options result))
       result))
 
   (stop [{:keys [::test-channel] :as component}]

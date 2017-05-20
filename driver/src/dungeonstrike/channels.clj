@@ -6,7 +6,7 @@
   (:require [clojure.core.async :as async :refer [<!]]
             [clojure.spec :as s]
             [com.stuartsierra.component :as component]
-            [dev]))
+            [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
 (defrecord Channel []
@@ -38,7 +38,9 @@
 (defn get-tap
   "Returns the tap with key `key` from the provided channel wrapper."
   [{:keys [::taps]} key]
-  (get taps key))
+  (if-let [tap (taps key)]
+    tap
+    (throw (RuntimeException. (str "No tap found for key '" key "'")))))
 
 (s/fdef unwrap
         :args (s/cat :channel ::channel-wrapper)

@@ -33,6 +33,11 @@ namespace DungeonStrike.Source.Messaging
         public SceneName SceneName { get; set; }
     }
 
+    public sealed class QuitGameMessage : Message
+    {
+        public static readonly string Type = "QuitGame";
+    }
+
     public sealed class CreateEntityMessage : Message
     {
         public static readonly string Type = "CreateEntity";
@@ -61,6 +66,8 @@ namespace DungeonStrike.Source.Messaging
                     return new TestMessage();
                 case "LoadScene":
                     return new LoadSceneMessage();
+                case "QuitGame":
+                    return new QuitGameMessage();
                 case "CreateEntity":
                     return new CreateEntityMessage();
                 case "DestroyEntity":

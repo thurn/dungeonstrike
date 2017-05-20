@@ -149,8 +149,9 @@ namespace DungeonStrike.Source.Core
         private void RegisterServices()
         {
             AddAndEnableService<MessageRouter>();
-            AddAndEnableService<SceneLoader>();
             AddAndEnableService<WebsocketManager>(true);
+            AddAndEnableService<SceneLoader>();
+            AddAndEnableService<QuitGame>();
         }
 
         /// <summary>

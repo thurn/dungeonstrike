@@ -16,7 +16,7 @@ namespace DungeonStrike.Source.Messaging
         protected override void OnEnableService(Action onStart)
         {
             _messageRouter = GetService<MessageRouter>();
-            _websocket = new WebSocket("ws://localhost:59005?client-id=client");
+            _websocket = new WebSocket("ws://localhost:" + GetPort() + "?client-id=client");
             _websocket.OnOpen += OnOpen;
             _websocket.OnError += OnError;
             _websocket.OnClose += OnClosed;
@@ -39,6 +39,20 @@ namespace DungeonStrike.Source.Messaging
                 _websocket.Close();
                 _websocket = null;
             }
+        }
+
+        /// <returns>The port on which to listen for websocket connections, based on command-line arguments.</returns>
+        private static string GetPort()
+        {
+            var args = Environment.GetCommandLineArgs();
+            for (var i = 1; i < args.Length; ++i)
+            {
+                if (args[i - 1] == "--port")
+                {
+                    return args[i];
+                }
+            }
+            return "59005";
         }
 
         private IEnumerator<WaitForSeconds> AutoReconnect()

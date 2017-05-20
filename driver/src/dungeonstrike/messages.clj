@@ -2,7 +2,7 @@
   "Contains specifications for all messages sent between the driver and the
    client."
   (:require [clojure.spec :as s]
-            [dev]))
+            [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
 (defprotocol MessageSender
@@ -78,6 +78,10 @@
          (defmessage :m/load-scene
            "Loads a scene by name"
            [:m/scene-name])
+
+         (defmessage :m/quit-game
+           "Exits the client."
+           [])
 
          (defmessage :m/create-entity
            "Creates a new entity with the specified type and position"
