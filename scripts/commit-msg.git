@@ -1,0 +1,9 @@
+#!/bin/sh
+
+current_branch="$(git rev-parse --abbrev-ref HEAD)"
+[ "$current_branch" != "master" ] && exit 0
+
+if ! grep -iqE $(date "+%Y-%m-%d %H:%M" | md5) "$1"; then
+    echo "Please use ./scripts/git_commit.py to create commits" >&2
+    exit 1
+fi
