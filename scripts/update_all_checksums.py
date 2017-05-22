@@ -23,8 +23,8 @@ with open(version_path, "w") as assets_version:
 
 print("Checksums updated.")
 
-if lib.yesno("Validate now?"):
-  lib.call([env.script("checksum.py")])
+if lib.yesno("Show git status?"):
+  lib.call(["git", "status"])
 
 if lib.yesno("Run compress_third_party.py now?"):
   lib.call([env.script("compress_third_party.py")])

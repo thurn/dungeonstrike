@@ -14,7 +14,7 @@ if branch != "* master":
 lib.call([env.script("presubmit.py")])
 
 time = lib.output(["date", "+%Y-%m-%d %H:%M"])
-key = libf.output(["md5", "-q", "-s", time])
+key = lib.output(["md5", "-q", "-s", time])
 
 print("Creating commit...")
 lib.call(["git", "commit"] + all_args + ["-m", "KEY: " + key])
