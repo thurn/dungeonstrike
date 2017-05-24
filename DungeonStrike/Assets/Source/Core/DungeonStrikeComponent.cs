@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Utilities;
 using UnityEngine;
@@ -217,12 +219,10 @@ namespace DungeonStrike.Source.Core
         /// or <see cref="Service"/>. Refer to the documentation for those classes to understand the difference.
         /// </para>
         /// <param name="receivedMessage">The new message object received from the driver</param>
-        /// <param name="onComplete">A callback which must be invoked once your component has finished processing
-        /// <paramref name="receivedMessage"/>. It is an error for a component to be sent a message while it is still
-        /// handling a previous message.</param>
-        protected virtual void HandleMessage(Message receivedMessage, Action onComplete)
+        /// <returns>A Task object which should be completed once the message has been handled.</returns>
+        protected virtual Task HandleMessage(Message receivedMessage)
         {
-            onComplete();
+            return Async.Done;
         }
 
         /// <summary>
@@ -234,9 +234,20 @@ namespace DungeonStrike.Source.Core
         /// register to receive messages. For singleton-scoped messages, only one instance of your component can
         /// register for a given message type, while for entity-scoped messages, multiple components can register.
         /// </para>
-        protected virtual string MessageType
+        protected virtual string MessageType => null;
+
+        protected Task RunOperationAsync(YieldInstruction operation)
         {
-            get { return null; }
+            var completionSource = new TaskCompletionSource<bool>();
+            StartCoroutine(StartOperationAsync(operation, completionSource));
+            return completionSource.Task;
+        }
+
+        private static IEnumerator<YieldInstruction> StartOperationAsync(YieldInstruction operation,
+            TaskCompletionSource<bool> completionSource)
+        {
+            yield return operation;
+            completionSource.SetResult(true);
         }
 
         /// <summary>
@@ -252,16 +263,15 @@ namespace DungeonStrike.Source.Core
         /// from component code.
         /// </para>
         /// <param name="message">The received message object.</param>
-        public void HandleMessageFromDriver(Message message)
+        public async Task HandleMessageFromDriver(Message message)
         {
             Logger.Log("Received message", message);
             ErrorHandler.CheckState(!CurrentMessageId.HasValue, "Component is already handling a message");
             CurrentMessageId = Optional.Of(message.MessageId);
-            HandleMessage(message, () =>
-            {
-                Logger.Log("Finished processing message", message);
-                CurrentMessageId = Utilities.Optional<string>.Empty;
-            });
+            await HandleMessage(message);
+
+            Logger.Log("Finished processing message", message);
+            CurrentMessageId = Utilities.Optional<string>.Empty;
         }
     }
 }

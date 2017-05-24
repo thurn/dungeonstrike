@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Messaging;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace DungeonStrike.Tests.Editor.Core
 {
@@ -9,17 +11,14 @@ namespace DungeonStrike.Tests.Editor.Core
     {
         public Message ReceivedMessage { get; private set; }
         public string TestMessageType { get; set; }
-        public Action OnComplete { get; private set; }
+        public TaskCompletionSource<bool> CompletionSource { get; } = new TaskCompletionSource<bool>();
 
-        protected override string MessageType
-        {
-            get { return TestMessageType; }
-        }
+        protected override string MessageType => TestMessageType;
 
-        protected override void HandleMessage(Message receivedMessage, Action onComplete)
+        protected override async Task HandleMessage(Message receivedMessage)
         {
             ReceivedMessage = receivedMessage;
-            OnComplete = onComplete;
+            await CompletionSource.Task;
         }
     }
 
@@ -27,17 +26,14 @@ namespace DungeonStrike.Tests.Editor.Core
     {
         public Message ReceivedMessage { get; private set; }
         public string TestMessageType { get; set; }
-        public Action OnComplete { get; private set; }
+        public TaskCompletionSource<bool> CompletionSource { get; } = new TaskCompletionSource<bool>();
 
-        protected override string MessageType
-        {
-            get { return TestMessageType; }
-        }
+        protected override string MessageType => TestMessageType;
 
-        protected override void HandleMessage(Message receivedMessage, Action onComplete)
+        protected override async Task HandleMessage(Message receivedMessage)
         {
             ReceivedMessage = receivedMessage;
-            OnComplete = onComplete;
+            await CompletionSource.Task;
         }
     }
 
@@ -88,7 +84,7 @@ namespace DungeonStrike.Tests.Editor.Core
             _messageRouter.Update();
             Assert.IsTrue(receiver.CurrentMessageId.HasValue);
             Assert.AreEqual(receiver.ReceivedMessage, _testMessage1);
-            receiver.OnComplete();
+            receiver.CompletionSource.SetResult(true);
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
         }
 
@@ -112,21 +108,28 @@ namespace DungeonStrike.Tests.Editor.Core
             Assert.IsTrue(receiver1.CurrentMessageId.HasValue);
             Assert.IsFalse(receiver2.CurrentMessageId.HasValue);
             Assert.AreEqual(receiver1.ReceivedMessage, _testMessage2);
-            receiver1.OnComplete();
+            receiver1.CompletionSource.SetResult(true);
             Assert.IsFalse(receiver1.CurrentMessageId.HasValue);
         }
 
         [Test]
-        public void TestAlreadyHandlingMessage()
+        public async void TestAlreadyHandlingMessage()
         {
             var receiver = CreateTestService<TestServiceMessageReceiver>();
             receiver.TestMessageType = _testMessage1.MessageType;
             EnableObjects();
             Assert.IsFalse(receiver.CurrentMessageId.HasValue);
-            _messageRouter.RouteMessageToFrontend(_testMessage1.ToJson());
-            _messageRouter.Update();
-            _messageRouter.RouteMessageToFrontend(_testMessage3.ToJson());
-            Assert.Throws<InvalidOperationException>(delegate { _messageRouter.Update(); });
+            try
+            {
+                await receiver.HandleMessageFromDriver(_testMessage1);
+                await receiver.HandleMessageFromDriver(_testMessage3);
+                Debug.Log("Failing");
+                Assert.Fail("Expected exception!");
+            }
+            catch (InvalidOperationException)
+            {
+                // Expected
+            }
         }
 
         [Test]
@@ -164,7 +167,7 @@ namespace DungeonStrike.Tests.Editor.Core
                 _messageRouter.Update();
                 Assert.Fail("Expected exception!");
             }
-            catch (ArgumentException _)
+            catch (ArgumentException)
             {
                 // Expected
             }

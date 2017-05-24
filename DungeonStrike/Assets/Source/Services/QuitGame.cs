@@ -1,6 +1,7 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Messaging;
+using DungeonStrike.Source.Utilities;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Services
@@ -10,15 +11,13 @@ namespace DungeonStrike.Source.Services
     /// </summary>
     public sealed class QuitGame : Service
     {
-        protected override string MessageType
-        {
-            get { return QuitGameMessage.Type; }
-        }
+        protected override string MessageType => QuitGameMessage.Type;
 
-        protected override void HandleMessage(Message receivedMessage, Action onComplete)
+        protected override Task HandleMessage(Message receivedMessage)
         {
             Logger.Log("Quitting Client");
             Application.Quit();
+            return Async.Done;
         }
     }
 }
