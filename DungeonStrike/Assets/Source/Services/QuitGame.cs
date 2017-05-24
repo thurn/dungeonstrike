@@ -8,7 +8,7 @@ namespace DungeonStrike.Source.Services
     /// <summary>
     /// Handles quitting the game.
     /// </summary>
-    public class QuitGame : Service
+    public sealed class QuitGame : Service
     {
         protected override string MessageType
         {

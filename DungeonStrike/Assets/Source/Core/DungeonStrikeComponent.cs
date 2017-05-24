@@ -156,7 +156,7 @@ namespace DungeonStrike.Source.Core
             ErrorHandler.CheckState(result.LifecycleState != ComponentLifecycleState.NotStarted,
                 "Incorrect dependency order detected in RegisterServices()!", "not-yet-started", typeof(T));
             ErrorHandler.CheckState(result.LifecycleState != ComponentLifecycleState.Starting,
-                "Circular dependency detected in Service graph", typeof(T));
+                "Requested service is still starting", typeof(T));
             return result;
         }
 

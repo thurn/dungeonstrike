@@ -29,4 +29,4 @@ sysinfo.txt
 CSharp60Support/compilation.log
 .vscode/launch.json
 
-EditorTestResults.xml
+TestResults-*.xml

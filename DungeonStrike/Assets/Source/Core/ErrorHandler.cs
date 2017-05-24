@@ -25,11 +25,19 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
+        /// Returns a new exception objcet describing an ErrorHandler error.
+        /// </summary>
+        public SystemException NewException(string message, params object[] arguments)
+        {
+            return new SystemException(LogWriter.FormatForLogOutput(message, _logContext, true, arguments));
+        }
+
+        /// <summary>
         /// Unconditionally throws an error.
         /// </summary>
         public void ReportError(string message, params object[] arguments)
         {
-            throw new SystemException(LogWriter.FormatForLogOutput(message, _logContext, true, arguments));
+            throw NewException(message, arguments);
         }
 
         /// <summary>

@@ -12,8 +12,13 @@ def time_duration(func):
   elapsed = time.time() - start
   if elapsed > 60:
     print("Done. " + str(round(elapsed / 60, 2)) + " minutes elapsed.")
-  elif elapsed > 10:
+  elif elapsed > 5:
     print("Done. " + str(round(elapsed, 2)) + " seconds elapsed.")
+
+def call_script(name, args=[]):
+  """Calls a script and times the run time."""
+  def fn(): lib.call([env.script(name)] + args)
+  time_duration(fn)
 
 def call_script_on_staging(name, args=[]):
   """Calls a script on the project copy in the staging area."""
@@ -22,12 +27,13 @@ def call_script_on_staging(name, args=[]):
 
 print("Starting pre-commit checks...")
 
-def copy(): lib.call([env.script("copy_to_staging_area.py")])
-time_duration(copy)
-
 # Note: These should be ordered from shortest to longest runtime.
-call_script_on_staging("uncrustify.py")
-call_script_on_staging("cljfmt.py")
-call_script_on_staging("checksum.py")
+call_script("uncrustify.py")
+call_script("cljfmt.py")
+call_script("checksum.py")
+
+# Unity tests need to be run on a separate copy of the project, because you
+# can't have the same project open in two different copies of Unity at once.
+call_script("copy_to_staging_area.py")
 call_script_on_staging("run_editor_tests.py")
 call_script_on_staging("run_integration.py", ["--test", "all"])

@@ -6,7 +6,7 @@ env = lib.init()
 
 print("Creating third party archive...")
 
-third_party = os.path.join(env.client_root, 'Assets/ThirdParty')
+third_party = os.path.join(env.client_root, "Assets", "ThirdParty")
 checksum = lib.output([env.script("metasum.py")]).rstrip()
 
 size = lib.output(["du", "-sk", third_party]).split("\t")[0]
