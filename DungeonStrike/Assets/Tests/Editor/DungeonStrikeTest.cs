@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
 using NUnit.Framework;
 using UnityEngine;
@@ -83,19 +84,21 @@ namespace DungeonStrike.Tests.Editor
             return _rootObject.GetComponent<T>();
         }
 
-        public void EnableObjects()
+        public async Task EnableObjects()
         {
+            var tasks = new List<Task>();
             foreach (var service in _testServices)
             {
-                service.Enable(_rootLogContext);
+                tasks.Add(service.Enable(_rootLogContext));
             }
             foreach (var managedObject in _managedObjects)
             {
                 foreach (var component in managedObject.GetComponents<EntityComponent>())
                 {
-                    component.Enable(_rootLogContext);
+                    tasks.Add(component.Enable(_rootLogContext));
                 }
             }
+            await Task.WhenAll(tasks);
         }
     }
 }

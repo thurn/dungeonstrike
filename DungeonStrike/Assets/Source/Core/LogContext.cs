@@ -19,7 +19,7 @@ namespace DungeonStrike.Source.Core
         {
             if (parentContext == null)
             {
-                throw new ArgumentNullException("parentContext");
+                throw new ArgumentNullException(nameof(parentContext));
             }
             return new LogContext(parentContext._clientId, parentContext, type,
                     gameObject != null ? gameObject.name : null);

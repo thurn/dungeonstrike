@@ -39,9 +39,13 @@ namespace DungeonStrike.Source.Core
         /// <param name="entityId">Sets the entity ID.</param>
         public void Initialize(string entityType, string entityId)
         {
-            if ((entityType == null) || (entityId == null))
+            if (entityType == null)
             {
-                throw new ArgumentNullException("entityType and entityId cannot be null");
+                throw new ArgumentNullException(nameof(entityType));
+            }
+            if (entityId == null)
+            {
+                throw new ArgumentNullException(nameof(entityId));
             }
             EntityType = entityType;
             EntityId = entityId;

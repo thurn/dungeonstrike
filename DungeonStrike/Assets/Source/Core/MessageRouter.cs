@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DisruptorUnity3d;
 using DungeonStrike.Source.Messaging;
+using DungeonStrike.Source.Utilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Tuple = DungeonStrike.Source.Utilities.Tuple;
@@ -23,14 +25,14 @@ namespace DungeonStrike.Source.Core
 
         private RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>> _messages;
 
-        protected override void OnEnableService(Action onStart)
+        protected override Task OnEnableService()
         {
             _serviceMessageHandlers = new Dictionary<string, DungeonStrikeComponent>();
             _entityComponentMessageHandlers =
                 new Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent>();
             _errors = new RingBuffer<Exception>(16);
             _messages = new RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>>(16);
-            onStart();
+            return Async.Done;
         }
 
         protected override void OnDisableService()
@@ -52,7 +54,8 @@ namespace DungeonStrike.Source.Core
             Utilities.Tuple<Message, DungeonStrikeComponent> messageTarget;
             if (_messages.TryDequeue(out messageTarget))
             {
-                messageTarget.Item2.HandleMessageFromDriver(messageTarget.Item1);
+                // Avoid waiting for handler to finish to avoid blocking.
+                var _ = messageTarget.Item2.HandleMessageFromDriver(messageTarget.Item1);
             }
         }
 

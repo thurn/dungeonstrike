@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+using DungeonStrike.Source.Utilities;
 
 namespace DungeonStrike.Source.Core
 {
@@ -18,13 +19,12 @@ namespace DungeonStrike.Source.Core
         /// setup logic should put it in <see cref="OnEnableService" />. This method should only be invoked from
         /// "Root"!
         /// </summary>
-        public override void Enable(LogContext parentContext)
+        public override async Task Enable(LogContext parentContext)
         {
-            base.Enable(parentContext);
+            await base.Enable(parentContext);
             ErrorHandler.CheckState(LifecycleState == ComponentLifecycleState.NotStarted,
                 "Attempted to start service twice!");
             LifecycleState = ComponentLifecycleState.Starting;
-            Root.BeganStartingService();
 
             var root = GetComponent<Root>();
             ErrorHandler.CheckState(root != null, "Service components must be attached to the Root object!");
@@ -38,19 +38,17 @@ namespace DungeonStrike.Source.Core
                     messageRouter.RegisterServiceForMessage(MessageType, this);
                 }
             }
-            OnEnableService(() =>
-            {
-                LifecycleState = ComponentLifecycleState.Started;
-                Root.FinishedStartingService();
-            });
+            await OnEnableService();
+
+            LifecycleState = ComponentLifecycleState.Started;
         }
 
         /// <summary>
         /// Should be used to implement any required setup logic for services.
         /// </summary>
-        protected virtual void OnEnableService(Action onStarted)
+        protected virtual Task OnEnableService()
         {
-            onStarted();
+            return Async.Done;
         }
 
         /// <summary>

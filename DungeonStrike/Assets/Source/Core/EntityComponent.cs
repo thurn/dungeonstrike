@@ -1,4 +1,6 @@
-﻿using DungeonStrike.Source.Messaging;
+﻿using System.Threading.Tasks;
+using DungeonStrike.Source.Messaging;
+using DungeonStrike.Source.Utilities;
 
 namespace DungeonStrike.Source.Core
 {
@@ -24,9 +26,9 @@ namespace DungeonStrike.Source.Core
         /// Registers this EntityComponent to receive messages requested directed at its specific EntityID. Subclasses
         /// should put their setup logic in <see cref="OnEnableEntityComponent"/>.
         /// </summary>
-        public override void Enable(LogContext parentContext)
+        public override async Task Enable(LogContext parentContext)
         {
-            base.Enable(parentContext);
+            await base.Enable(parentContext);
             ErrorHandler.CheckState(LifecycleState == ComponentLifecycleState.NotStarted,
                 "Attempted to start entity component twice!");
             LifecycleState = ComponentLifecycleState.Starting;
@@ -34,9 +36,8 @@ namespace DungeonStrike.Source.Core
             var entity = GetComponent<Entity>();
             if (entity == null)
             {
-                ErrorHandler.ReportError(
-                    "EntityComponents can only be attached to GameObjects which contain the Entity component");
-                return;
+                throw ErrorHandler.NewException(
+                        "EntityComponents can only be attached to GameObjects which contain the Entity component");
             }
             ErrorHandler.CheckState(entity.Initialized, "Entity component must be initialized before Awake()");
 
@@ -46,7 +47,7 @@ namespace DungeonStrike.Source.Core
             {
                 messageRouter.RegisterEntityComponentForMessage(MessageType, entity.EntityId, this);
             }
-            OnEnableEntityComponent();
+            await OnEnableEntityComponent();
 
             LifecycleState = ComponentLifecycleState.Started;
         }
@@ -54,8 +55,9 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Should be used to implement any required setup logic for EntityComponents.
         /// </summary>
-        protected virtual void OnEnableEntityComponent()
+        protected virtual Task OnEnableEntityComponent()
         {
+            return Async.Done;
         }
 
         /// <summary>

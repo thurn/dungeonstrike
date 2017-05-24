@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
+using DungeonStrike.Source.Utilities;
 using UnityEngine;
 using WebSocketSharp;
 
@@ -13,7 +15,7 @@ namespace DungeonStrike.Source.Messaging
         private IEnumerator<WaitForSeconds> _autoReconnect;
         private bool _connectionClosed;
 
-        protected override void OnEnableService(Action onStart)
+        protected override Task OnEnableService()
         {
             _messageRouter = GetService<MessageRouter>();
             _websocket = new WebSocket("ws://localhost:" + GetPort() + "?client-id=client");
@@ -24,7 +26,7 @@ namespace DungeonStrike.Source.Messaging
             _websocket.Connect();
             _autoReconnect = AutoReconnect();
             StartCoroutine(_autoReconnect);
-            onStart();
+            return Async.Done;
         }
 
         protected override void OnDisableService()
@@ -65,6 +67,7 @@ namespace DungeonStrike.Source.Messaging
                     _websocket.Connect();
                 }
             }
+            // ReSharper disable once IteratorNeverReturns
         }
 
         private void OnOpen(object sender, EventArgs args)

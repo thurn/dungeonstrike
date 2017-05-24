@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DungeonStrike.Source.Messaging;
@@ -98,7 +99,7 @@ namespace DungeonStrike.Source.Core
         /// "base.Enable(parentContext)".
         /// </para>
         /// <param name="parentContext">The LogContext of the component which created this component.</param>
-        public virtual void Enable(LogContext parentContext)
+        public virtual Task Enable(LogContext parentContext)
         {
             if (_root == null)
             {
@@ -107,6 +108,7 @@ namespace DungeonStrike.Source.Core
             var logContext = LogContext.NewContext(parentContext, GetType(), gameObject);
             _logger = new Logger(logContext);
             _errorHandler = new ErrorHandler(logContext);
+            return Async.Done;
         }
 
         /// <summary>
@@ -239,11 +241,11 @@ namespace DungeonStrike.Source.Core
         protected Task RunOperationAsync(YieldInstruction operation)
         {
             var completionSource = new TaskCompletionSource<bool>();
-            StartCoroutine(StartOperationAsync(operation, completionSource));
+            StartCoroutine(RunOperationAsyncEnumerator(operation, completionSource));
             return completionSource.Task;
         }
 
-        private static IEnumerator<YieldInstruction> StartOperationAsync(YieldInstruction operation,
+        private static IEnumerator<YieldInstruction> RunOperationAsyncEnumerator(YieldInstruction operation,
             TaskCompletionSource<bool> completionSource)
         {
             yield return operation;
