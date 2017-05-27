@@ -15,9 +15,10 @@ namespace DungeonStrike.Source.Messaging
         private IEnumerator<WaitForSeconds> _autoReconnect;
         private bool _connectionClosed;
 
-        protected override Task OnEnableService()
+        protected override async Task OnEnableService()
         {
-            _messageRouter = GetService<MessageRouter>();
+            _messageRouter = await GetService<MessageRouter>();
+
             _websocket = new WebSocket("ws://localhost:" + GetPort() + "?client-id=client");
             _websocket.OnOpen += OnOpen;
             _websocket.OnError += OnError;
@@ -26,7 +27,6 @@ namespace DungeonStrike.Source.Messaging
             _websocket.Connect();
             _autoReconnect = AutoReconnect();
             StartCoroutine(_autoReconnect);
-            return Async.Done;
         }
 
         protected override void OnDisableService()
@@ -54,7 +54,7 @@ namespace DungeonStrike.Source.Messaging
                     return args[i];
                 }
             }
-            return "59005";
+            return "59008";
         }
 
         private IEnumerator<WaitForSeconds> AutoReconnect()

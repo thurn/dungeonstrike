@@ -70,7 +70,7 @@
                          ::log-context log-context
                          ::outbound-channel outbound-channel
                          ::socket-atom socket-atom)
-          port (Integer/parseInt (get options :port "59005"))
+          port (Integer/parseInt (get options :port "59008"))
           stop-server! (http-kit/run-server (create-handler updated)
                                             {:port port})]
       (reset! stop-server-fn stop-server!)

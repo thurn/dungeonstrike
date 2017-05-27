@@ -1,0 +1,6 @@
+- Corrected error in AssetBundleManager where WWW.error was compared to
+  null. According to the docs, the empty string is sometimes returned in
+  non-failure cases, and the check should use "if
+  (!string.IsNullOrEmpty(download.error))"
+- Added "BuildAssetBundleOptions.StrictMode" to BuildScript BuildAssetBundles
+- Made BuildScript::CopyAssetBundlesTo() method public

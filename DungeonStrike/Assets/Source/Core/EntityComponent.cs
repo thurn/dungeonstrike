@@ -26,9 +26,9 @@ namespace DungeonStrike.Source.Core
         /// Registers this EntityComponent to receive messages requested directed at its specific EntityID. Subclasses
         /// should put their setup logic in <see cref="OnEnableEntityComponent"/>.
         /// </summary>
-        public override async Task Enable(LogContext parentContext)
+        public async Task<EntityComponent> Enable(LogContext parentContext)
         {
-            await base.Enable(parentContext);
+            Initialize(parentContext);
             ErrorHandler.CheckState(LifecycleState == ComponentLifecycleState.NotStarted,
                 "Attempted to start entity component twice!");
             LifecycleState = ComponentLifecycleState.Starting;
@@ -41,7 +41,7 @@ namespace DungeonStrike.Source.Core
             }
             ErrorHandler.CheckState(entity.Initialized, "Entity component must be initialized before Awake()");
 
-            var messageRouter = GetService<MessageRouter>();
+            var messageRouter = await GetService<MessageRouter>();
 
             if (MessageType != null)
             {
@@ -50,6 +50,7 @@ namespace DungeonStrike.Source.Core
             await OnEnableEntityComponent();
 
             LifecycleState = ComponentLifecycleState.Started;
+            return this;
         }
 
         /// <summary>

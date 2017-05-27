@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DungeonStrike.Source.Messaging;
@@ -99,7 +98,7 @@ namespace DungeonStrike.Source.Core
         /// "base.Enable(parentContext)".
         /// </para>
         /// <param name="parentContext">The LogContext of the component which created this component.</param>
-        public virtual Task Enable(LogContext parentContext)
+        protected void Initialize(LogContext parentContext)
         {
             if (_root == null)
             {
@@ -108,7 +107,6 @@ namespace DungeonStrike.Source.Core
             var logContext = LogContext.NewContext(parentContext, GetType(), gameObject);
             _logger = new Logger(logContext);
             _errorHandler = new ErrorHandler(logContext);
-            return Async.Done;
         }
 
         /// <summary>
@@ -147,21 +145,13 @@ namespace DungeonStrike.Source.Core
         /// <returns>The service of type T on the root object.</returns>
         /// <exception cref="InvalidOperationException">Thrown if there is not exactly one GameObject with the Root
         /// component attached to it, or if this service cannot be found.</exception>
-        protected T GetService<T>() where T : Service
+        protected Task<T> GetService<T>() where T : Service
         {
             if (_root == null)
             {
                 throw new InvalidOperationException("Root must be specified before calling GetService()!");
             }
-            var results = _root.GetComponents<T>();
-            ErrorHandler.CheckState(results.Length != 0, "Unable to locate service", typeof(T));
-            ErrorHandler.CheckState(results.Length == 1, "Multiple services found", typeof(T));
-            var result = results[0];
-            ErrorHandler.CheckState(result.LifecycleState != ComponentLifecycleState.NotStarted,
-                "Incorrect dependency order detected in RegisterServices()!", "not-yet-started", typeof(T));
-            ErrorHandler.CheckState(result.LifecycleState != ComponentLifecycleState.Starting,
-                "Requested service is still starting", typeof(T));
-            return result;
+            return _root.GetService<T>();
         }
 
         /// <summary>

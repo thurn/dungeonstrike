@@ -37,6 +37,7 @@
   :profiles {:uberjar {:aot [dungeonstrike.main]}
              :dev {:dependencies [[org.clojure/tools.namespace "0.2.11"]
                                   [com.stuartsierra/component.repl "0.2.0"]
+                                  [cider/cider-nrepl "0.14.0"]
                                   [debugger "0.2.0"]
                                   [com.gfredericks/debug-repl "0.0.8"]]
                    :source-paths ["dev"]}})

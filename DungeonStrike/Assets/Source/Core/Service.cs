@@ -19,9 +19,9 @@ namespace DungeonStrike.Source.Core
         /// setup logic should put it in <see cref="OnEnableService" />. This method should only be invoked from
         /// "Root"!
         /// </summary>
-        public override async Task Enable(LogContext parentContext)
+        public async Task<Service> Enable(LogContext parentContext)
         {
-            await base.Enable(parentContext);
+            Initialize(parentContext);
             ErrorHandler.CheckState(LifecycleState == ComponentLifecycleState.NotStarted,
                 "Attempted to start service twice!");
             LifecycleState = ComponentLifecycleState.Starting;
@@ -31,7 +31,7 @@ namespace DungeonStrike.Source.Core
 
             if (GetType() != typeof(MessageRouter))
             {
-                var messageRouter = GetService<MessageRouter>();
+                var messageRouter = await GetService<MessageRouter>();
 
                 if (MessageType != null)
                 {
@@ -41,6 +41,7 @@ namespace DungeonStrike.Source.Core
             await OnEnableService();
 
             LifecycleState = ComponentLifecycleState.Started;
+            return this;
         }
 
         /// <summary>

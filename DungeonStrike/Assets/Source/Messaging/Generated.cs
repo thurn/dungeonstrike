@@ -41,6 +41,7 @@ namespace DungeonStrike.Source.Messaging
     public sealed class CreateEntityMessage : Message
     {
         public static readonly string Type = "CreateEntity";
+        public string NewEntityId { get; set; }
         public EntityType EntityType { get; set; }
         public Position Position { get; set; }
     }

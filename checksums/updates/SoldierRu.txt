@@ -1,0 +1,2 @@
+- Moved all non-scene assets to soldier_ru asset bundle
+- Corrected spelling of Soldier_ru_customizable

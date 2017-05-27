@@ -28,7 +28,7 @@ lib.call([env.script("build_driver_jar.py")])
 client = subprocess.Popen([
   os.path.join(env.client_binary_path, "Contents", "MacOS", "dungeonstrike"),
   "-batchmode",
-  "--port", "59006"
+  "--port", "59009"
 ])
 
 print("Started client with pid " + str(client.pid))
@@ -38,7 +38,7 @@ lib.call([
   "-jar", os.path.join(env.driver_jar_path, "driver.jar"),
   "--crash-on-exceptions",
   "--verbose",
-  "--port", "59006",
+  "--port", "59009",
   "--client-path", env.client_binary_path,
   "--driver-path", env.driver_jar_path,
   "--tests-path", env.tests_root,

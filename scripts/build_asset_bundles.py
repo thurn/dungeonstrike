@@ -3,13 +3,12 @@ import os
 import lib
 env = lib.init()
 
-lib.call([env.script("build_asset_bundles.py")])
-
-print("Building Unity client...")
+print("Building Unity asset bundles...")
 
 env.unity([
   "-quit",
   "-batchmode",
   "-projectPath", env.client_root,
-  "-buildOSX64Player", env.client_binary_path
+  "-executeMethod",
+  "DungeonStrike.Source.Editor.BuildCommands.BuildAssetBundles"
 ])

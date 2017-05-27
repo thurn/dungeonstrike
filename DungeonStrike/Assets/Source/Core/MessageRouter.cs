@@ -6,6 +6,7 @@ using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Utilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using UnityEngine;
 using Tuple = DungeonStrike.Source.Utilities.Tuple;
 
 namespace DungeonStrike.Source.Core
@@ -32,6 +33,7 @@ namespace DungeonStrike.Source.Core
                 new Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent>();
             _errors = new RingBuffer<Exception>(16);
             _messages = new RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>>(16);
+            Debug.Log("Done Starting Message Router");
             return Async.Done;
         }
 

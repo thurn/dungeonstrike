@@ -46,8 +46,42 @@
         :otherwise
         (seesaw/text "Unknown field type")) "width 200px, wrap"]]))
 
-(defn- message-form-items [{:keys [::send-button-enabled?]}
-                           message-picker message-type]
+(defn- process-position
+  [value]
+  (if (= value "")
+    {:m/x 0, :m/y 0}
+    (let [[x y] (string/split value #",")]
+      {:m/x (Integer/parseInt x), :m/y (Integer/parseInt y)})))
+
+(defn- process-form-values
+  [message key value]
+  (cond
+    (= key :m/position)
+    (assoc message key (process-position value))
+    (= key :m/new-entity-id)
+    (if (= "" value)
+      (assoc message key (uuid/new-entity-id))
+      (assoc message key value))
+    (= "m" (namespace key))
+    (assoc message key value)
+    :otherwise
+    message))
+
+(defn- on-send-button-clicked
+  "Returns a click handler function for the 'send' button."
+  [{:keys [::message-sender ::recording-state]} message-form]
+  (fn [event]
+    (let [form-value (seesaw/value message-form)
+          message (reduce-kv process-form-values {} form-value)
+          message-id (uuid/new-message-id)
+          message-id-label (seesaw/select message-form [:#message-id-label])
+          message-with-id (assoc message :m/message-id message-id)]
+      (when (:recording? @recording-state)
+        (swap! recording-state assoc :message->client message-with-id))
+      (seesaw/config! message-id-label :text message-id)
+      (messages/send-message! message-sender message-with-id))))
+
+(defn- message-form-items [send-button message-picker message-type]
   (concat
    [[(seesaw/label :text "Send Message" :font (title-font))
      "alignx center, pushx, span, wrap 20px"]
@@ -57,27 +91,29 @@
     [(seesaw/label :id :message-id-label
                    :text "M:0000000000000000000000") "wrap"]]
    (mapcat form-for-field (message-type messages/messages))
-   [[(seesaw/button :text "Send!" :id :send-button
-                    :enabled? @send-button-enabled?)
-     "skip, span, wrap"]]))
+   [[send-button "skip, span, wrap"]]))
 
-(defn- message-selected-fn [component panel message-picker]
+(defn- message-selected-fn [send-button panel message-picker]
   (fn [event]
     (seesaw/config! panel :items
-                    (message-form-items component message-picker
+                    (message-form-items send-button
+                                        message-picker
                                         (seesaw/selection message-picker)))))
-
 (defn- send-message-panel
   "UI for 'Send Message' panel."
-  [component]
+  [{:keys [::send-button-enabled?] :as component}]
   (let [message-types (keys messages/messages)
         message-picker (seesaw/combobox :id :m/message-type
                                         :model message-types)
-        form-items (message-form-items component message-picker :m/load-scene)
+        send-button (seesaw/button :text "Send!"
+                                   :id :send-button
+                                   :enabled? @send-button-enabled?)
+        form-items (message-form-items send-button message-picker :m/load-scene)
         panel (mig/mig-panel :id :message-form :items form-items)]
     (seesaw/selection! message-picker :m/load-scene)
     (seesaw/listen message-picker :selection
-                   (message-selected-fn component panel message-picker))
+                   (message-selected-fn send-button panel message-picker))
+    (seesaw/listen send-button :action (on-send-button-clicked component panel))
     panel))
 
 (defn- test-runner-panel
@@ -279,22 +315,6 @@
               (seesaw/scroll! logs-view :to :bottom)))))
         (recur)))))
 
-(defn- on-send-button-clicked
-  "Returns a click handler function for the 'send' button."
-  [{:keys [::frame ::message-sender ::recording-state]}]
-  (let [message-form (seesaw/select frame [:#message-form])]
-    (fn [event]
-      (let [form-value (seesaw/value message-form)
-            filter-keys (fn [[key value]] (= "m" (namespace key)))
-            message (into {} (filter filter-keys form-value))
-            message-id (uuid/new-message-id)
-            message-id-label (seesaw/select message-form [:#message-id-label])
-            message-with-id (assoc message :m/message-id message-id)]
-        (when (:recording? @recording-state)
-          (swap! recording-state assoc :message->client message-with-id))
-        (seesaw/config! message-id-label :text message-id)
-        (messages/send-message! message-sender message-with-id)))))
-
 (defn- start-send-button
   "Attaches a listener to the send button to send the current message to the
    client on click. Monitors message channel events and enables/disables the
@@ -303,7 +323,6 @@
     :as component}]
   (let [message-form (seesaw/select frame [:#message-form])
         send-button (seesaw/select frame [:#send-button])]
-    (seesaw/listen send-button :action (on-send-button-clicked component))
     (async/go-loop []
       (when-some [status (<! status-channel)]
         (reset! send-button-enabled? (= :connection-opened status))

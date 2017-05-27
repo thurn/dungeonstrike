@@ -2,13 +2,13 @@
 ;
 AssetBundleManager/AssetBundleLoadOperation.cs be70fe7a
 AssetBundleManager/AssetBundleLoadOperation.cs.meta d915bade
-AssetBundleManager/AssetBundleManager.cs 9bee83b0
+AssetBundleManager/AssetBundleManager.cs 9d6fd70e
 AssetBundleManager/AssetBundleManager.cs.meta 244e1fa2
 AssetBundleManager/Editor/AssetBundleServer.exe 6ddf90b1
 AssetBundleManager/Editor/AssetBundleServer.exe.meta 669165cf
 AssetBundleManager/Editor/AssetbundlesMenuItems.cs c9203196
 AssetBundleManager/Editor/AssetbundlesMenuItems.cs.meta 0fbe7762
-AssetBundleManager/Editor/BuildScript.cs a0926490
+AssetBundleManager/Editor/BuildScript.cs 40eece06
 AssetBundleManager/Editor/BuildScript.cs.meta 28a559df
 AssetBundleManager/Editor/ExecuteInternalMono.cs 6ded515c
 AssetBundleManager/Editor/ExecuteInternalMono.cs.meta 155641f0

@@ -47,6 +47,8 @@
 
          (deffield :m/entity-id string?)
 
+         (deffield :m/new-entity-id string?)
+
          (deffield :m/entity-type entity-types)
 
          (deffield :m/position position-spec)]))
@@ -85,7 +87,7 @@
 
          (defmessage :m/create-entity
            "Creates a new entity with the specified type and position"
-           [:m/entity-id :m/entity-type :m/position])
+           [:m/new-entity-id :m/entity-type :m/position])
 
          (defmessage :m/destroy-entity
            "Destroys an entity by ID."
