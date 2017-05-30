@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DungeonStrike.Source.Assets;
 using DungeonStrike.Source.Core;
@@ -23,6 +24,8 @@ namespace DungeonStrike.Source.Services
             var message = (CreateEntityMessage) receivedMessage;
             var result = await CreateSoldier();
 
+            var entity = result.AddComponent<Entity>();
+            entity.Initialize(message.EntityType, message.NewEntityId);
             result.transform.position = new Vector3(message.Position.X, 0, message.Position.Y);
         }
 

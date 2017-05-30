@@ -9,16 +9,15 @@ using System;
 
 namespace DungeonStrike.Source.Messaging
 {
+    public enum EntityType
+    {
+        Soldier
+    }
+
     public enum SceneName
     {
         Empty,
         Flat
-    }
-
-    public enum EntityType
-    {
-        Orc,
-        Soldier
     }
 
     public sealed class TestMessage : Message

@@ -91,11 +91,11 @@ namespace DungeonStrike.Tests.Editor.Core
         [Test]
         public async void TestReceiveEntityMessage()
         {
-            var testEntity1 = NewTestEntityObject("entityObject", "entityId", _testMessage2.EntityId);
+            var testEntity1 = NewTestEntityObject("entityObject", EntityType.Soldier, _testMessage2.EntityId);
             var receiver1 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity1);
             receiver1.TestMessageType = _testMessage2.MessageType;
 
-            var testEntity2 = NewTestEntityObject("entityObject", "entityId", "SomeOtherEntityId");
+            var testEntity2 = NewTestEntityObject("entityObject", EntityType.Soldier, "SomeOtherEntityId");
             var receiver2 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity2);
             receiver2.TestMessageType = _testMessage2.MessageType;
 
@@ -153,11 +153,11 @@ namespace DungeonStrike.Tests.Editor.Core
         [Test]
         public async void TestTwoEntityIdHandlersRegistered()
         {
-            var testEntity1 = NewTestEntityObject("entityObject", "entityId", _testMessage2.EntityId);
+            var testEntity1 = NewTestEntityObject("entityObject", EntityType.Soldier, _testMessage2.EntityId);
             var receiver1 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity1);
             receiver1.TestMessageType = _testMessage2.MessageType;
 
-            var testEntity2 = NewTestEntityObject("entityObject", "entityId", _testMessage2.EntityId);
+            var testEntity2 = NewTestEntityObject("entityObject", EntityType.Soldier, _testMessage2.EntityId);
             var receiver2 = AddTestEntityComponent<TestEntityComponentMessageReceiver>(testEntity2);
             receiver2.TestMessageType = _testMessage2.MessageType;
 

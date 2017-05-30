@@ -83,7 +83,7 @@
 
 (defn- message-form-items [send-button message-picker message-type]
   (concat
-   [[(seesaw/label :text "Send Message" :font (title-font))
+   [[(seesaw/label :text "Send Meossage" :font (title-font))
      "alignx center, pushx, span, wrap 20px"]
     [(seesaw/label "Message Type")]
     [message-picker "wrap"]
@@ -123,8 +123,8 @@
 (defn- recording-file-names
   "Returns all available file names of test recordings in the recordings
    directory."
-  [test-recordings-directory]
-  (let [files (file-seq (io/file test-recordings-directory))]
+  [test-recordings-path]
+  (let [files (file-seq (io/file test-recordings-path))]
     (mapv #(.getName %) (filter #(.isFile %) files))))
 
 (defn- test-list-table

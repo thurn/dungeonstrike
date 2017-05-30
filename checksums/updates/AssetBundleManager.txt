@@ -4,3 +4,4 @@
   (!string.IsNullOrEmpty(download.error))"
 - Added "BuildAssetBundleOptions.StrictMode" to BuildScript BuildAssetBundles
 - Made BuildScript::CopyAssetBundlesTo() method public
+- Made AssetBundldManager::Log not log in non-error cases

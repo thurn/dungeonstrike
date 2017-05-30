@@ -30,7 +30,7 @@
    {:keys [:name :entries :message->client]}]
   (when message->client
     (messages/send-message! message-sender message->client))
-  (let [timeout (async/timeout 10000)]
+  (let [timeout (async/timeout 30000)]
     (async/go-loop [missing-entries (group-by :source entries)]
       (let [[value port] (async/alts! [timeout log-channel])]
         (if (= port timeout)

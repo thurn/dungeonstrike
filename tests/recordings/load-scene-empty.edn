@@ -3,20 +3,20 @@
  :message->client
  {:m/message-type :m/load-scene,
   :m/scene-name :empty,
-  :m/message-id "M:koMo6IXIQVSpDq4+4AJwAA"},
+  :m/message-id "M:1RsO5ExNSW25/l6iPNyBZA"},
  :entries
  [{:message
-   "Received message [<[LoadScene] M:koMo6IXIQVSpDq4+4AJwAA>]",
+   "Received message [<[LoadScene] M:1RsO5ExNSW25/l6iPNyBZA>]",
    :source "DungeonStrike.Source.Services.SceneLoader",
    :log-type :client}
   {:message
-   "Websocket sending message [message=<[load-scene] M:koMo6IXIQVSpDq4+4AJwAA>]",
+   "Websocket sending message [message=<[load-scene] M:1RsO5ExNSW25/l6iPNyBZA>]",
    :source "dungeonstrike.websocket",
    :log-type :driver}
-  {:message "Loading scene [Empty]",
-   :source "DungeonStrike.Source.Services.SceneLoader",
+  {:message "Scene loaded [Empty]",
+   :source "DungeonStrike.Source.Tools.Panopticon",
    :log-type :client}
   {:message
-   "Finished processing message [<[LoadScene] M:koMo6IXIQVSpDq4+4AJwAA>]",
+   "Finished processing message [<[LoadScene] M:1RsO5ExNSW25/l6iPNyBZA>]",
    :source "DungeonStrike.Source.Services.SceneLoader",
    :log-type :client}]}

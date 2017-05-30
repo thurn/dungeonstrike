@@ -33,7 +33,6 @@ namespace DungeonStrike.Source.Core
                 new Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent>();
             _errors = new RingBuffer<Exception>(16);
             _messages = new RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>>(16);
-            Debug.Log("Done Starting Message Router");
             return Async.Done;
         }
 
@@ -45,7 +44,7 @@ namespace DungeonStrike.Source.Core
             _messages = null;
         }
 
-        public void Update()
+        public async void Update()
         {
             Exception error;
             if (_errors.TryDequeue(out error))
@@ -56,8 +55,7 @@ namespace DungeonStrike.Source.Core
             Utilities.Tuple<Message, DungeonStrikeComponent> messageTarget;
             if (_messages.TryDequeue(out messageTarget))
             {
-                // Avoid waiting for handler to finish to avoid blocking.
-                var _ = messageTarget.Item2.HandleMessageFromDriver(messageTarget.Item1);
+                await messageTarget.Item2.HandleMessageFromDriver(messageTarget.Item1);
             }
         }
 

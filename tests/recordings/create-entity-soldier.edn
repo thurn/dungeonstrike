@@ -1,0 +1,24 @@
+{:name "create-entity-soldier",
+ :prerequisite "load-scene-flat.edn",
+ :message->client
+ {:m/message-type :m/create-entity,
+  :m/new-entity-id "E:YT06NzkJQDW0b4GuA/6WwA",
+  :m/entity-type :soldier,
+  :m/position {:m/x 0, :m/y 0},
+  :m/message-id "M:yYWIrFojTB6/f8sUA6U34w"},
+ :entries
+ [{:message
+   "Websocket sending message [message=<[create-entity] M:yYWIrFojTB6/f8sUA6U34w>]",
+   :source "dungeonstrike.websocket",
+   :log-type :driver}
+  {:message
+   "Received message [<[CreateEntity] M:yYWIrFojTB6/f8sUA6U34w>]",
+   :source "DungeonStrike.Source.Services.CreateEntity",
+   :log-type :client}
+  {:message
+   "Finished processing message [<[CreateEntity] M:yYWIrFojTB6/f8sUA6U34w>]",
+   :source "DungeonStrike.Source.Services.CreateEntity",
+   :log-type :client}
+  {:message "Entity created [<Soldier E:YT06NzkJQDW0b4GuA/6WwA>]",
+   :source "DungeonStrike.Source.Tools.Panopticon",
+   :log-type :client}]}

@@ -15,7 +15,6 @@ namespace DungeonStrike.Source.Services
         protected override async Task HandleMessage(Message receivedMessage)
         {
             var message = (LoadSceneMessage) receivedMessage;
-            Logger.Log("Loading scene", message.SceneName);
             await RunOperationAsync(SceneManager.LoadSceneAsync(message.SceneName.ToString()));
         }
     }

@@ -1,4 +1,6 @@
 ﻿using System;
+using DungeonStrike.Source.Messaging;
+using UnityEngine;
 
 namespace DungeonStrike.Source.Core
 {
@@ -23,7 +25,7 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Type string for this entity, as defined by the driver.
         /// </summary>
-        public string EntityType { get; private set; }
+        public EntityType EntityType { get; private set; }
 
         /// <summary>
         /// ID for this entity. Entity IDs must be globally unique across all entity types.
@@ -37,12 +39,8 @@ namespace DungeonStrike.Source.Core
 
         /// <param name="entityType">Sets the entity type.</param>
         /// <param name="entityId">Sets the entity ID.</param>
-        public void Initialize(string entityType, string entityId)
+        public void Initialize(EntityType entityType, string entityId)
         {
-            if (entityType == null)
-            {
-                throw new ArgumentNullException(nameof(entityType));
-            }
             if (entityId == null)
             {
                 throw new ArgumentNullException(nameof(entityId));
@@ -50,6 +48,11 @@ namespace DungeonStrike.Source.Core
             EntityType = entityType;
             EntityId = entityId;
             Initialized = true;
+        }
+
+        public override string ToString()
+        {
+            return $"<{EntityType} {EntityId}>";
         }
     }
 }

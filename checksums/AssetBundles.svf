@@ -2,7 +2,7 @@
 ;
 AssetBundleManager/AssetBundleLoadOperation.cs be70fe7a
 AssetBundleManager/AssetBundleLoadOperation.cs.meta d915bade
-AssetBundleManager/AssetBundleManager.cs 9d6fd70e
+AssetBundleManager/AssetBundleManager.cs 800f4267
 AssetBundleManager/AssetBundleManager.cs.meta 244e1fa2
 AssetBundleManager/Editor/AssetBundleServer.exe 6ddf90b1
 AssetBundleManager/Editor/AssetBundleServer.exe.meta 669165cf

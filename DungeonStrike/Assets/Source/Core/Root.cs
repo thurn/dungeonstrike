@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DungeonStrike.Source.Assets;
 using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Services;
+using DungeonStrike.Source.Tools;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Core
@@ -68,24 +69,17 @@ namespace DungeonStrike.Source.Core
 
         public void Awake()
         {
+            if (EnsureUniqueRoot()) return;
             if (IsUnitTest) return;
 
-            if (_instance != null && _instance != this)
-            {
-                // Each scene has a Root object. This means that when a new scene is loaded, there will be two Roots
-                // present. If this happens, we destroy the duplicate.
-                DestroyImmediate(gameObject);
-            }
-            else
-            {
-                _instance = this;
-                DontDestroyOnLoad(gameObject);
-                LogWriter.Initialize();
-            }
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+            LogWriter.Initialize();
         }
 
         public async void OnEnable()
         {
+            if (EnsureUniqueRoot()) return;
             State = LifecycleState.Starting;
             // LogWriter static state is lost during serialize/deserialize
             LogWriter.Initialize();
@@ -106,9 +100,18 @@ namespace DungeonStrike.Source.Core
 
         public void OnDisable()
         {
-            if (_logger == null) return;
+            if (EnsureUniqueRoot()) return;
             _logger.Log("Root::OnDisable()");
             State = LifecycleState.NotStarted;
+        }
+
+        private bool EnsureUniqueRoot()
+        {
+            if (IsUnitTest || (_instance == null) || (_instance == this)) return false;
+            // Each scene has a Root object. This means that when a new scene is loaded, there will be two Roots
+            // present. If this happens, we destroy the duplicate.
+            Destroy(gameObject);
+            return true;
         }
 
         /// <summary>
@@ -147,6 +150,7 @@ namespace DungeonStrike.Source.Core
             AddAndEnableService<MessageRouter>();
             AddAndEnableService<WebsocketManager>(true);
             AddAndEnableService<AssetLoader>();
+            AddAndEnableService<Panopticon>();
             AddAndEnableService<SceneLoader>();
             AddAndEnableService<QuitGame>();
             AddAndEnableService<CreateEntity>();

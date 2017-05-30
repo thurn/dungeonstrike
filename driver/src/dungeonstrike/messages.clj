@@ -26,8 +26,7 @@
 (def entity-types
   "Possible types of entities which can be created by a :m/create-entity
    message."
-  #{:soldier
-    :orc})
+  #{:soldier})
 
 (defmacro deffield
   "Helper macro to specify field specifications. Because clojure.spec does not
