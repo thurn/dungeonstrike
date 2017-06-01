@@ -10,7 +10,7 @@ for directory in os.listdir(third_party):
   path = os.path.join(third_party, directory)
   if not os.path.isdir(path): continue
   checksum_file = os.path.join(env.checksums_root, directory + ".svf")
-  lib.call(["cfv", "-rr", "-q", "-p", path, '-f', checksum_file])
+  lib.call(["cfv", "-rr", "-VV", "-p", path, '-f', checksum_file])
   print(directory + " OK")
 
 print("ALL OK")

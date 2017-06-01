@@ -3,7 +3,9 @@
    driver and the client."
   (:require [clojure.core.async :as async :refer [<!]]
             [clojure.data.json :as json]
+            [clojure.edn :as edn]
             [clojure.spec :as s]
+            [clojure.string :as string]
             [dungeonstrike.channels :as channels]
             [dungeonstrike.logger :as logger :refer [log error]]
             [dungeonstrike.messages :as messages]
@@ -20,13 +22,6 @@
     (log log-context "Driver connection closed" status)
     (channels/put! connection-status-channel :connection-closed)))
 
-(defn- channel-receive-handler
-  "Handler invoked when the websocket server receives a new message."
-  [{:keys [::log-context]}]
-  (fn [data]
-    (let [parsed (json/read-str data :key-fn #(keyword (case/->kebab-case %)))]
-      (log log-context "Websocket got message" parsed))))
-
 (defn- to-json
   "Converts a message map into a JSON string."
   [message]
@@ -34,7 +29,33 @@
         value-fn (fn [_ value] (if (keyword? value)
                                  (case/->PascalCase (name value))
                                  value))]
-    (json/write-str message :key-fn key-fn :value-fn value-fn)))
+    (json/write-str message
+                    :key-fn key-fn
+                    :value-fn value-fn
+                    :escape-slash false)))
+
+(defn- parse-json
+  "Converts a JSON string into a message map."
+  [string]
+  (let [key-fn (fn [key] (keyword "m" (case/->kebab-case key)))
+        value-fn (fn [key value]
+                   (cond
+                     (= :m/message-type key)
+                     (keyword "m" (case/->kebab-case value))
+
+                     (messages/set-for-enum-name (case/->PascalCase (name key)))
+                     (keyword (case/->kebab-case value))
+
+                     :otherwise
+                     value))]
+    (json/read-str string :key-fn key-fn :value-fn value-fn)))
+
+(defn- channel-receive-handler
+  "Handler invoked when the websocket server receives a new message."
+  [{:keys [::log-context]}]
+  (fn [data]
+    (let [message (parse-json data)]
+      (log log-context "Websocket got message" message))))
 
 (defn- create-handler
   "Returns a new handler function for websocket connections suitable for being

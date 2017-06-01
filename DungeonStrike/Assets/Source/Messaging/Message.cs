@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DungeonStrike.Source.Utilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -21,7 +21,7 @@ namespace DungeonStrike.Source.Messaging
     public abstract class Message
     {
         /// <summary>
-        /// Unique identifier for this message.
+        /// Unique identifier for this message. Defaults to a randomly-generated message ID.
         /// </summary>
         public string MessageId { get; set; }
 
@@ -35,6 +35,12 @@ namespace DungeonStrike.Source.Messaging
         /// Type of this message, used to determine how to deserialize it.
         /// </summary>
         public string MessageType { get; set; }
+
+        protected Message(string messageType)
+        {
+            MessageId = IdGenerator.NewId("M");
+            MessageType = messageType;
+        }
 
         public override string ToString()
         {

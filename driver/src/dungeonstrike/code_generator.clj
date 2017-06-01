@@ -27,7 +27,9 @@ namespace DungeonStrike.Source.Messaging
     {{#enums}}
     public enum {{enumName}}
     {
-        {{values}}
+        {{#values}}
+        {{name}},
+        {{/values}}
     }
 
     {{/enums}}
@@ -35,6 +37,11 @@ namespace DungeonStrike.Source.Messaging
     public sealed class {{messageName}}Message : Message
     {
         public static readonly string Type = \"{{messageName}}\";
+
+        public {{messageName}}Message() : base(\"{{messageName}}\")
+        {
+        }
+
         {{#fields}}
         public {{fieldType}} {{fieldName}} { get; set; }
         {{/fields}}
@@ -60,14 +67,6 @@ namespace DungeonStrike.Source.Messaging
     }
 }")
 
-(defn- enum-name
-  "Returns the enum type name to use for a given set."
-  [set]
-  (cond
-    (= set messages/scene-names) "SceneName"
-    (= set messages/entity-types) "EntityType"
-    :otherwise (throw (RuntimeException. "UnknownEnumType"))))
-
 (defn- enum-sets
   "Returns the set of all sets defined in the message specifications."
   []
@@ -78,7 +77,7 @@ namespace DungeonStrike.Source.Messaging
   [field-name]
   (let [spec (field-name messages/message-fields)]
     (cond
-      (set? spec) (enum-name spec)
+      (set? spec) (messages/enum-name-for-set spec)
       (= uuid? spec) "string"
       (= string? spec) "string"
       (= messages/position-spec spec) "Position"
@@ -95,10 +94,10 @@ namespace DungeonStrike.Source.Messaging
                           :fields (map field-params
                                        (remove #{:m/entity-id} fields))})
         get-name (comp case/->PascalCase name)
+        enum-value (fn [name] {:name (get-name name)})
         enum-params (fn [set]
-                      {:enumName (enum-name set)
-                       :values (string/join ",\n        "
-                                            (map get-name set))})]
+                      {:enumName (messages/enum-name-for-set set)
+                       :values (map enum-value set)})]
 
     {:messages (map message-params messages/messages)
      :enums (map enum-params (enum-sets))}))

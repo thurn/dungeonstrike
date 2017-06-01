@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
-using DungeonStrike.Source.Utilities;
 using UnityEngine;
 using WebSocketSharp;
 
@@ -19,7 +18,7 @@ namespace DungeonStrike.Source.Messaging
         {
             _messageRouter = await GetService<MessageRouter>();
 
-            _websocket = new WebSocket("ws://localhost:" + GetPort() + "?client-id=client");
+            _websocket = new WebSocket("ws://localhost:" + GetPort());
             _websocket.OnOpen += OnOpen;
             _websocket.OnError += OnError;
             _websocket.OnClose += OnClosed;
@@ -73,7 +72,25 @@ namespace DungeonStrike.Source.Messaging
         private void OnOpen(object sender, EventArgs args)
         {
             _connectionClosed = false;
+            var message = new ClientConnectedMessage
+            {
+                ClientVersion = Root.ClientVersion,
+                ClientLogFilePath = LogWriter.LogFilePath
+            };
+            Root.RunWhenReady(() => SendMessage(message));
             Root.RunWhenReady(() => Logger.Log(">> client connected <<"));
+        }
+
+        public void SendMessage(Message message)
+        {
+            ErrorHandler.CheckNotNull(nameof(message), message);
+            _websocket.SendAsync(message.ToJson(), success =>
+            {
+                if (!success)
+                {
+                    Logger.Log("Websocket send failed!", message);
+                }
+            });
         }
 
         private void OnError(object sender, ErrorEventArgs args)

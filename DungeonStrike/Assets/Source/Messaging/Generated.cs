@@ -11,35 +11,66 @@ namespace DungeonStrike.Source.Messaging
 {
     public enum EntityType
     {
-        Soldier
+        Soldier,
     }
 
     public enum SceneName
     {
         Empty,
-        Flat
+        Flat,
     }
 
     public sealed class TestMessage : Message
     {
         public static readonly string Type = "Test";
+
+        public TestMessage() : base("Test")
+        {
+        }
+
         public SceneName SceneName { get; set; }
+    }
+
+    public sealed class ClientConnectedMessage : Message
+    {
+        public static readonly string Type = "ClientConnected";
+
+        public ClientConnectedMessage() : base("ClientConnected")
+        {
+        }
+
+        public string ClientVersion { get; set; }
+        public string ClientLogFilePath { get; set; }
     }
 
     public sealed class LoadSceneMessage : Message
     {
         public static readonly string Type = "LoadScene";
+
+        public LoadSceneMessage() : base("LoadScene")
+        {
+        }
+
         public SceneName SceneName { get; set; }
     }
 
     public sealed class QuitGameMessage : Message
     {
         public static readonly string Type = "QuitGame";
+
+        public QuitGameMessage() : base("QuitGame")
+        {
+        }
     }
 
     public sealed class CreateEntityMessage : Message
     {
         public static readonly string Type = "CreateEntity";
+
+        public CreateEntityMessage() : base("CreateEntity")
+        {
+        }
+
         public string NewEntityId { get; set; }
         public EntityType EntityType { get; set; }
         public Position Position { get; set; }
@@ -48,11 +79,20 @@ namespace DungeonStrike.Source.Messaging
     public sealed class DestroyEntityMessage : Message
     {
         public static readonly string Type = "DestroyEntity";
+
+        public DestroyEntityMessage() : base("DestroyEntity")
+        {
+        }
     }
 
     public sealed class MoveToPositionMessage : Message
     {
         public static readonly string Type = "MoveToPosition";
+
+        public MoveToPositionMessage() : base("MoveToPosition")
+        {
+        }
+
         public Position Position { get; set; }
     }
 
@@ -64,6 +104,8 @@ namespace DungeonStrike.Source.Messaging
             {
                 case "Test":
                     return new TestMessage();
+                case "ClientConnected":
+                    return new ClientConnectedMessage();
                 case "LoadScene":
                     return new LoadSceneMessage();
                 case "QuitGame":

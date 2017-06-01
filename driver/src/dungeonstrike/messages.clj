@@ -2,6 +2,7 @@
   "Contains specifications for all messages sent between the driver and the
    client."
   (:require [clojure.spec :as s]
+            [clojure.set :as set]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
@@ -28,6 +29,15 @@
    message."
   #{:soldier})
 
+(def enum-name-for-set
+  "Maps the above sets to the name they should be called in generated code."
+  {scene-names "SceneName"
+   entity-types "EntityType"})
+
+(def set-for-enum-name
+  "Maps enumeration names to their associated set."
+  (clojure.set/map-invert enum-name-for-set))
+
 (defmacro deffield
   "Helper macro to specify field specifications. Because clojure.spec does not
    currently provide the ability to program with specs as values, we create a
@@ -42,7 +52,11 @@
   "A map containing all possible fields which can be found in a message, keyed
    by field keyword."
   (into {}
-        [(deffield :m/scene-name scene-names)
+        [(deffield :m/client-version string?)
+
+         (deffield :m/client-log-file-path string?)
+
+         (deffield :m/scene-name scene-names)
 
          (deffield :m/entity-id string?)
 
@@ -75,6 +89,10 @@
         [(defmessage :m/test
            "Message for use in unit tests."
            [:m/entity-id :m/scene-name])
+
+         (defmessage :m/client-connected
+           "Message sent by the client when a connection is first established."
+           [:m/client-version :m/client-log-file-path])
 
          (defmessage :m/load-scene
            "Loads a scene by name"

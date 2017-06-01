@@ -20,6 +20,9 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class Root : MonoBehaviour
     {
+        public static string ClientVersion { get; }
+            = "0.1";
+
         private enum LifecycleState
         {
             NotStarted,
@@ -86,7 +89,11 @@ namespace DungeonStrike.Source.Core
             _rootLogContext = LogContext.NewRootContext(GetType());
             _logger = new Logger(_rootLogContext);
             _errorHandler = new ErrorHandler(_rootLogContext);
-            _logger.Log("Root::OnEnable()");
+            var msg = new LoadSceneMessage()
+            {
+                SceneName = SceneName.Empty
+            };
+            _logger.Log("Root::OnEnable() " + msg.ToJson());
 
             RegisterServices();
             await Task.WhenAll(_services.Values);
@@ -105,6 +112,10 @@ namespace DungeonStrike.Source.Core
             State = LifecycleState.NotStarted;
         }
 
+        /// <summary>
+        /// Enforces that there can be only one root object in the game. Returns true if the current root instance is a
+        /// duplicate root which should be ignored.
+        /// </summary>
         private bool EnsureUniqueRoot()
         {
             if (IsUnitTest || (_instance == null) || (_instance == this)) return false;

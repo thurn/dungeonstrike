@@ -7,6 +7,7 @@ namespace DungeonStrike.Source.Core
 {
     public static class LogWriter
     {
+        public static string LogFilePath { get; private set; }
         private static StreamWriter _logFile;
         private static bool _disabled;
         private const string MetadataSeparator = "\t\t»";
@@ -20,8 +21,8 @@ namespace DungeonStrike.Source.Core
             if (_disabled || (_logFile != null)) return;
             var logDir = Path.Combine(Application.dataPath, "../Logs");
             Directory.CreateDirectory(logDir);
-            var logFile = Path.Combine(logDir, "client_logs.txt");
-            _logFile = new StreamWriter(logFile, true /* append */) {AutoFlush = true};
+            LogFilePath = Path.Combine(logDir, "client_logs.txt");
+            _logFile = new StreamWriter(LogFilePath, true /* append */) {AutoFlush = true};
             Application.logMessageReceivedThreaded += HandleUnityLog;
         }
 

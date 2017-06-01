@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using DungeonStrike.Source.Utilities;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Core
@@ -30,9 +31,7 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public static LogContext NewRootContext(Type type)
         {
-            var guid = Guid.NewGuid();
-            var clientId = "C:" + Convert.ToBase64String(guid.ToByteArray());
-            return new LogContext(clientId.Substring(0, clientId.Length - 2), null, type, null);
+            return new LogContext(IdGenerator.NewId("C"), null, type, null);
         }
 
         private LogContext(string clientId, LogContext parentContext, Type type, string gameObjectName)
