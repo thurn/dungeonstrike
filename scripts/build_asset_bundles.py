@@ -3,7 +3,7 @@ import os
 import lib
 env = lib.init()
 
-print("Building Unity asset bundles...")
+print("\nBuilding Unity asset bundles...\n")
 
 env.unity([
   "-quit",

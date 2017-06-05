@@ -3,7 +3,7 @@ import os
 import lib
 env = lib.init()
 
-print("Building Driver...")
+print("\nBuilding Driver...\n")
 
 env.lein(["uberjar"])
 out = os.path.join(env.driver_root, "out")

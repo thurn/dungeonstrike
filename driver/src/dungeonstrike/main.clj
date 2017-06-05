@@ -4,7 +4,7 @@
   (:require [clojure.core.async :as async :refer [<!]]
             [clojure.tools.cli :as cli]
             [com.stuartsierra.component :as component]
-            [dungeonstrike.channels :as channels]
+            [dungeonstrike.channels :as channelz]
             [dungeonstrike.log-tailer]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.test-runner]
@@ -34,61 +34,89 @@
               (str (System/getProperty "user.dir") "/../tests"))
          "/" path)))
 
+(extend-type (class (async/chan))
+  component/Lifecycle
+  (start [channel]
+    channel)
+  (stop [channel]
+    (when channel (async/close! channel))))
+
+(defn channels
+  "Returns a map containing all shared communication channels in the system, as
+   well as required `pub` objects for those channels. Pubs can be extracted by
+   key and passed to the `sub` function to create a new subscriber channel."
+  []
+  (let [incoming-messages-channel (async/chan (async/dropping-buffer 1024))]
+    {:incoming-messages-channel incoming-messages-channel
+     :incoming-messages-pub (async/pub incoming-messages-channel
+                                       :m/message-type)}))
+
 (defn core-system
   "Returns a new component framework 'System Map' which instantiates all
    components used by the core application and binds their dependencies.
-   `options` should contain any command-line options passed on start."
-  [options]
-  {:driver-log-path
-   (get-path options :driver "logs/driver_logs.txt")
-
-   :connection-status-channel
-   (channels/new-channel
-    [(async/sliding-buffer 1024)]
-    [:dungeonstrike.gui/connection-status-channel])
-
-   :on-start-channel
-   (channels/new-channel
-    [(async/dropping-buffer 1024)]
-    [])
-
-   :logger
-   (component/using
-    (Logger. options)
-    {:dungeonstrike.logger/log-file-path
-     :driver-log-path})
-
-   :websocket
-   (component/using
-    (Websocket. options)
-    {:dungeonstrike.websocket/logger
-     :logger
-     :dungeonstrike.websocket/connection-status-channel
-     :connection-status-channel
-     :dungeonstrike.websocket/on-start-channel
-     :on-start-channel})})
-
-(defn test-system
-  "Returns a new system map which combines the elements of `core-system` with
-   additional components required for running integration tests."
-  [options]
-  (merge (core-system options)
-         {:test-recordings-path
-          (get-path options :tests "recordings")
+   `options` should contain any command-line options passed on start.
+   `channels` should contain system-wide channels and pubs."
+  [options channels]
+  (merge channels
+         {:driver-log-path
+          (get-path options :driver "logs/driver_logs.txt")
 
           :client-log-path
           (get-path options :client "Logs/client_logs.txt")
 
+          :connection-status-channel
+          (channelz/new-channel
+           [(async/sliding-buffer 1024)]
+           [:dungeonstrike.gui/connection-status-channel])
+
+          :on-start-channel
+          (channelz/new-channel
+           [(async/dropping-buffer 1024)]
+           [])
+
+          :logger
+          (component/using
+           (Logger. options)
+           {:dungeonstrike.logger/log-file-path
+            :driver-log-path})
+
+          :websocket
+          (component/using
+           (Websocket. options)
+           {:dungeonstrike.websocket/logger
+            :logger
+            :dungeonstrike.websocket/incoming-messages-channel
+            :incoming-messages-channel
+            :dungeonstrike.websocket/connection-status-channel
+            :connection-status-channel
+            :dungeonstrike.websocket/on-start-channel
+            :on-start-channel})}))
+
+(defn test-system
+  "Returns a new system map which combines the elements of `core-system` with
+   additional components required for running integration tests."
+  [options channels]
+  (merge (core-system options channels)
+         {:test-recordings-path
+          (get-path options :tests "recordings")
+
           :debug-log-channel
-          (channels/new-channel
+          (channelz/new-channel
            [(async/sliding-buffer 1024) logger/debug-log-transducer]
            [:dungeonstrike.test-runner/debug-log-channel])
 
-          :driver-log-tailer
+          :client-connected-channel
+          (async/sub (:incoming-messages-pub channels)
+                     :m/client-connected
+                     (async/chan))
+
+          :log-tailer
           (component/using
            (LogTailer. options)
            {:dungeonstrike.log-tailer/debug-log-channel
             :debug-log-channel
+            :dungeonstrike.log-tailer/client-connected-channel
+            :client-connected-channel
             :dungeonstrike.log-tailer/log-file-path
             :driver-log-path})
 
@@ -97,6 +125,8 @@
            (LogTailer. options)
            {:dungeonstrike.log-tailer/debug-log-channel
             :debug-log-channel
+            :dungeonstrike.log-tailer/client-connected-channel
+            :client-connected-channel
             :dungeonstrike.log-tailer/log-file-path
             :client-log-path})
 
@@ -115,9 +145,9 @@
    should be populated with command-line options passed to the application.
    Returns the started system map."
   [system-fn options]
-  (let [system-args (flatten (into [] (system-fn options)))
+  (let [system-args (flatten (into [] (system-fn options (channels))))
         started (component/start (apply component/system-map system-args))
-        on-start-channel (channels/unwrap (:on-start-channel started))]
+        on-start-channel (channelz/unwrap (:on-start-channel started))]
     (async/go-loop []
       (when-let [function (<! on-start-channel)]
         (function)

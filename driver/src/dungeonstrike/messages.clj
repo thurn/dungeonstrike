@@ -52,9 +52,7 @@
   "A map containing all possible fields which can be found in a message, keyed
    by field keyword."
   (into {}
-        [(deffield :m/client-version string?)
-
-         (deffield :m/client-log-file-path string?)
+        [(deffield :m/client-log-file-path string?)
 
          (deffield :m/scene-name scene-names)
 
@@ -92,7 +90,7 @@
 
          (defmessage :m/client-connected
            "Message sent by the client when a connection is first established."
-           [:m/client-version :m/client-log-file-path])
+           [:m/client-log-file-path])
 
          (defmessage :m/load-scene
            "Loads a scene by name"

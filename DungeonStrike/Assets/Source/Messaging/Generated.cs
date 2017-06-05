@@ -39,7 +39,6 @@ namespace DungeonStrike.Source.Messaging
         {
         }
 
-        public string ClientVersion { get; set; }
         public string ClientLogFilePath { get; set; }
     }
 

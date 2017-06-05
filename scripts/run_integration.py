@@ -12,7 +12,7 @@ parser.add_argument("--test",
                     required=True)
 args = parser.parse_args()
 
-print("Running integration test(s) '" + args.test + "'...")
+print("\nRunning integration test(s) '" + args.test + "'...\n")
 
 client_logs = os.path.join(env.client_binary_path, "Logs")
 lib.rm(os.path.join(client_logs, "client_logs.txt"))
@@ -31,7 +31,7 @@ client = subprocess.Popen([
   "--port", "59009"
 ])
 
-print("Started client with pid " + str(client.pid))
+print("Started client with pid " + str(client.pid) + "\n")
 
 lib.call([
   "java",

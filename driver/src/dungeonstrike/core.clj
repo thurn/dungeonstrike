@@ -2,7 +2,7 @@
   "Main entry point for the application during interactive development"
   (:require [clojure.core.async :as async]
             [clojure.spec.test :as spec-test]
-            [dungeonstrike.channels :as channels]
+            [dungeonstrike.channels :as channelz]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.code-generator]
             [dungeonstrike.gui]
@@ -16,12 +16,12 @@
 (defn- development-system
   "Returns a new system map which combines the elements of `main/test-system`
    with additional components suitable for interactive development."
-  [options]
-  (merge (main/test-system options)
+  [options channels]
+  (merge (main/test-system options channels)
          {;; Override debug-log-channel to subscribe the debug-gui component to
           ;; logs:
           :debug-log-channel
-          (channels/new-channel
+          (channelz/new-channel
            [(async/sliding-buffer 1024) logger/debug-log-transducer]
            [:dungeonstrike.gui/debug-log-channel
             :dungeonstrike.test-runner/debug-log-channel])

@@ -20,9 +20,6 @@ namespace DungeonStrike.Source.Core
     /// </remarks>
     public sealed class Root : MonoBehaviour
     {
-        public static string ClientVersion { get; }
-            = "0.1";
-
         private enum LifecycleState
         {
             NotStarted,

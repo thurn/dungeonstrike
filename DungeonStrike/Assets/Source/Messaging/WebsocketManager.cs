@@ -74,11 +74,10 @@ namespace DungeonStrike.Source.Messaging
             _connectionClosed = false;
             var message = new ClientConnectedMessage
             {
-                ClientVersion = Root.ClientVersion,
                 ClientLogFilePath = LogWriter.LogFilePath
             };
-            Root.RunWhenReady(() => SendMessage(message));
             Root.RunWhenReady(() => Logger.Log(">> client connected <<"));
+            Root.RunWhenReady(() => SendMessage(message));
         }
 
         public void SendMessage(Message message)

@@ -3,7 +3,7 @@ import os
 import lib
 env = lib.init()
 
-print("Copying all project files to staging directory...")
+print("\nCopying all project files to staging directory...\n")
 
 lib.call([
   "rsync", "--archive", "--delete", "--quiet",

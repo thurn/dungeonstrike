@@ -14,8 +14,8 @@
 
   (start [{:keys [::args ::subscribers] :as component}]
     (if (empty? subscribers)
-      ;; Avoid creating a mult if there are no subscribers since this seems to
-      ;; cause strange behavior. TODO: Investigate.
+      ;; Avoid creating a mult if there are no subscribers since this causes
+      ;; messages to be dropped
       (assoc component ::channel (apply async/chan args))
       (let [channel (apply async/chan args)
             mult (async/mult channel)

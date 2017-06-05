@@ -6,7 +6,8 @@
   :plugins [[lein-kibit "0.1.3"]
             [jonase/eastwood "0.2.3"]
             [lein-cljfmt "0.5.6"]
-            [lein-codox "0.10.3"]]
+            [lein-codox "0.10.3"]
+            [lein-expectations "0.0.8"]]
 
   :main dungeonstrike.main
 
@@ -39,5 +40,6 @@
                                   [com.stuartsierra/component.repl "0.2.0"]
                                   [cider/cider-nrepl "0.14.0"]
                                   [debugger "0.2.0"]
+                                  [expectations "2.2.0-beta1"]
                                   [com.gfredericks/debug-repl "0.0.8"]]
                    :source-paths ["dev"]}})

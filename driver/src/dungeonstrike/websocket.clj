@@ -52,10 +52,13 @@
 
 (defn- channel-receive-handler
   "Handler invoked when the websocket server receives a new message."
-  [{:keys [::log-context]}]
+  [{:keys [::log-context ::incoming-messages-channel]}]
   (fn [data]
     (let [message (parse-json data)]
-      (log log-context "Websocket got message" message))))
+      (log log-context "Websocket got message" message)
+      (if (s/valid? :m/message message)
+        :ignore
+        (error "Invalid message received" (s/explain :m/message message))))))
 
 (defn- create-handler
   "Returns a new handler function for websocket connections suitable for being

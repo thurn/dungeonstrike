@@ -2,7 +2,7 @@
 import lib
 env = lib.init()
 
-print("Running Unity editor tests...")
+print("\nRunning Unity editor tests...\n")
 
 result = env.unity([
   "-batchmode",
