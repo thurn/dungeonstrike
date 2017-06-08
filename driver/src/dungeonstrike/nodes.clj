@@ -44,11 +44,11 @@
      1) A Query object, constructed by calling the `new-query` function. This
         indicates that the node's ultimate value must be obtained by querying
         some external system to obtain the needed state.
-     2) A vector of Mutation objects, constructed by calling the `new-mutation`
-        function. Each mutation describes some change to the state of
+     2) A vector of Effect objects, constructed by calling the `new-effect`
+        function. Each effect describes some change to the state of
         external system as a result of executing the node. Nodes which return
-        mutations can still be used as inputs to other nodes, allowing
-        composition of mutations.
+        effects can still be used as inputs to other nodes, allowing
+        composition of effects.
      3) Any other non-nil value. The returned value, called an intermediate
         value, will be made available as an input to other nodes."
   [node-name & defnode-args]
@@ -82,25 +82,25 @@
     "Performs a query with provided arguments, returning the appropriate result.
      May throw an exception on failure."))
 
-(defrecord MutationImpl [mutation-id type arguments])
+(defrecord EffectImpl [effect-id type arguments])
 
-(s/fdef new-mutation :args (s/cat :type keyword? :arguments some?))
-(defn new-mutation
-  "Creates a new mutation object with an associated `type` and set of
-   `arguments`. Will be massed to the appropriate `MutationHandler` for
+(s/fdef new-effect :args (s/cat :type keyword? :arguments some?))
+(defn new-effect
+  "Creates a new effect object with an associated `type` and set of
+   `arguments`. Will be massed to the appropriate `EffectHandler` for
    execution."
   [type arguments]
-  (MutationImpl. (uuid/new-mutation-id) type arguments))
+  (EffectImpl. (uuid/new-effect-id) type arguments))
 
-(defprotocol MutationHandler
-  "Protocol for components which perform mutations."
-  (mutate! [this arguments]
-    "Performs a mutation with the provided arguments, making some change to the
-     external state of the system. Should return nil, may throw an exception on
+(defprotocol EffectHandler
+  "Protocol for components which perform effects."
+  (apply! [this arguments]
+    "Performs a effect with the provided arguments, making some change to the
+     external state of the system. Should return nil. May throw an exception on
      failure."))
 
 (defn- get-node
-  "Returns the node value for the node named `node-name`."
+  "Returns the node function for the node named `node-name`."
   [node-name]
   (let [node (node-name @node-registry)]
     (when (nil? node)
@@ -108,10 +108,13 @@
     node))
 
 (defn- contains-queries?
-  "Returns True if any value in the provided map is a Query object."
+  "Returns True if any value in the provided seq is a Query object."
   [values]
   (some #(instance? QueryImpl %) values))
 
+(s/fdef execution-step :args
+        (s/cat :current-values (s/map-of namespaced-keyword? some?)
+               :node-name namespaced-keyword?))
 (defn execution-step
   "Performs a single step of the node execution process. Recursively executes
    the transitive dependencies of `node-name` using the intermediate results in
@@ -124,33 +127,76 @@
     current-values ; Short-circuit if a value already exists for this node name.
     (let [{:keys [:inputs :function]} (get-node node-name)
           results (reduce execution-step current-values inputs)
+          missing? (not= (count inputs)
+                         (count (select-keys results inputs)))
           arguments (map results inputs)]
-      (if (contains-queries? arguments)
+      (if (or missing? (contains-queries? arguments))
         results
-        (assoc results node-name (apply function arguments))))))
+        (let [output (apply function arguments)]
+          (if (some? output)
+            (assoc results node-name output)
+            (throw (RuntimeException.
+                    (str "Node returned nil: " node-name)))))))))
+
+(defn- run-query
+  "Runs a Query using the appropriate handler from `query-handlers` and returns
+   its result."
+  [query-handlers {:keys [:type :arguments]}]
+  (when-not (query-handlers type)
+    (throw (RuntimeException.
+            (str "No QueryHandler provided for type: " type))))
+  (let [result (query (query-handlers type) arguments)]
+    (if (some? result)
+      result
+      (throw (RuntimeException.
+              (str "QueryHandler returned nil for type: " type))))))
 
 (s/fdef execute-queries :args
         (s/cat :node namespaced-keyword?
                :request (s/map-of namespaced-keyword? some?)
-               :query-handlers (s/map-of namespaced-keyword?
-                                         #(instance? QueryHandler %))))
+               :query-handlers (s/map-of keyword?
+                                         #(satisfies? QueryHandler %))))
 (defn execute-queries
   "Executes `node`, supplying its dependencies from `request` and querying for
    any needed values from the provided `query-handlers` map, which should be a
    map from query types to the QueryHandler instance for that type. Returns the
    output of `node`."
-  [node request query-handlers])
+  [node request query-handlers]
+  (let [step (execution-step request node)
+        reduce-query (fn [map key value]
+                       (if (instance? QueryImpl value)
+                         (assoc map key (run-query query-handlers value))
+                         (assoc map key value)))]
+    (if-not (contains-queries? (vals step))
+      (step node)
+      (recur node (reduce-kv reduce-query {} step) query-handlers))))
+
+(defn- run-effect!
+  "Invokes an Effect using the appropriate handler from `effect-handlers`."
+  [effect-handlers {:keys [:type :arguments]}]
+  (when-not (effect-handlers type)
+    (throw (RuntimeException.
+            (str "No EffectHandler provided for type: " type))))
+  (apply! (effect-handlers type) arguments))
 
 (s/fdef execute! :args
         (s/cat :node namespaced-keyword?
                :request (s/map-of namespaced-keyword? some?)
                :query-handlers (s/map-of keyword?
-                                         #(instance? QueryHandler %))
-               :mutation-handlers (s/map-of keyword?
-                                            #(instance? MutationHandler %))))
+                                         #(satisfies? QueryHandler %))
+               :effect-handlers (s/map-of keyword?
+                                          #(satisfies? EffectHandler %))))
 (defn execute!
-  "Executes `node` as in `execute-queries` and then obtains any Mutation
-   instances returned from `node` and executes them via the provided
-   `mutation-handlers` map, which should be a map from mutation types to the
-   appropriate MutationHandler for that type. Returns the output of `node`."
-  [node request query-handlers mutation-handlers])
+  "Executes `node` with a `request` and `query-handlers` map as in
+  `execute-queries`. If `node` produces an Effect instance or a sequence of
+  Effect instances, the Effects are executed via the provided `effect-handlers`
+  map, which should be a map from effect types to the appropriate EffectHandler
+  for that type. Returns the output of `node`."
+  [node request query-handlers effect-handlers]
+  (let [output (execute-queries node request query-handlers)]
+    (cond
+      (instance? EffectImpl output) (run-effect! effect-handlers output)
+      (sequential? output) (doseq [value output]
+                             (when (instance? EffectImpl value)
+                               (run-effect! effect-handlers value))))
+    output))

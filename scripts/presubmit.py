@@ -30,6 +30,7 @@ print("Starting pre-commit checks...")
 # Note: These should be ordered from shortest to longest runtime.
 call_script("uncrustify.py")
 call_script("cljfmt.py")
+call_script("run_driver_tests.py")
 call_script("checksum.py")
 
 # Unity tests need to be run on a separate copy of the project, because you

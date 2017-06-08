@@ -3,7 +3,7 @@ import os
 import lib
 env = lib.init()
 
-print("Validating checksums...")
+print("\nValidating checksums...\n")
 third_party = os.path.join(env.client_root, 'Assets/ThirdParty')
 
 for directory in os.listdir(third_party):

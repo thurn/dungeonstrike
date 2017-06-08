@@ -34,7 +34,7 @@
   []
   (str "Q:" (create-id)))
 
-(defn new-mutation-id
+(defn new-effect-id
   "Creates a new random effect ID."
   []
-  (str "MT:" (create-id)))
+  (str "EF:" (create-id)))
