@@ -83,7 +83,7 @@
 
 (defn- message-form-items [send-button message-picker message-type]
   (concat
-   [[(seesaw/label :text "Send Meossage" :font (title-font))
+   [[(seesaw/label :text "Send Message" :font (title-font))
      "alignx center, pushx, span, wrap 20px"]
     [(seesaw/label "Message Type")]
     [message-picker "wrap"]

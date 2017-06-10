@@ -76,7 +76,6 @@ namespace DungeonStrike.Source.Messaging
             {
                 ClientLogFilePath = LogWriter.LogFilePath
             };
-            Root.RunWhenReady(() => Logger.Log(">> client connected <<"));
             Root.RunWhenReady(() => SendMessage(message));
         }
 

@@ -6,7 +6,8 @@
             [com.stuartsierra.component :as component]
             [dungeonstrike.channels :as channelz]
             [dungeonstrike.log-tailer]
-            [dungeonstrike.logger :as logger]
+            [dungeonstrike.logger :as logger :refer [die!]]
+            [dungeonstrike.nodes :as nodes]
             [dungeonstrike.test-runner]
             [dungeonstrike.websocket]
             [dungeonstrike.dev :as dev])
@@ -46,10 +47,8 @@
    well as required `pub` objects for those channels. Pubs can be extracted by
    key and passed to the `sub` function to create a new subscriber channel."
   []
-  (let [incoming-messages-channel (async/chan (async/dropping-buffer 1024))]
-    {:incoming-messages-channel incoming-messages-channel
-     :incoming-messages-pub (async/pub incoming-messages-channel
-                                       :m/message-type)}))
+  (let [requests-channel (async/chan (async/dropping-buffer 1024))]
+    {:requests-channel requests-channel}))
 
 (defn core-system
   "Returns a new component framework 'System Map' which instantiates all
@@ -69,11 +68,6 @@
            [(async/sliding-buffer 1024)]
            [:dungeonstrike.gui/connection-status-channel])
 
-          :on-start-channel
-          (channelz/new-channel
-           [(async/dropping-buffer 1024)]
-           [])
-
           :logger
           (component/using
            (Logger. options)
@@ -86,11 +80,9 @@
            {:dungeonstrike.websocket/logger
             :logger
             :dungeonstrike.websocket/incoming-messages-channel
-            :incoming-messages-channel
+            :requests-channel
             :dungeonstrike.websocket/connection-status-channel
-            :connection-status-channel
-            :dungeonstrike.websocket/on-start-channel
-            :on-start-channel})}))
+            :connection-status-channel})}))
 
 (defn test-system
   "Returns a new system map which combines the elements of `core-system` with
@@ -105,30 +97,15 @@
            [(async/sliding-buffer 1024) logger/debug-log-transducer]
            [:dungeonstrike.test-runner/debug-log-channel])
 
-          :client-connected-channel
-          (async/sub (:incoming-messages-pub channels)
-                     :m/client-connected
-                     (async/chan))
-
           :log-tailer
           (component/using
            (LogTailer. options)
-           {:dungeonstrike.log-tailer/debug-log-channel
+           {:dungeonstrike.log-tailer/logger
+            :logger
+            :dungeonstrike.log-tailer/debug-log-channel
             :debug-log-channel
-            :dungeonstrike.log-tailer/client-connected-channel
-            :client-connected-channel
             :dungeonstrike.log-tailer/log-file-path
             :driver-log-path})
-
-          :client-log-tailer
-          (component/using
-           (LogTailer. options)
-           {:dungeonstrike.log-tailer/debug-log-channel
-            :debug-log-channel
-            :dungeonstrike.log-tailer/client-connected-channel
-            :client-connected-channel
-            :dungeonstrike.log-tailer/log-file-path
-            :client-log-path})
 
           :test-runner
           (component/using
@@ -140,19 +117,42 @@
             :dungeonstrike.test-runner/debug-log-channel
             :debug-log-channel})}))
 
+(defn- request-type
+  "Returns the appropriate node keyword to run for a given request."
+  [request]
+  (cond
+    (:m/message-type request) (:m/message-type request)
+    (:request-type request) (:request-type request)
+    :otherwise (die! nil "Request is missing a :request-type" request)))
+
+(defn- start-nodes
+  "Starts a go loop which monitors the system `requests-channel` for new
+   requests intended for excecution by `nodes/execute!`."
+  [system]
+  (let [query-handlers (into {} (filter
+                                 #(satisfies? nodes/QueryHandler (val %))
+                                 system))
+        effect-handlers (into {} (filter
+                                  #(satisfies? nodes/EffectHandler (val %))
+                                  system))
+        requests-channel (:requests-channel system)]
+    (async/go-loop []
+      (when-let [request (<! requests-channel)]
+        (nodes/execute! (request-type request)
+                        request
+                        query-handlers
+                        effect-handlers)
+        (recur)))))
+
 (defn create-and-start-system
   "Creates and starts the system specified by `system-fn`. The `options` map
    should be populated with command-line options passed to the application.
    Returns the started system map."
   [system-fn options]
   (let [system-args (flatten (into [] (system-fn options (channels))))
-        started (component/start (apply component/system-map system-args))
-        on-start-channel (channelz/unwrap (:on-start-channel started))]
-    (async/go-loop []
-      (when-let [function (<! on-start-channel)]
-        (function)
-        (recur)))
-    started))
+        system (component/start (apply component/system-map system-args))]
+    (start-nodes system)
+    system))
 
 (def ^:private cli-options
   [[nil "--help" (str "Print this help message and quit")]

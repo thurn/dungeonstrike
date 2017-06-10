@@ -12,6 +12,10 @@
   (send-message! [this message]
     "Sends `message` to the client."))
 
+(defprotocol MessageReceiver
+  "Abstraction layer for the act of receiving messages from the client."
+  (receive-message [this message]))
+
 (s/def :m/x integer?)
 (s/def :m/y integer?)
 (def position-spec

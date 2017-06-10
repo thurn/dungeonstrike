@@ -155,12 +155,9 @@
   {:name "startup"
    :prerequisite nil
    :entries
-   [{:message ">> driver connected <<"
-     :source "dungeonstrike.websocket"
-     :log-type :driver}
-    {:message ">> client connected <<"
-     :source "DungeonStrike.Source.Messaging.WebsocketManager"
-     :log-type :client}]})
+   [{:message "Client connected"
+     :source "dungeonstrike.log-tailer"
+     :log-type :driver}]})
 
 (def ^:private shutdown-recording
   {:name "shutdown"

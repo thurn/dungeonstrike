@@ -57,6 +57,15 @@
   [logger component-name]
   (merge (::system-log-context logger) {::component-name component-name}))
 
+(defn- format-message
+  "Formats a message and message arguments for output as a log message."
+  [message arg-names arguments]
+  (let [args (map list arg-names arguments)
+        format-fn (fn [[key value]] (str key "=" (info value)))]
+    (if (empty? arg-names)
+      message
+      (str message " [" (string/join "; " (map format-fn args)) "]"))))
+
 (s/fdef log-helper :args (s/cat :log-context ::log-context
                                 :message string?
                                 :important? boolean?
@@ -69,17 +78,13 @@
    formatted version of the log message and its arguments. Do not invoke this
    function directly."
   [log-context message important? error? line & [arg-names & arguments]]
-  (let [args (map list arg-names arguments)
-        format-fn (fn [[key value]] (str key "=" (info value)))
-        formatted (if (empty? arg-names)
-                    message
-                    (str message " ["
-                         (string/join "; " (map format-fn args)) "]"))]
-    (apply merge log-context {:message formatted
-                              :important? important?
-                              :error? error?
-                              :line line}
-           (filter map? arguments))))
+  (apply merge log-context {:message (format-message message
+                                                     arg-names
+                                                     arguments)
+                            :important? important?
+                            :error? error?
+                            :line line}
+         (filter map? arguments)))
 
 (defmacro log-important!
   "Logs a message as in `log`, but flags it as 'important' for special handling
@@ -118,6 +123,27 @@
                              ~(:line (meta &form))
                              '~arguments
                              ~@arguments)))
+
+(defn throw-exception
+  "Helper function invoked by the `die!` macro to throw an exception."
+  [message [arg-names & arguments]]
+  (throw (RuntimeException.
+          (format-message message arg-names arguments))))
+
+(defmacro die!
+  "Logs an error in the style of `log` with an associated LogContext and
+   optional details, and then throws an exception. Unlike with the previous two
+   macros, `log-context` can be nil for this call."
+  [log-context message & arguments]
+  `(do
+     (timbre/error (log-helper (or ~log-context (map->LogContext {}))
+                               ~message
+                               false
+                               true
+                               ~(:line (meta &form))
+                               '~arguments
+                               ~@arguments))
+     (throw-exception ~message '~arguments ~@arguments)))
 
 (defmacro dbg!
   "Logs a message as in `log` without a LogContext for debugging use only.

@@ -108,10 +108,10 @@
 
 (nodes/defnode ::e [::c ::d] [:e c d])
 
-(deftest execute-queries-no-queries
+(deftest evaluate-no-queries
   (is (=
        [:e [:c [:a]] [:d [:a] [:b]]]
-       (nodes/execute-queries ::e {} {}))))
+       (nodes/evaluate ::e {} {}))))
 
 (def query1 (nodes/new-query :test-query [1]))
 
@@ -126,35 +126,36 @@
 
 (deftest execute-simple-query
   (is (= 10
-         (nodes/execute-queries ::f {} {:test-query (TestQueryHandler.)}))))
+         (nodes/evaluate ::f {} {:test-query (TestQueryHandler.)}))))
 
 (nodes/defnode ::g [::f ::e] (+ f 1))
 
 (deftest execute-depends-on-query
   (is (= 11
-         (nodes/execute-queries ::g {} {:test-query (TestQueryHandler.)}))))
+         (nodes/evaluate ::g {} {:test-query (TestQueryHandler.)}))))
 
 (nodes/defnode ::h [::g] query2)
 
 (deftest execute-second-query
   (is (= 20
-         (nodes/execute-queries ::h {} {:test-query (TestQueryHandler.)}))))
+         (nodes/evaluate ::h {} {:test-query (TestQueryHandler.)}))))
 
 (nodes/defnode ::i [::g ::h] (+ g h))
 
 (deftest two-queries
   (is (= 31
-         (nodes/execute-queries ::i {} {:test-query (TestQueryHandler.)}))))
+         (nodes/evaluate ::i {} {:test-query (TestQueryHandler.)}))))
 
 (nodes/defnode ::with-input [::i ::input] (* i input))
 
 (deftest query-with-request-input
   (is (= 62
-         (nodes/execute-queries ::with-input {::input 2}
-                                {:test-query (TestQueryHandler.)}))))
+         (nodes/evaluate ::with-input
+                         {::input 2}
+                         {:test-query (TestQueryHandler.)}))))
 
 (deftest no-handler
-  (is (thrown? RuntimeException (nodes/execute-queries ::i {} {}))))
+  (is (thrown? RuntimeException (nodes/evaluate ::i {} {}))))
 
 (defrecord TestNilQueryHandler []
   nodes/QueryHandler
@@ -162,8 +163,9 @@
 
 (deftest nil-query-result
   (is (thrown? RuntimeException
-               (nodes/execute-queries ::i {}
-                                      {:test-query (TestNilQueryHandler.)}))))
+               (nodes/evaluate ::i
+                               {}
+                               {:test-query (TestNilQueryHandler.)}))))
 
 (def effect1 (nodes/new-effect :test-effect [5]))
 
@@ -171,7 +173,7 @@
 
 (defrecord TestEffectHandler [state]
   nodes/EffectHandler
-  (apply! [this arguments]
+  (execute-effect! [this arguments]
     (swap! state + (first arguments))))
 
 (nodes/defnode ::j [] effect1)

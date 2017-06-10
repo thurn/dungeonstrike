@@ -73,7 +73,7 @@
   "Creates a new query object with an associated `type` and `arguments`. When
    the result is required, this object will be passed to an appropriate
    `QueryHandler` for execution."
-  [type arguments]
+  [type & arguments]
   (QueryImpl. (uuid/new-query-id) type arguments))
 
 (defprotocol QueryHandler
@@ -87,14 +87,14 @@
 (s/fdef new-effect :args (s/cat :type keyword? :arguments some?))
 (defn new-effect
   "Creates a new effect object with an associated `type` and set of
-   `arguments`. Will be massed to the appropriate `EffectHandler` for
+   `arguments`. Will be passed to the appropriate `EffectHandler` for
    execution."
-  [type arguments]
+  [type & arguments]
   (EffectImpl. (uuid/new-effect-id) type arguments))
 
 (defprotocol EffectHandler
   "Protocol for components which perform effects."
-  (apply! [this arguments]
+  (execute-effect! [this arguments]
     "Performs a effect with the provided arguments, making some change to the
      external state of the system. Should return nil. May throw an exception on
      failure."))
@@ -145,18 +145,18 @@
   (when-not (query-handlers type)
     (throw (RuntimeException.
             (str "No QueryHandler provided for type: " type))))
-  (let [result (query (query-handlers type) arguments)]
+  (let [result (apply query (query-handlers type) arguments)]
     (if (some? result)
       result
       (throw (RuntimeException.
               (str "QueryHandler returned nil for type: " type))))))
 
-(s/fdef execute-queries :args
+(s/fdef evaluate :args
         (s/cat :node namespaced-keyword?
                :request (s/map-of namespaced-keyword? some?)
                :query-handlers (s/map-of keyword?
                                          #(satisfies? QueryHandler %))))
-(defn execute-queries
+(defn evaluate
   "Executes `node`, supplying its dependencies from `request` and querying for
    any needed values from the provided `query-handlers` map, which should be a
    map from query types to the QueryHandler instance for that type. Returns the
@@ -177,7 +177,7 @@
   (when-not (effect-handlers type)
     (throw (RuntimeException.
             (str "No EffectHandler provided for type: " type))))
-  (apply! (effect-handlers type) arguments))
+  (apply execute-effect! (effect-handlers type) arguments))
 
 (s/fdef execute! :args
         (s/cat :node namespaced-keyword?
@@ -187,13 +187,13 @@
                :effect-handlers (s/map-of keyword?
                                           #(satisfies? EffectHandler %))))
 (defn execute!
-  "Executes `node` with a `request` and `query-handlers` map as in
-  `execute-queries`. If `node` produces an Effect instance or a sequence of
-  Effect instances, the Effects are executed via the provided `effect-handlers`
+  "Executes `node` with a `request` and `query-handlers` map via
+  `evaluate`. If `node` produces an Effect instance or a sequence of Effect
+  instances, the Effects are executed via the provided `effect-handlers`
   map, which should be a map from effect types to the appropriate EffectHandler
   for that type. Returns the output of `node`."
   [node request query-handlers effect-handlers]
-  (let [output (execute-queries node request query-handlers)]
+  (let [output (evaluate node request query-handlers)]
     (cond
       (instance? EffectImpl output) (run-effect! effect-handlers output)
       (sequential? output) (doseq [value output]

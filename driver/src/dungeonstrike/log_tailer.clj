@@ -6,12 +6,18 @@
             [clojure.spec :as s]
             [clojure.string :as string]
             [dungeonstrike.channels :as channels]
+            [dungeonstrike.logger :as logger :refer [log]]
             [dungeonstrike.messages :as messages]
+            [dungeonstrike.nodes :as nodes]
             [com.stuartsierra.component :as component]
             [dungeonstrike.dev :as dev])
   (:import (org.apache.commons.io.input Tailer TailerListener
                                         TailerListenerAdapter)))
 (dev/require-dev-helpers)
+
+(nodes/defnode :m/client-connected
+  [:m/client-log-file-path]
+  (nodes/new-effect :log-tailer client-log-file-path))
 
 (defn- new-tailer
   "Creates a new Tailer object which will automatically monitor additions to the
@@ -27,13 +33,22 @@
 (defrecord LogTailer [options]
   component/Lifecycle
 
-  (start [{:keys [::log-file-path ::debug-log-channel
-                  ::client-connected-channel] :as component}]
+  (start [{:keys [::log-file-path ::debug-log-channel ::logger] :as component}]
     (let [tailers (atom {log-file-path (new-tailer log-file-path
                                                    debug-log-channel)})]
-      (assoc component ::tailers tailers)))
+      (assoc component
+             ::tailers tailers
+             ::log-context (logger/component-log-context logger "LogTailer"))))
+
   (stop [{:keys [::tailers] :as component}]
     (when tailers
       (doseq [[path tailer] @tailers]
         (when tailer (.stop tailer))))
-    (dissoc component ::tailers)))
+    (dissoc component ::tailers))
+
+  nodes/EffectHandler
+  (execute-effect! [{:keys [::tailers ::debug-log-channel ::log-context]}
+                    log-path]
+    (when-not (@tailers log-path)
+      (swap! tailers assoc log-path (new-tailer log-path debug-log-channel)))
+    (log log-context "Client connected")))

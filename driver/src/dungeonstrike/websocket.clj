@@ -57,7 +57,7 @@
     (let [message (parse-json data)]
       (log log-context "Websocket got message" message)
       (if (s/valid? :m/message message)
-        :ignore
+        (async/put! incoming-messages-channel message)
         (error "Invalid message received" (s/explain :m/message message))))))
 
 (defn- create-handler
@@ -66,16 +66,12 @@
    updates `socket-atom` with a websocket channel reference. When messages are
    received or connection status changes, publishes events to
    `connection-status-channel`."
-  [{:keys [::log-context ::socket-atom ::on-start-channel
-           ::connection-status-channel]
+  [{:keys [::log-context ::socket-atom ::connection-status-channel]
     :as component}]
   (fn [request]
     (http-kit/with-channel request channel
       (channels/put! connection-status-channel :connection-opened)
       (reset! socket-atom channel)
-      (channels/put! on-start-channel
-                     #(log log-context ">> driver connected <<"))
-
       (http-kit/on-close channel (channel-closed-handler component))
       (http-kit/on-receive channel (channel-receive-handler component)))))
 
@@ -84,7 +80,7 @@
 (defrecord Websocket [options]
   component/Lifecycle
 
-  (start [{:keys [:options ::logger ::on-start-channel]
+  (start [{:keys [:options ::logger]
            :as component}]
     (when @stop-server-fn (@stop-server-fn))
     (let [log-context (logger/component-log-context logger "Websocket")
