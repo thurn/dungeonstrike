@@ -7,6 +7,7 @@
             [dungeonstrike.code-generator]
             [dungeonstrike.gui]
             [dungeonstrike.main :as main]
+            [dungeonstrike.nodes :as nodes]
             [dungeonstrike.dev :as dev]
             [com.stuartsierra.component :as component])
   (:import (dungeonstrike.gui DebugGui)
