@@ -10,6 +10,7 @@
             [dungeonstrike.channels :as channels]
             [dungeonstrike.logger :as logger :refer [log error log-important!]]
             [dungeonstrike.messages :as messages]
+            [dungeonstrike.nodes :as nodes]
             [dungeonstrike.test-runner :as test-runner]
             [dungeonstrike.uuid :as uuid]
             [com.stuartsierra.component :as component]
@@ -315,20 +316,6 @@
               (seesaw/scroll! logs-view :to :bottom)))))
         (recur)))))
 
-(defn- start-send-button
-  "Attaches a listener to the send button to send the current message to the
-   client on click. Monitors message channel events and enables/disables the
-   send button based on connection status."
-  [{:keys [::frame ::message-sender ::send-button-enabled? ::status-channel]
-    :as component}]
-  (let [message-form (seesaw/select frame [:#message-form])
-        send-button (seesaw/select frame [:#send-button])]
-    (async/go-loop []
-      (when-some [status (<! status-channel)]
-        (reset! send-button-enabled? (= :connection-opened status))
-        (seesaw/config! send-button :enabled? @send-button-enabled?)
-        (recur)))))
-
 (defn- start-recording
   [{:keys [::frame ::recording-state] :as component}]
   (let [recording-button (seesaw/select frame [:#recording-button])]
@@ -427,11 +414,18 @@
                    (new-recording-fn component))
     (seesaw/listen clear-button :action on-clear)))
 
+(nodes/defnode :m/client-connected
+  []
+  (nodes/new-effect :debug-gui [[:#send-button] :enabled? true]))
+
+(nodes/defnode :r/client-disconnected
+  []
+  (nodes/new-effect :debug-gui [[:#send-button] :enabled? false]))
+
 (defrecord DebugGui []
   component/Lifecycle
 
-  (start [{:keys [::logger ::message-sender ::connection-status-channel
-                  ::debug-log-channel]
+  (start [{:keys [::logger ::message-sender ::debug-log-channel]
            :as component}]
     ; Instruct Seesaw to try to make things look as native as possible
     (seesaw/native!)
@@ -441,9 +435,6 @@
                          ::log-context log-context
                          ::log-channel (channels/get-tap debug-log-channel
                                                          ::debug-log-channel)
-                         ::status-channel (channels/get-tap
-                                           connection-status-channel
-                                           ::connection-status-channel)
                          ::send-button-enabled? (atom false)
                          ::recording-state (atom {:recording? false}))
           frame (seesaw/frame :title "The DungeonStrike Driver"
@@ -452,7 +443,6 @@
           result (assoc updated ::frame frame)]
       (start-logs result)
       (register-listeners result)
-      (start-send-button result)
       (seesaw/show! frame)
       (log log-context "Started DebugGui")
       result))
@@ -462,4 +452,10 @@
       (seesaw/config! frame :visible? false)
       (seesaw/dispose! frame))
     (log log-context "Stopped DebugGui")
-    (dissoc component ::frame ::log-context ::recording-state)))
+    (dissoc component ::frame ::log-context ::recording-state))
+
+  nodes/EffectHandler
+  (execute-effect! [{:keys [::frame ::send-button-enabled?]}
+                    [selector key value]]
+    (let [element (seesaw/select frame selector)]
+      (seesaw/config! element key value))))

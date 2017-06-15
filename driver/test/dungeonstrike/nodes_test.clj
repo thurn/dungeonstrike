@@ -113,6 +113,10 @@
        [:e [:c [:a]] [:d [:a] [:b]]]
        (nodes/evaluate ::e {} {}))))
 
+(deftest missing-top-level-node
+  (is (= #{}
+         (nodes/evaluate ::some-node-which-does-not-exist))))
+
 (def query1 (nodes/new-query :test-query [1]))
 
 (def query2 (nodes/new-query :test-query [2]))
@@ -190,6 +194,10 @@
     (nodes/execute! ::k {} {} {:test-effect (TestEffectHandler. state)})
     (is (= 11 @state))))
 
+(deftest execute-missing-top-level-node
+  (is (= #{}
+         (nodes/execute! ::some-node-which-does-not-exist))))
+
 (nodes/defnode ::l [::g ::h ::j] j)
 
 (deftest query-produce-effect
@@ -208,18 +216,19 @@
 (nodes/defnode :test/multi2 [:test/multi2-input-1] (inc multi2-input-1))
 
 (ns dungeonstrike.other-test-namespace
-  (:require [dungeonstrike.nodes :as nodes]
-            [clojure.test :as test :refer [deftest is]]))
+  (:require [dungeonstrike.nodes]))
 
-(nodes/defnode :test/multi [:test/multi-input] (dec multi-input))
+(dungeonstrike.nodes/defnode :test/multi [:test/multi-input]
+  (dec multi-input))
 
-(nodes/defnode :test/multi2 [:test/multi2-input-2] (dec multi2-input-2))
+(dungeonstrike.nodes/defnode :test/multi2 [:test/multi2-input-2]
+  (dec multi2-input-2))
 
-(nodes/defnode :test/two-effects []
-  (nodes/new-effect :test-effect [5]))
+(dungeonstrike.nodes/defnode :test/two-effects []
+  (dungeonstrike.nodes/new-effect :test-effect [5]))
 
-(nodes/defnode :test/two-queries []
-  (nodes/new-query :test-query [2]))
+(dungeonstrike.nodes/defnode :test/two-queries []
+  (dungeonstrike.nodes/new-query :test-query [2]))
 
 (ns dungeonstrike.nodes-test)
 

@@ -8,6 +8,7 @@
             [dungeonstrike.log-tailer]
             [dungeonstrike.logger :as logger :refer [die!]]
             [dungeonstrike.nodes :as nodes]
+            [dungeonstrike.requests :as requests]
             [dungeonstrike.test-runner]
             [dungeonstrike.websocket]
             [dungeonstrike.dev :as dev])
@@ -63,11 +64,6 @@
           :client-log-path
           (get-path options :client "Logs/client_logs.txt")
 
-          :connection-status-channel
-          (channelz/new-channel
-           [(async/sliding-buffer 1024)]
-           [:dungeonstrike.gui/connection-status-channel])
-
           :logger
           (component/using
            (Logger. options)
@@ -79,10 +75,8 @@
            (Websocket. options)
            {:dungeonstrike.websocket/logger
             :logger
-            :dungeonstrike.websocket/incoming-messages-channel
-            :requests-channel
-            :dungeonstrike.websocket/connection-status-channel
-            :connection-status-channel})}))
+            :dungeonstrike.websocket/requests-channel
+            :requests-channel})}))
 
 (defn test-system
   "Returns a new system map which combines the elements of `core-system` with
@@ -117,14 +111,6 @@
             :dungeonstrike.test-runner/debug-log-channel
             :debug-log-channel})}))
 
-(defn- request-type
-  "Returns the appropriate node keyword to run for a given request."
-  [request]
-  (cond
-    (:m/message-type request) (:m/message-type request)
-    (:request-type request) (:request-type request)
-    :otherwise (die! nil "Request is missing a :request-type" request)))
-
 (defn- start-nodes
   "Starts a go loop which monitors the system `requests-channel` for new
    requests intended for excecution by `nodes/execute!`."
@@ -138,7 +124,7 @@
         requests-channel (:requests-channel system)]
     (async/go-loop []
       (when-let [request (<! requests-channel)]
-        (nodes/execute! (request-type request)
+        (nodes/execute! (requests/node-for-request request)
                         request
                         query-handlers
                         effect-handlers)

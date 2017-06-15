@@ -5,7 +5,20 @@
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
-(defonce ^:private node-registry (atom {}))
+(def ^:private node-registry
+  "The global node registry. This is strucutured as a map of:
+
+         node namespace object  ->
+              simple node name  ->
+     function namespace object  ->
+              function, inputs
+
+   This storage structure is intended to assist with workflows based on code
+   reloading. When a namespace is reloaded, a new namespace object is created,
+   and all references to the old namespace become garbage. Without
+   strucuturing, it might be possible to delete a node definition but have the
+   code continue to run after reloading."
+  (atom {}))
 
 (defn- node-namespace
   "Returns the namespace object for a given node name."
@@ -15,9 +28,9 @@
 (defn register-node-impl!
   "Adds a new node to the node registry. Use the `defnode` macro instead of
    calling this function directly."
-  [node-name namespace function inputs line]
+  [node-name function-namespace function inputs line]
   (swap! node-registry assoc-in
-         [(node-namespace node-name) (name node-name) (str namespace)]
+         [(node-namespace node-name) (name node-name) function-namespace]
          {:function function
           :inputs inputs
           :line line}))
@@ -82,7 +95,7 @@
   "Creates a new query object with an associated `type` and `arguments`. When
    the result is required, this object will be passed to an appropriate
    `QueryHandler` for execution."
-  [type & arguments]
+  [type arguments]
   (QueryImpl. type arguments))
 
 (defprotocol QueryHandler
@@ -98,7 +111,7 @@
   "Creates a new effect object with an associated `type` and set of
    `arguments`. Will be passed to the appropriate `EffectHandler` for
    execution."
-  [type & arguments]
+  [type arguments]
   (EffectImpl. type arguments))
 
 (defprotocol EffectHandler
@@ -108,11 +121,18 @@
      external state of the system. Should return nil. May throw an exception on
      failure."))
 
+(defn- get-node-or-nil
+  "Returns the node binding map for the node named `node-name`, or nil if it
+   does not exist."
+  [node-name]
+  (get-in @node-registry
+          [(node-namespace node-name)
+           (name node-name)]))
+
 (defn- get-node
   "Returns the node binding map for the node named `node-name`."
   [node-name]
-  (let [node (get-in @node-registry
-                     [(node-namespace node-name) (name node-name)])]
+  (let [node (get-node-or-nil node-name)]
     (when (nil? node)
       (throw (RuntimeException. (str "Node not found: " node-name))))
     node))
@@ -176,7 +196,7 @@
   (when-not (query-handlers type)
     (throw (RuntimeException.
             (str "No QueryHandler provided for type: " type))))
-  (let [result (apply query (query-handlers type) arguments)]
+  (let [result (query (query-handlers type) arguments)]
     (if (some? result)
       result
       (throw (RuntimeException.
@@ -212,12 +232,14 @@
   ([node] (evaluate node {} {}))
   ([node request] (evaluate node request {}))
   ([node request query-handlers]
-   (let [step (evaluation-step request node)]
-     (if-not (contains-queries? (vals step))
-       (step node)
-       (recur node
-              (reduce-kv (reduce-queries-fn query-handlers) {} step)
-              query-handlers)))))
+   (if-not (get-node-or-nil node)
+     #{} ; Empty set indicates node was not found.
+     (let [step (evaluation-step request node)]
+       (if-not (contains-queries? (vals step))
+         (step node)
+         (recur node
+                (reduce-kv (reduce-queries-fn query-handlers) {} step)
+                query-handlers))))))
 
 (defn- run-effect!
   "Invokes an Effect using the appropriate handler from `effect-handlers`."
@@ -225,7 +247,7 @@
   (when-not (effect-handlers type)
     (throw (RuntimeException.
             (str "No EffectHandler provided for type: " type))))
-  (apply execute-effect! (effect-handlers type) arguments))
+  (execute-effect! (effect-handlers type) arguments))
 
 (s/fdef execute! :args
         (s/cat :node namespaced-keyword?

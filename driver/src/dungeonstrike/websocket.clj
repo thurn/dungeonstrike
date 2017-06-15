@@ -17,10 +17,10 @@
 
 (defn- channel-closed-handler
   "Handler for websocket channel close events."
-  [{:keys [::log-context ::connection-status-channel]}]
+  [{:keys [::log-context ::requests-channel]}]
   (fn [status]
     (log log-context "Driver connection closed" status)
-    (channels/put! connection-status-channel :connection-closed)))
+    (async/put! requests-channel {:r/request-type :r/client-disconnected})))
 
 (defn- to-json
   "Converts a message map into a JSON string."
@@ -52,12 +52,13 @@
 
 (defn- channel-receive-handler
   "Handler invoked when the websocket server receives a new message."
-  [{:keys [::log-context ::incoming-messages-channel]}]
+  [{:keys [::log-context ::requests-channel]}]
   (fn [data]
     (let [message (parse-json data)]
       (log log-context "Websocket got message" message)
       (if (s/valid? :m/message message)
-        (async/put! incoming-messages-channel message)
+        (async/put! requests-channel
+                    (assoc message :r/request-type :r/client-message))
         (error "Invalid message received" (s/explain :m/message message))))))
 
 (defn- create-handler
@@ -65,12 +66,11 @@
    passed to http-kit's run-server function.  When a connection is established,
    updates `socket-atom` with a websocket channel reference. When messages are
    received or connection status changes, publishes events to
-   `connection-status-channel`."
-  [{:keys [::log-context ::socket-atom ::connection-status-channel]
+   the `requests-channel`."
+  [{:keys [::log-context ::socket-atom]
     :as component}]
   (fn [request]
     (http-kit/with-channel request channel
-      (channels/put! connection-status-channel :connection-opened)
       (reset! socket-atom channel)
       (http-kit/on-close channel (channel-closed-handler component))
       (http-kit/on-receive channel (channel-receive-handler component)))))

@@ -70,7 +70,7 @@
                                 :message string?
                                 :important? boolean?
                                 :error? boolean?
-                                :line integer?
+                                :line any?
                                 :rest (s/* any?)))
 (defn log-helper
   "Helper function invoked by the `log` and `error` macros. Returns a log entry

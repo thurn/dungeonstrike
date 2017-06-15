@@ -50,9 +50,7 @@
             :dungeonstrike.gui/test-recordings-path
             :test-recordings-path
             :dungeonstrike.gui/debug-log-channel
-            :debug-log-channel
-            :dungeonstrike.gui/connection-status-channel
-            :connection-status-channel})}))
+            :debug-log-channel})}))
 
 ; Atom containing the system -- for development use only
 (defonce system (atom nil))

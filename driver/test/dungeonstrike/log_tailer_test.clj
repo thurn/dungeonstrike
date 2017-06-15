@@ -4,6 +4,6 @@
             [clojure.test :as test :refer [deftest is]]))
 
 (deftest client-connected
-  (is (= (nodes/new-effect :log-tailer "foo/bar")
-         (nodes/evaluate :m/client-connected
-                         {:m/client-log-file-path "foo/bar"}))))
+  (is (some #{(nodes/new-effect :log-tailer "foo/bar")}
+            (nodes/evaluate :m/client-connected
+                            {:m/client-log-file-path "foo/bar"}))))
