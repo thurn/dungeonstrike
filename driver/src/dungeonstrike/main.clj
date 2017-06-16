@@ -4,7 +4,6 @@
   (:require [clojure.core.async :as async :refer [<!]]
             [clojure.tools.cli :as cli]
             [com.stuartsierra.component :as component]
-            [dungeonstrike.channels :as channelz]
             [dungeonstrike.log-tailer]
             [dungeonstrike.logger :as logger :refer [die!]]
             [dungeonstrike.nodes :as nodes]
@@ -48,8 +47,11 @@
    well as required `pub` objects for those channels. Pubs can be extracted by
    key and passed to the `sub` function to create a new subscriber channel."
   []
-  (let [requests-channel (async/chan (async/dropping-buffer 1024))]
-    {:requests-channel requests-channel}))
+  (let [debug-log-channel (async/chan (async/sliding-buffer 1024)
+                                      logger/debug-log-transducer)]
+    {:requests-channel (async/chan (async/dropping-buffer 1024))
+     :debug-log-channel debug-log-channel
+     :debug-log-mult (async/mult debug-log-channel)}))
 
 (defn core-system
   "Returns a new component framework 'System Map' which instantiates all
@@ -86,11 +88,6 @@
          {:test-recordings-path
           (get-path options :tests "recordings")
 
-          :debug-log-channel
-          (channelz/new-channel
-           [(async/sliding-buffer 1024) logger/debug-log-transducer]
-           [:dungeonstrike.test-runner/debug-log-channel])
-
           :log-tailer
           (component/using
            (LogTailer. options)
@@ -108,8 +105,8 @@
             :websocket
             :dungeonstrike.test-runner/test-recordings-path
             :test-recordings-path
-            :dungeonstrike.test-runner/debug-log-channel
-            :debug-log-channel})}))
+            :dungeonstrike.test-runner/debug-log-mult
+            :debug-log-mult})}))
 
 (defn- start-nodes
   "Starts a go loop which monitors the system `requests-channel` for new

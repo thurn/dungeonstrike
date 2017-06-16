@@ -6,7 +6,6 @@
             [clojure.edn :as edn]
             [clojure.spec :as s]
             [clojure.string :as string]
-            [dungeonstrike.channels :as channels]
             [dungeonstrike.logger :as logger :refer [log error]]
             [dungeonstrike.messages :as messages]
             [camel-snake-kebab.core :as case]

@@ -7,7 +7,6 @@
             [clojure.spec :as s]
             [clojure.string :as string]
             [clojure-watch.core :as watch]
-            [dungeonstrike.channels :as channels]
             [dungeonstrike.logger :as logger :refer [log error log-important!]]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.nodes :as nodes]
@@ -425,7 +424,7 @@
 (defrecord DebugGui []
   component/Lifecycle
 
-  (start [{:keys [::logger ::message-sender ::debug-log-channel]
+  (start [{:keys [::logger ::message-sender ::debug-log-mult]
            :as component}]
     ; Instruct Seesaw to try to make things look as native as possible
     (seesaw/native!)
@@ -433,8 +432,9 @@
     (let [log-context (logger/component-log-context logger "DebugGui")
           updated (assoc component
                          ::log-context log-context
-                         ::log-channel (channels/get-tap debug-log-channel
-                                                         ::debug-log-channel)
+                         ::log-channel
+                         (async/tap debug-log-mult
+                                    (async/chan (async/dropping-buffer 1024)))
                          ::send-button-enabled? (atom false)
                          ::recording-state (atom {:recording? false}))
           frame (seesaw/frame :title "The DungeonStrike Driver"

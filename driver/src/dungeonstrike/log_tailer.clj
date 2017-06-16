@@ -5,7 +5,6 @@
             [clojure.java.io :as io]
             [clojure.spec :as s]
             [clojure.string :as string]
-            [dungeonstrike.channels :as channels]
             [dungeonstrike.logger :as logger :refer [log]]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.nodes :as nodes]
@@ -26,7 +25,7 @@
   [log-file-path debug-log-channel]
   (let [listener (proxy [TailerListenerAdapter] []
                    (handle [line]
-                     (channels/put! debug-log-channel line)))
+                     (async/put! debug-log-channel line)))
         file (io/file log-file-path)]
     (Tailer/create file listener 1000 true true)))
 

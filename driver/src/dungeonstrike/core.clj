@@ -2,7 +2,6 @@
   "Main entry point for the application during interactive development"
   (:require [clojure.core.async :as async]
             [clojure.spec.test :as spec-test]
-            [dungeonstrike.channels :as channelz]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.code-generator]
             [dungeonstrike.gui]
@@ -19,15 +18,7 @@
    with additional components suitable for interactive development."
   [options channels]
   (merge (main/test-system options channels)
-         {;; Override debug-log-channel to subscribe the debug-gui component to
-          ;; logs:
-          :debug-log-channel
-          (channelz/new-channel
-           [(async/sliding-buffer 1024) logger/debug-log-transducer]
-           [:dungeonstrike.gui/debug-log-channel
-            :dungeonstrike.test-runner/debug-log-channel])
-
-          :code-generator-output-path
+         {:code-generator-output-path
           (main/get-path options :client "Assets/Source/Messaging/Generated.cs")
 
           :code-generator
@@ -49,8 +40,8 @@
             :websocket
             :dungeonstrike.gui/test-recordings-path
             :test-recordings-path
-            :dungeonstrike.gui/debug-log-channel
-            :debug-log-channel})}))
+            :dungeonstrike.gui/debug-log-mult
+            :debug-log-mult})}))
 
 ; Atom containing the system -- for development use only
 (defonce system (atom nil))

@@ -4,7 +4,6 @@
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.spec :as s]
-            [dungeonstrike.channels :as channels]
             [dungeonstrike.messages :as messages]
             [com.stuartsierra.component :as component]
             [dungeonstrike.dev :as dev]))
@@ -214,12 +213,14 @@
 (defrecord TestRunner [options]
   component/Lifecycle
 
-  (start [{:keys [::debug-log-channel] :as component}]
+  (start [{:keys [::debug-log-mult] :as component}]
     (let [test-channel (async/chan (async/dropping-buffer 1024))
-          log-channel (channels/get-tap debug-log-channel ::debug-log-channel)
+          log-channel (async/tap debug-log-mult
+                                 (async/chan (async/dropping-buffer 1024)))
           result (assoc component
                         ::log-channel log-channel
                         ::test-channel test-channel)]
+      (async/tap debug-log-mult log-channel)
       (start-test-runner result)
       (when (:test options)
         (run-tests-from-options result))
