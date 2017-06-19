@@ -1,9 +1,16 @@
 (ns dungeonstrike.requests
   "Centralized definitions for request messages sent through the Nodes system."
-  (:require [clojure.spec :as s]
+  (:require [clojure.core.async :as async]
+            [clojure.spec :as s]
             [dungeonstrike.messages :as messages]
+            [mount.core :as mount]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
+
+(mount/defstate requests-channel
+  "Channel for requests to the Nodes system."
+  :start (async/chan 1024)
+  :stop (async/close! requests-channel))
 
 (s/def :r/request-type keyword?)
 

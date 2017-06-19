@@ -8,46 +8,43 @@
             [dungeonstrike.logger :as logger :refer [log]]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.nodes :as nodes]
-            [com.stuartsierra.component :as component]
+            [dungeonstrike.paths :as paths]
+            [dungeonstrike.requests :as requests]
+            [mount.core :as mount]
             [dungeonstrike.dev :as dev])
   (:import (org.apache.commons.io.input Tailer TailerListener
                                         TailerListenerAdapter)))
 (dev/require-dev-helpers)
 
-(nodes/defnode :m/client-connected
-  [:m/client-log-file-path]
-  (nodes/new-effect :log-tailer client-log-file-path))
+(mount/defstate ^:private log-context
+  :start (logger/component-log-context "LogTailer"))
 
 (defn- new-tailer
   "Creates a new Tailer object which will automatically monitor additions to the
    log file at `log-file-path` and publish the new lines on
    `debug-log-channel`."
-  [log-file-path debug-log-channel]
+  [log-file-path]
   (let [listener (proxy [TailerListenerAdapter] []
                    (handle [line]
-                     (async/put! debug-log-channel line)))
+                     (async/put! logger/debug-log-channel line)))
         file (io/file log-file-path)]
-    (Tailer/create file listener 1000 true true)))
+    ;; Arguments:
+    ;; 1000: Delay between checks of the file for new content (in milliseconds)
+    ;; true: Whether to tail from the end of the file
+    ;; true: Whether to close and re-open the file between chunks
+    (Tailer/create file listener 1000 false true)))
 
-(defrecord LogTailer [options]
-  component/Lifecycle
+(mount/defstate ^:private tailers
+  :start (atom {paths/driver-log-path (new-tailer paths/driver-log-path)})
+  :stop (doseq [[path tailer] @tailers] (when tailer (.stop tailer))))
 
-  (start [{:keys [::log-file-path ::debug-log-channel ::logger] :as component}]
-    (let [tailers (atom {log-file-path (new-tailer log-file-path
-                                                   debug-log-channel)})]
-      (assoc component
-             ::tailers tailers
-             ::log-context (logger/component-log-context logger "LogTailer"))))
+(nodes/defnode :m/client-connected
+  [:m/client-log-file-path]
+  (nodes/new-effect :log-tailer client-log-file-path))
 
-  (stop [{:keys [::tailers] :as component}]
-    (when tailers
-      (doseq [[path tailer] @tailers]
-        (when tailer (.stop tailer))))
-    (dissoc component ::tailers))
-
+(defrecord LogEffector []
   nodes/EffectHandler
-  (execute-effect! [{:keys [::tailers ::debug-log-channel ::log-context]}
-                    log-path]
+  (execute-effect! [_ log-path]
     (when-not (@tailers log-path)
-      (swap! tailers assoc log-path (new-tailer log-path debug-log-channel)))
+      (swap! tailers assoc log-path (new-tailer log-path)))
     (log log-context "Client connected")))

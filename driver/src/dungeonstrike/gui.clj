@@ -10,9 +10,12 @@
             [dungeonstrike.logger :as logger :refer [log error log-important!]]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.nodes :as nodes]
+            [dungeonstrike.paths :as paths]
+            [dungeonstrike.requests :as requests]
             [dungeonstrike.test-runner :as test-runner]
+            [dungeonstrike.websocket :as websocket]
             [dungeonstrike.uuid :as uuid]
-            [com.stuartsierra.component :as component]
+            [mount.core :as mount]
             [seesaw.core :as seesaw]
             [seesaw.font :as font]
             [seesaw.mig :as mig]
@@ -24,6 +27,15 @@
            (javax.swing.event ListSelectionListener)
            (javax.swing.table DefaultTableCellRenderer TableRowSorter)))
 (dev/require-dev-helpers)
+
+(mount/defstate ^:private log-context
+  :start (logger/component-log-context "DebugGui"))
+
+(mount/defstate ^:private log-channel
+  :start (async/tap logger/debug-log-mult (async/chan)))
+
+(mount/defstate ^:private recording-state
+  :start (atom {:recording? false}))
 
 (defn- title-font
   "Font to use in section headers"
@@ -69,7 +81,7 @@
 
 (defn- on-send-button-clicked
   "Returns a click handler function for the 'send' button."
-  [{:keys [::message-sender ::recording-state]} message-form]
+  [message-form]
   (fn [event]
     (let [form-value (seesaw/value message-form)
           message (reduce-kv process-form-values {} form-value)
@@ -79,7 +91,7 @@
       (when (:recording? @recording-state)
         (swap! recording-state assoc :message->client message-with-id))
       (seesaw/config! message-id-label :text message-id)
-      (messages/send-message! message-sender message-with-id))))
+      (websocket/send-message! message-with-id))))
 
 (defn- message-form-items [send-button message-picker message-type]
   (concat
@@ -101,30 +113,26 @@
                                         (seesaw/selection message-picker)))))
 (defn- send-message-panel
   "UI for 'Send Message' panel."
-  [{:keys [::send-button-enabled?] :as component}]
+  []
   (let [message-types (keys messages/messages)
         message-picker (seesaw/combobox :id :m/message-type
                                         :model message-types)
         send-button (seesaw/button :text "Send!"
                                    :id :send-button
-                                   :enabled? @send-button-enabled?)
+                                   :enabled? false)
         form-items (message-form-items send-button message-picker :m/load-scene)
         panel (mig/mig-panel :id :message-form :items form-items)]
     (seesaw/selection! message-picker :m/load-scene)
     (seesaw/listen message-picker :selection
                    (message-selected-fn send-button panel message-picker))
-    (seesaw/listen send-button :action (on-send-button-clicked component panel))
+    (seesaw/listen send-button :action (on-send-button-clicked panel))
     panel))
-
-(defn- test-runner-panel
-  [component]
-  (seesaw/label "test runner UI"))
 
 (defn- recording-file-names
   "Returns all available file names of test recordings in the recordings
    directory."
-  [test-recordings-path]
-  (let [files (file-seq (io/file test-recordings-path))]
+  []
+  (let [files (file-seq (io/file paths/test-recordings-path))]
     (mapv #(.getName %) (filter #(.isFile %) files))))
 
 (defn- test-list-table
@@ -138,27 +146,26 @@
 (defn- run-test
   "Requests to run the test named in `test-name`, or all tests if the keyword
    `:all-tests` is passed."
-  [{:keys [::test-runner ::log-context]} test-name]
+  [test-name]
   (log-important! log-context "Running test" test-name)
   (async/go
     (let [{:keys [:status :message] :as result}
-          (<! (test-runner/run-integration-test test-runner test-name))]
+          (<! (test-runner/run-integration-test test-name))]
       (if (= status :success)
         (log-important! log-context "Test passed!" test-name)
         (error log-context message result)))))
 
 (defn- tests-panel
   "UI for the 'Tests' panel"
-  [{:keys [::test-recordings-path] :as component}]
-  (let [file-names (recording-file-names test-recordings-path)
+  []
+  (let [file-names (recording-file-names)
         run-selected-button (seesaw/button :text "Run Selected" :enabled? false)
         run-all-button (seesaw/button :text "Run All")
         test-list (test-list-table file-names)]
     (seesaw/listen run-selected-button :action
                    (fn [e]
                      (when-let [test (seesaw/value test-list)]
-                       (run-test component (file-names
-                                            (seesaw/selection test-list))))))
+                       (run-test (file-names (seesaw/selection test-list))))))
     (seesaw/listen test-list :selection
                    (fn [e]
                      (seesaw/config! run-selected-button :enabled? true)))
@@ -171,12 +178,12 @@
              [test-list "grow, span"]])))
 
 (defn- left-content
-  [component]
+  []
   (seesaw/tabbed-panel :placement :top
                        :tabs [{:title "Send Message"
-                               :content (send-message-panel component)}
+                               :content (send-message-panel)}
                               {:title "Tests"
-                               :content (tests-panel component)}]))
+                               :content (tests-panel)}]))
 
 (defn- on-log-selected
   "Callback when a log entry is selected"
@@ -292,15 +299,23 @@
 
 (defn- frame-content
   "Constructs all UI for the debug window"
-  [component]
-  (seesaw/left-right-split (left-content component)
+  []
+  (seesaw/left-right-split (left-content)
                            (right-content)
                            :divider-location 1/3))
+
+(mount/defstate ^:private frame
+  :start (seesaw/frame :title "The DungeonStrike Driver"
+                       :minimum-size [1440 :by 878]
+                       :content (frame-content))
+  :stop (when frame
+          (seesaw/config! frame :visible? false)
+          (seesaw/dispose! frame)))
 
 (defn- start-logs
   "Starts a go loop to pull logs out of the debug log channel and render them
    in the log entry table."
-  [{:keys [::log-channel ::frame ::recording-state]}]
+  []
   (let [logs-view (seesaw/select frame [:#logs])]
     (async/go-loop []
       (when-some [{:keys [source] :as entry} (<! log-channel)]
@@ -316,7 +331,7 @@
         (recur)))))
 
 (defn- start-recording
-  [{:keys [::frame ::recording-state] :as component}]
+  []
   (let [recording-button (seesaw/select frame [:#recording-button])]
     (seesaw/config! recording-button :text "Stop Recording")
     (reset! recording-state {:recording? true :entries []})))
@@ -327,12 +342,11 @@
   (with-out-str (pprint/pprint form)))
 
 (defn- save-recording-frame
-  [initial-message entries test-recordings-path on-close]
+  [initial-message entries on-close]
   (let [save-button (seesaw/button :text "Save")
         cancel-button (seesaw/button :text "Cancel")
         prerequisite (seesaw/combobox
-                      :model (into [nil] (recording-file-names
-                                          test-recordings-path)))
+                      :model (into [nil] (recording-file-names)))
         recording-name (seesaw/text)
         text-area (seesaw/text :text (pretty-string entries)
                                :multi-line? true
@@ -355,37 +369,36 @@
                         "width 1200px, height 400px, span, wrap"]
                        [cancel-button]
                        [save-button "wrap"]])
-        frame (seesaw/frame :title "The DungeonStrike Driver"
-                            :minimum-size [1200 :by 800]
-                            :content panel)]
-    (.setLocationRelativeTo frame nil)
+        new-frame (seesaw/frame :title "The DungeonStrike Driver"
+                                :minimum-size [1200 :by 800]
+                                :content panel)]
+    (.setLocationRelativeTo new-frame nil)
     (seesaw/listen save-button :action
                    (fn [e]
                      (let [result-name (seesaw/value recording-name)
                            result-prerequisite (seesaw/value prerequisite)]
                        (when-not (empty? result-name)
                          (on-close result-name result-prerequisite)
-                         (seesaw/dispose! frame)))))
+                         (seesaw/dispose! new-frame)))))
     (seesaw/listen cancel-button :action
                    (fn [e]
                      (on-close nil nil)
-                     (seesaw/dispose! frame)))
-    frame))
+                     (seesaw/dispose! new-frame)))
+    new-frame))
 
 (defn- stop-recording
-  [{:keys [::frame ::recording-state ::test-recordings-path ::log-context]
-    :as component}]
+  []
   (let [recording-button (seesaw/select frame [:#recording-button])
         initial-message (:message->client @recording-state)
         entries (:entries @recording-state)]
     (seesaw/show!
      (save-recording-frame
-      initial-message entries test-recordings-path
+      initial-message entries
       (fn [recording-name prerequisite]
         (when recording-name
           (reset! recording-state {:recording? false :entries []})
           (seesaw/config! recording-button :text "Start Recording")
-          (let [output-file (io/file test-recordings-path
+          (let [output-file (io/file paths/test-recordings-path
                                      (str recording-name ".edn"))
                 output (pretty-string {:name recording-name
                                        :prerequisite prerequisite
@@ -396,22 +409,29 @@
 
 (defn- new-recording-fn
   "Returns a function to act as the listener for the 'Start Recording' button."
-  [{:keys [::recording-state] :as component}]
-  (fn [e]
-    (if (:recording? @recording-state)
-      (stop-recording component)
-      (start-recording component))))
+  [event]
+  (if (:recording? @recording-state)
+    (stop-recording)
+    (start-recording)))
 
 (defn- register-listeners
   "Registers button listeners for controls."
-  [{:keys [::frame] :as component}]
+  []
   (let [clear-button (seesaw/select frame [:#clear-button])
         recording-button (seesaw/select frame [:#recording-button])
         logs-table (seesaw/select frame [:#logs])
         on-clear (fn [e] (.setRowCount (.getModel logs-table) 0))]
-    (seesaw/listen recording-button :action
-                   (new-recording-fn component))
+    (seesaw/listen recording-button :action new-recording-fn)
     (seesaw/listen clear-button :action on-clear)))
+
+(defn- show-debug-gui
+  []
+  (seesaw/show! frame)
+  (start-logs)
+  (register-listeners))
+
+(mount/defstate ^:private debug-gui
+  :start (show-debug-gui))
 
 (nodes/defnode :m/client-connected
   []
@@ -421,41 +441,8 @@
   []
   (nodes/new-effect :debug-gui [[:#send-button] :enabled? false]))
 
-(defrecord DebugGui []
-  component/Lifecycle
-
-  (start [{:keys [::logger ::message-sender ::debug-log-mult]
-           :as component}]
-    ; Instruct Seesaw to try to make things look as native as possible
-    (seesaw/native!)
-
-    (let [log-context (logger/component-log-context logger "DebugGui")
-          updated (assoc component
-                         ::log-context log-context
-                         ::log-channel
-                         (async/tap debug-log-mult
-                                    (async/chan (async/dropping-buffer 1024)))
-                         ::send-button-enabled? (atom false)
-                         ::recording-state (atom {:recording? false}))
-          frame (seesaw/frame :title "The DungeonStrike Driver"
-                              :minimum-size [1440 :by 878]
-                              :content (frame-content updated))
-          result (assoc updated ::frame frame)]
-      (start-logs result)
-      (register-listeners result)
-      (seesaw/show! frame)
-      (log log-context "Started DebugGui")
-      result))
-
-  (stop [{:keys [::frame ::log-context ::message-pub] :as component}]
-    (when frame
-      (seesaw/config! frame :visible? false)
-      (seesaw/dispose! frame))
-    (log log-context "Stopped DebugGui")
-    (dissoc component ::frame ::log-context ::recording-state))
-
+(defrecord GuiEffector []
   nodes/EffectHandler
-  (execute-effect! [{:keys [::frame ::send-button-enabled?]}
-                    [selector key value]]
+  (execute-effect! [_ [selector key value]]
     (let [element (seesaw/select frame selector)]
       (seesaw/config! element key value))))

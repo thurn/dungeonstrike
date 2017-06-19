@@ -28,18 +28,3 @@
   "Creates a new random message ID."
   []
   (str "M:" (create-id)))
-
-(defn new-request-id
-  "Creates a new random effect ID."
-  []
-  (str "R:" (create-id)))
-
-(defn new-query-id
-  "Creates a new random query ID."
-  []
-  (str "Q:" (create-id)))
-
-(defn new-effect-id
-  "Creates a new random effect ID."
-  []
-  (str "EF:" (create-id)))

@@ -40,6 +40,7 @@ namespace DungeonStrike.Source.Messaging
         }
 
         public string ClientLogFilePath { get; set; }
+        public string ClientId { get; set; }
     }
 
     public sealed class LoadSceneMessage : Message

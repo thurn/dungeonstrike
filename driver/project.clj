@@ -17,12 +17,12 @@
                  [org.clojure/tools.cli "0.3.5"]
                  [camel-snake-kebab "0.4.0"]
                  [clojure-watch "0.1.13"]
-                 [com.stuartsierra/component "0.3.2"]
                  [com.taoensso/timbre "4.8.0"]
                  [commons-io "2.5"]
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [http-kit "2.2.0"]
                  [io.aviso/pretty "0.1.33"]
+                 [mount "0.1.11"]
                  [seesaw "1.4.5"]
                  [selmer "1.10.7"]]
 

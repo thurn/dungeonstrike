@@ -4,11 +4,11 @@
   (:require [clojure.java.io :as io]
             [clojure.spec :as s]
             [clojure.string :as string]
-            [dungeonstrike.logger :as logger :refer [log error]]
             [dungeonstrike.messages :as messages]
+            [dungeonstrike.paths :as paths]
             [camel-snake-kebab.core :as case]
             [clostache.parser :as templates]
-            [com.stuartsierra.component :as component]
+            [mount.core :as mount]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
@@ -102,18 +102,11 @@ namespace DungeonStrike.Source.Messaging
     {:messages (map message-params messages/messages)
      :enums (map enum-params (enum-sets))}))
 
-(defn generate!
+(defn- generate!
   "Generates C# code based on the message specifications found in
    `dungeonstrike.messages` and outputs it to the configured output file."
-  [{:keys [::code-generator-output-path]}]
+  []
   (let [output (templates/render template (template-parameters))]
-    (spit code-generator-output-path output)))
+    (spit paths/code-generator-output-path output)))
 
-(defrecord CodeGenerator []
-  component/Lifecycle
-  (start [{:keys [::logger] :as component}]
-    (let [log-context (logger/component-log-context logger "CodeGenerator")]
-      (generate! component)
-      (assoc component ::log-context log-context)))
-  (stop [component]
-    (dissoc component ::log-context)))
+(mount/defstate ^:private code-generator :start (generate!))

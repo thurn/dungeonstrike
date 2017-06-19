@@ -1,17 +1,65 @@
 (ns dungeonstrike.logger
   "Component which provides utilities for logging application behavior. Any
    non-trivial application state transition should be logged."
-  (:require [clojure.edn :as edn]
+  (:require [clojure.core.async :as async]
+            [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.spec :as s]
             [clojure.string :as string]
+            [dungeonstrike.nodes :as nodes]
+            [dungeonstrike.paths :as paths]
             [dungeonstrike.uuid :as uuid]
-            [com.stuartsierra.component :as component]
-            [io.aviso.exception :as exception]
+            [mount.core :as mount]
             [taoensso.timbre :as timbre]
             [taoensso.timbre.appenders.core :as appenders]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
+
+(mount/defstate ^:private driver-id
+  :start (uuid/new-driver-id))
+
+(mount/defstate ^:private current-client-id
+  :start (atom nil))
+
+(def ^:private metadata-separator
+  "The unique string used to separate log messages from log metadata in lines of
+   a log file."
+  "\t\t»")
+
+(defn- parse-log-entry
+  "Parses a logfile entry line into a log entry map."
+  [line]
+  (try
+    (let [metadata-start (string/index-of line metadata-separator)
+          separator-length (count metadata-separator)
+          message (subs line 0 metadata-start)
+          metadata (edn/read-string
+                    (subs line (+ metadata-start separator-length)))]
+      (assoc metadata :message message))
+    (catch Exception exception
+      {:message (str "Error parsing log entry: " line)})))
+
+(defn- current-entry?
+  "Returns true if the provided map entry uses the current driver id or the most
+   recent client id."
+  [message]
+  (or (= driver-id (::driver-id message))
+      (and (some? @current-client-id)
+           (= @current-client-id (:client-id message)))))
+
+(mount/defstate ^:private debug-log-transducer
+  "A transducer for parsing log entry strings."
+  :start (comp (map parse-log-entry) (filter current-entry?)))
+
+(mount/defstate debug-log-channel
+  "Channel on which new log entries should be published. Consumes log entry
+   strings and produces parsed log entries."
+  :start (async/chan (async/buffer 1024) debug-log-transducer)
+  :stop (async/close! debug-log-channel))
+
+(mount/defstate debug-log-mult
+  "Mult on `debug-log-channel`."
+  :start (async/mult debug-log-channel))
 
 (defn- reduce-info-map
   "Reducer helper function for use by `info`. Creates a summarized version of a
@@ -47,15 +95,7 @@
    are operations of the system itself. Only one system log context should ever
    be created."
   []
-  (map->LogContext {::driver-id (uuid/new-driver-id)}))
-
-(s/fdef component-log-context :args (s/cat :logger ::logger
-                                           :component-name string?))
-(defn component-log-context
-  "Creates a log context for a component. Each component should create and
-   store its own log context for use in log calls that it makes."
-  [logger component-name]
-  (merge (::system-log-context logger) {::component-name component-name}))
+  (map->LogContext {::driver-id driver-id}))
 
 (defn- format-message
   "Formats a message and message arguments for output as a log message."
@@ -145,22 +185,6 @@
                                ~@arguments))
      (throw-exception ~message '~arguments ~@arguments)))
 
-(defmacro dbg!
-  "Logs a message as in `log` without a LogContext for debugging use only.
-   Code containing calls to this macro should not be checked in to version
-   control."
-  [message & arguments]
-  `(timbre/info (log-helper (map->LogContext {})
-                            ~message
-                            ~(:line (meta &form))
-                            '~arguments
-                            ~@arguments)))
-
-(def ^:private metadata-separator
-  "The unique string used to separate log messages from log metadata in lines of
-   a log file."
-  "\t\t»")
-
 (defn- logger-output-fn
   "Log output function as defined by the timbre logging library. Processes
    timbre log maps into our custom log string format."
@@ -181,19 +205,6 @@
                                   :error? error-level?
                                   :file ?file}))))))
 
-(defn- parse-log-entry
-  "Parses a logfile entry line into a log entry map."
-  [line]
-  (try
-    (let [metadata-start (string/index-of line metadata-separator)
-          separator-length (count metadata-separator)
-          message (subs line 0 metadata-start)
-          metadata (edn/read-string
-                    (subs line (+ metadata-start separator-length)))]
-      (assoc metadata :message message))
-    (catch Exception exception
-      {:message (str "Error parsing log entry: " line)})))
-
 (defn- timbre-config
   "Builds the custom timbre config."
   [driver-log-file]
@@ -201,60 +212,26 @@
    :output-fn logger-output-fn
    :appenders {:spit (appenders/spit-appender {:fname driver-log-file})}})
 
-(defn- error-info
-  "Helper function which uses various heuristics to produce a helpful summary of
-  an exception when one is logged."
-  [thread exception]
-  (binding [exception/*fonts* {}]
-    (let [builder (StringBuilder.)
-          analyzed (exception/analyze-exception exception {:properties false
-                                                           :frame-limit 10})
-          root-cause (last analyzed)
+(defn- new-logger
+  "Configures timbre and stores a new system log context."
+  []
+  (timbre/set-config! (timbre-config paths/driver-log-path))
+  {::system-log-context (new-system-log-context)})
 
-         ;; Find the first stack frame that contains 'dungeonstrike', since it
-         ;; likely to be relevant:
+(mount/defstate ^:private logger :start (new-logger))
 
-          relevant? (fn [trace]
-                      (string/includes? (:formatted-name trace) "dungeonstrike"))
+(s/fdef component-log-context :args (s/cat :component-name string?))
+(defn component-log-context
+  "Creates a log context for a component. Each component should create and
+   store its own log context for use in log calls that it makes."
+  [component-name]
+  (merge (::system-log-context logger) {::component-name component-name}))
 
-          proximate-cause (first (filter relevant? (:stack-trace root-cause)))]
+(nodes/defnode :m/client-connected
+  [:m/client-id]
+  (nodes/new-effect :logger client-id))
 
-      (exception/write-exception builder exception)
-      {:message (if proximate-cause
-                  (str (:formatted-name proximate-cause) "("
-                       (:line proximate-cause) "): "
-                       (:message root-cause))
-                  (str (:class-name root-cause) ": "
-                       (:message root-cause)))
-       :exception-class (:class-name root-cause)
-       :thead-name (.getName thread)
-       :stack-trace (str builder)})))
-
-(def debug-log-transducer
-  "A transducer for parsing log entry strings."
-  (map parse-log-entry))
-
-(defrecord Logger [options]
-  component/Lifecycle
-
-  (start [{:keys [::log-file-path] :as component}]
-    (let [system-log-context (new-system-log-context)]
-      (timbre/set-config! (timbre-config log-file-path))
-
-      (Thread/setDefaultUncaughtExceptionHandler
-       (reify Thread$UncaughtExceptionHandler
-         (uncaughtException [_ thread ex]
-           (println "==== Uncaught Exception! ===")
-           (println ex)
-           (timbre/error (error-info thread ex))
-           (when (:crash-on-exceptions options)
-             (println "Terminating.")
-             (System/exit 1)))))
-
-      (assoc component ::system-log-context system-log-context)))
-
-  (stop [{:keys [::system-log-context]
-          :as component}]
-    (dissoc component ::system-log-context)))
-
-(s/def ::logger #(instance? Logger %))
+(defrecord LoggerEffector []
+  nodes/EffectHandler
+  (execute-effect! [_ client-id]
+    (reset! current-client-id client-id)))

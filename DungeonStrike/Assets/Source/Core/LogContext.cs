@@ -7,7 +7,7 @@ namespace DungeonStrike.Source.Core
 {
     public class LogContext
     {
-        private readonly string _clientId;
+        public string ClientId { get; }
         private readonly LogContext _parentContext;
         private readonly Type _type;
         private readonly string _gameObjectName;
@@ -22,7 +22,7 @@ namespace DungeonStrike.Source.Core
             {
                 throw new ArgumentNullException(nameof(parentContext));
             }
-            return new LogContext(parentContext._clientId, parentContext, type,
+            return new LogContext(parentContext.ClientId, parentContext, type,
                     gameObject != null ? gameObject.name : null);
         }
 
@@ -36,7 +36,7 @@ namespace DungeonStrike.Source.Core
 
         private LogContext(string clientId, LogContext parentContext, Type type, string gameObjectName)
         {
-            _clientId = clientId;
+            ClientId = clientId;
             _parentContext = parentContext;
             _type = type;
             _gameObjectName = gameObjectName;
@@ -44,7 +44,7 @@ namespace DungeonStrike.Source.Core
 
         public void AppendContextParameters(StringBuilder stringBuilder)
         {
-            stringBuilder.Append(":client-id \"").Append(_clientId).Append("\", ");
+            stringBuilder.Append(":client-id \"").Append(ClientId).Append("\", ");
             stringBuilder.Append(":parents [");
             var parent = _parentContext;
             while (parent != null)

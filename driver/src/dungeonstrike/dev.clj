@@ -10,12 +10,7 @@
             '[clojure.pprint :refer [pprint]]
             '[clojure.reflect :refer [reflect]]
             '[clojure.java.javadoc :refer [javadoc]]
-            '[dungeonstrike.dev :refer [get-component p]]))
-
-(defn get-component
-  "Returns the component named `component-name` from the system atom."
-  [component-name]
-  (component-name @@(resolve 'dungeonstrike.core/system)))
+            '[dungeonstrike.dev :refer [p]]))
 
 (defmacro p
   "Logs a message to the log console and to stdout."

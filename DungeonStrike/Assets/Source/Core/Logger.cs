@@ -31,5 +31,11 @@ namespace DungeonStrike.Source.Core
         {
             Debug.Log(LogWriter.FormatForLogOutput(message, _logContext, false, arguments));
         }
+
+        /// <returns>The client ID associated with the current log context.</returns>
+        public string CurrentClientId()
+        {
+            return _logContext.ClientId;
+        }
     }
 }

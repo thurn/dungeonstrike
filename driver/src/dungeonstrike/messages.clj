@@ -6,16 +6,6 @@
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
-(defprotocol MessageSender
-  "Abstraction layer for the act of sending messages from the driver to the
-   client."
-  (send-message! [this message]
-    "Sends `message` to the client."))
-
-(defprotocol MessageReceiver
-  "Abstraction layer for the act of receiving messages from the client."
-  (receive-message [this message]))
-
 (s/def :m/x integer?)
 (s/def :m/y integer?)
 (def position-spec
@@ -56,7 +46,9 @@
   "A map containing all possible fields which can be found in a message, keyed
    by field keyword."
   (into {}
-        [(deffield :m/client-log-file-path string?)
+        [(deffield :m/client-id string?)
+
+         (deffield :m/client-log-file-path string?)
 
          (deffield :m/scene-name scene-names)
 
@@ -94,7 +86,7 @@
 
          (defmessage :m/client-connected
            "Message sent by the client when a connection is first established."
-           [:m/client-log-file-path])
+           [:m/client-log-file-path :m/client-id])
 
          (defmessage :m/load-scene
            "Loads a scene by name"

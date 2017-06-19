@@ -6,7 +6,8 @@
 (deftest client-connected
   (is (some #{(nodes/new-effect :debug-gui [[:#send-button] :enabled? true])}
             (nodes/evaluate :m/client-connected
-                            {:m/client-log-file-path "foo/bar"}))))
+                            {:m/client-log-file-path "foo/bar"
+                             :m/client-id "1"}))))
 
 (deftest client-disconnected
   (is (= (nodes/new-effect :debug-gui [[:#send-button] :enabled? false])
