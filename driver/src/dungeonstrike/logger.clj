@@ -54,7 +54,7 @@
 (mount/defstate debug-log-channel
   "Channel on which new log entries should be published. Consumes log entry
    strings and produces parsed log entries."
-  :start (async/chan (async/buffer 1024) debug-log-transducer)
+  :start (async/chan 1 debug-log-transducer)
   :stop (async/close! debug-log-channel))
 
 (mount/defstate debug-log-mult

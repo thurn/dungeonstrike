@@ -9,8 +9,12 @@
 
 (mount/defstate requests-channel
   "Channel for requests to the Nodes system."
-  :start (async/chan 1024)
+  :start (async/chan)
   :stop (async/close! requests-channel))
+
+(mount/defstate requests-mult
+  "Mult over requests-channel."
+  :start (async/mult requests-channel))
 
 (s/def :r/request-type keyword?)
 

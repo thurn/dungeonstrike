@@ -1,7 +1,7 @@
 (ns dungeonstrike.main
   "Main entry point when invoked from the command line."
   (:gen-class)
-  (:require [clojure.core.async :as async :refer [<!]]
+  (:require [clojure.core.async :as async]
             [clojure.spec.test :as spec-test]
             [clojure.tools.cli :as cli]
             [dungeonstrike.exception-handler :as exception-handler]
@@ -17,12 +17,15 @@
            (dungeonstrike.logger LoggerEffector)))
 (dev/require-dev-helpers)
 
+(mount/defstate requests-channel
+  :start (async/tap requests/requests-mult (async/chan)))
+
 (defn- start-nodes
   "Starts a go loop which monitors the system `requests-channel` for new
    requests intended for execution by `nodes/execute!`."
   [query-handlers effect-handlers]
   (async/go-loop []
-    (when-let [request (<! requests/requests-channel)]
+    (when-let [request (async/<! requests-channel)]
       (nodes/execute! (requests/node-for-request request)
                       request
                       query-handlers
