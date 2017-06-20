@@ -96,18 +96,23 @@
         prerequisites (into #{} (remove nil? (map :prerequisite recordings)))]
     (remove prerequisites (map :name recordings))))
 
+(declare recording-sequence-for-all-tests)
+
 (defn- recording-sequence-for-test
   "Returns the sequence of recording objects consisting of all of the recursive
    prerequisites of `test-name` followed by the recording object for `test-name`
-   itself."
+   itself. Alternativly, if `test-name` is `:all-tests`, runs the recording
+   sequence for all tests."
   [test-name]
-  (let [recording (edn/read-string (slurp (io/file paths/test-recordings-path
-                                                   test-name)))]
-    (when (empty? recording)
-      (throw (RuntimeException. (str "Recording not found" test-name))))
-    (if-let [prerequisite (:prerequisite recording)]
-      (conj (recording-sequence-for-test prerequisite) recording)
-      [recording])))
+  (if (= test-name :all-tests)
+    (recording-sequence-for-all-tests)
+    (let [recording (edn/read-string (slurp (io/file paths/test-recordings-path
+                                                     test-name)))]
+      (when (empty? recording)
+        (throw (RuntimeException. (str "Recording not found" test-name))))
+      (if-let [prerequisite (:prerequisite recording)]
+        (conj (recording-sequence-for-test prerequisite) recording)
+        [recording]))))
 
 (defn- recording-sequence-for-all-tests
   "Returns the sequence of recording objects required to run all recording-based
@@ -116,24 +121,26 @@
   (flatten (map #(recording-sequence-for-test (str % ".edn"))
                 (all-tests))))
 
-(s/fdef run-integration-test :args (s/cat :test-name string?))
+(s/fdef run-integration-test :args
+        (s/cat :test-name (s/or :test-name string? :test-keyword keyword?)))
 (defn run-integration-test
-  "Runs a recording-based integration test. Each test recording consists of a
-   message to send and a set of recorded logs which are expected in response to
-   the message. Recordings can also have a 'prerequisite' recording, which means
-   that they expect the named recording to be played first in order to set up
-   their test state.
+  "Runs recording-based integration tests. Each test recording consists of a
+  message to send and a set of recorded logs which are expected in response to
+  the message. Recordings can also have a 'prerequisite' recording, which means
+  that they expect the named recording to be played first in order to set up
+  their test state. If the argument is a string, the named test is run. if the
+  argument is `:all-tests`, then all tests will be run.
 
-   At a high level, this function connects to the rest of the system, waits for
-   startup to complete, recursively runs tests for the chain of prerequisites
-   for the recording named in `test-name`, and then sends the message specified
-   in this recording and verifies that the subsequent system logs match the
-   expected log entries. Each entry is tagged with a log `:source` -- logs with
-   the same `:source` must happen in the listed order. Logs with different log
-   sources can occur in any order.
+  At a high level, this function connects to the rest of the system,
+  recursively runs tests for the chain of prerequisites for the recording named
+  in `test-name`, and then sends the message specified in this recording and
+  verifies that the subsequent system logs match the expected log entries. Each
+  entry is tagged with a log `:source` -- logs with the same `:source` must
+  happen in the listed order. Logs with different log sources can occur in any
+  order.
 
-   Returns a channel which will receive the result of running the test on
-   completion."
+  Returns a channel which will receive the result of running the test on
+  completion."
   [test-name]
   (let [recordings (recording-sequence-for-test test-name)
         result-channel (async/chan)]

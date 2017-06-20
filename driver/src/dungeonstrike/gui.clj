@@ -166,6 +166,8 @@
                    (fn [e]
                      (when-let [test (seesaw/value test-list)]
                        (run-test (file-names (seesaw/selection test-list))))))
+    (seesaw/listen run-all-button :action
+                   (fn [e] (run-test :all-tests)))
     (seesaw/listen test-list :selection
                    (fn [e]
                      (seesaw/config! run-selected-button :enabled? true)))
