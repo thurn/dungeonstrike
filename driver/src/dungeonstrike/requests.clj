@@ -28,6 +28,9 @@
 (defmethod request-type :r/client-disconnected [_]
   some?)
 
+(defmethod request-type :r/message-selected [_]
+  (s/keys :req [:m/message-type]))
+
 (s/def :r/request (s/multi-spec request-type :r/request-type))
 
 (s/fdef node-for-request :args (s/cat :request :r/request) :ret keyword?)
@@ -38,4 +41,8 @@
     (request :m/message-type)
     request-type))
 
-(s/def :r/test (s/and :m/message :r/request))
+(s/fdef send-request! :args (s/cat :request :r/request))
+(defn send-request!
+  "Helper method to send a request."
+  [request]
+  (async/put! requests-channel request))

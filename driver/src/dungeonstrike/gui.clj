@@ -37,6 +37,11 @@
 (mount/defstate ^:private recording-state
   :start (atom {:recording? false}))
 
+(mount/defstate ^:private gui-state
+  :start (atom {}))
+
+(declare update-frame!)
+
 (defn- title-font
   "Font to use in section headers"
   []
@@ -50,7 +55,10 @@
         (seesaw/combobox :id field-name :model field)
 
         (= messages/position-spec field)
-        (seesaw/text :id field-name :text "")
+        (seesaw/text :id field-name :text "0,0")
+
+        (= field-name :m/new-entity-id)
+        (seesaw/text :id field-name :text (uuid/new-entity-id))
 
         (= string? field)
         (seesaw/text :id field-name :text "")
@@ -70,10 +78,6 @@
   (cond
     (= key :m/position)
     (assoc message key (process-position value))
-    (= key :m/new-entity-id)
-    (if (= "" value)
-      (assoc message key (uuid/new-entity-id))
-      (assoc message key value))
     (= "m" (namespace key))
     (assoc message key value)
     :otherwise
@@ -84,14 +88,11 @@
   [message-form]
   (fn [event]
     (let [form-value (seesaw/value message-form)
-          message (reduce-kv process-form-values {} form-value)
-          message-id (uuid/new-message-id)
-          message-id-label (seesaw/select message-form [:#message-id-label])
-          message-with-id (assoc message :m/message-id message-id)]
+          message (reduce-kv process-form-values {} form-value)]
       (when (:recording? @recording-state)
-        (swap! recording-state assoc :message->client message-with-id))
-      (seesaw/config! message-id-label :text message-id)
-      (websocket/send-message! message-with-id))))
+        (swap! recording-state assoc :message->client message))
+      (websocket/send-message! message)
+      (update-frame!))))
 
 (defn- message-form-items [send-button message-picker message-type]
   (concat
@@ -100,31 +101,37 @@
     [(seesaw/label "Message Type")]
     [message-picker "wrap"]
     [(seesaw/label "Message ID")]
-    [(seesaw/label :id :message-id-label
-                   :text "M:0000000000000000000000") "wrap"]]
+    [(seesaw/label :id :m/message-id
+                   :text (uuid/new-message-id)) "wrap"]]
    (mapcat form-for-field (message-type messages/messages))
    [[send-button "skip, span, wrap"]]))
 
-(defn- message-selected-fn [send-button panel message-picker]
-  (fn [event]
-    (seesaw/config! panel :items
-                    (message-form-items send-button
-                                        message-picker
-                                        (seesaw/selection message-picker)))))
+(defn- message-selected-fn [message-picker]
+  (fn [e]
+    (requests/send-request!
+     {:r/request-type :r/message-selected,
+      :m/message-type (seesaw/selection message-picker)})))
+
+(nodes/defnode :r/message-selected
+  [:m/message-type]
+  (nodes/new-effect :debug-gui [:#message-form {:selected message-type}]))
+
 (defn- send-message-panel
   "UI for 'Send Message' panel."
   []
   (let [message-types (keys messages/messages)
         message-picker (seesaw/combobox :id :m/message-type
                                         :model message-types)
+        enabled? (get-in @gui-state [:#send-button :enabled?] false)
         send-button (seesaw/button :text "Send!"
                                    :id :send-button
-                                   :enabled? false)
-        form-items (message-form-items send-button message-picker :m/load-scene)
+                                   :enabled? enabled?)
+        selected (get-in @gui-state [:#message-form :selected] :m/load-scene)
+        form-items (message-form-items send-button message-picker selected)
         panel (mig/mig-panel :id :message-form :items form-items)]
-    (seesaw/selection! message-picker :m/load-scene)
+    (seesaw/selection! message-picker selected)
     (seesaw/listen message-picker :selection
-                   (message-selected-fn send-button panel message-picker))
+                   (message-selected-fn message-picker))
     (seesaw/listen send-button :action (on-send-button-clicked panel))
     panel))
 
@@ -299,11 +306,13 @@
            [(log-split)
             "aligny top, span, grow, push"]]))
 
+(mount/defstate ^:private frame-right-content :start (right-content))
+
 (defn- frame-content
   "Constructs all UI for the debug window"
   []
   (seesaw/left-right-split (left-content)
-                           (right-content)
+                           frame-right-content
                            :divider-location 1/3))
 
 (mount/defstate ^:private frame
@@ -313,6 +322,14 @@
   :stop (when frame
           (seesaw/config! frame :visible? false)
           (seesaw/dispose! frame)))
+
+(defn- update-frame!
+  "Recreates all frame content."
+  []
+  (seesaw/config! frame :content
+                  (seesaw/left-right-split (left-content)
+                                           frame-right-content
+                                           :divider-location 1/3)))
 
 (defn- start-logs
   "Starts a go loop to pull logs out of the debug log channel and render them
@@ -437,14 +454,14 @@
 
 (nodes/defnode :m/client-connected
   []
-  (nodes/new-effect :debug-gui [[:#send-button] :enabled? true]))
+  (nodes/new-effect :debug-gui [:#send-button {:enabled? true}]))
 
 (nodes/defnode :r/client-disconnected
   []
-  (nodes/new-effect :debug-gui [[:#send-button] :enabled? false]))
+  (nodes/new-effect :debug-gui [:#send-button {:enabled? false}]))
 
 (defrecord GuiEffector []
   nodes/EffectHandler
-  (execute-effect! [_ [selector key value]]
-    (let [element (seesaw/select frame selector)]
-      (seesaw/config! element key value))))
+  (execute-effect! [_ [key config]]
+    (swap! gui-state assoc key config)
+    (update-frame!)))
