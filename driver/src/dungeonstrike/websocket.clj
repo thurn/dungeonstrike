@@ -6,7 +6,7 @@
             [clojure.edn :as edn]
             [clojure.spec :as s]
             [clojure.string :as string]
-            [dungeonstrike.logger :as logger :refer [log error die!]]
+            [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.requests :as requests]
             [camel-snake-kebab.core :as case]
@@ -14,9 +14,6 @@
             [org.httpkit.server :as http-kit]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
-
-(mount/defstate ^:private log-context
-  :start (logger/component-log-context "Websocket"))
 
 (defn- to-json
   "Converts a message map into a JSON string."
@@ -50,16 +47,17 @@
   "Handler invoked when the websocket server receives a new message."
   [data]
   (let [message (parse-json data)]
-    (log log-context "Websocket got message" message)
+    (logger/log "Websocket got message" message)
     (if (s/valid? :m/message message)
       (async/put! requests/requests-channel
                   (assoc message :r/request-type :r/client-message))
-      (error "Invalid message received" (s/explain :m/message message)))))
+      (logger/error "Invalid message received"
+                    (s/explain :m/message message)))))
 
 (defn- channel-closed-handler
   "Handler for websocket channel close events."
   [status]
-  (log log-context "Driver connection closed" status)
+  (logger/log "Driver connection closed" status)
   (when-not (= status :server-close)
     (async/put! requests/requests-channel
                 {:r/request-type :r/client-disconnected})))
@@ -91,9 +89,9 @@
   (let [socket @socket-atom]
     (if (and (some? socket) (http-kit/open? socket))
       (do
-        (log log-context "Websocket sending message" message)
+        (logger/log "Websocket sending message" message)
         (let [json (to-json message)
               result (http-kit/send! socket json)]
           (when-not result
-            (error log-context "Unable to send message" message))))
-      (error log-context "Unable to send: Channel is closed" message))))
+            (logger/error "Unable to send message" message))))
+      (logger/error "Unable to send: Channel is closed" message))))

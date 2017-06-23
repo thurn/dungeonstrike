@@ -5,7 +5,7 @@
             [clojure.java.io :as io]
             [clojure.spec :as s]
             [clojure.string :as string]
-            [dungeonstrike.logger :as logger :refer [log]]
+            [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.nodes :as nodes]
             [dungeonstrike.paths :as paths]
@@ -15,9 +15,6 @@
   (:import (org.apache.commons.io.input Tailer TailerListener
                                         TailerListenerAdapter)))
 (dev/require-dev-helpers)
-
-(mount/defstate ^:private log-context
-  :start (logger/component-log-context "LogTailer"))
 
 (defn- new-tailer
   "Creates a new Tailer object which will automatically monitor additions to the
@@ -47,4 +44,4 @@
   (execute-effect! [_ log-path]
     (when-not (@tailers log-path)
       (swap! tailers assoc log-path (new-tailer log-path)))
-    (log log-context "Client connected")))
+    (logger/log "Client connected")))

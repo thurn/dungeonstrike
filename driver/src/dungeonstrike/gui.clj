@@ -7,7 +7,7 @@
             [clojure.spec :as s]
             [clojure.string :as string]
             [clojure-watch.core :as watch]
-            [dungeonstrike.logger :as logger :refer [log error log-important!]]
+            [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.nodes :as nodes]
             [dungeonstrike.paths :as paths]
@@ -27,9 +27,6 @@
            (javax.swing.event ListSelectionListener)
            (javax.swing.table DefaultTableCellRenderer TableRowSorter)))
 (dev/require-dev-helpers)
-
-(mount/defstate ^:private log-context
-  :start (logger/component-log-context "DebugGui"))
 
 (mount/defstate ^:private log-channel
   :start (async/tap logger/debug-log-mult (async/chan)))
@@ -161,13 +158,13 @@
   "Requests to run the test named in `test-name`, or all tests if the keyword
    `:all-tests` is passed."
   [test-name]
-  (log-important! log-context "Running test" test-name)
+  (logger/log-important! "Running test" test-name)
   (async/go
     (let [{:keys [:status :message] :as result}
           (<! (test-runner/run-integration-test test-name))]
       (if (= status :success)
-        (log-important! log-context "Test passed!" test-name)
-        (error log-context message result)))))
+        (logger/log-important! "Test passed!" test-name)
+        (logger/error message result)))))
 
 (defn- tests-panel
   "UI for the 'Tests' panel"
@@ -435,7 +432,7 @@
                                        :message->client initial-message
                                        :entries entries})]
             (spit output-file output)
-            (log log-context "Wrote new recording" recording-name))))))))
+            (logger/log "Wrote new recording" recording-name))))))))
 
 (defn- new-recording-fn
   "Returns a function to act as the listener for the 'Start Recording' button."

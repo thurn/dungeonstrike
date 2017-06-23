@@ -18,7 +18,6 @@
   `(do
      (require '[dungeonstrike.logger])
      (dungeonstrike.logger/log
-      (dungeonstrike.logger/map->LogContext {})
       ~message
       ~@arguments)
      (println ~message (str ~@arguments))))
