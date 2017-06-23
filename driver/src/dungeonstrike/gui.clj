@@ -37,6 +37,11 @@
 (mount/defstate ^:private recording-state
   :start (atom {:recording? false}))
 
+;; State which should be persisted between restarts, mostly for convenience so
+;; that you don't constantly need to re-navigate to the same view. Use with
+;; caution.
+(defonce persistent-state (atom {}))
+
 (mount/defstate ^:private gui-state
   :start (atom {}))
 
@@ -114,7 +119,8 @@
 
 (nodes/defnode :r/message-selected
   [:m/message-type]
-  (nodes/new-effect :debug-gui [:#message-form {:selected message-type}]))
+  (nodes/new-effect :debug-gui [:persistent-state :#message-form
+                                {:selected message-type}]))
 
 (defn- send-message-panel
   "UI for 'Send Message' panel."
@@ -126,7 +132,8 @@
         send-button (seesaw/button :text "Send!"
                                    :id :send-button
                                    :enabled? enabled?)
-        selected (get-in @gui-state [:#message-form :selected] :m/load-scene)
+        selected (get-in @persistent-state
+                         [:#message-form :selected] :m/load-scene)
         form-items (message-form-items send-button message-picker selected)
         panel (mig/mig-panel :id :message-form :items form-items)]
     (seesaw/selection! message-picker selected)
@@ -188,11 +195,15 @@
 
 (defn- left-content
   []
-  (seesaw/tabbed-panel :placement :top
-                       :tabs [{:title "Send Message"
-                               :content (send-message-panel)}
-                              {:title "Tests"
-                               :content (tests-panel)}]))
+  (let [panel (seesaw/tabbed-panel :placement :top
+                                   :tabs [{:title "Send Message"
+                                           :content (send-message-panel)}
+                                          {:title "Tests"
+                                           :content (tests-panel)}])]
+    (seesaw/listen panel :selection
+                   (fn [e] (swap! persistent-state assoc :left-tab-index
+                                  (:index (seesaw/selection panel)))))
+    (seesaw/selection! panel (get @persistent-state :left-tab-index 0))))
 
 (defn- on-log-selected
   "Callback when a log entry is selected"
@@ -454,14 +465,16 @@
 
 (nodes/defnode :m/client-connected
   []
-  (nodes/new-effect :debug-gui [:#send-button {:enabled? true}]))
+  (nodes/new-effect :debug-gui [:gui-state :#send-button {:enabled? true}]))
 
 (nodes/defnode :r/client-disconnected
   []
-  (nodes/new-effect :debug-gui [:#send-button {:enabled? false}]))
+  (nodes/new-effect :debug-gui [:gui-state :#send-button {:enabled? false}]))
 
 (defrecord GuiEffector []
   nodes/EffectHandler
-  (execute-effect! [_ [key config]]
-    (swap! gui-state assoc key config)
+  (execute-effect! [_ [state key config]]
+    (if (= state :persistent-state)
+      (swap! persistent-state assoc key config)
+      (swap! gui-state assoc key config))
     (update-frame!)))
