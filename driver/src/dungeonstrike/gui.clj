@@ -158,12 +158,12 @@
   "Requests to run the test named in `test-name`, or all tests if the keyword
    `:all-tests` is passed."
   [test-name]
-  (logger/log-important! "Running test" test-name)
+  (logger/log "Running test" test-name {:important? true})
   (async/go
     (let [{:keys [:status :message] :as result}
           (<! (test-runner/run-integration-test test-name))]
       (if (= status :success)
-        (logger/log-important! "Test passed!" test-name)
+        (logger/log "Test passed!" test-name {:important? true})
         (logger/error message result)))))
 
 (defn- tests-panel

@@ -118,13 +118,13 @@
   "Formats a message and message arguments for output as a log message."
   [message arg-names arguments]
   (let [args (map list arg-names arguments)
+        symbol-args (filter #(symbol? (first %)) args)
         format-fn (fn [[key value]] (str key "=" (info value)))]
-    (if (empty? arg-names)
+    (if (empty? symbol-args)
       message
-      (str message " [" (string/join "; " (map format-fn args)) "]"))))
+      (str message " [" (string/join "; " (map format-fn symbol-args)) "]"))))
 
 (s/fdef log-helper :args (s/cat :message string?
-                                :important? boolean?
                                 :error? boolean?
                                 :line any?
                                 :rest (s/* any?)))
@@ -133,26 +133,14 @@
   map which includes the provided context and a `:message` entry with a
   formatted version of the log message and its arguments. Do not invoke this
   function directly."
-  [message important? error? line & [arg-names & arguments]]
+  [message error? line & [arg-names & arguments]]
   (apply merge {:driver-id driver-id
                 :message (format-message message
                                          arg-names
                                          arguments)
-                :important? important?
                 :error? error?
                 :line line}
          (filter map? arguments)))
-
-(defmacro log-important!
-  "Logs a message as in `log`, but flags it as 'important' for special handling
-   in the logging UI."
-  [message & arguments]
-  `(timbre/info (log-helper ~message
-                            true
-                            false
-                            ~(:line (meta &form))
-                            '~arguments
-                            ~@arguments)))
 
 (defmacro log
   "Logs a message with optional details. Argument expressions are are preserved
@@ -162,7 +150,6 @@
   [message & arguments]
   `(timbre/info (log-helper ~message
                             false
-                            false
                             ~(:line (meta &form))
                             '~arguments
                             ~@arguments)))
@@ -171,7 +158,6 @@
   "Logs an error in the style of `log` with optional details."
   [message & arguments]
   `(timbre/error (log-helper ~message
-                             false
                              true
                              ~(:line (meta &form))
                              '~arguments
@@ -189,7 +175,6 @@
   [message & arguments]
   `(do
      (timbre/error (log-helper ~message
-                               false
                                true
                                ~(:line (meta &form))
                                '~arguments
