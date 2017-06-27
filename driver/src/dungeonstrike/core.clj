@@ -1,7 +1,6 @@
 (ns dungeonstrike.core
   "Main entry point for the application during interactive development"
   (:require [clojure.core.async :as async]
-            [clojure.spec.test :as spec-test]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.log-tailer :as log-tailer]
             [dungeonstrike.code-generator]

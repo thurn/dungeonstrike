@@ -1,7 +1,7 @@
 (ns dungeonstrike.messages
   "Contains specifications for all messages sent between the driver and the
    client."
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [clojure.set :as set]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)

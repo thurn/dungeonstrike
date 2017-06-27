@@ -48,7 +48,7 @@
    external world.
 
    The `update!` implementation can have arbitrary side effects including,
-  potentially, submitting additional requests for execution, and must return
+  potentially, submitting additional requests for execution, and should return
   nil. Note that `update!` is invoked synchronously *before* the global universe
   state is updated, and thus any new requests should be submitted via a channel
   queue as discussed below."
@@ -133,7 +133,7 @@
   Each request has a `request-type` keyword to identify it.
 
    For each request type, there must be a corresponding implementation of the
-  `evalaute` multimethod: a pure function which accepts the request value and
+  `evaluate` multimethod: a pure function which accepts the request value and
   the current universe state and produces a new universe state. When a request
   is executed, this method is invoked to obtain the new universe state. Then,
   for each domain which has changed (as defined by `identical?`), the

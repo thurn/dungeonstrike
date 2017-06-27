@@ -11,10 +11,11 @@
 
   :main dungeonstrike.main
 
-  :dependencies [[org.clojure/clojure "1.9.0-alpha15"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha16"]
                  [org.clojure/core.async "0.3.442"]
                  [org.clojure/data.json "0.2.6"]
                  [org.clojure/tools.cli "0.3.5"]
+                 [org.clojure/spec.alpha "0.1.108"]
                  [camel-snake-kebab "0.4.0"]
                  [clojure-watch "0.1.13"]
                  [com.taoensso/timbre "4.8.0"]
@@ -23,6 +24,7 @@
                  [http-kit "2.2.0"]
                  [io.aviso/pretty "0.1.33"]
                  [mount "0.1.11"]
+                 [orchestra "0.3.0"]
                  [seesaw "1.4.5"]
                  [selmer "1.10.7"]]
 

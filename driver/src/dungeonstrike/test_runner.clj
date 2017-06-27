@@ -3,7 +3,7 @@
   (:require [clojure.core.async :as async :refer [<! >!]]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.paths :as paths]

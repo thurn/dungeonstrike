@@ -4,7 +4,7 @@
   (:require [clojure.core.async :as async :refer [<!]]
             [clojure.java.io :as io]
             [clojure.pprint :as pprint]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [clojure-watch.core :as watch]
             [dungeonstrike.logger :as logger]

@@ -2,7 +2,7 @@
   "Centralized definitions for request messages sent through the Reconciler
    system."
   (:require [clojure.core.async :as async]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [dungeonstrike.messages :as messages]
             [mount.core :as mount]
             [dungeonstrike.dev :as dev]))

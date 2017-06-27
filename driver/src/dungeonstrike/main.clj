@@ -2,8 +2,7 @@
   "Main entry point when invoked from the command line."
   (:gen-class)
   (:require [clojure.core.async :as async]
-            [clojure.spec :as s]
-            [clojure.spec.test :as spec-test]
+            [clojure.spec.alpha :as s]
             [clojure.tools.cli :as cli]
             [dungeonstrike.exception-handler :as exception-handler]
             [dungeonstrike.log-tailer :as log-tailer]
@@ -14,6 +13,7 @@
             [dungeonstrike.test-runner]
             [dungeonstrike.websocket]
             [mount.core :as mount]
+            [orchestra.spec.test :as orchestra]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
@@ -41,7 +41,7 @@
 (defn start!
   "Starts the system via the mount framework."
   [arguments]
-  (spec-test/instrument)
+  (orchestra/instrument)
   (exception-handler/set-default-exception-handler!)
   (mount/start-with-args arguments))
 

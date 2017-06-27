@@ -1,6 +1,6 @@
 (ns dungeonstrike.request-handlers
   "Contains evaluation functions for client messages."
-  (:require [clojure.spec :as s]
+  (:require [clojure.spec.alpha :as s]
             [dungeonstrike.reconciler :as reconciler]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)

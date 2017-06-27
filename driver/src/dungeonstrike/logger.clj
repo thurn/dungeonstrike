@@ -4,7 +4,7 @@
   (:require [clojure.core.async :as async]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [dungeonstrike.paths :as paths]
             [dungeonstrike.reconciler :as reconciler]

@@ -3,7 +3,7 @@
    debug log channel when new log entries are appended to the end of the file."
   (:require [clojure.core.async :as async :refer [<!]]
             [clojure.java.io :as io]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]

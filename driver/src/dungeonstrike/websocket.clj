@@ -4,7 +4,7 @@
   (:require [clojure.core.async :as async :refer [<!]]
             [clojure.data.json :as json]
             [clojure.edn :as edn]
-            [clojure.spec :as s]
+            [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
