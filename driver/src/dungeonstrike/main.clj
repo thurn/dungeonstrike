@@ -2,44 +2,48 @@
   "Main entry point when invoked from the command line."
   (:gen-class)
   (:require [clojure.core.async :as async]
+            [clojure.spec :as s]
             [clojure.spec.test :as spec-test]
             [clojure.tools.cli :as cli]
             [dungeonstrike.exception-handler :as exception-handler]
             [dungeonstrike.log-tailer :as log-tailer]
             [dungeonstrike.logger :as logger]
-            [dungeonstrike.nodes :as nodes]
+            [dungeonstrike.reconciler :as reconciler]
+            [dungeonstrike.request-handlers]
             [dungeonstrike.requests :as requests]
             [dungeonstrike.test-runner]
             [dungeonstrike.websocket]
             [mount.core :as mount]
-            [dungeonstrike.dev :as dev])
-  (:import (dungeonstrike.log_tailer LogEffector)
-           (dungeonstrike.logger LoggerEffector)))
+            [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
-(mount/defstate requests-channel
-  :start (async/tap requests/requests-mult (async/chan)))
+(defmethod reconciler/valid-request? :default [_ request]
+  (s/valid? :r/request request))
 
-(defn- start-nodes
+(defmethod reconciler/valid-domain? :default [_ _] true)
+
+(defmethod reconciler/log :default [& args]
+  (apply println args))
+
+(defn- start-reconciler
   "Starts a go loop which monitors the system `requests-channel` for new
-   requests intended for execution by `nodes/execute!`."
-  [query-handlers effect-handlers]
+   requests intended for execution by `reconciler/execute!`."
+  []
   (async/go-loop []
-    (when-let [request (async/<! requests-channel)]
-      (nodes/execute! (requests/node-for-request request)
-                      request
-                      query-handlers
-                      effect-handlers)
+    (when-let [request (async/<! requests/requests-channel)]
+      (reconciler/execute! (requests/request-type request) request)
       (recur))))
+
+(mount/defstate reconciler
+  :start (start-reconciler)
+  :stop (async/close! requests/requests-channel))
 
 (defn start!
   "Starts the system via the mount framework."
-  [arguments query-handlers effect-handlers]
+  [arguments]
   (spec-test/instrument)
   (exception-handler/set-default-exception-handler!)
-  (let [result (mount/start-with-args arguments)]
-    (start-nodes query-handlers effect-handlers)
-    result))
+  (mount/start-with-args arguments))
 
 (def ^:private cli-options
   [[nil "--help" "Print this help message and quit"]
@@ -62,8 +66,7 @@
       (exit 0 summary)
 
       (:test options)
-      (start! options {} {:log-tailer (log-tailer/LogEffector.)
-                          :logger (logger/LoggerEffector.)})
+      (start! options)
 
       :otherwise
       (exit 1 (str "Unrecognized flag(s).\n"

@@ -7,8 +7,8 @@
             [clojure.string :as string]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
-            [dungeonstrike.nodes :as nodes]
             [dungeonstrike.paths :as paths]
+            [dungeonstrike.reconciler :as reconciler]
             [dungeonstrike.requests :as requests]
             [mount.core :as mount]
             [dungeonstrike.dev :as dev])
@@ -35,13 +35,9 @@
   :start (atom {paths/driver-log-path (new-tailer paths/driver-log-path)})
   :stop (doseq [[path tailer] @tailers] (when tailer (.stop tailer))))
 
-(nodes/defnode :m/client-connected
-  [:m/client-log-file-path]
-  (nodes/new-effect :log-tailer client-log-file-path))
-
-(defrecord LogEffector []
-  nodes/EffectHandler
-  (execute-effect! [_ log-path]
+(defmethod reconciler/update! :d/client-log-files
+  [_ client-log-files]
+  (doseq [log-path client-log-files]
     (when-not (@tailers log-path)
       (swap! tailers assoc log-path (new-tailer log-path)))
     (logger/log "Client connected")))

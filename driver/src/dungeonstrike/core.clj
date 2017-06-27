@@ -7,12 +7,8 @@
             [dungeonstrike.code-generator]
             [dungeonstrike.gui :as gui]
             [dungeonstrike.main :as main]
-            [dungeonstrike.nodes :as nodes]
             [mount.core :as mount]
-            [dungeonstrike.dev :as dev])
-  (:import (dungeonstrike.log_tailer LogEffector)
-           (dungeonstrike.logger LoggerEffector)
-           (dungeonstrike.gui GuiEffector)))
+            [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
 (defn stop!
@@ -24,6 +20,4 @@
   "Creates a new system and starts all components in it. For development use
    only."
   []
-  (main/start! {} {} {:log-tailer (log-tailer/LogEffector.)
-                      :logger (logger/LoggerEffector.)
-                      :debug-gui (gui/GuiEffector.)}))
+  (main/start! {}))

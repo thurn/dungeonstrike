@@ -37,7 +37,7 @@
   will be compared against the previous universe value and will cause the
   appropriate `update!` handlers to run, as described in that function's
   docstring."
-  (fn [request-type request universe] type))
+  (fn [request-type request universe] request-type))
 
 (defmulti update!
   "Multimethod for responding to state changes. The global system state (or
@@ -52,7 +52,9 @@
   nil. Note that `update!` is invoked synchronously *before* the global universe
   state is updated, and thus any new requests should be submitted via a channel
   queue as discussed below."
-  (fn [domain-key old-domain new-domain] domain-key))
+  (fn [domain-key new-domain] domain-key))
+
+(defmethod update! :default [_ _] nil)
 
 (defmulti valid-request?
   "Multimethod for validating request values before executing them. Will be
@@ -168,7 +170,7 @@
         (when-not (valid-domain? updated-key domain)
           (error! "Invalid domain returned!" updated-key domain))
         (log :new-value updated-key domain)
-        (update! updated-key (old-universe updated-key) domain)
+        (update! updated-key domain)
         (log :domain-updated updated-key)))
     (reset! universe new-universe)
     (log :universe-updated)

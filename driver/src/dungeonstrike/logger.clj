@@ -6,8 +6,8 @@
             [clojure.java.io :as io]
             [clojure.spec :as s]
             [clojure.string :as string]
-            [dungeonstrike.nodes :as nodes]
             [dungeonstrike.paths :as paths]
+            [dungeonstrike.reconciler :as reconciler]
             [dungeonstrike.uuid :as uuid]
             [mount.core :as mount]
             [taoensso.timbre :as timbre]
@@ -25,6 +25,10 @@
   "The unique string used to separate log messages from log metadata in lines of
    a log file."
   "\t\t»")
+
+(defmethod reconciler/update! :d/current-client-id
+  [_ client-id]
+  (reset! current-client-id client-id))
 
 (defn- logger-output-fn
   "Log output function as defined by the timbre logging library. Processes
@@ -180,12 +184,3 @@
                                '~arguments
                                ~@arguments))
      (throw-exception ~message '~arguments ~@arguments)))
-
-(nodes/defnode :m/client-connected
-  [:m/client-id]
-  (nodes/new-effect :logger client-id))
-
-(defrecord LoggerEffector []
-  nodes/EffectHandler
-  (execute-effect! [_ client-id]
-    (reset! current-client-id client-id)))

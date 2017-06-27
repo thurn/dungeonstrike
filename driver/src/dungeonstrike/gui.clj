@@ -9,8 +9,8 @@
             [clojure-watch.core :as watch]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
-            [dungeonstrike.nodes :as nodes]
             [dungeonstrike.paths :as paths]
+            [dungeonstrike.reconciler :as reconciler]
             [dungeonstrike.requests :as requests]
             [dungeonstrike.test-runner :as test-runner]
             [dungeonstrike.websocket :as websocket]
@@ -113,11 +113,6 @@
     (requests/send-request!
      {:r/request-type :r/message-selected,
       :m/message-type (seesaw/selection message-picker)})))
-
-(nodes/defnode :r/message-selected
-  [:m/message-type]
-  (nodes/new-effect :debug-gui [:persistent-state :#message-form
-                                {:selected message-type}]))
 
 (defn- send-message-panel
   "UI for 'Send Message' panel."
@@ -460,18 +455,9 @@
 (mount/defstate ^:private debug-gui
   :start (show-debug-gui))
 
-(nodes/defnode :m/client-connected
-  []
-  (nodes/new-effect :debug-gui [:gui-state :#send-button {:enabled? true}]))
-
-(nodes/defnode :r/client-disconnected
-  []
-  (nodes/new-effect :debug-gui [:gui-state :#send-button {:enabled? false}]))
-
-(defrecord GuiEffector []
-  nodes/EffectHandler
-  (execute-effect! [_ [state key config]]
-    (if (= state :persistent-state)
-      (swap! persistent-state assoc key config)
-      (swap! gui-state assoc key config))
-    (update-frame!)))
+(defmethod reconciler/update! :d/gui-configuration
+  [_ gui-state]
+  (doseq [[selector config] gui-state]
+    (let [widget (seesaw/select frame [selector])]
+      (doseq [[key value] config]
+        (seesaw/config! widget key value)))))
