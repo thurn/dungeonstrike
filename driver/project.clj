@@ -43,5 +43,6 @@
                                   [cider/cider-nrepl "0.14.0"]
                                   [debugger "0.2.0"]
                                   [expectations "2.2.0-beta1"]
+                                  [philoskim/debux "0.3.1"]
                                   [com.gfredericks/debug-repl "0.0.8"]]
                    :source-paths ["dev"]}})
