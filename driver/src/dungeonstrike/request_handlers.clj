@@ -1,22 +1,23 @@
 (ns dungeonstrike.request-handlers
-  "Contains evaluation functions for client messages."
+  "Contains evaluation functions for client messages and UI requests."
   (:require [clojure.spec.alpha :as s]
-            [dungeonstrike.reconciler :as reconciler]
+            [effects.core :as effects]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
-(defmethod reconciler/evaluate :m/client-connected
-  [_ {:keys [:m/client-log-file-path :m/client-id]}
-   {:keys [:d/client-log-files :d/gui-configuration] :as universe}]
-  (assoc universe
-         :d/client-log-files (conj (or client-log-files #{})
-                                   client-log-file-path)
-         :d/current-client-id client-id
-         :d/gui-configuration (assoc gui-configuration
-                                     :#send-button {:enabled? true})))
+(defmethod effects/evaluate :m/client-connected
+  [{:keys [:m/client-log-file-path :m/client-id]}]
+  [(effects/effect :dungeonstrike.logger/set-client-id :client-id client-id)
+   (effects/optional-effect :dungeonstrike.log-tailer/add-tailer
+                            :path client-log-file-path)
+   (effects/optional-effect :dungeonstrike.gui/config
+                            :selector :#send-button
+                            :key :enabled?
+                            :value true)])
 
-(defmethod reconciler/evaluate :r/client-disconnected
-  [_ _ {:keys [:d/gui-configuration] :as universe}]
-  (assoc universe
-         :d/gui-configuration (assoc gui-configuration
-                                     :#send-button {:enabled? false})))
+(defmethod effects/evaluate :r/client-disconnected
+  [_]
+  [(effects/optional-effect :dungeonstrike.gui/config
+                            :selector :#send-button
+                            :key :enabled?
+                            :value false)])

@@ -1,19 +1,17 @@
-(ns dungeonstrike.effects
+(ns effects.core
   "A simple library for transforming incoming requests into effects. See the
   docstring for `execute!` for an overview."
   (:require [clojure.core.async :as async]
+            [clojure.pprint :as pprint]
             [clojure.spec.alpha :as s]
-            [clojure.string :as string]
-            [dungeonstrike.dev :as dev]))
-(dev/require-dev-helpers)
-
-(defn- namespaced-keyword? [k] (and (keyword? k) (namespace k)))
+            [clojure.spec.gen.alpha :as gen]
+            [clojure.string :as string]))
 
 (def ^:private channel-class (class (async/chan)))
 
 (defn- channel? [c] (instance? channel-class c))
 
-(s/def ::namespaced-map (s/map-of namespaced-keyword? some?))
+(defn- namespaced-keyword? [k] (and (keyword? k) (namespace k)))
 
 (defmulti query
   "Multimethod which fetches additional state which is required to process a
@@ -42,83 +40,95 @@
 
 (defmethod query ::not-found [_ _] ::not-found)
 
-(s/fdef -query
+(s/fdef query'
         :args (s/cat :key namespaced-keyword? :value some?)
         :ret (s/or :channel channel? :not-found #{::not-found}))
-(defn- -query
-  "Temporary wrapper for `query` until spec supports multimethods."
+(defn query'
+  "Wrapper for `query` with spec support. Will be removed once specs can be
+   attached to multimethods."
   [key value]
   (query key value))
-
-(s/def ::effect-type namespaced-keyword?)
 
 (s/def ::optional? boolean?)
 
 (defmulti effect-spec
   "Multimethod for creating specs for `effect` objects returned from `evaluate`.
-  Will receive the returned effect, identified by the ::effect-type key.
-  Implementations should return a spec appropriate to the given effect type.
-
-  A default spec for all effects can alternatively be provided under the key
-  :default."
+  Implementations will receive a single argument, which they should ignore, and
+  should return a spec or predicate describing the given effect type."
   ::effect-type)
+
+(defmethod effect-spec :default [_] (s/keys :req [::effect-type]))
 
 (s/def ::effect (s/multi-spec effect-spec ::effect-type))
 
-(s/fdef effect
-        :args (s/cat :effect-type ::effect-type :args (s/* some?))
-        :ret ::effect)
+(s/def ::builder-args-spec
+  (s/or :keys (s/cat :type namespaced-keyword?
+                     :rest (s/* (s/cat :key keyword? :value some?)))
+        :map (s/cat :type namespaced-keyword? :map map?)))
+
+(s/fdef effect :args ::builder-args-spec :ret ::effect)
 (defn effect
   "Creates a new effect object, indicating some required mutation to the global
   system state. First argument should be a namespaced keyword which identifies
-  the effect, subsequent arguments are bundled into a map object representing
-  the effect value. Effects must be returned from `evaluate` method
+  the effect, subsequent argument can either be a map object or a series of
+  key-value pairs which will be bundled into a map object representing
+  the effect value. Effects are what must be returned from `evaluate` method
   implementations."
-  [effect-type & {:as args}]
-  (assoc args ::effect-type effect-type))
+  ([effect-type] (effect effect-type {}))
+  ([effect-type map] (assoc map ::effect-type effect-type))
+  ([effect-type key value & {:as args}]
+   (assoc args key value ::effect-type effect-type)))
 
 (s/fdef optional-effect
-        :args (s/cat :effect-type ::effect-type :args (s/* some?))
+        :args ::builder-args-spec
         :ret ::effect)
 (defn optional-effect
   "Creates an optional effect object. Optional effects are the same as regular
   effects, except that they are silently ignored if no `apply!` implementation
   has been provided. Optional effects can be used for e.g. taking special
-  actions in development builds."
-  [effect-type & {:as args}]
-  (assoc args ::effect-type effect-type ::optional? true))
+  actions in development builds. Arguments are the same as for `effect`."
+  ([effect-type] (effect effect-type {}))
+  ([effect-type map] (assoc map ::effect-type effect-type ::optional? true))
+  ([effect-type key value & {:as args}]
+   (assoc args key value ::effect-type effect-type ::optional? true)))
 
-(s/def ::effect-or-effect-sequence
-  (s/or :effect ::effect
-        :effect-sequence (s/and sequential?
-                                not-empty
-                                (s/coll-of ::effect))))
+(s/def ::effect-sequence (s/and sequential? not-empty (s/coll-of ::effect)))
 
 (defmulti request-spec
   "Multimethod for creating specs for requests passed to `evaluate`. Will
   receive the request supplied to `execute!` with a ::request-type key added
   identifying the type of request, as well as all query results added to the
-  map.  Implementations should return a spec appropriate to the given request
-  type.
-
-   A default spec for all requests can alternatively be provided under the
-  key :default."
+  map.  Implementations are passed a single argument, which they should ignore,
+  and should return a spec or predicate describing the given request type."
   ::request-type)
 
-(s/def ::request
-  (s/cat :request (s/and ::namespaced-map
-                         (s/multi-spec request-spec ::request-type))))
+(defmethod request-spec :default [_] (s/keys :req [::request-type]))
+
+(s/def ::request (s/multi-spec request-spec ::request-type))
+
+(s/fdef request :args ::builder-args-spec :ret ::request)
+(defn request
+  "Creates a new request object, indicating some desired system change which
+  needs to be transformed into side effects. Requests typically represent some
+  external stimulus to the system, such as a user interaction. First argument
+  should be a namespaced keyword which identifies the request, subsequent
+  argument can be a map or a series of key value pairs which will be bundled
+  into a map object."
+  ([request-type] (request request-type {}))
+  ([request-type map] (assoc map ::request-type request-type))
+  ([request-type key value & {:as args}]
+   (assoc args key value ::request-type request-type)))
 
 (defmulti evaluate
   "Pure function multimethod which transforms a request into effect objects.
+
    Must not have side effects!
 
    Implementations will be passed a 'request' map describing the desired system
   change, potentially populated with additional state obtained via `query`. The
-  implementation must return either an effect object created via the `effect` or
-  `optional-effect` functions or a sequence of such objects. These effects will
-  be applied by calling the appropriate `apply!` handlers when `execute!` is
-  called.
+  implementation must return a sequence of objects created by the `effect` or
+  `optional-effect` functions. These effects will be applied by `execute!` by
+  calling the appropriate `apply!` handlers in order.
 
    No default implementation is provided for `evaluate`, so an exception will be
   thrown if a request is received for an unrecognized type. This behavior can be
@@ -126,11 +136,12 @@
   ::request-type
   :default ::not-found)
 
-(s/fdef -evaluate
+(s/fdef evaluate'
         :args (s/cat :request ::request)
-        :ret ::effect-or-effect-sequence)
-(defn- -evaluate
-  "Temporary wrapper for `evaluate` until spec supports multimethods."
+        :ret ::effect-sequence)
+(defn evaluate'
+  "Wrapper for `evaluate` with spec support. Will be removed once specs can be
+   attached to multimethods."
   [request]
   (evaluate request))
 
@@ -154,11 +165,12 @@
 
 (defmethod apply! ::not-found [_] ::not-found)
 
-(s/fdef -apply!
+(s/fdef apply!'
         :args (s/cat :effect ::effect)
         :ret any?)
-(defn- -apply!
-  "Temporary wrapper for `apply!` until spec supports multimethods."
+(defn apply!'
+  "Wrapper for `apply!` with spec support. Will be removed once specs can be
+   attached to multimethods."
   [effect]
   (apply! effect))
 
@@ -193,10 +205,12 @@
   "Invokes the associated query handler for the provided 'key' and 'value',
   adding it to 'queries' if it is found."
   [queries key value]
-  (let [result (-query key value)]
+  (let [result (query' key value)]
     (if (= result ::not-found)
       queries
       (assoc queries key result))))
+
+(s/def ::namespaced-map (s/map-of namespaced-keyword? some?))
 
 (s/fdef validate-query-results
         :args (s/cat :results (s/coll-of ::namespaced-map)))
@@ -210,7 +224,7 @@
   "Returns a function which applies an effect via its `apply!` handler."
   [log]
   (fn [{:keys [::effect-type ::optional?] :as effect}]
-    (let [result (-apply! effect)
+    (let [result (apply!' effect)
           not-found? (= result ::not-found)]
       (cond
         (and not-found? optional?)
@@ -228,8 +242,7 @@
 (s/def ::exception-handler fn?)
 
 (s/fdef execute!
-        :args (s/cat :request-type namespaced-keyword?
-                     :request (s/? ::namespaced-map)
+        :args (s/cat :request ::request
                      :options (s/? (s/keys :opt-un
                                            [::log-fn ::exception-handler])))
         :ret channel?)
@@ -239,8 +252,9 @@
 
    A 'request' is a map describing some required change to the state of the
   system, usually based on some external stimulus such as a network request or a
-  user input. Each request has an associated 'request-type' which identifies
-  which piece of code knows how to handle a given request.
+  user input. Requests should be created by the `request` function. Each request
+  has an associated 'request-type' which identifies which piece of code knows
+  how to handle a given request.
 
     An 'effect' is some change to the state of the system, represented by an
   effect object returned by the `effect` function. When the `execute!` function
@@ -297,9 +311,8 @@
   from the channel normally for processing by the caller. If no exception
   handler is specified, exceptions will be thrown on the running background
   thread and handled by the system uncaught exception handler."
-  ([request-type] (execute! request-type {} {}))
-  ([request-type request] (execute! request-type request {}))
-  ([request-type request {:keys [:log-fn :exception-handler]}]
+  ([request] (execute! request {}))
+  ([{:keys [::request-type] :as request} {:keys [:log-fn :exception-handler]}]
    (let [log (or log-fn (constantly nil))
          queries (reduce-kv run-query {} request)]
      (log :request-received
@@ -307,13 +320,13 @@
            :queries (into [] (keys queries))})
      (async/go
        (try
-         (let [request-with-type (assoc request ::request-type request-type)
-               results (<? (async-map (vals queries) [{}]))
+         (let [results (<? (async-map (vals queries) [{}]))
                input (apply merge (conj (validate-query-results results)
-                                        request-with-type))]
-           (log :queries-completed :request-type request-type :results results)
-           (let [output (-evaluate input)
-                 effects (if (sequential? output) output [output])]
+                                        request))]
+           (when-not (empty? queries)
+             (log :queries-completed {:request-type request-type
+                                      :results results}))
+           (let [effects (evaluate' input)]
              (log :evaluated {:request-type request-type
                               :effects (mapv ::effect-type effects)})
              (let [apply-effect! (apply-effect-fn log)

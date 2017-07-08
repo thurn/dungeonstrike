@@ -1,14 +1,9 @@
-(ns dungeonstrike.effects-test
-  (:require [dungeonstrike.effects :as effects]
+(ns effects.core-test
+  (:require [effects.core :as effects]
             [clojure.core.async :as async]
             [clojure.test :as test :refer [deftest is]]
             [orchestra.spec.test :as orchestra]))
-
 (orchestra/instrument)
-
-;; Disable fine-grained spec validation for simplicity
-(defmethod effects/effect-spec :default [_] map?)
-(defmethod effects/request-spec :default [_] map?)
 
 (def numbers (atom #{}))
 
@@ -21,11 +16,10 @@
     (f)))
 
 (defn- run-execute!
-  ([request-type] (run-execute! request-type {} {}))
-  ([request-type request] (run-execute! request-type request {}))
-  ([request-type request options]
+  ([request] (run-execute! request {}))
+  ([request options]
    (let [handler {:exception-handler identity}
-         channel (effects/execute! request-type request (merge handler options))
+         channel (effects/execute! request (merge handler options))
          timeout (async/timeout 1000)
          [val port] (async/alts!! [channel timeout])]
      (when (= port timeout)
@@ -38,13 +32,13 @@
   (swap! numbers conj number))
 
 (defmethod effects/evaluate ::four [_]
-  (effects/effect ::number ::number 4))
+  [(effects/effect ::number ::number 4)])
 
 (defmethod effects/evaluate ::five [_]
-  (effects/effect ::number ::number 5))
+  [(effects/effect ::number ::number 5)])
 
 (deftest simple-execution
-  (run-execute! ::four {})
+  (run-execute! (effects/request ::four))
   (is (= #{4} @numbers)))
 
 (defmethod effects/evaluate ::four-five [_]
@@ -52,34 +46,32 @@
    (effects/effect ::number ::number 5)])
 
 (deftest two-effects
-  (run-execute! ::four-five {})
+  (run-execute! (effects/request ::four-five))
   (is (= #{4 5} @numbers)))
 
 (defmethod effects/evaluate ::plus-one
   [{:keys [::input]}]
-  (effects/effect ::number ::number (inc input)))
+  [(effects/effect ::number ::number (inc input))])
 
 (deftest request-execution
-  (run-execute! ::plus-one {::input 2})
+  (run-execute! (effects/request ::plus-one ::input 2))
   (is (= #{3} @numbers)))
 
 (defn- logger [log-type & args]
   (swap! logs conj [log-type (into [] args)]))
 
 (deftest test-log-fn
-  (run-execute! ::plus-one {::input 2} {:log-fn logger})
+  (run-execute! (effects/request ::plus-one ::input 2) {:log-fn logger})
   (is (=
        [[:request-received
-         [{:request-type :dungeonstrike.effects-test/plus-one,
-           :request #:dungeonstrike.effects-test{:input 2},
+         [{:request-type ::plus-one,
+           :request (effects/request ::plus-one ::input 2)
            :queries []}]]
-        [:queries-completed
-         [:request-type :dungeonstrike.effects-test/plus-one :results [{}]]]
         [:evaluated
-         [{:request-type :dungeonstrike.effects-test/plus-one,
+         [{:request-type ::plus-one,
            :effects [::number]}]]
         [:done
-         [{:request-type :dungeonstrike.effects-test/plus-one,
+         [{:request-type ::plus-one,
            :results :done}]]]
        @logs)))
 
@@ -91,28 +83,28 @@
 
 (defmethod effects/evaluate ::double-age
   [{:keys [::user-age]}]
-  (effects/effect ::number ::number (* 2 user-age)))
+  [(effects/effect ::number ::number (* 2 user-age))])
 
 (deftest test-query
-  (run-execute! ::double-age {::user-id 10})
+  (run-execute! (effects/request ::double-age ::user-id 10))
   (is (= #{100} @numbers)))
 
 (deftest test-query-logs
-  (run-execute! ::double-age {::user-id 10} {:log-fn logger})
+  (run-execute! (effects/request ::double-age ::user-id 10) {:log-fn logger})
   (is (= [[:request-received
-           [{:request-type :dungeonstrike.effects-test/double-age,
-             :request #:dungeonstrike.effects-test{:user-id 10},
-             :queries [:dungeonstrike.effects-test/user-id]}]]
+           [{:request-type ::double-age,
+             :request (effects/request ::double-age ::user-id 10)
+             :queries [::user-id]}]]
           [:queries-completed
-           [:request-type
-            :dungeonstrike.effects-test/double-age
-            :results
-            [#:dungeonstrike.effects-test{:user-age 50}]]]
+           [{:request-type
+             ::double-age
+             :results
+             [#::{:user-age 50}]}]]
           [:evaluated
-           [{:request-type :dungeonstrike.effects-test/double-age,
-             :effects [:dungeonstrike.effects-test/number]}]]
+           [{:request-type ::double-age,
+             :effects [::number]}]]
           [:done
-           [{:request-type :dungeonstrike.effects-test/double-age,
+           [{:request-type ::double-age,
              :results :done}]]]
          @logs)))
 
@@ -124,14 +116,15 @@
 
 (defmethod effects/evaluate ::age-and-car-number
   [{:keys [::user-age ::car-number]}]
-  (effects/effect ::number ::number (+ user-age car-number)))
+  [(effects/effect ::number ::number (+ user-age car-number))])
 
 (deftest test-two-queries
-  (run-execute! ::age-and-car-number {::user-id 10 ::car-id -2})
+  (run-execute! (effects/request ::age-and-car-number
+                                 ::user-id 10 ::car-id -2))
   (is (= #{48} @numbers)))
 
 (deftest unused-query
-  (run-execute! ::double-age {::user-id 10 ::car-id -2})
+  (run-execute! (effects/request ::double-age ::user-id 10 ::car-id -2))
   (is (= #{100} @numbers)))
 
 (defmethod effects/apply! ::async-number
@@ -146,25 +139,20 @@
   [(effects/effect ::async-number ::number (* 2 input))])
 
 (deftest test-async-effect
-  (run-execute! ::async-double {::input 3})
+  (run-execute! (effects/request ::async-double ::input 3))
   (is (= #{6} @numbers)))
 
 (deftest test-log-async-effect
-  (run-execute! ::async-double {::input 3} {:log-fn logger})
+  (run-execute! (effects/request ::async-double ::input 3) {:log-fn logger})
   (is (= [[:request-received
-           [{:request-type :dungeonstrike.effects-test/async-double,
-             :request #:dungeonstrike.effects-test{:input 3},
+           [{:request-type ::async-double,
+             :request (effects/request ::async-double ::input 3)
              :queries []}]]
-          [:queries-completed
-           [:request-type
-            :dungeonstrike.effects-test/async-double
-            :results
-            [{}]]]
           [:evaluated
-           [{:request-type :dungeonstrike.effects-test/async-double,
-             :effects [:dungeonstrike.effects-test/async-number]}]]
+           [{:request-type ::async-double,
+             :effects [::async-number]}]]
           [:done
-           [{:request-type :dungeonstrike.effects-test/async-double,
+           [{:request-type ::async-double,
              :results [[:finished 6]]}]]]
          @logs)))
 
@@ -174,26 +162,24 @@
    (effects/optional-effect ::missing-effect ::missing (+ 3 input))])
 
 (deftest optional-effects
-  (run-execute! ::optional {::input 2})
+  (run-execute! (effects/request ::optional ::input 2))
   (is (= #{3} @numbers)))
 
 (deftest log-optional-effects
-  (run-execute! ::optional {::input 2} {:log-fn logger})
+  (run-execute! (effects/request ::optional ::input 2) {:log-fn logger})
   (is (= [[:request-received
-           [{:request-type :dungeonstrike.effects-test/optional,
-             :request #:dungeonstrike.effects-test{:input 2},
+           [{:request-type ::optional,
+             :request (effects/request ::optional ::input 2)
              :queries []}]]
-          [:queries-completed
-           [:request-type :dungeonstrike.effects-test/optional :results [{}]]]
           [:evaluated
-           [{:request-type :dungeonstrike.effects-test/optional,
+           [{:request-type ::optional,
              :effects
-             [:dungeonstrike.effects-test/number
-              :dungeonstrike.effects-test/missing-effect]}]]
+             [::number
+              ::missing-effect]}]]
           [:optional-effect-ignored
-           [{:effect-type :dungeonstrike.effects-test/missing-effect}]]
+           [{:effect-type ::missing-effect}]]
           [:done
-           [{:request-type :dungeonstrike.effects-test/optional,
+           [{:request-type ::optional,
              :results :done}]]]
          @logs)))
 
@@ -203,7 +189,7 @@
 
 (deftest invalid-query-result
   (is (thrown? RuntimeException
-               (run-execute! ::four {::invalid-result 2}))))
+               (run-execute! (effects/request ::four ::invalid-result 2)))))
 
 (defmethod effects/query ::invalid-channel-result
   [_ _]
@@ -213,16 +199,16 @@
 
 (deftest invalid-channel-result
   (is (thrown? RuntimeException
-               (run-execute! ::four
-                             {::invalid-channel-result 2}))))
+               (run-execute! (effects/request ::four
+                                              ::invalid-channel-result 2)))))
 
 (defmethod effects/evaluate ::invalid-evaluation
   [_]
-  17)
+  [17])
 
 (deftest invalid-evaluation
   (is (thrown? RuntimeException
-               (run-execute! ::invalid-evaluation))))
+               (run-execute! (effects/request ::invalid-evaluation)))))
 
 (defmethod effects/query ::normal-query
   [_ _]
@@ -238,12 +224,13 @@
 
 (defmethod effects/evaluate ::nil
   [_]
-  nil)
+  [nil])
 
 (deftest query-throws-exception
   (is (thrown? NegativeArraySizeException
-               (run-execute! ::nil
-                             {::normal-query 1 ::query-throws-exception 2}))))
+               (run-execute! (effects/request ::nil
+                                              ::normal-query 1
+                                              ::query-throws-exception 2)))))
 
 (defmethod effects/apply! ::effect-throws-exception
   [_]
@@ -253,8 +240,8 @@
 
 (defmethod effects/evaluate ::create-exception
   [_]
-  (effects/effect ::effect-throws-exception))
+  [(effects/effect ::effect-throws-exception)])
 
 (deftest effect-throws-exception
   (is (thrown? NegativeArraySizeException
-               (run-execute! ::create-exception))))
+               (run-execute! (effects/request ::create-exception)))))

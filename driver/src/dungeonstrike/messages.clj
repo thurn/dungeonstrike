@@ -3,6 +3,7 @@
    client."
   (:require [clojure.spec.alpha :as s]
             [clojure.set :as set]
+            [effects.core :as effects]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
@@ -60,14 +61,25 @@
 
          (deffield :m/position position-spec)]))
 
-(defmacro defmessage
+(defmacro defmessage-to-client
   "As with `deffield`, this macro both defines a specification and returns a
    parallel version of the specification as a data structure for metaprogramming
-   purposes."
+   purposes. Describes messages sent *to* the client from the driver."
   [type docstring fields]
   `(do
      (defmethod message-type ~type [~'_]
        (s/keys :req [:m/message-id :m/message-type ~@fields]))
+     [~type ~fields]))
+
+(defmacro defmessage-from-client
+  "As `defmessage-to-client`, except that it describes messages sent *from* the
+  client to the driver."
+  [type docstring fields]
+  `(do
+     (defmethod message-type ~type [~'_]
+       (s/keys :req [:m/message-id :m/message-type ~@fields]))
+     (defmethod effects/request-spec ~type [~'_]
+       (s/and (s/keys :req [:m/message-id ~@fields])))
      [~type ~fields]))
 
 (s/def :m/message-id string?)
@@ -80,31 +92,31 @@
   "All possible message specifications. A map from message type keywords to the
    required field keywords for that message type."
   (into {}
-        [(defmessage :m/test
+        [(defmessage-to-client :m/test
            "Message for use in unit tests."
            [:m/entity-id :m/scene-name])
 
-         (defmessage :m/client-connected
+         (defmessage-from-client :m/client-connected
            "Message sent by the client when a connection is first established."
            [:m/client-log-file-path :m/client-id])
 
-         (defmessage :m/load-scene
+         (defmessage-to-client :m/load-scene
            "Loads a scene by name"
            [:m/scene-name])
 
-         (defmessage :m/quit-game
+         (defmessage-to-client :m/quit-game
            "Exits the client."
            [])
 
-         (defmessage :m/create-entity
+         (defmessage-to-client :m/create-entity
            "Creates a new entity with the specified type and position"
            [:m/new-entity-id :m/entity-type :m/position])
 
-         (defmessage :m/destroy-entity
+         (defmessage-to-client :m/destroy-entity
            "Destroys an entity by ID."
            [:m/entity-id])
 
-         (defmessage :m/move-to-position
+         (defmessage-to-client :m/move-to-position
            "Instructs an entity to move itself to a given position."
            [:m/entity-id :m/position])]))
 

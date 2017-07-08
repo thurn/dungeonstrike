@@ -10,7 +10,7 @@
             '[clojure.pprint :refer [pprint]]
             '[clojure.reflect :refer [reflect]]
             '[clojure.java.javadoc :refer [javadoc]]
-            '[dungeonstrike.dev :refer [p]]))
+            '[dungeonstrike.dev :refer :all]))
 
 (defmacro p
   "Logs a message to the log console and to stdout."

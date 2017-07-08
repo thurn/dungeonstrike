@@ -9,6 +9,7 @@
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.requests :as requests]
+            [effects.core :as effects]
             [camel-snake-kebab.core :as case]
             [mount.core :as mount]
             [org.httpkit.server :as http-kit]
@@ -49,8 +50,8 @@
   (let [message (parse-json data)]
     (logger/log "Websocket got message" message)
     (if (s/valid? :m/message message)
-      (async/put! requests/requests-channel
-                  (assoc message :r/request-type :r/client-message))
+      (requests/send-request!
+       (effects/request (:m/message-type message) message))
       (logger/error "Invalid message received"
                     (s/explain :m/message message)))))
 
@@ -59,8 +60,7 @@
   [status]
   (logger/log "Driver connection closed" status)
   (when-not (= status :server-close)
-    (async/put! requests/requests-channel
-                {:r/request-type :r/client-disconnected})))
+    (requests/send-request! (effects/request :r/client-disconnected))))
 
 (mount/defstate ^:private socket-atom
   :start (atom nil)

@@ -8,8 +8,8 @@
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.paths :as paths]
-            [dungeonstrike.reconciler :as reconciler]
             [dungeonstrike.requests :as requests]
+            [effects.core :as effects]
             [mount.core :as mount]
             [dungeonstrike.dev :as dev])
   (:import (org.apache.commons.io.input Tailer TailerListener
@@ -35,9 +35,13 @@
   :start (atom {paths/driver-log-path (new-tailer paths/driver-log-path)})
   :stop (doseq [[path tailer] @tailers] (when tailer (.stop tailer))))
 
-(defmethod reconciler/update! :d/client-log-files
-  [_ client-log-files]
-  (doseq [log-path client-log-files]
-    (when-not (@tailers log-path)
-      (swap! tailers assoc log-path (new-tailer log-path)))
+(s/def ::path string?)
+
+(defmethod effects/effect-spec ::add-tailer [_]
+  (s/keys :req-un [::path]))
+
+(defmethod effects/apply! ::add-tailer
+  [{:keys [:path]}]
+  (when-not (@tailers path)
+    (swap! tailers assoc path (new-tailer path))
     (logger/log "Client connected")))

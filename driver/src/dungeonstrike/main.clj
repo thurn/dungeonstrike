@@ -7,35 +7,43 @@
             [dungeonstrike.exception-handler :as exception-handler]
             [dungeonstrike.log-tailer :as log-tailer]
             [dungeonstrike.logger :as logger]
-            [dungeonstrike.reconciler :as reconciler]
             [dungeonstrike.request-handlers]
             [dungeonstrike.requests :as requests]
             [dungeonstrike.test-runner]
             [dungeonstrike.websocket]
+            [effects.core :as effects]
             [mount.core :as mount]
             [orchestra.spec.test :as orchestra]
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
-(defmethod reconciler/valid-request? :default [_ request]
-  (s/valid? :r/request request))
+(defn- effects-log-fn
+  "Log function for the actions of the 'effects system."
+  [log-type {:keys [:request-type]}]
+  (case log-type
+    :request-received
+    (logger/log "Received request" request-type)
+    :queries-completed
+    (logger/log "Completed query execution" request-type)
+    :evaluated
+    (logger/log "Evaluated request" request-type)
+    :optional-effect-ignored
+    (logger/log "Ignored optional effect")
+    :done
+    (logger/log "Finished processing request" request-type)))
 
-(defmethod reconciler/valid-domain? :default [_ _] true)
-
-(defmethod reconciler/log :default [& args]
-  (apply println args))
-
-(defn- start-reconciler
+(defn- start-effects
   "Starts a go loop which monitors the system `requests-channel` for new
-   requests intended for execution by `reconciler/execute!`."
+   requests intended for execution by `effects/execute!`. Returns a channel
+   which will receive a Throwable object on error."
   []
   (async/go-loop []
     (when-let [request (async/<! requests/requests-channel)]
-      (reconciler/execute! (requests/request-type request) request)
+      (async/<! (effects/execute! request {:log-fn effects-log-fn}))
       (recur))))
 
-(mount/defstate reconciler
-  :start (start-reconciler)
+(mount/defstate effects
+  :start (start-effects)
   :stop (async/close! requests/requests-channel))
 
 (defn start!

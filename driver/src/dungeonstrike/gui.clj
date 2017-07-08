@@ -10,11 +10,11 @@
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
             [dungeonstrike.paths :as paths]
-            [dungeonstrike.reconciler :as reconciler]
             [dungeonstrike.requests :as requests]
             [dungeonstrike.test-runner :as test-runner]
             [dungeonstrike.websocket :as websocket]
             [dungeonstrike.uuid :as uuid]
+            [effects.core :as effects]
             [mount.core :as mount]
             [seesaw.core :as seesaw]
             [seesaw.font :as font]
@@ -111,8 +111,13 @@
 (defn- message-selected-fn [message-picker]
   (fn [e]
     (requests/send-request!
-     {:r/request-type :r/message-selected,
-      :m/message-type (seesaw/selection message-picker)})))
+     (effects/request :r/message-selected
+                      :m/message-type (seesaw/selection message-picker)))))
+
+(defmethod effects/evaluate :r/message-selected
+  [{:keys [:m/message-type]}]
+  [(effects/effect ::config :selector :#message-form :key :selected
+                   :value message-type :persistent? true)])
 
 (defn- send-message-panel
   "UI for 'Send Message' panel."
@@ -455,9 +460,17 @@
 (mount/defstate ^:private debug-gui
   :start (show-debug-gui))
 
-(defmethod reconciler/update! :d/gui-configuration
-  [_ gui-state]
-  (doseq [[selector config] gui-state]
-    (let [widget (seesaw/select frame [selector])]
-      (doseq [[key value] config]
-        (seesaw/config! widget key value)))))
+(s/def ::selector keyword?)
+(s/def ::key keyword?)
+(s/def ::value some?)
+(s/def ::persistent? boolean?)
+
+(defmethod effects/effect-spec ::config [_]
+  (s/keys :req-un [::selector ::key ::value] :opt-un [::persistent?]))
+
+(defmethod effects/apply! ::config
+  [{:keys [:selector :key :value :persistent?]}]
+  (if persistent?
+    (swap! persistent-state assoc-in [selector key] value)
+    (swap! gui-state assoc-in [selector key] value))
+  (update-frame!))

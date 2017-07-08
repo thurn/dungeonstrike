@@ -7,8 +7,8 @@
             [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [dungeonstrike.paths :as paths]
-            [dungeonstrike.reconciler :as reconciler]
             [dungeonstrike.uuid :as uuid]
+            [effects.core :as effects]
             [mount.core :as mount]
             [taoensso.timbre :as timbre]
             [taoensso.timbre.appenders.core :as appenders]
@@ -26,8 +26,13 @@
    a log file."
   "\t\t»")
 
-(defmethod reconciler/update! :d/current-client-id
-  [_ client-id]
+(s/def ::client-id string?)
+
+(defmethod effects/effect-spec ::set-client-id [_]
+  (s/keys :req-un [::client-id]))
+
+(defmethod effects/apply! ::set-client-id
+  [{:keys [:client-id]}]
   (reset! current-client-id client-id))
 
 (defn- logger-output-fn
