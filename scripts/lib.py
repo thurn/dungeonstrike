@@ -19,6 +19,7 @@ class Env(object):
       self.project_root = project_root
       self.scripts_root = scripts_root
       self.driver_root = os.path.join(project_root, "driver")
+      self.effects_root = os.path.join(project_root, "effects")
       self.driver_jar_path = os.path.join(self.driver_root, "out")
       self.client_root = os.path.join(project_root, "DungeonStrike")
       self.client_binary_path = os.path.join(self.client_root,
