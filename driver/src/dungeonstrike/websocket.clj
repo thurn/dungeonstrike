@@ -29,13 +29,13 @@
                     :escape-slash false)))
 
 (defn- parse-json
-  "Converts a JSON string into a message map."
+  "Converts a JSON string into an action map."
   [string]
-  (let [key-fn (fn [key] (keyword "m" (case/->kebab-case key)))
+  (let [key-fn (fn [key] (keyword "a" (case/->kebab-case key)))
         value-fn (fn [key value]
                    (cond
-                     (= :m/message-type key)
-                     (keyword "m" (case/->kebab-case value))
+                     (= :a/action-type key)
+                     (keyword "a" (case/->kebab-case value))
 
                      (messages/set-for-enum-name (case/->PascalCase (name key)))
                      (keyword (case/->kebab-case value))
@@ -45,15 +45,14 @@
     (json/read-str string :key-fn key-fn :value-fn value-fn)))
 
 (defn- channel-receive-handler
-  "Handler invoked when the websocket server receives a new message."
+  "Handler invoked when the websocket server receives a new input."
   [data]
-  (let [message (parse-json data)]
-    (logger/log "Websocket got message" message)
-    (if (s/valid? :m/message message)
-      (requests/send-request!
-       (effects/request (:m/message-type message) message))
-      (logger/error "Invalid message received"
-                    (s/explain :m/message message)))))
+  (let [action (parse-json data)]
+    (logger/log "Websocket got action" action)
+    (if (s/valid? :a/action action)
+      (requests/send-request! (effects/request (:a/action-type action) action))
+      (logger/error "Invalid action received"
+                    (s/explain :a/action action)))))
 
 (defn- channel-closed-handler
   "Handler for websocket channel close events."
@@ -69,7 +68,7 @@
 (defn- connection-handler
   "Handler function for websocket connections suitable for being passed to
   http-kit's run-server function.  When a connection is established, updates
-  `socket-atom` with a websocket channel reference. When messages are received
+  `socket-atom` with a websocket channel reference. When actions are received
   or connection status changes, publishes events to the `requests-channel`."
   [request]
   (http-kit/with-channel request channel

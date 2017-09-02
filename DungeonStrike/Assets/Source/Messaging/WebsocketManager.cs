@@ -72,22 +72,22 @@ namespace DungeonStrike.Source.Messaging
         private void OnOpen(object sender, EventArgs args)
         {
             _connectionClosed = false;
-            var message = new ClientConnectedMessage
+            var userAction = new ClientConnectedAction
             {
                 ClientLogFilePath = LogWriter.LogFilePath,
                 ClientId = Logger.CurrentClientId()
             };
-            Root.RunWhenReady(() => SendMessage(message));
+            Root.RunWhenReady(() => SendMessage(userAction));
         }
 
-        public void SendMessage(Message message)
+        public void SendMessage(UserAction userAction)
         {
-            ErrorHandler.CheckNotNull(nameof(message), message);
-            _websocket.SendAsync(message.ToJson(), success =>
+            ErrorHandler.CheckNotNull(nameof(userAction), userAction);
+            _websocket.SendAsync(userAction.ToJson(), success =>
             {
                 if (!success)
                 {
-                    Logger.Log("Websocket send failed!", message);
+                    Logger.Log("Websocket send failed!", userAction);
                 }
             });
         }

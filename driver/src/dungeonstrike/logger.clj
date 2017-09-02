@@ -106,6 +106,8 @@
     (cond
       (:m/message-type argument)
       (str "<[" (:m/message-type argument) "] " (:m/message-id argument) ">")
+      (:a/action-type argument)
+      (str "<[" (:a/action-type argument) "] " (:a/action-id argument) ">")
       :otherwise
       "{...}")
     (str argument)))

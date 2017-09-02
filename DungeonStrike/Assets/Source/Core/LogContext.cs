@@ -31,7 +31,7 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public static LogContext NewRootContext(Type type)
         {
-            return new LogContext(IdGenerator.NewId("C"), null, type, null);
+            return new LogContext(IdGenerator.NewClientId(), null, type, null);
         }
 
         private LogContext(string clientId, LogContext parentContext, Type type, string gameObjectName)

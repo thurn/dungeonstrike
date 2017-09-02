@@ -31,18 +31,6 @@ namespace DungeonStrike.Source.Messaging
         public SceneName SceneName { get; set; }
     }
 
-    public sealed class ClientConnectedMessage : Message
-    {
-        public static readonly string Type = "ClientConnected";
-
-        public ClientConnectedMessage() : base("ClientConnected")
-        {
-        }
-
-        public string ClientLogFilePath { get; set; }
-        public string ClientId { get; set; }
-    }
-
     public sealed class LoadSceneMessage : Message
     {
         public static readonly string Type = "LoadScene";
@@ -96,6 +84,18 @@ namespace DungeonStrike.Source.Messaging
         public Position Position { get; set; }
     }
 
+    public sealed class ClientConnectedAction : UserAction
+    {
+        public static readonly string Type = "ClientConnected";
+
+        public ClientConnectedAction() : base("ClientConnected")
+        {
+        }
+
+        public string ClientLogFilePath { get; set; }
+        public string ClientId { get; set; }
+    }
+
     public sealed class Messages
     {
         public static Message EmptyMessageForType(string messageType)
@@ -104,8 +104,6 @@ namespace DungeonStrike.Source.Messaging
             {
                 case "Test":
                     return new TestMessage();
-                case "ClientConnected":
-                    return new ClientConnectedMessage();
                 case "LoadScene":
                     return new LoadSceneMessage();
                 case "QuitGame":

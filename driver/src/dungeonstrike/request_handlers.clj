@@ -5,8 +5,8 @@
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
-(defmethod effects/evaluate :m/client-connected
-  [{:keys [:m/client-log-file-path :m/client-id]}]
+(defmethod effects/evaluate :a/client-connected
+  [{:keys [:a/client-log-file-path :a/client-id]}]
   [(effects/effect :dungeonstrike.logger/set-client-id :client-id client-id)
    (effects/optional-effect :dungeonstrike.log-tailer/add-tailer
                             :path client-log-file-path)

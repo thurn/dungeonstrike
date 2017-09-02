@@ -10,7 +10,7 @@
 (dev/require-dev-helpers)
 
 (mount/defstate requests-channel
-  "Channel for requests to the Nodes system."
+  "Channel for requests to the Effects system."
   :start (async/chan)
   :stop (async/close! requests-channel))
 

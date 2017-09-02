@@ -48,6 +48,21 @@ namespace DungeonStrike.Source.Messaging
     }
 
     {{/messages}}
+    {{#actions}}
+    public sealed class {{actionName}}Action : UserAction
+    {
+        public static readonly string Type = \"{{actionName}}\";
+
+        public {{actionName}}Action() : base(\"{{actionName}}\")
+        {
+        }
+
+        {{#fields}}
+        public {{fieldType}} {{fieldName}} { get; set; }
+        {{/fields}}
+    }
+
+    {{/actions}}
 
     public sealed class Messages
     {
@@ -72,8 +87,8 @@ namespace DungeonStrike.Source.Messaging
   []
   #{messages/scene-names messages/entity-types})
 
-(defn- field-type
-  "Returns the C# type to use to represent a given field."
+(defn- message-field-type
+  "Returns the C# type to use to represent a given message field."
   [field-name]
   (let [spec (field-name messages/message-fields)]
     (cond
@@ -81,18 +96,33 @@ namespace DungeonStrike.Source.Messaging
       (= uuid? spec) "string"
       (= string? spec) "string"
       (= messages/position-spec spec) "Position"
-      :otherwise (throw (RuntimeException. "UnknownFieldType")))))
+      :otherwise (throw (RuntimeException. "Unknown Message Field Type")))))
+
+(defn- action-field-type
+  "Returns the C# type to use to represent a given action field."
+  [field-name]
+  (let [spec (field-name messages/action-fields)]
+    (cond
+      (= uuid? spec) "string"
+      (= string? spec) "string"
+      :otherwise (throw (RuntimeException. "Unknown Action Field Type")))))
 
 (defn- template-parameters
   "Helper function which builds the parameters to the code generation template."
   []
-  (let [field-params (fn [field-name]
-                       {:fieldName (case/->PascalCase (name field-name))
-                        :fieldType (field-type field-name)})
+  (let [message-field-params (fn [field-name]
+                               {:fieldName (case/->PascalCase (name field-name))
+                                :fieldType (message-field-type field-name)})
         message-params (fn [[message-name fields]]
                          {:messageName (case/->PascalCase (name message-name))
-                          :fields (map field-params
+                          :fields (map message-field-params
                                        (remove #{:m/entity-id} fields))})
+        action-field-params (fn [field-name]
+                              {:fieldName (case/->PascalCase (name field-name))
+                               :fieldType (action-field-type field-name)})
+        action-params (fn [[action-name fields]]
+                        {:actionName (case/->PascalCase (name action-name))
+                         :fields (map action-field-params fields)})
         get-name (comp case/->PascalCase name)
         enum-value (fn [name] {:name (get-name name)})
         enum-params (fn [set]
@@ -100,6 +130,7 @@ namespace DungeonStrike.Source.Messaging
                        :values (map enum-value set)})]
 
     {:messages (map message-params messages/messages)
+     :actions (map action-params messages/actions)
      :enums (map enum-params (enum-sets))}))
 
 (defn- generate!

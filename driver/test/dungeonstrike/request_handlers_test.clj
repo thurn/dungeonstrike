@@ -20,11 +20,11 @@
                                    :key :enabled?
                                    :value true)]
          (effects/evaluate'
-          (effects/request :m/client-connected
-                           :m/client-log-file-path "foo/client_logs.txt"
-                           :m/client-id "C:0z+v2RXWOUiP7er+KAZsrw"
-                           :m/message-id "M:/ydkmbevzEmE4yE/XjfbJA"
-                           :m/message-type :m/client-connected)))))
+          (effects/request :a/client-connected
+                           :a/client-log-file-path "foo/client_logs.txt"
+                           :a/client-id "C:0z+v2RXWOUiP7er+KAZsrw"
+                           :a/action-id "A:/ydkmbevzEmE4yE/XjfbJA"
+                           :a/action-type :a/client-connected)))))
 
 (deftest client-disconnected
   (is (= [(effects/optional-effect :dungeonstrike.gui/config
