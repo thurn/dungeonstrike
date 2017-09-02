@@ -29,9 +29,9 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Creates a new instance of the root log context. Should only be invoked from the Root.
         /// </summary>
-        public static LogContext NewRootContext(Type type)
+        public static LogContext NewRootContext(Type type, string clientId)
         {
-            return new LogContext(IdGenerator.NewClientId(), null, type, null);
+            return new LogContext(clientId, null, type, null);
         }
 
         private LogContext(string clientId, LogContext parentContext, Type type, string gameObjectName)

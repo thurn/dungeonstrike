@@ -120,54 +120,60 @@
     (str message " [" (string/join "; " (map format-argument arguments)) "]")))
 
 (s/fdef log-helper :args (s/cat :message string?
-                                :error? boolean?
+                                :log-type keyword?
                                 :line any?
                                 :rest (s/* any?)))
 (defn log-helper
-  "Helper function invoked by the `log` and `error` macros. Returns a log entry
+  "Helper function invoked by the various log macros. Returns a log entry
   map which includes the provided context and a `:message` entry with a
   formatted version of the log message and its arguments. Do not invoke this
   function directly."
-  [message error? line & arguments]
+  [message log-style line & arguments]
   (apply merge
          {:driver-id driver-id
           :message (format-message message arguments)
-          :error? error?
+          :error? (= :error log-style)
+          :log-style log-style
           :line line}
          (filter map? arguments)))
 
 (defmacro log
-  "Logs a message with optional details. Argument expressions are are preserved
-  as strings in the log output, so this macro should *not* be invoked with
-  complex function calls as arguments. Argument values are passed to the `info`
-  function to be summarized."
+  "Logs a message with optional details. Map arguments will be merged into log
+  output"
   [message & arguments]
   `(timbre/info (log-helper ~message
-                            false
+                            :log
                             ~(:line (meta &form))
                             ~@arguments)))
 
-(defmacro error
-  "Logs an error in the style of `log` with optional details."
+(defmacro warning
+  "Logs a warning message in the style of `log`."
   [message & arguments]
-  `(timbre/error (log-helper ~message
-                             true
-                             ~(:line (meta &form))
-                             ~@arguments)))
+  `(timbre/info (log-helper ~message
+                            :warning
+                            ~(:line (meta &form))
+                            ~@arguments)))
+
+(defmacro log-gui
+  "Logs a message which corresponds to direct user input in the developer GUI.
+  Used to provide distinctive highlighting to user actions in the logs."
+  [message & arguments]
+  `(timbre/info (log-helper ~message
+                            :gui
+                            ~(:line (meta &form))
+                            ~@arguments)))
 
 (defn throw-exception
-  "Helper function invoked by the `die!` macro to throw an exception."
+  "Helper function invoked by the `error` macro to throw an exception."
   [message [arg-names & arguments]]
   (throw (RuntimeException.
           (format-message message arguments))))
 
-(defmacro die!
-  "Logs an error in the style of `log` with optional details, and then throws an
-  exception."
+(defmacro error
+  "Logs an error in the style of `log` with optional details."
   [message & arguments]
-  `(do
-     (timbre/error (log-helper ~message
-                               true
-                               ~(:line (meta &form))
-                               ~@arguments))
-     (throw-exception ~message '~arguments ~@arguments)))
+  `(do (timbre/error (log-helper ~message
+                                 :error
+                                 ~(:line (meta &form))
+                                 ~@arguments))
+       (throw-exception ~message ~@arguments)))

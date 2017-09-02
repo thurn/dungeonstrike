@@ -158,13 +158,13 @@
   "Requests to run the test named in `test-name`, or all tests if the keyword
    `:all-tests` is passed."
   [test-name]
-  (logger/log "Running test" test-name {:important? true})
+  (logger/log-gui "Running test" test-name)
   (async/go
     (let [{:keys [:status :message] :as result}
           (<! (test-runner/run-integration-test test-name))]
       (if (= status :success)
-        (logger/log "Test passed!" test-name {:important? true})
-        (logger/error message result)))))
+        (logger/log-gui "Test passed!" test-name)
+        (logger/warning message result)))))
 
 (defn- tests-panel
   "UI for the 'Tests' panel"
@@ -218,18 +218,16 @@
 
 (defn- set-cell-color!
   "Sets the background color of a cell based on the value it is displaying."
-  [cell {:keys [log-type error? important?]}]
+  [cell {:keys [log-type error? log-style]}]
   (if (= :client log-type)
     (if error?
       (.setBackground cell (Color. 0xFF 0xCC 0xBC))
-      (if important?
-        (.setBackground cell (Color. 0x21 0x96 0xF3))
-        (.setBackground cell (Color. 0xE0 0xF7 0xFA))))
-    (if error?
-      (.setBackground cell (Color. 0xFF 0xCD 0xD2))
-      (if important?
-        (.setBackground cell (Color. 0x8B 0xC3 0x4A))
-        (.setBackground cell (Color. 0xF1 0xF8 0xE9))))))
+      (.setBackground cell (Color. 0xE0 0xF7 0xFA)))
+    (case log-style
+      :error (.setBackground cell (Color. 0xFF 0xCD 0xD2))
+      :warning (.setBackground cell (Color. 0xFF 0xEB 0x3B))
+      :gui (.setBackground cell (Color. 0x8B 0xC3 0x4A))
+      :log (.setBackground cell (Color. 0xF1 0xF8 0xE9)))))
 
 (defn- log-table
   "Returns the JTable instance for showing log entries."

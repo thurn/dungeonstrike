@@ -48,7 +48,7 @@
              error (error-info thread ex)
              message (:message error)]
          (when log-helper
-           (timbre/error (log-helper message true 0 error))))
+           (timbre/error (log-helper message :error 0 error))))
        (when (:crash-on-exceptions (mount/args))
          (println "Terminating.")
          (System/exit 1))))))

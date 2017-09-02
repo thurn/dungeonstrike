@@ -47,24 +47,31 @@
            :message "Test timed out waiting for logs!"
            :detail (flatten (vals (remove #(empty? (val %)) missing-entries)))}
 
-          (let [{:keys [source] :as message} value
+          (let [{:keys [source error?] :as log-message} value
                 [next & remaining] (missing-entries source)]
             (cond
               ;; If this log entry is expected, remove it from the expected set
               ;; and recur, signalling completion if the expected set is empty.
-              (equivalent-log-entries? next message)
+              (equivalent-log-entries? next log-message)
               (let [updated (update missing-entries source rest)]
                 (if (every? #(empty? (val %)) updated)
                   {:status :success :test-name name}
                   (recur updated)))
 
+              ;; If this log entry is an error, signal test failure.
+              error?
+              {:status :error
+               :test-name name
+               :message "Error encountered running test!"
+               :detail log-message}
+
               ;; If this log entry is in the expected set, but has arrived too
-              ;; early, signal an error.
-              (some #(equivalent-log-entries? message %) remaining)
+              ;; early, signal test failure.
+              (some #(equivalent-log-entries? log-message %) remaining)
               {:status :out-of-order
                :test-name name
-               :message "Test message arrived out of order!"
-               :detail message}
+               :message "Test log message arrived out of order!"
+               :detail log-message}
 
               ;; Otherwise, ignore this log entry.
               :otherwise

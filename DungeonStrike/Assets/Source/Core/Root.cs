@@ -6,6 +6,7 @@ using DungeonStrike.Source.Assets;
 using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Services;
 using DungeonStrike.Source.Tools;
+using DungeonStrike.Source.Utilities;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Core
@@ -57,6 +58,8 @@ namespace DungeonStrike.Source.Core
             }
         }
 
+        private string _clientId;
+
         private LogContext _rootLogContext;
 
         private Logger _logger;
@@ -74,7 +77,6 @@ namespace DungeonStrike.Source.Core
 
             _instance = this;
             DontDestroyOnLoad(gameObject);
-            LogWriter.Initialize();
         }
 
         public async void OnEnable()
@@ -82,8 +84,9 @@ namespace DungeonStrike.Source.Core
             if (EnsureUniqueRoot()) return;
             State = LifecycleState.Starting;
             // LogWriter static state is lost during serialize/deserialize
-            LogWriter.Initialize();
-            _rootLogContext = LogContext.NewRootContext(GetType());
+            _clientId = IdGenerator.NewClientId();
+            LogWriter.Initialize(_clientId);
+            _rootLogContext = LogContext.NewRootContext(GetType(), _clientId);
             _logger = new Logger(_rootLogContext);
             _errorHandler = new ErrorHandler(_rootLogContext);
 
@@ -106,7 +109,8 @@ namespace DungeonStrike.Source.Core
 
         /// <summary>
         /// Enforces that there can be only one root object in the game. Returns true if the current root instance is a
-        /// duplicate root which should be ignored.
+        /// duplicate root which should be ignored. Having multiple root objects allows us to enter the game from
+        /// any starting scene.
         /// </summary>
         private bool EnsureUniqueRoot()
         {

@@ -19,7 +19,7 @@ namespace DungeonStrike.Tests.Editor
         public void SetUpTest()
         {
             LogWriter.DisableForTests();
-            _rootLogContext = LogContext.NewRootContext(GetType());
+            _rootLogContext = LogContext.NewRootContext(GetType(), "C:<test-client-id>");
             _rootObject = new GameObject("Root");
             _rootComponent = _rootObject.AddComponent<Root>();
             _rootComponent.IsUnitTest = true;

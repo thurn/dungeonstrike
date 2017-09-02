@@ -11,19 +11,21 @@ namespace DungeonStrike.Source.Core
         private static StreamWriter _logFile;
         private static bool _disabled;
         private const string MetadataSeparator = "\t\t»";
+        private static string _clientId;
 
         /// <summary>
         /// Initialize the log file. Must be invoked at startup. In order to avoid logging during unit test execution,
         /// this method should not be called during tests. This method is safe to call multiple times.
         /// </summary>
-        public static void Initialize()
+        public static void Initialize(string clientId)
         {
             if (_disabled || (_logFile != null)) return;
             var logDir = Path.Combine(Application.dataPath, "../Logs");
             Directory.CreateDirectory(logDir);
             LogFilePath = Path.Combine(logDir, "client_logs.txt");
             _logFile = new StreamWriter(LogFilePath, true /* append */) {AutoFlush = true};
-            Application.logMessageReceivedThreaded += HandleUnityLog;
+            _clientId = clientId;
+            Application.logMessageReceived += HandleUnityLog;
         }
 
         public static void DisableForTests()
@@ -32,9 +34,9 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// Handler for Unity log callbacks. See <see cref="Application.logMessageReceivedThreaded"/>.
+        /// Handler for Unity log callbacks. See <see cref="Application.logMessageReceived"/>.
         /// </summary>
-        public static void HandleUnityLog(string logString, string stackTrace, LogType logType)
+        private static void HandleUnityLog(string logString, string stackTrace, LogType logType)
         {
             if ((logType == LogType.Warning) &&
                 (logString.Contains("Assets/ThirdParty") || logString.Contains("Assets/OldSource")))
@@ -48,7 +50,12 @@ namespace DungeonStrike.Source.Core
             {
                 result.Append(MetadataSeparator);
                 result.Append("{");
-                result.Append(":source \"").Append("Unity" + logType).Append("\", ");
+                result.Append(":source \"")
+                    .Append("Unity" + logType)
+                    .Append("\", :client-id \"")
+                    .Append(_clientId)
+                    .Append("\", ");
+
                 if (logType != LogType.Log)
                 {
                     result.Append(":error? true, ");
@@ -88,7 +95,7 @@ namespace DungeonStrike.Source.Core
                 }
                 result.Append("]");
             }
-            result.Append(StartLogMetadata(logContext, false));
+            result.Append(StartLogMetadata(logContext, error));
             return result.ToString();
         }
 
