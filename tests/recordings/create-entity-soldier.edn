@@ -1,5 +1,6 @@
 {:name "create-entity-soldier",
  :prerequisite "load-scene-flat.edn",
+ :timeout 10,
  :message->client
  {:m/message-type :m/create-entity,
   :m/new-entity-id "E:YT06NzkJQDW0b4GuA/6WwA",

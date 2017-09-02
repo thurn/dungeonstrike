@@ -34,13 +34,13 @@
   `websocket` and then listens for logs on `log-channel` and verifies that they
   match the logs in the provided log entry. Returns a channel which will receive
   a value describing the success or failure of the test."
-  [{:keys [:name :entries :message->client]}]
+  [{:keys [:name :entries :message->client :timeout]}]
   (when message->client
     (websocket/send-message! message->client))
-  (let [timeout (async/timeout 30000)]
+  (let [timeout-channel (async/timeout (* 1000 timeout))]
     (async/go-loop [missing-entries (group-by :source entries)]
-      (let [[value port] (async/alts! [timeout log-channel])]
-        (if (= port timeout)
+      (let [[value port] (async/alts! [timeout-channel log-channel])]
+        (if (= port timeout-channel)
           ;; Timeout exceeded, return failure value.
           {:status :timeout
            :test-name name
@@ -79,19 +79,22 @@
 
 (defn- run-recording-list
   "Runs a sequence of recordings via the `run-recording` function. Returns a
-   channel which will receieve either the *final* success value returned or the
+   channel which will receive either the *final* success value returned or the
    *first* failure value returned."
   [args recordings]
   (async/go-loop [[recording & remaining] recordings]
-    (when (:verbose args)
-      (println (str "RUNNING: '" (:name recording) "'")))
-    (when-let [{:keys [:status] :as result}
-               (<! (run-recording recording))]
-      (when (and (:verbose args) (= status :success))
-        (println (str "SUCCESS: '" (:name recording) "'")))
-      (if (or (empty? remaining) (not= status :success))
-        result
-        (recur remaining)))))
+    (let [start-time (System/currentTimeMillis)]
+      (when (:verbose args)
+        (println (str "RUNNING: '" (:name recording) "'")))
+      (when-let [{:keys [:status] :as result}
+                 (<! (run-recording recording))]
+        (when (and (:verbose args) (= status :success))
+          (let [duration (int (/ (- (System/currentTimeMillis) start-time)
+                                 1000))]
+            (println (str "SUCCESS: '" (:name recording) "' [" duration "s]"))))
+        (if (or (empty? remaining) (not= status :success))
+          result
+          (recur remaining))))))
 
 (defn- all-tests
   "Returns a sequence containing the names of all tests in the recordings
@@ -159,6 +162,7 @@
 (def ^:private startup-recording
   {:name "startup"
    :prerequisite nil
+   :timeout 10
    :entries
    [{:message "Client connected"
      :source "dungeonstrike.log-tailer"
@@ -167,6 +171,7 @@
 (def ^:private shutdown-recording
   {:name "shutdown"
    :prerequisite nil
+   :timeout 10
    :message->client {:m/message-type :m/quit-game
                      :m/message-id "M:QUIT"}
    :entries

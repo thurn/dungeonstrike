@@ -92,7 +92,8 @@
     (let [form-value (seesaw/value message-form)
           message (reduce-kv process-form-values {} form-value)]
       (when (:recording? @recording-state)
-        (swap! recording-state assoc :message->client message))
+        (swap! recording-state assoc
+               :message->client message))
       (websocket/send-message! message)
       (update-frame!))))
 
@@ -359,7 +360,8 @@
   []
   (let [recording-button (seesaw/select frame [:#recording-button])]
     (seesaw/config! recording-button :text "Stop Recording")
-    (reset! recording-state {:recording? true :entries []})))
+    (reset! recording-state {:recording? true
+                             :entries []})))
 
 (defn- pretty-string
   "Returns a pretty-printed string representation of 'form'"
@@ -373,6 +375,7 @@
         prerequisite (seesaw/combobox
                       :model (into [nil] (recording-file-names)))
         recording-name (seesaw/text)
+        recording-timeout (seesaw/text :text "10")
         text-area (seesaw/text :text (pretty-string entries)
                                :multi-line? true
                                :font (font/font :name :monospaced))
@@ -383,6 +386,8 @@
                        [prerequisite "wrap"]
                        [(seesaw/label :text "Name:")]
                        [recording-name "width 250px, wrap"]
+                       [(seesaw/label :text "Timeout (seconds):")]
+                       [recording-timeout "width 100px, wrap"]
                        [(seesaw/label :text "Message:")]
                        [(seesaw/scrollable
                          (seesaw/text :text (pretty-string initial-message)
@@ -401,9 +406,14 @@
     (seesaw/listen save-button :action
                    (fn [e]
                      (let [result-name (seesaw/value recording-name)
-                           result-prerequisite (seesaw/value prerequisite)]
+                           result-prerequisite (seesaw/value prerequisite)
+                           timeout (Integer/parseInt
+                                    (seesaw/value recording-timeout))]
                        (when-not (empty? result-name)
-                         (on-close result-name result-prerequisite)
+                         (on-close {:recording-name result-name
+                                    :prerequisite result-prerequisite
+                                    :timeout timeout})
+
                          (seesaw/dispose! new-frame)))))
     (seesaw/listen cancel-button :action
                    (fn [e]
@@ -419,18 +429,20 @@
     (seesaw/show!
      (save-recording-frame
       initial-message entries
-      (fn [recording-name prerequisite]
+      (fn [{:keys [recording-name prerequisite timeout]}]
         (when recording-name
-          (reset! recording-state {:recording? false :entries []})
+          (reset! recording-state {:recording? false
+                                   :entries []})
           (seesaw/config! recording-button :text "Start Recording")
           (let [output-file (io/file paths/test-recordings-path
                                      (str recording-name ".edn"))
                 output (pretty-string {:name recording-name
                                        :prerequisite prerequisite
+                                       :timeout timeout
                                        :message->client initial-message
                                        :entries entries})]
             (spit output-file output)
-            (logger/log "Wrote new recording" recording-name))))))))
+            (logger/log-gui "Wrote new recording" recording-name))))))))
 
 (defn- new-recording-fn
   "Returns a function to act as the listener for the 'Start Recording' button."

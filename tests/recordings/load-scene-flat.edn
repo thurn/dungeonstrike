@@ -1,5 +1,6 @@
 {:name "load-scene-flat",
  :prerequisite nil,
+ :timeout 10,
  :message->client
  {:m/message-type :m/load-scene,
   :m/scene-name :flat,
