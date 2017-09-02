@@ -86,11 +86,6 @@ namespace DungeonStrike.Source.Core
             _rootLogContext = LogContext.NewRootContext(GetType());
             _logger = new Logger(_rootLogContext);
             _errorHandler = new ErrorHandler(_rootLogContext);
-            var msg = new LoadSceneMessage()
-            {
-                SceneName = SceneName.Empty
-            };
-            _logger.Log("Root::OnEnable() " + msg.ToJson());
 
             RegisterServices();
             await Task.WhenAll(_services.Values);

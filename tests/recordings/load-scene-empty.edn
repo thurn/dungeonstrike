@@ -10,7 +10,7 @@
    :source "DungeonStrike.Source.Services.SceneLoader",
    :log-type :client}
   {:message
-   "Websocket sending message [message=<[load-scene] M:1RsO5ExNSW25/l6iPNyBZA>]",
+   "Websocket sending message [<[:m/load-scene] M:1RsO5ExNSW25/l6iPNyBZA>]",
    :source "dungeonstrike.websocket",
    :log-type :driver}
   {:message "Scene loaded [Empty]",

@@ -27,7 +27,7 @@
         file (io/file log-file-path)]
     ;; Arguments:
     ;; 1000: Delay between checks of the file for new content (in milliseconds)
-    ;; true: Whether to tail from the end of the file
+    ;; false: Whether to tail from the end of the file
     ;; true: Whether to close and re-open the file between chunks
     (Tailer/create file listener 1000 false true)))
 

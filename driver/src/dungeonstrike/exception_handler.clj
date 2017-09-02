@@ -43,7 +43,12 @@
      (uncaughtException [_ thread ex]
        (println "==== Uncaught Exception! ===")
        (println ex)
-       (timbre/error (error-info thread ex))
+       ; Lazily resolve logger to prevent direct dependency:
+       (let [log-helper (resolve (symbol "dungeonstrike.logger" "log-helper"))
+             error (error-info thread ex)
+             message (:message error)]
+         (when log-helper
+           (timbre/error (log-helper message true 0 error))))
        (when (:crash-on-exceptions (mount/args))
          (println "Terminating.")
          (System/exit 1))))))

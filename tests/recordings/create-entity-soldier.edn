@@ -8,7 +8,7 @@
   :m/message-id "M:yYWIrFojTB6/f8sUA6U34w"},
  :entries
  [{:message
-   "Websocket sending message [message=<[create-entity] M:yYWIrFojTB6/f8sUA6U34w>]",
+   "Websocket sending message [<[:m/create-entity] M:yYWIrFojTB6/f8sUA6U34w>]",
    :source "dungeonstrike.websocket",
    :log-type :driver}
   {:message

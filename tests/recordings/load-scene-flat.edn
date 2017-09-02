@@ -6,7 +6,7 @@
   :m/message-id "M:nIBUiVA8R6SnIoWSJ9WtvA"},
  :entries
  [{:message
-   "Websocket sending message [message=<[load-scene] M:nIBUiVA8R6SnIoWSJ9WtvA>]",
+   "Websocket sending message [<[:m/load-scene] M:nIBUiVA8R6SnIoWSJ9WtvA>]",
    :source "dungeonstrike.websocket",
    :log-type :driver}
   {:message

@@ -12,6 +12,7 @@ third_party = os.path.join(env.client_root, 'Assets/ThirdParty')
 for directory in os.listdir(third_party):
   path = os.path.join(third_party, directory)
   if not os.path.isdir(path): continue
+  if directory == "Plugins": continue
   print path
   lib.call(["cfv", "-C", "-rr", "-p", path])
   sfv = os.path.join(path, directory + ".sfv")

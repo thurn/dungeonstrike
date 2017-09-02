@@ -39,7 +39,6 @@
   "Log output function as defined by the timbre logging library. Processes
    timbre log maps into our custom log string format."
   [{:keys [instant vargs error-level? ?ns-str ?file trace ?msg-fmt] :as data}]
-  (when error-level?)
   (let [[{:keys [message] :as entry} & rest] vargs
         strip-newlines (fn [msg] (string/replace msg "\n" " \\n "))
         msg (or message ?msg-fmt (str "<" ?ns-str ">"))]
@@ -100,38 +99,23 @@
   "Mult on `debug-log-channel`."
   :start (async/mult debug-log-channel))
 
-(defn- reduce-info-map
-  "Reducer helper function for use by `info`. Creates a summarized version of a
-   map entry."
-  [map key-form value-form]
-  (let [key (str key-form)
-        value (str value-form)
-        shorten (fn [s]
-                  (if (> (count s) 10)
-                    (str (subs s 0 10) "...")
-                    s))]
-    (assoc map (shorten key) (shorten value))))
-
-(defn- info
-  "Returns a concise summary of `value` appropriate for including in a log
-   message."
-  [value]
-  (cond
-    (string? value) value
-    (:m/message-type value) (str "<[" (name (:m/message-type value)) "] "
-                                 (:m/message-id value) ">")
-    (map? value) (str (reduce-kv reduce-info-map {} value))
-    :otherwise (str value)))
+(defn- format-argument
+  "Formats an argument to a log function."
+  [argument]
+  (if (map? argument)
+    (cond
+      (:m/message-type argument)
+      (str "<[" (:m/message-type argument) "] " (:m/message-id argument) ">")
+      :otherwise
+      "{...}")
+    (str argument)))
 
 (defn- format-message
   "Formats a message and message arguments for output as a log message."
-  [message arg-names arguments]
-  (let [args (map list arg-names arguments)
-        symbol-args (filter #(symbol? (first %)) args)
-        format-fn (fn [[key value]] (str key "=" (info value)))]
-    (if (empty? symbol-args)
-      message
-      (str message " [" (string/join "; " (map format-fn symbol-args)) "]"))))
+  [message arguments]
+  (if (empty? arguments)
+    message
+    (str message " [" (string/join "; " (map format-argument arguments)) "]")))
 
 (s/fdef log-helper :args (s/cat :message string?
                                 :error? boolean?
@@ -142,13 +126,12 @@
   map which includes the provided context and a `:message` entry with a
   formatted version of the log message and its arguments. Do not invoke this
   function directly."
-  [message error? line & [arg-names & arguments]]
-  (apply merge {:driver-id driver-id
-                :message (format-message message
-                                         arg-names
-                                         arguments)
-                :error? error?
-                :line line}
+  [message error? line & arguments]
+  (apply merge
+         {:driver-id driver-id
+          :message (format-message message arguments)
+          :error? error?
+          :line line}
          (filter map? arguments)))
 
 (defmacro log
@@ -160,7 +143,6 @@
   `(timbre/info (log-helper ~message
                             false
                             ~(:line (meta &form))
-                            '~arguments
                             ~@arguments)))
 
 (defmacro error
@@ -169,14 +151,13 @@
   `(timbre/error (log-helper ~message
                              true
                              ~(:line (meta &form))
-                             '~arguments
                              ~@arguments)))
 
 (defn throw-exception
   "Helper function invoked by the `die!` macro to throw an exception."
   [message [arg-names & arguments]]
   (throw (RuntimeException.
-          (format-message message arg-names arguments))))
+          (format-message message arguments))))
 
 (defmacro die!
   "Logs an error in the style of `log` with optional details, and then throws an
@@ -186,6 +167,5 @@
      (timbre/error (log-helper ~message
                                true
                                ~(:line (meta &form))
-                               '~arguments
                                ~@arguments))
      (throw-exception ~message '~arguments ~@arguments)))
