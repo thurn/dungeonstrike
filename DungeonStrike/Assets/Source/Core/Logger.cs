@@ -29,6 +29,7 @@ namespace DungeonStrike.Source.Core
         /// <param name="arguments">Additional log parameters</param>
         public void Log(string message, params object[] arguments)
         {
+            // AllowBannedRegex:
             Debug.Log(LogWriter.FormatForLogOutput(message, _logContext, false, arguments));
         }
 

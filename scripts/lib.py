@@ -8,6 +8,7 @@ import os
 import os.path
 import shutil
 import subprocess
+import re
 
 EXPECTED_PROGRAMS = [
   "rsync", "pv", "find", "wc", "lein", "cfv", "git", "md5deep",
@@ -117,6 +118,24 @@ def rm(path):
   """Removes the file at 'path if it exists."""
   if os.path.exists(path):
     os.remove(path)
+
+def ban_regex(path, extension, regex):
+  """Bans a regex from appearing in files on the given path with the given file
+  extension."""
+  for (dirpath, dirname, filenames) in os.walk(path):
+    for name in filenames:
+      if name.endswith(extension) and not "Generated" in name:
+        path = os.path.join(dirpath, name)
+        with open(path, 'r') as source_file:
+          line_number = 0
+          prev_line = None
+          for line in source_file.readlines():
+            line_number += 1
+            if re.search(regex, line) and not "AllowBannedRegex:" in prev_line:
+              print("Error: " + name + ":" + str(line_number) +
+                    " matches forbidden regex " + regex)
+              exit(1)
+            prev_line = line
 
 def verify_on_path(programs):
   """Verifies that the provided programs can be found on the system path."""

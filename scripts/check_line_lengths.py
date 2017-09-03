@@ -1,4 +1,6 @@
 #!/usr/bin/env python2.7
+"""A script to enforce maximum line lengths."""
+
 import os
 import lib
 env = lib.init()

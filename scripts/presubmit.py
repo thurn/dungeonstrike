@@ -27,11 +27,24 @@ def call_script_on_staging(name, args=[]):
 
 print("Starting pre-commit checks...")
 
+print("Checking for banned regexes...")
+source_dir = os.path.join(env.client_root, "Assets", "Source")
+driver_dir = os.path.join(env.driver_root, "src")
+driver_tests_dir = os.path.join(env.driver_root, "test")
+
+lib.ban_regex(source_dir, ".cs", r"Debug\.Log")
+lib.ban_regex(driver_dir, ".clj", r"\(p ")
+lib.ban_regex(driver_tests_dir, ".clj", r"\(p ")
+
 # Note: These should be ordered from shortest to longest runtime.
 call_script("check_line_lengths.py")
+
 call_script("uncrustify.py")
+
 call_script("cljfmt.py")
+
 call_script("run_driver_tests.py")
+
 call_script("checksum.py")
 
 # Unity tests need to be run on a separate copy of the project, because you

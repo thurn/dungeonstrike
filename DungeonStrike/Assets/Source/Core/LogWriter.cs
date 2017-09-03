@@ -68,7 +68,7 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// Prepares a string for logging output via Debug.Log or an exception message. The resulting string will
+        /// Prepares a string for logging output via Logger or an exception message. The resulting string will
         /// contain the *start* of a log metadata entry, but not the *end* of that entry, so that the metadata can be
         /// expanded by the log handler in <see cref="HandleUnityLog"/> above.
         /// </summary>
