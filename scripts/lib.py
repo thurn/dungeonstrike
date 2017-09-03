@@ -30,10 +30,23 @@ class Env(object):
       self.unity_path = config["unity_path"]
       self.staging_path = config["staging_path"]
       self.third_party_path = config["third_party_path"]
+      self.check_assets_version()
+
+  def check_assets_version(self):
+    """Checks to make sure the assets version currently being used matches the
+    one in ThirdParty."""
+    with open(os.path.join(self.client_root, "assets_version.md5")) as assets:
+      self.assets_version = assets.readline().strip()
+    if not os.path.isfile(os.path.join(self.third_party_path,
+                                       self.assets_version + ".zip")):
+      print("Error: ThirdParty directory does not match current assets " +
+            "version '" + self.assets_version + "'")
+      print("ThirdParty assets may need to be updated.")
+      exit(1)
 
   def lein(self, args, allow_failure = False):
-    """Runs a lein command by changing to the correct directory and invoking lein
-    with the provided 'args'."""
+    """Runs a lein command by changing to the correct directory and invoking
+    lein with the provided 'args'."""
     cwd = os.getcwd()
     os.chdir(self.driver_root)
     if allow_failure:
@@ -181,8 +194,11 @@ def init():
   """Initializes the scripting environment. Looks for a file named
   'environment.json' which contains local configuration values. If one is not
   found, prompts the user to create one. Also runs through some useful setup
-  instructions. A call to this function must be the first line of every
-  script. Returns a tuple object representing the environment state.
+  instructions.
+
+  A call to this function must be the first line of every script.
+
+  Returns an object representing the environment state.
   """
   scripts_root = os.path.dirname(os.path.realpath(__file__))
   project_root = os.path.abspath(os.path.join(scripts_root, os.pardir))

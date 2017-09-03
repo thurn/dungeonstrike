@@ -28,6 +28,7 @@ def call_script_on_staging(name, args=[]):
 print("Starting pre-commit checks...")
 
 # Note: These should be ordered from shortest to longest runtime.
+call_script("check_line_lengths.py")
 call_script("uncrustify.py")
 call_script("cljfmt.py")
 call_script("run_driver_tests.py")
