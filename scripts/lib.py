@@ -76,13 +76,11 @@ class Env(object):
 
 def call(args, failure_message = None):
   """Wrapper around subprocess.check_call"""
-  if failure_message:
-    result = subprocess.call(args)
-    if result != 0:
+  result = subprocess.call(args)
+  if result != 0:
+    if failure_message:
       print(failure_message)
-      exit(result)
-  else:
-    return subprocess.check_call(args)
+    exit(result)
 
 def output(args):
   """Wrapper around subprocess.check_output"""

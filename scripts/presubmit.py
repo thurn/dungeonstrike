@@ -27,6 +27,8 @@ def call_script_on_staging(name, args=[]):
 
 print("Starting pre-commit checks...")
 
+call_script("check_for_unsaved_files.py")
+
 print("Checking for banned regexes...")
 source_dir = os.path.join(env.client_root, "Assets", "Source")
 driver_dir = os.path.join(env.driver_root, "src")
