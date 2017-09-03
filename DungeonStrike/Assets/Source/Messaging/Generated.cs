@@ -49,6 +49,7 @@ namespace DungeonStrike.Source.Messaging
         public QuitGameMessage() : base("QuitGame")
         {
         }
+
     }
 
     public sealed class CreateEntityMessage : Message
@@ -71,6 +72,7 @@ namespace DungeonStrike.Source.Messaging
         public DestroyEntityMessage() : base("DestroyEntity")
         {
         }
+
     }
 
     public sealed class MoveToPositionMessage : Message

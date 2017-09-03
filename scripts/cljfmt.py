@@ -13,6 +13,6 @@ if args.fix:
   env.lein(["cljfmt", "fix"])
 else:
   print("Checking Clojure source code formatting...")
-  env.lein(["cljfmt", "check"],
-           failure_message = "\n Formatting Error: Run '" +
-           __file__ + " --fix' to fix")
+  result = env.lein(["cljfmt", "check"], allow_failure = True)
+  if result != 0 and lib.yesno("Clojure formatting errors. Fix now? (y/n)"):
+    env.lein(["cljfmt", "fix"])

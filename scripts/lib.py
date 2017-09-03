@@ -31,13 +31,18 @@ class Env(object):
       self.staging_path = config["staging_path"]
       self.third_party_path = config["third_party_path"]
 
-  def lein(self, args, failure_message = None):
+  def lein(self, args, allow_failure = False):
     """Runs a lein command by changing to the correct directory and invoking lein
     with the provided 'args'."""
     cwd = os.getcwd()
     os.chdir(self.driver_root)
-    call(["lein"] + args, failure_message = failure_message)
-    os.chdir(cwd)
+    if allow_failure:
+      result = subprocess.call(["lein"] + args)
+      os.chdir(cwd)
+      return result
+    else:
+      call(["lein"] + args)
+      os.chdir(cwd)
 
   def script(self, name):
     return os.path.join(self.scripts_root, name)

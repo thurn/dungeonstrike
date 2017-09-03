@@ -228,6 +228,9 @@ namespace DungeonStrike.Source.Core
         /// </para>
         protected virtual string MessageType => null;
 
+        /// <summary>
+        /// Starts a coroutine to run a Unity YieldInstruction-based operation asynchronously wrapped in a Task.
+        /// </summary>
         protected Task RunOperationAsync(YieldInstruction operation)
         {
             var completionSource = new TaskCompletionSource<bool>();
