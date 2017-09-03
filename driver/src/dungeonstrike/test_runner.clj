@@ -83,15 +83,21 @@
    *first* failure value returned."
   [args recordings]
   (async/go-loop [[recording & remaining] recordings]
-    (let [start-time (System/currentTimeMillis)]
+    (let [start-time (System/currentTimeMillis)
+          message (str "RUNNING: '" (:name recording) "'")]
+      (logger/log-gui message)
       (when (:verbose args)
-        (println (str "RUNNING: '" (:name recording) "'")))
+        (println message))
       (when-let [{:keys [:status] :as result}
                  (<! (run-recording recording))]
-        (when (and (:verbose args) (= status :success))
+        (when (= status :success)
           (let [duration (int (/ (- (System/currentTimeMillis) start-time)
-                                 1000))]
-            (println (str "SUCCESS: '" (:name recording) "' [" duration "s]"))))
+                                 1000))
+                message (str "SUCCESS: '" (:name recording)
+                             "' [" duration "s]")]
+            (logger/log-gui message)
+            (when (:verbose args)
+              (println message))))
         (if (or (empty? remaining) (not= status :success))
           result
           (recur remaining))))))

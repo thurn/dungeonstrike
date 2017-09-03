@@ -47,7 +47,6 @@
          (into {} (remove #(nil? (val %))
                           (merge (dissoc entry :message :?msg-fmt)
                                  {:source ?ns-str
-                                  :formatted msg
                                   :timestamp (.getTime instant)
                                   :log-type :driver
                                   :rest rest

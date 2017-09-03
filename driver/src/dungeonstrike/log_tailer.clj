@@ -29,7 +29,7 @@
     ;; 1000: Delay between checks of the file for new content (in milliseconds)
     ;; false: Whether to tail from the end of the file
     ;; true: Whether to close and re-open the file between chunks
-    (Tailer/create file listener 1000 false true)))
+    (Tailer/create file listener 100 false true)))
 
 (mount/defstate ^:private tailers
   :start (atom {paths/driver-log-path (new-tailer paths/driver-log-path)})
