@@ -32,7 +32,7 @@
                   (str (:class-name root-cause) ": "
                        (:message root-cause)))
        :exception-class (:class-name root-cause)
-       :thead-name (.getName thread)
+       :thread-name (.getName thread)
        :stack-trace (str builder)})))
 
 (defn set-default-exception-handler!

@@ -1,5 +1,5 @@
 (ns dungeonstrike.requests
-  "Centralized definitions for request messages sent through the Reconciler
+  "Centralized definitions for request messages sent through the effects
    system."
   (:require [clojure.core.async :as async]
             [clojure.spec.alpha :as s]

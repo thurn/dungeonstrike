@@ -65,6 +65,8 @@
 
          (deffield :m/position position-spec)]))
 
+(defmulti message-type :m/message-type)
+
 (defmacro defmessage
   "As with `deffield`, this macro both defines a specification and returns a
    parallel version of the specification as a data structure for metaprogramming
@@ -79,7 +81,7 @@
 
 (s/def :m/message-type keyword?)
 
-(defmulti message-type :m/message-type)
+(defmulti action-type :a/action-type)
 
 (defmacro defaction
   "As `defmessage`, except that it describes values sent *from* the
@@ -95,8 +97,6 @@
 (s/def :m/action-id string?)
 
 (s/def :m/action-type keyword?)
-
-(defmulti action-type :a/action-type)
 
 (def actions
   "All possible action specifications. An action is a value sent from the client
