@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Messaging;
+using DungeonStrike.Source.Utilities;
 using UnityEngine.SceneManagement;
 
 namespace DungeonStrike.Source.Services
@@ -13,10 +13,12 @@ namespace DungeonStrike.Source.Services
     {
         protected override string MessageType => LoadSceneMessage.Type;
 
-        protected override async Task HandleMessage(Message receivedMessage)
+        protected override async Task<Result> HandleMessage(Message receivedMessage)
         {
             var message = (LoadSceneMessage) receivedMessage;
             await RunOperationAsync(SceneManager.LoadSceneAsync(message.SceneName.ToString()));
+
+            return Result.Success;
         }
     }
 }

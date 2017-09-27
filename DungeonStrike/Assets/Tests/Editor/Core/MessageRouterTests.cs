@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Messaging;
+using DungeonStrike.Source.Utilities;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -15,10 +16,11 @@ namespace DungeonStrike.Tests.Editor.Core
 
         protected override string MessageType => TestMessageType;
 
-        protected override async Task HandleMessage(Message receivedMessage)
+        protected override async Task<Result> HandleMessage(Message receivedMessage)
         {
             ReceivedMessage = receivedMessage;
             await CompletionSource.Task;
+            return Result.Success;
         }
     }
 
@@ -30,10 +32,11 @@ namespace DungeonStrike.Tests.Editor.Core
 
         protected override string MessageType => TestMessageType;
 
-        protected override async Task HandleMessage(Message receivedMessage)
+        protected override async Task<Result> HandleMessage(Message receivedMessage)
         {
             ReceivedMessage = receivedMessage;
             await CompletionSource.Task;
+            return Result.Success;
         }
     }
 

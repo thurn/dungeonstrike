@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
+using DungeonStrike.Source.Utilities;
 using UnityEngine;
 using WebSocketSharp;
 
@@ -14,7 +15,7 @@ namespace DungeonStrike.Source.Messaging
         private IEnumerator<WaitForSeconds> _autoReconnect;
         private bool _connectionClosed;
 
-        protected override async Task OnEnableService()
+        protected override async Task<Result> OnEnableService()
         {
             _messageRouter = await GetService<MessageRouter>();
 
@@ -26,6 +27,7 @@ namespace DungeonStrike.Source.Messaging
             _websocket.Connect();
             _autoReconnect = AutoReconnect();
             StartCoroutine(_autoReconnect);
+            return Result.Success;
         }
 
         protected override void OnDisableService()

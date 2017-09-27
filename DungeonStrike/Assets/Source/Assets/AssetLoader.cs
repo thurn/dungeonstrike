@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AssetBundles;
 using DungeonStrike.Source.Core;
+using DungeonStrike.Source.Utilities;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Assets
@@ -12,7 +13,7 @@ namespace DungeonStrike.Source.Assets
     {
         public static readonly Vector3 DefaultPosition = new Vector3(0, -1000, 0);
 
-        protected override async Task OnEnableService()
+        protected override async Task<Result> OnEnableService()
         {
             AssetBundleManager.SetSourceAssetBundleDirectory("/AssetBundles/" + Utility.GetPlatformName() + "/");
             var request = AssetBundleManager.Initialize();
@@ -24,6 +25,7 @@ namespace DungeonStrike.Source.Assets
             }
 
             Logger.Log("Done loading AssetBundle manifest");
+            return Result.Success;
         }
 
         /// <summary>

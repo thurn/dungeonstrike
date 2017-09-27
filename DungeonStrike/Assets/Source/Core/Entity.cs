@@ -1,5 +1,6 @@
 ﻿using System;
 using DungeonStrike.Source.Messaging;
+using UnityEngine;
 
 namespace DungeonStrike.Source.Core
 {
@@ -19,17 +20,17 @@ namespace DungeonStrike.Source.Core
     /// method.
     /// </para>
     /// </remarks>
-    public sealed class Entity : DungeonStrikeComponent
+    public sealed class Entity : MonoBehaviour
     {
         /// <summary>
         /// Type string for this entity, as defined by the driver.
         /// </summary>
-        public EntityType EntityType { get; private set; }
+        public EntityType EntityType;
 
         /// <summary>
         /// ID for this entity. Entity IDs must be globally unique across all entity types.
         /// </summary>
-        public string EntityId { get; private set; }
+        public string EntityId;
 
         /// <summary>
         /// Whether or not this entity has been initialized via <see cref="Initialize"/>.

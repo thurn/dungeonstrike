@@ -26,7 +26,7 @@ namespace DungeonStrike.Source.Core
         /// Registers this EntityComponent to receive messages requested directed at its specific EntityID. Subclasses
         /// should put their setup logic in <see cref="OnEnableEntityComponent"/>.
         /// </summary>
-        public async Task<EntityComponent> Enable(LogContext parentContext)
+        public override async Task<DungeonStrikeComponent> Enable(LogContext parentContext)
         {
             Initialize(parentContext);
             ErrorHandler.CheckState(LifecycleState == ComponentLifecycleState.NotStarted,
@@ -56,9 +56,9 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Should be used to implement any required setup logic for EntityComponents.
         /// </summary>
-        protected virtual Task OnEnableEntityComponent()
+        protected virtual Task<Result> OnEnableEntityComponent()
         {
-            return Async.Done;
+            return Async.Success;
         }
 
         /// <summary>

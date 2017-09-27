@@ -14,6 +14,7 @@
 
 (def ^:private template
   "using System;
+using System.Collections.Generic;
 
 // =============================================================================
 // WARNING: Do not modify this file by hand! This file is automatically
@@ -43,7 +44,7 @@ namespace DungeonStrike.Source.Messaging
         }
 
         {{#fields}}
-        public {{fieldType}} {{fieldName}} { get; set; }
+        public {{&fieldType}} {{fieldName}} { get; set; }
         {{/fields}}
     }
 
@@ -58,7 +59,7 @@ namespace DungeonStrike.Source.Messaging
         }
 
         {{#fields}}
-        public {{fieldType}} {{fieldName}} { get; set; }
+        public {{&fieldType}} {{fieldName}} { get; set; }
         {{/fields}}
     }
 
@@ -96,6 +97,7 @@ namespace DungeonStrike.Source.Messaging
       (= uuid? spec) "string"
       (= string? spec) "string"
       (= messages/position-spec spec) "Position"
+      (= messages/position-coll-spec spec) "List<Position>"
       :otherwise (throw (RuntimeException. "Unknown Message Field Type")))))
 
 (defn- action-field-type

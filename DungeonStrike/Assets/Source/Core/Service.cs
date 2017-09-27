@@ -19,7 +19,7 @@ namespace DungeonStrike.Source.Core
         /// setup logic should put it in <see cref="OnEnableService" />. This method should only be invoked from
         /// "Root"!
         /// </summary>
-        public async Task<Service> Enable(LogContext parentContext)
+        public override async Task<DungeonStrikeComponent> Enable(LogContext parentContext)
         {
             Initialize(parentContext);
             ErrorHandler.CheckState(LifecycleState == ComponentLifecycleState.NotStarted,
@@ -47,9 +47,9 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Should be used to implement any required setup logic for services.
         /// </summary>
-        protected virtual Task OnEnableService()
+        protected virtual Task<Result> OnEnableService()
         {
-            return Async.Done;
+            return Async.Success;
         }
 
         /// <summary>

@@ -16,10 +16,10 @@ namespace DungeonStrike.Source.Tools
     {
         private readonly ISet<GameObject> _trackedEntities = new HashSet<GameObject>();
 
-        protected override Task OnEnableService()
+        protected override Task<Result> OnEnableService()
         {
             SceneManager.sceneLoaded += (scene, mode) => Logger.Log("Scene loaded", scene.name);
-            return Async.Done;
+            return Async.Success;
         }
 
         private void Update()

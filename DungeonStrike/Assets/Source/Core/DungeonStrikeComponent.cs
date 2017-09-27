@@ -46,9 +46,19 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
+        /// The private root object property.
+        /// </summary>
+        private Root _root;
+
+        /// <summary>
         /// Keeps track of this component's Unity lifecycle state.
         /// </summary>
         protected ComponentLifecycleState LifecycleState = ComponentLifecycleState.NotStarted;
+
+        /// <summary>
+        /// The private log context of this component.
+        /// </summary>
+        private LogContext _logContext;
 
         private Logger _logger;
 
@@ -105,14 +115,19 @@ namespace DungeonStrike.Source.Core
                 throw new InvalidOperationException("Root must be specified before calling Enable()!");
             }
             var logContext = LogContext.NewContext(parentContext, GetType(), gameObject);
+            _logContext = logContext;
             _logger = new Logger(logContext);
             _errorHandler = new ErrorHandler(logContext);
         }
 
         /// <summary>
-        /// The private root object property.
+        /// Method to perform initialization logic for components. Must be called immediately after creating
+        /// a new DungeonStrikeComponent. Implementations should call <see cref="Initialize"/> as their first action.
         /// </summary>
-        private Root _root;
+        /// <param name="parentContext">The <see cref="LogContext"/> of the component which created this component.
+        /// Used to form a contextual chain tracing how components are instantiated.</param>
+        /// <returns></returns>
+        public abstract Task<DungeonStrikeComponent> Enable(LogContext parentContext);
 
         /// <summary>
         /// A reference to the global root component, used for service lookups. This property should be set by the
@@ -194,30 +209,6 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// Called when this component receives a message from the driver of a type it has registered for.
-        /// </summary>
-        /// <para>
-        /// Overriding this method is the primary way in which components can receive messages from the driver, the
-        /// independent program which implements the DungeonStrike game logic. The driver controls the behavior of the
-        /// Unity3D frontend by sending JSON-encoded messages to it, which are deserialized to instances of the
-        /// <see cref="Message"/> class. Each message must be consumed by exactly one component instance. The component
-        /// instance to receive a given message is determined by examining the <see cref="Message.MessageType"/>
-        /// property. A component indicates the types of messages it wishes to register for by overriding the
-        /// <see cref="MessageType"/> property of this class. When a message is received matching one of your
-        /// component's supported message types, this method will be invoked.
-        /// </para>
-        /// <para>
-        /// Message dispatch behavior is affected by the choice of parent class, either <see cref="EntityComponent"/>
-        /// or <see cref="Service"/>. Refer to the documentation for those classes to understand the difference.
-        /// </para>
-        /// <param name="receivedMessage">The new message object received from the driver</param>
-        /// <returns>A Task object which should be completed once the message has been handled.</returns>
-        protected virtual Task HandleMessage(Message receivedMessage)
-        {
-            return Async.Done;
-        }
-
-        /// <summary>
         /// The unique MessageType for this component, or null if this component is not associated with any message
         /// type.
         /// </summary>
@@ -263,10 +254,51 @@ namespace DungeonStrike.Source.Core
             Logger.Log("Received message", message);
             ErrorHandler.CheckState(!CurrentMessageId.HasValue, "Component is already handling a message");
             CurrentMessageId = Optional.Of(message.MessageId);
-            await HandleMessage(message);
+            var result = await HandleMessage(message);
 
-            Logger.Log("Finished processing message", message);
+            Logger.Log(result == Result.Success ? "Finished processing message" : "Error processing message", message);
             CurrentMessageId = Utilities.Optional<string>.Empty;
+        }
+
+        /// <summary>
+        /// Called when this component receives a message from the driver of a type it has registered for.
+        /// </summary>
+        /// <para>
+        /// Overriding this method is the primary way in which components can receive messages from the driver, the
+        /// independent program which implements the DungeonStrike game logic. The driver controls the behavior of the
+        /// Unity3D frontend by sending JSON-encoded messages to it, which are deserialized to instances of the
+        /// <see cref="Message"/> class. Each message must be consumed by exactly one component instance. The component
+        /// instance to receive a given message is determined by examining the <see cref="Message.MessageType"/>
+        /// property. A component indicates the types of messages it wishes to register for by overriding the
+        /// <see cref="MessageType"/> property of this class. When a message is received matching one of your
+        /// component's supported message types, this method will be invoked.
+        /// </para>
+        /// <para>
+        /// Message dispatch behavior is affected by the choice of parent class, either <see cref="EntityComponent"/>
+        /// or <see cref="Service"/>. Refer to the documentation for those classes to understand the difference.
+        /// </para>
+        /// <param name="receivedMessage">The new message object received from the driver</param>
+        /// <returns>A Task object which should be completed once the message has been handled.</returns>
+        protected virtual Task<Result> HandleMessage(Message receivedMessage)
+        {
+            return Async.Success;
+        }
+
+        /// <summary>
+        /// Adds a new DungeonStrikeComponent to a given GameObject and immediately enables it. The new componet
+        /// is initialized as a child of this component, meaning that it will have a derived LogContext and share the
+        /// same root object reference.
+        /// </summary>
+        /// <param name="source">The game object to which the component should be added.</param>
+        /// <typeparam name="T">The type of the component to add.</typeparam>
+        /// <returns></returns>
+        public async Task<T> AddAndEnableComponent<T>(GameObject source) where T : DungeonStrikeComponent
+        {
+            var result = source.AddComponent<T>();
+            result.Root = _root;
+            await result.Enable(_logContext);
+
+            return result;
         }
     }
 }

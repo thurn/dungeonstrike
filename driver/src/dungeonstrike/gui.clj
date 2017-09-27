@@ -11,6 +11,7 @@
             [dungeonstrike.messages :as messages]
             [dungeonstrike.paths :as paths]
             [dungeonstrike.requests :as requests]
+            [dungeonstrike.test-message-values :as test-message-values]
             [dungeonstrike.test-runner :as test-runner]
             [dungeonstrike.websocket :as websocket]
             [dungeonstrike.uuid :as uuid]
@@ -59,6 +60,9 @@
         (= messages/position-spec field)
         (seesaw/text :id field-name :text "0,0")
 
+        (= messages/position-coll-spec field)
+        (seesaw/combobox :id field-name :model [:0&0+7])
+
         (= field-name :m/new-entity-id)
         (seesaw/text :id field-name :text (uuid/new-entity-id))
 
@@ -80,6 +84,8 @@
   (cond
     (= key :m/position)
     (assoc message key (process-position value))
+    (= key :m/positions)
+    (assoc message key (test-message-values/positions value))
     (= "m" (namespace key))
     (assoc message key value)
     :otherwise
@@ -251,9 +257,11 @@
      column0
      (proxy [DefaultTableCellRenderer] []
        (getTableCellRendererComponent [table value s f r c]
-         (set-cell-color! this value)
-         (proxy-super getTableCellRendererComponent
-                      table (:message value) s f r c))))
+         (when-not (nil? value)
+           ;; TODO: why is the value sometimes nil?
+           (set-cell-color! this value)
+           (proxy-super getTableCellRendererComponent
+                        table (:message value) s f r c)))))
     (.setSelectionMode table ListSelectionModel/MULTIPLE_INTERVAL_SELECTION)
     (.setMinWidth column1 200)
     (.setMaxWidth column1 200)

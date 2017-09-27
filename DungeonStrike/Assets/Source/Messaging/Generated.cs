@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 // =============================================================================
 // WARNING: Do not modify this file by hand! This file is automatically
@@ -86,6 +87,17 @@ namespace DungeonStrike.Source.Messaging
         public Position Position { get; set; }
     }
 
+    public sealed class ShowMoveSelectorMessage : Message
+    {
+        public static readonly string Type = "ShowMoveSelector";
+
+        public ShowMoveSelectorMessage() : base("ShowMoveSelector")
+        {
+        }
+
+        public List<Position> Positions { get; set; }
+    }
+
     public sealed class ClientConnectedAction : UserAction
     {
         public static readonly string Type = "ClientConnected";
@@ -116,6 +128,8 @@ namespace DungeonStrike.Source.Messaging
                     return new DestroyEntityMessage();
                 case "MoveToPosition":
                     return new MoveToPositionMessage();
+                case "ShowMoveSelector":
+                    return new ShowMoveSelectorMessage();
                 default:
                     throw new InvalidOperationException(
                         "Unrecognized message type: " + messageType);

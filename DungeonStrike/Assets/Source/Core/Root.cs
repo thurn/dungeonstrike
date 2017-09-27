@@ -66,7 +66,8 @@ namespace DungeonStrike.Source.Core
 
         private ErrorHandler _errorHandler;
 
-        private readonly IDictionary<Type, Task<Service>> _services = new Dictionary<Type, Task<Service>>();
+        private readonly IDictionary<Type, Task<DungeonStrikeComponent>> _services =
+            new Dictionary<Type, Task<DungeonStrikeComponent>>();
 
         private static Root _instance;
 

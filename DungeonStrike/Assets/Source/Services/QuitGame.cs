@@ -13,11 +13,11 @@ namespace DungeonStrike.Source.Services
     {
         protected override string MessageType => QuitGameMessage.Type;
 
-        protected override Task HandleMessage(Message receivedMessage)
+        protected override Task<Result> HandleMessage(Message receivedMessage)
         {
             Logger.Log("Quitting Client");
             Application.Quit();
-            return Async.Done;
+            return Async.Success;
         }
     }
 }

@@ -26,14 +26,14 @@ namespace DungeonStrike.Source.Core
 
         private RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>> _messages;
 
-        protected override Task OnEnableService()
+        protected override Task<Result> OnEnableService()
         {
             _serviceMessageHandlers = new Dictionary<string, DungeonStrikeComponent>();
             _entityComponentMessageHandlers =
                 new Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent>();
             _errors = new RingBuffer<Exception>(16);
             _messages = new RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>>(16);
-            return Async.Done;
+            return Async.Success;
         }
 
         protected override void OnDisableService()

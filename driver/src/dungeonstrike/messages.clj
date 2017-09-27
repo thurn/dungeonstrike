@@ -10,9 +10,13 @@
 (s/def :m/x integer?)
 (s/def :m/y integer?)
 (def position-spec
-  "Spec for an entity's position. This abstract position is translated into
-   'real' world coordinates by the display layer."
+  "Spec for an entity or tile position. This abstract position is translated
+   into 'real' world coordinates by the display layer."
   (s/keys :req [:m/x :m/y]))
+
+(def position-coll-spec
+  "Spec for a collection of positions"
+  (s/coll-of position-spec))
 
 (def scene-names
   "Possible names of scenes, can be loaded via the :m/load-scene message type"
@@ -63,7 +67,9 @@
 
          (deffield :m/entity-type entity-types)
 
-         (deffield :m/position position-spec)]))
+         (deffield :m/position position-spec)
+
+         (deffield :m/positions position-coll-spec)]))
 
 (defmulti message-type :m/message-type)
 
@@ -133,8 +139,13 @@
            [:m/entity-id])
 
          (defmessage :m/move-to-position
-           "Instructs an entity to move itself to a given position."
-           [:m/entity-id :m/position])]))
+           "Moves an entity to a given position."
+           [:m/entity-id :m/position])
+
+         (defmessage :m/show-move-selector
+           "Displays a UI for selecting a destination for an entity to move to
+           from a collection of available positions"
+           [:m/entity-id :m/positions])]))
 
 ;; The core message specification, a multi-spec which identifies the message
 ;; type in question via the :m/message-type key and then validates it.

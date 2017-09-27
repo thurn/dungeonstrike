@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using DungeonStrike.Source.Assets;
 using DungeonStrike.Source.Core;
+using DungeonStrike.Source.EntityComponents;
 using DungeonStrike.Source.Messaging;
+using DungeonStrike.Source.Utilities;
 using UnityEngine;
 
 namespace DungeonStrike.Source.Services
@@ -13,19 +15,24 @@ namespace DungeonStrike.Source.Services
 
         protected override string MessageType => CreateEntityMessage.Type;
 
-        protected override async Task OnEnableService()
+        protected override async Task<Result> OnEnableService()
         {
             _assetLoader = await GetService<AssetLoader>();
+
+            return Result.Success;
         }
 
-        protected override async Task HandleMessage(Message receivedMessage)
+        protected override async Task<Result> HandleMessage(Message receivedMessage)
         {
             var message = (CreateEntityMessage) receivedMessage;
             var result = await CreateSoldier();
 
             var entity = result.AddComponent<Entity>();
             entity.Initialize(message.EntityType, message.NewEntityId);
+            await AddAndEnableComponent<ShowMoveSelector>(result);
+
             result.transform.position = new Vector3(message.Position.X, 0, message.Position.Y);
+            return Result.Success;
         }
 
         private async Task<GameObject> CreateSoldier()
