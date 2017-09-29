@@ -20,12 +20,14 @@ for directory in os.listdir(third_party):
   os.rename(sfv, newPath)
   lib.call(["perl", "-p", "-i", "-e", "s/Generated.*//g", newPath])
 
+print("\nChecksums updated. Updating asset_version.md5...")
+
 metasum = lib.output([env.script("metasum.py")]).rstrip()
 version_path = os.path.join(env.client_root, "assets_version.md5")
 with open(version_path, "w") as assets_version:
   assets_version.write(metasum)
 
-print("Checksums updated.")
+print("asset_version.md5 updated")
 
 if lib.yesno("Show git status?"):
   lib.call(["git", "status"])

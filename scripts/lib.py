@@ -31,7 +31,6 @@ class Env(object):
       self.unity_path = config["unity_path"]
       self.staging_path = config["staging_path"]
       self.third_party_path = config["third_party_path"]
-      self.check_assets_version()
 
   def check_assets_version(self):
     """Checks to make sure the assets version currently being used matches the

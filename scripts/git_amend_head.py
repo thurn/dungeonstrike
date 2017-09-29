@@ -3,6 +3,7 @@ import sys
 import re
 import lib
 env = lib.init()
+env.check_assets_version()
 
 branch = lib.output(["git", "branch"]).rstrip()
 all_args = sys.argv[1:]

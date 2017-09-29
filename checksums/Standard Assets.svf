@@ -97,8 +97,8 @@ Effects/ImageEffects/Scripts/NoiseAndGrain.cs f4378a49
 Effects/ImageEffects/Scripts/NoiseAndGrain.cs.meta 8e9d1fc6
 Effects/ImageEffects/Scripts/NoiseAndScratches.cs b810a19f
 Effects/ImageEffects/Scripts/NoiseAndScratches.cs.meta de7ec603
-Effects/ImageEffects/Scripts/PostEffectsBase.cs 494ca6d3
-Effects/ImageEffects/Scripts/PostEffectsBase.cs.meta 401e2b4a
+Effects/ImageEffects/Scripts/PostEffectsBase.cs fc8b6d78
+Effects/ImageEffects/Scripts/PostEffectsBase.cs.meta 38ece418
 Effects/ImageEffects/Scripts/PostEffectsHelper.cs 84fd8a48
 Effects/ImageEffects/Scripts/PostEffectsHelper.cs.meta f6e51ecd
 Effects/ImageEffects/Scripts/Quads.cs f838a2af
@@ -125,7 +125,7 @@ Effects/ImageEffects/Scripts/VignetteAndChromaticAberration.cs bacadb37
 Effects/ImageEffects/Scripts/VignetteAndChromaticAberration.cs.meta 098fbc9b
 Effects/ImageEffects/Scripts/Vortex.cs 1d8dc82c
 Effects/ImageEffects/Scripts/Vortex.cs.meta e7e807f3
-Effects/ImageEffects/Scripts.meta 75a6accd
+Effects/ImageEffects/Scripts.meta 110fa1a1
 Effects/ImageEffects/Shaders/BlendModesOverlay.shader b51cb838
 Effects/ImageEffects/Shaders/BlendModesOverlay.shader.meta f58f028e
 Effects/ImageEffects/Shaders/BlurEffectConeTaps.shader 27b332d5
@@ -236,7 +236,7 @@ Effects/ImageEffects/Shaders/_BloomAndFlares/BrightPassFilter2.shader 8901d428
 Effects/ImageEffects/Shaders/_BloomAndFlares/BrightPassFilter2.shader.meta 922aa9b9
 Effects/ImageEffects/Shaders/_BloomAndFlares/LensFlareCreate.shader e4acd9d7
 Effects/ImageEffects/Shaders/_BloomAndFlares/LensFlareCreate.shader.meta 5fb3e5b7
-Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBloom.shader 54dd8886
+Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBloom.shader 4cf962b9
 Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBloom.shader.meta 6954e4b9
 Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBlur.shader 1fe50ab1
 Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBlur.shader.meta 41892c39
@@ -246,7 +246,7 @@ Effects/ImageEffects/Shaders/_BloomAndFlares/SeparableBlurPlus.shader 3d904675
 Effects/ImageEffects/Shaders/_BloomAndFlares/SeparableBlurPlus.shader.meta 7a8d3b23
 Effects/ImageEffects/Shaders/_BloomAndFlares/VignetteShader.shader 93364da3
 Effects/ImageEffects/Shaders/_BloomAndFlares/VignetteShader.shader.meta 3705402a
-Effects/ImageEffects/Shaders/_BloomAndFlares.meta 788f6f05
+Effects/ImageEffects/Shaders/_BloomAndFlares.meta 8baaf827
 Effects/ImageEffects/Shaders/_DepthOfField/Bokeh34.shader 48d9b085
 Effects/ImageEffects/Shaders/_DepthOfField/Bokeh34.shader.meta cf174571
 Effects/ImageEffects/Shaders/_DepthOfField/DepthOfField34.shader fb43ce67
@@ -264,7 +264,7 @@ Effects/ImageEffects/Shaders/_DepthOfField/TiltShiftHdrLensBlur.shader.meta 6a57
 Effects/ImageEffects/Shaders/_DepthOfField.meta 9f1c0a6d
 Effects/ImageEffects/Shaders/frag_ao.cginc 8b67d0e8
 Effects/ImageEffects/Shaders/frag_ao.cginc.meta 57d42345
-Effects/ImageEffects/Shaders.meta 25f2f385
+Effects/ImageEffects/Shaders.meta 9260dd81
 Effects/ImageEffects/Textures/ContrastEnhanced3D16.png 316cf052
 Effects/ImageEffects/Textures/ContrastEnhanced3D16.png.meta cd4000f4
 Effects/ImageEffects/Textures/HexShape.psd 511e20fd
@@ -292,7 +292,7 @@ Effects/ImageEffects/Textures/color correction ramp.png.meta 7e2ab401
 Effects/ImageEffects/Textures/grayscale ramp.png 511bad87
 Effects/ImageEffects/Textures/grayscale ramp.png.meta deebf853
 Effects/ImageEffects/Textures.meta d42329e9
-Effects/ImageEffects.meta fa5918fa
+Effects/ImageEffects.meta 904c488a
 Effects/LightCookies/Textures/FlashlightCookie.tif cce3f136
 Effects/LightCookies/Textures/FlashlightCookie.tif.meta 5d3d91bc
 Effects/LightCookies/Textures/FlashlightIrregularCookie.tif 8ed1ec8e
@@ -310,17 +310,17 @@ Effects/LightFlares/Flares/50mmZoom.flare.meta edec4186
 Effects/LightFlares/Flares/FlareSmall.flare 599a33cd
 Effects/LightFlares/Flares/FlareSmall.flare.meta 3eecebce
 Effects/LightFlares/Flares/Sun.flare 26579d1c
-Effects/LightFlares/Flares/Sun.flare.meta 090b07e9
+Effects/LightFlares/Flares/Sun.flare.meta cbf5c1b4
 Effects/LightFlares/Flares.meta 2fa8c3c5
-Effects/LightFlares/Materials/Flare50mm.mat b254c826
-Effects/LightFlares/Materials/Flare50mm.mat.meta ac61795b
-Effects/LightFlares/Materials.meta 02b70215
+Effects/LightFlares/Materials/Flare50mm.mat c9769042
+Effects/LightFlares/Materials/Flare50mm.mat.meta d5018bb7
+Effects/LightFlares/Materials.meta 54a21b99
 Effects/LightFlares/Textures/Flare50mm.psd 30b2abb0
-Effects/LightFlares/Textures/Flare50mm.psd.meta e9695c66
+Effects/LightFlares/Textures/Flare50mm.psd.meta fcbe5746
 Effects/LightFlares/Textures/FlareStar.psd d463dfc7
 Effects/LightFlares/Textures/FlareStar.psd.meta 5ea67045
-Effects/LightFlares/Textures.meta 58a10372
-Effects/LightFlares.meta 4f02e112
+Effects/LightFlares/Textures.meta 07986fe6
+Effects/LightFlares.meta ffff177a
 Effects/Projectors/Guidelines.txt 84f81162
 Effects/Projectors/Guidelines.txt.meta 70c03aad
 Effects/Projectors/Materials/GridProjector.mat b6933708
