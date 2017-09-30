@@ -6,8 +6,6 @@ using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Utilities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using UnityEngine;
-using Tuple = DungeonStrike.Source.Utilities.Tuple;
 
 namespace DungeonStrike.Source.Core
 {
@@ -20,19 +18,19 @@ namespace DungeonStrike.Source.Core
         private Dictionary<string, DungeonStrikeComponent> _serviceMessageHandlers;
 
         // Map from (message type, entityId) to the registered message handler
-        private Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent> _entityComponentMessageHandlers;
+        private Dictionary<Tuple<string, string>, DungeonStrikeComponent> _entityComponentMessageHandlers;
 
         private RingBuffer<Exception> _errors;
 
-        private RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>> _messages;
+        private RingBuffer<Tuple<Message, DungeonStrikeComponent>> _messages;
 
         protected override Task<Result> OnEnableService()
         {
             _serviceMessageHandlers = new Dictionary<string, DungeonStrikeComponent>();
             _entityComponentMessageHandlers =
-                new Dictionary<Utilities.Tuple<string, string>, DungeonStrikeComponent>();
+                new Dictionary<Tuple<string, string>, DungeonStrikeComponent>();
             _errors = new RingBuffer<Exception>(16);
-            _messages = new RingBuffer<Utilities.Tuple<Message, DungeonStrikeComponent>>(16);
+            _messages = new RingBuffer<Tuple<Message, DungeonStrikeComponent>>(16);
             return Async.Success;
         }
 
@@ -52,7 +50,7 @@ namespace DungeonStrike.Source.Core
                 throw error;
             }
 
-            Utilities.Tuple<Message, DungeonStrikeComponent> messageTarget;
+            Tuple<Message, DungeonStrikeComponent> messageTarget;
             if (_messages.TryDequeue(out messageTarget))
             {
                 await messageTarget.Item2.HandleMessageFromDriver(messageTarget.Item1);

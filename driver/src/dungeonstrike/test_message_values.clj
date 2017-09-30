@@ -3,6 +3,9 @@
   (:require [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
+(def entity-ids
+  ["E:DRLS2GWvR8GAZaZixfBamw"])
+
 (def positions
   {:0&0+7
    [{:m/x -7 :m/y -7}

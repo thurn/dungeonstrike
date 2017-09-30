@@ -63,8 +63,8 @@
         (= messages/position-coll-spec field)
         (seesaw/combobox :id field-name :model [:0&0+7])
 
-        (= field-name :m/new-entity-id)
-        (seesaw/text :id field-name :text (uuid/new-entity-id))
+        (or (= field-name :m/new-entity-id) (= field-name :m/entity-id))
+        (seesaw/combobox :id field-name :model test-message-values/entity-ids)
 
         (= string? field)
         (seesaw/text :id field-name :text "")

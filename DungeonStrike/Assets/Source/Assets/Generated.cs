@@ -1,5 +1,12 @@
 ﻿namespace DungeonStrike.Source.Assets
 {
+    public class Materials
+    {
+        public static AssetReference MoveSelectorMaterial { get; }
+            =
+            new AssetReference("materials", "MoveSelectorMaterial");
+    }
+
     public class SoldierRu
     {
         public static AssetReference BagsBlack { get; }
