@@ -29,10 +29,10 @@ with open(version_path, "w") as assets_version:
 
 print("asset_version.md5 updated")
 
-if lib.yesno("Show git status?"):
+if lib.yesno("Show git status? (y/n)"):
   lib.call(["git", "status"])
 
-keep_going = lib.yesno("Create third party archive now?")
+keep_going = lib.yesno("Create third party archive now? (y/n)")
 if not keep_going:
   exit(0)
 

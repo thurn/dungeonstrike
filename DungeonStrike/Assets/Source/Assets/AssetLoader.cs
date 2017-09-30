@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using AssetBundles;
+using AssetBundlesFixed;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Utilities;
 using UnityEngine;
@@ -12,11 +12,14 @@ namespace DungeonStrike.Source.Assets
     public sealed class AssetLoader : Service
     {
         public static readonly Vector3 DefaultPosition = new Vector3(0, -1000, 0);
+        private AssetBundleManager _assetBundleManager;
 
         protected override async Task<Result> OnEnableService()
         {
-            AssetBundleManager.SetSourceAssetBundleDirectory("/AssetBundles/" + Utility.GetPlatformName() + "/");
-            var request = AssetBundleManager.Initialize();
+            _assetBundleManager = gameObject.AddComponent<AssetBundleManager>();
+            //_assetBundleManager.SimulateAssetBundleInEditor = true;
+            _assetBundleManager.SetSourceAssetBundleDirectory("/AssetBundles/" + Utility.GetPlatformName() + "/");
+            var request = _assetBundleManager.Initialize();
 
             // Load the Asset Bundle Manifest if we are not in Simulation mode.
             if (request != null)
@@ -37,7 +40,7 @@ namespace DungeonStrike.Source.Assets
         /// <returns>Asychronous task which will be resolved with a copy of the desired asset.</returns>
         public async Task<T> LoadAsset<T>(AssetReference asset) where T : Object
         {
-            var loadRequest = AssetBundleManager.LoadAssetAsync(asset.BundleName, asset.AssetName, typeof(T));
+            var loadRequest = _assetBundleManager.LoadAssetAsync(asset.BundleName, asset.AssetName, typeof(T));
             await RunOperationAsync(StartCoroutine(loadRequest));
 
             var instance = loadRequest.GetAsset<T>();

@@ -44,10 +44,10 @@ namespace DungeonStrike.Source.EntityComponents
             var points = new List<Vector3>();
             foreach (var line in lines)
             {
-                points.Add(new Vector3(line.Item1 + 0.5f, 0.11f, line.Item2 + 0.5f));
-                points.Add(new Vector3(line.Item3 + 0.5f, 0.11f, line.Item4 + 0.5f));
+                points.Add(new Vector3(line.Item1 + 0.5f, 0.1f, line.Item2 + 0.5f));
+                points.Add(new Vector3(line.Item3 + 0.5f, 0.1f, line.Item4 + 0.5f));
             }
-            var vectorLine = new VectorLine("MoveSelector", points, 5.0f)
+            var vectorLine = new VectorLine("MoveSelector", points, 6.0f)
             {
                 material = material
             };

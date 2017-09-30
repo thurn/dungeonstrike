@@ -5,3 +5,4 @@
 - Added "BuildAssetBundleOptions.StrictMode" to BuildScript BuildAssetBundles
 - Made BuildScript::CopyAssetBundlesTo() method public
 - Made AssetBundldManager::Log not log in non-error cases
+- Converted basically all of the 'static' stuff to be 'non-static'

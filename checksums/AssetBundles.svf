@@ -21,6 +21,13 @@ AssetBundleManager/Resources.meta 7f726439
 AssetBundleManager/Utility.cs 6ba9a91e
 AssetBundleManager/Utility.cs.meta 73efda07
 AssetBundleManager.meta 70b17965
+AssetBundleManagerFixed/AssetBundleLoadOperation.cs 0c5565ce
+AssetBundleManagerFixed/AssetBundleLoadOperation.cs.meta 4764db1f
+AssetBundleManagerFixed/AssetBundleManager.cs 93f9d1a0
+AssetBundleManagerFixed/AssetBundleManager.cs.meta 65dfae48
+AssetBundleManagerFixed/Utility.cs 24cb3077
+AssetBundleManagerFixed/Utility.cs.meta ca794ac6
+AssetBundleManagerFixed.meta 05c275f3
 AssetBundleSample/SampleAssets/MyCube.prefab 9541f0fe
 AssetBundleSample/SampleAssets/MyCube.prefab.meta 7d18f557
 AssetBundleSample/SampleAssets/MyMaterial.mat aa8451ee
