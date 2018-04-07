@@ -2,6 +2,7 @@
   "A Component which renders a Swing UI window showing various debugging
    tools."
   (:require [clojure.core.async :as async :refer [<!]]
+            [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojure.pprint :as pprint]
             [clojure.spec.alpha :as s]
@@ -35,10 +36,24 @@
 (mount/defstate ^:private recording-state
   :start (atom {:recording? false}))
 
+(defn- load-gui-state
+  []
+  (let [file (io/file paths/driver-gui-state-path)]
+    (if (.exists file)
+      (atom (edn/read-string (slurp file)))
+      (atom {}))))
+
+(defn- save-gui-state
+  [state]
+  (let [file (io/file paths/driver-gui-state-path)]
+    (spit file (str state))))
+
 ;; State which should be persisted between restarts, mostly for convenience so
 ;; that you don't constantly need to re-navigate to the same view. Use with
 ;; caution.
-(defonce persistent-state (atom {}))
+(mount/defstate ^:private persistent-state
+  :start (load-gui-state)
+  :stop (save-gui-state @persistent-state))
 
 (mount/defstate ^:private gui-state
   :start (atom {}))
@@ -179,7 +194,9 @@
   (let [file-names (recording-file-names)
         run-selected-button (seesaw/button :text "Run Selected" :enabled? false)
         run-all-button (seesaw/button :text "Run All")
-        test-list (test-list-table file-names)]
+        test-list (test-list-table file-names)
+        test-selector (seesaw/combobox :id :run-on-connect
+                                       :model (conj (seq file-names) "None"))]
     (seesaw/listen run-selected-button :action
                    (fn [e]
                      (when-let [test (seesaw/value test-list)]
@@ -189,13 +206,22 @@
     (seesaw/listen test-list :selection
                    (fn [e]
                      (seesaw/config! run-selected-button :enabled? true)))
+    (seesaw/listen test-selector :selection
+                   (fn [e]
+                     (swap! persistent-state assoc :run-on-connect
+                            (seesaw/selection test-selector))))
+    (seesaw/selection! test-selector
+                       (get @persistent-state :run-on-connect "None"))
+
     (mig/mig-panel
      :id :tests
      :items [[(seesaw/label :text "Tests" :font (title-font))
               "alignx center, pushx, span, wrap 20px"]
              [run-selected-button]
              [run-all-button "wrap 20px"]
-             [test-list "grow, span"]])))
+             [test-list "grow, span"]
+             [(seesaw/label :text "Run On Connect:")]
+             [test-selector "grow, span"]])))
 
 (defn- left-content
   []

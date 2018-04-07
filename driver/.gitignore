@@ -12,3 +12,4 @@ pom.xml.asc
 .hg/
 /.classpath
 logs/
+.gui_state.edn

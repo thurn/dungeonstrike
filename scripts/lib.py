@@ -25,7 +25,7 @@ class Env(object):
       self.client_root = os.path.join(project_root, "DungeonStrike")
       self.client_binary_path = os.path.join(self.client_root,
                                              "Out",
-                                             "dungeonstrike.app")
+                                             "DungeonStrike.app")
       self.tests_root = os.path.join(project_root, "tests")
       self.checksums_root = os.path.join(project_root, "checksums")
       self.unity_path = config["unity_path"]

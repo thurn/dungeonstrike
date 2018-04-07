@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DungeonStrike.Source.Assets;
@@ -33,7 +32,7 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public bool IsUnitTest { get; set; }
 
-        private readonly ConcurrentQueue<Action> _onReady = new ConcurrentQueue<Action>();
+        private readonly Queue<Action> _onReady = new Queue<Action>();
 
         /// <summary>
         /// The current startup state of services.

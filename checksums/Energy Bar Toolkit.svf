@@ -382,7 +382,7 @@ Scripts/Sources/MadCommons.zip.meta d344909e
 Scripts/Sources.meta 47f01a07
 Scripts/Utils.cs 598fa8e2
 Scripts/Utils.cs.meta 83a8c764
-Scripts/uGUI/Editor/EBTPackerPolicy.cs 02f5da62
+Scripts/uGUI/Editor/EBTPackerPolicy.cs 8d9bf89d
 Scripts/uGUI/Editor/EBTPackerPolicy.cs.meta e03868e6
 Scripts/uGUI/Editor/EnergyBarUGUIInspectorBase.cs 1e4bc391
 Scripts/uGUI/Editor/EnergyBarUGUIInspectorBase.cs.meta 3e757809

@@ -47,7 +47,7 @@ namespace DungeonStrike.Source.EntityComponents
                 points.Add(new Vector3(line.Item1 + 0.5f, 0.1f, line.Item2 + 0.5f));
                 points.Add(new Vector3(line.Item3 + 0.5f, 0.1f, line.Item4 + 0.5f));
             }
-            var vectorLine = new VectorLine("MoveSelector", points, 6.0f)
+            var vectorLine = new VectorLine("MoveSelector", points, 10.0f)
             {
                 material = material
             };

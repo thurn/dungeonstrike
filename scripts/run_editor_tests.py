@@ -6,6 +6,7 @@ print("\nRunning Unity editor tests...\n")
 
 result = env.unity([
   "-batchmode",
+  "-quit", # Documentation says this isn't required, but it's wrong :)
   "-projectPath", env.client_root,
   "-runEditorTests"
 ])

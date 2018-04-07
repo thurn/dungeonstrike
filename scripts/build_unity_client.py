@@ -1,5 +1,4 @@
 #!/usr/bin/env python2.7
-import os
 import lib
 env = lib.init()
 
@@ -11,5 +10,5 @@ env.unity([
   "-quit",
   "-batchmode",
   "-projectPath", env.client_root,
-  "-buildOSX64Player", env.client_binary_path
+  "-buildOSXUniversalPlayer", env.client_binary_path
 ])

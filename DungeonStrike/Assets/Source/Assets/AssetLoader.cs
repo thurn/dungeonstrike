@@ -17,7 +17,6 @@ namespace DungeonStrike.Source.Assets
         protected override async Task<Result> OnEnableService()
         {
             _assetBundleManager = gameObject.AddComponent<AssetBundleManager>();
-            //_assetBundleManager.SimulateAssetBundleInEditor = true;
             _assetBundleManager.SetSourceAssetBundleDirectory("/AssetBundles/" + Utility.GetPlatformName() + "/");
             var request = _assetBundleManager.Initialize();
 

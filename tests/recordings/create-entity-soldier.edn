@@ -3,7 +3,7 @@
  :timeout 10,
  :message->client
  {:m/message-type :m/create-entity,
-  :m/new-entity-id "E:YT06NzkJQDW0b4GuA/6WwA",
+  :m/new-entity-id "E:DRLS2GWvR8GAZaZixfBamw",
   :m/entity-type :soldier,
   :m/position {:m/x 0, :m/y 0},
   :m/message-id "M:yYWIrFojTB6/f8sUA6U34w"},
@@ -20,6 +20,6 @@
    "Finished processing message [<[CreateEntity] M:yYWIrFojTB6/f8sUA6U34w>]",
    :source "DungeonStrike.Source.Services.CreateEntity",
    :log-type :client}
-  {:message "Entity created [<Soldier E:YT06NzkJQDW0b4GuA/6WwA>]",
+  {:message "Entity created [<Soldier E:DRLS2GWvR8GAZaZixfBamw>]",
    :source "DungeonStrike.Source.Tools.Panopticon",
    :log-type :client}]}

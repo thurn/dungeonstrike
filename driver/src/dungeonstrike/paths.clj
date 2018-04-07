@@ -33,3 +33,7 @@
 (mount/defstate code-generator-output-path
   "The path at which the messages code generator should produce output."
   :start (get-path :client "Assets/Source/Messaging/Generated.cs"))
+
+(mount/defstate driver-gui-state-path
+  "The path to the driver's GUI state file"
+  :start (get-path :driver ".gui_state.edn"))
