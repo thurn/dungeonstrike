@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using DungeonStrike.Source.Assets;
 using DungeonStrike.Source.Core;
-using DungeonStrike.Source.EntityComponents;
 using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Utilities;
 using UnityEngine;
@@ -25,40 +24,35 @@ namespace DungeonStrike.Source.Services
         protected override async Task<Result> HandleMessage(Message receivedMessage)
         {
             var message = (CreateEntityMessage) receivedMessage;
-            var result = await CreateSoldier();
+            var result = await CreateSoldier(
+                    new Vector3(message.Position.X, 0, message.Position.Y));
 
             var entity = result.AddComponent<Entity>();
             entity.Initialize(message.EntityType, message.NewEntityId);
-            await AddAndEnableComponent<ShowMoveSelector>(result);
-
-            result.transform.position = new Vector3(message.Position.X, 0, message.Position.Y);
             return Result.Success;
         }
 
-        private async Task<GameObject> CreateSoldier()
+        private async Task<GameObject> CreateSoldier(Vector3 position)
         {
-            var prefab = await _assetLoader.LoadAsset<GameObject>(Units.Soldier);
-
-            await Task.WhenAll(new List<Task>
-            {
-                LoadAndSetMaterial(prefab, "Body", SoldierRu.SoldierRuForest),
-                LoadAndSetMaterial(prefab, "Helmet", SoldierRu.HelmetGreen),
-                LoadAndSetMaterial(prefab, "Bags", SoldierRu.BagsGreen),
-                LoadAndSetMaterial(prefab, "Vest", SoldierRu.VestGreen)
+            var assetRefs = await _assetLoader.LoadAssets(new List<string>() {
+                "Soldier",
+                "SoldierForest",
+                "SoldierHelmetGreen",
+                "SoldierBagsGreen",
+                "SoldierVestGreen"
             });
 
+            var prefab = AssetUtil.InstantiateGameObject(assetRefs, "Soldier", position);
+            prefab.transform.Find("Body").GetComponent<SkinnedMeshRenderer>().material =
+                AssetUtil.GetMaterial(assetRefs, "SoldierForest");
+            prefab.transform.Find("Helmet").GetComponent<SkinnedMeshRenderer>().material =
+                AssetUtil.GetMaterial(assetRefs, "SoldierHelmetGreen");
+            prefab.transform.Find("Bags").GetComponent<SkinnedMeshRenderer>().material =
+                AssetUtil.GetMaterial(assetRefs, "SoldierBagsGreen");
+            prefab.transform.Find("Vest").GetComponent<SkinnedMeshRenderer>().material =
+                AssetUtil.GetMaterial(assetRefs, "SoldierVestGreen");
+
             return prefab;
-        }
-
-        /// <summary>
-        /// Loads the material in "asset" from disk and then sets it as the renderer material for "prefab".
-        /// </summary>
-        private async Task LoadAndSetMaterial(GameObject prefab, string childName, AssetReference asset)
-        {
-            var material = await _assetLoader.LoadAsset<Material>(asset);
-
-            var meshRenderer = prefab.transform.Find(childName).GetComponent<SkinnedMeshRenderer>();
-            meshRenderer.material = material;
         }
     }
 }

@@ -1,0 +1,25 @@
+{
+  "types": [{
+    "type": "Material",
+    "extension": "mat"
+  }, {
+    "type": "GameObject",
+    "extension": "prefab"
+  }],
+  "dirs": [{
+    "path": "ThirdParty/Soldier_ru",
+    "prefix": "Soldier",
+    "extensions": [
+      "mat"
+    ],
+    "replace": {
+      "Soldier_ru": "",
+      "Soldier_02": "02"
+    }
+  }, {
+    "path": "Prefabs/Units",
+    "extensions": [
+      "prefab"
+    ]
+  }]
+}

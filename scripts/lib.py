@@ -31,6 +31,8 @@ class Env(object):
       self.unity_path = config["unity_path"]
       self.staging_path = config["staging_path"]
       self.third_party_path = config["third_party_path"]
+      self.assets_dir_path = os.path.join(self.client_root, "Assets")
+      self.asset_config_path = os.path.join(self.assets_dir_path, "assets.json")
 
   def check_assets_version(self):
     """Checks to make sure the assets version currently being used matches the
@@ -231,3 +233,11 @@ def init():
   with open(env_path) as env_file:
     config = json.load(env_file)
     return Env(config, scripts_root, project_root)
+
+def is_generated(name):
+  return name in {
+    "AssetRefs.cs",
+    "AssetUtil.cs",
+    "AssetLinker.cs",
+    "Generated.cs"
+   }

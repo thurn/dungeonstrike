@@ -10,7 +10,7 @@ print("Checking C# source code formatting...")
 
 for (dirpath, dirname, filenames) in os.walk(source):
   for name in filenames:
-    if name.endswith(".cs") and not "Generated" in name:
+    if name.endswith(".cs") and not lib.is_generated(name):
       path = os.path.join(dirpath, name)
       tmp = tempfile.NamedTemporaryFile()
       lib.call([
