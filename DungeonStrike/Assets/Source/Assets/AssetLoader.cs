@@ -7,7 +7,7 @@ using UnityEngine;
 namespace DungeonStrike.Source.Assets
 {
     /// <summary>
-    /// Handles loading named assets from Unity AssetBundles.
+    /// Handles loading named assets from Unity.
     /// </summary>
     public sealed class AssetLoader : Service
     {

@@ -23,7 +23,7 @@
                  [commons-io "2.5"]
                  [de.ubercode.clostache/clostache "1.4.0"]
                  [effects "0.1.0"]
-                 [http-kit "2.2.0"]
+                 [http-kit "2.3.0-beta2"]
                  [io.aviso/pretty "0.1.33"]
                  [mount "0.1.11"]
                  [orchestra "0.3.0"]
