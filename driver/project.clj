@@ -11,12 +11,12 @@
 
   :main dungeonstrike.main
 
-  :dependencies [[org.clojure/clojure "1.9.0-alpha16"]
+  :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/core.async "0.3.442"]
                  [org.clojure/data.json "0.2.6"]
                  [org.clojure/test.check "0.10.0-alpha2"]
                  [org.clojure/tools.cli "0.3.5"]
-                 [org.clojure/spec.alpha "0.1.108"]
+                 [org.clojure/core.specs.alpha "0.1.24"]
                  [camel-snake-kebab "0.4.0"]
                  [clojure-watch "0.1.13"]
                  [com.taoensso/timbre "4.8.0"]
