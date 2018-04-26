@@ -11,6 +11,7 @@
             [dungeonstrike.requests :as requests]
             [dungeonstrike.test-runner]
             [dungeonstrike.websocket]
+            [dungeonstrike.messages-old]
             [effects.core :as effects]
             [mount.core :as mount]
             [orchestra.spec.test :as orchestra]

@@ -83,57 +83,58 @@ namespace DungeonStrike.Source.Messaging
     }
 }")
 
-(defn- enum-sets
-  "Returns the set of all sets defined in the message specifications."
-  []
-  #{messages/scene-names messages/entity-types})
+(defn- pascal-name
+  "Returns the pascal-cased 'name' of this keyword"
+  [keyword]
+  (case/->PascalCase (name keyword)))
 
-(defn- message-field-type
+(defn- enum-info
+  "Returns information about all enum messages."
+  []
+  (for [x messages/message-fields
+        :let [k (key x)]
+        :when (messages/is-enum-message-key? k)]
+    {:enumName (pascal-name k)
+     :values (for [v (messages/message-values k)]
+               {:name (pascal-name v)})}))
+
+(defn- csharp-field-type
   "Returns the C# type to use to represent a given message field."
   [field-name]
-  (let [spec (field-name messages/message-fields)]
-    (cond
-      (set? spec) (messages/enum-name-for-set spec)
-      (= uuid? spec) "string"
-      (= string? spec) "string"
-      (= messages/position-spec spec) "Position"
-      (= messages/position-coll-spec spec) "List<Position>"
-      :otherwise (throw (RuntimeException. "Unknown Message Field Type")))))
-
-(defn- action-field-type
-  "Returns the C# type to use to represent a given action field."
-  [field-name]
-  (let [spec (field-name messages/action-fields)]
-    (cond
-      (= uuid? spec) "string"
-      (= string? spec) "string"
-      :otherwise (throw (RuntimeException. "Unknown Action Field Type")))))
+  (case (messages/field-type field-name)
+    :integer
+    "int"
+    :string
+    "string"
+    :enum
+    (pascal-name field-name)
+    :map
+    (pascal-name field-name)
+    :seq
+    (str "List<" (pascal-name (messages/seq-type field-name)) ">")
+    (throw (RuntimeException.
+            (str "Unknown type '" (messages/field-type field-name)
+                 "' for field '" field-name "'")))))
 
 (defn- template-parameters
   "Helper function which builds the parameters to the code generation template."
   []
   (let [message-field-params (fn [field-name]
-                               {:fieldName (case/->PascalCase (name field-name))
-                                :fieldType (message-field-type field-name)})
+                               {:fieldName (pascal-name field-name)
+                                :fieldType (csharp-field-type field-name)})
         message-params (fn [[message-name fields]]
-                         {:messageName (case/->PascalCase (name message-name))
+                         {:messageName (pascal-name message-name)
                           :fields (map message-field-params
                                        (remove #{:m/entity-id} fields))})
         action-field-params (fn [field-name]
-                              {:fieldName (case/->PascalCase (name field-name))
-                               :fieldType (action-field-type field-name)})
+                              {:fieldName (pascal-name field-name)
+                               :fieldType (csharp-field-type field-name)})
         action-params (fn [[action-name fields]]
-                        {:actionName (case/->PascalCase (name action-name))
-                         :fields (map action-field-params fields)})
-        get-name (comp case/->PascalCase name)
-        enum-value (fn [name] {:name (get-name name)})
-        enum-params (fn [set]
-                      {:enumName (messages/enum-name-for-set set)
-                       :values (map enum-value set)})]
-
+                        {:actionName (pascal-name action-name)
+                         :fields (map action-field-params fields)})]
     {:messages (map message-params messages/messages)
      :actions (map action-params messages/actions)
-     :enums (map enum-params (enum-sets))}))
+     :enums (enum-info)}))
 
 (defn- generate!
   "Generates C# code based on the message specifications found in

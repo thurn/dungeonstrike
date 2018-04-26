@@ -5,7 +5,7 @@
 
   :plugins [[lein-kibit "0.1.3"]
             [jonase/eastwood "0.2.3"]
-            [lein-cljfmt "0.5.6"]
+            [lein-cljfmt "0.5.7"]
             [lein-codox "0.10.3"]
             [lein-expectations "0.0.8"]]
 
@@ -26,7 +26,7 @@
                  [http-kit "2.3.0-beta2"]
                  [io.aviso/pretty "0.1.33"]
                  [mount "0.1.11"]
-                 [orchestra "0.3.0"]
+                 [orchestra "2017.11.12-1"]
                  [seesaw "1.4.5"]
                  [selmer "1.10.7"]]
 

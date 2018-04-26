@@ -43,8 +43,6 @@ call_script("check_line_lengths.py")
 
 call_script("uncrustify.py")
 
-call_script("cljfmt.py")
-
 call_script("run_driver_tests.py")
 
 call_script("checksum.py")

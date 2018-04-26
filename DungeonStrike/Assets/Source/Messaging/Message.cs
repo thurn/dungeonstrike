@@ -9,6 +9,7 @@ namespace DungeonStrike.Source.Messaging
     /// </summary>
     public struct Position
     {
+        // TODO: Generate this
         public int X;
         public int Y;
     }

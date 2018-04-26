@@ -3,7 +3,6 @@
    system."
   (:require [clojure.core.async :as async]
             [clojure.spec.alpha :as s]
-            [dungeonstrike.messages :as messages]
             [effects.core :as effects]
             [mount.core :as mount]
             [dungeonstrike.dev :as dev]))

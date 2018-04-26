@@ -10,15 +10,15 @@ using System.Collections.Generic;
 
 namespace DungeonStrike.Source.Messaging
 {
-    public enum EntityType
-    {
-        Soldier,
-    }
-
     public enum SceneName
     {
         Empty,
         Flat,
+    }
+
+    public enum EntityType
+    {
+        Soldier,
     }
 
     public sealed class TestMessage : Message

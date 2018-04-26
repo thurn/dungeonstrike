@@ -10,6 +10,7 @@
             [clojure-watch.core :as watch]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.messages :as messages]
+            [dungeonstrike.message-gui :as message-gui]
             [dungeonstrike.paths :as paths]
             [dungeonstrike.requests :as requests]
             [dungeonstrike.test-message-values :as test-message-values]
@@ -65,28 +66,6 @@
   []
   (font/font :style #{:bold} :size 18))
 
-(defn- form-for-field [field-name]
-  (let [field (field-name messages/message-fields)]
-    [[(seesaw/label (str field-name))]
-     [(cond
-        (set? field)
-        (seesaw/combobox :id field-name :model field)
-
-        (= messages/position-spec field)
-        (seesaw/text :id field-name :text "0,0")
-
-        (= messages/position-coll-spec field)
-        (seesaw/combobox :id field-name :model [:0&0+7])
-
-        (or (= field-name :m/new-entity-id) (= field-name :m/entity-id))
-        (seesaw/combobox :id field-name :model test-message-values/entity-ids)
-
-        (= string? field)
-        (seesaw/text :id field-name :text "")
-
-        :otherwise
-        (seesaw/text "Unknown field type")) "width 200px, wrap"]]))
-
 (defn- process-position
   [value]
   (if (= value "")
@@ -96,14 +75,8 @@
 
 (defn- process-form-values
   [message key value]
-  (cond
-    (= key :m/position)
-    (assoc message key (process-position value))
-    (= key :m/positions)
-    (assoc message key (test-message-values/positions value))
-    (= "m" (namespace key))
+  (if (= "m" (namespace key))
     (assoc message key value)
-    :otherwise
     message))
 
 (defn- on-send-button-clicked
@@ -112,6 +85,7 @@
   (fn [event]
     (let [form-value (seesaw/value message-form)
           message (reduce-kv process-form-values {} form-value)]
+      (println message)
       (when (:recording? @recording-state)
         (swap! recording-state assoc
                :message->client message))
@@ -127,7 +101,7 @@
     [(seesaw/label "Message ID")]
     [(seesaw/label :id :m/message-id
                    :text (uuid/new-message-id)) "wrap"]]
-   (mapcat form-for-field (message-type messages/messages))
+   (message-gui/editor-for-message-type message-type)
    [[send-button "skip, span, wrap"]]))
 
 (defn- message-selected-fn [message-picker]

@@ -1074,27 +1074,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a0cb844832a495d85cb40f7520ef43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Soldier: {fileID: 0}
-  SoldierWinter: {fileID: 0}
-  SoldierBlack: {fileID: 0}
-  SoldierVestGreen: {fileID: 0}
-  SoldierGorka: {fileID: 0}
-  SoldierVestBlack: {fileID: 0}
-  SoldierForest: {fileID: 0}
-  Soldier02HelmetKhaki: {fileID: 0}
-  SoldierBagsGreen: {fileID: 0}
-  SoldierJungle: {fileID: 0}
-  SoldierHelmetBlack: {fileID: 0}
-  SoldierBagsKhaki: {fileID: 0}
-  Soldier02BodyGorka: {fileID: 0}
-  SoldierHelmetKhaki: {fileID: 0}
-  SoldierHelmetGreen: {fileID: 0}
-  SoldierDesert: {fileID: 0}
-  SoldierVestKhaki: {fileID: 0}
-  SoldierBagsBlack: {fileID: 0}
-  Soldier02BagsKhaki: {fileID: 0}
-  SoldierSurpat: {fileID: 0}
-  Soldier02VestKhaki: {fileID: 0}
+  Soldier: {fileID: 1956170962627226, guid: 8b4d78ca299704ba79d8c411bec60916, type: 2}
+  SoldierWinter: {fileID: 2100000, guid: 7d7db6825ae4d654ba211abca24c1b86, type: 2}
+  SoldierBlack: {fileID: 2100000, guid: 877eaf173e97fa042ba5e976f1d89076, type: 2}
+  SoldierVestGreen: {fileID: 2100000, guid: cf5516a7f95fd9546a8afe50384f741c, type: 2}
+  SoldierGorka: {fileID: 2100000, guid: 908a51001afa02f4ca7288a9572af570, type: 2}
+  SoldierVestBlack: {fileID: 2100000, guid: a6d355d5eddd00a47bcd7770f68ecd6c, type: 2}
+  SoldierForest: {fileID: 2100000, guid: 4ce0490f81196634eaf83b070bbd7f65, type: 2}
+  Soldier02HelmetKhaki: {fileID: 2100000, guid: 343eafad8643646cd95c287eb117f686,
+    type: 2}
+  SoldierBagsGreen: {fileID: 2100000, guid: 44bfd94cf7500bf4a8a2a487f338c718, type: 2}
+  SoldierJungle: {fileID: 2100000, guid: f76b56eeefe9c344a8dd4383f7df1aea, type: 2}
+  SoldierHelmetBlack: {fileID: 2100000, guid: c6178b6592d916f4a815420c596c3b5f, type: 2}
+  SoldierBagsKhaki: {fileID: 2100000, guid: 190d824c8b1315d498f99d0b1587898a, type: 2}
+  Soldier02BodyGorka: {fileID: 2100000, guid: 9b14426e076684729b0fe41ea7f4a7ce, type: 2}
+  SoldierHelmetKhaki: {fileID: 2100000, guid: 9858d6efb9f587246bbaed3331b39e80, type: 2}
+  SoldierHelmetGreen: {fileID: 2100000, guid: 966a9114a3f507941aec93de80721def, type: 2}
+  SoldierDesert: {fileID: 2100000, guid: 5a2a344653d212347b563efd60ce3613, type: 2}
+  SoldierVestKhaki: {fileID: 2100000, guid: 293f734a5170c1945a309e9e2283d3aa, type: 2}
+  SoldierBagsBlack: {fileID: 2100000, guid: 0002261bbaf32fa4ab99d986159fd515, type: 2}
+  Soldier02BagsKhaki: {fileID: 2100000, guid: 24b96345cb3cc41ff8942f41050aacfa, type: 2}
+  SoldierSurpat: {fileID: 2100000, guid: f27c59db0bde5024b95e5dd410b20ff1, type: 2}
+  Soldier02VestKhaki: {fileID: 2100000, guid: a8ccf1624f95c445581af90436dee292, type: 2}
 --- !u!1001 &384593015
 Prefab:
   m_ObjectHideFlags: 0
