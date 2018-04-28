@@ -1096,6 +1096,239 @@ MonoBehaviour:
   Soldier02BagsKhaki: {fileID: 2100000, guid: 24b96345cb3cc41ff8942f41050aacfa, type: 2}
   SoldierSurpat: {fileID: 2100000, guid: f27c59db0bde5024b95e5dd410b20ff1, type: 2}
   Soldier02VestKhaki: {fileID: 2100000, guid: a8ccf1624f95c445581af90436dee292, type: 2}
+  ShadowCardPowerSymbolShadowBig: {fileID: 21300000, guid: 3efec8896c3f58e418fd906b35598be7,
+    type: 3}
+  WaterCardEcWaterBackBig: {fileID: 21300000, guid: 32498374cf2389f4ea302662d107f852,
+    type: 3}
+  EarthCardPowerBigEarth: {fileID: 21300000, guid: b7fbe249db52c0845ae06ba25ad385bf,
+    type: 3}
+  WaterCardRarityRank2: {fileID: 21300000, guid: 0857b9f1017e7fd4695806d55b7a20ad,
+    type: 3}
+  AirCardRarityRank1Big: {fileID: 21300000, guid: 572c51285da6f334bb7c4d776070ce95,
+    type: 3}
+  FireCardRarityRank1Big: {fileID: 21300000, guid: 4d4226b5bfb6a0843a6d36ca912cbf5d,
+    type: 3}
+  LightCardCostSymbolBigLight: {fileID: 21300000, guid: e988f1c19f7ed6f41856114a62adc164,
+    type: 3}
+  LightCardHealthSymbolBigLightShadowed: {fileID: 21300000, guid: e80cbd8103195fb449d342faf1bffdc7,
+    type: 3}
+  LightCardCostSymbolBigLightShadowed: {fileID: 21300000, guid: bb36c1db8912c5944bca41be8a607090,
+    type: 3}
+  LightCardPowerSymbolBigLightShadowed: {fileID: 21300000, guid: 8b5507d8510e41d4089f35bc728e0439,
+    type: 3}
+  FireCardScorchedEarthArtBig: {fileID: 21300000, guid: 37b7649b8690353418cf944b54095509,
+    type: 3}
+  FireCardCostSymbol: {fileID: 21300000, guid: 0fb7ff65b9b67324baa8e916512b2cc3, type: 3}
+  AirCardElAirHeadingSeparate: {fileID: 21300000, guid: 019152dc1d5a768429d96124cf8f033a,
+    type: 3}
+  AirCardElementalAirCardBack: {fileID: 21300000, guid: ee3fa8793a49e124886751c939ffe8ab,
+    type: 3}
+  LightCardRarityRank2Big: {fileID: 21300000, guid: 903b1ca9acdf5a344925263720be5fee,
+    type: 3}
+  FireCardPowerSymbolFireShadowed: {fileID: 21300000, guid: cc13f186a02418f46804e35fb944c6d9,
+    type: 3}
+  WaterCardRarityRank4: {fileID: 21300000, guid: b20dccae3c9ddd543aef0f3370703e2e,
+    type: 3}
+  EarthCardRarityRank5: {fileID: 21300000, guid: f368ef6a4e5b93148b096892dcec3401,
+    type: 3}
+  FireCardRarityRank3Big: {fileID: 21300000, guid: 2d20db31a1c7f6a4d89fae0dcd3414a1,
+    type: 3}
+  LightCardLightCardBigFrontShadowed: {fileID: 21300000, guid: a2824821a19e7d74baaaf4fbdeaee3db,
+    type: 3}
+  FireCardRarityRank5Big: {fileID: 21300000, guid: db125264d42c1774f83b39844a1dff10,
+    type: 3}
+  EarthCardEcEarthFrontBig: {fileID: 21300000, guid: ae903a48d9beb1943843a164101cecf5,
+    type: 3}
+  EarthCardEcEarthFrontNoHeading: {fileID: 21300000, guid: 45a027d03874666408b2e1f7eb27fadd,
+    type: 3}
+  EarthCardRarityRank4: {fileID: 21300000, guid: f00b3fa5d2f71c7468b52cad11680ad2,
+    type: 3}
+  WaterCardEcWaterFrontBigShadowed: {fileID: 21300000, guid: a5999706223c0634bb44f0a012a0978c,
+    type: 3}
+  AirCardHealthSymbolAir: {fileID: 21300000, guid: c8a5f370f8ada884caf7d0b3f3c8863b,
+    type: 3}
+  LightCardLightCardBody: {fileID: 21300000, guid: 761a88deb09344c4d8a90d633e43e553,
+    type: 3}
+  AirCardElementalAirCardArtFrame: {fileID: 21300000, guid: c411e6665d2d382468cbd903dcb45ef9,
+    type: 3}
+  ShadowCardRarityRank1Big: {fileID: 21300000, guid: 1601c2236a1dea548be81001eb777b5b,
+    type: 3}
+  WaterCardWaterArtworkBig: {fileID: 21300000, guid: e4e48015f14d5a246864500867fe829b,
+    type: 3}
+  AirCardElementalAirCardBackShadowed: {fileID: 21300000, guid: f98d617e1b8bdb943a567392e54f510e,
+    type: 3}
+  ShadowCardHealthSymbolShadowBig: {fileID: 21300000, guid: d293fd83cb08224468fd6d91e76ab935,
+    type: 3}
+  FireCardPowerSymbol: {fileID: 21300000, guid: 81103ddec4c568d489aa82b2f763918d,
+    type: 3}
+  ShadowCardShadowFontBigOutlined: {fileID: 21300000, guid: c459efe8d587ca84d86e69e31c6edfd8,
+    type: 3}
+  FireCardElFiHeadingSeparate: {fileID: 21300000, guid: c12eb28a547fff8408a6764243d66732,
+    type: 3}
+  ShadowCardCostSymbolShadowBigOutlined: {fileID: 21300000, guid: 317dbad0c077d5145844be630a595cb2,
+    type: 3}
+  AirCardRarityRank2Big: {fileID: 21300000, guid: 558a2b2411d377f4d9382a9f4ba30633,
+    type: 3}
+  WaterCardEcWaterFrontHeading: {fileID: 21300000, guid: 65e482b41b6d0954992aeb7133bd0a7a,
+    type: 3}
+  LightCardRarityRank3Big: {fileID: 21300000, guid: 1961c1cb937a6b74284dd134b3367233,
+    type: 3}
+  ShadowCardPowerSymbolShadowBigOutlined: {fileID: 21300000, guid: 85f0138670c9c5f41bd38c4f647868cc,
+    type: 3}
+  AirCardRarityRank5Big: {fileID: 21300000, guid: 53c00cb845c24ca468b79a900f9b4bab,
+    type: 3}
+  EarthCardRarityRank1: {fileID: 21300000, guid: a686dadb29dfeed4ab61f6817e5ea1fc,
+    type: 3}
+  AirCardCostSymbolAirBig: {fileID: 21300000, guid: 8e8ce67fc473bb44c895ecb25bd4647f,
+    type: 3}
+  WaterCardCostBigSymbol: {fileID: 21300000, guid: 30e67b1ca2ca99047a98614724fcb341,
+    type: 3}
+  ShadowCardShadowBigArtMask: {fileID: 21300000, guid: 301c00ed94274f049a40f77e405b8b3d,
+    type: 3}
+  AirCardElementalAirCardFrontShadowed: {fileID: 21300000, guid: a43aca47776ae174688110c50f62810e,
+    type: 3}
+  LightCardLightArtBig: {fileID: 21300000, guid: 06baad1965bd09f40b8a3af4a66ba1d1,
+    type: 3}
+  ShadowCardShadowHeadingSeparated: {fileID: 21300000, guid: 48d20d3ae5630024fb588f166c385a6f,
+    type: 3}
+  EarthCardEcEarthArtFrameBig: {fileID: 21300000, guid: 62c9e965b19195c4d9a60a95ee758869,
+    type: 3}
+  AirCardElementalAirCardArtMask: {fileID: 21300000, guid: b7f596492da69a741b664929177e39bf,
+    type: 3}
+  WaterCardRarityRank3: {fileID: 21300000, guid: 34ca753862275594dbf5f2c6e51cb21b,
+    type: 3}
+  LightCardHealthSymbolBigLight: {fileID: 21300000, guid: d743c1245cda06949b4bddef01711064,
+    type: 3}
+  ShadowCardShadowFrontBig: {fileID: 21300000, guid: 501202e7a9b55914fa25272ff4c95ba0,
+    type: 3}
+  EarthCardHealthBigEarthShadowed: {fileID: 21300000, guid: 442f66140ab6e0b4785ec6c025c3c836,
+    type: 3}
+  WaterCardPowerBigSymbol: {fileID: 21300000, guid: aec479f6a7478d540a9ed6659c07ebe4,
+    type: 3}
+  AirCardPowerSymbolAirBigShadowed: {fileID: 21300000, guid: 4cc24c7256be24945a98e14e7e55cb3c,
+    type: 3}
+  AirCardHealthSymbolAirBigShadowed: {fileID: 21300000, guid: b0a0753e07f5b4043a190c8fcc861f19,
+    type: 3}
+  WaterCardEcWaterFrontBig: {fileID: 21300000, guid: 446b2d5d11c2b1840ba3efd463a661d0,
+    type: 3}
+  AirCardElementalAirCardFront: {fileID: 21300000, guid: 28e6b6408d26c8947b8482c6d38d9457,
+    type: 3}
+  ShadowCardShadowBodyFront: {fileID: 21300000, guid: d595c79b72e4c2b4ca2d6a908b91581f,
+    type: 3}
+  AirCardRarityRank3Big: {fileID: 21300000, guid: 1d57574a6b6085a42abc2866f3e74cb5,
+    type: 3}
+  ShadowCardShadowArtFrameBig: {fileID: 21300000, guid: 0288dc7d05812864d9e335b83ca23f9b,
+    type: 3}
+  LightCardRarityRank5Big: {fileID: 21300000, guid: 9257b2b9539a99f4bb7bedad96779707,
+    type: 3}
+  LightCardLightCardBigBackShadowed: {fileID: 21300000, guid: 55e15d619c5806247b7384256237ad66,
+    type: 3}
+  FireCardElementalFireCardFrontShadowed: {fileID: 21300000, guid: 764c1e9e91df35640b4ea9bf99583d2f,
+    type: 3}
+  WaterCardHealthBigSymbol: {fileID: 21300000, guid: fba845124c92bcf429b74892a1389720,
+    type: 3}
+  ShadowCardRarityRank4Big: {fileID: 21300000, guid: c82ff75ca2e5f4348a9cfc46a2bfa510,
+    type: 3}
+  ShadowCardRarityRank3Big: {fileID: 21300000, guid: bee75669d33e736448462cfcfd5b4059,
+    type: 3}
+  ShadowCardShadowArtBig: {fileID: 21300000, guid: 0160b196f8cab8849be066f4d8838424,
+    type: 3}
+  FireCardElementalFireCardBack: {fileID: 21300000, guid: a6053e2e96c95e44ea1ac0cffed52669,
+    type: 3}
+  EarthCardCostBigEarth: {fileID: 21300000, guid: be4bd4b701b9730488d0ca3b40cb83da,
+    type: 3}
+  LightCardLightCardBigFront: {fileID: 21300000, guid: 83bd876aca14fe14b9fc9cefc849f030,
+    type: 3}
+  LightCardPowerSymbolBigLight: {fileID: 21300000, guid: 1197c6f335cdcf24fb7937855d3d5dd5,
+    type: 3}
+  WaterCardEcWaterFrontNoHeading: {fileID: 21300000, guid: 863ab00404459294999acf20e22936f5,
+    type: 3}
+  FireCardHealthSymbolFireShadowed: {fileID: 21300000, guid: c14a45744826a184ea45572bfbcc8f05,
+    type: 3}
+  ShadowCardShadowBackBigOutlined: {fileID: 21300000, guid: 8140b5d7c27d43e489fc8a4c7615571d,
+    type: 3}
+  EarthCardRarityRank2: {fileID: 21300000, guid: f2f843417289cc54ebb8b3c2d1614a64,
+    type: 3}
+  LightCardLightCardHeading: {fileID: 21300000, guid: b95fdfa54ade9c845a4e45a62489bd8d,
+    type: 3}
+  FireCardElFiCardBodyFront: {fileID: 21300000, guid: 1e27aec42ba7cc6489b4f956c117a4d6,
+    type: 3}
+  EarthCardRarityRank3: {fileID: 21300000, guid: 0fabe0459a82acd43b3eb1170934bbe7,
+    type: 3}
+  EarthCardEcEarthMaskBig: {fileID: 21300000, guid: 6dfb685bd53aa0a48836193ea11aa116,
+    type: 3}
+  ShadowCardHealthSymbolShadowBigOutlined: {fileID: 21300000, guid: 03d7f8b782636d04a81db11a7f80cff6,
+    type: 3}
+  WaterCardEcWaterArtFrameBig: {fileID: 21300000, guid: 45da333a80c29454796978156188f9d3,
+    type: 3}
+  ShadowCardRarityRank5Big: {fileID: 21300000, guid: 70c3c4ff77f708548868dd195b080719,
+    type: 3}
+  ShadowCardRarityRank2Big: {fileID: 21300000, guid: 9dc7d307dabaedc46a2f419b56b37f68,
+    type: 3}
+  ShadowCardShadowBackBig: {fileID: 21300000, guid: d8d1b19b03390eb4bb1d0e785bc1cb5d,
+    type: 3}
+  LightCardArtMaskBigLight: {fileID: 21300000, guid: 16e711256b96d2a41bc453a297108266,
+    type: 3}
+  EarthCardPowerBigEarthShadowed: {fileID: 21300000, guid: 1dba86c3b63869f4b94327033fb07ba6,
+    type: 3}
+  EarthCardEcEarthBackBig: {fileID: 21300000, guid: e761c1f0782e6e640894417b58df8d1a,
+    type: 3}
+  EarthCardEcEarthFrontHeading: {fileID: 21300000, guid: 48c664f121755934ab2062a0d418d62f,
+    type: 3}
+  FireCardCostSymbolFireShadowed: {fileID: 21300000, guid: 13af20867975ab14ba0da0829b9607f6,
+    type: 3}
+  LightCardPortraitFrameBigLight: {fileID: 21300000, guid: 0df95d2a84d1d944eb1dd8dbe0c524d4,
+    type: 3}
+  WaterCardRarityRank1: {fileID: 21300000, guid: 42fc687fd569e2d4bbb7d12f01aa639e,
+    type: 3}
+  WaterCardEcWaterMaskBig: {fileID: 21300000, guid: 93ef4157d884ef348a9163d6ff441049,
+    type: 3}
+  ShadowCardCostSymbolShadowBig: {fileID: 21300000, guid: 2e0391f4d9dfc00468af94fdce3d4beb,
+    type: 3}
+  FireCardElementalFireCardFront: {fileID: 21300000, guid: fbf7c37bfb59a05479aca38894235747,
+    type: 3}
+  AirCardElAirCardBodyFront: {fileID: 21300000, guid: edfba0139b1a3d4448b95ed8a61f1651,
+    type: 3}
+  EarthCardEcEarthFrontBigShadowed: {fileID: 21300000, guid: 3c5356d29c89a2a48ae1c287d5092e2a,
+    type: 3}
+  AirCardArtworkAirBig: {fileID: 21300000, guid: fd36ffc42ef0a334eb4416a7db4485b7,
+    type: 3}
+  EarthCardEcEarthBackBigShadowed: {fileID: 21300000, guid: 87c727f29809f394383903fd395c4019,
+    type: 3}
+  FireCardRarityRank4Big: {fileID: 21300000, guid: 508efcc28b6b7ec419ff9700fd9cacaf,
+    type: 3}
+  AirCardPowerSymbolAir: {fileID: 21300000, guid: 9f80c28c55ecd7c4981ea19e3384accc,
+    type: 3}
+  FireCardElementalFireCardArtMask: {fileID: 21300000, guid: 79bd9a84982f316449c3246101f4ae43,
+    type: 3}
+  WaterCardEcWaterBackBigShadowed: {fileID: 21300000, guid: 42e002e888756ea45ab74cabe4a43bbd,
+    type: 3}
+  AirCardRarityRank4Big: {fileID: 21300000, guid: fe6d73508d43c924aba8dc4a545403de,
+    type: 3}
+  FireCardRarityRank2Big: {fileID: 21300000, guid: 349312604ed74384ba492cb032c89aa1,
+    type: 3}
+  EarthCardHealthBigEarth: {fileID: 21300000, guid: f3e3be6feb77e684e92c79ce1829ef48,
+    type: 3}
+  LightCardRarityRank1Big: {fileID: 21300000, guid: 140f4df7bb0f7524095ae7fb3a13a5a3,
+    type: 3}
+  FireCardElementalFireCardBackShadowed: {fileID: 21300000, guid: 6fe7f90260b42c5428d24347b97c7ce2,
+    type: 3}
+  LightCardRarityRank4Big: {fileID: 21300000, guid: 643cbf2a1543cec418534dd342b40a9c,
+    type: 3}
+  AirCardCostSymbolAirBigShadowed: {fileID: 21300000, guid: 60bfb7e4f292eb042a5d87d1ca8b118d,
+    type: 3}
+  FireCardElementalFireCardArtFrame: {fileID: 21300000, guid: 3def69930d5273645b1cd5b027c50094,
+    type: 3}
+  EarthCardEarthArtworkBig: {fileID: 21300000, guid: 1b13a0a1071646449bfc21532467b372,
+    type: 3}
+  FireCardHealthSymbol: {fileID: 21300000, guid: b593e9ab211316249a950c825ef5ba34,
+    type: 3}
+  WaterCardRarityRank5: {fileID: 21300000, guid: e1a3ec132b16f2341840472cd7f96965,
+    type: 3}
+  EarthCardCostBigEarthShadowed: {fileID: 21300000, guid: 12b5e8c49dcfedb40b86bb8a92eda261,
+    type: 3}
+  LightCardLightCardBigBack: {fileID: 21300000, guid: 5316f90553673c24aa19f27329a290c3,
+    type: 3}
 --- !u!1001 &384593015
 Prefab:
   m_ObjectHideFlags: 0

@@ -1,0 +1,466 @@
+; 
+;
+Assets/Fonts/Germania_One/GermaniaOne-Regular.ttf 48db3c39
+Assets/Fonts/Germania_One/GermaniaOne-Regular.ttf.meta ba90b5d1
+Assets/Fonts/Germania_One/OFL.txt 28d64b14
+Assets/Fonts/Germania_One/OFL.txt.meta f4747c77
+Assets/Fonts/Germania_One.meta 8de05483
+Assets/Fonts/Ropa_Sans/OFL.txt 30e26efa
+Assets/Fonts/Ropa_Sans/OFL.txt.meta c66d51e3
+Assets/Fonts/Ropa_Sans/RopaSans-Italic.ttf 77e863f6
+Assets/Fonts/Ropa_Sans/RopaSans-Italic.ttf.meta 2526989c
+Assets/Fonts/Ropa_Sans/RopaSans-Regular.ttf 5de85bbe
+Assets/Fonts/Ropa_Sans/RopaSans-Regular.ttf.meta 32f3d9ae
+Assets/Fonts/Ropa_Sans.meta e5778eb1
+Assets/Fonts.meta 1e3eca41
+Assets/PNG Slices/Demo Wallpaper/dwallpaper.png 32cc3273
+Assets/PNG Slices/Demo Wallpaper/dwallpaper.png.meta a9efa970
+Assets/PNG Slices/Demo Wallpaper.meta e816cf7a
+Assets/PNG Slices/Elemental Card - Air/Background Wallpaper/air_wallpaper.png f1686253
+Assets/PNG Slices/Elemental Card - Air/Background Wallpaper/air_wallpaper.png.meta b2cad2ae
+Assets/PNG Slices/Elemental Card - Air/Background Wallpaper.meta 5c7fa474
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/artwork_air_big.png 7893f738
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/artwork_air_big.png.meta 742407e1
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/cost_symbol_air_big.png d20a584d
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/cost_symbol_air_big.png.meta aa3fc5dc
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/cost_symbol_air_big_shadowed.png a261156a
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/cost_symbol_air_big_shadowed.png.meta d2912340
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/el_air_card_body_front.png d8990b97
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/el_air_card_body_front.png.meta 335679f5
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/el_air_heading_separate.png 3e6d2b6d
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/el_air_heading_separate.png.meta c13aa6de
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_art_frame.png 62937a98
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_art_frame.png.meta 9b55c09d
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_art_mask.png d61a651e
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_art_mask.png.meta 71a706e5
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_back.png 47384b5b
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_back.png.meta eb7333dc
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_back_shadowed.png e84cbda1
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_back_shadowed.png.meta c3c26d8d
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_front.png b06035e5
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_front.png.meta 7f9ce0c8
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_front_shadowed.png ef766085
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/elemental_air_card_front_shadowed.png.meta 669bfd40
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/health_symbol_air.png 938559a6
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/health_symbol_air.png.meta 1cedc682
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/health_symbol_air_big_shadowed.png 98785497
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/health_symbol_air_big_shadowed.png.meta 82eb064c
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/power_symbol_air.png ef444040
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/power_symbol_air.png.meta 075d5a8d
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/power_symbol_air_big_shadowed.png ebb52407
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/power_symbol_air_big_shadowed.png.meta 2b2118e6
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank1_big.png 8f09d678
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank1_big.png.meta db2ae9a0
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank2_big.png fa0440ce
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank2_big.png.meta 5765d91a
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank3_big.png 68b6f4ba
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank3_big.png.meta 8f2c76ba
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank4_big.png 4b163a4c
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank4_big.png.meta 543a8129
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank5_big.png dead4a4c
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice/rarity_rank5_big.png.meta b094cd14
+Assets/PNG Slices/Elemental Card - Air/Big Size Slice.meta b60b5490
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/air_card_back.png eff51996
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/air_card_back.png.meta 7600f879
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/air_card_front.png 220d026c
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/air_card_front.png.meta 121b9fb8
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/art_mask.png 7b016ab2
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/art_mask.png.meta 87d2afb2
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/artwork_air.png 92484143
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/artwork_air.png.meta 9c450c60
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/cost_symbol_air.png 30c72c77
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/cost_symbol_air.png.meta 44e1ce0c
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/health_air.png 3d161b7a
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/health_air.png.meta 4e0c65c7
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/portrait_frame_air.png da687541
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/portrait_frame_air.png.meta 6c423625
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/power_air.png 15ab6818
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/power_air.png.meta 3a86c304
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank1.png abfbf033
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank1.png.meta 25440243
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank2.png d82af29b
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank2.png.meta eb68556e
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank3.png ee0a0ca4
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank3.png.meta ca9ba46a
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank4.png 12bcef1d
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank4.png.meta 7776360f
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank5.png da3d42ac
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice/rarity_rank5.png.meta a8645880
+Assets/PNG Slices/Elemental Card - Air/Normal Size Slice.meta 6d3b0007
+Assets/PNG Slices/Elemental Card - Air.meta dced6647
+Assets/PNG Slices/Elemental Card - Earth/Background Wallpaper/earth_wallpaper.png 63fd1b9d
+Assets/PNG Slices/Elemental Card - Earth/Background Wallpaper/earth_wallpaper.png.meta 42e798f4
+Assets/PNG Slices/Elemental Card - Earth/Background Wallpaper.meta ea1f8157
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/cost_big_earth.png 90610502
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/cost_big_earth.png.meta 05dbd35e
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/cost_big_earth_shadowed.png 68d54b38
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/cost_big_earth_shadowed.png.meta 3ae4f714
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/earth_artwork_big.png 6f04cd98
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/earth_artwork_big.png.meta 6c027c8b
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_art_frame_big.png ab869c39
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_art_frame_big.png.meta 67dc73f4
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_back_big.png 08ee57cd
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_back_big.png.meta 0f534139
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_back_big_shadowed.png 35a51555
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_back_big_shadowed.png.meta 730765b2
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_big.png f475e94d
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_big.png.meta 0ea44e70
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_big_shadowed.png da5892c4
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_big_shadowed.png.meta 4bfb0112
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_heading.png 165a0103
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_heading.png.meta c9b507e5
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_no_heading.png 58cfc9ab
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_no_heading.png.meta 3f16df29
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_mask_big.png e299b0a7
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_mask_big.png.meta 1e52bedf
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/health_big_earth.png 053cc3f3
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/health_big_earth.png.meta ae48dd35
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/health_big_earth_shadowed.png d4ff4b30
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/health_big_earth_shadowed.png.meta 43628c73
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/power_big_earth.png cea49b19
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/power_big_earth.png.meta af470e03
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/power_big_earth_shadowed.png 484853bd
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/power_big_earth_shadowed.png.meta ed67186f
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank1.png 8f09d678
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank1.png.meta 0d90c473
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank2.png fa0440ce
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank2.png.meta 4f99159c
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank3.png 68b6f4ba
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank3.png.meta 3a4ff596
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank4.png 4b163a4c
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank4.png.meta ffc7da7b
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank5.png dead4a4c
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/rarity_rank5.png.meta 47da7662
+Assets/PNG Slices/Elemental Card - Earth/Big Size Slice.meta 4c6922d6
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/art_frame_earth.png a75cf192
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/art_frame_earth.png.meta 85c9f6b4
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/art_mask_earth.png 8c8dda93
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/art_mask_earth.png.meta 3002d49b
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/cost_symbol_earth.png fcc6f4c3
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/cost_symbol_earth.png.meta 4810b0d5
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/earth_card_back.png 3cc80899
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/earth_card_back.png.meta 5964548c
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/earth_card_front.png 7378a8cc
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/earth_card_front.png.meta bc043737
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/earth_terrain_artwork.png 9570ef06
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/earth_terrain_artwork.png.meta 996962d4
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/health_symbol_earth.png bbfa0784
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/health_symbol_earth.png.meta 532f642d
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank1.png abfbf033
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank1.png.meta 45355928
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank2.png d82af29b
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank2.png.meta 09a9a8b8
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank3.png ee0a0ca4
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank3.png.meta 413bf2e9
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank4.png 12bcef1d
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank4.png.meta 69e9a4b8
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank5.png da3d42ac
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/ns_rarity_rank5.png.meta 6025b025
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/power_symbol_earth.png 223ac03d
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice/power_symbol_earth.png.meta d0a30154
+Assets/PNG Slices/Elemental Card - Earth/Normal Size Slice.meta cca84717
+Assets/PNG Slices/Elemental Card - Earth.meta c01152a6
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/cost_symbol.png 1ce8d250
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/cost_symbol.png.meta fd228070
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/cost_symbol_fire_shadowed.png 371cb067
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/cost_symbol_fire_shadowed.png.meta f5005b06
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/el_fi_card_body_front.png 25419b2b
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/el_fi_card_body_front.png.meta f79f6193
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/el_fi_heading_separate.png 311c63ee
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/el_fi_heading_separate.png.meta a416917c
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_art_frame.png 9de0296a
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_art_frame.png.meta 6db9d305
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_art_mask.png f6b11588
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_art_mask.png.meta 691f0ed5
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_back.png b592b1a5
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_back.png.meta 0ac7f1ef
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_back_shadowed.png 7594a5d5
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_back_shadowed.png.meta 5154f308
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_front.png 07a3c5f2
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_front.png.meta f16cfd01
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_front_shadowed.png 4787de8b
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_front_shadowed.png.meta 229b2abc
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/health_symbol.png 577c2a6c
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/health_symbol.png.meta 4a081c87
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/health_symbol_fire_shadowed.png 87f8ce11
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/health_symbol_fire_shadowed.png.meta 4173d542
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/power_symbol.png 05d0eb54
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/power_symbol.png.meta cc4dcd55
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/power_symbol_fire_shadowed.png 3ca18cc3
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/power_symbol_fire_shadowed.png.meta d8139cb4
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank1_big.png 8f09d678
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank1_big.png.meta 3e7ed4b4
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank2_big.png fa0440ce
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank2_big.png.meta 567b5474
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank3_big.png 68b6f4ba
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank3_big.png.meta 8f314697
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank4_big.png 4b163a4c
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank4_big.png.meta ed355757
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank5_big.png dead4a4c
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank5_big.png.meta 09d55e4a
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/scorched_earth_art_big.png be819134
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/scorched_earth_art_big.png.meta 97c44dca
+Assets/PNG Slices/Elemental Card - Fire/Big Size Slice.meta 873e49af
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/cost_symbol_fire.png 4fed034b
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/cost_symbol_fire.png.meta 8263f2a6
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/fire_card_back.png 56e1d188
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/fire_card_back.png.meta c9ac5c39
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/fire_card_front.png b558bf1f
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/fire_card_front.png.meta d42f01d0
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/health_fire.png 562c0acf
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/health_fire.png.meta 9d8a12d9
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/portrait_frame_fire.png b510ae3c
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/portrait_frame_fire.png.meta 627d6267
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/portrait_mask_fire.png c8fc251f
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/portrait_mask_fire.png.meta e81e5c3f
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/power_fire.png 688237c6
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/power_fire.png.meta 8fa08daa
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank1.png abfbf033
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank1.png.meta 27cf3e5f
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank2.png d82af29b
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank2.png.meta 1838619a
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank3.png ee0a0ca4
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank3.png.meta 254e2ad5
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank4.png 12bcef1d
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank4.png.meta fbdc9278
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank5.png da3d42ac
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/rarity_rank5.png.meta ef25f3e9
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/scortched_earth_fire.png c2f30408
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice/scortched_earth_fire.png.meta a82c21e9
+Assets/PNG Slices/Elemental Card - Fire/Normal Size Slice.meta 5dce8b4b
+Assets/PNG Slices/Elemental Card - Fire/Wallpaper Background/fire_cards_wallpaper.png ca34f8a6
+Assets/PNG Slices/Elemental Card - Fire/Wallpaper Background/fire_cards_wallpaper.png.meta ab194903
+Assets/PNG Slices/Elemental Card - Fire/Wallpaper Background.meta 42e8df92
+Assets/PNG Slices/Elemental Card - Fire.meta f622b51b
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/art_mask_big_light.png 1694bbd7
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/art_mask_big_light.png.meta c372dc50
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/cost_symbol_big_light.png 5243a40d
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/cost_symbol_big_light.png.meta 624c6cad
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/cost_symbol_big_light_shadowed.png ede1e2fa
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/cost_symbol_big_light_shadowed.png.meta 8da8b703
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/health_symbol_big_light.png b43ce491
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/health_symbol_big_light.png.meta 8c29ca47
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/health_symbol_big_light_shadowed.png b0639c26
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/health_symbol_big_light_shadowed.png.meta b22b1113
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_art_big.png e456739e
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_art_big.png.meta c59943e9
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_big_back.png c8411cee
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_big_back.png.meta 6ec7aff4
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_big_back_shadowed.png 16535ceb
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_big_back_shadowed.png.meta 1686d9a8
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_big_front.png 33f5b547
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_big_front.png.meta 66014c0b
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_big_front_shadowed.png 8434c6a7
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_big_front_shadowed.png.meta 80d1566c
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_body.png 2a21c31e
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_body.png.meta 73e3f904
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_heading.png ebc3f917
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/light_card_heading.png.meta 97aa7b24
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/portrait_frame_big_light.png c6d4ddf6
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/portrait_frame_big_light.png.meta 9b5c93b9
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/power_symbol_big_light.png b1db8646
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/power_symbol_big_light.png.meta c9a5bd73
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/power_symbol_big_light_shadowed.png d1303815
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/power_symbol_big_light_shadowed.png.meta 13a9d1da
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank1_big.png 8f09d678
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank1_big.png.meta d17a211f
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank2_big.png fa0440ce
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank2_big.png.meta 504e2837
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank3_big.png 68b6f4ba
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank3_big.png.meta 012c2ca9
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank4_big.png 4b163a4c
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank4_big.png.meta e3e60154
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank5_big.png dead4a4c
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice/rarity_rank5_big.png.meta 8b26ff81
+Assets/PNG Slices/Elemental Card - Light/Big Size Slice.meta c0d9d357
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/cost_symbol_light.png 2c9d7d7d
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/cost_symbol_light.png.meta 2d271843
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/health_symbol_light.png 9e05e752
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/health_symbol_light.png.meta 9f0c0c58
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/light_art.png ca5b3f3e
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/light_art.png.meta 05aa93b7
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/light_card_back.png dbf0bf41
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/light_card_back.png.meta db72be36
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/light_card_front.png 5a960e9b
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/light_card_front.png.meta 4da9f11f
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/portrait_frame_light.png ee73bd96
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/portrait_frame_light.png.meta c01ccff5
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/portrait_mask_light.png 040d0759
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/portrait_mask_light.png.meta 661d0181
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/power_symbol_light.png e11b1cc2
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/power_symbol_light.png.meta a353b2e5
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank1.png abfbf033
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank1.png.meta 97c495c6
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank2.png d82af29b
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank2.png.meta 75650a5c
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank3.png ee0a0ca4
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank3.png.meta 9ad5250b
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank4.png 12bcef1d
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank4.png.meta 6010d768
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank5.png da3d42ac
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice/rarity_rank5.png.meta 4b9c9720
+Assets/PNG Slices/Elemental Card - Light/Normal Size Slice.meta 6b10dc28
+Assets/PNG Slices/Elemental Card - Light/Wallpaper Background/light_wallpaper.png c4569bff
+Assets/PNG Slices/Elemental Card - Light/Wallpaper Background/light_wallpaper.png.meta 70d2a3c3
+Assets/PNG Slices/Elemental Card - Light/Wallpaper Background.meta 22073467
+Assets/PNG Slices/Elemental Card - Light.meta d6fcbb39
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/cost_symbol_shadow_big.png 7e3c7832
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/cost_symbol_shadow_big.png.meta a4e80ebe
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/cost_symbol_shadow_big_outlined.png aa60f11a
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/cost_symbol_shadow_big_outlined.png.meta bf6c0e00
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/health_symbol_shadow_big.png f07fdf7c
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/health_symbol_shadow_big.png.meta 6ffad981
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/health_symbol_shadow_big_outlined.png a365454d
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/health_symbol_shadow_big_outlined.png.meta a989c648
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/power_symbol_shadow_big.png 21a472d8
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/power_symbol_shadow_big.png.meta bb96b253
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/power_symbol_shadow_big_outlined.png 3b67a0f1
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/power_symbol_shadow_big_outlined.png.meta 3d60a237
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank1_big.png 8f09d678
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank1_big.png.meta 55d4fc32
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank2_big.png fa0440ce
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank2_big.png.meta 3b8994ca
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank3_big.png 68b6f4ba
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank3_big.png.meta 64539b41
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank4_big.png 4b163a4c
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank4_big.png.meta 81204af0
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank5_big.png dead4a4c
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/rarity_rank5_big.png.meta 040ad059
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_art_big.png e843259c
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_art_big.png.meta 73261524
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_art_frame_big.png be4921e8
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_art_frame_big.png.meta 560ef78f
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_back_big.png b85200fe
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_back_big.png.meta b77b6efd
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_back_big_outlined.png 18a94ab3
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_back_big_outlined.png.meta 38ea439e
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_big_art_mask.png 5c2e135b
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_big_art_mask.png.meta 1a9d29f1
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_body_front.png bb2e2b4c
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_body_front.png.meta af91d28c
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_font_big_outlined.png c6d6879d
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_font_big_outlined.png.meta 9240ac77
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_front_big.png b296c451
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_front_big.png.meta 58885dab
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_heading_separated.png 2f90e9e1
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice/shadow_heading_separated.png.meta 18cf1875
+Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice.meta 6652a26d
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/cost_shadow.png 96da9110
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/cost_shadow.png.meta 94119975
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/health_shadow.png d6d8044d
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/health_shadow.png.meta 52eca028
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/portrait_frame_shadow.png 92c4cf8e
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/portrait_frame_shadow.png.meta b17141e9
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/portrait_mask_shadow.png c54e2e11
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/portrait_mask_shadow.png.meta 20764908
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/power_shadow.png f20eef3e
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/power_shadow.png.meta 9afa5bdf
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank1.png abfbf033
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank1.png.meta e779bf8d
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank2.png d82af29b
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank2.png.meta 161f60f0
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank3.png ee0a0ca4
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank3.png.meta bffbb333
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank4.png 12bcef1d
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank4.png.meta 2dc1d2ea
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank5.png da3d42ac
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/rarity_rank5.png.meta fa440648
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/shadow_card_art.png cf404915
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/shadow_card_art.png.meta bfe99778
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/shadow_card_back.png 0b4cc75b
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/shadow_card_back.png.meta afef7129
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/shadow_card_front.png 308556d8
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice/shadow_card_front.png.meta 22f58b57
+Assets/PNG Slices/Elemental Card - Shadow/Normal Size Slice.meta 34256710
+Assets/PNG Slices/Elemental Card - Shadow/Wallpaper Background/shadow_card_wallpaper.png b85f213f
+Assets/PNG Slices/Elemental Card - Shadow/Wallpaper Background/shadow_card_wallpaper.png.meta 33e8f153
+Assets/PNG Slices/Elemental Card - Shadow/Wallpaper Background.meta 94cdd79d
+Assets/PNG Slices/Elemental Card - Shadow.meta 8640cfd0
+Assets/PNG Slices/Elemental Card - Water/Background Wallpaper/water_wallpaper.png 14dc911f
+Assets/PNG Slices/Elemental Card - Water/Background Wallpaper/water_wallpaper.png.meta e20b29b3
+Assets/PNG Slices/Elemental Card - Water/Background Wallpaper.meta 8fea0e31
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/cost_big_symbol.png 46f7c5a7
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/cost_big_symbol.png.meta a12b7934
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_art_frame_big.png 8166d02d
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_art_frame_big.png.meta 285f4c83
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_back_big.png 7f17cbd7
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_back_big.png.meta 5c4cb91a
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_back_big_shadowed.png a4580eba
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_back_big_shadowed.png.meta 8475aa51
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_front_big.png da14f3be
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_front_big.png.meta 168e66ca
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_front_big_shadowed.png 89a39cbf
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_front_big_shadowed.png.meta 15b9b43c
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_front_heading.png 450102d7
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_front_heading.png.meta 982c8df2
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_front_no_heading.png 62d8b764
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_front_no_heading.png.meta 240db025
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_mask_big.png 4a6aa310
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/ec_water_mask_big.png.meta 1cd671da
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/health_big_symbol.png d191fed9
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/health_big_symbol.png.meta c2d82251
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/power_big_symbol.png c89cbe69
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/power_big_symbol.png.meta 3527fa9c
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank1.png 8f09d678
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank1.png.meta ee1946a9
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank2.png fa0440ce
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank2.png.meta a5bf8c5a
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank3.png 68b6f4ba
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank3.png.meta d01b90c9
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank4.png 4b163a4c
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank4.png.meta 0ea4c2f0
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank5.png dead4a4c
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/rarity_rank5.png.meta e779db06
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/water_artwork_big.png dc88d895
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice/water_artwork_big.png.meta e37db612
+Assets/PNG Slices/Elemental Card - Water/Big Size Slice.meta e0d5b0e2
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/art_frame.png f3fdf722
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/art_frame.png.meta e84ba711
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/art_mask.png 247e7caf
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/art_mask.png.meta f1de491e
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/cost_symbol.png ef1cd348
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/cost_symbol.png.meta 658eafa6
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/health_symbol.png 6a9f1314
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/health_symbol.png.meta 0a2310ff
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank1.png abfbf033
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank1.png.meta 8af4923c
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank2.png d82af29b
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank2.png.meta 763f26fb
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank3.png ee0a0ca4
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank3.png.meta 5e9b3ab7
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank4.png 12bcef1d
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank4.png.meta 2ef7f6cb
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank5.png da3d42ac
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/ns_rarity_rank5.png.meta 1527ce07
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/power_symbol.png 9558a2a6
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/power_symbol.png.meta 7243be37
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/water_card_back.png 69ad8d56
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/water_card_back.png.meta 2c20f3e7
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/water_card_front.png 47828078
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/water_card_front.png.meta a164bb28
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/water_terrain_art.png 2490032f
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice/water_terrain_art.png.meta f5ef9455
+Assets/PNG Slices/Elemental Card - Water/Normal Size Slice.meta a2db0ea6
+Assets/PNG Slices/Elemental Card - Water.meta 91cd11fa
+Assets/PNG Slices.meta 8fd62eb7
+Assets/PSDs/Elemental Card - Air.psd be81e385
+Assets/PSDs/Elemental Card - Air.psd.meta 331ed505
+Assets/PSDs/Elemental Card - Earth.psd 31f45b09
+Assets/PSDs/Elemental Card - Earth.psd.meta 0ed86423
+Assets/PSDs/Elemental Card - Fire.psd 3aa71f6d
+Assets/PSDs/Elemental Card - Fire.psd.meta 634a9cf0
+Assets/PSDs/Elemental Card - Light.psd a0f5478d
+Assets/PSDs/Elemental Card - Light.psd.meta 4e492029
+Assets/PSDs/Elemental Card - Shadow.psd 849d7d38
+Assets/PSDs/Elemental Card - Shadow.psd.meta 82ef408e
+Assets/PSDs/Elemental Card - Water.psd 7e388955
+Assets/PSDs/Elemental Card - Water.psd.meta 61da20ae
+Assets/PSDs.meta a48a1663
+Assets.meta 1981ba4c
+Documentation.docx ba5f9a8c
+Documentation.docx.meta 5ef93c6a
+Scenes/air_earth_fire_scene.unity cf6e0240
+Scenes/air_earth_fire_scene.unity.meta 555f01a8
+Scenes/light_shadow_water_scene.unity b62f44cd
+Scenes/light_shadow_water_scene.unity.meta 2cf0b8af
+Scenes.meta d7a25fc1

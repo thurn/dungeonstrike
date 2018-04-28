@@ -21,6 +21,127 @@ namespace DungeonStrike.Source.Messaging
         Flat,
     }
 
+    public enum SpriteName
+    {
+        EarthCardRarityRank4,
+        ShadowCardHealthSymbolShadowBigOutlined,
+        ShadowCardCostSymbolShadowBigOutlined,
+        EarthCardPowerBigEarth,
+        ShadowCardShadowBigArtMask,
+        EarthCardCostBigEarthShadowed,
+        FireCardElFiCardBodyFront,
+        WaterCardRarityRank5,
+        FireCardElementalFireCardFrontShadowed,
+        WaterCardEcWaterFrontNoHeading,
+        FireCardCostSymbol,
+        EarthCardEcEarthFrontBig,
+        FireCardHealthSymbol,
+        LightCardLightCardBigBack,
+        AirCardPowerSymbolAirBigShadowed,
+        FireCardElementalFireCardArtFrame,
+        EarthCardEcEarthMaskBig,
+        ShadowCardShadowHeadingSeparated,
+        ShadowCardRarityRank3Big,
+        FireCardPowerSymbolFireShadowed,
+        ShadowCardCostSymbolShadowBig,
+        LightCardRarityRank3Big,
+        AirCardRarityRank4Big,
+        ShadowCardShadowFrontBig,
+        FireCardHealthSymbolFireShadowed,
+        FireCardElementalFireCardFront,
+        LightCardRarityRank4Big,
+        LightCardCostSymbolBigLight,
+        EarthCardRarityRank2,
+        ShadowCardRarityRank1Big,
+        FireCardRarityRank3Big,
+        FireCardElementalFireCardBackShadowed,
+        AirCardElementalAirCardFrontShadowed,
+        WaterCardEcWaterArtFrameBig,
+        ShadowCardRarityRank2Big,
+        EarthCardHealthBigEarthShadowed,
+        EarthCardRarityRank1,
+        FireCardScorchedEarthArtBig,
+        WaterCardRarityRank4,
+        LightCardHealthSymbolBigLightShadowed,
+        FireCardRarityRank2Big,
+        LightCardLightCardBigBackShadowed,
+        LightCardLightCardBigFront,
+        WaterCardPowerBigSymbol,
+        AirCardElementalAirCardBackShadowed,
+        ShadowCardHealthSymbolShadowBig,
+        ShadowCardShadowBackBigOutlined,
+        AirCardCostSymbolAirBigShadowed,
+        LightCardRarityRank5Big,
+        WaterCardEcWaterFrontBigShadowed,
+        ShadowCardShadowArtFrameBig,
+        ShadowCardPowerSymbolShadowBigOutlined,
+        ShadowCardRarityRank5Big,
+        AirCardCostSymbolAirBig,
+        WaterCardEcWaterMaskBig,
+        WaterCardHealthBigSymbol,
+        AirCardPowerSymbolAir,
+        ShadowCardShadowBodyFront,
+        AirCardRarityRank3Big,
+        LightCardRarityRank2Big,
+        EarthCardRarityRank3,
+        LightCardPowerSymbolBigLightShadowed,
+        LightCardLightCardBody,
+        AirCardRarityRank2Big,
+        LightCardArtMaskBigLight,
+        WaterCardEcWaterFrontBig,
+        AirCardElAirCardBodyFront,
+        AirCardRarityRank1Big,
+        FireCardElementalFireCardBack,
+        AirCardHealthSymbolAir,
+        AirCardElementalAirCardBack,
+        WaterCardCostBigSymbol,
+        AirCardElAirHeadingSeparate,
+        LightCardLightArtBig,
+        EarthCardEcEarthArtFrameBig,
+        WaterCardRarityRank2,
+        FireCardElementalFireCardArtMask,
+        EarthCardRarityRank5,
+        WaterCardRarityRank3,
+        EarthCardCostBigEarth,
+        WaterCardEcWaterBackBigShadowed,
+        ShadowCardShadowArtBig,
+        EarthCardHealthBigEarth,
+        LightCardHealthSymbolBigLight,
+        AirCardArtworkAirBig,
+        EarthCardEcEarthBackBig,
+        EarthCardEcEarthFrontNoHeading,
+        WaterCardEcWaterFrontHeading,
+        EarthCardEcEarthFrontBigShadowed,
+        LightCardCostSymbolBigLightShadowed,
+        LightCardRarityRank1Big,
+        FireCardRarityRank1Big,
+        ShadowCardRarityRank4Big,
+        FireCardRarityRank4Big,
+        FireCardRarityRank5Big,
+        LightCardPortraitFrameBigLight,
+        WaterCardRarityRank1,
+        LightCardLightCardHeading,
+        EarthCardEcEarthFrontHeading,
+        AirCardElementalAirCardArtMask,
+        FireCardElFiHeadingSeparate,
+        ShadowCardShadowFontBigOutlined,
+        WaterCardEcWaterBackBig,
+        ShadowCardShadowBackBig,
+        AirCardElementalAirCardFront,
+        AirCardElementalAirCardArtFrame,
+        FireCardPowerSymbol,
+        WaterCardWaterArtworkBig,
+        LightCardPowerSymbolBigLight,
+        FireCardCostSymbolFireShadowed,
+        AirCardRarityRank5Big,
+        AirCardHealthSymbolAirBigShadowed,
+        EarthCardEcEarthBackBigShadowed,
+        LightCardLightCardBigFrontShadowed,
+        EarthCardEarthArtworkBig,
+        ShadowCardPowerSymbolShadowBig,
+        EarthCardPowerBigEarthShadowed,
+    }
+
     public enum MaterialName
     {
         SoldierGorka,
@@ -103,38 +224,6 @@ namespace DungeonStrike.Source.Messaging
         public List<MaterialUpdate> MaterialUpdates { get; set; }
     }
 
-    public sealed class DestroyEntityMessage : Message
-    {
-        public static readonly string Type = "DestroyEntity";
-
-        public DestroyEntityMessage() : base("DestroyEntity")
-        {
-        }
-
-    }
-
-    public sealed class MoveToPositionMessage : Message
-    {
-        public static readonly string Type = "MoveToPosition";
-
-        public MoveToPositionMessage() : base("MoveToPosition")
-        {
-        }
-
-        public Position Position { get; set; }
-    }
-
-    public sealed class ShowMoveSelectorMessage : Message
-    {
-        public static readonly string Type = "ShowMoveSelector";
-
-        public ShowMoveSelectorMessage() : base("ShowMoveSelector")
-        {
-        }
-
-        public List<Position> Positions { get; set; }
-    }
-
     public sealed class ClientConnectedAction : UserAction
     {
         public static readonly string Type = "ClientConnected";
@@ -161,12 +250,6 @@ namespace DungeonStrike.Source.Messaging
                     return new QuitGameMessage();
                 case "CreateEntity":
                     return new CreateEntityMessage();
-                case "DestroyEntity":
-                    return new DestroyEntityMessage();
-                case "MoveToPosition":
-                    return new MoveToPositionMessage();
-                case "ShowMoveSelector":
-                    return new ShowMoveSelectorMessage();
                 default:
                     throw new InvalidOperationException(
                         "Unrecognized message type: " + messageType);

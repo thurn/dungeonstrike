@@ -34,19 +34,25 @@
   #::{:type :seq ::value-type value-type})
 
 (def fields
-  {:m/x integer-value
+  {
+   ;; Object Fields:
+   :m/x integer-value
    :m/y integer-value
    :m/entity-child-path string-value
    :m/material-name (enum-value assets/material)
+   :m/sprite-name (enum-value assets/sprite)
+
+   ;; Action Fields
    :a/entity-id string-value
    :a/client-log-file-path string-value
    :a/client-id string-value
+
+   ;; Message Fields
    :m/entity-id string-value
    :m/scene-name (enum-value #{:empty :flat})
    :m/new-entity-id string-value
    :m/prefab-name (enum-value assets/prefab)
    :m/position (object-value [:m/x :m/y])
-   :m/positions (seq-value :m/position)
    :m/material-update (object-value [:m/entity-child-path :m/material-name])
    :m/material-updates (seq-value :m/material-update)})
 
@@ -58,10 +64,7 @@
    :m/load-scene [:m/scene-name]
    :m/quit-game []
    :m/create-entity [:m/new-entity-id :m/prefab-name :m/position
-                     :m/material-updates]
-   :m/destroy-entity [:m/entity-id]
-   :m/move-to-position [:m/entity-id :m/position]
-   :m/show-move-selector [:m/entity-id :m/positions]})
+                     :m/material-updates]})
 
 (defn field-type
   "Returns the type keyword for the named field."

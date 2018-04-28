@@ -5,6 +5,9 @@
   }, {
     "type": "GameObject",
     "extension": "prefab"
+  }, {
+    "type": "Sprite",
+    "extension": "png"
   }],
   "dirs": [{
     "path": "ThirdParty/Soldier_ru",
@@ -21,5 +24,41 @@
     "extensions": [
       "prefab"
     ]
+  }, {
+      "path": "ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Earth/Big Size Slice",
+      "extensions": [
+        "png"
+      ],
+      "prefix": "EarthCard"
+  }, {
+      "path": "ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Air/Big Size Slice",
+      "extensions": [
+        "png"
+      ],
+      "prefix": "AirCard"
+  }, {
+      "path": "ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Fire/Big Size Slice",
+      "extensions": [
+        "png"
+      ],
+      "prefix": "FireCard"
+  }, {
+      "path": "ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Water/Big Size Slice",
+      "extensions": [
+        "png"
+      ],
+      "prefix": "WaterCard"
+  }, {
+      "path": "ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Light/Big Size Slice",
+      "extensions": [
+        "png"
+      ],
+      "prefix": "LightCard"
+  }, {
+      "path": "ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Shadow/Big Size Slice",
+      "extensions": [
+        "png"
+      ],
+      "prefix": "ShadowCard"
   }]
 }
