@@ -13,8 +13,8 @@
             [dungeonstrike.message-gui :as message-gui]
             [dungeonstrike.paths :as paths]
             [dungeonstrike.requests :as requests]
-            [dungeonstrike.test-message-values :as test-message-values]
             [dungeonstrike.test-runner :as test-runner]
+            [dungeonstrike.test-message-values :as test-values]
             [dungeonstrike.websocket :as websocket]
             [dungeonstrike.uuid :as uuid]
             [effects.core :as effects]
@@ -75,9 +75,13 @@
 
 (defn- process-form-values
   [message key value]
-  (if (= "m" (namespace key))
-    (assoc message key value)
-    message))
+  (let [processed-value (if (and (keyword? value)
+                                 (= "test-values" (namespace value)))
+                          (test-values/lookup-test-value-key value)
+                          value)]
+    (if (= "m" (namespace key))
+      (assoc message key processed-value)
+      message)))
 
 (defn- on-send-button-clicked
   "Returns a click handler function for the 'send' button."

@@ -28,8 +28,3 @@
   message type."
   [message-type]
   (mapcat editor-for-message-field (message-type messages/messages)))
-
-(defn- map-items-for-message-field
-  "Returns a series of GUI items representing a 'map' message field."
-  [values]
-  nil)

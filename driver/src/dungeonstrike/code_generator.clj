@@ -35,6 +35,15 @@ namespace DungeonStrike.Source.Messaging
     }
 
     {{/enums}}
+    {{#structs}}
+    public struct {{structName}}
+    {
+        {{#structFields}}
+        public {{fieldType}} {{fieldName}};
+        {{/structFields}}
+    }
+
+    {{/structs}}
     {{#messages}}
     public sealed class {{messageName}}Message : Message
     {
@@ -115,6 +124,17 @@ namespace DungeonStrike.Source.Messaging
     (str "List<" (pascal-name (messages/seq-type field-name)) ">")
     (logger/error "Unknown type for field-name" field-name)))
 
+(defn- struct-info
+  []
+  "Returns information about all struct messages."
+  (for [field messages/fields
+        :let [field-name (key field)]
+        :when (= :object (messages/field-type field-name))]
+    {:structName (pascal-name field-name)
+     :structFields (for [f (messages/values field-name)]
+                     {:fieldName (pascal-name f)
+                      :fieldType (csharp-field-type f)})}))
+
 (defn- template-parameters
   "Helper function which builds the parameters to the code generation template."
   []
@@ -133,6 +153,7 @@ namespace DungeonStrike.Source.Messaging
                          :fields (map action-field-params fields)})]
     {:messages (map message-params messages/messages)
      :actions (map action-params messages/actions)
+     :structs (struct-info)
      :enums (enum-info)}))
 
 (defn- generate!

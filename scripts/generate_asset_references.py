@@ -85,30 +85,34 @@ header = ("// WARNING: Do not modify this file! This file is automatically\n" +
 
 def generate_asset_loader(asset_map, p):
   p.print(header)
-  p.print("using UnityEngine;\n")
+  p.print("using UnityEngine;")
+  p.print("using DungeonStrike.Source.Messaging;\n")
   p.print("namespace DungeonStrike.Source.Assets")
   p.brace()
   p.print("public class AssetUtil")
   p.brace()
   for asset_type, asset_list in asset_map.items():
     if asset_type == "GameObject":
-      p.print("public static GameObject InstantiateGameObject(" +
-              "AssetRefs refs, string name, Vector3 position)")
+      p.print("public static GameObject InstantiatePrefab(" +
+              "AssetRefs refs, PrefabName name, Vector3 position)")
     else:
       p.print("public static " + asset_type + " Get" + asset_type +
-              "(AssetRefs refs, string name)")
+              "(AssetRefs refs, " + asset_type + "Name name)")
     p.brace()
     p.print("switch (name)")
     p.brace()
     for value in asset_list:
-     p.print("case \"" + value.name + "\":")
-     p.indent()
      if asset_type == "GameObject":
+       p.print("case PrefabName." + value.name + ":")
+       p.indent()
        p.print("return Object.Instantiate(refs." + value.name +
                ", position, Quaternion.identity);")
+       p.dedent()
      else:
+       p.print("case " + asset_type + "Name." + value.name + ":")
+       p.indent()
        p.print("return refs." + value.name + ";")
-     p.dedent()
+       p.dedent()
     p.unbrace()
     p.print("throw new System.InvalidOperationException" \
             "(\"Unknown asset name: \" + name);")

@@ -57,11 +57,11 @@ namespace DungeonStrike.Tests.Editor
             return result;
         }
 
-        public GameObject NewTestEntityObject(string name, EntityType entityType, string entityId)
+        public GameObject NewTestEntityObject(string name, PrefabName prefabName, string entityId)
         {
             var result = NewTestGameObject(name);
             var entity = result.AddComponent<Entity>();
-            entity.Initialize(entityType, entityId);
+            entity.Initialize(prefabName, entityId);
             return result;
         }
 

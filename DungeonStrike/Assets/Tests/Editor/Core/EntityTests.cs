@@ -15,8 +15,8 @@ namespace DungeonStrike.Tests.Editor.Core
             var entity = obj.AddComponent<Entity>();
             Assert.IsNull(entity.EntityId);
             Assert.IsFalse(entity.Initialized);
-            entity.Initialize(EntityType.Soldier, "entityId");
-            Assert.AreEqual(EntityType.Soldier, entity.EntityType);
+            entity.Initialize(PrefabName.Soldier, "entityId");
+            Assert.AreEqual(PrefabName.Soldier, entity.PrefabName);
             Assert.AreEqual("entityId", entity.EntityId);
             Assert.IsTrue(entity.Initialized);
         }

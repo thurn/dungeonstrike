@@ -10,15 +10,51 @@ using System.Collections.Generic;
 
 namespace DungeonStrike.Source.Messaging
 {
+    public enum PrefabName
+    {
+        Soldier,
+    }
+
     public enum SceneName
     {
         Empty,
         Flat,
     }
 
-    public enum EntityType
+    public enum MaterialName
     {
-        Soldier,
+        SoldierGorka,
+        SoldierDesert,
+        SoldierHelmetGreen,
+        SoldierJungle,
+        Soldier02BodyGorka,
+        SoldierVestBlack,
+        SoldierSurpat,
+        Soldier02HelmetKhaki,
+        SoldierForest,
+        Soldier02BagsKhaki,
+        Soldier02VestKhaki,
+        SoldierVestGreen,
+        SoldierBagsBlack,
+        SoldierHelmetKhaki,
+        SoldierBagsGreen,
+        SoldierVestKhaki,
+        SoldierBagsKhaki,
+        SoldierWinter,
+        SoldierHelmetBlack,
+        SoldierBlack,
+    }
+
+    public struct MaterialUpdate
+    {
+        public string EntityChildPath;
+        public MaterialName MaterialName;
+    }
+
+    public struct Position
+    {
+        public int X;
+        public int Y;
     }
 
     public sealed class TestMessage : Message
@@ -62,8 +98,9 @@ namespace DungeonStrike.Source.Messaging
         }
 
         public string NewEntityId { get; set; }
-        public EntityType EntityType { get; set; }
+        public PrefabName PrefabName { get; set; }
         public Position Position { get; set; }
+        public List<MaterialUpdate> MaterialUpdates { get; set; }
     }
 
     public sealed class DestroyEntityMessage : Message

@@ -4,17 +4,6 @@ using Newtonsoft.Json.Converters;
 namespace DungeonStrike.Source.Messaging
 {
     /// <summary>
-    /// Represents an abstract object position as used by the driver. Should be translated to a 'real'
-    /// GameObject position before being used by the client UI.
-    /// </summary>
-    public struct Position
-    {
-        // TODO: Generate this
-        public int X;
-        public int Y;
-    }
-
-    /// <summary>
     /// Base class for all generated Messages. Messages are values which are sent from the driver to the client when
     /// the game's state changes. The set of possible messages are specified in 'messages.clj', and code is generated
     /// by 'code_generator.clj' to create a strongly-typed interface for each message object.

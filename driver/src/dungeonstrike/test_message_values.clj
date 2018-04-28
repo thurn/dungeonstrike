@@ -22,4 +22,24 @@
     :m/positions
     []
     :m/client-id
-    ["C:CLIENT_ID"]))
+    ["C:CLIENT_ID"]
+    :m/material-updates
+    [:test-values/soldier-green :test-values/soldier-black]))
+
+(defn lookup-test-value-key
+  "Test values can be replaced with a keyword namespaced with 'test-values' for
+  legibility, in which case their actual values can be looked up via this
+  function."
+  [test-value-key]
+  (case test-value-key
+    :test-values/soldier-green
+    [{:m/entity-child-path "Body" :m/material-name :soldier-forest}
+     {:m/entity-child-path "Helmet" :m/material-name :soldier-helmet-green}
+     {:m/entity-child-path "Bags" :m/material-name :soldier-bags-green}
+     {:m/entity-child-path "Vest" :m/material-name :soldier-vest-green}]
+    :test-values/soldier-black
+    [{:m/entity-child-path "Body" :m/material-name :soldier-black}
+     {:m/entity-child-path "Helmet" :m/material-name :soldier-helmet-black}
+     {:m/entity-child-path "Bags" :m/material-name :soldier-bags-black}
+     {:m/entity-child-path "Vest" :m/material-name :soldier-vest-black}]
+    (throw (RuntimeException. (str "Unknown test-value-key " test-value-key)))))

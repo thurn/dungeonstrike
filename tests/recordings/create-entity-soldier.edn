@@ -2,11 +2,18 @@
  :prerequisite "load-scene-flat.edn",
  :timeout 10,
  :message->client
- {:m/message-type :m/create-entity,
-  :m/new-entity-id "E:DRLS2GWvR8GAZaZixfBamw",
-  :m/entity-type :soldier,
-  :m/position {:m/x 0, :m/y 0},
-  :m/message-id "M:yYWIrFojTB6/f8sUA6U34w"},
+ #:m{:message-type :m/create-entity,
+     :message-id "M:yYWIrFojTB6/f8sUA6U34w",
+     :new-entity-id "E:DRLS2GWvR8GAZaZixfBamw",
+     :prefab-name :soldier,
+     :position #:m{:x 0, :y 0},
+     :material-updates
+     [#:m{:entity-child-path "Body", :material-name :soldier-forest}
+      #:m{:entity-child-path "Helmet",
+          :material-name :soldier-helmet-green}
+      #:m{:entity-child-path "Bags", :material-name :soldier-bags-green}
+      #:m{:entity-child-path "Vest",
+          :material-name :soldier-vest-green}]}
  :entries
  [{:message
    "Websocket sending message [<[:m/create-entity] M:yYWIrFojTB6/f8sUA6U34w>]",

@@ -17,14 +17,10 @@ namespace DungeonStrike.Source.Assets
         /// <param name="assetNames">List of asset name strings.</param>
         /// <returns>Asychronous task which will be resolved with an 'AssetRefs' object. The fields
         /// corresponding to the requested assets are guaranteed to be populated.</returns>
-        public Task<AssetRefs> LoadAssets(List<string> assetNames)
+        public AssetRefs GetAssets()
         {
             var assets = Root.transform.Find("Assets");
-            if (assets == null)
-            {
-                throw new InvalidOperationException("Asset list not found.");
-            }
-            return Task.FromResult(assets.GetComponent<AssetRefs>());
+            return assets.GetComponent<AssetRefs>();
         }
     }
 }

@@ -25,10 +25,10 @@ namespace DungeonStrike.Source.Core
         /// <summary>
         /// Type string for this entity, as defined by the driver.
         /// </summary>
-        public EntityType EntityType;
+        public PrefabName PrefabName;
 
         /// <summary>
-        /// ID for this entity. Entity IDs must be globally unique across all entity types.
+        /// ID for this entity. Entity IDs must be globally unique across all prefab types.
         /// </summary>
         public string EntityId;
 
@@ -37,22 +37,22 @@ namespace DungeonStrike.Source.Core
         /// </summary>
         public bool Initialized { get; private set; }
 
-        /// <param name="entityType">Sets the entity type.</param>
+        /// <param name="prefabName">Sets the name of the entity's prefab.</param>
         /// <param name="entityId">Sets the entity ID.</param>
-        public void Initialize(EntityType entityType, string entityId)
+        public void Initialize(PrefabName prefabName, string entityId)
         {
             if (entityId == null)
             {
                 throw new ArgumentNullException(nameof(entityId));
             }
-            EntityType = entityType;
+            PrefabName = prefabName;
             EntityId = entityId;
             Initialized = true;
         }
 
         public override string ToString()
         {
-            return $"<{EntityType} {EntityId}>";
+            return $"<{PrefabName} {EntityId}>";
         }
     }
 }
