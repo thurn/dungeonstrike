@@ -20,11 +20,11 @@
   [spec-set]
   #::{:type :enum ::values spec-set})
 
-(defn map-value
+(defn object-value
   "A field containing a map with keyword keys and typed values. Argument should
-   be a map from field name to field type."
+   be a vector of map key names."
   [spec-map]
-  #::{:type :map ::values spec-map})
+  #::{:type :object ::values spec-map})
 
 (defn seq-value
   "A field containing a sequence of fields of a single type. Argument should be
@@ -32,17 +32,17 @@
   [value-type]
   #::{:type :seq ::value-type value-type})
 
-(def action-fields
-  {:a/entity-id string-value
+(def fields
+  {:m/x integer-value
+   :m/y integer-value
+   :a/entity-id string-value
    :a/client-log-file-path string-value
-   :a/client-id string-value})
-
-(def message-fields
-  {:m/entity-id string-value
+   :a/client-id string-value
+   :m/entity-id string-value
    :m/scene-name (enum-value #{:empty :flat})
    :m/new-entity-id string-value
    :m/entity-type (enum-value #{:soldier})
-   :m/position (map-value {:m/x integer-value :m/y integer-value})
+   :m/position (object-value [:m/x :m/y])
    :m/positions (seq-value :m/position)})
 
 (def actions
@@ -60,26 +60,14 @@
 (defn field-type
   "Returns the type keyword for the named field."
   [field-name]
-  (::type (or (message-fields field-name)
-              (action-fields field-name))))
+  (::type (fields field-name)))
 
-(defn message-values
+(defn values
   "Returns the 'values' component of a message field specification."
   [field-name]
-  (::values (message-fields field-name)))
+  (::values (fields field-name)))
 
 (defn seq-type
   "Returns the sequence type of a seq-value specification"
   [field-name]
-  (::value-type (or (message-fields field-name)
-                    (action-fields field-name))))
-
-(defn is-enum-message-key?
-  "Returns true if this message field key identifes an enum value."
-  [key]
-  (= :enum (::type (message-fields key))))
-
-(defn is-enum-action-key?
-  "Returns true if this action field key identifes an enum value."
-  [key]
-  (= :enum (::type (action-fields key))))
+  (::value-type (fields field-name)))

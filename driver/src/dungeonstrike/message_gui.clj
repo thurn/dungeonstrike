@@ -17,7 +17,7 @@
   [[(seesaw/label (str field-name))]
    [(if (= :enum (messages/field-type field-name))
       (seesaw/combobox :id field-name
-                       :model (messages/message-values field-name))
+                       :model (messages/values field-name))
       (seesaw/combobox :id field-name
                        :model (test-values/test-values-for-field-name
                                field-name)))

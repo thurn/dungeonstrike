@@ -5,6 +5,7 @@
             [clojure.spec.alpha :as s]
             [clojure.string :as string]
             [dungeonstrike.messages :as messages]
+            [dungeonstrike.logger :as logger]
             [dungeonstrike.paths :as paths]
             [camel-snake-kebab.core :as case]
             [clostache.parser :as templates]
@@ -91,11 +92,11 @@ namespace DungeonStrike.Source.Messaging
 (defn- enum-info
   "Returns information about all enum messages."
   []
-  (for [x messages/message-fields
+  (for [x messages/fields
         :let [k (key x)]
-        :when (messages/is-enum-message-key? k)]
+        :when (= :enum (messages/field-type k))]
     {:enumName (pascal-name k)
-     :values (for [v (messages/message-values k)]
+     :values (for [v (messages/values k)]
                {:name (pascal-name v)})}))
 
 (defn- csharp-field-type
@@ -108,13 +109,11 @@ namespace DungeonStrike.Source.Messaging
     "string"
     :enum
     (pascal-name field-name)
-    :map
+    :object
     (pascal-name field-name)
     :seq
     (str "List<" (pascal-name (messages/seq-type field-name)) ">")
-    (throw (RuntimeException.
-            (str "Unknown type '" (messages/field-type field-name)
-                 "' for field '" field-name "'")))))
+    (logger/error "Unknown type for field-name" field-name)))
 
 (defn- template-parameters
   "Helper function which builds the parameters to the code generation template."

@@ -37,7 +37,7 @@
                      (= :a/action-type key)
                      (keyword "a" (case/->kebab-case value))
 
-                     (messages/is-enum-action-key? key)
+                     (= :enum (messages/field-type key))
                      (keyword (case/->kebab-case value))
 
                      :otherwise

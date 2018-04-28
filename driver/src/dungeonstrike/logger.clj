@@ -169,7 +169,8 @@
           (format-message message arguments))))
 
 (defmacro error
-  "Logs an error in the style of `log` with optional details."
+  "Logs an error in the style of `log` with optional details and throw
+   exception"
   [message & arguments]
   `(do (timbre/error (log-helper ~message
                                  :error
