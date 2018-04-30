@@ -16,6 +16,8 @@
 (def ^:private template
   "using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 // =============================================================================
 // WARNING: Do not modify this file by hand! This file is automatically
@@ -35,15 +37,63 @@ namespace DungeonStrike.Source.Messaging
     }
 
     {{/enums}}
-    {{#structs}}
-    public struct {{structName}}
+    {{#interfaces}}
+    public interface I{{interfaceName}}
     {
-        {{#structFields}}
-        public {{fieldType}} {{fieldName}};
-        {{/structFields}}
+      {{#interfaceFields}}
+      {{&fieldType}} Get{{fieldName}}();
+      {{/interfaceFields}}
     }
 
-    {{/structs}}
+    {{/interfaces}}
+    {{#unionObjects}}
+    public sealed class {{objectName}} : I{{interfaceName}}
+    {
+      public {{unionType}} {{unionType}};
+      {{#objectFields}}
+      public {{&fieldType}} {{fieldName}};
+      {{/objectFields}}
+
+      public {{unionType}} Get{{unionType}}()
+      {
+        return {{unionType}};
+      }
+    }
+
+    {{/unionObjects}}
+    {{#unionDeserializers}}
+    public sealed class {{objectName}}JsonConverter
+        : UnionJsonConverter<I{{objectName}}>
+    {
+        public override string GetTypeIdentifier()
+        {
+            return \"{{unionType}}\";
+        }
+
+        public override object GetEmptyObjectForType(string type)
+        {
+            switch (type) {
+               {{#unionValues}}
+                case \"{{name}}\":
+                    return new {{name}}();
+                {{/unionValues}}
+                default:
+                    throw new InvalidOperationException(
+                        \"Unrecognized type: \" + type);
+            }
+        }
+    }
+
+    {{/unionDeserializers}}
+    {{#objects}}
+    public sealed class {{objectName}}{{interfaceDeclaration}}
+    {
+        {{#objectFields}}
+        public {{&fieldType}} {{fieldName}};
+        {{/objectFields}}
+    }
+
+    {{/objects}}
     {{#messages}}
     public sealed class {{messageName}}Message : Message
     {
@@ -90,6 +140,17 @@ namespace DungeonStrike.Source.Messaging
                         \"Unrecognized message type: \" + messageType);
             }
         }
+
+        public static JsonConverter[] GetJsonConverters()
+        {
+            return new JsonConverter[] {
+                new MessageConverter(),
+                new StringEnumConverter(),
+                {{#unionTypes}}
+                new {{name}}JsonConverter(),
+                {{/unionTypes}}
+            };
+        }
     }
 }")
 
@@ -97,6 +158,22 @@ namespace DungeonStrike.Source.Messaging
   "Returns the pascal-cased 'name' of this keyword"
   [keyword]
   (case/->PascalCase (name keyword)))
+
+(defn- union-enum-values
+  [type-keyword]
+  (for [field (keys messages/fields)
+        :when (= type-keyword (messages/union-value-keyword field))]
+    {:name (pascal-name field)}))
+
+(defn- union-enums
+  "Returns enum specifications for enums required to implement union types."
+  []
+  (let [union? (fn [f] (= :union-type (messages/field-type f)))
+        union-types (filter union? (keys messages/fields))]
+    (for [union-type union-types]
+      (let [type-keyword (messages/union-type-keyword union-type)]
+        {:enumName (pascal-name type-keyword)
+         :values (union-enum-values type-keyword)}))))
 
 (defn- enum-info
   "Returns information about all enum messages."
@@ -120,20 +197,76 @@ namespace DungeonStrike.Source.Messaging
     (pascal-name field-name)
     :object
     (pascal-name field-name)
+    :union-type
+    (str "I" (pascal-name field-name))
+    :union-value
+    (pascal-name field-name)
     :seq
-    (str "List<" (pascal-name (messages/seq-type field-name)) ">")
+    (str "List<" (csharp-field-type (messages/seq-type field-name)) ">")
     (logger/error "Unknown type for field-name" field-name)))
 
-(defn- struct-info
+(defn- interface-info
+  "Returns information about interfaces that must be generated."
   []
-  "Returns information about all struct messages."
-  (for [field messages/fields
-        :let [field-name (key field)]
+  (for [field-name (keys messages/fields)
+        :when (= :union-type (messages/field-type field-name))
+        :let [field-type (pascal-name
+                          (messages/union-type-keyword field-name))]]
+    {:interfaceName (pascal-name field-name)
+     :interfaceFields [{:fieldName field-type
+                        :fieldType field-type}]}))
+
+(defn- object-fields
+  "Field specifications for the object in field-name"
+  [field-name]
+  (for [f (messages/values field-name)]
+    {:fieldName (pascal-name f)
+     :fieldType (csharp-field-type f)}))
+
+(defn- object-info
+  []
+  "Returns information about all object messages."
+  (for [field-name (keys messages/fields)
         :when (= :object (messages/field-type field-name))]
-    {:structName (pascal-name field-name)
-     :structFields (for [f (messages/values field-name)]
-                     {:fieldName (pascal-name f)
-                      :fieldType (csharp-field-type f)})}))
+    {:objectName (pascal-name field-name)
+     :objectFields (object-fields field-name)}))
+
+(defn- union-field-name-for-type-keyword
+  "Looks up the field name for a union type based on its type keyword."
+  [type-keyword]
+  (key
+   (first
+    (filter (fn [[k _]] (= :gui/component-type (messages/union-type-keyword k)))
+            messages/fields))))
+
+(defn- union-types
+  "Returns specifications for union types for use in json conversion"
+  []
+  (for [field (keys messages/fields)
+        :when (= :union-type (messages/field-type field))]
+    {:name (pascal-name field)}))
+
+(defn- union-value-objects
+  "Returns specifications for union-value-typed objects."
+  []
+  (for [field (keys messages/fields)
+        :when (= :union-value (messages/field-type field))]
+    (let [type-keyword (messages/union-value-keyword field)
+          union-field (union-field-name-for-type-keyword type-keyword)]
+      {:objectName (pascal-name field)
+       :interfaceName (pascal-name union-field)
+       :unionType (pascal-name type-keyword)
+       :objectFields (object-fields field)})))
+
+(defn- union-deserializers
+  "Returns specifications for union type deserializers"
+  []
+  (for [field (keys messages/fields)
+        :when (= :union-type (messages/field-type field))
+        :let [type-keyword (messages/union-type-keyword field)]]
+    {:objectName (pascal-name field)
+     :unionType (pascal-name type-keyword)
+     :unionValues (union-enum-values type-keyword)}))
 
 (defn- template-parameters
   "Helper function which builds the parameters to the code generation template."
@@ -153,8 +286,12 @@ namespace DungeonStrike.Source.Messaging
                          :fields (map action-field-params fields)})]
     {:messages (map message-params messages/messages)
      :actions (map action-params messages/actions)
-     :structs (struct-info)
-     :enums (enum-info)}))
+     :objects (object-info)
+     :unionObjects (union-value-objects)
+     :unionDeserializers (union-deserializers)
+     :interfaces (interface-info)
+     :enums (concat (union-enums) (enum-info))
+     :unionTypes (union-types)}))
 
 (defn- generate!
   "Generates C# code based on the message specifications found in

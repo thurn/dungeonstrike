@@ -95,8 +95,7 @@ namespace DungeonStrike.Source.Core
         {
             try
             {
-                var message = JsonConvert.DeserializeObject<Message>(messageInput, new MessageConverter(),
-                        new StringEnumConverter());
+                var message = JsonConvert.DeserializeObject<Message>(messageInput, Messages.GetJsonConverters());
                 ErrorHandler.CheckNotNull("message", message);
                 var messageType = message.MessageType;
                 if (message.EntityId != null)

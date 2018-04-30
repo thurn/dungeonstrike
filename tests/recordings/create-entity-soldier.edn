@@ -5,15 +5,15 @@
  #:m{:message-type :m/create-entity,
      :message-id "M:yYWIrFojTB6/f8sUA6U34w",
      :new-entity-id "E:DRLS2GWvR8GAZaZixfBamw",
-     :prefab-name :soldier,
+     :prefab-name :assets/soldier,
      :position #:m{:x 0, :y 0},
      :material-updates
-     [#:m{:entity-child-path "Body", :material-name :soldier-forest}
+     [#:m{:entity-child-path "Body", :material-name :assets/soldier-forest}
       #:m{:entity-child-path "Helmet",
-          :material-name :soldier-helmet-green}
-      #:m{:entity-child-path "Bags", :material-name :soldier-bags-green}
+          :material-name :assets/soldier-helmet-green}
+      #:m{:entity-child-path "Bags", :material-name :assets/soldier-bags-green}
       #:m{:entity-child-path "Vest",
-          :material-name :soldier-vest-green}]}
+          :material-name :assets/soldier-vest-green}]}
  :entries
  [{:message
    "Websocket sending message [<[:m/create-entity] M:yYWIrFojTB6/f8sUA6U34w>]",

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 // =============================================================================
 // WARNING: Do not modify this file by hand! This file is automatically
@@ -10,6 +12,12 @@ using System.Collections.Generic;
 
 namespace DungeonStrike.Source.Messaging
 {
+    public enum ComponentType
+    {
+        Canvas,
+        EventSystem,
+    }
+
     public enum PrefabName
     {
         Soldier,
@@ -23,156 +31,215 @@ namespace DungeonStrike.Source.Messaging
 
     public enum SpriteName
     {
-        EarthCardRarityRank4,
-        ShadowCardHealthSymbolShadowBigOutlined,
-        ShadowCardCostSymbolShadowBigOutlined,
-        EarthCardPowerBigEarth,
-        ShadowCardShadowBigArtMask,
-        EarthCardCostBigEarthShadowed,
-        FireCardElFiCardBodyFront,
-        WaterCardRarityRank5,
-        FireCardElementalFireCardFrontShadowed,
-        WaterCardEcWaterFrontNoHeading,
+        AirCardRarityRank5Big,
+        FireCardElFiHeadingSeparate,
+        AirCardElementalAirCardArtMask,
         FireCardCostSymbol,
+        WaterCardEcWaterFrontNoHeading,
         EarthCardEcEarthFrontBig,
-        FireCardHealthSymbol,
-        LightCardLightCardBigBack,
-        AirCardPowerSymbolAirBigShadowed,
-        FireCardElementalFireCardArtFrame,
-        EarthCardEcEarthMaskBig,
-        ShadowCardShadowHeadingSeparated,
-        ShadowCardRarityRank3Big,
-        FireCardPowerSymbolFireShadowed,
-        ShadowCardCostSymbolShadowBig,
+        WaterCardEcWaterFrontBigShadowed,
+        EarthCardRarityRank3,
         LightCardRarityRank3Big,
         AirCardRarityRank4Big,
-        ShadowCardShadowFrontBig,
-        FireCardHealthSymbolFireShadowed,
-        FireCardElementalFireCardFront,
+        LightCardRarityRank2Big,
+        AirCardRarityRank3Big,
+        WaterCardEcWaterMaskBig,
+        AirCardCostSymbolAirBig,
+        ShadowCardPowerSymbolShadowBig,
+        WaterCardRarityRank5,
         LightCardRarityRank4Big,
-        LightCardCostSymbolBigLight,
-        EarthCardRarityRank2,
-        ShadowCardRarityRank1Big,
-        FireCardRarityRank3Big,
-        FireCardElementalFireCardBackShadowed,
-        AirCardElementalAirCardFrontShadowed,
-        WaterCardEcWaterArtFrameBig,
+        WaterCardEcWaterBackBig,
+        EarthCardEcEarthFrontHeading,
+        EarthCardCostBigEarthShadowed,
+        FireCardElFiCardBodyFront,
+        EarthCardEcEarthMaskBig,
+        ShadowCardRarityRank3Big,
+        ShadowCardShadowHeadingSeparated,
+        AirCardPowerSymbolAirBigShadowed,
+        FireCardElementalFireCardArtFrame,
+        LightCardLightCardBigBack,
+        FireCardPowerSymbolFireShadowed,
+        FireCardElementalFireCardFrontShadowed,
+        FireCardRarityRank5Big,
+        EarthCardHealthBigEarth,
+        WaterCardRarityRank4,
+        LightCardLightCardBigBackShadowed,
+        ShadowCardCostSymbolShadowBig,
         ShadowCardRarityRank2Big,
         EarthCardHealthBigEarthShadowed,
-        EarthCardRarityRank1,
-        FireCardScorchedEarthArtBig,
-        WaterCardRarityRank4,
-        LightCardHealthSymbolBigLightShadowed,
-        FireCardRarityRank2Big,
-        LightCardLightCardBigBackShadowed,
-        LightCardLightCardBigFront,
-        WaterCardPowerBigSymbol,
-        AirCardElementalAirCardBackShadowed,
-        ShadowCardHealthSymbolShadowBig,
-        ShadowCardShadowBackBigOutlined,
-        AirCardCostSymbolAirBigShadowed,
-        LightCardRarityRank5Big,
-        WaterCardEcWaterFrontBigShadowed,
-        ShadowCardShadowArtFrameBig,
-        ShadowCardPowerSymbolShadowBigOutlined,
         ShadowCardRarityRank5Big,
-        AirCardCostSymbolAirBig,
-        WaterCardEcWaterMaskBig,
-        WaterCardHealthBigSymbol,
-        AirCardPowerSymbolAir,
+        EarthCardEcEarthFrontBigShadowed,
+        AirCardCostSymbolAirBigShadowed,
+        AirCardArtworkAirBig,
+        FireCardElementalFireCardBackShadowed,
+        LightCardRarityRank5Big,
+        FireCardHealthSymbolFireShadowed,
+        ShadowCardShadowArtFrameBig,
+        EarthCardRarityRank1,
+        FireCardHealthSymbol,
+        WaterCardEcWaterArtFrameBig,
         ShadowCardShadowBodyFront,
-        AirCardRarityRank3Big,
-        LightCardRarityRank2Big,
-        EarthCardRarityRank3,
-        LightCardPowerSymbolBigLightShadowed,
-        LightCardLightCardBody,
-        AirCardRarityRank2Big,
+        FireCardRarityRank3Big,
+        ShadowCardRarityRank1Big,
+        WaterCardHealthBigSymbol,
+        ShadowCardHealthSymbolShadowBig,
+        ShadowCardPowerSymbolShadowBigOutlined,
+        LightCardLightCardBigFront,
+        AirCardHealthSymbolAirBigShadowed,
+        AirCardElAirHeadingSeparate,
+        EarthCardEcEarthBackBigShadowed,
+        EarthCardEcEarthBackBig,
+        AirCardRarityRank1Big,
+        ShadowCardHealthSymbolShadowBigOutlined,
+        ShadowCardShadowBigArtMask,
+        EarthCardPowerBigEarthShadowed,
+        WaterCardRarityRank3,
         LightCardArtMaskBigLight,
         WaterCardEcWaterFrontBig,
+        LightCardLightCardBigFrontShadowed,
+        AirCardPowerSymbolAir,
+        AirCardElementalAirCardBackShadowed,
+        EarthCardEcEarthFrontNoHeading,
+        WaterCardPowerBigSymbol,
+        FireCardRarityRank1Big,
+        ShadowCardShadowBackBigOutlined,
+        LightCardHealthSymbolBigLightShadowed,
+        LightCardPowerSymbolBigLightShadowed,
         AirCardElAirCardBodyFront,
-        AirCardRarityRank1Big,
-        FireCardElementalFireCardBack,
+        FireCardScorchedEarthArtBig,
+        AirCardRarityRank2Big,
+        LightCardLightCardBody,
+        FireCardRarityRank2Big,
+        AirCardElementalAirCardFrontShadowed,
+        ShadowCardShadowArtBig,
+        EarthCardEcEarthArtFrameBig,
+        WaterCardEcWaterBackBigShadowed,
+        FireCardElementalFireCardArtMask,
+        EarthCardRarityRank2,
+        EarthCardRarityRank5,
+        AirCardElementalAirCardArtFrame,
+        LightCardPowerSymbolBigLight,
+        WaterCardRarityRank2,
+        EarthCardCostBigEarth,
+        EarthCardEarthArtworkBig,
+        WaterCardEcWaterFrontHeading,
+        LightCardCostSymbolBigLightShadowed,
+        LightCardCostSymbolBigLight,
+        LightCardRarityRank1Big,
+        ShadowCardShadowFrontBig,
+        ShadowCardRarityRank4Big,
+        FireCardRarityRank4Big,
+        FireCardElementalFireCardFront,
+        FireCardCostSymbolFireShadowed,
+        LightCardHealthSymbolBigLight,
+        LightCardLightArtBig,
+        LightCardLightCardHeading,
+        ShadowCardCostSymbolShadowBigOutlined,
+        EarthCardPowerBigEarth,
+        WaterCardRarityRank1,
+        EarthCardRarityRank4,
         AirCardHealthSymbolAir,
         AirCardElementalAirCardBack,
         WaterCardCostBigSymbol,
-        AirCardElAirHeadingSeparate,
-        LightCardLightArtBig,
-        EarthCardEcEarthArtFrameBig,
-        WaterCardRarityRank2,
-        FireCardElementalFireCardArtMask,
-        EarthCardRarityRank5,
-        WaterCardRarityRank3,
-        EarthCardCostBigEarth,
-        WaterCardEcWaterBackBigShadowed,
-        ShadowCardShadowArtBig,
-        EarthCardHealthBigEarth,
-        LightCardHealthSymbolBigLight,
-        AirCardArtworkAirBig,
-        EarthCardEcEarthBackBig,
-        EarthCardEcEarthFrontNoHeading,
-        WaterCardEcWaterFrontHeading,
-        EarthCardEcEarthFrontBigShadowed,
-        LightCardCostSymbolBigLightShadowed,
-        LightCardRarityRank1Big,
-        FireCardRarityRank1Big,
-        ShadowCardRarityRank4Big,
-        FireCardRarityRank4Big,
-        FireCardRarityRank5Big,
         LightCardPortraitFrameBigLight,
-        WaterCardRarityRank1,
-        LightCardLightCardHeading,
-        EarthCardEcEarthFrontHeading,
-        AirCardElementalAirCardArtMask,
-        FireCardElFiHeadingSeparate,
+        FireCardElementalFireCardBack,
         ShadowCardShadowFontBigOutlined,
-        WaterCardEcWaterBackBig,
         ShadowCardShadowBackBig,
         AirCardElementalAirCardFront,
-        AirCardElementalAirCardArtFrame,
-        FireCardPowerSymbol,
         WaterCardWaterArtworkBig,
-        LightCardPowerSymbolBigLight,
-        FireCardCostSymbolFireShadowed,
-        AirCardRarityRank5Big,
-        AirCardHealthSymbolAirBigShadowed,
-        EarthCardEcEarthBackBigShadowed,
-        LightCardLightCardBigFrontShadowed,
-        EarthCardEarthArtworkBig,
-        ShadowCardPowerSymbolShadowBig,
-        EarthCardPowerBigEarthShadowed,
+        FireCardPowerSymbol,
     }
 
     public enum MaterialName
     {
-        SoldierGorka,
-        SoldierDesert,
         SoldierHelmetGreen,
-        SoldierJungle,
-        Soldier02BodyGorka,
-        SoldierVestBlack,
-        SoldierSurpat,
         Soldier02HelmetKhaki,
         SoldierForest,
+        SoldierBagsKhaki,
+        SoldierGorka,
+        SoldierSurpat,
+        SoldierVestBlack,
+        SoldierDesert,
         Soldier02BagsKhaki,
-        Soldier02VestKhaki,
+        SoldierWinter,
         SoldierVestGreen,
-        SoldierBagsBlack,
+        Soldier02VestKhaki,
         SoldierHelmetKhaki,
+        Soldier02BodyGorka,
+        SoldierJungle,
+        SoldierHelmetBlack,
         SoldierBagsGreen,
         SoldierVestKhaki,
-        SoldierBagsKhaki,
-        SoldierWinter,
-        SoldierHelmetBlack,
+        SoldierBagsBlack,
         SoldierBlack,
     }
 
-    public struct MaterialUpdate
+    public interface IComponent
+    {
+      ComponentType GetComponentType();
+    }
+
+    public sealed class Canvas : IComponent
+    {
+      public ComponentType ComponentType;
+      public string CanvasString;
+      public ComponentType GetComponentType()
+      {
+        return ComponentType;
+      }
+    }
+
+    public sealed class EventSystem : IComponent
+    {
+      public ComponentType ComponentType;
+      public ComponentType GetComponentType()
+      {
+        return ComponentType;
+      }
+    }
+
+    public sealed class ComponentJsonConverter
+        : UnionJsonConverter<IComponent>
+    {
+        public override string GetTypeIdentifier()
+        {
+            return "ComponentType";
+        }
+
+        public override object GetEmptyObjectForType(string type)
+        {
+            switch (type) {
+                case "Canvas":
+                    return new Canvas();
+                case "EventSystem":
+                    return new EventSystem();
+                default:
+                    throw new InvalidOperationException(
+                        "Unrecognized type: " + type);
+            }
+        }
+    }
+
+    public sealed class Node
+    {
+        public string Name;
+        public int Transform;
+        public List<IComponent> Components;
+    }
+
+    public sealed class MaterialUpdate
     {
         public string EntityChildPath;
         public MaterialName MaterialName;
     }
 
-    public struct Position
+    public sealed class Size
+    {
+        public int X;
+        public int Y;
+    }
+
+    public sealed class Position
     {
         public int X;
         public int Y;
@@ -224,6 +291,17 @@ namespace DungeonStrike.Source.Messaging
         public List<MaterialUpdate> MaterialUpdates { get; set; }
     }
 
+    public sealed class UpdateGuiMessage : Message
+    {
+        public static readonly string Type = "UpdateGui";
+
+        public UpdateGuiMessage() : base("UpdateGui")
+        {
+        }
+
+        public Node Node { get; set; }
+    }
+
     public sealed class ClientConnectedAction : UserAction
     {
         public static readonly string Type = "ClientConnected";
@@ -250,10 +328,21 @@ namespace DungeonStrike.Source.Messaging
                     return new QuitGameMessage();
                 case "CreateEntity":
                     return new CreateEntityMessage();
+                case "UpdateGui":
+                    return new UpdateGuiMessage();
                 default:
                     throw new InvalidOperationException(
                         "Unrecognized message type: " + messageType);
             }
+        }
+
+        public static JsonConverter[] GetJsonConverters()
+        {
+            return new JsonConverter[] {
+                new MessageConverter(),
+                new StringEnumConverter(),
+                new ComponentJsonConverter(),
+            };
         }
     }
 }

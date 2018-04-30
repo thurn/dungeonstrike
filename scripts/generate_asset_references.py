@@ -170,7 +170,7 @@ def generate_assets_clj(asset_map, p):
     p.indent()
     p.print("#{")
     for value in values:
-      p.print(":" + hyphenate(value.name))
+      p.print(":assets/" + hyphenate(value.name))
     p.dedent()
     p.print("})\n")
 

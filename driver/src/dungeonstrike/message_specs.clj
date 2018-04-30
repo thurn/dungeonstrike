@@ -25,6 +25,10 @@
       `(messages/values ~field-name)
       :object
       `(s/keys :req [~@(messages/values field-name)])
+      :union-type
+      `any?
+      :union-value
+      `any?
       :seq
       `(s/coll-of ~(messages/seq-type field-name))
       (throw (RuntimeException.
