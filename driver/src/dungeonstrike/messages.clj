@@ -58,13 +58,13 @@
    :m/sprite-name (enum-value assets/sprite)
 
    ;; GUI fields
+   :gui/component (union-type :gui/component-type)
    :gui/size (object-value [:m/x :m/y])
    :gui/transform integer-value
    :gui/name string-value
    :gui/canvas-string string-value
    :gui/canvas (union-value :gui/component-type [:gui/canvas-string])
    :gui/event-system (union-value :gui/component-type [])
-   :gui/component (union-type :gui/component-type)
    :gui/components (seq-value :gui/component)
    :m/node (object-value [:gui/name :gui/transform :gui/components])
 
