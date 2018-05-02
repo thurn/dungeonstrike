@@ -14,23 +14,27 @@ namespace DungeonStrike.Source.Messaging
 {
     public enum ComponentType
     {
+        Unknown,
         Canvas,
-        EventSystem,
+        Renderer,
     }
 
     public enum PrefabName
     {
+        Unknown,
         Soldier,
     }
 
     public enum SceneName
     {
+        Unknown,
         Empty,
         Flat,
     }
 
     public enum SpriteName
     {
+        Unknown,
         AirCardRarityRank5Big,
         FireCardElFiHeadingSeparate,
         AirCardElementalAirCardArtMask,
@@ -152,6 +156,7 @@ namespace DungeonStrike.Source.Messaging
 
     public enum MaterialName
     {
+        Unknown,
         SoldierHelmetGreen,
         Soldier02HelmetKhaki,
         SoldierForest,
@@ -182,16 +187,16 @@ namespace DungeonStrike.Source.Messaging
     public sealed class Canvas : IComponent
     {
       public ComponentType ComponentType;
-      public string CanvasString;
       public ComponentType GetComponentType()
       {
         return ComponentType;
       }
     }
 
-    public sealed class EventSystem : IComponent
+    public sealed class Renderer : IComponent
     {
       public ComponentType ComponentType;
+      public MaterialName MaterialName;
       public ComponentType GetComponentType()
       {
         return ComponentType;
@@ -211,8 +216,8 @@ namespace DungeonStrike.Source.Messaging
             switch (type) {
                 case "Canvas":
                     return new Canvas();
-                case "EventSystem":
-                    return new EventSystem();
+                case "Renderer":
+                    return new Renderer();
                 default:
                     throw new InvalidOperationException(
                         "Unrecognized type: " + type);
@@ -220,11 +225,9 @@ namespace DungeonStrike.Source.Messaging
         }
     }
 
-    public sealed class Node
+    public sealed class DeleteObject
     {
-        public string Name;
-        public int Transform;
-        public List<IComponent> Components;
+        public string ObjectPath;
     }
 
     public sealed class MaterialUpdate
@@ -233,10 +236,25 @@ namespace DungeonStrike.Source.Messaging
         public MaterialName MaterialName;
     }
 
-    public sealed class Size
+    public sealed class UpdateObject
     {
-        public int X;
-        public int Y;
+        public string ObjectPath;
+        public Transform Transform;
+        public List<IComponent> Components;
+    }
+
+    public sealed class Transform
+    {
+        public Position Position;
+    }
+
+    public sealed class CreateObject
+    {
+        public string ObjectName;
+        public string ParentPath;
+        public PrefabName PrefabName;
+        public Transform Transform;
+        public List<IComponent> Components;
     }
 
     public sealed class Position
@@ -291,15 +309,17 @@ namespace DungeonStrike.Source.Messaging
         public List<MaterialUpdate> MaterialUpdates { get; set; }
     }
 
-    public sealed class UpdateGuiMessage : Message
+    public sealed class UpdateMessage : Message
     {
-        public static readonly string Type = "UpdateGui";
+        public static readonly string Type = "Update";
 
-        public UpdateGuiMessage() : base("UpdateGui")
+        public UpdateMessage() : base("Update")
         {
         }
 
-        public Node Node { get; set; }
+        public List<CreateObject> CreateObjects { get; set; }
+        public List<UpdateObject> UpdateObjects { get; set; }
+        public List<DeleteObject> DeleteObjects { get; set; }
     }
 
     public sealed class ClientConnectedAction : UserAction
@@ -328,8 +348,8 @@ namespace DungeonStrike.Source.Messaging
                     return new QuitGameMessage();
                 case "CreateEntity":
                     return new CreateEntityMessage();
-                case "UpdateGui":
-                    return new UpdateGuiMessage();
+                case "Update":
+                    return new UpdateMessage();
                 default:
                     throw new InvalidOperationException(
                         "Unrecognized message type: " + messageType);

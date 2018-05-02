@@ -8,12 +8,12 @@ namespace DungeonStrike.Source.Assets
 {
   public class AssetUtil
   {
-    public static GameObject InstantiatePrefab(AssetRefs refs, PrefabName name, Vector3 position)
+    public static GameObject InstantiatePrefab(AssetRefs refs, PrefabName name)
     {
       switch (name)
       {
         case PrefabName.Soldier:
-          return Object.Instantiate(refs.Soldier, position, Quaternion.identity);
+          return Object.Instantiate(refs.Soldier);
       }
       throw new System.InvalidOperationException("Unknown asset name: " + name);
     }

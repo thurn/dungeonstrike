@@ -22,10 +22,12 @@
   #::{:type :enum :values spec-set})
 
 (defn- object-value
-  "A field containing a map with keyword keys and typed values. Argument should
-   be a vector of map key names."
-  [field-list]
-  #::{:type :object :values field-list})
+  "A field containing a map with keyword keys and typed values. Arguments should
+   be vectors of required map key names and optional key names."
+  [required-field-list optional-field-list]
+  #::{:type :object
+      :required-fields required-field-list
+      :optional-fields optional-field-list})
 
 (defn- seq-value
   "A field containing a sequence of fields of a single type. Argument should be
@@ -45,8 +47,13 @@
   of object, and all object-value semantics apply to them. First argument is a
   type-keyword to link to a given union-type. Second argument is a list of
   object fields."
-  [type-keyword field-list]
-  #::{:type :union-value :union-value-keyword type-keyword :values field-list})
+  [type-keyword required-field-list optional-field-list]
+  #::{:type :union-value
+      :union-value-keyword type-keyword
+      :required-fields required-field-list
+      :optional-fields optional-field-list})
+
+;; TODO: Implement messages and actions using union-type mechanism
 
 (def fields
   {
@@ -56,17 +63,23 @@
    :m/entity-child-path string-value
    :m/material-name (enum-value assets/material)
    :m/sprite-name (enum-value assets/sprite)
-
-   ;; GUI fields
-   :gui/component (union-type :gui/component-type)
-   :gui/size (object-value [:m/x :m/y])
-   :gui/transform integer-value
-   :gui/name string-value
-   :gui/canvas-string string-value
-   :gui/canvas (union-value :gui/component-type [:gui/canvas-string])
-   :gui/event-system (union-value :gui/component-type [])
-   :gui/components (seq-value :gui/component)
-   :m/node (object-value [:gui/name :gui/transform :gui/components])
+   :m/create-object (object-value [:m/object-name]
+                                  [:m/parent-path :m/prefab-name
+                                   :m/transform :m/components])
+   :m/create-objects (seq-value :m/create-object)
+   :m/update-object (object-value [:m/object-path]
+                                  [:m/transform :m/components])
+   :m/update-objects (seq-value :m/update-object)
+   :m/delete-object (object-value [:m/object-path] [])
+   :m/delete-objects (seq-value :m/delete-object)
+   :m/parent-path string-value
+   :m/object-path string-value
+   :m/object-name string-value
+   :m/transform (object-value [] [:m/position])
+   :m/component (union-type :m/component-type)
+   :m/canvas (union-value :m/component-type [] [])
+   :m/renderer (union-value :m/component-type [] [:m/material-name])
+   :m/components (seq-value :m/component)
 
    ;; Action Fields
    :a/entity-id string-value
@@ -78,8 +91,8 @@
    :m/scene-name (enum-value #{:empty :flat})
    :m/new-entity-id string-value
    :m/prefab-name (enum-value assets/prefab)
-   :m/position (object-value [:m/x :m/y])
-   :m/material-update (object-value [:m/entity-child-path :m/material-name])
+   :m/position (object-value [:m/x :m/y] [])
+   :m/material-update (object-value [:m/entity-child-path :m/material-name] [])
    :m/material-updates (seq-value :m/material-update)})
 
 (def actions
@@ -91,7 +104,7 @@
    :m/quit-game []
    :m/create-entity [:m/new-entity-id :m/prefab-name :m/position
                      :m/material-updates]
-   :m/update-gui [:m/node]})
+   :m/update [:m/create-objects :m/update-objects :m/delete-objects]})
 
 (defn field-type
   "Returns the type keyword for the named field."
@@ -112,6 +125,21 @@
   "Returns the 'values' component of a message field specification."
   [field-name]
   (::values (fields field-name)))
+
+(defn required-fields
+  "Returns the required fields of an object or union value."
+  [field-name]
+  (::required-fields (fields field-name)))
+
+(defn optional-fields
+  "Returns the optional fields of an object or union value."
+  [field-name]
+  (::optional-fields (fields field-name)))
+
+(defn all-fields
+  "Returns all fields for an object or union value."
+  [field-name]
+  (concat (required-fields field-name) (optional-fields field-name)))
 
 (defn seq-type
   "Returns the sequence type of a seq-value specification"

@@ -2,31 +2,43 @@
  :prerequisite "load-scene-flat.edn",
  :timeout 10,
  :message->client
- #:m{:message-type :m/create-entity,
-     :message-id "M:yYWIrFojTB6/f8sUA6U34w",
-     :new-entity-id "E:DRLS2GWvR8GAZaZixfBamw",
-     :prefab-name :assets/soldier,
-     :position #:m{:x 0, :y 0},
-     :material-updates
-     [#:m{:entity-child-path "Body", :material-name :assets/soldier-forest}
-      #:m{:entity-child-path "Helmet",
-          :material-name :assets/soldier-helmet-green}
-      #:m{:entity-child-path "Bags", :material-name :assets/soldier-bags-green}
-      #:m{:entity-child-path "Vest",
-          :material-name :assets/soldier-vest-green}]}
+ #:m{:message-type :m/update,
+     :message-id "M:U3VMDB3JTaWzDHSD86dn1w",
+     :create-objects
+     [#:m{:object-name "Soldier",
+          :transform #:m{:position #:m{:x 0, :y 0}},
+          :prefab-name :assets/soldier,
+          :components []}],
+     :update-objects
+     [#:m{:object-path "Soldier/Body",
+          :components
+          [#:m{:component-type :m/renderer,
+               :material-name :assets/soldier-forest}]}
+      #:m{:object-path "Soldier/Helmet",
+          :components
+          [#:m{:component-type :m/renderer,
+               :material-name :assets/soldier-helmet-green}]}
+      #:m{:object-path "Soldier/Bags",
+          :components
+          [#:m{:component-type :m/renderer,
+               :material-name :assets/soldier-bags-green}]}
+      #:m{:object-path "Soldier/Vest",
+          :components
+          [#:m{:component-type :m/renderer,
+               :material-name :assets/soldier-vest-green}]}],
+     :delete-objects []}
  :entries
  [{:message
-   "Websocket sending message [<[:m/create-entity] M:yYWIrFojTB6/f8sUA6U34w>]",
+   "Websocket sending message [<[:m/update] M:U3VMDB3JTaWzDHSD86dn1w>]",
    :source "dungeonstrike.websocket",
    :log-type :driver}
-  {:message
-   "Received message [<[CreateEntity] M:yYWIrFojTB6/f8sUA6U34w>]",
-   :source "DungeonStrike.Source.Services.CreateEntity",
+  {:message "Received message [<[Update] M:U3VMDB3JTaWzDHSD86dn1w>]",
+   :source "DungeonStrike.Source.Services.UpdateService",
    :log-type :client}
   {:message
-   "Finished processing message [<[CreateEntity] M:yYWIrFojTB6/f8sUA6U34w>]",
-   :source "DungeonStrike.Source.Services.CreateEntity",
+   "Finished processing message [<[Update] M:U3VMDB3JTaWzDHSD86dn1w>]",
+   :source "DungeonStrike.Source.Services.UpdateService",
    :log-type :client}
-  {:message "Entity created [<Soldier E:DRLS2GWvR8GAZaZixfBamw>]",
+  {:message "Object created [Soldier]",
    :source "DungeonStrike.Source.Tools.Panopticon",
    :log-type :client}]}

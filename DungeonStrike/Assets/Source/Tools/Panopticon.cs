@@ -24,12 +24,12 @@ namespace DungeonStrike.Source.Tools
 
         private void Update()
         {
-            var newEntities = FindObjectsOfType<Entity>();
-            foreach (var entity in newEntities)
+            foreach (var gameObject in UnityEngine.SceneManagement
+                    .SceneManager.GetActiveScene().GetRootGameObjects())
             {
-                if (_trackedEntities.Contains(entity.gameObject)) continue;
-                Logger.Log("Entity created", entity);
-                _trackedEntities.Add(entity.gameObject);
+                if (_trackedEntities.Contains(gameObject)) continue;
+                Logger.Log("Object created", gameObject.name);
+                _trackedEntities.Add(gameObject);
             }
         }
     }

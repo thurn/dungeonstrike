@@ -89,7 +89,6 @@
   (fn [event]
     (let [form-value (seesaw/value message-form)
           message (reduce-kv process-form-values {} form-value)]
-      (println message)
       (when (:recording? @recording-state)
         (swap! recording-state assoc
                :message->client message))

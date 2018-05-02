@@ -23,13 +23,34 @@
     []
     :m/client-id
     ["C:CLIENT_ID"]
+    :m/create-objects
+    [:test-values/create-soldier]
+    :m/update-objects
+    [:test-values/green-soldier]
+    :m/delete-objects
+    [[]]
     :m/material-updates
-    [:test-values/soldier-green :test-values/soldier-black]
-    :m/node
-    [{:gui/name "Node"
-      :gui/transform 16
-      :gui/components [{:gui/component-type :gui/canvas
-                        :gui/canvas-string "canvas-string"}]}]))
+    [:test-values/soldier-green :test-values/soldier-black]))
+
+(def create-soldier
+  [{:m/object-name "Soldier"
+    :m/transform {:m/position {:m/x 0, :m/y 0}}
+    :m/prefab-name :assets/soldier
+    :m/components []}])
+
+(def green-soldier
+  [{:m/object-path "Soldier/Body"
+    :m/components [{:m/component-type :m/renderer
+                    :m/material-name :assets/soldier-forest}]}
+   {:m/object-path "Soldier/Helmet"
+    :m/components [{:m/component-type :m/renderer
+                    :m/material-name :assets/soldier-helmet-green}]}
+   {:m/object-path "Soldier/Bags"
+    :m/components [{:m/component-type :m/renderer
+                    :m/material-name :assets/soldier-bags-green}]}
+   {:m/object-path "Soldier/Vest"
+    :m/components [{:m/component-type :m/renderer
+                    :m/material-name :assets/soldier-vest-green}]}])
 
 (defn lookup-test-value-key
   "Test values can be replaced with a keyword namespaced with 'test-values' for
@@ -37,23 +58,6 @@
   function."
   [test-value-key]
   (case test-value-key
-    :test-values/soldier-green
-    [{:m/entity-child-path "Body"
-      :m/material-name :assets/soldier-forest}
-     {:m/entity-child-path "Helmet"
-      :m/material-name
-      :assets/soldier-helmet-green}
-     {:m/entity-child-path "Bags"
-      :m/material-name :assets/soldier-bags-green}
-     {:m/entity-child-path "Vest"
-      :m/material-name :assets/soldier-vest-green}]
-    :test-values/soldier-black
-    [{:m/entity-child-path "Body"
-      :m/material-name :assets/soldier-black}
-     {:m/entity-child-path "Helmet" :m/material-name
-      :assets/soldier-helmet-black}
-     {:m/entity-child-path "Bags"
-      :m/material-name :assets/soldier-bags-black}
-     {:m/entity-child-path "Vest"
-      :m/material-name :assets/soldier-vest-black}]
+    :test-values/create-soldier create-soldier
+    :test-values/green-soldier green-soldier
     (throw (RuntimeException. (str "Unknown test-value-key " test-value-key)))))

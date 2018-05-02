@@ -31,6 +31,7 @@ namespace DungeonStrike.Source.Messaging
     {{#enums}}
     public enum {{enumName}}
     {
+        Unknown,
         {{#values}}
         {{name}},
         {{/values}}
@@ -219,7 +220,7 @@ namespace DungeonStrike.Source.Messaging
 (defn- object-fields
   "Field specifications for the object in field-name"
   [field-name]
-  (for [f (messages/values field-name)]
+  (for [f (messages/all-fields field-name)]
     {:fieldName (pascal-name f)
      :fieldType (csharp-field-type f)}))
 
@@ -234,10 +235,12 @@ namespace DungeonStrike.Source.Messaging
 (defn- union-field-name-for-type-keyword
   "Looks up the field name for a union type based on its type keyword."
   [type-keyword]
-  (key
-   (first
-    (filter (fn [[k _]] (= :gui/component-type (messages/union-type-keyword k)))
-            messages/fields))))
+  (let [matches (filter (fn [[k _]]
+                          (= type-keyword (messages/union-type-keyword k)))
+                        messages/fields)]
+    (if (empty? matches)
+      (throw (RuntimeException. (str "Keyword not found: " type-keyword)))
+      (key (first matches)))))
 
 (defn- union-types
   "Returns specifications for union types for use in json conversion"

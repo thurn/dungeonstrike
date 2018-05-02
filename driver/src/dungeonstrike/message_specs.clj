@@ -24,11 +24,13 @@
       :enum
       `(messages/values ~field-name)
       :object
-      `(s/keys :req [~@(messages/values field-name)])
+      `(s/keys :req [~@(messages/required-fields field-name)]
+               :opt [~@(messages/optional-fields field-name)])
       :union-type
       `any?
       :union-value
-      `(s/keys :req [~@(messages/values field-name)])
+      `(s/keys :req [~@(messages/required-fields field-name)]
+               :opt [~@(messages/optional-fields field-name)])
       :seq
       `(s/coll-of ~(messages/seq-type field-name))
       (throw (RuntimeException.

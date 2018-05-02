@@ -94,7 +94,7 @@ def generate_asset_loader(asset_map, p):
   for asset_type, asset_list in asset_map.items():
     if asset_type == "GameObject":
       p.print("public static GameObject InstantiatePrefab(" +
-              "AssetRefs refs, PrefabName name, Vector3 position)")
+              "AssetRefs refs, PrefabName name)")
     else:
       p.print("public static " + asset_type + " Get" + asset_type +
               "(AssetRefs refs, " + asset_type + "Name name)")
@@ -105,8 +105,7 @@ def generate_asset_loader(asset_map, p):
      if asset_type == "GameObject":
        p.print("case PrefabName." + value.name + ":")
        p.indent()
-       p.print("return Object.Instantiate(refs." + value.name +
-               ", position, Quaternion.identity);")
+       p.print("return Object.Instantiate(refs." + value.name + ");")
        p.dedent()
      else:
        p.print("case " + asset_type + "Name." + value.name + ":")

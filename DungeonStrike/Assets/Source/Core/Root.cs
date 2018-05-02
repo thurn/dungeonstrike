@@ -160,7 +160,7 @@ namespace DungeonStrike.Source.Core
             AddAndEnableService<Panopticon>();
             AddAndEnableService<SceneLoader>();
             AddAndEnableService<QuitGame>();
-            AddAndEnableService<CreateEntity>();
+            AddAndEnableService<UpdateService>();
         }
 
         /// <summary>
