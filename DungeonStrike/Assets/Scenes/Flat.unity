@@ -1295,6 +1295,7 @@ MonoBehaviour:
     type: 3}
   EarthCardEcEarthBackBigShadowed: {fileID: 21300000, guid: 87c727f29809f394383903fd395c4019,
     type: 3}
+  LightCardDeck: {fileID: 21300000, guid: d82c12a539043824496dfb44b47c45d0, type: 3}
   FireCardRarityRank4Big: {fileID: 21300000, guid: 508efcc28b6b7ec419ff9700fd9cacaf,
     type: 3}
   AirCardPowerSymbolAir: {fileID: 21300000, guid: 9f80c28c55ecd7c4981ea19e3384accc,

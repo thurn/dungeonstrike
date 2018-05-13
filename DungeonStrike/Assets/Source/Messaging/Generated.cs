@@ -102,6 +102,7 @@ namespace DungeonStrike.Source.Messaging
         WaterCardEcWaterFrontBig,
         LightCardLightCardBigFrontShadowed,
         AirCardPowerSymbolAir,
+        LightCardDeck,
         AirCardElementalAirCardBackShadowed,
         EarthCardEcEarthFrontNoHeading,
         WaterCardPowerBigSymbol,

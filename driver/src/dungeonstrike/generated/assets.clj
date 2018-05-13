@@ -129,6 +129,7 @@
     :assets/earth-card-ec-earth-front-big-shadowed
     :assets/air-card-artwork-air-big
     :assets/earth-card-ec-earth-back-big-shadowed
+    :assets/light-card-deck
     :assets/fire-card-rarity-rank4-big
     :assets/air-card-power-symbol-air
     :assets/fire-card-elemental-fire-card-art-mask

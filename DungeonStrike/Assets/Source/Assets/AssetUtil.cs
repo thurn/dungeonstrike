@@ -270,6 +270,8 @@ namespace DungeonStrike.Source.Assets
           return refs.AirCardArtworkAirBig;
         case SpriteName.EarthCardEcEarthBackBigShadowed:
           return refs.EarthCardEcEarthBackBigShadowed;
+        case SpriteName.LightCardDeck:
+          return refs.LightCardDeck;
         case SpriteName.FireCardRarityRank4Big:
           return refs.FireCardRarityRank4Big;
         case SpriteName.AirCardPowerSymbolAir:

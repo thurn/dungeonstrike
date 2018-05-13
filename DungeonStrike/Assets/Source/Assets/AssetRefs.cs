@@ -128,6 +128,7 @@ namespace DungeonStrike.Source.Assets
     public Sprite EarthCardEcEarthFrontBigShadowed;
     public Sprite AirCardArtworkAirBig;
     public Sprite EarthCardEcEarthBackBigShadowed;
+    public Sprite LightCardDeck;
     public Sprite FireCardRarityRank4Big;
     public Sprite AirCardPowerSymbolAir;
     public Sprite FireCardElementalFireCardArtMask;

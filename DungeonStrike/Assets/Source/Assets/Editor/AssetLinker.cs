@@ -132,6 +132,7 @@ namespace DungeonStrike.Source.Assets.Editor
       refs.EarthCardEcEarthFrontBigShadowed = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_front_big_shadowed.png");
       refs.AirCardArtworkAirBig = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Air/Big Size Slice/artwork_air_big.png");
       refs.EarthCardEcEarthBackBigShadowed = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Earth/Big Size Slice/ec_earth_back_big_shadowed.png");
+      refs.LightCardDeck = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Light/Big Size Slice/deck.png");
       refs.FireCardRarityRank4Big = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/rarity_rank4_big.png");
       refs.AirCardPowerSymbolAir = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Air/Big Size Slice/power_symbol_air.png");
       refs.FireCardElementalFireCardArtMask = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ThirdParty/Elemental Cards Bundle/Assets/PNG Slices/Elemental Card - Fire/Big Size Slice/elemental_fire_card_art_mask.png");
