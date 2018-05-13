@@ -76,10 +76,20 @@
    :m/object-path string-value
    :m/object-name string-value
    :m/transform (object-value [] [:m/position])
-   :m/component (union-type :m/component-type)
-   :m/canvas (union-value :m/component-type [] [])
-   :m/renderer (union-value :m/component-type [] [:m/material-name])
+
+   ;; Components
    :m/components (seq-value :m/component)
+   :m/component (union-type :m/component-type)
+   :m/canvas (union-value :m/component-type [:m/render-mode] [])
+   :m/render-mode (enum-value #{:screen-space-overlay :screen-space-camera
+                                :world-space})
+   :m/canvas-scaler (union-value :m/component-type [:m/scale-mode
+                                                    :m/reference-resolution] [])
+   :m/scale-mode (enum-value #{:constant-pixel-size :scale-with-screen-size
+                               :constant-physical-size})
+   :m/reference-resolution (object-value [:m/x :m/y] [])
+   :m/graphic-raycaster (union-value :m/component-type [] [])
+   :m/renderer (union-value :m/component-type [] [:m/material-name])
 
    ;; Action Fields
    :a/entity-id string-value

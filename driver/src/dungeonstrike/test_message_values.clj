@@ -24,13 +24,25 @@
     :m/client-id
     ["C:CLIENT_ID"]
     :m/create-objects
-    [:test-values/create-soldier]
+    [:test-values/create-test-canvas
+     :test-values/create-soldier]
     :m/update-objects
-    [:test-values/green-soldier]
+    [[]
+     :test-values/green-soldier]
     :m/delete-objects
     [[]]
     :m/material-updates
     [:test-values/soldier-green :test-values/soldier-black]))
+
+(def create-test-canvas
+  [{:m/object-name "Canvas"
+    :m/transform {:m/position {:m/x 0, :m/y 0}}
+    :m/components [{:m/component-type :m/canvas
+                    :m/render-mode :screen-space-overlay}
+                   {:m/component-type :m/canvas-scaler
+                    :m/scale-mode :scale-with-screen-size
+                    :m/reference-resolution {:m/x 1920, :m/y 1080}}
+                   {:m/component-type :m/graphic-raycaster}]}])
 
 (def create-soldier
   [{:m/object-name "Soldier"
@@ -58,6 +70,7 @@
   function."
   [test-value-key]
   (case test-value-key
+    :test-values/create-test-canvas create-test-canvas
     :test-values/create-soldier create-soldier
     :test-values/green-soldier green-soldier
     (throw (RuntimeException. (str "Unknown test-value-key " test-value-key)))))

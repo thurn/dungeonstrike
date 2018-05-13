@@ -15,14 +15,24 @@ namespace DungeonStrike.Source.Messaging
     public enum ComponentType
     {
         Unknown,
+        CanvasScaler,
         Canvas,
         Renderer,
+        GraphicRaycaster,
     }
 
     public enum PrefabName
     {
         Unknown,
         Soldier,
+    }
+
+    public enum ScaleMode
+    {
+        Unknown,
+        ConstantPixelSize,
+        ScaleWithScreenSize,
+        ConstantPhysicalSize,
     }
 
     public enum SceneName
@@ -180,14 +190,34 @@ namespace DungeonStrike.Source.Messaging
         SoldierBlack,
     }
 
+    public enum RenderMode
+    {
+        Unknown,
+        WorldSpace,
+        ScreenSpaceCamera,
+        ScreenSpaceOverlay,
+    }
+
     public interface IComponent
     {
       ComponentType GetComponentType();
     }
 
+    public sealed class CanvasScaler : IComponent
+    {
+      public ComponentType ComponentType;
+      public ScaleMode ScaleMode;
+      public ReferenceResolution ReferenceResolution;
+      public ComponentType GetComponentType()
+      {
+        return ComponentType;
+      }
+    }
+
     public sealed class Canvas : IComponent
     {
       public ComponentType ComponentType;
+      public RenderMode RenderMode;
       public ComponentType GetComponentType()
       {
         return ComponentType;
@@ -198,6 +228,15 @@ namespace DungeonStrike.Source.Messaging
     {
       public ComponentType ComponentType;
       public MaterialName MaterialName;
+      public ComponentType GetComponentType()
+      {
+        return ComponentType;
+      }
+    }
+
+    public sealed class GraphicRaycaster : IComponent
+    {
+      public ComponentType ComponentType;
       public ComponentType GetComponentType()
       {
         return ComponentType;
@@ -215,10 +254,14 @@ namespace DungeonStrike.Source.Messaging
         public override object GetEmptyObjectForType(string type)
         {
             switch (type) {
+                case "CanvasScaler":
+                    return new CanvasScaler();
                 case "Canvas":
                     return new Canvas();
                 case "Renderer":
                     return new Renderer();
+                case "GraphicRaycaster":
+                    return new GraphicRaycaster();
                 default:
                     throw new InvalidOperationException(
                         "Unrecognized type: " + type);
@@ -242,6 +285,12 @@ namespace DungeonStrike.Source.Messaging
         public string ObjectPath;
         public Transform Transform;
         public List<IComponent> Components;
+    }
+
+    public sealed class ReferenceResolution
+    {
+        public int X;
+        public int Y;
     }
 
     public sealed class Transform
