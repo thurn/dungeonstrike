@@ -194,6 +194,10 @@ namespace DungeonStrike.Source.Messaging
     "int"
     :string
     "string"
+    :float
+    "float"
+    :boolean
+    "bool"
     :enum
     (pascal-name field-name)
     :object
@@ -202,6 +206,8 @@ namespace DungeonStrike.Source.Messaging
     (str "I" (pascal-name field-name))
     :union-value
     (pascal-name field-name)
+    :alias
+    (csharp-field-type (messages/alias-field-key field-name))
     :seq
     (str "List<" (csharp-field-type (messages/seq-type field-name)) ">")
     (logger/error "Unknown type for field-name" field-name)))

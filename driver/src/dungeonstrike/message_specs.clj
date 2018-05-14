@@ -21,13 +21,20 @@
       `integer?
       :string
       `string?
+      :float
+      `float?
+      :boolean
+      `boolean?
       :enum
       `(messages/values ~field-name)
       :object
       `(s/keys :req [~@(messages/required-fields field-name)]
                :opt [~@(messages/optional-fields field-name)])
-      :union-type
-      `any?
+      :alias
+      `(s/keys :req [~@(messages/required-fields
+                        (messages/alias-field-key field-name))]
+               :opt [~@(messages/optional-fields
+                        (messages/alias-field-key field-name))])
       :union-value
       `(s/keys :req [~@(messages/required-fields field-name)]
                :opt [~@(messages/optional-fields field-name)])

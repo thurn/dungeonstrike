@@ -4,6 +4,8 @@
             [dungeonstrike.dev :as dev]))
 (dev/require-dev-helpers)
 
+;; TODO: Validate specs in this file on load
+
 (def entity-ids
   ["E:DRLS2GWvR8GAZaZixfBamw"])
 
@@ -36,17 +38,34 @@
 
 (def create-test-canvas
   [{:m/object-name "Canvas"
-    :m/transform {:m/position {:m/x 0, :m/y 0}}
+    :m/transform {:m/transform-type :m/rect-transform
+                  :m/position2d {:m/x 0, :m/y 0}}
     :m/components [{:m/component-type :m/canvas
                     :m/render-mode :screen-space-overlay}
                    {:m/component-type :m/canvas-scaler
                     :m/scale-mode :scale-with-screen-size
                     :m/reference-resolution {:m/x 1920, :m/y 1080}}
-                   {:m/component-type :m/graphic-raycaster}]}])
+                   {:m/component-type :m/graphic-raycaster}]}
+   {:m/object-name "Deck"
+    :m/parent-path "Canvas"
+    :m/transform {:m/transform-type :m/rect-transform
+                  :m/position2d {:m/x 10, :m/y 10}
+                  :m/size {:m/x 0, :m/y 200}
+                  :m/horizontal-anchor :right
+                  :m/vertical-anchor :bottom
+                  :m/pivot :lower-right}
+    :m/components [{:m/component-type :m/image
+                    :m/sprite-name :assets/light-card-deck
+                    :m/image-type {:m/image-subtype :m/simple-image-type
+                                   :m/preserve-aspect-ratio true}}
+                   {:m/component-type :m/content-size-fitter
+                    :m/horizontal-fit-mode :preferred-size
+                    :m/vertical-fit-mode :unconstrained}]}])
 
 (def create-soldier
   [{:m/object-name "Soldier"
-    :m/transform {:m/position {:m/x 0, :m/y 0}}
+    :m/transform {:m/transform-type :m/cube-transform
+                  :m/position3d {:m/x 0, :m/y 0, :m/z 0}}
     :m/prefab-name :assets/soldier
     :m/components []}])
 

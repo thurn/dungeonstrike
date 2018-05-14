@@ -6,7 +6,8 @@
      :message-id "M:U3VMDB3JTaWzDHSD86dn1w",
      :create-objects
      [#:m{:object-name "Soldier",
-          :transform #:m{:position #:m{:x 0, :y 0}},
+          :transform #:m{:transform-type :m/cube-transform
+                         :position3d #:m{:x 0, :y 0, :z 0}},
           :prefab-name :assets/soldier,
           :components []}],
      :update-objects

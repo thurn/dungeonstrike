@@ -11,6 +11,14 @@
   "An integer-typed field"
   #::{:type :integer})
 
+(def ^:private float-value
+  "A float-typed field"
+  #::{:type :float})
+
+(def ^:private boolean-value
+  "A boolean-typed field"
+  #::{:type :boolean})
+
 (def ^:private string-value
   "A string-typed field"
   #::{:type :string})
@@ -28,6 +36,12 @@
   #::{:type :object
       :required-fields required-field-list
       :optional-fields optional-field-list})
+
+(defn- alias-value
+  "A field containing a map described by another field key. Argument should be
+  the corresponding field key to look up."
+  [field-key]
+  #::{:type :alias :field-key field-key})
 
 (defn- seq-value
   "A field containing a sequence of fields of a single type. Argument should be
@@ -57,12 +71,22 @@
 
 (def fields
   {
-   ;; Object Fields:
+   ;; Primitives:
    :m/x integer-value
    :m/y integer-value
+   :m/z integer-value
+   :m/vector2 (object-value [:m/x :m/y] [])
+   :m/vector3 (object-value [:m/x :m/y :m/z] [])
+   :m/r float-value
+   :m/g float-value
+   :m/b float-value
+   :m/a float-value
+   :m/color (object-value [:m/r :m/g :m/b :m/a] [])
    :m/entity-child-path string-value
    :m/material-name (enum-value assets/material)
    :m/sprite-name (enum-value assets/sprite)
+
+   ;; Updates
    :m/create-object (object-value [:m/object-name]
                                   [:m/parent-path :m/prefab-name
                                    :m/transform :m/components])
@@ -75,7 +99,23 @@
    :m/parent-path string-value
    :m/object-path string-value
    :m/object-name string-value
-   :m/transform (object-value [] [:m/position])
+
+   ;; Transforms
+   :m/transform (union-type :m/transform-type)
+   :m/cube-transform (union-value :m/transform-type [:m/position3d] [])
+   :m/rect-transform (union-value :m/transform-type [] [:m/size
+                                                        :m/pivot
+                                                        :m/position2d
+                                                        :m/vertical-anchor
+                                                        :m/horizontal-anchor])
+   :m/position3d (alias-value :m/vector3)
+   :m/pivot (enum-value #{:upper-left :upper-center :upper-right :middle-left
+                          :middle-center :middle-right :lower-left :lower-center
+                          :lower-right})
+   :m/size (alias-value :m/vector2)
+   :m/position2d (alias-value :m/vector2)
+   :m/vertical-anchor (enum-value #{:top :middle :bottom :stretch})
+   :m/horizontal-anchor (enum-value #{:left :center :right :stretch})
 
    ;; Components
    :m/components (seq-value :m/component)
@@ -90,30 +130,47 @@
    :m/reference-resolution (object-value [:m/x :m/y] [])
    :m/graphic-raycaster (union-value :m/component-type [] [])
    :m/renderer (union-value :m/component-type [] [:m/material-name])
+   :m/image (union-value :m/component-type [] [:m/sprite-name
+                                               :m/color
+                                               :m/material-name
+                                               :m/is-raycast-target
+                                               :m/image-type])
+   :m/is-raycast-target boolean-value
+   :m/image-type (union-type :m/image-subtype)
+   :m/simple-image-type (union-value :m/image-subtype []
+                                     [:m/preserve-aspect-ratio])
+   :m/preserve-aspect-ratio boolean-value
+   :m/content-size-fitter (union-value :m/component-type [:m/horizontal-fit-mode
+                                                          :m/vertical-fit-mode]
+                                       [])
+   :m/horizontal-fit-mode (enum-value #{:unconstrained :min-size
+                                        :preferred-size})
+   :m/vertical-fit-mode (enum-value #{:unconstrained :min-size :preferred-size})
 
-   ;; Action Fields
+   ;; Actions
    :a/entity-id string-value
    :a/client-log-file-path string-value
    :a/client-id string-value
 
-   ;; Message Fields
+   ;; Messages
    :m/entity-id string-value
    :m/scene-name (enum-value #{:empty :flat})
    :m/new-entity-id string-value
    :m/prefab-name (enum-value assets/prefab)
-   :m/position (object-value [:m/x :m/y] [])
    :m/material-update (object-value [:m/entity-child-path :m/material-name] [])
    :m/material-updates (seq-value :m/material-update)})
 
 (def actions
   {:a/client-connected [:a/client-log-file-path :a/client-id]})
 
+;; TODO: Replace messages with updates. Updates have five fields:
+;; 1) load-scene 2) create-objects 3) update-objects 4) delete-objects
+;; 5) quit-game
+;; Unify recordings with test values
 (def messages
   {:m/test [:m/entity-id :m/scene-name]
    :m/load-scene [:m/scene-name]
    :m/quit-game []
-   :m/create-entity [:m/new-entity-id :m/prefab-name :m/position
-                     :m/material-updates]
    :m/update [:m/create-objects :m/update-objects :m/delete-objects]})
 
 (defn field-type
@@ -155,3 +212,8 @@
   "Returns the sequence type of a seq-value specification"
   [field-name]
   (::value-type (fields field-name)))
+
+(defn alias-field-key
+  "Returns the field key for an alias-value type"
+  [field-name]
+  (::field-key (fields field-name)))

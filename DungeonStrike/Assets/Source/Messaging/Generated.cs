@@ -15,16 +15,57 @@ namespace DungeonStrike.Source.Messaging
     public enum ComponentType
     {
         Unknown,
+        Image,
         CanvasScaler,
+        ContentSizeFitter,
         Canvas,
         Renderer,
         GraphicRaycaster,
+    }
+
+    public enum TransformType
+    {
+        Unknown,
+        RectTransform,
+        CubeTransform,
+    }
+
+    public enum ImageSubtype
+    {
+        Unknown,
+        SimpleImageType,
     }
 
     public enum PrefabName
     {
         Unknown,
         Soldier,
+    }
+
+    public enum HorizontalAnchor
+    {
+        Unknown,
+        Center,
+        Right,
+        Stretch,
+        Left,
+    }
+
+    public enum VerticalFitMode
+    {
+        Unknown,
+        Unconstrained,
+        MinSize,
+        PreferredSize,
+    }
+
+    public enum VerticalAnchor
+    {
+        Unknown,
+        Bottom,
+        Top,
+        Middle,
+        Stretch,
     }
 
     public enum ScaleMode
@@ -40,6 +81,14 @@ namespace DungeonStrike.Source.Messaging
         Unknown,
         Empty,
         Flat,
+    }
+
+    public enum HorizontalFitMode
+    {
+        Unknown,
+        Unconstrained,
+        MinSize,
+        PreferredSize,
     }
 
     public enum SpriteName
@@ -165,6 +214,20 @@ namespace DungeonStrike.Source.Messaging
         FireCardPowerSymbol,
     }
 
+    public enum Pivot
+    {
+        Unknown,
+        UpperRight,
+        LowerRight,
+        LowerLeft,
+        LowerCenter,
+        MiddleLeft,
+        UpperCenter,
+        UpperLeft,
+        MiddleCenter,
+        MiddleRight,
+    }
+
     public enum MaterialName
     {
         Unknown,
@@ -203,11 +266,70 @@ namespace DungeonStrike.Source.Messaging
       ComponentType GetComponentType();
     }
 
+    public interface ITransform
+    {
+      TransformType GetTransformType();
+    }
+
+    public interface IImageType
+    {
+      ImageSubtype GetImageSubtype();
+    }
+
+    public sealed class SimpleImageType : IImageType
+    {
+      public ImageSubtype ImageSubtype;
+      public bool PreserveAspectRatio;
+      public ImageSubtype GetImageSubtype()
+      {
+        return ImageSubtype;
+      }
+    }
+
+    public sealed class Image : IComponent
+    {
+      public ComponentType ComponentType;
+      public SpriteName SpriteName;
+      public Color Color;
+      public MaterialName MaterialName;
+      public bool IsRaycastTarget;
+      public IImageType ImageType;
+      public ComponentType GetComponentType()
+      {
+        return ComponentType;
+      }
+    }
+
     public sealed class CanvasScaler : IComponent
     {
       public ComponentType ComponentType;
       public ScaleMode ScaleMode;
       public ReferenceResolution ReferenceResolution;
+      public ComponentType GetComponentType()
+      {
+        return ComponentType;
+      }
+    }
+
+    public sealed class RectTransform : ITransform
+    {
+      public TransformType TransformType;
+      public Vector2 Size;
+      public Pivot Pivot;
+      public Vector2 Position2d;
+      public VerticalAnchor VerticalAnchor;
+      public HorizontalAnchor HorizontalAnchor;
+      public TransformType GetTransformType()
+      {
+        return TransformType;
+      }
+    }
+
+    public sealed class ContentSizeFitter : IComponent
+    {
+      public ComponentType ComponentType;
+      public HorizontalFitMode HorizontalFitMode;
+      public VerticalFitMode VerticalFitMode;
       public ComponentType GetComponentType()
       {
         return ComponentType;
@@ -234,6 +356,16 @@ namespace DungeonStrike.Source.Messaging
       }
     }
 
+    public sealed class CubeTransform : ITransform
+    {
+      public TransformType TransformType;
+      public Vector3 Position3d;
+      public TransformType GetTransformType()
+      {
+        return TransformType;
+      }
+    }
+
     public sealed class GraphicRaycaster : IComponent
     {
       public ComponentType ComponentType;
@@ -254,14 +386,60 @@ namespace DungeonStrike.Source.Messaging
         public override object GetEmptyObjectForType(string type)
         {
             switch (type) {
+                case "Image":
+                    return new Image();
                 case "CanvasScaler":
                     return new CanvasScaler();
+                case "ContentSizeFitter":
+                    return new ContentSizeFitter();
                 case "Canvas":
                     return new Canvas();
                 case "Renderer":
                     return new Renderer();
                 case "GraphicRaycaster":
                     return new GraphicRaycaster();
+                default:
+                    throw new InvalidOperationException(
+                        "Unrecognized type: " + type);
+            }
+        }
+    }
+
+    public sealed class TransformJsonConverter
+        : UnionJsonConverter<ITransform>
+    {
+        public override string GetTypeIdentifier()
+        {
+            return "TransformType";
+        }
+
+        public override object GetEmptyObjectForType(string type)
+        {
+            switch (type) {
+                case "RectTransform":
+                    return new RectTransform();
+                case "CubeTransform":
+                    return new CubeTransform();
+                default:
+                    throw new InvalidOperationException(
+                        "Unrecognized type: " + type);
+            }
+        }
+    }
+
+    public sealed class ImageTypeJsonConverter
+        : UnionJsonConverter<IImageType>
+    {
+        public override string GetTypeIdentifier()
+        {
+            return "ImageSubtype";
+        }
+
+        public override object GetEmptyObjectForType(string type)
+        {
+            switch (type) {
+                case "SimpleImageType":
+                    return new SimpleImageType();
                 default:
                     throw new InvalidOperationException(
                         "Unrecognized type: " + type);
@@ -280,10 +458,18 @@ namespace DungeonStrike.Source.Messaging
         public MaterialName MaterialName;
     }
 
+    public sealed class Color
+    {
+        public float R;
+        public float G;
+        public float B;
+        public float A;
+    }
+
     public sealed class UpdateObject
     {
         public string ObjectPath;
-        public Transform Transform;
+        public ITransform Transform;
         public List<IComponent> Components;
     }
 
@@ -293,21 +479,23 @@ namespace DungeonStrike.Source.Messaging
         public int Y;
     }
 
-    public sealed class Transform
-    {
-        public Position Position;
-    }
-
     public sealed class CreateObject
     {
         public string ObjectName;
         public string ParentPath;
         public PrefabName PrefabName;
-        public Transform Transform;
+        public ITransform Transform;
         public List<IComponent> Components;
     }
 
-    public sealed class Position
+    public sealed class Vector3
+    {
+        public int X;
+        public int Y;
+        public int Z;
+    }
+
+    public sealed class Vector2
     {
         public int X;
         public int Y;
@@ -343,20 +531,6 @@ namespace DungeonStrike.Source.Messaging
         {
         }
 
-    }
-
-    public sealed class CreateEntityMessage : Message
-    {
-        public static readonly string Type = "CreateEntity";
-
-        public CreateEntityMessage() : base("CreateEntity")
-        {
-        }
-
-        public string NewEntityId { get; set; }
-        public PrefabName PrefabName { get; set; }
-        public Position Position { get; set; }
-        public List<MaterialUpdate> MaterialUpdates { get; set; }
     }
 
     public sealed class UpdateMessage : Message
@@ -396,8 +570,6 @@ namespace DungeonStrike.Source.Messaging
                     return new LoadSceneMessage();
                 case "QuitGame":
                     return new QuitGameMessage();
-                case "CreateEntity":
-                    return new CreateEntityMessage();
                 case "Update":
                     return new UpdateMessage();
                 default:
@@ -412,6 +584,8 @@ namespace DungeonStrike.Source.Messaging
                 new MessageConverter(),
                 new StringEnumConverter(),
                 new ComponentJsonConverter(),
+                new TransformJsonConverter(),
+                new ImageTypeJsonConverter(),
             };
         }
     }

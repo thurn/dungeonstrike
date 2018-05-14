@@ -1,12 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DungeonStrike.Source.Assets;
 using DungeonStrike.Source.Core;
 using DungeonStrike.Source.Messaging;
+using DungeonStrike.Source.Specs;
 using DungeonStrike.Source.Utilities;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace DungeonStrike.Source.Services
 {
@@ -16,9 +15,20 @@ namespace DungeonStrike.Source.Services
 
         protected override string MessageType => UpdateMessage.Type;
 
+        private TransformSpec _transformSpec;
+        private Dictionary<ComponentType, ISpec> _specs;
+
         protected override async Task<Result> OnEnableService()
         {
             _assetLoader = await GetService<AssetLoader>();
+
+            var assetRefs = _assetLoader.GetAssets();
+            _transformSpec = new TransformSpec(assetRefs, ErrorHandler);
+            _specs = new Dictionary<ComponentType, ISpec>()
+            {
+                {ComponentType.Image, new ImageSpec(assetRefs, ErrorHandler)},
+                {ComponentType.ContentSizeFitter, new ContentSizeFitterSpec(assetRefs, ErrorHandler)}
+            };
 
             return Result.Success;
         }
@@ -58,74 +68,75 @@ namespace DungeonStrike.Source.Services
                 }
             }
 
-            GameObject gameObject;
+            GameObject newObject;
             if (createObject.PrefabName == PrefabName.Unknown)
             {
-                gameObject = new GameObject(createObject.ObjectName);
+                newObject = new GameObject(createObject.ObjectName);
             }
             else
             {
-                gameObject = AssetUtil.InstantiatePrefab(assetRefs, createObject.PrefabName);
-                gameObject.name = createObject.ObjectName;
+                newObject = AssetUtil.InstantiatePrefab(assetRefs, createObject.PrefabName);
+                newObject.name = createObject.ObjectName;
             }
 
             if (parentObject != null)
             {
-                gameObject.transform.SetParent(parentObject.transform);
+                newObject.transform.SetParent(parentObject.transform);
             }
 
-            UpdateComponents(assetRefs, gameObject, createObject.Components);
-            UpdateTransform(gameObject, createObject.Transform);
+            UpdateComponents(assetRefs, newObject, createObject.Components);
+
+            if (createObject.Transform != null)
+            {
+                // UpdateTransform should always be last, to handle layout components being added above.
+                _transformSpec.UpdateGameObject(newObject, createObject.Transform);
+            }
         }
 
         private void UpdateObject(AssetRefs assetRefs, UpdateObject updateObject)
         {
-            var gameObject = GameObject.Find(updateObject.ObjectPath);
-            UpdateComponents(assetRefs, gameObject, updateObject.Components);
+            var foundObject = GameObject.Find(updateObject.ObjectPath);
+            UpdateComponents(assetRefs, foundObject, updateObject.Components);
+
+            if (updateObject.Transform != null)
+            {
+                _transformSpec.UpdateGameObject(foundObject, updateObject.Transform);
+            }
         }
 
-        private void UpdateComponents(AssetRefs assetRefs, GameObject gameObject, List<IComponent> components)
+        private void UpdateComponents(AssetRefs assetRefs, GameObject updateObject, List<IComponent> components)
         {
             foreach (var component in components)
             {
-                switch (component.GetComponentType())
+                if (_specs.ContainsKey(component.GetComponentType()))
                 {
-                    case ComponentType.Renderer:
-                        UpdateRenderer(assetRefs, gameObject, (Messaging.Renderer)component);
-                        break;
-                    case ComponentType.Canvas:
-                        UpdateCanvas(assetRefs, gameObject, (Messaging.Canvas)component);
-                        break;
-                    case ComponentType.CanvasScaler:
-                        UpdateCanvasScaler(assetRefs, gameObject, (Messaging.CanvasScaler)component);
-                        break;
-                    case ComponentType.GraphicRaycaster:
-                        UpdateGraphicRaycaster(assetRefs, gameObject, (Messaging.GraphicRaycaster)component);
-                        break;
-                    default:
-                        ErrorHandler.ReportError("Unsupported component type", component.GetComponentType());
-                        break;
+                    _specs[component.GetComponentType()].UpdateGameObject(updateObject, component);
+                }
+                else
+                {
+                    switch (component.GetComponentType())
+                    {
+                        case ComponentType.Renderer:
+                            UpdateRenderer(assetRefs, updateObject, (Messaging.Renderer)component);
+                            break;
+                        case ComponentType.Canvas:
+                            UpdateCanvas(assetRefs, updateObject, (Messaging.Canvas)component);
+                            break;
+                        case ComponentType.CanvasScaler:
+                            UpdateCanvasScaler(assetRefs, updateObject, (CanvasScaler) component);
+                            break;
+                        case ComponentType.GraphicRaycaster:
+                            UpdateGraphicRaycaster(assetRefs, updateObject, (GraphicRaycaster) component);
+                            break;
+                        default:
+                            throw ErrorHandler.UnexpectedEnumValue(component.GetComponentType());
+                    }
                 }
             }
         }
 
         private void DeleteObject(DeleteObject deleteObject)
         {
-        }
-
-        private static T GetOrCreateComponent<T>(GameObject gameObject) where T : UnityEngine.Component
-        {
-            var result = gameObject.GetComponent<T>();
-            if (result == null)
-            {
-                result = gameObject.AddComponent<T>();
-            }
-            return result;
-        }
-
-        private void UpdateTransform(GameObject gameObject, Messaging.Transform transform)
-        {
-            gameObject.transform.position = new Vector3(transform.Position.X, 0, transform.Position.Y);
         }
 
         private void UpdateRenderer(AssetRefs assetRefs, GameObject gameObject, Messaging.Renderer renderer)
@@ -149,8 +160,7 @@ namespace DungeonStrike.Source.Services
                     component.renderMode = UnityEngine.RenderMode.WorldSpace;
                     break;
                 default:
-                    ErrorHandler.ReportError("Unsupported render mode", canvas.RenderMode);
-                    break;
+                    throw ErrorHandler.UnexpectedEnumValue(canvas.RenderMode);
             }
         }
 
@@ -169,16 +179,26 @@ namespace DungeonStrike.Source.Services
                     component.uiScaleMode = UnityEngine.UI.CanvasScaler.ScaleMode.ConstantPhysicalSize;
                     break;
                 default:
-                    ErrorHandler.ReportError("Unsupported scale mode", scaler.ScaleMode);
-                    break;
+                    throw ErrorHandler.UnexpectedEnumValue(scaler.ScaleMode);
             }
-            component.referenceResolution = new Vector2(scaler.ReferenceResolution.X, scaler.ReferenceResolution.Y);
+            component.referenceResolution = new UnityEngine.Vector2(
+                    scaler.ReferenceResolution.X, scaler.ReferenceResolution.Y);
         }
 
         private void UpdateGraphicRaycaster(AssetRefs assetRefs, GameObject gameObject,
             Messaging.GraphicRaycaster raycaster)
         {
             GetOrCreateComponent<UnityEngine.UI.GraphicRaycaster>(gameObject);
+        }
+
+        private static T GetOrCreateComponent<T>(GameObject gameObject) where T : UnityEngine.Component
+        {
+            var result = gameObject.GetComponent<T>();
+            if (result == null)
+            {
+                result = gameObject.AddComponent<T>();
+            }
+            return result;
         }
     }
 }
