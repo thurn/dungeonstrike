@@ -56,85 +56,6 @@
 (mount/defstate ^:private gui-state
   :start (atom {}))
 
-(declare update-frame!)
-
-(defn- title-font
-  "Font to use in section headers"
-  []
-  (font/font :style #{:bold} :size 18))
-
-(defn- process-position
-  [value]
-  (if (= value "")
-    {:m/x 0, :m/y 0}
-    (let [[x y] (string/split value #",")]
-      {:m/x (Integer/parseInt x), :m/y (Integer/parseInt y)})))
-
-(defn- process-form-values
-  [message key value]
-  (let [processed-value (if (and (keyword? value)
-                                 (= "test-values" (namespace value)))
-                          (test-values/lookup-test-value-key value)
-                          value)]
-    (if (= "m" (namespace key))
-      (assoc message key processed-value)
-      message)))
-
-(defn- on-send-button-clicked
-  "Returns a click handler function for the 'send' button."
-  [message-form]
-  (fn [event]
-    (let [form-value (seesaw/value message-form)
-          message (reduce-kv process-form-values {} form-value)]
-      (when (:recording? @message-gui/recording-state)
-        (swap! message-gui/recording-state assoc
-               :message->client message))
-      (websocket/send-message! message)
-      (update-frame!))))
-
-(defn- message-form-items [send-button message-picker message-type]
-  (concat
-   [[(seesaw/label :text "Send Message" :font (title-font))
-     "alignx center, pushx, span, wrap 20px"]
-    [(seesaw/label "Message Type")]
-    [message-picker "wrap"]
-    [(seesaw/label "Message ID")]
-    [(seesaw/label :id :m/message-id
-                   :text (uuid/new-message-id)) "wrap"]]
-   (message-gui/editor-for-message-type message-type)
-   [[send-button "skip, span, wrap"]]))
-
-(defn- message-selected-fn [message-picker]
-  (fn [e]
-    (requests/send-request!
-     (effects/request :r/message-selected
-                      :m/message-type (seesaw/selection message-picker)))))
-
-(defmethod effects/evaluate :r/message-selected
-  [{:keys [:m/message-type]}]
-  [(effects/effect ::config :selector :#message-form :key :selected
-                   :value message-type :persistent? true)])
-
-(defn- send-message-panel
-  "UI for 'Send Message' panel."
-  []
-  (let [message-types (keys messages/messages)
-        message-picker (seesaw/combobox :id :m/message-type
-                                        :model message-types)
-        enabled? (get-in @gui-state [:#send-button :enabled?] false)
-        send-button (seesaw/button :text "Send!"
-                                   :id :send-button
-                                   :enabled? enabled?)
-        selected (get-in @persistent-state
-                         [:#message-form :selected] :m/load-scene)
-        form-items (message-form-items send-button message-picker selected)
-        panel (mig/mig-panel :id :message-form :items form-items)]
-    (seesaw/selection! message-picker selected)
-    (seesaw/listen message-picker :selection
-                   (message-selected-fn message-picker))
-    (seesaw/listen send-button :action (on-send-button-clicked panel))
-    panel))
-
 (defn- recording-file-names
   "Returns all available file names of test recordings in the recordings
    directory."
@@ -180,7 +101,7 @@
                      (seesaw/config! run-selected-button :enabled? true)))
     (mig/mig-panel
      :id :tests
-     :items [[(seesaw/label :text "Tests" :font (title-font))
+     :items [[(seesaw/label :text "Tests" :font (message-gui/title-font))
               "alignx center, pushx, span, wrap 20px"]
              [run-selected-button]
              [run-all-button "wrap 20px"]
@@ -190,11 +111,9 @@
   []
   (let [panel (seesaw/tabbed-panel :placement :top
                                    :tabs [{:title "Send Message"
-                                           :content (send-message-panel)}
+                                           :content (message-gui/send-panel)}
                                           {:title "Tests"
-                                           :content (tests-panel)}
-                                          {:title "Send Message 2"
-                                           :content (message-gui/send-panel)}])]
+                                           :content (tests-panel)}])]
     (seesaw/listen panel :selection
                    (fn [e] (swap! persistent-state assoc :left-tab-index
                                   (:index (seesaw/selection panel)))))
@@ -307,7 +226,7 @@
   "Log viewer window"
   []
   (mig/mig-panel
-   :items [[(seesaw/label :text "Logs" :font (title-font))
+   :items [[(seesaw/label :text "Logs" :font (message-gui/title-font))
             "alignx center, span, wrap 20px"]
            [(seesaw/button :text "Start Recording" :id :recording-button)]
            [(seesaw/button :text "Clear" :id :clear-button) "wrap"]
@@ -381,7 +300,8 @@
                                :multi-line? true
                                :font (font/font :name :monospaced))
         panel (mig/mig-panel
-               :items [[(seesaw/label :text "Save Recording" :font (title-font))
+               :items [[(seesaw/label :text "Save Recording"
+                                      :font (message-gui/title-font))
                         "alignx center, span, wrap"]
                        [(seesaw/label :text "Prerequisite Recording:")]
                        [prerequisite "wrap"]
@@ -470,18 +390,3 @@
 
 (mount/defstate ^:private debug-gui
   :start (show-debug-gui))
-
-(s/def ::selector keyword?)
-(s/def ::key keyword?)
-(s/def ::value some?)
-(s/def ::persistent? boolean?)
-
-(defmethod effects/effect-spec ::config [_]
-  (s/keys :req-un [::selector ::key ::value] :opt-un [::persistent?]))
-
-(defmethod effects/apply! ::config
-  [{:keys [:selector :key :value :persistent?]}]
-  (if persistent?
-    (swap! persistent-state assoc-in [selector key] value)
-    (swap! gui-state assoc-in [selector key] value))
-  (update-frame!))

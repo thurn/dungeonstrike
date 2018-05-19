@@ -57,9 +57,9 @@
 (defn- channel-closed-handler
   "Handler for websocket channel close events."
   [status]
-  (logger/log "Driver connection closed" status)
-  (when-not (= status :server-close)
-    (requests/send-request! (effects/request :r/client-disconnected))))
+  (logger/log "Driver connection closed" status))
+  ; (when-not (= status :server-close)
+  ;  (requests/send-request! (effects/request :r/client-disconnected))))
 
 (mount/defstate ^:private socket-atom
   :start (atom nil)

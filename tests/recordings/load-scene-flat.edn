@@ -1,10 +1,7 @@
 {:name "load-scene-flat",
  :prerequisite nil,
  :timeout 10,
- :message->client
- {:m/message-type :m/load-scene,
-  :m/scene-name :flat,
-  :m/message-id "M:nIBUiVA8R6SnIoWSJ9WtvA"},
+ :message->client :test-values/load-scene-flat
  :entries
  [{:message
    "Websocket sending message [<[:m/load-scene] M:nIBUiVA8R6SnIoWSJ9WtvA>]",

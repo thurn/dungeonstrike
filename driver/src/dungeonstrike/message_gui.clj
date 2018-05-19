@@ -16,28 +16,7 @@
 (mount/defstate recording-state
   :start (atom {:recording? false}))
 
-(declare map-items-for-message-field)
-
-(defn- editor-for-message-field
-  "Returns an appropriate GUI widget for editing the message field. The widget
-  will have an ':id' of the field name."
-  [field-name]
-  [[(seesaw/label (str field-name))]
-   [(if (= :enum (messages/field-type field-name))
-      (seesaw/combobox :id field-name
-                       :model (messages/values field-name))
-      (seesaw/combobox :id field-name
-                       :model (test-values/test-values-for-field-name
-                               field-name)))
-    "width 200px, wrap"]])
-
-(defn editor-for-message-type
-  "Returns a vector of form items implementing an editor for the supplied
-  message type."
-  [message-type]
-  (mapcat editor-for-message-field (message-type messages/messages)))
-
-(defn- title-font
+(defn title-font
   "Font to use in section headers"
   []
   (font/font :style #{:bold} :size 18))

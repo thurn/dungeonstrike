@@ -1,40 +1,7 @@
 {:name "create-deck",
  :prerequisite "load-scene-flat.edn",
  :timeout 10,
- :message->client
- {:m/message-type :m/update,
-  :m/message-id "M:LKYhHswSTo6qd9gJfsl92g",
-  :m/create-objects
-  [{:m/object-name "Canvas",
-    :m/transform
-    {:m/transform-type :m/rect-transform,
-     :m/position2d {:m/x 0, :m/y 0}},
-    :m/components
-    [{:m/component-type :m/canvas,
-      :m/render-mode :screen-space-overlay}
-     {:m/component-type :m/canvas-scaler,
-      :m/scale-mode :constant-physical-size}
-     {:m/component-type :m/graphic-raycaster}]}
-   {:m/object-name "Deck",
-    :m/parent-path "Canvas",
-    :m/transform
-    {:m/transform-type :m/rect-transform,
-     :m/position2d {:m/x 0, :m/y 0},
-     :m/size {:m/x 0, :m/y 20},
-     :m/horizontal-anchor :right,
-     :m/vertical-anchor :bottom,
-     :m/pivot :lower-right},
-    :m/components
-    [{:m/component-type :m/image,
-      :m/sprite-name :assets/light-card-deck,
-      :m/image-type
-      {:m/image-subtype :m/simple-image-type,
-       :m/preserve-aspect-ratio true}}
-     {:m/component-type :m/content-size-fitter,
-      :m/horizontal-fit-mode :preferred-size,
-      :m/vertical-fit-mode :unconstrained}]}],
-  :m/update-objects [],
-  :m/delete-objects []},
+ :message->client :test-values/create-deck,
  :entries
  [{:message
    "Websocket sending message [<[:m/update] M:LKYhHswSTo6qd9gJfsl92g>]",

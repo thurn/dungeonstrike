@@ -6,6 +6,7 @@
             [clojure.spec.alpha :as s]
             [dungeonstrike.logger :as logger]
             [dungeonstrike.paths :as paths]
+            [dungeonstrike.test-message-values :as test-message-values]
             [dungeonstrike.websocket :as websocket]
             [mount.core :as mount]
             [dungeonstrike.dev :as dev]))
@@ -34,8 +35,8 @@
   match the logs in the provided log entry. Returns a channel which will receive
   a value describing the success or failure of the test."
   [args {:keys [:name :entries :message->client :timeout]}]
-  (when message->client
-    (websocket/send-message! message->client))
+  (when-let [message-to-send (test-message-values/values message->client)]
+    (websocket/send-message! message-to-send))
   (let [timeout-channel (async/timeout (* 1000 timeout))]
     (async/go-loop [missing-entries entries]
       (let [[value port] (async/alts! [timeout-channel log-channel])]
@@ -174,8 +175,7 @@
   {:name "shutdown"
    :prerequisite nil
    :timeout 10
-   :message->client {:m/message-type :m/quit-game
-                     :m/message-id "M:QUIT"}
+   :message->client :test-values/quit-game
    :entries
    [{:message "Quitting Client"
      :source "DungeonStrike.Source.Services.QuitGame"
