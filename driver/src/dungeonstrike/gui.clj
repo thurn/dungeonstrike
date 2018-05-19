@@ -24,7 +24,7 @@
             [seesaw.mig :as mig]
             [seesaw.table :as table]
             [dungeonstrike.dev :as dev])
-  (:import (java.awt Color)
+  (:import (java.awt Color Dimension)
            (java.util Comparator)
            (javax.swing ListSelectionModel SwingUtilities JOptionPane)
            (javax.swing.event ListSelectionListener)
@@ -33,9 +33,6 @@
 
 (mount/defstate ^:private log-channel
   :start (async/tap logger/debug-log-mult (async/chan)))
-
-(mount/defstate ^:private recording-state
-  :start (atom {:recording? false}))
 
 (defn- load-gui-state
   []
@@ -89,8 +86,8 @@
   (fn [event]
     (let [form-value (seesaw/value message-form)
           message (reduce-kv process-form-values {} form-value)]
-      (when (:recording? @recording-state)
-        (swap! recording-state assoc
+      (when (:recording? @message-gui/recording-state)
+        (swap! message-gui/recording-state assoc
                :message->client message))
       (websocket/send-message! message)
       (update-frame!))))
@@ -195,7 +192,9 @@
                                    :tabs [{:title "Send Message"
                                            :content (send-message-panel)}
                                           {:title "Tests"
-                                           :content (tests-panel)}])]
+                                           :content (tests-panel)}
+                                          {:title "Send Message 2"
+                                           :content (message-gui/send-panel)}])]
     (seesaw/listen panel :selection
                    (fn [e] (swap! persistent-state assoc :left-tab-index
                                   (:index (seesaw/selection panel)))))
@@ -276,6 +275,8 @@
                                      :multi-line? true
                                      :editable? true
                                      :font (font/font :name :monospaced))]
+          (.setLineWrap text-area true)
+          (.setPreferredSize text-area (Dimension. 1000 600))
           (JOptionPane/showMessageDialog nil (seesaw/scrollable text-area)))))))
 
 (defn- log-info-table
@@ -345,8 +346,8 @@
   (let [logs-view (seesaw/select frame [:#logs])]
     (async/go-loop []
       (when-some [{:keys [source] :as entry} (<! log-channel)]
-        (when (:recording? @recording-state)
-          (swap! recording-state update :entries conj
+        (when (:recording? @message-gui/recording-state)
+          (swap! message-gui/recording-state update :entries conj
                  (select-keys entry [:message :source :log-type :error?])))
         (SwingUtilities/invokeLater
          (fn []
@@ -360,8 +361,8 @@
   []
   (let [recording-button (seesaw/select frame [:#recording-button])]
     (seesaw/config! recording-button :text "Stop Recording")
-    (reset! recording-state {:recording? true
-                             :entries []})))
+    (reset! message-gui/recording-state {:recording? true
+                                         :entries []})))
 
 (defn- pretty-string
   "Returns a pretty-printed string representation of 'form'"
@@ -424,14 +425,14 @@
 (defn- stop-recording
   []
   (let [recording-button (seesaw/select frame [:#recording-button])
-        initial-message (:message->client @recording-state)
-        entries (:entries @recording-state)]
+        initial-message (:message->client @message-gui/recording-state)
+        entries (:entries @message-gui/recording-state)]
     (seesaw/show!
      (save-recording-frame
       initial-message entries
       (fn [{:keys [recording-name prerequisite timeout]}]
-        (reset! recording-state {:recording? false
-                                 :entries []})
+        (reset! message-gui/recording-state {:recording? false
+                                             :entries []})
         (seesaw/config! recording-button :text "Start Recording")
         (when recording-name
           (let [output-file (io/file paths/test-recordings-path
@@ -447,7 +448,7 @@
 (defn- new-recording-fn
   "Returns a function to act as the listener for the 'Start Recording' button."
   [event]
-  (if (:recording? @recording-state)
+  (if (:recording? @message-gui/recording-state)
     (stop-recording)
     (start-recording)))
 

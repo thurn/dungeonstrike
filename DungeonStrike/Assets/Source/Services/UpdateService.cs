@@ -12,6 +12,7 @@ namespace DungeonStrike.Source.Services
     public class UpdateService : Service
     {
         private AssetLoader _assetLoader;
+        private AssetRefs _assetRefs;
 
         protected override string MessageType => UpdateMessage.Type;
 
@@ -22,13 +23,28 @@ namespace DungeonStrike.Source.Services
         {
             _assetLoader = await GetService<AssetLoader>();
 
-            var assetRefs = _assetLoader.GetAssets();
-            _transformSpec = new TransformSpec(assetRefs, ErrorHandler);
+            _assetRefs = _assetLoader.GetAssets();
+            _transformSpec = new TransformSpec
+            {
+                ErrorHandler = ErrorHandler,
+                AssetRefs = _assetRefs
+            };
+
             _specs = new Dictionary<ComponentType, ISpec>()
             {
-                {ComponentType.Image, new ImageSpec(assetRefs, ErrorHandler)},
-                {ComponentType.ContentSizeFitter, new ContentSizeFitterSpec(assetRefs, ErrorHandler)}
+                {ComponentType.Image, new ImageSpec()},
+                {ComponentType.ContentSizeFitter, new ContentSizeFitterSpec()},
+                {ComponentType.Renderer, new RendererSpec()},
+                {ComponentType.CanvasScaler, new CanvasScalerSpec()},
+                {ComponentType.Canvas, new CanvasSpec()},
+                {ComponentType.GraphicRaycaster, new GraphicRaycasterSpec()}
             };
+
+            foreach (var pair in _specs)
+            {
+                pair.Value.AssetRefs = _assetRefs;
+                pair.Value.ErrorHandler = ErrorHandler;
+            }
 
             return Result.Success;
         }
@@ -45,7 +61,7 @@ namespace DungeonStrike.Source.Services
 
             foreach (var updateObject in message.UpdateObjects)
             {
-                UpdateObject(assetRefs, updateObject);
+                UpdateObject(updateObject);
             }
 
             foreach (var deleteObject in message.DeleteObjects)
@@ -85,7 +101,7 @@ namespace DungeonStrike.Source.Services
                 newObject.transform.SetParent(parentObject.transform);
             }
 
-            UpdateComponents(assetRefs, newObject, createObject.Components);
+            UpdateComponents(newObject, createObject.Components);
 
             if (createObject.Transform != null)
             {
@@ -94,10 +110,10 @@ namespace DungeonStrike.Source.Services
             }
         }
 
-        private void UpdateObject(AssetRefs assetRefs, UpdateObject updateObject)
+        private void UpdateObject(UpdateObject updateObject)
         {
             var foundObject = GameObject.Find(updateObject.ObjectPath);
-            UpdateComponents(assetRefs, foundObject, updateObject.Components);
+            UpdateComponents(foundObject, updateObject.Components);
 
             if (updateObject.Transform != null)
             {
@@ -105,7 +121,7 @@ namespace DungeonStrike.Source.Services
             }
         }
 
-        private void UpdateComponents(AssetRefs assetRefs, GameObject updateObject, List<IComponent> components)
+        private void UpdateComponents(GameObject updateObject, List<IComponent> components)
         {
             foreach (var component in components)
             {
@@ -115,96 +131,13 @@ namespace DungeonStrike.Source.Services
                 }
                 else
                 {
-                    switch (component.GetComponentType())
-                    {
-                        case ComponentType.Renderer:
-                            UpdateRenderer(assetRefs, updateObject, (Messaging.Renderer)component);
-                            break;
-                        case ComponentType.Canvas:
-                            UpdateCanvas(assetRefs, updateObject, (Messaging.Canvas)component);
-                            break;
-                        case ComponentType.CanvasScaler:
-                            UpdateCanvasScaler(assetRefs, updateObject, (CanvasScaler) component);
-                            break;
-                        case ComponentType.GraphicRaycaster:
-                            UpdateGraphicRaycaster(assetRefs, updateObject, (GraphicRaycaster) component);
-                            break;
-                        default:
-                            throw ErrorHandler.UnexpectedEnumValue(component.GetComponentType());
-                    }
+                    throw ErrorHandler.UnexpectedEnumValue(component.GetComponentType());
                 }
             }
         }
 
         private void DeleteObject(DeleteObject deleteObject)
         {
-        }
-
-        private void UpdateRenderer(AssetRefs assetRefs, GameObject gameObject, Messaging.Renderer renderer)
-        {
-            var component = GetOrCreateComponent<UnityEngine.Renderer>(gameObject);
-            component.material = AssetUtil.GetMaterial(assetRefs, renderer.MaterialName);
-        }
-
-        private void UpdateCanvas(AssetRefs assetRefs, GameObject gameObject, Messaging.Canvas canvas)
-        {
-            var component = GetOrCreateComponent<UnityEngine.Canvas>(gameObject);
-            switch (canvas.RenderMode)
-            {
-                case Messaging.RenderMode.ScreenSpaceCamera:
-                    component.renderMode = UnityEngine.RenderMode.ScreenSpaceCamera;
-                    break;
-                case Messaging.RenderMode.ScreenSpaceOverlay:
-                    component.renderMode = UnityEngine.RenderMode.ScreenSpaceOverlay;
-                    break;
-                case Messaging.RenderMode.WorldSpace:
-                    component.renderMode = UnityEngine.RenderMode.WorldSpace;
-                    break;
-                default:
-                    throw ErrorHandler.UnexpectedEnumValue(canvas.RenderMode);
-            }
-        }
-
-        private void UpdateCanvasScaler(AssetRefs assetRefs, GameObject gameObject, Messaging.CanvasScaler scaler)
-        {
-            var component = GetOrCreateComponent<UnityEngine.UI.CanvasScaler>(gameObject);
-            switch (scaler.ScaleMode)
-            {
-                case Messaging.ScaleMode.ConstantPixelSize:
-                    component.uiScaleMode = UnityEngine.UI.CanvasScaler.ScaleMode.ConstantPixelSize;
-                    break;
-                case Messaging.ScaleMode.ScaleWithScreenSize:
-                    component.uiScaleMode = UnityEngine.UI.CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                    break;
-                case Messaging.ScaleMode.ConstantPhysicalSize:
-                    component.uiScaleMode = UnityEngine.UI.CanvasScaler.ScaleMode.ConstantPhysicalSize;
-                    component.physicalUnit = UnityEngine.UI.CanvasScaler.Unit.Millimeters;
-                    break;
-                default:
-                    throw ErrorHandler.UnexpectedEnumValue(scaler.ScaleMode);
-            }
-
-            if (scaler.ReferenceResolution != null)
-            {
-                component.referenceResolution = new UnityEngine.Vector2(
-                        scaler.ReferenceResolution.X, scaler.ReferenceResolution.Y);
-            }
-        }
-
-        private void UpdateGraphicRaycaster(AssetRefs assetRefs, GameObject gameObject,
-            Messaging.GraphicRaycaster raycaster)
-        {
-            GetOrCreateComponent<UnityEngine.UI.GraphicRaycaster>(gameObject);
-        }
-
-        private static T GetOrCreateComponent<T>(GameObject gameObject) where T : UnityEngine.Component
-        {
-            var result = gameObject.GetComponent<T>();
-            if (result == null)
-            {
-                result = gameObject.AddComponent<T>();
-            }
-            return result;
         }
     }
 }

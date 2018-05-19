@@ -9,6 +9,9 @@ namespace DungeonStrike.Source.Specs
     public interface ISpec
     {
         void UpdateGameObject(GameObject gameObject, object value);
+
+        ErrorHandler ErrorHandler { get; set; }
+        AssetRefs AssetRefs { get; set;  }
     }
 
     public abstract class Spec<T> : ISpec
@@ -20,14 +23,8 @@ namespace DungeonStrike.Source.Specs
 
         protected abstract void Update(GameObject gameObject, T value);
 
-        protected ErrorHandler ErrorHandler { get; }
-        protected AssetRefs AssetRefs { get; }
-
-        protected Spec(AssetRefs refs, ErrorHandler errorHandler)
-        {
-            ErrorHandler = errorHandler;
-            AssetRefs = refs;
-        }
+        public ErrorHandler ErrorHandler { get; set; }
+        public AssetRefs AssetRefs { get; set;  }
 
         protected static TC GetOrCreateComponent<TC>(GameObject gameObject) where TC : Component
         {

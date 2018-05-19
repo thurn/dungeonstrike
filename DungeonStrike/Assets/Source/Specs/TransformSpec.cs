@@ -9,10 +9,6 @@ namespace DungeonStrike.Source.Specs
 {
     public class TransformSpec : Spec<ITransform>
     {
-        public TransformSpec(AssetRefs refs, ErrorHandler errorHandler) : base(refs, errorHandler)
-        {
-        }
-
         protected override void Update(GameObject gameObject, ITransform transform)
         {
             switch (transform.GetTransformType())

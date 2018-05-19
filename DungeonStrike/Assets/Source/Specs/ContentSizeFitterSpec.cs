@@ -8,10 +8,6 @@ namespace DungeonStrike.Source.Specs
 {
     public class ContentSizeFitterSpec : Spec<ContentSizeFitter>
     {
-        public ContentSizeFitterSpec(AssetRefs refs, ErrorHandler errorHandler) : base(refs, errorHandler)
-        {
-        }
-
         protected override void Update(GameObject gameObject, ContentSizeFitter fitter)
         {
             var component = GetOrCreateComponent<UnityEngine.UI.ContentSizeFitter>(gameObject);

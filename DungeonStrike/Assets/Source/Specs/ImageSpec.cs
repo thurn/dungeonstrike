@@ -7,10 +7,6 @@ namespace DungeonStrike.Source.Specs
 {
     public class ImageSpec : Spec<Image>
     {
-        public ImageSpec(AssetRefs refs, ErrorHandler errorHandler) : base(refs, errorHandler)
-        {
-        }
-
         protected override void Update(GameObject gameObject, Image image)
         {
             var component = GetOrCreateComponent<UnityEngine.UI.Image>(gameObject);
