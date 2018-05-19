@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DungeonStrike.Source.Core;
-using DungeonStrike.Source.Messaging;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -57,21 +56,6 @@ namespace DungeonStrike.Tests.Editor
             return result;
         }
 
-        public GameObject NewTestEntityObject(string name, PrefabName prefabName, string entityId)
-        {
-            var result = NewTestGameObject(name);
-            var entity = result.AddComponent<Entity>();
-            entity.Initialize(prefabName, entityId);
-            return result;
-        }
-
-        public T AddTestEntityComponent<T>(GameObject gameObject) where T : EntityComponent
-        {
-            var result = gameObject.AddComponent<T>();
-            result.Root = _rootComponent;
-            return result;
-        }
-
         public T CreateTestService<T>() where T : Service
         {
             var service = _rootObject.AddComponent<T>();
@@ -91,13 +75,6 @@ namespace DungeonStrike.Tests.Editor
             foreach (var service in _testServices)
             {
                 tasks.Add(service.Enable(_rootLogContext));
-            }
-            foreach (var managedObject in _managedObjects)
-            {
-                foreach (var component in managedObject.GetComponents<EntityComponent>())
-                {
-                    tasks.Add(component.Enable(_rootLogContext));
-                }
             }
             await Task.WhenAll(tasks);
         }

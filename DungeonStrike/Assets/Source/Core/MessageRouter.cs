@@ -5,7 +5,6 @@ using DisruptorUnity3d;
 using DungeonStrike.Source.Messaging;
 using DungeonStrike.Source.Utilities;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace DungeonStrike.Source.Core
 {
@@ -17,9 +16,6 @@ namespace DungeonStrike.Source.Core
         // Map from message type to the registered message handler
         private Dictionary<string, DungeonStrikeComponent> _serviceMessageHandlers;
 
-        // Map from (message type, entityId) to the registered message handler
-        private Dictionary<Tuple<string, string>, DungeonStrikeComponent> _entityComponentMessageHandlers;
-
         private RingBuffer<Exception> _errors;
 
         private RingBuffer<Tuple<Message, DungeonStrikeComponent>> _messages;
@@ -27,8 +23,6 @@ namespace DungeonStrike.Source.Core
         protected override Task<Result> OnEnableService()
         {
             _serviceMessageHandlers = new Dictionary<string, DungeonStrikeComponent>();
-            _entityComponentMessageHandlers =
-                new Dictionary<Tuple<string, string>, DungeonStrikeComponent>();
             _errors = new RingBuffer<Exception>(16);
             _messages = new RingBuffer<Tuple<Message, DungeonStrikeComponent>>(16);
             return Async.Success;
@@ -37,7 +31,6 @@ namespace DungeonStrike.Source.Core
         protected override void OnDisableService()
         {
             _serviceMessageHandlers = null;
-            _entityComponentMessageHandlers = null;
             _errors = null;
             _messages = null;
         }
@@ -71,22 +64,6 @@ namespace DungeonStrike.Source.Core
         }
 
         /// <summary>
-        /// Register an <see cref="EntityComponent"/> to be the receiver of a specific type of messages
-        /// </summary>
-        /// <param name="messageType">The type of messages to register for</param>
-        /// <param name="entityId">The entityId of messages that should be delivered, based on
-        /// <see cref="Message.EntityId"/></param>
-        /// <param name="component">The component which should be called when these messages are received</param>
-        public void RegisterEntityComponentForMessage(string messageType, string entityId, EntityComponent component)
-        {
-            ErrorHandler.CheckNotNull("messageType", messageType, "entityId", entityId, "component", component);
-            var key = Tuple.Create(messageType, entityId);
-            ErrorHandler.CheckArgument(!_entityComponentMessageHandlers.ContainsKey(key),
-                "Handler already registered for message", "messageType", "entityId", entityId);
-            _entityComponentMessageHandlers[key] = component;
-        }
-
-        /// <summary>
         /// Called when new messages are received from the driver. Should not be invoked in user code.
         /// </summary>
         /// <param name="messageInput">The newly-received message JSON string, which should be delivered to the
@@ -98,21 +75,10 @@ namespace DungeonStrike.Source.Core
                 var message = JsonConvert.DeserializeObject<Message>(messageInput, Messages.GetJsonConverters());
                 ErrorHandler.CheckNotNull("message", message);
                 var messageType = message.MessageType;
-                if (message.EntityId != null)
-                {
-                    var key = Tuple.Create(messageType, message.EntityId);
-                    ErrorHandler.CheckState(_entityComponentMessageHandlers.ContainsKey(key),
-                        "No entity component message handler registered for message", "MessageId", message.MessageId,
-                        "MessageType", message.MessageType, "EntityId", message.EntityId);
-                    _messages.Enqueue(Tuple.Create(message, _entityComponentMessageHandlers[key]));
-                }
-                else
-                {
-                    ErrorHandler.CheckArgument(_serviceMessageHandlers.ContainsKey(messageType),
-                        "No service message handler registered for message", "MessageId", message.MessageId,
-                        "MessageType", message.MessageType);
-                    _messages.Enqueue(Tuple.Create(message, _serviceMessageHandlers[messageType]));
-                }
+                ErrorHandler.CheckArgument(_serviceMessageHandlers.ContainsKey(messageType),
+                    "No service message handler registered for message", "MessageId", message.MessageId,
+                    "MessageType", message.MessageType);
+                _messages.Enqueue(Tuple.Create(message, _serviceMessageHandlers[messageType]));
             }
             catch (Exception ex)
             {

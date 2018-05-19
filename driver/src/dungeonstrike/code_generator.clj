@@ -285,8 +285,7 @@ namespace DungeonStrike.Source.Messaging
                                 :fieldType (csharp-field-type field-name)})
         message-params (fn [[message-name fields]]
                          {:messageName (pascal-name message-name)
-                          :fields (map message-field-params
-                                       (remove #{:m/entity-id} fields))})
+                          :fields (map message-field-params fields)})
         action-field-params (fn [field-name]
                               {:fieldName (pascal-name field-name)
                                :fieldType (csharp-field-type field-name)})

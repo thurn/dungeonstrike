@@ -16,12 +16,6 @@ namespace DungeonStrike.Source.Messaging
         public string MessageId { get; set; }
 
         /// <summary>
-        /// ID of Entity which should consume this message, or null if this message is not scoped to any particular
-        /// entity.
-        /// </summary>
-        public string EntityId { get; set; }
-
-        /// <summary>
         /// Type of this message, used to determine how to deserialize it.
         /// </summary>
         public string MessageType { get; set; }

@@ -149,14 +149,11 @@
    :m/vertical-fit-mode (enum-value #{:unconstrained :min-size :preferred-size})
 
    ;; Actions
-   :a/entity-id string-value
    :a/client-log-file-path string-value
    :a/client-id string-value
 
    ;; Messages
-   :m/entity-id string-value
    :m/scene-name (enum-value #{:empty :flat})
-   :m/new-entity-id string-value
    :m/prefab-name (enum-value assets/prefab)
    :m/material-update (object-value [:m/entity-child-path :m/material-name] [])
    :m/material-updates (seq-value :m/material-update)})
@@ -169,7 +166,7 @@
 ;; 5) quit-game
 ;; Unify recordings with test values
 (def messages
-  {:m/test [:m/entity-id :m/scene-name]
+  {:m/test [:m/scene-name]
    :m/load-scene [:m/scene-name]
    :m/quit-game []
    :m/update [:m/create-objects :m/update-objects :m/delete-objects]})

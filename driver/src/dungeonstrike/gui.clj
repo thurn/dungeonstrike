@@ -430,10 +430,10 @@
      (save-recording-frame
       initial-message entries
       (fn [{:keys [recording-name prerequisite timeout]}]
+        (reset! recording-state {:recording? false
+                                 :entries []})
+        (seesaw/config! recording-button :text "Start Recording")
         (when recording-name
-          (reset! recording-state {:recording? false
-                                   :entries []})
-          (seesaw/config! recording-button :text "Start Recording")
           (let [output-file (io/file paths/test-recordings-path
                                      (str recording-name ".edn"))
                 output (pretty-string {:name recording-name
