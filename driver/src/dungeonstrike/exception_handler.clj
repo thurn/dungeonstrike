@@ -4,7 +4,8 @@
             [io.aviso.exception :as exception]
             [mount.core :as mount]
             [taoensso.timbre :as timbre]
-            [dungeonstrike.dev :as dev]))
+            [dungeonstrike.dev :as dev])
+  (:import (java.util.concurrent.locks ReentrantLock)))
 (dev/require-dev-helpers)
 
 (defn- error-info
@@ -35,14 +36,20 @@
        :thread-name (.getName thread)
        :stack-trace (str builder)})))
 
+(defonce exception-printing-lock (ReentrantLock.))
+
 (defn set-default-exception-handler!
   "Sets a Java default uncaught exception handler."
   []
   (Thread/setDefaultUncaughtExceptionHandler
    (reify Thread$UncaughtExceptionHandler
      (uncaughtException [_ thread ex]
-       (println "==== Uncaught Exception! ===")
-       (println ex)
+       (try
+         (.lock exception-printing-lock)
+         (println "==== Uncaught Exception! ===")
+         (println ex)
+         (finally
+           (.unlock exception-printing-lock)))
        ; Lazily resolve logger to prevent direct dependency:
        (let [log-helper (resolve (symbol "dungeonstrike.logger" "log-helper"))
              error (error-info thread ex)

@@ -43,9 +43,9 @@ namespace DungeonStrike.Source.Services
                 CreateObject(assetRefs, createObject);
             }
 
-            foreach (var updatObject in message.UpdateObjects)
+            foreach (var updateObject in message.UpdateObjects)
             {
-                UpdateObject(assetRefs, updatObject);
+                UpdateObject(assetRefs, updateObject);
             }
 
             foreach (var deleteObject in message.DeleteObjects)
@@ -77,6 +77,7 @@ namespace DungeonStrike.Source.Services
             {
                 newObject = AssetUtil.InstantiatePrefab(assetRefs, createObject.PrefabName);
                 newObject.name = createObject.ObjectName;
+                newObject.tag = "Prefab";
             }
 
             if (parentObject != null)
@@ -177,12 +178,17 @@ namespace DungeonStrike.Source.Services
                     break;
                 case Messaging.ScaleMode.ConstantPhysicalSize:
                     component.uiScaleMode = UnityEngine.UI.CanvasScaler.ScaleMode.ConstantPhysicalSize;
+                    component.physicalUnit = UnityEngine.UI.CanvasScaler.Unit.Millimeters;
                     break;
                 default:
                     throw ErrorHandler.UnexpectedEnumValue(scaler.ScaleMode);
             }
-            component.referenceResolution = new UnityEngine.Vector2(
-                    scaler.ReferenceResolution.X, scaler.ReferenceResolution.Y);
+
+            if (scaler.ReferenceResolution != null)
+            {
+                component.referenceResolution = new UnityEngine.Vector2(
+                        scaler.ReferenceResolution.X, scaler.ReferenceResolution.Y);
+            }
         }
 
         private void UpdateGraphicRaycaster(AssetRefs assetRefs, GameObject gameObject,

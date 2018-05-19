@@ -2326,7 +2326,7 @@ GameObject:
   - component: {fileID: 926540623}
   m_Layer: 0
   m_Name: Lights
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2832,7 +2832,7 @@ GameObject:
   - component: {fileID: 1158147027}
   m_Layer: 8
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4333,7 +4333,7 @@ GameObject:
   - component: {fileID: 1721057770}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: MainCamera
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4554,7 +4554,7 @@ GameObject:
   - component: {fileID: 1725581621}
   m_Layer: 0
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

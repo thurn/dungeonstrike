@@ -1,0 +1,67 @@
+{:name "create-deck",
+ :prerequisite "load-scene-flat.edn",
+ :timeout 10,
+ :message->client
+ {:m/message-type :m/update,
+  :m/message-id "M:LKYhHswSTo6qd9gJfsl92g",
+  :m/create-objects
+  [{:m/object-name "Canvas",
+    :m/transform
+    {:m/transform-type :m/rect-transform,
+     :m/position2d {:m/x 0, :m/y 0}},
+    :m/components
+    [{:m/component-type :m/canvas,
+      :m/render-mode :screen-space-overlay}
+     {:m/component-type :m/canvas-scaler,
+      :m/scale-mode :constant-physical-size}
+     {:m/component-type :m/graphic-raycaster}]}
+   {:m/object-name "Deck",
+    :m/parent-path "Canvas",
+    :m/transform
+    {:m/transform-type :m/rect-transform,
+     :m/position2d {:m/x 0, :m/y 0},
+     :m/size {:m/x 0, :m/y 20},
+     :m/horizontal-anchor :right,
+     :m/vertical-anchor :bottom,
+     :m/pivot :lower-right},
+    :m/components
+    [{:m/component-type :m/image,
+      :m/sprite-name :assets/light-card-deck,
+      :m/image-type
+      {:m/image-subtype :m/simple-image-type,
+       :m/preserve-aspect-ratio true}}
+     {:m/component-type :m/content-size-fitter,
+      :m/horizontal-fit-mode :preferred-size,
+      :m/vertical-fit-mode :unconstrained}]}],
+  :m/update-objects [],
+  :m/delete-objects []},
+ :entries
+ [{:message
+   "Websocket sending message [<[:m/update] M:LKYhHswSTo6qd9gJfsl92g>]",
+   :source "dungeonstrike.websocket",
+   :log-type :driver}
+  {:message "Received message [<[Update] M:LKYhHswSTo6qd9gJfsl92g>]",
+   :source "DungeonStrike.Source.Services.UpdateService",
+   :log-type :client}
+  {:message
+   "Finished processing message [<[Update] M:LKYhHswSTo6qd9gJfsl92g>]",
+   :source "DungeonStrike.Source.Services.UpdateService",
+   :log-type :client}
+  {:message "Object created [Canvas]",
+   :source "DungeonStrike.Source.Tools.Panopticon",
+   :log-type :client}
+  {:message
+   "Component Update [Game Object=Canvas, Component=UnityEngine.RectTransform, State={AnchorMin=(0.0, 0.0), AnchorMax=(0.0, 0.0), AnchoredPosition=(0.0, 0.0), SizeDelta=(0.0, 0.0), Pivot=(0.0, 0.0)}]",
+   :source "DungeonStrike.Source.Tools.Panopticon",
+   :log-type :client}
+  {:message "Object created [Deck]",
+   :source "DungeonStrike.Source.Tools.Panopticon",
+   :log-type :client}
+  {:message
+   "Component Update [Game Object=Deck, Component=UnityEngine.RectTransform, State={AnchorMin=(1.0, 0.0), AnchorMax=(1.0, 0.0), AnchoredPosition=(0.0, 0.0), SizeDelta=(76.0, 20.0), Pivot=(1.0, 0.0)}]",
+   :source "DungeonStrike.Source.Tools.Panopticon",
+   :log-type :client}
+  {:message
+   "Component Update [Game Object=Deck, Component=UnityEngine.UI.Image, State={SpriteName=deck}]",
+   :source "DungeonStrike.Source.Tools.Panopticon",
+   :log-type :client}]}

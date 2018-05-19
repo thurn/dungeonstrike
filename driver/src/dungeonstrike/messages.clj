@@ -123,8 +123,9 @@
    :m/canvas (union-value :m/component-type [:m/render-mode] [])
    :m/render-mode (enum-value #{:screen-space-overlay :screen-space-camera
                                 :world-space})
-   :m/canvas-scaler (union-value :m/component-type [:m/scale-mode
-                                                    :m/reference-resolution] [])
+   :m/canvas-scaler (union-value :m/component-type
+                                 [:m/scale-mode]
+                                 [:m/reference-resolution])
    :m/scale-mode (enum-value #{:constant-pixel-size :scale-with-screen-size
                                :constant-physical-size})
    :m/reference-resolution (object-value [:m/x :m/y] [])

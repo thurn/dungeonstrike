@@ -14,22 +14,50 @@ namespace DungeonStrike.Source.Tools
     /// </summary>
     public sealed class Panopticon : Service
     {
-        private readonly ISet<GameObject> _trackedEntities = new HashSet<GameObject>();
+        private readonly HashSet<GameObject> _trackedEntities = new HashSet<GameObject>();
+        private ComponentTracker _componentTracker;
 
         protected override Task<Result> OnEnableService()
         {
             SceneManager.sceneLoaded += (scene, mode) => Logger.Log("Scene loaded", scene.name);
+            _componentTracker = new ComponentTracker(Logger);
+            InvokeRepeating(nameof(ObserveObjects), 2.0f, 2.0f);
             return Async.Success;
         }
 
-        private void Update()
+        private void ObserveObjects()
         {
-            foreach (var gameObject in UnityEngine.SceneManagement
-                    .SceneManager.GetActiveScene().GetRootGameObjects())
+            foreach (var go in SceneManager.GetActiveScene().GetRootGameObjects())
             {
-                if (_trackedEntities.Contains(gameObject)) continue;
-                Logger.Log("Object created", gameObject.name);
-                _trackedEntities.Add(gameObject);
+                ObserveObject(go);
+            }
+        }
+
+        private void ObserveObject(GameObject observee)
+        {
+            if (observee.CompareTag("Environment"))
+            {
+                return;
+            }
+
+            if (!_trackedEntities.Contains(observee))
+            {
+                Logger.Log("Object created", observee.name);
+                _trackedEntities.Add(observee);
+            }
+
+
+            if (!observee.CompareTag("Prefab"))
+            {
+                foreach (var component in observee.GetComponents<Component>())
+                {
+                    _componentTracker.TrackComponentState(observee, component);
+                }
+
+                foreach (Transform t in observee.transform)
+                {
+                    ObserveObject(t.gameObject);
+                }
             }
         }
     }

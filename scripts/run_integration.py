@@ -10,6 +10,9 @@ parser = argparse.ArgumentParser(
 parser.add_argument("--test",
                     help="Test to run, or 'all', or 'changed'",
                     required=True)
+parser.add_argument("--verbose",
+                    action="store_true",
+                    help="Should tests be run in verbose mode?")
 args = parser.parse_args()
 
 print("\nRunning integration test(s) '" + args.test + "'...\n")
@@ -28,19 +31,19 @@ lib.call([env.script("build_driver_jar.py")])
 client = subprocess.Popen([
   os.path.join(env.client_binary_path, "Contents", "MacOS", "dungeonstrike"),
   "-batchmode",
-  "--port", "59009"
+  "--port", "59009",
 ])
 
 print("Started client with pid " + str(client.pid) + "\n")
+verbose = ["--verbose"] if args.verbose else []
 
 lib.call([
   "java",
   "-jar", os.path.join(env.driver_jar_path, "driver.jar"),
   "--crash-on-exceptions",
-  "--verbose",
   "--port", "59009",
   "--client-path", env.client_binary_path,
   "--driver-path", env.driver_jar_path,
   "--tests-path", env.tests_root,
   "--test", args.test
-])
+] + verbose)

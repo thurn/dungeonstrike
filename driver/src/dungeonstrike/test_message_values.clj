@@ -43,14 +43,13 @@
     :m/components [{:m/component-type :m/canvas
                     :m/render-mode :screen-space-overlay}
                    {:m/component-type :m/canvas-scaler
-                    :m/scale-mode :scale-with-screen-size
-                    :m/reference-resolution {:m/x 1920, :m/y 1080}}
+                    :m/scale-mode :constant-physical-size}
                    {:m/component-type :m/graphic-raycaster}]}
    {:m/object-name "Deck"
     :m/parent-path "Canvas"
     :m/transform {:m/transform-type :m/rect-transform
-                  :m/position2d {:m/x 10, :m/y 10}
-                  :m/size {:m/x 0, :m/y 200}
+                  :m/position2d {:m/x 0, :m/y 0}
+                  :m/size {:m/x 0, :m/y 20}
                   :m/horizontal-anchor :right
                   :m/vertical-anchor :bottom
                   :m/pivot :lower-right}

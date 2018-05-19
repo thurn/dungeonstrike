@@ -8,6 +8,8 @@ TagManager:
   - FiringPoint
   - TargetPoint
   - SpineBone
+  - Environment
+  - Prefab
   layers:
   - Default
   - TransparentFX

@@ -91,7 +91,8 @@ namespace DungeonStrike.Source.Core
                 for (var i = 0; i < arguments.Length; ++i)
                 {
                     result.Append(arguments[i]);
-                    result.Append(i % 2 == 0 ? "=" : ", ");
+                    var comma = i == arguments.Length - 1 ? "" : ", ";
+                    result.Append(i % 2 == 0 ? "=" : comma);
                 }
                 result.Append("]");
             }

@@ -33,27 +33,29 @@
   `websocket` and then listens for logs on `log-channel` and verifies that they
   match the logs in the provided log entry. Returns a channel which will receive
   a value describing the success or failure of the test."
-  [{:keys [:name :entries :message->client :timeout]}]
+  [args {:keys [:name :entries :message->client :timeout]}]
   (when message->client
     (websocket/send-message! message->client))
   (let [timeout-channel (async/timeout (* 1000 timeout))]
-    (async/go-loop [missing-entries (group-by :source entries)]
+    (async/go-loop [missing-entries entries]
       (let [[value port] (async/alts! [timeout-channel log-channel])]
         (if (= port timeout-channel)
           ;; Timeout exceeded, return failure value.
           {:status :timeout
            :test-name name
            :message "Test timed out waiting for logs!"
-           :detail (flatten (vals (remove #(empty? (val %)) missing-entries)))}
+           :detail missing-entries}
 
-          (let [{:keys [source error?] :as log-message} value
-                [next & remaining] (missing-entries source)]
+          (let [{:keys [source error? message] :as log-message} value]
             (cond
-              ;; If this log entry is expected, remove it from the expected set
+              ;; If this log entry is expected, remove it from the missing set
               ;; and recur, signalling completion if the expected set is empty.
-              (equivalent-log-entries? next log-message)
-              (let [updated (update missing-entries source rest)]
-                (if (every? #(empty? (val %)) updated)
+              (some #(equivalent-log-entries? log-message %) missing-entries)
+              (let [updated (remove #(equivalent-log-entries? log-message %)
+                                    missing-entries)]
+                (when (:verbose args)
+                  (println (str "GOT: \"" message "\"")))
+                (if (empty? updated)
                   {:status :success :test-name name}
                   (recur updated)))
 
@@ -64,17 +66,12 @@
                :message "Error encountered running test!"
                :detail log-message}
 
-              ;; If this log entry is in the expected set, but has arrived too
-              ;; early, signal test failure.
-              (some #(equivalent-log-entries? log-message %) remaining)
-              {:status :out-of-order
-               :test-name name
-               :message "Test log message arrived out of order!"
-               :detail log-message}
-
               ;; Otherwise, ignore this log entry.
               :otherwise
-              (recur missing-entries))))))))
+              (do
+                (when (:verbose args)
+                  (println (str "SKIPPING: \"" message "\"")))
+                (recur missing-entries)))))))))
 
 (defn- run-recording-list
   "Runs a sequence of recordings via the `run-recording` function. Returns a
@@ -88,7 +85,7 @@
       (when (:verbose args)
         (println message))
       (when-let [{:keys [:status] :as result}
-                 (<! (run-recording recording))]
+                 (<! (run-recording args recording))]
         (when (= status :success)
           (let [duration (int (/ (- (System/currentTimeMillis) start-time)
                                  1000))

@@ -171,9 +171,7 @@
   (let [file-names (recording-file-names)
         run-selected-button (seesaw/button :text "Run Selected" :enabled? false)
         run-all-button (seesaw/button :text "Run All")
-        test-list (test-list-table file-names)
-        test-selector (seesaw/combobox :id :run-on-connect
-                                       :model (conj (seq file-names) "None"))]
+        test-list (test-list-table file-names)]
     (seesaw/listen run-selected-button :action
                    (fn [e]
                      (when-let [test (seesaw/value test-list)]
@@ -183,22 +181,13 @@
     (seesaw/listen test-list :selection
                    (fn [e]
                      (seesaw/config! run-selected-button :enabled? true)))
-    (seesaw/listen test-selector :selection
-                   (fn [e]
-                     (swap! persistent-state assoc :run-on-connect
-                            (seesaw/selection test-selector))))
-    (seesaw/selection! test-selector
-                       (get @persistent-state :run-on-connect "None"))
-
     (mig/mig-panel
      :id :tests
      :items [[(seesaw/label :text "Tests" :font (title-font))
               "alignx center, pushx, span, wrap 20px"]
              [run-selected-button]
              [run-all-button "wrap 20px"]
-             [test-list "grow, span"]
-             [(seesaw/label :text "Run On Connect:")]
-             [test-selector "grow, span"]])))
+             [test-list "grow, span"]])))
 
 (defn- left-content
   []
@@ -395,7 +384,7 @@
                         "alignx center, span, wrap"]
                        [(seesaw/label :text "Prerequisite Recording:")]
                        [prerequisite "wrap"]
-                       [(seesaw/label :text "Name:")]
+                       [(seesaw/label :text "Name (no .edn):")]
                        [recording-name "width 250px, wrap"]
                        [(seesaw/label :text "Timeout (seconds):")]
                        [recording-timeout "width 100px, wrap"]
@@ -428,7 +417,7 @@
                          (seesaw/dispose! new-frame)))))
     (seesaw/listen cancel-button :action
                    (fn [e]
-                     (on-close nil nil)
+                     (on-close {})
                      (seesaw/dispose! new-frame)))
     new-frame))
 

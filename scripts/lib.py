@@ -65,12 +65,12 @@ class Env(object):
   def unity(self, args):
     """Invokes Unity with the provided arguments."""
     result = subprocess.call([self.unity_path] + args)
-    if result == 1:
-      print("Error invoking Unity. Perhaps the project is already open?\n" +
-            "Only one instance of Unity can have the project open at once")
-      exit(1)
-    elif result != 0:
-      print("Error invoking Unity. Test failures? Code: " + str(result))
+    if result != 0:
+      print("Error invoking Unity. Code: " + str(result))
+      print("""Things to try:
+1) Close Unity. Only one instance of Unity can have a project open (code 1).
+2) Check for compile errors in Editor.log (code 1)
+3) Check for unit test failures (code 2)""")
       exit(result)
     else:
       return result
